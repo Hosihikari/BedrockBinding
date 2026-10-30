@@ -215,6 +215,7 @@ public sealed unsafe partial class RandomLookAroundAndSitGoal : global::System.I
         NativeMethods.TablePtr->C2.hs_method_17ac8dbf((void*)__hosihikari_shim_handle);
     }
 
+
     public float mInitialRotation
     {
         get => NativeMethods.TablePtr->C2.hs_get_36e86268((void*)__hosihikari_shim_handle);

@@ -66,6 +66,7 @@ public sealed unsafe partial class LevelChunkDataRegistry : global::System.IDisp
         get => (nint)NativeMethods.TablePtr->C4.hs_get_fa718f07((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

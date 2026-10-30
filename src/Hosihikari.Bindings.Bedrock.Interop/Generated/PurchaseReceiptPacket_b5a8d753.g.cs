@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PurchaseReceiptPacket
+public sealed unsafe partial class PurchaseReceiptPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,9 +227,23 @@ public sealed unsafe partial class PurchaseReceiptPacket
         NativeMethods.TablePtr->C2.hs_method_4d040a4a((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPurchaseReceipts_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_14fadd83((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b5a8d753((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

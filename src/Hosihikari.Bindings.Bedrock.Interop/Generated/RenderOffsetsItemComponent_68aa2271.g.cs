@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RenderOffsetsItemComponent
+public sealed unsafe partial class RenderOffsetsItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -72,5 +72,19 @@ public sealed unsafe partial class RenderOffsetsItemComponent
     public nint mOffhand_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_c6dde2ba((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_68aa2271((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

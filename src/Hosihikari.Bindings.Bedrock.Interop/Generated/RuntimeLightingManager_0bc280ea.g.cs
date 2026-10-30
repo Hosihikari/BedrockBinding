@@ -44,7 +44,7 @@ public sealed unsafe partial class RuntimeLightingManager : global::System.IDisp
 
     public static RuntimeLightingManager Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_55aaedbd();
+        var handle = NativeMethods.TablePtr->C3.hs_create_55aaedbd();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,7 +55,7 @@ public sealed unsafe partial class RuntimeLightingManager : global::System.IDisp
 
     public static RuntimeLightingManager Create(global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_663f99e4((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_663f99e4((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,7 +66,7 @@ public sealed unsafe partial class RuntimeLightingManager : global::System.IDisp
 
     public void _getListOfChunksWithPlayerDistance()
     {
-        NativeMethods.TablePtr->C2.hs_method_2561c807((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_2561c807((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -75,53 +75,53 @@ public sealed unsafe partial class RuntimeLightingManager : global::System.IDisp
 
     public void _removeProcessedSubchunks()
     {
-        NativeMethods.TablePtr->C2.hs_method_c576f6f6((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_c576f6f6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimension_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_8e080cdf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8e080cdf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelChunksToLight_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_0ad74b58((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0ad74b58((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLightingTimeboxTime_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_d9bb7ae6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d9bb7ae6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mListOfChunksToProcess_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_540c7ea5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_540c7ea5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mProcessedSubchunks_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_f3af4e54((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f3af4e54((void*)__hosihikari_shim_handle);
     }
 
     public bool mWorkerScheduled
     {
-        get => NativeMethods.TablePtr->C2.hs_get_222ad4f1((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_222ad4f1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_222ad4f1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_222ad4f1((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager((nint)NativeMethods.TablePtr->C2.hs_method_8c1a2e7c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RuntimeLightingManager((nint)NativeMethods.TablePtr->C3.hs_method_8c1a2e7c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void updateBlockLight(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, global::Hosihikari.Bindings.Bedrock.Interop.Brightness oldBrightness, global::Hosihikari.Bindings.Bedrock.Interop.Brightness newBrightness, global::Hosihikari.Bindings.Bedrock.Interop.Brightness oldAbsorption, global::Hosihikari.Bindings.Bedrock.Interop.Brightness newAbsorption, bool isSkyLight)
     {
-        NativeMethods.TablePtr->C2.hs_method_eb443510((void*)__hosihikari_shim_handle, (void*)blockPos.Handle, (void*)oldBrightness.Handle, (void*)newBrightness.Handle, (void*)oldAbsorption.Handle, (void*)newAbsorption.Handle, isSkyLight);
+        NativeMethods.TablePtr->C3.hs_method_eb443510((void*)__hosihikari_shim_handle, (void*)blockPos.Handle, (void*)oldBrightness.Handle, (void*)newBrightness.Handle, (void*)oldAbsorption.Handle, (void*)newAbsorption.Handle, isSkyLight);
     }
 
 
@@ -131,7 +131,7 @@ public sealed unsafe partial class RuntimeLightingManager : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_0bc280ea((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_0bc280ea((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

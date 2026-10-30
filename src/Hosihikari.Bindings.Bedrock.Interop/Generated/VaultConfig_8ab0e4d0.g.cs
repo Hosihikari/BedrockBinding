@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested;
 
-public sealed unsafe partial class VaultConfig
+public sealed unsafe partial class VaultConfig : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,31 +40,45 @@ public sealed unsafe partial class VaultConfig
 
     public float activationRange
     {
-        get => NativeMethods.TablePtr->C3.hs_get_bb6dc1b9((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_bb6dc1b9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_bb6dc1b9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_bb6dc1b9((void*)__hosihikari_shim_handle, value);
     }
 
     public float deactivationRange
     {
-        get => NativeMethods.TablePtr->C3.hs_get_193ea813((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_193ea813((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_193ea813((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_193ea813((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint keyItem_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_5c60259d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_5c60259d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint lootTable_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_910bfb48((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_910bfb48((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint overrideLootTableToDisplay_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f995e78e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f995e78e((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_8ab0e4d0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MobArmorEquipmentPacket
+public sealed unsafe partial class MobArmorEquipmentPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class MobArmorEquipmentPacket
         NativeMethods.TablePtr->C2.hs_method_6faf16e5((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBody_Address
     {
@@ -261,5 +262,18 @@ public sealed unsafe partial class MobArmorEquipmentPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_d9e6f587((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_d9e6f587((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ea1adea3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

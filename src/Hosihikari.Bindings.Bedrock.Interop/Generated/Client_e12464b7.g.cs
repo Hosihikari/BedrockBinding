@@ -96,6 +96,7 @@ public sealed unsafe partial class Client : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_552f709b((void*)__hosihikari_shim_handle, subClientId);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BodyControl
+public sealed unsafe partial class BodyControl : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,5 +58,19 @@ public sealed unsafe partial class BodyControl
     {
         get => NativeMethods.TablePtr->C0.hs_get_767f6f60((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_767f6f60((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a5c048a3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

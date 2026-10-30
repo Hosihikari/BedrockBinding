@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler_Nested;
 
-public sealed unsafe partial class Record
+public sealed unsafe partial class Record : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,5 +58,19 @@ public sealed unsafe partial class Record
     public nint mName
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_8443a0c6((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_78556426((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

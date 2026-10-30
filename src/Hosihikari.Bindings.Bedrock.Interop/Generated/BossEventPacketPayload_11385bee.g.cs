@@ -102,6 +102,7 @@ public sealed unsafe partial class BossEventPacketPayload : global::System.IDisp
         set => NativeMethods.TablePtr->C0.hs_set_a7d3d4eb((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

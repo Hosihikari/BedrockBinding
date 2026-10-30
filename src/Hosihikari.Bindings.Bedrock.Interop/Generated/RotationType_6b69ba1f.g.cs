@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockTransformationComponent_Nested;
 
-public sealed unsafe partial class RotationType
+public sealed unsafe partial class RotationType : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,5 +60,19 @@ public sealed unsafe partial class RotationType
     {
         get => NativeMethods.TablePtr->C0.hs_get_fd15ae48((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_fd15ae48((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6b69ba1f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

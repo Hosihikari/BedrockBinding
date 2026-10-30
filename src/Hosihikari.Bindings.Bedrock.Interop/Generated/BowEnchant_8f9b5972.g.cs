@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BowEnchant
+public sealed unsafe partial class BowEnchant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -83,6 +83,7 @@ public sealed unsafe partial class BowEnchant
         return NativeMethods.TablePtr->C0.hs_method_15ed3fff((void*)__hosihikari_shim_handle, level);
     }
 
+
     public int mCompatibility
     {
         get => NativeMethods.TablePtr->C0.hs_get_7f909c6e((void*)__hosihikari_shim_handle);
@@ -135,5 +136,18 @@ public sealed unsafe partial class BowEnchant
     public nint mStringId_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_a3e8f729((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_8f9b5972((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

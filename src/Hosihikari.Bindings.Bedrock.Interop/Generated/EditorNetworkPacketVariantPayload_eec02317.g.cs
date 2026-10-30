@@ -92,6 +92,7 @@ public sealed unsafe partial class EditorNetworkPacketVariantPayload : global::S
         return new global::Hosihikari.Bindings.Bedrock.Interop.EditorNetworkPacketVariantPayload((nint)NativeMethods.TablePtr->C1.hs_method_96002b92((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

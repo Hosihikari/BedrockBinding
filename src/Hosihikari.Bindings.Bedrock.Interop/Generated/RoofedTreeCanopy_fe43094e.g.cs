@@ -59,7 +59,7 @@ public sealed unsafe partial class RoofedTreeCanopy : global::System.IDisposable
             fixed (nint* __hs_vectorHandleData7 = __hs_vectorHandles7)
             {
                 var __hs_vectorData7 = (void**)__hs_vectorHandleData7;
-                var __hs_handle = NativeMethods.TablePtr->C2.hs_method_b9d3d293((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)trunkSize.Handle, (void*)random.Handle, (void*)arg4.Handle, (void*)arg5.Handle, __hs_vectorData6, (nuint)(arg6?.Length ?? 0), __hs_vectorData7, (nuint)(arg7?.Length ?? 0), &__hs_hasValue);
+                var __hs_handle = NativeMethods.TablePtr->C3.hs_method_b9d3d293((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)trunkSize.Handle, (void*)random.Handle, (void*)arg4.Handle, (void*)arg5.Handle, __hs_vectorData6, (nuint)(arg6?.Length ?? 0), __hs_vectorData7, (nuint)(arg7?.Length ?? 0), &__hs_hasValue);
                 return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
             }
         }
@@ -67,38 +67,38 @@ public sealed unsafe partial class RoofedTreeCanopy : global::System.IDisposable
 
     public int mCoreWidth
     {
-        get => NativeMethods.TablePtr->C2.hs_get_cd773b8b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_cd773b8b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_cd773b8b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_cd773b8b((void*)__hosihikari_shim_handle, value);
     }
 
     public int mHeight
     {
-        get => NativeMethods.TablePtr->C2.hs_get_e8292a32((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_e8292a32((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_e8292a32((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e8292a32((void*)__hosihikari_shim_handle, value);
     }
 
     public int mInnerRadius
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f72d5834((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f72d5834((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f72d5834((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f72d5834((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLeavesBlockDescriptor_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_73d144c2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_73d144c2((void*)__hosihikari_shim_handle);
     }
 
     public int mOuterRadius
     {
-        get => NativeMethods.TablePtr->C2.hs_get_6d4a1c64((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_6d4a1c64((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_6d4a1c64((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_6d4a1c64((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mUseParsedCoreWidth
     {
-        get => NativeMethods.TablePtr->C2.hs_get_fa8477d6((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_fa8477d6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_fa8477d6((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_fa8477d6((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? placeCanopy(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.ITreeCanopy_Nested.BranchSize trunkSize, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.RenderParams arg4, global::Hosihikari.Bindings.Bedrock.Interop.TreeHelper.TreeParams arg5, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] arg6, global::Hosihikari.Bindings.Bedrock.Interop.ITreeCanopy_Nested.BranchSize[] arg7)
@@ -122,7 +122,7 @@ public sealed unsafe partial class RoofedTreeCanopy : global::System.IDisposable
             fixed (nint* __hs_vectorHandleData7 = __hs_vectorHandles7)
             {
                 var __hs_vectorData7 = (void**)__hs_vectorHandleData7;
-                var __hs_handle = NativeMethods.TablePtr->C2.hs_method_ce0a09ee((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)trunkSize.Handle, (void*)random.Handle, (void*)arg4.Handle, (void*)arg5.Handle, __hs_vectorData6, (nuint)(arg6?.Length ?? 0), __hs_vectorData7, (nuint)(arg7?.Length ?? 0), &__hs_hasValue);
+                var __hs_handle = NativeMethods.TablePtr->C3.hs_method_ce0a09ee((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)pos.Handle, (void*)trunkSize.Handle, (void*)random.Handle, (void*)arg4.Handle, (void*)arg5.Handle, __hs_vectorData6, (nuint)(arg6?.Length ?? 0), __hs_vectorData7, (nuint)(arg7?.Length ?? 0), &__hs_hasValue);
                 return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
             }
         }
@@ -135,7 +135,7 @@ public sealed unsafe partial class RoofedTreeCanopy : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_fe43094e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_fe43094e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

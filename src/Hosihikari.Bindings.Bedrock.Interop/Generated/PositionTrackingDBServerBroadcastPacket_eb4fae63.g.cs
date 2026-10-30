@@ -243,6 +243,7 @@ public sealed unsafe partial class PositionTrackingDBServerBroadcastPacket : glo
         NativeMethods.TablePtr->C2.hs_method_5c71a408((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public byte mAction
     {
         get => NativeMethods.TablePtr->C2.hs_get_e961e5ed((void*)__hosihikari_shim_handle);

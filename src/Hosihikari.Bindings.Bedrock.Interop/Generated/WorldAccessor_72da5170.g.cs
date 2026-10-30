@@ -151,6 +151,7 @@ public sealed unsafe partial class WorldAccessor : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_87aa3741((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

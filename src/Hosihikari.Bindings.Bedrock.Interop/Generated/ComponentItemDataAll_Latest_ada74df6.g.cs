@@ -91,6 +91,7 @@ public sealed unsafe partial class ComponentItemDataAll_Latest : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.ComponentItemDataAll_Latest((nint)NativeMethods.TablePtr->C0.hs_method_cbd1424a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

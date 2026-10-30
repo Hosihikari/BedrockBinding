@@ -108,9 +108,10 @@ public sealed unsafe partial class ItemStackRequestActionHandler : global::Syste
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionHandler_Nested.ScreenData((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemStackRequestHandlerSlotInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _validateRequestSlot(nint requestSlotInfo, bool isItemRequired, bool isHintSlot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemStackRequestHandlerSlotInfo' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestHandlerSlotInfo _validateRequestSlot(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestSlotInfo requestSlotInfo, bool isItemRequired, bool isHintSlot)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestHandlerSlotInfo((nint)NativeMethods.TablePtr->C1.hs_method_57efa8d1((void*)__hosihikari_shim_handle, (void*)requestSlotInfo.Handle, isItemRequired, isHintSlot));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'TypedClientNetId<ItemStackRequestIdTag, int>' is not a known bindable declaration.", false)]
     public void addStrings(nint requestId, nint strings) =>

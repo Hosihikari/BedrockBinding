@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AgentDetectCommandSystem
+public sealed unsafe partial class AgentDetectCommandSystem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,5 +56,19 @@ public sealed unsafe partial class AgentDetectCommandSystem
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
         NativeMethods.TablePtr->C0.hs_method_9699dfb6((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_48086fa9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

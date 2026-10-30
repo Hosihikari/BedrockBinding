@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LecternUpdatePacketPayload
+public sealed unsafe partial class LecternUpdatePacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class LecternUpdatePacketPayload
     {
         get => NativeMethods.TablePtr->C1.hs_get_50b4117c((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_50b4117c((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_7e45b4c4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

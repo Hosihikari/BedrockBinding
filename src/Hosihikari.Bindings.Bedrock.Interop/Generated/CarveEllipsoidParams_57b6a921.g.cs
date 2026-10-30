@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CaveFeature_Nested.CachedMetaData_Nested;
 
-public sealed unsafe partial class CarveEllipsoidParams
+public sealed unsafe partial class CarveEllipsoidParams : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -73,5 +73,19 @@ public sealed unsafe partial class CarveEllipsoidParams
     public float mVerticalRadius
     {
         get => NativeMethods.TablePtr->C0.hs_get_89c2152c((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_57b6a921((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

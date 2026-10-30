@@ -730,9 +730,10 @@ public sealed unsafe partial class TripodCamera : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C3.hs_method_0c63573a((void*)__hosihikari_shim_handle, (void*)(definitions?.Handle ?? 0), (void*)definitionName.Handle, (void*)entityContext.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getInteraction(nint player, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction _getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 location)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C3.hs_method_5e28ca7f((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)location.Handle));
+    }
 
     public float _getShadowRadius()
     {
@@ -785,9 +786,10 @@ public sealed unsafe partial class TripodCamera : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_6efa0777((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint player, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 location)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C3.hs_method_d3a77487((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)location.Handle));
+    }
 
     public float getShadowRadius()
     {
@@ -831,6 +833,7 @@ public sealed unsafe partial class TripodCamera : global::System.IDisposable
     {
         NativeMethods.TablePtr->C3.hs_method_cd5a458d((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
+
 
     public void Dispose()
     {

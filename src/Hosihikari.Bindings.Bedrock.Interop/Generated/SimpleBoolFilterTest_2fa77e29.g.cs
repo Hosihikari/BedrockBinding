@@ -117,6 +117,7 @@ public sealed unsafe partial class SimpleBoolFilterTest : global::System.IDispos
         return NativeMethods.TablePtr->C3.hs_method_8b3c9115((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

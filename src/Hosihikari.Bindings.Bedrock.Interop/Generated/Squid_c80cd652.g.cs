@@ -910,6 +910,7 @@ public sealed unsafe partial class Squid : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_d7628ed5((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

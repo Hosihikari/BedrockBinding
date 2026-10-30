@@ -124,6 +124,7 @@ public sealed unsafe partial class NoodleCavifier : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.NoodleCavifier((nint)NativeMethods.TablePtr->C2.hs_method_c9a13415((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

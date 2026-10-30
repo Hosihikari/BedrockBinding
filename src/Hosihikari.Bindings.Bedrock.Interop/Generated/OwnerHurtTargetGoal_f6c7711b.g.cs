@@ -169,6 +169,7 @@ public sealed unsafe partial class OwnerHurtTargetGoal : global::System.IDisposa
         NativeMethods.TablePtr->C2.hs_method_da4ea370((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAttackOwner
     {
         get => NativeMethods.TablePtr->C2.hs_get_e70c5eb4((void*)__hosihikari_shim_handle) != 0;

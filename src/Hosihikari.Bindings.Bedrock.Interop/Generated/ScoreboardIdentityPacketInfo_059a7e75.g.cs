@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScoreboardIdentityPacketInfo
+public sealed unsafe partial class ScoreboardIdentityPacketInfo : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class ScoreboardIdentityPacketInfo
     public nint mScoreboardId_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_55e6111a((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_059a7e75((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

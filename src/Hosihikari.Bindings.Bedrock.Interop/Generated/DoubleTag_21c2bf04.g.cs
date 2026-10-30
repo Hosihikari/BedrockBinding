@@ -137,6 +137,7 @@ public sealed unsafe partial class DoubleTag : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_e0680fbb((void*)__hosihikari_shim_handle, (void*)dos.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

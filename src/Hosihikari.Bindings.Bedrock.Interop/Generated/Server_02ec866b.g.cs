@@ -40,27 +40,27 @@ public sealed unsafe partial class Server : global::System.IDisposable
 
     public static void cycleDisplayItemFromLootTable(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultConfig config, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultSharedData sharedData)
     {
-        NativeMethods.TablePtr->C3.hs_method_fc2f327d((void*)region.Handle, (void*)config.Handle, (void*)sharedData.Handle);
+        NativeMethods.TablePtr->C4.hs_method_fc2f327d((void*)region.Handle, (void*)config.Handle, (void*)sharedData.Handle);
     }
 
     public static void onTransitionBetweenStates(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultConfig config, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultSharedData sharedData, byte oldState, byte newState)
     {
-        NativeMethods.TablePtr->C3.hs_method_d25a4ffe((void*)region.Handle, (void*)pos.Handle, (void*)config.Handle, (void*)sharedData.Handle, oldState, newState);
+        NativeMethods.TablePtr->C4.hs_method_d25a4ffe((void*)region.Handle, (void*)pos.Handle, (void*)config.Handle, (void*)sharedData.Handle, oldState, newState);
     }
 
     public static void playInsertFailSound(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultServerData serverData, uint sound)
     {
-        NativeMethods.TablePtr->C3.hs_method_b470f46d((void*)region.Handle, (void*)pos.Handle, (void*)serverData.Handle, sound);
+        NativeMethods.TablePtr->C4.hs_method_b470f46d((void*)region.Handle, (void*)pos.Handle, (void*)serverData.Handle, sound);
     }
 
     public static void tryInsertKey(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultConfig config, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultSharedData sharedData, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultServerData serverData)
     {
-        NativeMethods.TablePtr->C3.hs_method_5470a49d((void*)region.Handle, (void*)player.Handle, (void*)pos.Handle, (void*)config.Handle, (void*)sharedData.Handle, (void*)serverData.Handle);
+        NativeMethods.TablePtr->C4.hs_method_5470a49d((void*)region.Handle, (void*)player.Handle, (void*)pos.Handle, (void*)config.Handle, (void*)sharedData.Handle, (void*)serverData.Handle);
     }
 
     public static void updateConnectedPlayersWithinRange(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultServerData serverData, global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultSharedData sharedData, float range)
     {
-        NativeMethods.TablePtr->C3.hs_method_b7e756f6((void*)region.Handle, (void*)pos.Handle, (void*)serverData.Handle, (void*)sharedData.Handle, range);
+        NativeMethods.TablePtr->C4.hs_method_b7e756f6((void*)region.Handle, (void*)pos.Handle, (void*)serverData.Handle, (void*)sharedData.Handle, range);
     }
 
     public void Dispose()
@@ -69,7 +69,7 @@ public sealed unsafe partial class Server : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_02ec866b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_02ec866b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

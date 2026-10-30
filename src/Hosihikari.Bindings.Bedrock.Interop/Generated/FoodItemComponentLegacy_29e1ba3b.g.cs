@@ -200,6 +200,7 @@ public sealed unsafe partial class FoodItemComponentLegacy : global::System.IDis
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)__hs_handle, false) : null;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

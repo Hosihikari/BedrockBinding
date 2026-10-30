@@ -83,6 +83,7 @@ public sealed unsafe partial class CooldownItemComponent : global::System.IDispo
         set => NativeMethods.TablePtr->C0.hs_set_b0b6ae99((void*)__hosihikari_shim_handle, value);
     }
 
+
     public nint mOwner
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_3b26e165((void*)__hosihikari_shim_handle);

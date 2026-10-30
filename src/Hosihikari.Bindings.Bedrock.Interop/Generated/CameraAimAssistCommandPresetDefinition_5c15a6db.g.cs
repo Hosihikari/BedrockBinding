@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_50;
 
-public sealed unsafe partial class CameraAimAssistCommandPresetDefinition
+public sealed unsafe partial class CameraAimAssistCommandPresetDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -70,5 +70,19 @@ public sealed unsafe partial class CameraAimAssistCommandPresetDefinition
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_50.CameraAimAssistCommandPresetDefinition rhs)
     {
         return NativeMethods.TablePtr->C3.hs_method_e8b49998((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_5c15a6db((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

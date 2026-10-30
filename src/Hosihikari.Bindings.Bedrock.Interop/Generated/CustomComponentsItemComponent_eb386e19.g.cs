@@ -77,15 +77,16 @@ public sealed unsafe partial class CustomComponentsItemComponent : global::Syste
     public static CustomComponentsItemComponent Create(nint customComponentsData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'entt::iterable_adaptor<cereal::internal::ComponentStorageIterator<brstd::associative_adapter<std::basic_string<char>, entt::meta_any, std::less<void>, std::vector<std::basic_string<char>>, std::vector<entt::meta_any>>::iterator_impl<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<std::basic_string<char>>>>, std::_Vector_iterator<std::_Vector_val<std::_Simple_types<entt::meta_any>>>, std::pair<const std::basic_string<char> &, entt::meta_any &>>, SharedTypes::v1_26_30::ItemCustomComponent>, cereal::ComponentStorageSentinelType>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void _addComponent(nint compName, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponents_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_8010cb36((void*)__hosihikari_shim_handle);
     }
+
 
     public nint mOwner
     {

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BuoyancyDefinition
+public sealed unsafe partial class BuoyancyDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -134,5 +134,19 @@ public sealed unsafe partial class BuoyancyDefinition
     public void uninitialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.BuoyancyComponent arg1)
     {
         NativeMethods.TablePtr->C0.hs_method_4f8b2d1f((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)arg1.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_fa0178a5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

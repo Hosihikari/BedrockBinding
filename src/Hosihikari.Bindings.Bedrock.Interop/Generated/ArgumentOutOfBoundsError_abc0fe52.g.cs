@@ -133,6 +133,7 @@ public sealed unsafe partial class ArgumentOutOfBoundsError : global::System.IDi
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ArgumentOutOfBoundsError((nint)NativeMethods.TablePtr->C3.hs_method_c7f8bdd5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1599d8_Address
     {

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerSettingsResponsePacketPayload
+public sealed unsafe partial class ServerSettingsResponsePacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class ServerSettingsResponsePacketPayload
     public nint mFormJSON_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_3a5e35fe((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_da1d396f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

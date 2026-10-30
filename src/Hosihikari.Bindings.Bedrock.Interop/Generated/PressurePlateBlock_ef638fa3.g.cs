@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PressurePlateBlock
+public sealed unsafe partial class PressurePlateBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -313,5 +313,19 @@ public sealed unsafe partial class PressurePlateBlock
     {
         get => NativeMethods.TablePtr->C2.hs_get_07bd493a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_07bd493a((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ef638fa3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

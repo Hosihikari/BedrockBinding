@@ -73,9 +73,10 @@ public sealed unsafe partial class LeashableComponent : global::System.IDisposab
         return new LeashableComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint owner, nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C1.hs_method_d6d1a4c7((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle));
+    }
 
     public float mAngularMomentum
     {

@@ -97,6 +97,7 @@ public sealed unsafe partial class EnableQueueForMainThread : global::System.IDi
         }
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mQueueForThreadTaskGroup_Address
     {

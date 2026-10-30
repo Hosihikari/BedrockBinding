@@ -47,9 +47,10 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_e3650564((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _compactStorage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_ _compactStorage()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_((nint)NativeMethods.TablePtr->C1.hs_method_e3c174fe((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ChunkSource' has no accessible destructor.", false)]
     public nint _createChunkStorage(nint generator, nint arg1) =>
@@ -85,9 +86,24 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
     public nint _ctor(nint config, nint levelDbEnv) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DBStorageConfig' is not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _deleteData(nint key, nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_ _deleteData(string key, uint category)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_((nint)NativeMethods.TablePtr->C1.hs_method_3a2f97a2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, category));
+        }
+    }
 
     public void _flushToPermanentStorage()
     {
@@ -180,13 +196,14 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_9241bb60((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _saveData(nint batch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_ _saveData(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageWriteBatch batch)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_((nint)NativeMethods.TablePtr->C1.hs_method_18783e95((void*)__hosihikari_shim_handle, (void*)batch.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
     public nint _saveData(nint key, nint data, nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");
 
     public void _saveLevelData(global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelData)
     {
@@ -231,9 +248,10 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
     public static DBStorage Create(nint config, nint levelDbEnv) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DBStorageConfig' is not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TaskResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _flushWriteCacheToLevelDB() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TaskResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.TaskResult _flushWriteCacheToLevelDB()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TaskResult((nint)NativeMethods.TablePtr->C1.hs_method_29c7a9a5((void*)__hosihikari_shim_handle));
+    }
 
     public string _getTelemetryMessage(nint status)
     {
@@ -241,9 +259,24 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'DBStorage::PendingWriteResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _readPendingWrite(nint key, nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'DBStorage::PendingWriteResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.DBStorage_Nested.PendingWriteResult _readPendingWrite(string key, uint category)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.DBStorage_Nested.PendingWriteResult((nint)NativeMethods.TablePtr->C1.hs_method_28fe8ee1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, category));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void addStorageObserver(nint observer) =>
@@ -254,9 +287,10 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_473a2b8f((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint compactStorage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_ compactStorage()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_((nint)NativeMethods.TablePtr->C1.hs_method_e8caf676((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ChunkSource' has no accessible destructor.", false)]
     public nint createChunkStorage(nint generator, nint arg1) =>
@@ -288,9 +322,24 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint deleteData(nint key, nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_ deleteData(string key, uint category)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_((nint)NativeMethods.TablePtr->C1.hs_method_fa14b7ae((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, category));
+        }
+    }
 
     public void flushToPermanentStorage()
     {
@@ -656,13 +705,14 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_acd803f3((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint saveData(nint batch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_ saveData(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageWriteBatch batch)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_((nint)NativeMethods.TablePtr->C1.hs_method_182417cc((void*)__hosihikari_shim_handle, (void*)batch.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
     public nint saveData(nint key, nint data, nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");
 
     public void saveLevelData(global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelData)
     {

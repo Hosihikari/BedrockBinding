@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FoodItemVersioning;
 
-public sealed unsafe partial class FoodItem118Upgrade
+public sealed unsafe partial class FoodItem118Upgrade : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -80,5 +80,19 @@ public sealed unsafe partial class FoodItem118Upgrade
     public void upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
         NativeMethods.TablePtr->C1.hs_method_48d79efb((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_1c201e63((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

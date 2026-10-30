@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FeatureTerrainAdjustments
+public sealed unsafe partial class FeatureTerrainAdjustments : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -90,5 +90,19 @@ public sealed unsafe partial class FeatureTerrainAdjustments
     {
         var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ea9f7c48((void*)__hosihikari_shim_handle, (void*)bb.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_4c26a856((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

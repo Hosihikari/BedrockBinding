@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LogBlock
+public sealed unsafe partial class LogBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -297,5 +297,19 @@ public sealed unsafe partial class LogBlock
     public void use(nint eventData)
     {
         NativeMethods.TablePtr->C2.hs_method_95fd57b0((void*)__hosihikari_shim_handle, (void*)eventData);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_0edd363f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

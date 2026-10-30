@@ -40,7 +40,7 @@ public sealed unsafe partial class LevelChunkGarbageCollector : global::System.I
 
     public static LevelChunkGarbageCollector Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_10303fb5();
+        var handle = NativeMethods.TablePtr->C2.hs_create_10303fb5();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class LevelChunkGarbageCollector : global::System.I
 
     public static LevelChunkGarbageCollector Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_93f30aac((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_93f30aac((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,37 +66,38 @@ public sealed unsafe partial class LevelChunkGarbageCollector : global::System.I
 
     public void flush()
     {
-        NativeMethods.TablePtr->C1.hs_method_e5b5423a((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_e5b5423a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimension_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_daae2370((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_daae2370((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelChunksToDiscard_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e64145d9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e64145d9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0a9a2af8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0a9a2af8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPendingDeletes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_bc094eea((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bc094eea((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector((nint)NativeMethods.TablePtr->C1.hs_method_2524c2fd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkGarbageCollector((nint)NativeMethods.TablePtr->C2.hs_method_2524c2fd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {
@@ -104,7 +105,7 @@ public sealed unsafe partial class LevelChunkGarbageCollector : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_cb5d5a79((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_cb5d5a79((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

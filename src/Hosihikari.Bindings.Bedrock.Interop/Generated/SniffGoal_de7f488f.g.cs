@@ -201,6 +201,7 @@ public sealed unsafe partial class SniffGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_3dbaaf31((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

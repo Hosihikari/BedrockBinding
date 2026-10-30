@@ -337,6 +337,7 @@ public sealed unsafe partial class SlabBlockItem : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C3.hs_get_abbe949b((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

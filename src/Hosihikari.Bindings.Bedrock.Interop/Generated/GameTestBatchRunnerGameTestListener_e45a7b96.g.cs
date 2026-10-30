@@ -111,6 +111,7 @@ public sealed unsafe partial class GameTestBatchRunnerGameTestListener : global:
         return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestBatchRunnerGameTestListener((nint)NativeMethods.TablePtr->C4.hs_method_2563b738((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

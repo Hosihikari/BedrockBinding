@@ -243,9 +243,9 @@ public sealed unsafe partial class ItemStackNetManagerServer : global::System.ID
         return NativeMethods.TablePtr->C1.hs_method_1610a3b5((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CallbackToken' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint tryCloseContainerScreen(nint onContainerScreenCloseCB) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CallbackToken' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
     public void Dispose()

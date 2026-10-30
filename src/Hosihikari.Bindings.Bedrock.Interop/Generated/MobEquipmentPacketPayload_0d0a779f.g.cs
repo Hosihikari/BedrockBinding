@@ -95,6 +95,7 @@ public sealed unsafe partial class MobEquipmentPacketPayload : global::System.ID
         set => NativeMethods.TablePtr->C2.hs_set_1b3be568((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -105,6 +105,7 @@ public sealed unsafe partial class AllayVibrationConfig : global::System.IDispos
         return NativeMethods.TablePtr->C0.hs_method_c9e70d63((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

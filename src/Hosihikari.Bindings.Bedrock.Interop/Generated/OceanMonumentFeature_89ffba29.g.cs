@@ -143,6 +143,7 @@ public sealed unsafe partial class OceanMonumentFeature : global::System.IDispos
         return NativeMethods.TablePtr->C2.hs_method_eb42c403((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
     {

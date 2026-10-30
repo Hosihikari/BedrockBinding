@@ -46,4 +46,8 @@ public sealed partial class OwnerPtr_UniqueIDManager_
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public static OwnerPtr_UniqueIDManager_ Create_08a94de5(nint ptr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorPickRequestPacket
+public sealed unsafe partial class ActorPickRequestPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class ActorPickRequestPacket
         NativeMethods.TablePtr->C0.hs_method_6de6392a((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public long mID
     {
         get => NativeMethods.TablePtr->C0.hs_get_bc4c42c9((void*)__hosihikari_shim_handle);
@@ -243,5 +244,18 @@ public sealed unsafe partial class ActorPickRequestPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_376e0094((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_376e0094((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_bd834a51((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

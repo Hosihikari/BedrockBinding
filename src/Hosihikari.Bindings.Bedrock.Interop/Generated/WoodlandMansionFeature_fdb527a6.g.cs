@@ -197,6 +197,7 @@ public sealed unsafe partial class WoodlandMansionFeature : global::System.IDisp
         return NativeMethods.TablePtr->C4.hs_method_6caee7dd((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

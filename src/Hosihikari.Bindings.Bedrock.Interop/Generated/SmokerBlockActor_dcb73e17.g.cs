@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SmokerBlockActor
+public sealed unsafe partial class SmokerBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -272,6 +272,7 @@ public sealed unsafe partial class SmokerBlockActor
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {
@@ -312,5 +313,18 @@ public sealed unsafe partial class SmokerBlockActor
     {
         get => NativeMethods.TablePtr->C3.hs_get_cfd99efb((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_cfd99efb((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_dcb73e17((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

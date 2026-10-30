@@ -391,6 +391,7 @@ public sealed unsafe partial class HumanoidArmorItem : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C1.hs_method_9490d5c2((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)player.Handle, handSlot), false);
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C1.hs_get_2a4b6e35((void*)__hosihikari_shim_handle) != 0;

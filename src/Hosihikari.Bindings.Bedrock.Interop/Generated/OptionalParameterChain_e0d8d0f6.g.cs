@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested;
 
-public sealed unsafe partial class OptionalParameterChain
+public sealed unsafe partial class OptionalParameterChain : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class OptionalParameterChain
     {
         get => NativeMethods.TablePtr->C0.hs_get_34243992((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_34243992((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_e0d8d0f6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

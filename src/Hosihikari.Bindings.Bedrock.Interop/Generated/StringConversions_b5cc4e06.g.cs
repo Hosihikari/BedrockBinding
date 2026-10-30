@@ -40,12 +40,12 @@ public sealed unsafe partial class StringConversions : global::System.IDisposabl
 
     public static int toUtf8(nint src, int srcLen, nint dest, int max)
     {
-        return NativeMethods.TablePtr->C0.hs_method_eb8302c0((void*)src, srcLen, (void*)dest, max);
+        return NativeMethods.TablePtr->C1.hs_method_eb8302c0((void*)src, srcLen, (void*)dest, max);
     }
 
     public static string toUtf8(nint src, int srcLen)
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_ee5d037e((void*)src, srcLen);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_ee5d037e((void*)src, srcLen);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -59,7 +59,7 @@ public sealed unsafe partial class StringConversions : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_b5cc4e06((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_b5cc4e06((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

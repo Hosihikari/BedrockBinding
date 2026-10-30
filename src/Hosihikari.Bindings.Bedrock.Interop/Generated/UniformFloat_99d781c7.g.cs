@@ -40,7 +40,7 @@ public sealed unsafe partial class UniformFloat : global::System.IDisposable
 
     public static UniformFloat Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_ddd98dd0();
+        var handle = NativeMethods.TablePtr->C4.hs_create_ddd98dd0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class UniformFloat : global::System.IDisposable
 
     public static UniformFloat Create(global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.UniformFloat arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_860ff75e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_860ff75e((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class UniformFloat : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkaa6d7f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_577ef719((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_577ef719((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnke8f3d9_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f9a8580b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f9a8580b((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.UniformFloat operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.UniformFloat arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.UniformFloat((nint)NativeMethods.TablePtr->C3.hs_method_ec24dd09((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.UniformFloat((nint)NativeMethods.TablePtr->C4.hs_method_ec24dd09((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class UniformFloat : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_99d781c7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_99d781c7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -38,9 +38,9 @@ public sealed unsafe partial class BiomeManager : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint biomes, nint automaticFeatureRules) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void _dtor()
     {
@@ -58,9 +58,9 @@ public sealed unsafe partial class BiomeManager : global::System.IDisposable
         return new BiomeManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static BiomeManager Create(nint biomes, nint automaticFeatureRules) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
     public void _initializeServerBiomeRegistry(nint worldRegistries, nint levelSeed, nint levelStorage, nint linkedAssetValidator, nint biomeIdToResolvedData) =>

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChemistryItem
+public sealed unsafe partial class ChemistryItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -52,6 +52,7 @@ public sealed unsafe partial class ChemistryItem
     {
         NativeMethods.TablePtr->C0.hs_method_27ab42c2((void*)stack.Handle);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -260,5 +261,18 @@ public sealed unsafe partial class ChemistryItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_04178c8f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_04178c8f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_44238b43((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

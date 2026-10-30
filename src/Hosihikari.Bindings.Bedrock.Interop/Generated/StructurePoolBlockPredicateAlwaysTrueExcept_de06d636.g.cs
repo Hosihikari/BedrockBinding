@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructurePoolBlockPredicateAlwaysTrueExcept
+public sealed unsafe partial class StructurePoolBlockPredicateAlwaysTrueExcept : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -91,5 +91,19 @@ public sealed unsafe partial class StructurePoolBlockPredicateAlwaysTrueExcept
     public bool test(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos worldPos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos refPos, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
         return NativeMethods.TablePtr->C3.hs_method_03335642((void*)__hosihikari_shim_handle, (void*)worldPos.Handle, (void*)refPos.Handle, (void*)random.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_de06d636((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

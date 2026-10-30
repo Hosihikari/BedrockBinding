@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RandomFlyingGoal
+public sealed unsafe partial class RandomFlyingGoal : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -94,6 +94,7 @@ public sealed unsafe partial class RandomFlyingGoal
         set => NativeMethods.TablePtr->C2.hs_set_ce3eed64((void*)__hosihikari_shim_handle, value);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mChosenEndPos_Address
     {
@@ -140,5 +141,18 @@ public sealed unsafe partial class RandomFlyingGoal
     {
         get => NativeMethods.TablePtr->C2.hs_get_00f1cc64((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_00f1cc64((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_46003830((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

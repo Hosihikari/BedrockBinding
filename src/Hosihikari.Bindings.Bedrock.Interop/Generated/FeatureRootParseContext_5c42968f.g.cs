@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FeatureLoading;
 
-public sealed unsafe partial class FeatureRootParseContext
+public sealed unsafe partial class FeatureRootParseContext : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class FeatureRootParseContext
     public nint mRegistryProvider_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_8caf2a12((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_5c42968f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

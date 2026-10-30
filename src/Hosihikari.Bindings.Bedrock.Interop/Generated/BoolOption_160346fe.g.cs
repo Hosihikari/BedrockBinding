@@ -117,6 +117,7 @@ public sealed unsafe partial class BoolOption : global::System.IDisposable
     public void save(nint propertyVector) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mImpl_Address
     {

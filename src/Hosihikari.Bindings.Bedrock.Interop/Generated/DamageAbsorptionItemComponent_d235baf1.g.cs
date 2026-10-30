@@ -38,9 +38,9 @@ public sealed unsafe partial class DamageAbsorptionItemComponent : global::Syste
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public nint _ctor(int[] absorbableDamageCauses)
     {
@@ -65,9 +65,9 @@ public sealed unsafe partial class DamageAbsorptionItemComponent : global::Syste
         return new DamageAbsorptionItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static DamageAbsorptionItemComponent Create(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public static DamageAbsorptionItemComponent Create(int[] absorbableDamageCauses)
     {
@@ -94,6 +94,7 @@ public sealed unsafe partial class DamageAbsorptionItemComponent : global::Syste
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_21e79ee9((void*)__hosihikari_shim_handle);
     }
+
 
     public nint mOwner
     {

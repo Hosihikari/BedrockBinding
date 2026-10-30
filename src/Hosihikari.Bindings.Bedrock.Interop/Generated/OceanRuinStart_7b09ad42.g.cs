@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OceanRuinStart
+public sealed unsafe partial class OceanRuinStart : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,6 +56,7 @@ public sealed unsafe partial class OceanRuinStart
         get => (nint)NativeMethods.TablePtr->C2.hs_get_a6a2eb3c((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint boundingBox_Address
     {
@@ -84,5 +85,18 @@ public sealed unsafe partial class OceanRuinStart
     public nint pieces_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_58f70b24((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_7b09ad42((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

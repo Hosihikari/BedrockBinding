@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScriptDebugCommand
+public sealed unsafe partial class ScriptDebugCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -135,6 +135,20 @@ public sealed unsafe partial class ScriptDebugCommand
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             NativeMethods.TablePtr->C3.hs_method_ec96f921((void*)__hosihikari_shim_handle, (void*)(debugger?.Handle ?? 0), __hs_stringData1, (nuint)__hs_stringByteCount1, action, (void*)output.Handle);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_56b2905c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

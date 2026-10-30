@@ -676,6 +676,7 @@ public sealed unsafe partial class Bat : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_0bb66476((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_0450096e((void*)__hosihikari_shim_handle);

@@ -44,7 +44,7 @@ public sealed unsafe partial class ResourcePackStackFinished : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_f895f182((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_f895f182((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

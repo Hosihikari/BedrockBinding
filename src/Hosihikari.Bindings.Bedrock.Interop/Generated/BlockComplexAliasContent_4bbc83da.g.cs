@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockTypeRegistry_Nested;
 
-public sealed unsafe partial class BlockComplexAliasContent
+public sealed unsafe partial class BlockComplexAliasContent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,5 +60,19 @@ public sealed unsafe partial class BlockComplexAliasContent
     {
         get => NativeMethods.TablePtr->C0.hs_get_f44090ec((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_f44090ec((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_4bbc83da((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

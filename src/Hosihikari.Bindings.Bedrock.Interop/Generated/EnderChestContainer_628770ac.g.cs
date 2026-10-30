@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnderChestContainer
+public sealed unsafe partial class EnderChestContainer : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -152,6 +152,7 @@ public sealed unsafe partial class EnderChestContainer
         NativeMethods.TablePtr->C1.hs_method_5cddcfa7((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItems_Address
     {
@@ -162,5 +163,18 @@ public sealed unsafe partial class EnderChestContainer
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_a5f78499((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_a5f78499((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_628770ac((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

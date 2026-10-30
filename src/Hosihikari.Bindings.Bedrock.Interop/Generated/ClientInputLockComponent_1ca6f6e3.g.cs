@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ClientInputLockComponent
+public sealed unsafe partial class ClientInputLockComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,5 +53,19 @@ public sealed unsafe partial class ClientInputLockComponent
     public void setLockCategory(byte category, bool state)
     {
         NativeMethods.TablePtr->C0.hs_method_fd79d607((void*)__hosihikari_shim_handle, category, state);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_1ca6f6e3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

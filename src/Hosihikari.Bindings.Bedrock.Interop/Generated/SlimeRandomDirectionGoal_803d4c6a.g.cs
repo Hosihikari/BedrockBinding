@@ -151,6 +151,7 @@ public sealed unsafe partial class SlimeRandomDirectionGoal : global::System.IDi
         NativeMethods.TablePtr->C3.hs_method_60bdda38((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

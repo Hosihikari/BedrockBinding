@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SkinImage
+public sealed unsafe partial class SkinImage : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,6 +42,7 @@ public sealed unsafe partial class SkinImage
     {
         return NativeMethods.TablePtr->C3.hs_method_8b75d4c3((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
+
 
     public uint imageFormat
     {
@@ -83,5 +84,18 @@ public sealed unsafe partial class SkinImage
     {
         get => NativeMethods.TablePtr->C3.hs_get_36cdb3e1((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_36cdb3e1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_9293af2f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

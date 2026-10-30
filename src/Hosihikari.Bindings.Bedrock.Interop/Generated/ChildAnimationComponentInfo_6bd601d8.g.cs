@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AnimationComponent_Nested;
 
-public sealed unsafe partial class ChildAnimationComponentInfo
+public sealed unsafe partial class ChildAnimationComponentInfo : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,5 +53,19 @@ public sealed unsafe partial class ChildAnimationComponentInfo
     public nint mMolangVariableMap_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_e7a1e977((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6bd601d8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

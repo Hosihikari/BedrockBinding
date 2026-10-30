@@ -40,12 +40,12 @@ public sealed unsafe partial class StorageAreaStateListener : global::System.IDi
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_760733d6((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_760733d6((void*)__hosihikari_shim_handle);
     }
 
     public void _onCriticalDiskError(bool bSet, nint errorCode)
     {
-        NativeMethods.TablePtr->C0.hs_method_86ce6c70((void*)__hosihikari_shim_handle, bSet, (void*)errorCode);
+        NativeMethods.TablePtr->C1.hs_method_86ce6c70((void*)__hosihikari_shim_handle, bSet, (void*)errorCode);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -54,12 +54,12 @@ public sealed unsafe partial class StorageAreaStateListener : global::System.IDi
 
     public void _onLowDiskSpace(bool bSet, ulong freeSpace)
     {
-        NativeMethods.TablePtr->C0.hs_method_1470e5b0((void*)__hosihikari_shim_handle, bSet, freeSpace);
+        NativeMethods.TablePtr->C1.hs_method_1470e5b0((void*)__hosihikari_shim_handle, bSet, freeSpace);
     }
 
     public void _onOutOfDiskSpace(bool bSet, ulong freeSpace)
     {
-        NativeMethods.TablePtr->C0.hs_method_4d117660((void*)__hosihikari_shim_handle, bSet, freeSpace);
+        NativeMethods.TablePtr->C1.hs_method_4d117660((void*)__hosihikari_shim_handle, bSet, freeSpace);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -68,24 +68,24 @@ public sealed unsafe partial class StorageAreaStateListener : global::System.IDi
 
     public void initListener(global::Hosihikari.Bindings.Abi.SharedHandle? fileStorageArea)
     {
-        NativeMethods.TablePtr->C0.hs_method_c9cc098c((void*)__hosihikari_shim_handle, fileStorageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C1.hs_method_c9cc098c((void*)__hosihikari_shim_handle, fileStorageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFileStorageArea_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_6e1dcdde((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6e1dcdde((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_9d338e79((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9d338e79((void*)__hosihikari_shim_handle);
     }
 
     public void onCriticalDiskError(bool bSet, nint errorCode)
     {
-        NativeMethods.TablePtr->C0.hs_method_6fd12a79((void*)__hosihikari_shim_handle, bSet, (void*)errorCode);
+        NativeMethods.TablePtr->C1.hs_method_6fd12a79((void*)__hosihikari_shim_handle, bSet, (void*)errorCode);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -94,17 +94,17 @@ public sealed unsafe partial class StorageAreaStateListener : global::System.IDi
 
     public void onLowDiskSpace(bool bSet, ulong freeSpace)
     {
-        NativeMethods.TablePtr->C0.hs_method_66c45178((void*)__hosihikari_shim_handle, bSet, freeSpace);
+        NativeMethods.TablePtr->C1.hs_method_66c45178((void*)__hosihikari_shim_handle, bSet, freeSpace);
     }
 
     public void onOutOfDiskSpace(bool bSet, ulong freeSpace)
     {
-        NativeMethods.TablePtr->C0.hs_method_dbd48035((void*)__hosihikari_shim_handle, bSet, freeSpace);
+        NativeMethods.TablePtr->C1.hs_method_dbd48035((void*)__hosihikari_shim_handle, bSet, freeSpace);
     }
 
     public void removeListener()
     {
-        NativeMethods.TablePtr->C0.hs_method_fc876894((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_fc876894((void*)__hosihikari_shim_handle);
     }
 
 
@@ -114,7 +114,7 @@ public sealed unsafe partial class StorageAreaStateListener : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_eaac19c0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_eaac19c0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

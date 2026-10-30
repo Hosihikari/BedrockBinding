@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ComponentItemData_v1_20
+public sealed unsafe partial class ComponentItemData_v1_20 : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,5 +53,19 @@ public sealed unsafe partial class ComponentItemData_v1_20
     public nint mItemComponents_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_d1a6ff96((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_ed0c9df1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

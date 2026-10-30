@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UpdateAdventureSettingsPacketPayload
+public sealed unsafe partial class UpdateAdventureSettingsPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,6 +41,20 @@ public sealed unsafe partial class UpdateAdventureSettingsPacketPayload
     // The native field type is not projected; this is the address of the field storage.
     public nint mAdventureSettings_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_e9653f1c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e9653f1c((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_1b34857a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScoreboardEventCoordinator
+public sealed unsafe partial class ScoreboardEventCoordinator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -134,6 +134,20 @@ public sealed unsafe partial class ScoreboardEventCoordinator
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             NativeMethods.TablePtr->C3.hs_method_f7defb97((void*)__hosihikari_shim_handle, (void*)id.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, score);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_93c33e87((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

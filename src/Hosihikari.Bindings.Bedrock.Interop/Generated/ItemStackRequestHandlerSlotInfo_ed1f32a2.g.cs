@@ -99,6 +99,7 @@ public sealed unsafe partial class ItemStackRequestHandlerSlotInfo : global::Sys
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestHandlerSlotInfo((nint)NativeMethods.TablePtr->C1.hs_method_b2ff3179((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

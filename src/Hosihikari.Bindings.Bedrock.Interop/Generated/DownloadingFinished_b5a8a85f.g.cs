@@ -44,7 +44,7 @@ public sealed unsafe partial class DownloadingFinished : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_b5a8a85f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_b5a8a85f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

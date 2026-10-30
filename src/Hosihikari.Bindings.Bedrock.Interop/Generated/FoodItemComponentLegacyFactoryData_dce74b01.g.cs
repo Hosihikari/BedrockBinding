@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FoodItemComponentLegacyFactoryData
+public sealed unsafe partial class FoodItemComponentLegacyFactoryData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class FoodItemComponentLegacyFactoryData
     public nint mUsingConvertsTo_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_f61d1b1c((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_dce74b01((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

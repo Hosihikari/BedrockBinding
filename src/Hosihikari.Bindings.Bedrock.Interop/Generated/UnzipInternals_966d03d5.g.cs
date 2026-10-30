@@ -40,7 +40,7 @@ public sealed unsafe partial class UnzipInternals : global::System.IDisposable
 
     public static UnzipInternals Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_a22b41f0();
+        var handle = NativeMethods.TablePtr->C1.hs_create_a22b41f0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class UnzipInternals : global::System.IDisposable
 
     public static UnzipInternals Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.UnzipInternals arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_4d51fe0c((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_4d51fe0c((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,12 +63,12 @@ public sealed unsafe partial class UnzipInternals : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk8cf14c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_26a714fa((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_26a714fa((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.UnzipInternals operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.UnzipInternals arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.UnzipInternals((nint)NativeMethods.TablePtr->C0.hs_method_13f1e06f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.UnzipInternals((nint)NativeMethods.TablePtr->C1.hs_method_13f1e06f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -77,7 +77,7 @@ public sealed unsafe partial class UnzipInternals : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_966d03d5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_966d03d5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

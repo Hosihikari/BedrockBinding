@@ -40,14 +40,14 @@ public sealed unsafe partial class ExperienceAmount : global::System.IDisposable
 
     public int mAdditional
     {
-        get => NativeMethods.TablePtr->C0.hs_get_d300e747((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_d300e747((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_d300e747((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d300e747((void*)__hosihikari_shim_handle, value);
     }
 
     public int mInput
     {
-        get => NativeMethods.TablePtr->C0.hs_get_c5a26ce1((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_c5a26ce1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_c5a26ce1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_c5a26ce1((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -56,7 +56,7 @@ public sealed unsafe partial class ExperienceAmount : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_1c425cdb((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_1c425cdb((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -99,6 +99,7 @@ public sealed unsafe partial class WebSocketPacketData : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->C4.hs_get_5dae93d2((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -173,6 +173,7 @@ public sealed unsafe partial class EggItem : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C1.hs_method_ca330032((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)player.Handle, handSlot), false);
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C1.hs_get_8894bc01((void*)__hosihikari_shim_handle) != 0;

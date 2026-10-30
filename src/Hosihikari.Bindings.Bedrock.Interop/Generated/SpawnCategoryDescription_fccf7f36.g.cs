@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SpawnCategoryDescription
+public sealed unsafe partial class SpawnCategoryDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -52,5 +52,19 @@ public sealed unsafe partial class SpawnCategoryDescription
     {
         get => NativeMethods.TablePtr->C3.hs_get_8028cd5e((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_8028cd5e((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_fccf7f36((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StickInGroundSubcomponent
+public sealed unsafe partial class StickInGroundSubcomponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -82,5 +82,19 @@ public sealed unsafe partial class StickInGroundSubcomponent
     public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
     {
         NativeMethods.TablePtr->C3.hs_method_cf96728e((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_539d964f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

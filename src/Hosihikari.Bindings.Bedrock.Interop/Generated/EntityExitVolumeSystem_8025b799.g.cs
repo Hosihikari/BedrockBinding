@@ -76,6 +76,7 @@ public sealed unsafe partial class EntityExitVolumeSystem : global::System.IDisp
         NativeMethods.TablePtr->C1.hs_method_00a97b5e((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

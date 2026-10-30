@@ -146,6 +146,7 @@ public sealed unsafe partial class SmithingTransformRecipe : global::System.IDis
         return NativeMethods.TablePtr->C3.hs_method_f6c7ccf6((void*)__hosihikari_shim_handle, (void*)craftingContainer.Handle, (void*)arg1.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptItemCustomComponentBeforeDurabilityDamageEvent
+public sealed unsafe partial class ScriptItemCustomComponentBeforeDurabilityDamageEvent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -85,5 +85,19 @@ public sealed unsafe partial class ScriptItemCustomComponentBeforeDurabilityDama
     public void updateEngineEvent(nint durabilityDamage, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg2, global::Hosihikari.Bindings.Bedrock.Interop.Mob arg3)
     {
         NativeMethods.TablePtr->C3.hs_method_5a54d4fe((void*)__hosihikari_shim_handle, (void*)durabilityDamage, (void*)item.Handle, (void*)arg2.Handle, (void*)arg3.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_e0557c15((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

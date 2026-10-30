@@ -773,6 +773,7 @@ public sealed unsafe partial class Phantom : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_4529bf6a((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -70,6 +70,7 @@ public sealed unsafe partial class SmokerContainerScreenValidator : global::Syst
         return new SmokerContainerScreenValidator((nint)handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50;
 
-public sealed unsafe partial class CameraPreset
+public sealed unsafe partial class CameraPreset : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -180,5 +180,19 @@ public sealed unsafe partial class CameraPreset
     public nint mStartingRot_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_6fc34288((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_e868afc7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

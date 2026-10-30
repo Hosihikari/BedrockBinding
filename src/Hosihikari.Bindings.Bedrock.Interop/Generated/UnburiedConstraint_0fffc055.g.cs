@@ -40,17 +40,17 @@ public sealed unsafe partial class UnburiedConstraint : global::System.IDisposab
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structure)
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_59f7ce2b((void*)__hosihikari_shim_handle, (void*)structure.Handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_59f7ce2b((void*)__hosihikari_shim_handle, (void*)structure.Handle);
     }
 
     public bool _isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
     {
-        return NativeMethods.TablePtr->C3.hs_method_a30fc840((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_a30fc840((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
     }
 
     public static UnburiedConstraint Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_67c59912();
+        var handle = NativeMethods.TablePtr->C4.hs_create_67c59912();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,7 @@ public sealed unsafe partial class UnburiedConstraint : global::System.IDisposab
 
     public static UnburiedConstraint Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplate structure)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_6820e9d9((void*)structure.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_6820e9d9((void*)structure.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,13 +72,13 @@ public sealed unsafe partial class UnburiedConstraint : global::System.IDisposab
 
     public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
     {
-        return NativeMethods.TablePtr->C3.hs_method_531e4989((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_531e4989((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCeilingOffsets_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3ef01141((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3ef01141((void*)__hosihikari_shim_handle);
     }
 
 
@@ -88,7 +88,7 @@ public sealed unsafe partial class UnburiedConstraint : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_0fffc055((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_0fffc055((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

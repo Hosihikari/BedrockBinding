@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelBlockDestroyerProxy
+public sealed unsafe partial class LevelBlockDestroyerProxy : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,5 +56,19 @@ public sealed unsafe partial class LevelBlockDestroyerProxy
     public void sendEvents(global::Hosihikari.Bindings.Bedrock.Interop.LevelEventManager levelEventManager, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
         NativeMethods.TablePtr->C1.hs_method_cee317c9((void*)__hosihikari_shim_handle, (void*)levelEventManager.Handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_e7bdd9d1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

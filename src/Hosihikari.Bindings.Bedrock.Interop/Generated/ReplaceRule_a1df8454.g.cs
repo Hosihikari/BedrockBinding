@@ -69,6 +69,7 @@ public sealed unsafe partial class ReplaceRule : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_45143750((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -128,9 +128,10 @@ public sealed unsafe partial class TradeContainerManagerModel : global::System.I
         get => (nint)NativeMethods.TablePtr->C3.hs_get_1bf9ef28((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __postInit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext __postInit()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C3.hs_method_f585f9dc((void*)__hosihikari_shim_handle));
+    }
 
     public void _broadcastChanges()
     {
@@ -160,9 +161,10 @@ public sealed unsafe partial class TradeContainerManagerModel : global::System.I
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _postInit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C3.hs_method_37652bf8((void*)__hosihikari_shim_handle));
+    }
 
     public void broadcastChanges()
     {

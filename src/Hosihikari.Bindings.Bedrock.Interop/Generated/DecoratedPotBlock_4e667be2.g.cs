@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DecoratedPotBlock
+public sealed unsafe partial class DecoratedPotBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -259,9 +259,10 @@ public sealed unsafe partial class DecoratedPotBlock
         get => (nint)NativeMethods.TablePtr->C1.hs_get_ab739e4b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _asItemInstance(nint arg0, nint blockActor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance _asItemInstance(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockActor? blockActor)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C1.hs_method_c65e1f31((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(blockActor?.Handle ?? 0)));
+    }
 
     public bool _canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte face, int type)
     {
@@ -308,9 +309,10 @@ public sealed unsafe partial class DecoratedPotBlock
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint asItemInstance(nint arg0, nint blockActor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance asItemInstance(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockActor? blockActor)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C1.hs_method_7311ce67((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(blockActor?.Handle ?? 0)));
+    }
 
     public bool canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte face, int type)
     {
@@ -371,6 +373,7 @@ public sealed unsafe partial class DecoratedPotBlock
         NativeMethods.TablePtr->C1.hs_method_1e0f4d30((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public bool mHorizontalOnly
     {
         get => NativeMethods.TablePtr->C1.hs_get_e67d74ff((void*)__hosihikari_shim_handle) != 0;
@@ -381,5 +384,18 @@ public sealed unsafe partial class DecoratedPotBlock
     {
         get => NativeMethods.TablePtr->C1.hs_get_4cf401f2((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_4cf401f2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_4e667be2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40;
 
-public sealed unsafe partial class JumpControlComponentDefinition
+public sealed unsafe partial class JumpControlComponentDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,5 +60,19 @@ public sealed unsafe partial class JumpControlComponentDefinition
     public nint mRegularSkipData_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_23d23d15((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f0e9efd3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

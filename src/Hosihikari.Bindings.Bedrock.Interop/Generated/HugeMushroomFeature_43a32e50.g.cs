@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HugeMushroomFeature
+public sealed unsafe partial class HugeMushroomFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -80,6 +80,7 @@ public sealed unsafe partial class HugeMushroomFeature
         return NativeMethods.TablePtr->C1.hs_method_5659cfc4((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, mushroomType, height) != 0;
     }
 
+
     public bool mCanUseInternalFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_840ed25b((void*)__hosihikari_shim_handle) != 0;
@@ -90,5 +91,18 @@ public sealed unsafe partial class HugeMushroomFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_fda3bb47((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_fda3bb47((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_43a32e50((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

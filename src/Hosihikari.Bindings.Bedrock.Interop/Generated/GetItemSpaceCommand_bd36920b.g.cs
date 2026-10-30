@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AgentCommands;
 
-public sealed unsafe partial class GetItemSpaceCommand
+public sealed unsafe partial class GetItemSpaceCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -108,5 +108,19 @@ public sealed unsafe partial class GetItemSpaceCommand
     {
         get => NativeMethods.TablePtr->C0.hs_get_9d10486b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_9d10486b((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_bd36920b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

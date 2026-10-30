@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CommandMessage_Nested;
 
-public sealed unsafe partial class MessageComponent
+public sealed unsafe partial class MessageComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class MessageComponent
     public nint @string_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_e945f056((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_48fcd6b8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -44,7 +44,7 @@ public sealed unsafe partial class ResourcePacksInfoPacketPayload : global::Syst
 
     public static ResourcePacksInfoPacketPayload Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_80d28d27();
+        var handle = NativeMethods.TablePtr->C3.hs_create_80d28d27();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,39 +59,40 @@ public sealed unsafe partial class ResourcePacksInfoPacketPayload : global::Syst
 
     public bool mForceDisableVibrantVisuals
     {
-        get => NativeMethods.TablePtr->C2.hs_get_e7190562((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_e7190562((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_e7190562((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_e7190562((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mHasAddonPacks
     {
-        get => NativeMethods.TablePtr->C2.hs_get_36737081((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_36737081((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_36737081((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_36737081((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mHasScripts
     {
-        get => NativeMethods.TablePtr->C2.hs_get_eb998d5c((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_eb998d5c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_eb998d5c((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_eb998d5c((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mResourcePackRequired
     {
-        get => NativeMethods.TablePtr->C2.hs_get_0ba07da3((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_0ba07da3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_0ba07da3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_0ba07da3((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mResourcePacks_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_8dfcf9ed((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8dfcf9ed((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mWorldTemplateIdAndVersion_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a2ed01f5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a2ed01f5((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {
@@ -99,7 +100,7 @@ public sealed unsafe partial class ResourcePacksInfoPacketPayload : global::Syst
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_698c058b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_698c058b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -353,6 +353,7 @@ public sealed unsafe partial class LecternBlockActor : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_7f993b22((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {

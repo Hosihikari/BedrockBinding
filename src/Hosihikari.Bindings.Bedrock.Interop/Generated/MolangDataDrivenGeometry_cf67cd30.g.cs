@@ -61,6 +61,7 @@ public sealed unsafe partial class MolangDataDrivenGeometry : global::System.IDi
         get => (nint)NativeMethods.TablePtr->C2.hs_get_aa54a538((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

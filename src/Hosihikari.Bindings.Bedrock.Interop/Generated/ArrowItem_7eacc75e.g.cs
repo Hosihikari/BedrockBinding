@@ -212,6 +212,7 @@ public sealed unsafe partial class ArrowItem : global::System.IDisposable
         }
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlias_Address
     {

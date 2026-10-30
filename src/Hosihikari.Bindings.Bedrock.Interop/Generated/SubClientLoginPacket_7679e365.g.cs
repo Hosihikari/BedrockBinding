@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SubClientLoginPacket
+public sealed unsafe partial class SubClientLoginPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,9 +227,23 @@ public sealed unsafe partial class SubClientLoginPacket
         NativeMethods.TablePtr->C3.hs_method_f5b9b48f((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mConnectionRequest_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_8bbf8118((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_7679e365((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

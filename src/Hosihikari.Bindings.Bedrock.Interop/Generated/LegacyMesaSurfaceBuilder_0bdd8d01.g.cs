@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VanillaSurfaceBuilders;
 
-public sealed unsafe partial class LegacyMesaSurfaceBuilder
+public sealed unsafe partial class LegacyMesaSurfaceBuilder : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,80 +40,94 @@ public sealed unsafe partial class LegacyMesaSurfaceBuilder
 
     public void _buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters globalParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters surfaceBuilderParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
     {
-        NativeMethods.TablePtr->C3.hs_method_4a5baf60((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
+        NativeMethods.TablePtr->C4.hs_method_4a5baf60((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
     }
 
     public bool _getUsesDepthValue()
     {
-        return NativeMethods.TablePtr->C3.hs_method_71420cae((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_71420cae((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void _initBiomeSurface(nint surfaceBuilderData)
     {
-        NativeMethods.TablePtr->C3.hs_method_35a44bab((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
+        NativeMethods.TablePtr->C4.hs_method_35a44bab((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
     }
 
     public void _initBuilder(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed)
     {
-        NativeMethods.TablePtr->C3.hs_method_337f0bb6((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
+        NativeMethods.TablePtr->C4.hs_method_337f0bb6((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
     }
 
     public bool _isBestBuilder(nint surfaceBuilderData)
     {
-        return NativeMethods.TablePtr->C3.hs_method_5570c14a((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_5570c14a((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
     }
 
     public void buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters globalParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters surfaceBuilderParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
     {
-        NativeMethods.TablePtr->C3.hs_method_e314d258((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
+        NativeMethods.TablePtr->C4.hs_method_e314d258((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
     }
 
     public byte getBand(int worldX, int y, int worldZ, global::Hosihikari.Bindings.Bedrock.Interop.PerlinSimplexNoise noiseBuf)
     {
-        return NativeMethods.TablePtr->C3.hs_method_1a607802((void*)__hosihikari_shim_handle, worldX, y, worldZ, (void*)noiseBuf.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_1a607802((void*)__hosihikari_shim_handle, worldX, y, worldZ, (void*)noiseBuf.Handle);
     }
 
     public bool getUsesDepthValue()
     {
-        return NativeMethods.TablePtr->C3.hs_method_5e8cc964((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_5e8cc964((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void initBiomeSurface(nint surfaceBuilderData)
     {
-        NativeMethods.TablePtr->C3.hs_method_71fdcac2((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
+        NativeMethods.TablePtr->C4.hs_method_71fdcac2((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
     }
 
     public void initBuilder(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed)
     {
-        NativeMethods.TablePtr->C3.hs_method_cdd990cc((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
+        NativeMethods.TablePtr->C4.hs_method_cdd990cc((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
     }
 
     public bool isBestBuilder(nint surfaceBuilderData)
     {
-        return NativeMethods.TablePtr->C3.hs_method_22968280((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_22968280((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBandsNoise_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_c3619331((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c3619331((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mColorBands_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_0956956e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_0956956e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPillarNoise_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_efb09e6a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_efb09e6a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPillarRoofNoise_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_b55f5aa6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b55f5aa6((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_0bdd8d01((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

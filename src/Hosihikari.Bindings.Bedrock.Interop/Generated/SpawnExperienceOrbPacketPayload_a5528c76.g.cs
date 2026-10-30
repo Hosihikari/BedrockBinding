@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SpawnExperienceOrbPacketPayload
+public sealed unsafe partial class SpawnExperienceOrbPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class SpawnExperienceOrbPacketPayload
     {
         get => NativeMethods.TablePtr->C3.hs_get_cdba38f9((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_cdba38f9((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a5528c76((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

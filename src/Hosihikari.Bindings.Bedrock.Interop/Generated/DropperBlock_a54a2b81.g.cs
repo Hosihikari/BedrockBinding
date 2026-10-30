@@ -328,6 +328,7 @@ public sealed unsafe partial class DropperBlock : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_70ace794((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

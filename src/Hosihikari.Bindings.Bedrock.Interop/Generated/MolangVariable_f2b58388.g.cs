@@ -115,6 +115,7 @@ public sealed unsafe partial class MolangVariable : global::System.IDisposable
     public static nint mVariableNameToIndexMap_LowWaterMark() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

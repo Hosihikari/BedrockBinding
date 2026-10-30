@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LookControlComponent
+public sealed unsafe partial class LookControlComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -89,5 +89,19 @@ public sealed unsafe partial class LookControlComponent
     public void setLookAtPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor? target, float yMax, float xMax)
     {
         NativeMethods.TablePtr->C2.hs_method_cd41834b((void*)__hosihikari_shim_handle, (void*)(target?.Handle ?? 0), yMax, xMax);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8fe30854((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

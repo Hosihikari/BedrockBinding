@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ReinforcedDeepslateBlock
+public sealed unsafe partial class ReinforcedDeepslateBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -271,5 +271,19 @@ public sealed unsafe partial class ReinforcedDeepslateBlock
     public bool canBeOriginalSurface(bool arg0)
     {
         return NativeMethods.TablePtr->C2.hs_method_42cb1a2b((void*)__hosihikari_shim_handle, arg0) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_a4f825b9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -264,9 +264,9 @@ public sealed unsafe partial class DragonEggBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_d2bb5c13((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)pos.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool _breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public nint _ctor(string nameId, int id)
     {
@@ -348,9 +348,9 @@ public sealed unsafe partial class DragonEggBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_90a1bebc((void*)__hosihikari_shim_handle, (void*)(player?.Handle ?? 0), (void*)pos.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getDustColor(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0)
     {
@@ -367,6 +367,7 @@ public sealed unsafe partial class DragonEggBlock : global::System.IDisposable
     {
         NativeMethods.TablePtr->C1.hs_method_befaab32((void*)__hosihikari_shim_handle, (void*)eventData);
     }
+
 
     public void Dispose()
     {

@@ -880,6 +880,7 @@ public sealed unsafe partial class Npc : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_7bce6719((void*)__hosihikari_shim_handle, method, (void*)@params.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

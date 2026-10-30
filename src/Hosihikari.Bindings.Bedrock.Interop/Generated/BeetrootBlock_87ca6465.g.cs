@@ -57,9 +57,10 @@ public sealed unsafe partial class BeetrootBlock : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getBaseSeed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance _getBaseSeed()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C0.hs_method_df23d77f((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB _getCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3)
     {
@@ -116,9 +117,10 @@ public sealed unsafe partial class BeetrootBlock : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBaseSeed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getBaseSeed()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C0.hs_method_c18ae93d((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB getCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg2, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3)
     {
@@ -134,6 +136,7 @@ public sealed unsafe partial class BeetrootBlock : global::System.IDisposable
     {
         return NativeMethods.TablePtr->C0.hs_method_76b08f8f((void*)__hosihikari_shim_handle, (void*)block.Handle);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address

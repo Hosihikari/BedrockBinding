@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class JigsawBlock
+public sealed unsafe partial class JigsawBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -333,5 +333,19 @@ public sealed unsafe partial class JigsawBlock
     public void use(nint eventData)
     {
         NativeMethods.TablePtr->C1.hs_method_afa46266((void*)__hosihikari_shim_handle, (void*)eventData);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_243655b4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

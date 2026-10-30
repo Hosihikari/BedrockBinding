@@ -79,6 +79,7 @@ public sealed unsafe partial class NpcRequestPacketPayload : global::System.IDis
         set => NativeMethods.TablePtr->C2.hs_set_5fcfb321((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

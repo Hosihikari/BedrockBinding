@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested.ImportWorldsResult_Nested;
 
-public sealed unsafe partial class ImportWorldResult
+public sealed unsafe partial class ImportWorldResult : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class ImportWorldResult
     public nint path_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_8a25d424((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_103d71b5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -171,6 +171,7 @@ public sealed unsafe partial class CommandParameterData : global::System.IDispos
         return NativeMethods.TablePtr->C0.hs_method_aa9438f4((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

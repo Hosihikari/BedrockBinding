@@ -223,6 +223,7 @@ public sealed unsafe partial class DelayedAttackGoal : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_2572e89c((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAttackOnce
     {
         get => NativeMethods.TablePtr->C1.hs_get_025a75ab((void*)__hosihikari_shim_handle) != 0;

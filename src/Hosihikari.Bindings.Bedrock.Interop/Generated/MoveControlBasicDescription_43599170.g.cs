@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MoveControlBasicDescription
+public sealed unsafe partial class MoveControlBasicDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,9 +48,23 @@ public sealed unsafe partial class MoveControlBasicDescription
         return (nint)NativeMethods.TablePtr->C2.hs_method_ceb79882((void*)__hosihikari_shim_handle);
     }
 
+
     public float mMaxTurn
     {
         get => NativeMethods.TablePtr->C2.hs_get_699273aa((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_699273aa((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_43599170((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

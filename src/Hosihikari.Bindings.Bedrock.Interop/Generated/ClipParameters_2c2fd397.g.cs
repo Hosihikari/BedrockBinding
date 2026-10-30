@@ -125,6 +125,7 @@ public sealed unsafe partial class ClipParameters : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ClipParameters((nint)NativeMethods.TablePtr->C0.hs_method_783f4e54((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

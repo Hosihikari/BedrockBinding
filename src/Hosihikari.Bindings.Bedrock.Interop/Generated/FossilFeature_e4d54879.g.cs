@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FossilFeature
+public sealed unsafe partial class FossilFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -76,6 +76,7 @@ public sealed unsafe partial class FossilFeature
         return NativeMethods.TablePtr->C1.hs_method_7f414916((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
+
     public bool mCanUseInternalFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_203a408d((void*)__hosihikari_shim_handle) != 0;
@@ -86,5 +87,18 @@ public sealed unsafe partial class FossilFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_dd117b3a((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_dd117b3a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_e4d54879((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

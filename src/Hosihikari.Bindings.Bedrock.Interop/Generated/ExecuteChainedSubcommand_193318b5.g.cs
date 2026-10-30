@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.NewExecuteCommand_Nested;
 
-public sealed unsafe partial class ExecuteChainedSubcommand
+public sealed unsafe partial class ExecuteChainedSubcommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -143,5 +143,19 @@ public sealed unsafe partial class ExecuteChainedSubcommand
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry)
     {
         NativeMethods.TablePtr->C2.hs_method_c4980c38((void*)registry.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_193318b5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

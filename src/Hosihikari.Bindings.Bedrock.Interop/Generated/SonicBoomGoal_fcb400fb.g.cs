@@ -247,6 +247,7 @@ public sealed unsafe partial class SonicBoomGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_3b35ce2f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

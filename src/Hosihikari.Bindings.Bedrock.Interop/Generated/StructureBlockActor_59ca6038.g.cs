@@ -246,6 +246,7 @@ public sealed unsafe partial class StructureBlockActor : global::System.IDisposa
         NativeMethods.TablePtr->C3.hs_method_6e991385((void*)__hosihikari_shim_handle, (void*)data.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {

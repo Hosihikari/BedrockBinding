@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SculkVeinMultifaceSpreader
+public sealed unsafe partial class SculkVeinMultifaceSpreader : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -76,5 +76,19 @@ public sealed unsafe partial class SculkVeinMultifaceSpreader
     public bool _isOtherBlockValidAsSource(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
         return NativeMethods.TablePtr->C3.hs_method_beef24c2((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_57bc1fd7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

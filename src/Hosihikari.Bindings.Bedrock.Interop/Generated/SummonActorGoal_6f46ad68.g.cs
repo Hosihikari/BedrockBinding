@@ -209,6 +209,7 @@ public sealed unsafe partial class SummonActorGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_01e23ee0((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

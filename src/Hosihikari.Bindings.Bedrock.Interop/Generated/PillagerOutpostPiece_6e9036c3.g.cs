@@ -212,6 +212,7 @@ public sealed unsafe partial class PillagerOutpostPiece : global::System.IDispos
         NativeMethods.TablePtr->C2.hs_method_28498f36((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
     {

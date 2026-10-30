@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorDataDirtyFlagsComponent
+public sealed unsafe partial class ActorDataDirtyFlagsComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class ActorDataDirtyFlagsComponent
     public nint mDirtyFlags_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_66572705((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_87d3d438((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

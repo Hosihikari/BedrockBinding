@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.StructureMetadata;
 
-public sealed unsafe partial class StructureInstance
+public sealed unsafe partial class StructureInstance : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -71,5 +71,19 @@ public sealed unsafe partial class StructureInstance
     public nint mStructure_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_e559bb48((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_1c1d2397((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

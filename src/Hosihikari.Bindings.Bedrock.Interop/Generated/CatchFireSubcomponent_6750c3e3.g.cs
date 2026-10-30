@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CatchFireSubcomponent
+public sealed unsafe partial class CatchFireSubcomponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -88,5 +88,19 @@ public sealed unsafe partial class CatchFireSubcomponent
     public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
     {
         NativeMethods.TablePtr->C0.hs_method_497bf695((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6750c3e3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

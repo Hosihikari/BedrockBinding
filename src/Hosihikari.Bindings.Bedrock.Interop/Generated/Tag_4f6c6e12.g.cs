@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelDataValue_Nested;
 
-public sealed unsafe partial class Tag
+public sealed unsafe partial class Tag : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,6 +41,20 @@ public sealed unsafe partial class Tag
     // The native field type is not projected; this is the address of the field storage.
     public nint mTag_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_c993958c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c993958c((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_4f6c6e12((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

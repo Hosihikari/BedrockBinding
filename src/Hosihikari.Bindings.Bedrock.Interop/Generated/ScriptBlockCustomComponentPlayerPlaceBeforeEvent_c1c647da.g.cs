@@ -143,6 +143,7 @@ public sealed unsafe partial class ScriptBlockCustomComponentPlayerPlaceBeforeEv
         NativeMethods.TablePtr->C3.hs_method_95e3e807((void*)__hosihikari_shim_handle, (void*)engineEvent);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {

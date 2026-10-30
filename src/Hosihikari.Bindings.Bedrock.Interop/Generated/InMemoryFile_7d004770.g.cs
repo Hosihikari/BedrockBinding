@@ -60,10 +60,9 @@ public sealed unsafe partial class InMemoryFile : global::System.IDisposable
         return new InMemoryFile((nint)handle);
     }
 
-    public string getFilename()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getFilename()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_e8e7fa61((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_e8e7fa61((void*)__hosihikari_shim_handle));
     }
 
     // The native field type is not projected; this is the address of the field storage.

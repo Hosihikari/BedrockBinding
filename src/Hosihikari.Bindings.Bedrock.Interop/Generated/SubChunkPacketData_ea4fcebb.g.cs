@@ -100,6 +100,7 @@ public sealed unsafe partial class SubChunkPacketData : global::System.IDisposab
         return NativeMethods.TablePtr->C3.hs_method_83a79f53((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

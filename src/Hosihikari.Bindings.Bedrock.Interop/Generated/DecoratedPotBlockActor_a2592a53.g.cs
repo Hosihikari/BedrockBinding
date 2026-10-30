@@ -334,6 +334,7 @@ public sealed unsafe partial class DecoratedPotBlockActor : global::System.IDisp
     public static nint tryGetSherdsFromTag(nint tag) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::array<std::basic_string<char>, 4>' is not supported.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLootTable_Address
     {

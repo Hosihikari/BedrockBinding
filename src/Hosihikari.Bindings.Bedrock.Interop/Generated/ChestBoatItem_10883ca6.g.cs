@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChestBoatItem
+public sealed unsafe partial class ChestBoatItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -69,6 +69,7 @@ public sealed unsafe partial class ChestBoatItem
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_c17686f8((void*)__hosihikari_shim_handle, (void*)itemDescriptor.Handle, (void*)(userData?.Handle ?? 0));
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -277,5 +278,18 @@ public sealed unsafe partial class ChestBoatItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_2b5b1519((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_2b5b1519((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_10883ca6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

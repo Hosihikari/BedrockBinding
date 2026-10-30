@@ -113,6 +113,7 @@ public sealed unsafe partial class TransformItemResponse : global::System.IDispo
         return new global::Hosihikari.Bindings.Bedrock.Interop.TransformItemResponse((nint)NativeMethods.TablePtr->C3.hs_method_a327d51d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -44,7 +44,7 @@ public sealed unsafe partial class LevelDataWrapper : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_a07f9f35((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_a07f9f35((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

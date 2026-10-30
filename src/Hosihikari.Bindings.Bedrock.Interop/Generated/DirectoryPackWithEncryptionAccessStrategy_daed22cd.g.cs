@@ -105,9 +105,10 @@ public sealed unsafe partial class DirectoryPackWithEncryptionAccessStrategy : g
         return NativeMethods.TablePtr->C1.hs_method_47ef0000((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _readContentIdentity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity _readContentIdentity()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->C1.hs_method_5b67df39((void*)__hosihikari_shim_handle));
+    }
 
     public void _unload()
     {
@@ -268,9 +269,10 @@ public sealed unsafe partial class DirectoryPackWithEncryptionAccessStrategy : g
         return new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackWithEncryptionAccessStrategy((nint)NativeMethods.TablePtr->C1.hs_method_79830788((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint readContentIdentity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity readContentIdentity()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->C1.hs_method_7f406bc1((void*)__hosihikari_shim_handle));
+    }
 
     public void unload()
     {

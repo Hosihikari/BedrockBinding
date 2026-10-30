@@ -158,6 +158,7 @@ public sealed unsafe partial class AngryComponent : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_0adb58f1((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

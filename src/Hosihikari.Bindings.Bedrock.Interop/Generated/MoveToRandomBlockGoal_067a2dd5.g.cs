@@ -195,6 +195,7 @@ public sealed unsafe partial class MoveToRandomBlockGoal : global::System.IDispo
         NativeMethods.TablePtr->C2.hs_method_9d7ef8ee((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

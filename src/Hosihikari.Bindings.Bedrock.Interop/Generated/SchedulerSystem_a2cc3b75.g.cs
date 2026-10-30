@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SchedulerSystem
+public sealed unsafe partial class SchedulerSystem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,11 +40,25 @@ public sealed unsafe partial class SchedulerSystem
 
     public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C2.hs_method_12a2283a((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C3.hs_method_12a2283a((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C2.hs_method_f60c42e5((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C3.hs_method_f60c42e5((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a2cc3b75((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

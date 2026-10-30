@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptSimpleBlockVolume
+public sealed unsafe partial class ScriptSimpleBlockVolume : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -116,5 +116,19 @@ public sealed unsafe partial class ScriptSimpleBlockVolume
     public void setTo(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 to)
     {
         NativeMethods.TablePtr->C3.hs_method_6bca1232((void*)__hosihikari_shim_handle, (void*)to.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_6391ac39((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

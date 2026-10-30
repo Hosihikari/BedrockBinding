@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler_Nested;
 
-public sealed unsafe partial class RecordGroup
+public sealed unsafe partial class RecordGroup : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,6 +66,20 @@ public sealed unsafe partial class RecordGroup
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             return new global::Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler_Nested.RecordGroup_Nested.FullStackRecord((nint)NativeMethods.TablePtr->C1.hs_method_2332f8a3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_7ef92897((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

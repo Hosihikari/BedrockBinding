@@ -112,6 +112,7 @@ public sealed unsafe partial class ScriptPlayerLeaveAfterEvent : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptPlayerLeaveAfterEvent((nint)NativeMethods.TablePtr->C3.hs_method_a7264375((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

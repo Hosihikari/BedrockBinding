@@ -179,6 +179,7 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
         return NativeMethods.TablePtr->C3.hs_method_ab9609b5((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)tag.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

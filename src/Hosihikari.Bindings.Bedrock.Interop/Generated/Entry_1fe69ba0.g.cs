@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CircuitTrackingInfo_Nested;
 
-public sealed unsafe partial class Entry
+public sealed unsafe partial class Entry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,5 +60,19 @@ public sealed unsafe partial class Entry
     {
         get => NativeMethods.TablePtr->C0.hs_get_75565b9a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_75565b9a((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_1fe69ba0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

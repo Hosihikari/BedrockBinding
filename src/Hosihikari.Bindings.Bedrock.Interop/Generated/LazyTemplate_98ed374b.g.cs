@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement_Nested;
 
-public sealed unsafe partial class LazyTemplate
+public sealed unsafe partial class LazyTemplate : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -86,5 +86,19 @@ public sealed unsafe partial class LazyTemplate
     public nint mStructureVariant_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_45ea4cc1((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_98ed374b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

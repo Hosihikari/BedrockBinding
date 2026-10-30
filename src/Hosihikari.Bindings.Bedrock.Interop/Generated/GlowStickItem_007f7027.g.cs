@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GlowStickItem
+public sealed unsafe partial class GlowStickItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -83,6 +83,7 @@ public sealed unsafe partial class GlowStickItem
     {
         return NativeMethods.TablePtr->C1.hs_method_a2d90b6c((void*)__hosihikari_shim_handle, auxValue) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -291,5 +292,18 @@ public sealed unsafe partial class GlowStickItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_fa048aa3((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_fa048aa3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_007f7027((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

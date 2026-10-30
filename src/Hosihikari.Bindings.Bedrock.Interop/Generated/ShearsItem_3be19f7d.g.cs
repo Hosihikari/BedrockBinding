@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ShearsItem
+public sealed unsafe partial class ShearsItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -314,5 +314,19 @@ public sealed unsafe partial class ShearsItem
     public static void onShearsUsed(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.Actor? owner, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack shears, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, uint levelSoundEvent)
     {
         NativeMethods.TablePtr->C3.hs_method_75c99880((void*)region.Handle, (void*)level.Handle, (void*)(owner?.Handle ?? 0), (void*)shears.Handle, (void*)pos.Handle, levelSoundEvent);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_3be19f7d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

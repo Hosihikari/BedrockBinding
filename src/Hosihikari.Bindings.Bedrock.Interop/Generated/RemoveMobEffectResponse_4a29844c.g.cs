@@ -119,6 +119,7 @@ public sealed unsafe partial class RemoveMobEffectResponse : global::System.IDis
         return new global::Hosihikari.Bindings.Bedrock.Interop.RemoveMobEffectResponse((nint)NativeMethods.TablePtr->C2.hs_method_c1556329((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

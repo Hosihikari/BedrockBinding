@@ -603,9 +603,10 @@ public sealed unsafe partial class ArmorStand : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_10fc7350((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getInteraction(nint player, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction _getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 location)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C0.hs_method_d6ae89cc((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)location.Handle));
+    }
 
     public float _getShadowRadius()
     {
@@ -768,9 +769,10 @@ public sealed unsafe partial class ArmorStand : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_b418ec8d((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint player, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 location)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C0.hs_method_1453d939((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)location.Handle));
+    }
 
     public float getShadowRadius()
     {
@@ -818,6 +820,7 @@ public sealed unsafe partial class ArmorStand : global::System.IDisposable
     {
         NativeMethods.TablePtr->C0.hs_method_6126ad4e((void*)__hosihikari_shim_handle, poseIndex);
     }
+
 
     public float mAttackAnim
     {

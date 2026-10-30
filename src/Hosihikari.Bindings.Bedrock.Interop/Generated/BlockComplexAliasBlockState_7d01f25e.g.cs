@@ -66,6 +66,7 @@ public sealed unsafe partial class BlockComplexAliasBlockState : global::System.
         set => NativeMethods.TablePtr->C0.hs_set_15c0708e((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

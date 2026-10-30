@@ -40,7 +40,7 @@ public sealed unsafe partial class LevelChunkVolumeData : global::System.IDispos
 
     public static LevelChunkVolumeData Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_f64f1780();
+        var handle = NativeMethods.TablePtr->C2.hs_create_f64f1780();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class LevelChunkVolumeData : global::System.IDispos
 
     public static LevelChunkVolumeData Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkVolumeData arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_6d7fb1c0((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_6d7fb1c0((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,22 +62,22 @@ public sealed unsafe partial class LevelChunkVolumeData : global::System.IDispos
 
     public void addStructure(global::Hosihikari.Bindings.Bedrock.Interop.StructureStart start)
     {
-        NativeMethods.TablePtr->C1.hs_method_fce7f983((void*)__hosihikari_shim_handle, (void*)start.Handle);
+        NativeMethods.TablePtr->C2.hs_method_fce7f983((void*)__hosihikari_shim_handle, (void*)start.Handle);
     }
 
     public void addStructure(global::Hosihikari.Bindings.Abi.SharedHandle? instance)
     {
-        NativeMethods.TablePtr->C1.hs_method_672583d6((void*)__hosihikari_shim_handle, instance?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_672583d6((void*)__hosihikari_shim_handle, instance?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public void addStructureReference(global::Hosihikari.Bindings.Bedrock.Interop.StructureStart start)
     {
-        NativeMethods.TablePtr->C1.hs_method_1d505c14((void*)__hosihikari_shim_handle, (void*)start.Handle);
+        NativeMethods.TablePtr->C2.hs_method_1d505c14((void*)__hosihikari_shim_handle, (void*)start.Handle);
     }
 
     public void addStructureReference(global::Hosihikari.Bindings.Abi.SharedHandle? instance)
     {
-        NativeMethods.TablePtr->C1.hs_method_d16e58cf((void*)__hosihikari_shim_handle, instance?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C2.hs_method_d16e58cf((void*)__hosihikari_shim_handle, instance?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
@@ -87,53 +87,53 @@ public sealed unsafe partial class LevelChunkVolumeData : global::System.IDispos
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkPos_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_76d668b0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_76d668b0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDataRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ced4e218((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ced4e218((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMax_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b91c7c27((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b91c7c27((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMin_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_2e6a9a3a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_2e6a9a3a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructureReferences_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b4ba67f9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b4ba67f9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructureSpawnRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_fb7ffbee((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fb7ffbee((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructures_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4946127d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4946127d((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkVolumeData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkVolumeData arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkVolumeData((nint)NativeMethods.TablePtr->C1.hs_method_2ff97fbe((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkVolumeData((nint)NativeMethods.TablePtr->C2.hs_method_2ff97fbe((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[] structureSpawnPos()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_49fda64b((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_49fda64b((void*)__hosihikari_shim_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.BlockPos>() : new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -143,13 +143,14 @@ public sealed unsafe partial class LevelChunkVolumeData : global::System.IDispos
         return __hs_result;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_72dacd7f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_72dacd7f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

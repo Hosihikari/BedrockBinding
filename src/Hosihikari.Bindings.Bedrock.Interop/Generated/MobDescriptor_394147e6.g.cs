@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Legacy;
 
-public sealed unsafe partial class MobDescriptor
+public sealed unsafe partial class MobDescriptor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -119,4 +119,18 @@ public sealed unsafe partial class MobDescriptor
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SharedTypes::v1_21_120::MobDescriptor' requires --link-carrier or --virtual-dispatch.", false)]
     public nint toSharedTypes() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SharedTypes::v1_21_120::MobDescriptor' requires --link-carrier or --virtual-dispatch.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_394147e6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

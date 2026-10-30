@@ -94,6 +94,7 @@ public sealed unsafe partial class ScriptBlockRaycastHit : global::System.IDispo
         get => (nint)NativeMethods.TablePtr->C3.hs_get_e00f3ebf((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -201,6 +201,7 @@ public sealed unsafe partial class SendEventGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_e0d40956((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

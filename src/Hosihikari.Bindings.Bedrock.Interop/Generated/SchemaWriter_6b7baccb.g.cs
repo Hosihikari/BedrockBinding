@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal;
 
-public sealed unsafe partial class SchemaWriter
+public sealed unsafe partial class SchemaWriter : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -126,6 +126,7 @@ public sealed unsafe partial class SchemaWriter
     public void writeAdditionalData(uint value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+
     public byte mSerializationTraits
     {
         get => NativeMethods.TablePtr->C4.hs_get_ff84753e((void*)__hosihikari_shim_handle);
@@ -136,5 +137,18 @@ public sealed unsafe partial class SchemaWriter
     {
         get => NativeMethods.TablePtr->C4.hs_get_1c21ea23((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C4.hs_set_1c21ea23((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_6b7baccb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

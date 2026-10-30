@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BookshelfBlock
+public sealed unsafe partial class BookshelfBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -271,5 +271,19 @@ public sealed unsafe partial class BookshelfBlock
     public void animateTickBedrockLegacy(nint tickData)
     {
         NativeMethods.TablePtr->C0.hs_method_880e309f((void*)__hosihikari_shim_handle, (void*)tickData);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_aaac7c1c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

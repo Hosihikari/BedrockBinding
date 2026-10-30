@@ -115,6 +115,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatch : globa
         return NativeMethods.TablePtr->C3.hs_method_b4cd4d30((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

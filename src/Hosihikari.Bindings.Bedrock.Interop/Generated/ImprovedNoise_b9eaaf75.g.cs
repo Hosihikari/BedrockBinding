@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ImprovedNoise
+public sealed unsafe partial class ImprovedNoise : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,5 +59,19 @@ public sealed unsafe partial class ImprovedNoise
     public void readArea(nint buffer, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int xCount, int yCount, int zCount, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 s, float pow, int xStep, int yStep, int zStep)
     {
         NativeMethods.TablePtr->C1.hs_method_8b062a9e((void*)__hosihikari_shim_handle, (void*)buffer, (void*)pos.Handle, xCount, yCount, zCount, (void*)s.Handle, pow, xStep, yStep, zStep);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b9eaaf75((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

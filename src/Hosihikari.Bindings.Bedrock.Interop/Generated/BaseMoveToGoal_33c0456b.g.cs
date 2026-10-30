@@ -345,6 +345,7 @@ public sealed unsafe partial class BaseMoveToGoal : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_84f67a75((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

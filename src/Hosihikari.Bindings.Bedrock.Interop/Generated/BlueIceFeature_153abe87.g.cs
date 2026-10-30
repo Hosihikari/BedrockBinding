@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlueIceFeature
+public sealed unsafe partial class BlueIceFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,6 +48,7 @@ public sealed unsafe partial class BlueIceFeature
         return NativeMethods.TablePtr->C0.hs_method_7a7f6131((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
@@ -70,5 +71,18 @@ public sealed unsafe partial class BlueIceFeature
     {
         get => NativeMethods.TablePtr->C0.hs_get_87b9c73d((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C0.hs_set_87b9c73d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_153abe87((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

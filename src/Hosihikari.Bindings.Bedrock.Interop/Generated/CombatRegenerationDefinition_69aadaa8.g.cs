@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CombatRegenerationDefinition
+public sealed unsafe partial class CombatRegenerationDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -82,6 +82,20 @@ public sealed unsafe partial class CombatRegenerationDefinition
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             NativeMethods.TablePtr->C0.hs_method_342f05b5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_69aadaa8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

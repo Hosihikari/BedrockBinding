@@ -142,6 +142,7 @@ public sealed unsafe partial class ActorRuntimeIDManager : global::System.IDispo
         get => (nint)NativeMethods.TablePtr->C0.hs_get_e94cdd64((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

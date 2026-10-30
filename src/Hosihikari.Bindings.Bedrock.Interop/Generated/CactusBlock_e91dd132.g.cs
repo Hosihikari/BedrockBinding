@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CactusBlock
+public sealed unsafe partial class CactusBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -357,5 +357,19 @@ public sealed unsafe partial class CactusBlock
     public void tick(nint eventData)
     {
         NativeMethods.TablePtr->C0.hs_method_c362456e((void*)__hosihikari_shim_handle, (void*)eventData);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_e91dd132((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Scripting;
 
-public sealed unsafe partial class StringBasedRuntime
+public sealed unsafe partial class StringBasedRuntime : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,4 +51,18 @@ public sealed unsafe partial class StringBasedRuntime
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint runString(nint contextId, nint scriptName, nint scriptData, nint privilege) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_224e7e30((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

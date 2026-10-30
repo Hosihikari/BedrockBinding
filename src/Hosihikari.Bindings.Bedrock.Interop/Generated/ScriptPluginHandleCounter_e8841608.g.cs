@@ -109,6 +109,7 @@ public sealed unsafe partial class ScriptPluginHandleCounter : global::System.ID
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptPluginHandleCounter((nint)NativeMethods.TablePtr->C3.hs_method_11c9aaf8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

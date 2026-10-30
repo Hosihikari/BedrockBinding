@@ -73,6 +73,7 @@ public sealed unsafe partial class WeakEntityRef : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef((nint)NativeMethods.TablePtr->C4.hs_method_0a6f56e6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntity_Address
     {

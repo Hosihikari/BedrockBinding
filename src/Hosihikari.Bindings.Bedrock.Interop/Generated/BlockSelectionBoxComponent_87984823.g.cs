@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class BlockSelectionBoxComponent
+public sealed unsafe partial class BlockSelectionBoxComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -37,5 +36,37 @@ public sealed partial class BlockSelectionBoxComponent
         var __hs_handle = __hosihikari_shim_handle;
         __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public bool mEnabled
+    {
+        get => NativeMethods.TablePtr->C0.hs_get_596a031e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C0.hs_set_596a031e((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOriginalAABB_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_fafd80bc((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTransformedAABB_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C0.hs_get_0d0d99db((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_87984823((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

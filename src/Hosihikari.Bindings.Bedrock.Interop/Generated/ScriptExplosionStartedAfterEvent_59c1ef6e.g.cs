@@ -121,6 +121,7 @@ public sealed unsafe partial class ScriptExplosionStartedAfterEvent : global::Sy
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptExplosionStartedAfterEvent((nint)NativeMethods.TablePtr->C3.hs_method_14b217dc((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -92,6 +92,7 @@ public sealed unsafe partial class PlayerAbilitiesManager : global::System.IDisp
         NativeMethods.TablePtr->C2.hs_method_e63bffc0((void*)__hosihikari_shim_handle, (void*)playerReference.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

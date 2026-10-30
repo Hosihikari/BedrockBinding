@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SubChunkRequestPacket
+public sealed unsafe partial class SubChunkRequestPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class SubChunkRequestPacket
         NativeMethods.TablePtr->C3.hs_method_c4f67bfb((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCenterPos_Address
     {
@@ -243,5 +244,18 @@ public sealed unsafe partial class SubChunkRequestPacket
     public nint mSubChunkPosOffsets_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_145027e8((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_7503d11b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

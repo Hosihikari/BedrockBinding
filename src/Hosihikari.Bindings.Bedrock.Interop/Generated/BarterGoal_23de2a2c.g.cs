@@ -113,6 +113,7 @@ public sealed unsafe partial class BarterGoal : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_77be1872((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {

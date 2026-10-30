@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AngerLevelComponent_Nested;
 
-public sealed unsafe partial class ConditionalSound
+public sealed unsafe partial class ConditionalSound : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class ConditionalSound
     {
         get => NativeMethods.TablePtr->C0.hs_get_3dc2c16b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_3dc2c16b((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_5689d495((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NBStartPiece
+public sealed unsafe partial class NBStartPiece : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -72,6 +72,7 @@ public sealed unsafe partial class NBStartPiece
         get => (nint)NativeMethods.TablePtr->C2.hs_get_2bf91981((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLocalRegistry_Address
     {
@@ -100,5 +101,18 @@ public sealed unsafe partial class NBStartPiece
     public nint mTerrainAdjustmentToken_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_f048ab31((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_59b59b32((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

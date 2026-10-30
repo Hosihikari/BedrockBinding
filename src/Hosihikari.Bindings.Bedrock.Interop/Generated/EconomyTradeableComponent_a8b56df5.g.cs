@@ -92,9 +92,10 @@ public sealed unsafe partial class EconomyTradeableComponent : global::System.ID
         NativeMethods.TablePtr->C1.hs_method_d624d271((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createDataPacket(nint containerID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket createDataPacket(sbyte containerID)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket((nint)NativeMethods.TablePtr->C1.hs_method_c69c347d((void*)__hosihikari_shim_handle, containerID));
+    }
 
     public void fixVillagerTierToMatchTradeList(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList? oldOffers)
     {
@@ -106,9 +107,10 @@ public sealed unsafe partial class EconomyTradeableComponent : global::System.ID
         return new global::Hosihikari.Bindings.Bedrock.Interop.IntRange((nint)NativeMethods.TablePtr->C1.hs_method_98bc08dc((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C1.hs_method_05840583((void*)__hosihikari_shim_handle, (void*)player.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipeList? getOffers()
     {
@@ -261,6 +263,7 @@ public sealed unsafe partial class EconomyTradeableComponent : global::System.ID
     {
         NativeMethods.TablePtr->C1.hs_method_774ec662((void*)__hosihikari_shim_handle, (void*)(oldOffers?.Handle ?? 0));
     }
+
 
     public void Dispose()
     {

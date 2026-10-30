@@ -99,6 +99,7 @@ public sealed unsafe partial class RegionHillsOperationNode : global::System.IDi
         return new global::Hosihikari.Bindings.Bedrock.Interop.RegionHillsOperationNode((nint)NativeMethods.TablePtr->C2.hs_method_4ad2e350((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

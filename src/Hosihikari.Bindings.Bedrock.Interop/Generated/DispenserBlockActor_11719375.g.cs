@@ -344,6 +344,7 @@ public sealed unsafe partial class DispenserBlockActor : global::System.IDisposa
         NativeMethods.TablePtr->C1.hs_method_c22f2849((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLootTable_Address
     {

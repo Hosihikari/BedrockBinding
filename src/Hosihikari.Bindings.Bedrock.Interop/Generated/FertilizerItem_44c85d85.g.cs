@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FertilizerItem
+public sealed unsafe partial class FertilizerItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -111,6 +111,7 @@ public sealed unsafe partial class FertilizerItem
         get => NativeMethods.TablePtr->C1.hs_get_858b87a2((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_858b87a2((void*)__hosihikari_shim_handle, value);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -319,5 +320,18 @@ public sealed unsafe partial class FertilizerItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_c66943e7((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_c66943e7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_44c85d85((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

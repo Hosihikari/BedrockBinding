@@ -95,6 +95,7 @@ public sealed unsafe partial class LootItemActorHasMarkVariantCondition : global
         return new global::Hosihikari.Bindings.Bedrock.Interop.LootItemActorHasMarkVariantCondition((nint)NativeMethods.TablePtr->C2.hs_method_170b0301((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk7dec2c_Address
     {

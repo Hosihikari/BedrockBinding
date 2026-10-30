@@ -163,6 +163,7 @@ public sealed unsafe partial class DragonTakeoffGoal : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_cb700084((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

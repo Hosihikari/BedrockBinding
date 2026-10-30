@@ -44,7 +44,7 @@ public sealed unsafe partial class VanillaVillageJigsawStructureActorRules : glo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_80bccd74((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_80bccd74((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

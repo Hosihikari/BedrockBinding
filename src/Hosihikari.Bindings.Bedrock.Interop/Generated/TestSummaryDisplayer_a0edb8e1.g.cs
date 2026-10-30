@@ -135,6 +135,7 @@ public sealed unsafe partial class TestSummaryDisplayer : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.TestSummaryDisplayer((nint)NativeMethods.TablePtr->C3.hs_method_33411a28((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

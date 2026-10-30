@@ -671,6 +671,7 @@ public sealed unsafe partial class Endermite : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_7c7b5aa6((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_3042f742((void*)__hosihikari_shim_handle);

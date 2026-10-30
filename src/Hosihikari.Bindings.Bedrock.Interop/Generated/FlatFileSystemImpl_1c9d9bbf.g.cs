@@ -40,7 +40,7 @@ public sealed unsafe partial class FlatFileSystemImpl : global::System.IDisposab
 
     public static FlatFileSystemImpl Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_cee88593();
+        var handle = NativeMethods.TablePtr->C1.hs_create_cee88593();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class FlatFileSystemImpl : global::System.IDisposab
 
     public static FlatFileSystemImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_b1302657((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_b1302657((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -95,13 +95,13 @@ public sealed unsafe partial class FlatFileSystemImpl : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnke799e3_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_d157df5b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d157df5b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf2e326_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_aa1a221b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_aa1a221b((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -110,7 +110,7 @@ public sealed unsafe partial class FlatFileSystemImpl : global::System.IDisposab
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl((nint)NativeMethods.TablePtr->C0.hs_method_7322d8e0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSystemImpl((nint)NativeMethods.TablePtr->C1.hs_method_7322d8e0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -123,7 +123,7 @@ public sealed unsafe partial class FlatFileSystemImpl : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_1c9d9bbf((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_1c9d9bbf((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -259,9 +259,9 @@ public sealed unsafe partial class SoulSandBlock : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C3.hs_get_561a8720((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool _breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public nint _ctor(string nameId, int id)
     {
@@ -347,9 +347,9 @@ public sealed unsafe partial class SoulSandBlock : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB getCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource arg1, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? arg3)
     {
@@ -380,6 +380,7 @@ public sealed unsafe partial class SoulSandBlock : global::System.IDisposable
     {
         NativeMethods.TablePtr->C3.hs_method_287298b5((void*)__hosihikari_shim_handle, (void*)eventData);
     }
+
 
     public void Dispose()
     {

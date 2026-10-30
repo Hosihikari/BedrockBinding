@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptCustomComponentRegistry
+public sealed unsafe partial class ScriptCustomComponentRegistry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -37,5 +36,43 @@ public sealed partial class ScriptCustomComponentRegistry
         var __hs_handle = __hosihikari_shim_handle;
         __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mInitializeCompleteSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bb7551e4((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPreReloadSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3091802c((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStartupCompleteSub_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c9d893d2((void*)__hosihikari_shim_handle);
+    }
+
+    public int mState
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_34e7ee27((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_34e7ee27((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_fe4f5694((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

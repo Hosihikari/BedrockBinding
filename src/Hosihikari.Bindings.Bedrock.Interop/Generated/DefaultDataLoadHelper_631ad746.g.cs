@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DefaultDataLoadHelper
+public sealed unsafe partial class DefaultDataLoadHelper : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -208,5 +208,19 @@ public sealed unsafe partial class DefaultDataLoadHelper
     public bool shouldResetTime()
     {
         return NativeMethods.TablePtr->C1.hs_method_710dd857((void*)__hosihikari_shim_handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_631ad746((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

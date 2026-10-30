@@ -135,6 +135,7 @@ public sealed unsafe partial class OreVeinifier : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.OreVeinifier((nint)NativeMethods.TablePtr->C2.hs_method_f9c3bdf8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

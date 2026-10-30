@@ -40,7 +40,7 @@ public sealed unsafe partial class ResourcePackChunkRequestPacketPayload : globa
 
     public static ResourcePackChunkRequestPacketPayload Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_345d8a8e();
+        var handle = NativeMethods.TablePtr->C3.hs_create_345d8a8e();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,15 +51,16 @@ public sealed unsafe partial class ResourcePackChunkRequestPacketPayload : globa
 
     public int mChunk
     {
-        get => NativeMethods.TablePtr->C2.hs_get_d7037cfc((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_d7037cfc((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_d7037cfc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d7037cfc((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mResourceName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_d0f15941((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d0f15941((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {
@@ -67,7 +68,7 @@ public sealed unsafe partial class ResourcePackChunkRequestPacketPayload : globa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_9bc1b892((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_9bc1b892((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

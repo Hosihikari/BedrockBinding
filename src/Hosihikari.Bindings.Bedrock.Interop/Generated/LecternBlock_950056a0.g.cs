@@ -450,6 +450,7 @@ public sealed unsafe partial class LecternBlock : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_93f3b144((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.BasicSchema_Nested;
 
-public sealed unsafe partial class EnumMapping
+public sealed unsafe partial class EnumMapping : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class EnumMapping
     public nint mViews_Address
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_7198b7d7((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_bac05951((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -40,7 +40,7 @@ public sealed unsafe partial class VehicleClientPositionPassengerSystem : global
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo createSetPreviousPosRotSystem()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo((nint)NativeMethods.TablePtr->C3.hs_method_4665a185());
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo((nint)NativeMethods.TablePtr->C4.hs_method_4665a185());
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class VehicleClientPositionPassengerSystem : global
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_f1d5f5cc((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_f1d5f5cc((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

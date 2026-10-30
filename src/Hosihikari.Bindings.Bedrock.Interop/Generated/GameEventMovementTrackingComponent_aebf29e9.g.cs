@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameEventMovementTrackingComponent
+public sealed unsafe partial class GameEventMovementTrackingComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -82,5 +82,19 @@ public sealed unsafe partial class GameEventMovementTrackingComponent
     {
         get => NativeMethods.TablePtr->C1.hs_get_48aeae89((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_48aeae89((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_aebf29e9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

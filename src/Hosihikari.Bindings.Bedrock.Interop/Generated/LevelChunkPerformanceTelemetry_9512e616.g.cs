@@ -40,7 +40,7 @@ public sealed unsafe partial class LevelChunkPerformanceTelemetry : global::Syst
 
     public static LevelChunkPerformanceTelemetry Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_6767cdb1();
+        var handle = NativeMethods.TablePtr->C2.hs_create_6767cdb1();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class LevelChunkPerformanceTelemetry : global::Syst
 
     public static LevelChunkPerformanceTelemetry Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_e631d498((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_e631d498((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,46 +63,46 @@ public sealed unsafe partial class LevelChunkPerformanceTelemetry : global::Syst
     // The native field type is not projected; this is the address of the field storage.
     public nint mEventing_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4488d3d6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4488d3d6((void*)__hosihikari_shim_handle);
     }
 
     public bool mIsClientSide
     {
-        get => NativeMethods.TablePtr->C1.hs_get_3cb3830e((void*)__hosihikari_shim_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_3cb3830e((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool mPerformanceTelemetryFired
     {
-        get => NativeMethods.TablePtr->C1.hs_get_9fb534bd((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_9fb534bd((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_9fb534bd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_9fb534bd((void*)__hosihikari_shim_handle, value);
     }
 
     public ulong mPerformanceTelemetryTimer
     {
-        get => NativeMethods.TablePtr->C1.hs_get_e7827f2b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_e7827f2b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_e7827f2b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_e7827f2b((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mServerTickRange
     {
-        get => NativeMethods.TablePtr->C1.hs_get_1b99cd4b((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C2.hs_get_1b99cd4b((void*)__hosihikari_shim_handle);
     }
 
     public bool mShouldTick
     {
-        get => NativeMethods.TablePtr->C1.hs_get_1f69c9cf((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_1f69c9cf((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1f69c9cf((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1f69c9cf((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTelemetryPeriodicCallback_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_454afff9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_454afff9((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry((nint)NativeMethods.TablePtr->C1.hs_method_9d62e4cb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkPerformanceTelemetry((nint)NativeMethods.TablePtr->C2.hs_method_9d62e4cb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ChunkPerformanceData>' is not a known bindable declaration.", false)]
@@ -121,13 +121,14 @@ public sealed unsafe partial class LevelChunkPerformanceTelemetry : global::Syst
     public void tick(nint chunkPerformanceData) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<ChunkPerformanceData>' is not a known bindable declaration.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_9512e616((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_9512e616((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

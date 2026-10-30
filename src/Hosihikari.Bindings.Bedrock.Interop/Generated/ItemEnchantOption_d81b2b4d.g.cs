@@ -94,6 +94,7 @@ public sealed unsafe partial class ItemEnchantOption : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchantOption((nint)NativeMethods.TablePtr->C1.hs_method_e09a35af((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

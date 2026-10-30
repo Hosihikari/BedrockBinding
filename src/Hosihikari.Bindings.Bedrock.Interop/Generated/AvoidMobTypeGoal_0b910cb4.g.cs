@@ -304,6 +304,7 @@ public sealed unsafe partial class AvoidMobTypeGoal : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_43e1df09((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {

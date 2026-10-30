@@ -384,6 +384,7 @@ public sealed unsafe partial class PickaxeItem : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_adc43911((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

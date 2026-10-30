@@ -40,12 +40,12 @@ public sealed unsafe partial class ValidationResult : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_1a57184e((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_1a57184e((void*)__hosihikari_shim_handle);
     }
 
     public static ValidationResult Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_5d07bc85();
+        var handle = NativeMethods.TablePtr->C4.hs_create_5d07bc85();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class ValidationResult : global::System.IDisposable
 
     public static ValidationResult Create(global::Hosihikari.Bindings.Bedrock.Interop.Util.ResourceUri.ValidationResult arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_f5c70ec4((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_f5c70ec4((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,18 +68,18 @@ public sealed unsafe partial class ValidationResult : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbfca40_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_60179447((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_60179447((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc85a4a_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_c6c1a4de((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c6c1a4de((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Util.ResourceUri.ValidationResult operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Util.ResourceUri.ValidationResult arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Util.ResourceUri.ValidationResult((nint)NativeMethods.TablePtr->C3.hs_method_ad875863((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Util.ResourceUri.ValidationResult((nint)NativeMethods.TablePtr->C4.hs_method_ad875863((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class ValidationResult : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_ff8e0258((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_ff8e0258((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

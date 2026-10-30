@@ -859,6 +859,7 @@ public sealed unsafe partial class Skeleton : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_41234440((void*)__hosihikari_shim_handle, (void*)(target?.Handle ?? 0));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

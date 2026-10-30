@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructurePoolActorPredicateActorMatch
+public sealed unsafe partial class StructurePoolActorPredicateActorMatch : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -93,6 +93,20 @@ public sealed unsafe partial class StructurePoolActorPredicateActorMatch
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             return NativeMethods.TablePtr->C3.hs_method_0d726317((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a152b1be((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

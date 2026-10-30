@@ -216,6 +216,7 @@ public sealed unsafe partial class FollowMobGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_64c4c843((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

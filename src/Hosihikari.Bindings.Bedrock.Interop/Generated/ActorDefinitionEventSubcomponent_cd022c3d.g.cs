@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorDefinitionEventSubcomponent
+public sealed unsafe partial class ActorDefinitionEventSubcomponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -112,5 +112,19 @@ public sealed unsafe partial class ActorDefinitionEventSubcomponent
     public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
     {
         NativeMethods.TablePtr->C0.hs_method_a57f4f83((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_cd022c3d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

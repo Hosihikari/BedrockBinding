@@ -82,6 +82,7 @@ public sealed unsafe partial class BlockPermutationDescription : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPermutationDescription((nint)NativeMethods.TablePtr->C0.hs_method_331d1145((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

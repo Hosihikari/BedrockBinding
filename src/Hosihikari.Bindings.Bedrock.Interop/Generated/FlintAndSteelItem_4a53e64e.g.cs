@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FlintAndSteelItem
+public sealed unsafe partial class FlintAndSteelItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -101,6 +101,7 @@ public sealed unsafe partial class FlintAndSteelItem
     {
         return NativeMethods.TablePtr->C1.hs_method_b3d425aa((void*)__hosihikari_shim_handle, auxValue) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -309,5 +310,18 @@ public sealed unsafe partial class FlintAndSteelItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_be353b56((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_be353b56((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_4a53e64e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -173,6 +173,7 @@ public sealed unsafe partial class EncryptedProxyEnv : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.EncryptedProxyEnv((nint)NativeMethods.TablePtr->C1.hs_method_6442d257((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

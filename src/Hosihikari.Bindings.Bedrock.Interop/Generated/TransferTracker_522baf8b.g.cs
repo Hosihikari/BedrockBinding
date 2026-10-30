@@ -94,6 +94,7 @@ public sealed unsafe partial class TransferTracker : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ClientBlobCache.Server.ActiveTransfersManager_Nested.TransferTracker((nint)NativeMethods.TablePtr->C0.hs_method_7fa12b07((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

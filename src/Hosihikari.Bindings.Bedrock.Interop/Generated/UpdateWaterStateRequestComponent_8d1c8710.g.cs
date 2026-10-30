@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UpdateWaterStateRequestComponent
+public sealed unsafe partial class UpdateWaterStateRequestComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,30 +41,44 @@ public sealed unsafe partial class UpdateWaterStateRequestComponent
     // The native field type is not projected; this is the address of the field storage.
     public nint mAccumulatedFlow_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_4ac2c443((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_4ac2c443((void*)__hosihikari_shim_handle);
     }
 
     public bool mHasAdjacentFlowingBlocks
     {
-        get => NativeMethods.TablePtr->C3.hs_get_8262aa23((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_8262aa23((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_8262aa23((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_8262aa23((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mIsAnyWaterInBB
     {
-        get => NativeMethods.TablePtr->C3.hs_get_49fc3cdd((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_49fc3cdd((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_49fc3cdd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_49fc3cdd((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mMaterialType
     {
-        get => NativeMethods.TablePtr->C3.hs_get_a8f3b88e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_a8f3b88e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_a8f3b88e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_a8f3b88e((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mShouldApplyFlow
     {
-        get => NativeMethods.TablePtr->C3.hs_get_d03ce08e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_d03ce08e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_d03ce08e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_d03ce08e((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_8d1c8710((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

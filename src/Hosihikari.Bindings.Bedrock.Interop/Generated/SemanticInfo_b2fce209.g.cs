@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested;
 
-public sealed unsafe partial class SemanticInfo
+public sealed unsafe partial class SemanticInfo : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class SemanticInfo
     public nint mSoftEnumText_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_a9035ce2((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b2fce209((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

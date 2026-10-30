@@ -40,12 +40,12 @@ public sealed unsafe partial class SingleThreadedLock : global::System.IDisposab
 
     public void @lock()
     {
-        NativeMethods.TablePtr->C0.hs_method_620983d9((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_620983d9((void*)__hosihikari_shim_handle);
     }
 
     public void unlock()
     {
-        NativeMethods.TablePtr->C0.hs_method_17c664ab((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_17c664ab((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -54,7 +54,7 @@ public sealed unsafe partial class SingleThreadedLock : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_38b20304((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_38b20304((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

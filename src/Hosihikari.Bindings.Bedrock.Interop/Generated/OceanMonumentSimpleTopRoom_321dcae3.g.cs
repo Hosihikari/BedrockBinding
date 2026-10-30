@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OceanMonumentSimpleTopRoom
+public sealed unsafe partial class OceanMonumentSimpleTopRoom : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -70,6 +70,7 @@ public sealed unsafe partial class OceanMonumentSimpleTopRoom
         return NativeMethods.TablePtr->C2.hs_method_9cb9a012((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
     {
@@ -92,5 +93,18 @@ public sealed unsafe partial class OceanMonumentSimpleTopRoom
     public nint mTerrainAdjustmentToken_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_27ab0bcb((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_321dcae3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

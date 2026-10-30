@@ -60,6 +60,7 @@ public sealed unsafe partial class Shore : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_5b99b232((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

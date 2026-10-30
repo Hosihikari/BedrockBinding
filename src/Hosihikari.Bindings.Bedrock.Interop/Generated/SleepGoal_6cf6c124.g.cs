@@ -427,6 +427,7 @@ public sealed unsafe partial class SleepGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_e6befb35((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

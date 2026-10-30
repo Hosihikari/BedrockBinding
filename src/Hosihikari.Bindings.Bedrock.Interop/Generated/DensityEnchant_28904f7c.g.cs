@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DensityEnchant
+public sealed unsafe partial class DensityEnchant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -78,6 +78,7 @@ public sealed unsafe partial class DensityEnchant
         return NativeMethods.TablePtr->C1.hs_method_5ad07699((void*)__hosihikari_shim_handle, level);
     }
 
+
     public int mCompatibility
     {
         get => NativeMethods.TablePtr->C1.hs_get_69144132((void*)__hosihikari_shim_handle);
@@ -130,5 +131,18 @@ public sealed unsafe partial class DensityEnchant
     public nint mStringId_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_76882197((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_28904f7c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

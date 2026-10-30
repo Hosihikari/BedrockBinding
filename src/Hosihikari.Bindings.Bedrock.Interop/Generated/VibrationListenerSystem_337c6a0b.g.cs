@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VibrationListenerSystem
+public sealed unsafe partial class VibrationListenerSystem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,11 +40,25 @@ public sealed unsafe partial class VibrationListenerSystem
 
     public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_b0b88b82((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_b0b88b82((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_94075ca3((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_94075ca3((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_337c6a0b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

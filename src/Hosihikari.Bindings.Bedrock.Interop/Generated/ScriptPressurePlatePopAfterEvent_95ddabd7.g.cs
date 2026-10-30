@@ -94,6 +94,7 @@ public sealed unsafe partial class ScriptPressurePlatePopAfterEvent : global::Sy
         set => NativeMethods.TablePtr->C3.hs_set_89a31fe8((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

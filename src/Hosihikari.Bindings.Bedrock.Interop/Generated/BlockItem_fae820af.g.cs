@@ -174,6 +174,7 @@ public sealed unsafe partial class BlockItem : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_eb2029bd((void*)__hosihikari_shim_handle, auxValue) != 0;
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C0.hs_get_c5a20b17((void*)__hosihikari_shim_handle) != 0;

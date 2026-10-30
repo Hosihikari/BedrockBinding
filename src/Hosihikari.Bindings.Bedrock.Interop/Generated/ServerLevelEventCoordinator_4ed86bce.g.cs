@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerLevelEventCoordinator
+public sealed unsafe partial class ServerLevelEventCoordinator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -135,5 +135,19 @@ public sealed unsafe partial class ServerLevelEventCoordinator
     public void registerWithGameplayUserManagerOnServer(global::Hosihikari.Bindings.Bedrock.Interop.IGameplayUserManagerConnector gameplayUserManagerConnector)
     {
         NativeMethods.TablePtr->C3.hs_method_36eda1a8((void*)__hosihikari_shim_handle, (void*)gameplayUserManagerConnector.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_4ed86bce((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -400,6 +400,7 @@ public sealed unsafe partial class CoralPlantBlock : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_a3b09c78((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

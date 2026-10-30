@@ -257,6 +257,7 @@ public sealed unsafe partial class BigDripleafBlock : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_8ad76b99((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address
     {

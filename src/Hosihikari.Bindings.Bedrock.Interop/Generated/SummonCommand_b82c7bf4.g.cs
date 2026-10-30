@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SummonCommand
+public sealed unsafe partial class SummonCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -161,5 +161,19 @@ public sealed unsafe partial class SummonCommand
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry)
     {
         NativeMethods.TablePtr->C3.hs_method_73e3a3f8((void*)registry.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_b82c7bf4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -98,6 +98,7 @@ public sealed unsafe partial class ActorDefinitionModifier : global::System.IDis
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionModifier((nint)NativeMethods.TablePtr->C0.hs_method_c6bd146b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

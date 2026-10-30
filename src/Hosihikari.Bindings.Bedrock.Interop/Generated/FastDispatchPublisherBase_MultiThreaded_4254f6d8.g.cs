@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail;
 
-public sealed unsafe partial class FastDispatchPublisherBase_MultiThreaded
+public sealed unsafe partial class FastDispatchPublisherBase_MultiThreaded : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,6 +59,7 @@ public sealed unsafe partial class FastDispatchPublisherBase_MultiThreaded
         get => (nint)NativeMethods.TablePtr->C0.hs_get_34b78b4b((void*)__hosihikari_shim_handle);
     }
 
+
     public uint mSubscriberCount
     {
         get => NativeMethods.TablePtr->C0.hs_get_6352846b((void*)__hosihikari_shim_handle);
@@ -69,5 +70,18 @@ public sealed unsafe partial class FastDispatchPublisherBase_MultiThreaded
     public nint mSubscriptions_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_b354f070((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_4254f6d8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

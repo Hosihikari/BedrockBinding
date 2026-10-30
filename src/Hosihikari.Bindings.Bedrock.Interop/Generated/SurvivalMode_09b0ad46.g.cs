@@ -364,6 +364,7 @@ public sealed unsafe partial class SurvivalMode : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult((nint)NativeMethods.TablePtr->C3.hs_method_89757560((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)at.Handle, face, (void*)hit.Handle, handSlot, (void*)(targetBlock?.Handle ?? 0), isFirstEvent));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

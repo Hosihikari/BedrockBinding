@@ -350,6 +350,7 @@ public sealed unsafe partial class Motif : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Motif((nint)NativeMethods.TablePtr->C2.hs_method_10f7c3ba(), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

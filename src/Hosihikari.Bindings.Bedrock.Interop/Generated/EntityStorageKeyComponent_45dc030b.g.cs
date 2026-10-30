@@ -141,6 +141,7 @@ public sealed unsafe partial class EntityStorageKeyComponent : global::System.ID
         return new global::Hosihikari.Bindings.Bedrock.Interop.EntityStorageKeyComponent((nint)NativeMethods.TablePtr->C1.hs_method_f48f5b65((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

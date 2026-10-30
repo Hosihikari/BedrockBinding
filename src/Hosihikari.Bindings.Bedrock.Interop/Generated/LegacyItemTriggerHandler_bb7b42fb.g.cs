@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LegacyItemTriggerHandler
+public sealed unsafe partial class LegacyItemTriggerHandler : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,5 +58,19 @@ public sealed unsafe partial class LegacyItemTriggerHandler
     public nint mConfig_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_2350ec57((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_bb7b42fb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

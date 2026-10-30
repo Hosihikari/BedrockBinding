@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BastionPiece
+public sealed unsafe partial class BastionPiece : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -81,6 +81,7 @@ public sealed unsafe partial class BastionPiece
     {
         return NativeMethods.TablePtr->C0.hs_method_87d2a7cb((void*)__hosihikari_shim_handle);
     }
+
 
     public float mCachedMaxRadius
     {
@@ -170,5 +171,18 @@ public sealed unsafe partial class BastionPiece
     public nint mTerrainAdjustmentToken_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_8ca17734((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b3851629((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

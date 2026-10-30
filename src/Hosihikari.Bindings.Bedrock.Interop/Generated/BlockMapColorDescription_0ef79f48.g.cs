@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockMapColorDescription
+public sealed unsafe partial class BlockMapColorDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -101,5 +101,19 @@ public sealed unsafe partial class BlockMapColorDescription
     {
         get => NativeMethods.TablePtr->C0.hs_get_88707a91((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_88707a91((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0ef79f48((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

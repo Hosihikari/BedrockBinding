@@ -157,6 +157,7 @@ public sealed unsafe partial class DragonScanningGoal : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_bc9a7eff((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

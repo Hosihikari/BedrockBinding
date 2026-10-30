@@ -123,6 +123,7 @@ public sealed unsafe partial class SliderSetting : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_94b2889a((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

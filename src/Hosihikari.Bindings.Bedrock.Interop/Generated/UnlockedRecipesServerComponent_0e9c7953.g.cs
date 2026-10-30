@@ -40,30 +40,30 @@ public sealed unsafe partial class UnlockedRecipesServerComponent : global::Syst
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_2b40b2f4((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_2b40b2f4((void*)__hosihikari_shim_handle);
     }
 
     public static string COMPONENT_TAG()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_5c480099();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_5c480099();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string UNLOCKED_RECIPES_TAG()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_6c6debc1();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_6c6debc1();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string USED_CONTEXTS_TAG()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_c572f9ae();
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_c572f9ae();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->C3.hs_method_0c33825f((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+        NativeMethods.TablePtr->C4.hs_method_0c33825f((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
@@ -85,49 +85,49 @@ public sealed unsafe partial class UnlockedRecipesServerComponent : global::Syst
         global::System.Text.Encoding.UTF8.GetBytes(recipeId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C3.hs_method_bd3058e7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_bd3058e7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChangedInventorySlots_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_78a6f595((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_78a6f595((void*)__hosihikari_shim_handle);
     }
 
     public bool mInitialDataSent
     {
-        get => NativeMethods.TablePtr->C3.hs_get_3fb234f2((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_3fb234f2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_3fb234f2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_3fb234f2((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInventoryHasChanged
     {
-        get => NativeMethods.TablePtr->C3.hs_get_858ec37e((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_858ec37e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_858ec37e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_858ec37e((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnlockedRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_64e4e097((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_64e4e097((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnlockingInstructions_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_ead7b0ee((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ead7b0ee((void*)__hosihikari_shim_handle);
     }
 
     public uint mUsedContexts
     {
-        get => NativeMethods.TablePtr->C3.hs_get_145eb0c4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_145eb0c4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_145eb0c4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_145eb0c4((void*)__hosihikari_shim_handle, value);
     }
 
     public void readAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper arg2)
     {
-        NativeMethods.TablePtr->C3.hs_method_b79ee048((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle, (void*)arg2.Handle);
+        NativeMethods.TablePtr->C4.hs_method_b79ee048((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)tag.Handle, (void*)arg2.Handle);
     }
 
 
@@ -137,7 +137,7 @@ public sealed unsafe partial class UnlockedRecipesServerComponent : global::Syst
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_0e9c7953((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_0e9c7953((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptPlayerGameModeChangeAfterEvent
+public sealed unsafe partial class ScriptPlayerGameModeChangeAfterEvent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,5 +59,19 @@ public sealed unsafe partial class ScriptPlayerGameModeChangeAfterEvent
     {
         get => NativeMethods.TablePtr->C3.hs_get_d8a44262((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_d8a44262((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_6e65f9dd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

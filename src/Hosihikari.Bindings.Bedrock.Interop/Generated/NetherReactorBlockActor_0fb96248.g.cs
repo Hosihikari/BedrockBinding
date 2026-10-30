@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetherReactorBlockActor
+public sealed unsafe partial class NetherReactorBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -121,6 +121,7 @@ public sealed unsafe partial class NetherReactorBlockActor
         return NativeMethods.TablePtr->C2.hs_method_577c72fd((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)saveContext) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {
@@ -161,5 +162,18 @@ public sealed unsafe partial class NetherReactorBlockActor
     {
         get => NativeMethods.TablePtr->C2.hs_get_8930999e((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_8930999e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_0fb96248((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -109,9 +109,10 @@ public sealed unsafe partial class MinecraftDocumentInput : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger((nint)NativeMethods.TablePtr->C0.hs_method_63ddfd43((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _version() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion _version()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->C0.hs_method_530a0838((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -304,9 +305,10 @@ public sealed unsafe partial class MinecraftDocumentInput : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Resources.MinecraftDocumentInput((nint)NativeMethods.TablePtr->C0.hs_method_d5fdb0dd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint version() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.SemVersion version()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->C0.hs_method_7ba86fbb((void*)__hosihikari_shim_handle));
+    }
 
 
     public void Dispose()

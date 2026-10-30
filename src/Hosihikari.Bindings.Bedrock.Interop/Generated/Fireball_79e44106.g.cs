@@ -708,6 +708,7 @@ public sealed unsafe partial class Fireball : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_06887dc8((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

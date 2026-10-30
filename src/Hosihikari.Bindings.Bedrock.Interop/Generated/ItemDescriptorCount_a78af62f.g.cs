@@ -91,6 +91,7 @@ public sealed unsafe partial class ItemDescriptorCount : global::System.IDisposa
         NativeMethods.TablePtr->C1.hs_method_31fff1e1((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

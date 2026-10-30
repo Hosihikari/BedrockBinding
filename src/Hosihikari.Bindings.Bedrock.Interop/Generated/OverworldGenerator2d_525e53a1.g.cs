@@ -273,6 +273,7 @@ public sealed unsafe partial class OverworldGenerator2d : global::System.IDispos
         get => (nint)NativeMethods.TablePtr->C2.hs_get_5c19a6fd((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint canyonFeature_Address
     {

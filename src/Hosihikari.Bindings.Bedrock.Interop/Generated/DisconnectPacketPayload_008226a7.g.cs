@@ -133,6 +133,7 @@ public sealed unsafe partial class DisconnectPacketPayload : global::System.IDis
         set => NativeMethods.TablePtr->C1.hs_set_4815c4cf((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

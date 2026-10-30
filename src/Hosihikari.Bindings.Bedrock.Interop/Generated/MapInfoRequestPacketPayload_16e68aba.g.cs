@@ -77,6 +77,7 @@ public sealed unsafe partial class MapInfoRequestPacketPayload : global::System.
         get => (nint)NativeMethods.TablePtr->C2.hs_get_f913fa1f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

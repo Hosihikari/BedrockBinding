@@ -40,12 +40,12 @@ public sealed unsafe partial class FlatFileSearchResult : global::System.IDispos
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_59535f6b((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_59535f6b((void*)__hosihikari_shim_handle);
     }
 
     public static FlatFileSearchResult Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_f2abdd84();
+        var handle = NativeMethods.TablePtr->C1.hs_create_f2abdd84();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class FlatFileSearchResult : global::System.IDispos
 
     public static FlatFileSearchResult Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSearchResult arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_dc63a256((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_dc63a256((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,18 +68,18 @@ public sealed unsafe partial class FlatFileSearchResult : global::System.IDispos
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk52cace_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_a2defad6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_a2defad6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf09954_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_f97f1cd3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f97f1cd3((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSearchResult operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSearchResult arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSearchResult((nint)NativeMethods.TablePtr->C0.hs_method_c03f72b8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileSearchResult((nint)NativeMethods.TablePtr->C1.hs_method_c03f72b8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class FlatFileSearchResult : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_8296323d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_8296323d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

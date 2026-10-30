@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BellBlockActor
+public sealed unsafe partial class BellBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -131,6 +131,7 @@ public sealed unsafe partial class BellBlockActor
         NativeMethods.TablePtr->C0.hs_method_62990277((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainer_Address
     {
@@ -200,5 +201,18 @@ public sealed unsafe partial class BellBlockActor
     {
         get => NativeMethods.TablePtr->C0.hs_get_48b37933((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_48b37933((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0c7a1c58((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

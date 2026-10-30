@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CalibratedSculkSensorBlock
+public sealed unsafe partial class CalibratedSculkSensorBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -308,9 +308,23 @@ public sealed unsafe partial class CalibratedSculkSensorBlock
         NativeMethods.TablePtr->C0.hs_method_888d5fb6((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
     }
 
+
     public int mActiveTicks
     {
         get => NativeMethods.TablePtr->C0.hs_get_18878b61((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_18878b61((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_16030d46((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

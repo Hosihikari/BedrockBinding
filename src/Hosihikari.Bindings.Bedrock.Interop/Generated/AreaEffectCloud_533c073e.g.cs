@@ -646,9 +646,9 @@ public sealed unsafe partial class AreaEffectCloud : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9bf2feec((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void addAreaEffect(nint effect) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void calculateAndSetRadiusPerTick()
     {
@@ -758,6 +758,7 @@ public sealed unsafe partial class AreaEffectCloud : global::System.IDisposable
     {
         NativeMethods.TablePtr->C0.hs_method_130128e5((void*)__hosihikari_shim_handle, (void*)c.Handle);
     }
+
 
     public void Dispose()
     {

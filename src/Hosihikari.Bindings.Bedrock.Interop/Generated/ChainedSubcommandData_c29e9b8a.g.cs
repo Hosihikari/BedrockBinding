@@ -86,6 +86,7 @@ public sealed unsafe partial class ChainedSubcommandData : global::System.IDispo
         get => (nint)NativeMethods.TablePtr->C0.hs_get_e4ea664a((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

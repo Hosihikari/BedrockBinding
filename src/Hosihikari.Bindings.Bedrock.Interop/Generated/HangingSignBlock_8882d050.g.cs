@@ -259,9 +259,10 @@ public sealed unsafe partial class HangingSignBlock : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_e083ba7b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __getItemInstance() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance __getItemInstance()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C1.hs_method_1ee70c4a((void*)__hosihikari_shim_handle));
+    }
 
     public bool _canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte face, int type)
     {
@@ -362,9 +363,10 @@ public sealed unsafe partial class HangingSignBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_51ae7186((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)attachPos.Handle, attachFace, ourFace) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getItemInstance() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance _getItemInstance()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C1.hs_method_061135f5((void*)__hosihikari_shim_handle));
+    }
 
     public static bool _isDoubleChainAttached(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
@@ -420,6 +422,7 @@ public sealed unsafe partial class HangingSignBlock : global::System.IDisposable
     {
         return NativeMethods.TablePtr->C1.hs_method_b825f86d((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, face) != 0;
     }
+
 
     public bool mOnGround
     {

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UpdateSoftEnumPacketPayload
+public sealed unsafe partial class UpdateSoftEnumPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,18 +41,32 @@ public sealed unsafe partial class UpdateSoftEnumPacketPayload
     // The native field type is not projected; this is the address of the field storage.
     public nint mEnumName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_646b5169((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_646b5169((void*)__hosihikari_shim_handle);
     }
 
     public byte mType
     {
-        get => NativeMethods.TablePtr->C3.hs_get_631d3bf6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_631d3bf6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_631d3bf6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_631d3bf6((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValues_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_a6678350((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a6678350((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_8c2b9845((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

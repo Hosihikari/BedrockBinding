@@ -331,6 +331,7 @@ public sealed unsafe partial class FertilizeFarmBlockGoal : global::System.IDisp
         NativeMethods.TablePtr->C1.hs_method_df2e8282((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

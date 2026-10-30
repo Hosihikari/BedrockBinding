@@ -659,6 +659,7 @@ public sealed unsafe partial class Ghast : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_7446e735((void*)__hosihikari_shim_handle, method, (void*)@params.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_c06b9919((void*)__hosihikari_shim_handle);

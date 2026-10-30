@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockLightEmissionDescription
+public sealed unsafe partial class BlockLightEmissionDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -113,5 +113,19 @@ public sealed unsafe partial class BlockLightEmissionDescription
     public nint mLightEmission_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_eacc3eb4((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f64ece54((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

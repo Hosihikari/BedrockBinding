@@ -81,13 +81,15 @@ public sealed unsafe partial class LegacyTradeableComponent : global::System.IDi
         NativeMethods.TablePtr->C1.hs_method_5dc90892((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createDataPacket(nint owner, nint containerID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket createDataPacket(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, sbyte containerID)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket((nint)NativeMethods.TablePtr->C1.hs_method_89727d6a((void*)__hosihikari_shim_handle, (void*)owner.Handle, containerID));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint owner, nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C1.hs_method_72632a80((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle));
+    }
 
     public static bool isUseNewTradeScreen(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {

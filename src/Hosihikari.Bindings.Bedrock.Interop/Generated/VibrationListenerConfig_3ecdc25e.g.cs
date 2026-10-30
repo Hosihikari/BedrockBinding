@@ -40,32 +40,32 @@ public sealed unsafe partial class VibrationListenerConfig : global::System.IDis
 
     public bool _canReceiveOnlyIfAdjacentChunksAreTicking()
     {
-        return NativeMethods.TablePtr->C3.hs_method_caf5dad7((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_caf5dad7((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent)
     {
-        return NativeMethods.TablePtr->C3.hs_method_6a1189ad((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_6a1189ad((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;
     }
 
     public void _onSerializableDataChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        NativeMethods.TablePtr->C3.hs_method_7502d7d5((void*)__hosihikari_shim_handle, (void*)region.Handle);
+        NativeMethods.TablePtr->C4.hs_method_7502d7d5((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
     public bool canReceiveOnlyIfAdjacentChunksAreTicking()
     {
-        return NativeMethods.TablePtr->C3.hs_method_dfbb04ad((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_dfbb04ad((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isValidVibration(global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent)
     {
-        return NativeMethods.TablePtr->C3.hs_method_ef4b9810((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_ef4b9810((void*)__hosihikari_shim_handle, (void*)gameEvent.Handle) != 0;
     }
 
     public void onSerializableDataChanged(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region)
     {
-        NativeMethods.TablePtr->C3.hs_method_57538065((void*)__hosihikari_shim_handle, (void*)region.Handle);
+        NativeMethods.TablePtr->C4.hs_method_57538065((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -83,7 +83,7 @@ public sealed unsafe partial class VibrationListenerConfig : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_3ecdc25e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_3ecdc25e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -127,6 +127,7 @@ public sealed unsafe partial class SculkSpreader : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_bc3bb742((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)(region?.Handle ?? 0), (void*)originPos.Handle, (void*)random.Handle, spreadVeins);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

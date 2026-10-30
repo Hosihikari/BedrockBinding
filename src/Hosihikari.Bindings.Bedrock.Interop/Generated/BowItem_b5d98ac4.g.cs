@@ -167,6 +167,7 @@ public sealed unsafe partial class BowItem : global::System.IDisposable
         }
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C0.hs_get_5d7550b9((void*)__hosihikari_shim_handle) != 0;

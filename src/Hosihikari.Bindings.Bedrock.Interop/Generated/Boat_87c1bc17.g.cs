@@ -772,6 +772,7 @@ public sealed unsafe partial class Boat : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_e5a0ae7d((void*)__hosihikari_shim_handle, method);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

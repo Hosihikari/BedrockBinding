@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelGameRuleChangeEvent
+public sealed unsafe partial class LevelGameRuleChangeEvent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,19 +40,33 @@ public sealed unsafe partial class LevelGameRuleChangeEvent
 
     public int mRule
     {
-        get => NativeMethods.TablePtr->C1.hs_get_b5a177b3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_b5a177b3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_b5a177b3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b5a177b3((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_5adf2281((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_5adf2281((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_5adf2281((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_5adf2281((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1d2ab88f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1d2ab88f((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e7da44cf((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

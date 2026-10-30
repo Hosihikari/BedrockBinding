@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerParticleManager
+public sealed unsafe partial class ServerParticleManager : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -65,6 +65,20 @@ public sealed unsafe partial class ServerParticleManager
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             NativeMethods.TablePtr->C3.hs_method_f799ce40((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)spawnLocation.Handle, (void*)dimensionType.Handle);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_7cb20d54((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

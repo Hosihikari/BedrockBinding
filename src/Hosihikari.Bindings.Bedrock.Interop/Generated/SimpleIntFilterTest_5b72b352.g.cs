@@ -117,6 +117,7 @@ public sealed unsafe partial class SimpleIntFilterTest : global::System.IDisposa
         return NativeMethods.TablePtr->C3.hs_method_31d4cb1e((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

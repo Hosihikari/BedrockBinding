@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ContainerScreenValidationCrafting
+public sealed unsafe partial class ContainerScreenValidationCrafting : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -90,9 +90,9 @@ public sealed unsafe partial class ContainerScreenValidationCrafting
     public nint _getCraftResults(nint craftInputs, nint numCrafts) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint _tryCraft(nint craftInputs, nint numCrafts) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -102,7 +102,21 @@ public sealed unsafe partial class ContainerScreenValidationCrafting
     public nint getCraftResults(nint craftInputs, nint numCrafts) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint tryCraft(nint craftInputs, nint numCrafts) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_48671e7f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

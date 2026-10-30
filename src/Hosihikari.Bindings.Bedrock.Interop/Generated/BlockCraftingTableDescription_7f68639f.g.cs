@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockCraftingTableDescription
+public sealed unsafe partial class BlockCraftingTableDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -120,5 +120,19 @@ public sealed unsafe partial class BlockCraftingTableDescription
     public nint mTableName_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_46f9a4d9((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_7f68639f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

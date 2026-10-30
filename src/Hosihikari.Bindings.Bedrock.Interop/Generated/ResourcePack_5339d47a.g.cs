@@ -44,17 +44,17 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ RESOURCE_PACK_BUG_ICON_PATH()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_902b1e16(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C3.hs_method_902b1e16(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ RESOURCE_PACK_ICON_PATH()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_de2524ad(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C3.hs_method_de2524ad(), false);
     }
 
     public static ResourcePack Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_6e0e3cd8();
+        var handle = NativeMethods.TablePtr->C3.hs_create_6e0e3cd8();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -69,17 +69,17 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
 
     public void _createSubpack(global::Hosihikari.Bindings.Bedrock.Interop.I18n loc, global::Hosihikari.Bindings.Bedrock.Interop.SubpackInfo subpackInfo)
     {
-        NativeMethods.TablePtr->C2.hs_method_f40d4562((void*)__hosihikari_shim_handle, (void*)loc.Handle, (void*)subpackInfo.Handle);
+        NativeMethods.TablePtr->C3.hs_method_f40d4562((void*)__hosihikari_shim_handle, (void*)loc.Handle, (void*)subpackInfo.Handle);
     }
 
     public void _createSubpacks(global::Hosihikari.Bindings.Bedrock.Interop.I18n loc)
     {
-        NativeMethods.TablePtr->C2.hs_method_8602f6a5((void*)__hosihikari_shim_handle, (void*)loc.Handle);
+        NativeMethods.TablePtr->C3.hs_method_8602f6a5((void*)__hosihikari_shim_handle, (void*)loc.Handle);
     }
 
     public bool areKnownFilesValid()
     {
-        return NativeMethods.TablePtr->C2.hs_method_01538356((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_01538356((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -92,7 +92,7 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
 
     public void generateAssetSet()
     {
-        NativeMethods.TablePtr->C2.hs_method_0a2234d4((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_0a2234d4((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -101,18 +101,18 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
 
     public bool hasResource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path resourceName, int subpackIndex)
     {
-        return NativeMethods.TablePtr->C2.hs_method_29a58ed3((void*)__hosihikari_shim_handle, (void*)resourceName.Handle, subpackIndex) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_29a58ed3((void*)__hosihikari_shim_handle, (void*)resourceName.Handle, subpackIndex) != 0;
     }
 
     public bool isAssetExtractionViable()
     {
-        return NativeMethods.TablePtr->C2.hs_method_f312482e((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_f312482e((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mImpl_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_7ea86a0a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7ea86a0a((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Resources::PreloadedPathHandle' requires --link-carrier or --virtual-dispatch.", false)]
@@ -138,9 +138,10 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C2.hs_method_9260c104((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C3.hs_method_9260c104((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
 
     public void Dispose()
     {
@@ -148,7 +149,7 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_5339d47a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_5339d47a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

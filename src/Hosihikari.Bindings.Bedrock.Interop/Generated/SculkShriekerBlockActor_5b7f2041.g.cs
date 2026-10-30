@@ -189,6 +189,7 @@ public sealed unsafe partial class SculkShriekerBlockActor : global::System.IDis
         return NativeMethods.TablePtr->C3.hs_method_dd08de6f((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)provokingPlayer.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {

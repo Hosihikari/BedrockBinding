@@ -325,6 +325,7 @@ public sealed unsafe partial class RepeaterCapacitor : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_fc62ee72((void*)__hosihikari_shim_handle, (void*)system.Handle, (void*)pos.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mSideComponents_Address
     {

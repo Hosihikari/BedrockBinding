@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CryingObsidianBlock
+public sealed unsafe partial class CryingObsidianBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -271,5 +271,19 @@ public sealed unsafe partial class CryingObsidianBlock
     public void animateTickBedrockLegacy(nint tickData)
     {
         NativeMethods.TablePtr->C1.hs_method_ca29e524((void*)__hosihikari_shim_handle, (void*)tickData);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_94430086((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

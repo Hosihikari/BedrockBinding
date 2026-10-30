@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CommandBlockUpdatePacketPayload_Nested;
 
-public sealed unsafe partial class EntityCommandTarget
+public sealed unsafe partial class EntityCommandTarget : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class EntityCommandTarget
     public nint mEntityId_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_90c136e0((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0cb571de((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

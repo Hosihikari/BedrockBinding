@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Rabbit
+public sealed unsafe partial class Rabbit : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -728,5 +728,19 @@ public sealed unsafe partial class Rabbit
     public void onSynchedDataUpdate(int dataId)
     {
         NativeMethods.TablePtr->C2.hs_method_27d9454b((void*)__hosihikari_shim_handle, dataId);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c3bd44eb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

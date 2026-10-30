@@ -117,6 +117,7 @@ public sealed unsafe partial class EmptyPoolElement : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_2eddc55a((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address
     {

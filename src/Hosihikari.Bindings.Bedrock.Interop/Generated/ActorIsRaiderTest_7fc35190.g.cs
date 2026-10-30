@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorIsRaiderTest
+public sealed unsafe partial class ActorIsRaiderTest : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,6 +60,7 @@ public sealed unsafe partial class ActorIsRaiderTest
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk20eb73_Address
     {
@@ -82,5 +83,18 @@ public sealed unsafe partial class ActorIsRaiderTest
     public nint mUnka7c087_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_5a7c1641((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_7fc35190((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

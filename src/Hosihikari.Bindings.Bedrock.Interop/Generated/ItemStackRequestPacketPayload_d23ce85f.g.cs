@@ -59,6 +59,7 @@ public sealed unsafe partial class ItemStackRequestPacketPayload : global::Syste
     public nint toRequestBatch() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ItemStackRequestBatch' has no accessible destructor.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

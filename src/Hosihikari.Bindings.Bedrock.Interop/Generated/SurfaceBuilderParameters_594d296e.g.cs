@@ -91,6 +91,7 @@ public sealed unsafe partial class SurfaceBuilderParameters : global::System.IDi
         get => (nint)NativeMethods.TablePtr->C1.hs_get_8479cbdd((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

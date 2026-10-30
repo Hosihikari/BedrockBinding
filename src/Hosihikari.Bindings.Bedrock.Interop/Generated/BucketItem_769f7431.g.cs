@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BucketItem
+public sealed unsafe partial class BucketItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -288,6 +288,7 @@ public sealed unsafe partial class BucketItem
         return NativeMethods.TablePtr->C0.hs_method_22ff4164((void*)__hosihikari_shim_handle, arg0) != 0;
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C0.hs_get_187297d7((void*)__hosihikari_shim_handle) != 0;
@@ -495,5 +496,18 @@ public sealed unsafe partial class BucketItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_6692ba11((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_6692ba11((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_769f7431((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

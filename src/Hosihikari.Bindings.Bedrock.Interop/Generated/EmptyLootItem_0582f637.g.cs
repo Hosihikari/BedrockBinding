@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EmptyLootItem
+public sealed unsafe partial class EmptyLootItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,6 +56,7 @@ public sealed unsafe partial class EmptyLootItem
         return NativeMethods.TablePtr->C1.hs_method_c7acb208((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mConditions_Address
     {
@@ -84,5 +85,18 @@ public sealed unsafe partial class EmptyLootItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_61d04b23((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_61d04b23((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0582f637((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Player_Nested;
 
-public sealed unsafe partial class PlayerSpawnPoint
+public sealed unsafe partial class PlayerSpawnPoint : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class PlayerSpawnPoint
     public nint mSpawnBlockPos_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_1df8d729((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c96eaca0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

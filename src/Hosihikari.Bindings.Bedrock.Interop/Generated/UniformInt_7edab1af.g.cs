@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UniformInt
+public sealed unsafe partial class UniformInt : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,17 +40,17 @@ public sealed unsafe partial class UniformInt
 
     public int _maxValue()
     {
-        return NativeMethods.TablePtr->C3.hs_method_1478718d((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_1478718d((void*)__hosihikari_shim_handle);
     }
 
     public int _minValue()
     {
-        return NativeMethods.TablePtr->C3.hs_method_e31ca983((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_e31ca983((void*)__hosihikari_shim_handle);
     }
 
     public int _sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return NativeMethods.TablePtr->C3.hs_method_2e52ed4f((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_2e52ed4f((void*)__hosihikari_shim_handle, (void*)random.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -59,28 +59,42 @@ public sealed unsafe partial class UniformInt
 
     public int mMaxInclusive
     {
-        get => NativeMethods.TablePtr->C3.hs_get_5087942c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_5087942c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_5087942c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_5087942c((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMinInclusive
     {
-        get => NativeMethods.TablePtr->C3.hs_get_19a43b65((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_19a43b65((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_19a43b65((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_19a43b65((void*)__hosihikari_shim_handle, value);
     }
 
     public int maxValue()
     {
-        return NativeMethods.TablePtr->C3.hs_method_74371f42((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_74371f42((void*)__hosihikari_shim_handle);
     }
 
     public int minValue()
     {
-        return NativeMethods.TablePtr->C3.hs_method_c74152ad((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_c74152ad((void*)__hosihikari_shim_handle);
     }
 
     public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return NativeMethods.TablePtr->C3.hs_method_8f89fc30((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_8f89fc30((void*)__hosihikari_shim_handle, (void*)random.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_7edab1af((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

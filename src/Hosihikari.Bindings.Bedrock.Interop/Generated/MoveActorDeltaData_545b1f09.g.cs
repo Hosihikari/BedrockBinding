@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MoveActorDeltaData
+public sealed unsafe partial class MoveActorDeltaData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -96,5 +96,19 @@ public sealed unsafe partial class MoveActorDeltaData
     {
         get => NativeMethods.TablePtr->C2.hs_get_94cb64af((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_94cb64af((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_545b1f09((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

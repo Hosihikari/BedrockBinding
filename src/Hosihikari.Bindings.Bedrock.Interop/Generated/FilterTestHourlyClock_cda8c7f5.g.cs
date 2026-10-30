@@ -121,6 +121,7 @@ public sealed unsafe partial class FilterTestHourlyClock : global::System.IDispo
         return NativeMethods.TablePtr->C1.hs_method_14a9b3c0((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk8e0558_Address
     {

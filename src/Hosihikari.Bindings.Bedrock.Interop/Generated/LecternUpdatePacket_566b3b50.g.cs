@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LecternUpdatePacket
+public sealed unsafe partial class LecternUpdatePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class LecternUpdatePacket
         NativeMethods.TablePtr->C1.hs_method_b3bff2ab((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mPage
     {
         get => NativeMethods.TablePtr->C1.hs_get_b09ac209((void*)__hosihikari_shim_handle);
@@ -243,5 +244,18 @@ public sealed unsafe partial class LecternUpdatePacket
     {
         get => NativeMethods.TablePtr->C1.hs_get_837858af((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_837858af((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_566b3b50((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

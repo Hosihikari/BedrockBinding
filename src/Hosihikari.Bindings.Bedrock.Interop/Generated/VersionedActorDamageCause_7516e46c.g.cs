@@ -44,7 +44,7 @@ public sealed unsafe partial class VersionedActorDamageCause : global::System.ID
 
     public static VersionedActorDamageCause Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_32040b5b();
+        var handle = NativeMethods.TablePtr->C4.hs_create_32040b5b();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,31 +59,32 @@ public sealed unsafe partial class VersionedActorDamageCause : global::System.ID
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version getVersion()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version((nint)NativeMethods.TablePtr->C3.hs_method_d1eb6e85((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Version((nint)NativeMethods.TablePtr->C4.hs_method_d1eb6e85((void*)__hosihikari_shim_handle));
     }
 
     public int mCause
     {
-        get => NativeMethods.TablePtr->C3.hs_get_0ef24396((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_0ef24396((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDeprecatedMajorVersion_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_477b81e2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_477b81e2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f55f2b89((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f55f2b89((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVersion_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_ed4d0c04((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ed4d0c04((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {
@@ -91,7 +92,7 @@ public sealed unsafe partial class VersionedActorDamageCause : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_7516e46c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_7516e46c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

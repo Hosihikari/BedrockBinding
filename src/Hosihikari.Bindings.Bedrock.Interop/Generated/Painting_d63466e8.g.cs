@@ -726,6 +726,7 @@ public sealed unsafe partial class Painting : global::System.IDisposable
     public nint tryCreateAddActorPacket() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Packet' has no accessible destructor.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

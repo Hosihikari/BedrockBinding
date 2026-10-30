@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SpawnExperienceOrbPacket
+public sealed unsafe partial class SpawnExperienceOrbPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class SpawnExperienceOrbPacket
         NativeMethods.TablePtr->C3.hs_method_1cc0be72((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPos_Address
     {
@@ -237,5 +238,18 @@ public sealed unsafe partial class SpawnExperienceOrbPacket
     {
         get => NativeMethods.TablePtr->C3.hs_get_614ddef5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_614ddef5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_40f11193((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

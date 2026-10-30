@@ -105,6 +105,7 @@ public sealed unsafe partial class ScriptWeatherChangedAfterEvent : global::Syst
         set => NativeMethods.TablePtr->C3.hs_set_056d4826((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

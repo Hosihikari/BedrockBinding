@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NewExecuteCommand
+public sealed unsafe partial class NewExecuteCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -251,5 +251,19 @@ public sealed unsafe partial class NewExecuteCommand
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry, int newExecuteStartVersion)
     {
         NativeMethods.TablePtr->C2.hs_method_d1a7f5f7((void*)registry.Handle, newExecuteStartVersion);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_2faf2370((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

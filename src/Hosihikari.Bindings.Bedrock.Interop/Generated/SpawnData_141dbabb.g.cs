@@ -117,6 +117,7 @@ public sealed unsafe partial class SpawnData : global::System.IDisposable
     public nint save() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
 
+
     public int mRandomWeight
     {
         get => NativeMethods.TablePtr->C3.hs_get_94dd7d9b((void*)__hosihikari_shim_handle);

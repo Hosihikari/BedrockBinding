@@ -257,6 +257,7 @@ public sealed unsafe partial class CrossbowItem : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_bde0583a((void*)__hosihikari_shim_handle, (void*)inoutInstance.Handle, (void*)(level?.Handle ?? 0), (void*)(player?.Handle ?? 0));
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C1.hs_get_2a06e1da((void*)__hosihikari_shim_handle) != 0;

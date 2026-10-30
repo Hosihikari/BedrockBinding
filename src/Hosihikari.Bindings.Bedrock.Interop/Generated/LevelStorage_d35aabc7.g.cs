@@ -66,31 +66,31 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return NativeMethods.TablePtr->C1.hs_method_afeb9f9d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, isEditorPlayer) != 0;
+                return NativeMethods.TablePtr->C2.hs_method_afeb9f9d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, isEditorPlayer) != 0;
             }
         }
     }
 
     public void _corruptLevel()
     {
-        NativeMethods.TablePtr->C1.hs_method_710f51d4((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_710f51d4((void*)__hosihikari_shim_handle);
     }
 
     public static string LEGACY_CONSOLE_PLAYER_PREFIX()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_0dadd7ac();
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_0dadd7ac();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string LOCAL_PLAYER_EDITOR_TAG()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_0a2209fc();
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_0a2209fc();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string LOCAL_PLAYER_TAG()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_a820e012();
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_a820e012();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -130,7 +130,7 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return NativeMethods.TablePtr->C1.hs_method_e570d33f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, isEditorPlayer) != 0;
+                return NativeMethods.TablePtr->C2.hs_method_e570d33f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, isEditorPlayer) != 0;
             }
         }
     }
@@ -141,7 +141,7 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
 
     public void corruptLevel()
     {
-        NativeMethods.TablePtr->C1.hs_method_2cda1d35((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_2cda1d35((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -166,7 +166,7 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
 
     public void freeCaches()
     {
-        NativeMethods.TablePtr->C1.hs_method_4a310073((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_4a310073((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -187,7 +187,7 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
 
     public string getServerId(global::Hosihikari.Bindings.Bedrock.Interop.Player client, bool isXboxLive)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_858221ae((void*)__hosihikari_shim_handle, (void*)client.Handle, isXboxLive);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_858221ae((void*)__hosihikari_shim_handle, (void*)client.Handle, isXboxLive);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -209,7 +209,7 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
 
     public string[] loadAllPlayerIDs(bool includeLocalPlayer)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_337e2e86((void*)__hosihikari_shim_handle, includeLocalPlayer);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_337e2e86((void*)__hosihikari_shim_handle, includeLocalPlayer);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -233,7 +233,7 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
 
     public bool loadedSuccessfully()
     {
-        return NativeMethods.TablePtr->C1.hs_method_4fe1ab37((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_4fe1ab37((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -246,19 +246,34 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
 
     public void save(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->C1.hs_method_0edd214c((void*)__hosihikari_shim_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->C2.hs_method_0edd214c((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint saveData(nint batch) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint saveData_b1076ac8(nint key, nint tag, nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_ saveData(string key, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, uint category)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading.Async_void_((nint)NativeMethods.TablePtr->C2.hs_method_b1076ac8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)tag.Handle, category));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint saveData_5ec423ab(nint key, nint data, nint category) =>
+    public nint saveData(nint key, nint data, nint category) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -292,7 +307,7 @@ public sealed unsafe partial class LevelStorage : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_d35aabc7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_d35aabc7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OozingMobEffect
+public sealed unsafe partial class OozingMobEffect : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -159,5 +159,19 @@ public sealed unsafe partial class OozingMobEffect
     public void onActorDied(global::Hosihikari.Bindings.Bedrock.Interop.Actor target, int amplifier)
     {
         NativeMethods.TablePtr->C2.hs_method_8c6d94c4((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_db17a6e0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -147,6 +147,7 @@ public sealed unsafe partial class SpellStage : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40.SummonActorGoalDefinition_Nested.SpellStage((nint)NativeMethods.TablePtr->C3.hs_method_a1eac6cf((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

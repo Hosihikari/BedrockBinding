@@ -77,6 +77,7 @@ public sealed unsafe partial class ActorSpawnRuleDataLoader : global::System.IDi
         get => (nint)NativeMethods.TablePtr->C0.hs_get_38f5408d((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

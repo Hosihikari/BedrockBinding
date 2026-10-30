@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ShulkerBoxBlockItem
+public sealed unsafe partial class ShulkerBoxBlockItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -287,5 +287,19 @@ public sealed unsafe partial class ShulkerBoxBlockItem
     public int getLevelDataForAuxValue(int auxValue)
     {
         return NativeMethods.TablePtr->C3.hs_method_331b46a8((void*)__hosihikari_shim_handle, auxValue);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_c034b5ba((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

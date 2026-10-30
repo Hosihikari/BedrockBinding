@@ -196,6 +196,7 @@ public sealed unsafe partial class NearestPrioritizedAttackableTargetGoal : glob
     public void appendDebugInfo(nint str) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
+
     public bool mAttackOwner
     {
         get => NativeMethods.TablePtr->C2.hs_get_db3ce4d6((void*)__hosihikari_shim_handle) != 0;

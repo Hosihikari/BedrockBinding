@@ -87,6 +87,7 @@ public sealed unsafe partial class BeardAndShaverDescription : global::System.ID
         return new global::Hosihikari.Bindings.Bedrock.Interop.BeardAndShaverDescription((nint)NativeMethods.TablePtr->C0.hs_method_c3a51522((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

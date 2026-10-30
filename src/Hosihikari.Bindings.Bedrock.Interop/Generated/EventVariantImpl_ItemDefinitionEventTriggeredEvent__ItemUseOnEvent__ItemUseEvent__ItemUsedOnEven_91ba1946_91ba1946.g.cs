@@ -42,4 +42,8 @@ public sealed partial class EventVariantImpl_ItemDefinitionEventTriggeredEvent__
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public static EventVariantImpl_ItemDefinitionEventTriggeredEvent__ItemUseOnEvent__ItemUseEvent__ItemUsedOnEven_91ba1946 Create(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 }

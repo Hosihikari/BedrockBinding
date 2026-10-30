@@ -79,6 +79,7 @@ public sealed unsafe partial class ActorAnimationController : global::System.IDi
         get => (nint)NativeMethods.TablePtr->C0.hs_get_32bed460((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

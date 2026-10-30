@@ -42,9 +42,10 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
     public nint __receivePacket(nint outData, nint timepointPtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getNetworkStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus _getNetworkStatus()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C0.hs_method_cc61a6b4((void*)__hosihikari_shim_handle));
+    }
 
     public void _sendPacket(string data, int reliability, int compressible)
     {
@@ -73,9 +74,10 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
     public nint _receivePacket(nint outData, nint timepointPtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNetworkStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus getNetworkStatus()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C0.hs_method_2d7c192c((void*)__hosihikari_shim_handle));
+    }
 
     public bool mCompressionEnabled
     {

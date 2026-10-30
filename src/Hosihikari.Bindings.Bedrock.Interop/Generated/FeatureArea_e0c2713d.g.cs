@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RectLayoutFeature_Nested;
 
-public sealed unsafe partial class FeatureArea
+public sealed unsafe partial class FeatureArea : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class FeatureArea
     {
         get => NativeMethods.TablePtr->C2.hs_get_bf3ac800((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_bf3ac800((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e0c2713d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

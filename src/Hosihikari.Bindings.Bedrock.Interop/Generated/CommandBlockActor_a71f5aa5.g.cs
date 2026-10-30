@@ -310,6 +310,7 @@ public sealed unsafe partial class CommandBlockActor : global::System.IDisposabl
         }
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {

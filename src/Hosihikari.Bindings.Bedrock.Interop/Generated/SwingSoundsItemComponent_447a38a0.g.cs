@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_90;
 
-public sealed unsafe partial class SwingSoundsItemComponent
+public sealed unsafe partial class SwingSoundsItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -65,5 +65,19 @@ public sealed unsafe partial class SwingSoundsItemComponent
     public nint mAttackMissSound_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_244b8b91((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_447a38a0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

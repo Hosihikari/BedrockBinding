@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Warden
+public sealed unsafe partial class Warden : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -832,5 +832,19 @@ public sealed unsafe partial class Warden
     public void setTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor? target)
     {
         NativeMethods.TablePtr->C4.hs_method_324c0130((void*)__hosihikari_shim_handle, (void*)(target?.Handle ?? 0));
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_04161490((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

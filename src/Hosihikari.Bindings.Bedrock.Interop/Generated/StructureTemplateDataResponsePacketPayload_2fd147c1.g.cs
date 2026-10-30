@@ -96,6 +96,7 @@ public sealed unsafe partial class StructureTemplateDataResponsePacketPayload : 
         return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateDataResponsePacketPayload((nint)NativeMethods.TablePtr->C3.hs_method_1ad29222((void*)__hosihikari_shim_handle, (void*)other.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

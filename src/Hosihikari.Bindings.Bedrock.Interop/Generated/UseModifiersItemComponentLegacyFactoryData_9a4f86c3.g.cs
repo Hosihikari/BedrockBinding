@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UseModifiersItemComponentLegacyFactoryData
+public sealed unsafe partial class UseModifiersItemComponentLegacyFactoryData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,7 +48,21 @@ public sealed unsafe partial class UseModifiersItemComponentLegacyFactoryData
 
     public float mUseDuration
     {
-        get => NativeMethods.TablePtr->C3.hs_get_326fff45((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_326fff45((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_326fff45((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_326fff45((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_9a4f86c3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -111,6 +111,7 @@ public sealed unsafe partial class OverloadSyntaxInformation : global::System.ID
         get => (nint)NativeMethods.TablePtr->C2.hs_get_d9ed1648((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

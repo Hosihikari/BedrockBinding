@@ -635,6 +635,7 @@ public sealed unsafe partial class EvocationIllager : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_9d55bcb0((void*)__hosihikari_shim_handle, (void*)(other?.Handle ?? 0)) != 0;
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_cec29a5e((void*)__hosihikari_shim_handle);

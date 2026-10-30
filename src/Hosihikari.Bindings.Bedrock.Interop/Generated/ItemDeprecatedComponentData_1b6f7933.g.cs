@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_30;
 
-public sealed unsafe partial class ItemDeprecatedComponentData
+public sealed unsafe partial class ItemDeprecatedComponentData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class ItemDeprecatedComponentData
     public nint legacyOnConsumeTriggerItemComponent_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_f46ddc5a((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_1b6f7933((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

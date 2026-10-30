@@ -113,6 +113,7 @@ public sealed unsafe partial class ScriptPlayerInteractWithEntityAfterEvent : gl
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptPlayerInteractWithEntityAfterEvent((nint)NativeMethods.TablePtr->C3.hs_method_688486e1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mTarget_Address
     {

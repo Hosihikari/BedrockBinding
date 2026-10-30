@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AgentBodyControl
+public sealed unsafe partial class AgentBodyControl : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,6 +48,7 @@ public sealed unsafe partial class AgentBodyControl
         NativeMethods.TablePtr->C0.hs_method_86ee6352((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
 
+
     public float mLastYHeadRot
     {
         get => NativeMethods.TablePtr->C0.hs_get_c8d03afc((void*)__hosihikari_shim_handle);
@@ -58,5 +59,18 @@ public sealed unsafe partial class AgentBodyControl
     {
         get => NativeMethods.TablePtr->C0.hs_get_b66cd3ef((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_b66cd3ef((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2a3d7c59((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

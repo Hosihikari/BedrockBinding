@@ -38,9 +38,9 @@ public sealed unsafe partial class FileInfo : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint _filePath, int _fileSize, nint _fileHash) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void _dtor()
     {
@@ -58,9 +58,9 @@ public sealed unsafe partial class FileInfo : global::System.IDisposable
         return new FileInfo((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static FileInfo Create(nint _filePath, int _fileSize, nint _fileHash) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public static FileInfo Create(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo arg0)
     {

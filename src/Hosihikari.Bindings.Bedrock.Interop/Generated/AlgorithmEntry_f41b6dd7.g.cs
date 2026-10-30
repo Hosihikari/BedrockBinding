@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PacketGroupDefinition_Nested.PacketGroupBuilder_Nested;
 
-public sealed unsafe partial class AlgorithmEntry
+public sealed unsafe partial class AlgorithmEntry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class AlgorithmEntry
     public nint packetIds_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_235f7962((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_f41b6dd7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

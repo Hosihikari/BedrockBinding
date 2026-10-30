@@ -44,12 +44,12 @@ public sealed unsafe partial class CraftingContext : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_4152a4ae((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_4152a4ae((void*)__hosihikari_shim_handle);
     }
 
     public static CraftingContext Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_4f205694();
+        var handle = NativeMethods.TablePtr->C1.hs_create_4f205694();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,7 +65,7 @@ public sealed unsafe partial class CraftingContext : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mPimpl_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_b13f931e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b13f931e((void*)__hosihikari_shim_handle);
     }
 
 
@@ -75,7 +75,7 @@ public sealed unsafe partial class CraftingContext : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_9eb20d76((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_9eb20d76((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

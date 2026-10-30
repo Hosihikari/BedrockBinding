@@ -315,9 +315,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _fetchStrictEntity(nint actorId, bool getRemoved) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext _fetchStrictEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorId, bool getRemoved)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext((nint)NativeMethods.TablePtr->C1.hs_method_c8e1260f((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
     public nint _findPath(nint from, nint to, nint navigation) =>
@@ -702,9 +703,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'DimensionConversionData' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getDimensionConversionData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'DimensionConversionData' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionConversionData _getDimensionConversionData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionConversionData((nint)NativeMethods.TablePtr->C1.hs_method_9c2ed7bb((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtrFactory_Dimension__DerivedDimensionArguments____ _getDimensionFactory_9bac8da1()
     {
@@ -885,9 +887,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_08d80c2f((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getItemRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef _getItemRegistry()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef((nint)NativeMethods.TablePtr->C1.hs_method_1b715fee((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry _getJigsawStructureRegistry_125a60dd()
     {
@@ -943,10 +946,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelData((nint)NativeMethods.TablePtr->C1.hs_method_9d68033d((void*)__hosihikari_shim_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? _getLevelEntity_a0f41438()
+    public global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ _getLevelEntity_a0f41438()
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a0f41438((void*)__hosihikari_shim_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_((nint)NativeMethods.TablePtr->C1.hs_method_a0f41438((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getLevelEntity_c96e2f7b()
@@ -1394,10 +1396,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard((nint)NativeMethods.TablePtr->C1.hs_method_e9a9bf6f((void*)__hosihikari_shim_handle), false);
     }
 
-    public string _getScreenshotsFolder()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getScreenshotsFolder()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_2c417052((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_2c417052((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventCoordinator _getScriptDeferredEventCoordinator()
@@ -1967,17 +1968,17 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_2b6a9df3((void*)__hosihikari_shim_handle, (void*)ptr);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _removeActorAndTakeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _removeActorFromWorldAndTakeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void _removeDisplayEntity(nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _removeEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
@@ -1985,9 +1986,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _removeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void _removeListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelListener listener)
     {
@@ -2254,9 +2255,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_fc4d9e87((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _takeEntity(nint entityRef, nint lc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void _takePicture(nint outImage, nint camera, nint target, nint screenshotOptions, nint completedScreenshotCallback) =>
@@ -2699,9 +2700,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint fetchStrictEntity(nint actorId, bool getRemoved) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext fetchStrictEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorId, bool getRemoved)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext((nint)NativeMethods.TablePtr->C1.hs_method_739953a7((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
     public nint findPath(nint from, nint to, nint navigation) =>
@@ -3086,9 +3088,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'DimensionConversionData' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getDimensionConversionData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'DimensionConversionData' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionConversionData getDimensionConversionData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionConversionData((nint)NativeMethods.TablePtr->C1.hs_method_917ba7af((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtrFactory_Dimension__DerivedDimensionArguments____ getDimensionFactory_5bbf870b()
     {
@@ -3269,9 +3272,10 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_f0968703((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getItemRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef getItemRegistry()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef((nint)NativeMethods.TablePtr->C1.hs_method_362adcc1((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry getJigsawStructureRegistry_80debeb1()
     {
@@ -3327,10 +3331,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.LevelData((nint)NativeMethods.TablePtr->C1.hs_method_a96e22ee((void*)__hosihikari_shim_handle), false);
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelEntity_40950928()
+    public global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ getLevelEntity_40950928()
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_40950928((void*)__hosihikari_shim_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_((nint)NativeMethods.TablePtr->C1.hs_method_40950928((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelEntity_802102a9()
@@ -3791,10 +3794,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard((nint)NativeMethods.TablePtr->C1.hs_method_b4f65b4e((void*)__hosihikari_shim_handle), false);
     }
 
-    public string getScreenshotsFolder()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getScreenshotsFolder()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_a33f2dda((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_a33f2dda((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventCoordinator getScriptDeferredEventCoordinator()
@@ -5169,17 +5171,17 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_b24739f2((void*)__hosihikari_shim_handle, (void*)ptr);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint removeActorAndTakeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint removeActorFromWorldAndTakeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void removeDisplayEntity(nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? removeEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
@@ -5187,9 +5189,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint removeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void removeListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelListener listener)
     {
@@ -5456,9 +5458,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_dee69ad0((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint takeEntity(nint entityRef, nint lc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void takePicture(nint outImage, nint camera, nint target, nint screenshotOptions, nint completedScreenshotCallback) =>

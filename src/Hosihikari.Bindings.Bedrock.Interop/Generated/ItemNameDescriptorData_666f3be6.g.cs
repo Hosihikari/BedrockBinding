@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal;
 
-public sealed unsafe partial class ItemNameDescriptorData
+public sealed unsafe partial class ItemNameDescriptorData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class ItemNameDescriptorData
     public nint mFullName_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_310658c5((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_666f3be6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

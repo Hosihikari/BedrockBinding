@@ -93,6 +93,7 @@ public sealed unsafe partial class SlashCommand : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacketPayload_Nested.SlashCommand((nint)NativeMethods.TablePtr->C1.hs_method_2b9eedbb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

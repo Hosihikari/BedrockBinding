@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChangeMobPropertyPacketPayload
+public sealed unsafe partial class ChangeMobPropertyPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -72,5 +72,19 @@ public sealed unsafe partial class ChangeMobPropertyPacketPayload
     public nint mStringComponentVal_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_f0cd996e((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b81d0c4d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

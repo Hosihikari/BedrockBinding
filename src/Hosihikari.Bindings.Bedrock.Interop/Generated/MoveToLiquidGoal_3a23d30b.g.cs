@@ -279,6 +279,7 @@ public sealed unsafe partial class MoveToLiquidGoal : global::System.IDisposable
         set => NativeMethods.TablePtr->C2.hs_set_9f15c53f((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -40,7 +40,7 @@ public sealed unsafe partial class RoleCheckerCallback : global::System.IDisposa
 
     public static RoleCheckerCallback Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_dbb6083f();
+        var handle = NativeMethods.TablePtr->C3.hs_create_dbb6083f();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class RoleCheckerCallback : global::System.IDisposa
 
     public static RoleCheckerCallback Create(global::Hosihikari.Bindings.Bedrock.Interop.RoleCheckerCallback arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_242eae95((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_242eae95((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,12 +63,12 @@ public sealed unsafe partial class RoleCheckerCallback : global::System.IDisposa
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd29070_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_dbea6d09((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dbea6d09((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RoleCheckerCallback operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RoleCheckerCallback arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RoleCheckerCallback((nint)NativeMethods.TablePtr->C2.hs_method_b8ebec87((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RoleCheckerCallback((nint)NativeMethods.TablePtr->C3.hs_method_b8ebec87((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -77,7 +77,7 @@ public sealed unsafe partial class RoleCheckerCallback : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_a9785594((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_a9785594((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

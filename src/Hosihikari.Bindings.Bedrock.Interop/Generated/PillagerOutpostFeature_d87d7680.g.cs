@@ -135,6 +135,7 @@ public sealed unsafe partial class PillagerOutpostFeature : global::System.IDisp
         return NativeMethods.TablePtr->C2.hs_method_01dd38b9((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
     {

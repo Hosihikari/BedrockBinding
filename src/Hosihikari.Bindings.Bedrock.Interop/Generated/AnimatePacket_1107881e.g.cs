@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AnimatePacket
+public sealed unsafe partial class AnimatePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class AnimatePacket
         NativeMethods.TablePtr->C0.hs_method_1d553456((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public byte mAction
     {
         get => NativeMethods.TablePtr->C0.hs_get_6fcf62fa((void*)__hosihikari_shim_handle);
@@ -249,5 +250,18 @@ public sealed unsafe partial class AnimatePacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_dc2d7c75((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_dc2d7c75((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_1107881e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CircuitSystem
+public sealed unsafe partial class CircuitSystem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -84,5 +84,19 @@ public sealed unsafe partial class CircuitSystem
     public void updateBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos chunkPos)
     {
         NativeMethods.TablePtr->C0.hs_method_0f3c9f97((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)chunkPos.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2139d793((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

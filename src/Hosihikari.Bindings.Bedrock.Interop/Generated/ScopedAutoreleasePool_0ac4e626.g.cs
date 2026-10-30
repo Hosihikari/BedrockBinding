@@ -44,7 +44,7 @@ public sealed unsafe partial class ScopedAutoreleasePool : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_0ac4e626((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_0ac4e626((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

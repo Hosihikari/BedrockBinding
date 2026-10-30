@@ -65,10 +65,9 @@ public sealed unsafe partial class PhotoManager : global::System.IDisposable
     public static PhotoManager Create(nint levelStorage, bool isClientSide) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LevelStorage>' is not a known bindable declaration.");
 
-    public string _getPhotoStoragePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getPhotoStoragePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b6545d60((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_b6545d60((void*)__hosihikari_shim_handle));
     }
 
     public void createPhotoStorage()

@@ -299,6 +299,7 @@ public sealed unsafe partial class InspectBookshelfGoal : global::System.IDispos
         NativeMethods.TablePtr->C1.hs_method_78814010((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

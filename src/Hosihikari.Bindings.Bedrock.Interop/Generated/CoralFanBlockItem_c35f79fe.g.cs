@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CoralFanBlockItem
+public sealed unsafe partial class CoralFanBlockItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -71,6 +71,7 @@ public sealed unsafe partial class CoralFanBlockItem
     {
         return NativeMethods.TablePtr->C0.hs_method_91b3174c((void*)__hosihikari_shim_handle, auxValue) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -279,5 +280,18 @@ public sealed unsafe partial class CoralFanBlockItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_7957c760((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_7957c760((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_c35f79fe((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

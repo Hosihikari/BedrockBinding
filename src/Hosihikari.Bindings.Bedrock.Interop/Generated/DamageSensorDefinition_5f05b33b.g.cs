@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DamageSensorDefinition
+public sealed unsafe partial class DamageSensorDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -62,5 +62,19 @@ public sealed unsafe partial class DamageSensorDefinition
     public void uninitialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.DamageSensorComponent component)
     {
         NativeMethods.TablePtr->C1.hs_method_ab70bf17((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)component.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_5f05b33b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

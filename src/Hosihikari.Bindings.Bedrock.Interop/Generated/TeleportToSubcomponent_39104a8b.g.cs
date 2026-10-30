@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TeleportToSubcomponent
+public sealed unsafe partial class TeleportToSubcomponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -76,5 +76,19 @@ public sealed unsafe partial class TeleportToSubcomponent
     public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0)
     {
         NativeMethods.TablePtr->C3.hs_method_a8de17ba((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_39104a8b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

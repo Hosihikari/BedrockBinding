@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExitVehicleSystemImpl
+public sealed unsafe partial class ExitVehicleSystemImpl : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -75,5 +75,19 @@ public sealed unsafe partial class ExitVehicleSystemImpl
     public void tick(nint executionContext)
     {
         NativeMethods.TablePtr->C1.hs_method_971d5a3d((void*)__hosihikari_shim_handle, (void*)executionContext);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_cf028019((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

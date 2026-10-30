@@ -163,6 +163,7 @@ public sealed unsafe partial class LayDownGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_1d366532((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

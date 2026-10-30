@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50;
 
-public sealed unsafe partial class ShooterItemComponent
+public sealed unsafe partial class ShooterItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -76,5 +76,19 @@ public sealed unsafe partial class ShooterItemComponent
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.ShooterItemComponent arg0)
     {
         return NativeMethods.TablePtr->C3.hs_method_11b8b2b9((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_dd522047((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

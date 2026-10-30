@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TeleportCommand
+public sealed unsafe partial class TeleportCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -173,5 +173,19 @@ public sealed unsafe partial class TeleportCommand
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry)
     {
         NativeMethods.TablePtr->C3.hs_method_9f51c9c4((void*)registry.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_6c5285b4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

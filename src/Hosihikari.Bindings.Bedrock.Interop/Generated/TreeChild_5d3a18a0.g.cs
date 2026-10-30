@@ -40,7 +40,7 @@ public sealed unsafe partial class TreeChild : global::System.IDisposable
 
     public static TreeChild Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_2b9c89bf();
+        var handle = NativeMethods.TablePtr->C1.hs_create_2b9c89bf();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class TreeChild : global::System.IDisposable
 
     public static TreeChild Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree_Nested.TreeChild arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_65ce191b((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_65ce191b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class TreeChild : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk56eb22_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_1530d968((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1530d968((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd67789_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_16257825((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_16257825((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree_Nested.TreeChild operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree_Nested.TreeChild arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree_Nested.TreeChild((nint)NativeMethods.TablePtr->C0.hs_method_5affe06d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree_Nested.TreeChild((nint)NativeMethods.TablePtr->C1.hs_method_5affe06d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class TreeChild : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_5d3a18a0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_5d3a18a0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

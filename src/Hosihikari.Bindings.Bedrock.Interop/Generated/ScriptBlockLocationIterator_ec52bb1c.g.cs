@@ -94,6 +94,7 @@ public sealed unsafe partial class ScriptBlockLocationIterator : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockLocationIterator((nint)NativeMethods.TablePtr->C3.hs_method_e0139daa((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

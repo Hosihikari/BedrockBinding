@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ChunkPerformanceData_Nested;
 
-public sealed unsafe partial class AtomicMemoryAccumulator
+public sealed unsafe partial class AtomicMemoryAccumulator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class AtomicMemoryAccumulator
     public nint mMemorySum_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_fc16ce5c((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a75abcc6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

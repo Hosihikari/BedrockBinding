@@ -363,6 +363,7 @@ public sealed unsafe partial class StructureBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_5b50c91a((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

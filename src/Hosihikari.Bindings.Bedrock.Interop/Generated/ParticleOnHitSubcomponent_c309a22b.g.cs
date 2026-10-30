@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ParticleOnHitSubcomponent
+public sealed unsafe partial class ParticleOnHitSubcomponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -106,5 +106,19 @@ public sealed unsafe partial class ParticleOnHitSubcomponent
     public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
     {
         NativeMethods.TablePtr->C2.hs_method_4ae812de((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c309a22b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

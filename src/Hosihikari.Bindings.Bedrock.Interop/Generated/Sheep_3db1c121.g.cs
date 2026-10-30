@@ -757,6 +757,7 @@ public sealed unsafe partial class Sheep : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_724682fd((void*)__hosihikari_shim_handle, id, data);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

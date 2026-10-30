@@ -53,18 +53,18 @@ public sealed unsafe partial class ScopedGameTestTickingArea : global::System.ID
         global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            return (nint)NativeMethods.TablePtr->C2.hs_method_cdd264c3((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)bounds.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            return (nint)NativeMethods.TablePtr->C3.hs_method_cdd264c3((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)bounds.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
         }
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_ab590ac3((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_ab590ac3((void*)__hosihikari_shim_handle);
     }
 
     public static ScopedGameTestTickingArea Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_0717f7fe();
+        var handle = NativeMethods.TablePtr->C3.hs_create_0717f7fe();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -88,7 +88,7 @@ public sealed unsafe partial class ScopedGameTestTickingArea : global::System.ID
         global::System.Text.Encoding.UTF8.GetBytes(structureName, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            var handle = NativeMethods.TablePtr->C2.hs_create_ca7059a3((void*)dimension.Handle, (void*)bounds.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
+            var handle = NativeMethods.TablePtr->C3.hs_create_ca7059a3((void*)dimension.Handle, (void*)bounds.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -100,7 +100,7 @@ public sealed unsafe partial class ScopedGameTestTickingArea : global::System.ID
 
     public static ScopedGameTestTickingArea Create(global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_0ba096cd((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_0ba096cd((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -111,53 +111,53 @@ public sealed unsafe partial class ScopedGameTestTickingArea : global::System.ID
 
     public static string TICKING_AREA_PREFIX()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_81021211();
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_81021211();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void _removeTickingArea()
     {
-        NativeMethods.TablePtr->C2.hs_method_d8e2231b((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_d8e2231b((void*)__hosihikari_shim_handle);
     }
 
     public bool areChunksLoaded()
     {
-        return NativeMethods.TablePtr->C2.hs_method_274c9066((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_274c9066((void*)__hosihikari_shim_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getTickingArea()
     {
-        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_55d15748((void*)__hosihikari_shim_handle);
+        var __hs_shared = NativeMethods.TablePtr->C3.hs_method_55d15748((void*)__hosihikari_shim_handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk4e4001_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_fd0e556d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fd0e556d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk5eb88c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_f3ab597e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f3ab597e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkb32f30_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2f3a84bf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2f3a84bf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc921a0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_4cb701f3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4cb701f3((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea((nint)NativeMethods.TablePtr->C2.hs_method_68ee4ebe((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScopedGameTestTickingArea((nint)NativeMethods.TablePtr->C3.hs_method_68ee4ebe((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -167,7 +167,7 @@ public sealed unsafe partial class ScopedGameTestTickingArea : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_bfa6b4a5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_bfa6b4a5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

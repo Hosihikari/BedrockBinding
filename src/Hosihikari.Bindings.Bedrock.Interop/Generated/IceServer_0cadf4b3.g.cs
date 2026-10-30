@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionInterface_Nested;
 
-public sealed unsafe partial class IceServer
+public sealed unsafe partial class IceServer : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -84,5 +84,19 @@ public sealed unsafe partial class IceServer
     public nint username_Address
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_354dae2d((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_0cadf4b3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

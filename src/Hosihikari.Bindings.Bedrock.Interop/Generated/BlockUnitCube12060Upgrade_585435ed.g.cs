@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockGeometryVersioning;
 
-public sealed unsafe partial class BlockUnitCube12060Upgrade
+public sealed unsafe partial class BlockUnitCube12060Upgrade : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,6 +58,7 @@ public sealed unsafe partial class BlockUnitCube12060Upgrade
         NativeMethods.TablePtr->C0.hs_method_93c906f8((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk40e0d7_Address
     {
@@ -80,5 +81,18 @@ public sealed unsafe partial class BlockUnitCube12060Upgrade
     public nint mUnkd8210b_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_7b43f454((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_585435ed((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

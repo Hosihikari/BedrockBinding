@@ -215,6 +215,7 @@ public sealed unsafe partial class FindUnderwaterTreasureGoal : global::System.I
         NativeMethods.TablePtr->C1.hs_method_a41b7fef((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

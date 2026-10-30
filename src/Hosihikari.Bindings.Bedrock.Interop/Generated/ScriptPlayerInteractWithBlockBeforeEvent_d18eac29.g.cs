@@ -88,6 +88,7 @@ public sealed unsafe partial class ScriptPlayerInteractWithBlockBeforeEvent : gl
         get => (nint)NativeMethods.TablePtr->C3.hs_get_7ccd3a55((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {

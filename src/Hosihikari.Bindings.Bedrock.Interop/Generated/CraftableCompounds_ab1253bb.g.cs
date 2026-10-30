@@ -44,12 +44,12 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
 
     public nint _ctor()
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_2f9bbaee((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_2f9bbaee((void*)__hosihikari_shim_handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_621e1373((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_621e1373((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -58,7 +58,7 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
 
     public static CraftableCompounds Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_7a6cf7e3();
+        var handle = NativeMethods.TablePtr->C1.hs_create_7a6cf7e3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -82,7 +82,7 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            NativeMethods.TablePtr->C0.hs_method_015a4f64((void*)__hosihikari_shim_handle, result, reaction, containerOverride, stackCount, __hs_vectorData0, (nuint)(input?.Length ?? 0));
+            NativeMethods.TablePtr->C1.hs_method_015a4f64((void*)__hosihikari_shim_handle, result, reaction, containerOverride, stackCount, __hs_vectorData0, (nuint)(input?.Length ?? 0));
         }
     }
 
@@ -97,7 +97,7 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            NativeMethods.TablePtr->C0.hs_method_4f365b2c((void*)__hosihikari_shim_handle, (void*)result.Handle, reaction, containerOverride, __hs_vectorData0, (nuint)(input?.Length ?? 0));
+            NativeMethods.TablePtr->C1.hs_method_4f365b2c((void*)__hosihikari_shim_handle, (void*)result.Handle, reaction, containerOverride, __hs_vectorData0, (nuint)(input?.Length ?? 0));
         }
     }
 
@@ -116,30 +116,30 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponentsToCompound_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_18d2ee44((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_18d2ee44((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponentsToContainerOverride_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_7ddf4c4c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7ddf4c4c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponentsToReaction_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_66d92176((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_66d92176((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCompoundToComponents_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_3f4ee92a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3f4ee92a((void*)__hosihikari_shim_handle);
     }
 
     public void registerCompounds()
     {
-        NativeMethods.TablePtr->C0.hs_method_49ebc3cd((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_49ebc3cd((void*)__hosihikari_shim_handle);
     }
 
 
@@ -149,7 +149,7 @@ public sealed unsafe partial class CraftableCompounds : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_ab1253bb((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_ab1253bb((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

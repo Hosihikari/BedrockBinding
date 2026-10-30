@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.GameMode_Nested;
 
-public sealed unsafe partial class ContinueBuildData
+public sealed unsafe partial class ContinueBuildData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,5 +47,19 @@ public sealed unsafe partial class ContinueBuildData
     public nint mHit_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_4af89031((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_63cdd78e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

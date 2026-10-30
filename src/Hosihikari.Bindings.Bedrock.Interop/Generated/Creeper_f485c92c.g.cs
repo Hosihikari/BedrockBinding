@@ -635,6 +635,7 @@ public sealed unsafe partial class Creeper : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_13ca9419((void*)__hosihikari_shim_handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_54ae0168((void*)__hosihikari_shim_handle);

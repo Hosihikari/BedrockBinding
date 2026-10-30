@@ -713,6 +713,7 @@ public sealed unsafe partial class EnderMan : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_978fbcd3((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_a408440b((void*)__hosihikari_shim_handle);

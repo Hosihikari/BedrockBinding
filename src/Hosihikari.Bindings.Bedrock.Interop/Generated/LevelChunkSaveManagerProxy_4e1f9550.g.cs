@@ -40,29 +40,29 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
 
     public bool _doesLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave)
     {
-        return NativeMethods.TablePtr->C1.hs_method_d269c5f0((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_d269c5f0((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
     }
 
     public bool _doesNonActorDataInLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave)
     {
-        return NativeMethods.TablePtr->C1.hs_method_57f6b4a9((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_57f6b4a9((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_22958140((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)chunkPos.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_22958140((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)chunkPos.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getRandomChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_d22a91b1((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_d22a91b1((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getRandomDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager dimensionManager)
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_699d98d1((void*)__hosihikari_shim_handle, (void*)dimensionManager.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_699d98d1((void*)__hosihikari_shim_handle, (void*)dimensionManager.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
@@ -72,12 +72,12 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
 
     public void _saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_7248e82e((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7248e82e((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)levelChunk.Handle);
     }
 
     public void _startLeaveGame()
     {
-        NativeMethods.TablePtr->C1.hs_method_983ce2d4((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_983ce2d4((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -86,7 +86,7 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
 
     public static LevelChunkSaveManagerProxy Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_853a6f14();
+        var handle = NativeMethods.TablePtr->C2.hs_create_853a6f14();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -97,7 +97,7 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
 
     public static LevelChunkSaveManagerProxy Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_a9bca45e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_a9bca45e((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -108,47 +108,47 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
 
     public bool doesLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave)
     {
-        return NativeMethods.TablePtr->C1.hs_method_02fd24aa((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_02fd24aa((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
     }
 
     public bool doesNonActorDataInLevelChunkNeedSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int minTicksBeforeLiveSave, int maxTicksBeforeLiveSave)
     {
-        return NativeMethods.TablePtr->C1.hs_method_cf71528a((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_cf71528a((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, minTicksBeforeLiveSave, maxTicksBeforeLiveSave) != 0;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_88f810cc((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)chunkPos.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_88f810cc((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)chunkPos.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getRandomChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_f9ff6cd9((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_f9ff6cd9((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getRandomDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager dimensionManager)
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_b7f9d888((void*)__hosihikari_shim_handle, (void*)dimensionManager.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_b7f9d888((void*)__hosihikari_shim_handle, (void*)dimensionManager.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRandom_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_761e98eb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_761e98eb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTaskGroup_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f6391289((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f6391289((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy((nint)NativeMethods.TablePtr->C1.hs_method_8d6dd182((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManagerProxy((nint)NativeMethods.TablePtr->C2.hs_method_8d6dd182((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
@@ -157,12 +157,12 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
 
     public void saveLiveChunk(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_daca035a((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_daca035a((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)levelChunk.Handle);
     }
 
     public void startLeaveGame()
     {
-        NativeMethods.TablePtr->C1.hs_method_c2cf1555((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_c2cf1555((void*)__hosihikari_shim_handle);
     }
 
 
@@ -172,7 +172,7 @@ public sealed unsafe partial class LevelChunkSaveManagerProxy : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_4e1f9550((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_4e1f9550((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

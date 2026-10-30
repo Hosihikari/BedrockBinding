@@ -118,6 +118,7 @@ public sealed unsafe partial class MoveActorAbsoluteData : global::System.IDispo
         set => NativeMethods.TablePtr->C2.hs_set_51b57b94((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

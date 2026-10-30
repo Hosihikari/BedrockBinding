@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorPlacerItem
+public sealed unsafe partial class ActorPlacerItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -118,9 +118,9 @@ public sealed unsafe partial class ActorPlacerItem
         return NativeMethods.TablePtr->C0.hs_method_7c7f2d7a((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)container.Handle, slot, (void*)pos.Handle, face) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static void forEachCustomEgg(nint itemRegistry, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionIdentifier getActorIdentifier(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg0)
     {
@@ -172,9 +172,9 @@ public sealed unsafe partial class ActorPlacerItem
         return (nint)NativeMethods.TablePtr->C0.hs_method_79a5ffae();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static void registerCustomEggs(nint itemRegistry, nint registry, nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool shouldInteractionWithBlockBypassLiquid(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
@@ -191,6 +191,7 @@ public sealed unsafe partial class ActorPlacerItem
     {
         NativeMethods.TablePtr->C0.hs_method_125a0739((void*)__hosihikari_shim_handle);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -399,5 +400,18 @@ public sealed unsafe partial class ActorPlacerItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_1e038b5d((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_1e038b5d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_be9ef773((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

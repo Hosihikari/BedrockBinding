@@ -40,18 +40,18 @@ public sealed unsafe partial class FlatFileOperations : global::System.IDisposab
 
     public static string FLAT_FILE_EMPTY_MANIFEST_FILE()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_1247209f();
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_1247209f();
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static nint FLAT_FILE_EXTENSION()
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_a8eb1ca9();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_a8eb1ca9();
     }
 
     public static nint FLAT_FILE_MANIFEST_EXTENSION()
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_1cb9db60();
+        return (nint)NativeMethods.TablePtr->C1.hs_method_1cb9db60();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -80,7 +80,7 @@ public sealed unsafe partial class FlatFileOperations : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_2de65a03((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_2de65a03((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

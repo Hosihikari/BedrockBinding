@@ -234,9 +234,10 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_09ea9eae((void*)experiments.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static void unregisterQueryFunction(nint queryFunctionName, nint querySetIdentifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
 
     public void Dispose()
     {

@@ -240,6 +240,7 @@ public sealed unsafe partial class SwimWithEntityGoal : global::System.IDisposab
         NativeMethods.TablePtr->C3.hs_method_f88b932a((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

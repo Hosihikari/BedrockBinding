@@ -42,4 +42,8 @@ public sealed partial class EventVariantImpl_const_BlockPatternPostEvent__const_
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public static EventVariantImpl_const_BlockPatternPostEvent__const_ActorInsideBlockEvent__const_ActorStandOnBlo_bd413bc2 Create(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 }

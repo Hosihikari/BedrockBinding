@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AuxDataBlockItem
+public sealed unsafe partial class AuxDataBlockItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -68,6 +68,7 @@ public sealed unsafe partial class AuxDataBlockItem
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_abd26927((void*)__hosihikari_shim_handle);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -276,5 +277,18 @@ public sealed unsafe partial class AuxDataBlockItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_1a9db12e((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_1a9db12e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a544480a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

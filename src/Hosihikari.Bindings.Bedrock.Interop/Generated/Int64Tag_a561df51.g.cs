@@ -116,9 +116,10 @@ public sealed unsafe partial class Int64Tag : global::System.IDisposable
     public nint load(nint dis) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Int64Tag' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint operator_subtract() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Int64Tag' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Int64Tag operator_subtract()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Int64Tag((nint)NativeMethods.TablePtr->C1.hs_method_49783100((void*)__hosihikari_shim_handle));
+    }
 
     public string toString()
     {
@@ -130,6 +131,7 @@ public sealed unsafe partial class Int64Tag : global::System.IDisposable
     {
         NativeMethods.TablePtr->C1.hs_method_ee9d446b((void*)__hosihikari_shim_handle, (void*)dos.Handle);
     }
+
 
     public void Dispose()
     {

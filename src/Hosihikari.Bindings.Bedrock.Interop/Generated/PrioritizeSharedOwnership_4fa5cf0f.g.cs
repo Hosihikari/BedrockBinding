@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading;
 
-public sealed unsafe partial class PrioritizeSharedOwnership
+public sealed unsafe partial class PrioritizeSharedOwnership : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -86,5 +86,19 @@ public sealed unsafe partial class PrioritizeSharedOwnership
     public void unlock_shared()
     {
         NativeMethods.TablePtr->C0.hs_method_1c999482((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_4fa5cf0f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GuiDataPickItemPacketPayload
+public sealed unsafe partial class GuiDataPickItemPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class GuiDataPickItemPacketPayload
     {
         get => NativeMethods.TablePtr->C1.hs_get_6c87e756((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_6c87e756((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_d4cfe65b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

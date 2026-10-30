@@ -38,9 +38,9 @@ public sealed unsafe partial class WaterMovementDescription : global::System.IDi
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void _deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public nint _getJsonName()
     {
@@ -73,9 +73,9 @@ public sealed unsafe partial class WaterMovementDescription : global::System.IDi
         return new WaterMovementDescription((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void deserializeData(nint deserializeDataParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public nint getJsonName()
     {
@@ -92,6 +92,7 @@ public sealed unsafe partial class WaterMovementDescription : global::System.IDi
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.WaterMovementDescription((nint)NativeMethods.TablePtr->C4.hs_method_75ad8bb8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {

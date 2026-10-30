@@ -165,6 +165,7 @@ public sealed unsafe partial class DefendVillageTargetGoal : global::System.IDis
         NativeMethods.TablePtr->C1.hs_method_500f0a12((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAttackOwner
     {
         get => NativeMethods.TablePtr->C1.hs_get_61fc9749((void*)__hosihikari_shim_handle) != 0;

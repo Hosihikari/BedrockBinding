@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelChunkEventManagerProxy
+public sealed unsafe partial class LevelChunkEventManagerProxy : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,71 +40,85 @@ public sealed unsafe partial class LevelChunkEventManagerProxy
 
     public int _getClosestPlayerDistanceSquared(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->C1.hs_method_8d89b61d((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_8d89b61d((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
     public bool _isOwnedByTickingThread(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->C1.hs_method_f449927a((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_f449927a((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
     public bool _isReadOnly(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->C1.hs_method_9d76168e((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_9d76168e((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
     public void _onTickingStarted(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_9f207b18((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_9f207b18((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
     public void _onTickingStopped(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_7b9c1f5f((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7b9c1f5f((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
     public bool _setOnChunkLoadedCalled(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->C1.hs_method_a0faf9e8((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_a0faf9e8((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
     public void _setupRedstoneCircuit(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource chunkSource, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_d6e61c40((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_d6e61c40((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle);
     }
 
     public int getClosestPlayerDistanceSquared(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->C1.hs_method_5e9babe8((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_5e9babe8((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
     public bool isOwnedByTickingThread(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->C1.hs_method_51f40858((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_51f40858((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
     public bool isReadOnly(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->C1.hs_method_629558e1((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_629558e1((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
     public void onTickingStarted(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_f2ac1beb((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_f2ac1beb((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
     public void onTickingStopped(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_470d020d((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_470d020d((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
     public bool setOnChunkLoadedCalled(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        return NativeMethods.TablePtr->C1.hs_method_4f7f1632((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_4f7f1632((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
     }
 
     public void setupRedstoneCircuit(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource chunkSource, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_4db946ee((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4db946ee((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_9457e040((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

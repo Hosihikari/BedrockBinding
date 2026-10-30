@@ -157,6 +157,7 @@ public sealed unsafe partial class AzaleaBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_be29caa6((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)(actor?.Handle ?? 0), fType) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address
     {

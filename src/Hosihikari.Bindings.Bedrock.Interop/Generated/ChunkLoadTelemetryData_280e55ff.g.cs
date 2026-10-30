@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkLoadTelemetryData
+public sealed unsafe partial class ChunkLoadTelemetryData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -83,5 +83,19 @@ public sealed unsafe partial class ChunkLoadTelemetryData
     public void recordLoadedChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk chunk)
     {
         NativeMethods.TablePtr->C0.hs_method_88a5191e((void*)__hosihikari_shim_handle, (void*)chunk.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_280e55ff((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

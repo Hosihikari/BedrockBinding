@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelChunkSaveManager_Nested;
 
-public sealed unsafe partial class LevelChunkQueuedSavingElement
+public sealed unsafe partial class LevelChunkQueuedSavingElement : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,18 +41,32 @@ public sealed unsafe partial class LevelChunkQueuedSavingElement
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_53047f9f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_53047f9f((void*)__hosihikari_shim_handle);
     }
 
     public int mDist
     {
-        get => NativeMethods.TablePtr->C1.hs_get_cc83d13b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_cc83d13b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_cc83d13b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_cc83d13b((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPosition_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4cc337bd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4cc337bd((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e7b853f7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

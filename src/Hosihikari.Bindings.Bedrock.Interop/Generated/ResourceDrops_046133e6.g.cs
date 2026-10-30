@@ -45,14 +45,14 @@ public sealed unsafe partial class ResourceDrops : global::System.IDisposable
 
     public int mExperienceCount
     {
-        get => NativeMethods.TablePtr->C2.hs_get_3edd1cda((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_3edd1cda((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_3edd1cda((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_3edd1cda((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItems_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_58bbbe7f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_58bbbe7f((void*)__hosihikari_shim_handle);
     }
 
 

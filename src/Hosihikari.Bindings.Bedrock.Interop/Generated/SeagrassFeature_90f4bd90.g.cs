@@ -119,6 +119,7 @@ public sealed unsafe partial class SeagrassFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_469b53db((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

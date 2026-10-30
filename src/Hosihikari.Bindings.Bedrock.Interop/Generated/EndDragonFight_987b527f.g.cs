@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EndDragonFight
+public sealed unsafe partial class EndDragonFight : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -236,5 +236,19 @@ public sealed unsafe partial class EndDragonFight
     public void verifyExitPositions(global::Hosihikari.Bindings.Bedrock.Interop.EndGatewayBlockActor endGatewayBlockActor)
     {
         NativeMethods.TablePtr->C1.hs_method_521bba91((void*)__hosihikari_shim_handle, (void*)endGatewayBlockActor.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_987b527f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

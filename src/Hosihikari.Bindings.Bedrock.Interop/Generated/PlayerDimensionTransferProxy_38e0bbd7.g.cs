@@ -43,9 +43,10 @@ public sealed unsafe partial class PlayerDimensionTransferProxy : global::System
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_f27fbdf3((void*)__hosihikari_shim_handle, (void*)player.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _createMovePlayerPacket(nint player, nint resetPosition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket _createMovePlayerPacket(global::Hosihikari.Bindings.Bedrock.Interop.Player player, byte resetPosition)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket((nint)NativeMethods.TablePtr->C2.hs_method_85511d31((void*)__hosihikari_shim_handle, (void*)player.Handle, resetPosition));
+    }
 
     public void _fireWillChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
@@ -132,9 +133,10 @@ public sealed unsafe partial class PlayerDimensionTransferProxy : global::System
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_885dc9e0((void*)__hosihikari_shim_handle, (void*)player.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createMovePlayerPacket(nint player, nint resetPosition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MovePlayerPacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket createMovePlayerPacket(global::Hosihikari.Bindings.Bedrock.Interop.Player player, byte resetPosition)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MovePlayerPacket((nint)NativeMethods.TablePtr->C2.hs_method_155b4866((void*)__hosihikari_shim_handle, (void*)player.Handle, resetPosition));
+    }
 
     public void fireWillChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {

@@ -415,9 +415,10 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_dbb28a43((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemEnchants' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint constructItemEnchantsFromUserData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemEnchants' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants constructItemEnchantsFromUserData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemEnchants((nint)NativeMethods.TablePtr->C1.hs_method_f161be38((void*)__hosihikari_shim_handle));
+    }
 
     public void deserializeComponents(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput input)
     {

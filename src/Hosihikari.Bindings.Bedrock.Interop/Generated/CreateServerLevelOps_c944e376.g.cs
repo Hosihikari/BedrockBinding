@@ -95,6 +95,7 @@ public sealed unsafe partial class CreateServerLevelOps : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance_Nested.CreateServerLevelOps((nint)NativeMethods.TablePtr->C3.hs_method_8ce104f5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

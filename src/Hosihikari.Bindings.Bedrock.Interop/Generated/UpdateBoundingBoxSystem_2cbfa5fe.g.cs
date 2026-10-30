@@ -40,12 +40,12 @@ public sealed unsafe partial class UpdateBoundingBoxSystem : global::System.IDis
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo createSystem(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion version, bool isClientSide)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo((nint)NativeMethods.TablePtr->C3.hs_method_970963d5((void*)version.Handle, isClientSide));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo((nint)NativeMethods.TablePtr->C4.hs_method_970963d5((void*)version.Handle, isClientSide));
     }
 
     public static void synchronousUpdateSize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion version, bool isClientSide)
     {
-        NativeMethods.TablePtr->C3.hs_method_da41b6de((void*)entity.Handle, (void*)version.Handle, isClientSide);
+        NativeMethods.TablePtr->C4.hs_method_da41b6de((void*)entity.Handle, (void*)version.Handle, isClientSide);
     }
 
     public void Dispose()
@@ -54,7 +54,7 @@ public sealed unsafe partial class UpdateBoundingBoxSystem : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_2cbfa5fe((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_2cbfa5fe((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ShareableDefinition
+public sealed unsafe partial class ShareableDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -101,5 +101,19 @@ public sealed unsafe partial class ShareableDefinition
     {
         get => NativeMethods.TablePtr->C3.hs_get_3eec0a1e((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C3.hs_set_3eec0a1e((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_148a50a7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

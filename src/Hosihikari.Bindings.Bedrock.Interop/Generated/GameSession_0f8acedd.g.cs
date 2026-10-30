@@ -112,6 +112,7 @@ public sealed unsafe partial class GameSession : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_d4ad186c((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

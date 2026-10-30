@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AncientCityPiece
+public sealed unsafe partial class AncientCityPiece : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -81,6 +81,7 @@ public sealed unsafe partial class AncientCityPiece
     {
         return NativeMethods.TablePtr->C0.hs_method_57699fed((void*)__hosihikari_shim_handle);
     }
+
 
     public float mCachedMaxRadius
     {
@@ -170,5 +171,18 @@ public sealed unsafe partial class AncientCityPiece
     public nint mTerrainAdjustmentToken_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_f9ff14be((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_5c33f362((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

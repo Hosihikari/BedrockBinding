@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AgentCommands;
 
-public sealed unsafe partial class TurnCommand
+public sealed unsafe partial class TurnCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -114,5 +114,19 @@ public sealed unsafe partial class TurnCommand
     public void tick()
     {
         NativeMethods.TablePtr->C0.hs_method_39501629((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_03b2cc28((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

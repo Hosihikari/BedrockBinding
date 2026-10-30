@@ -113,6 +113,7 @@ public sealed unsafe partial class ScriptComponentTypeEnumBuilder : global::Syst
         get => NativeMethods.TablePtr->C3.hs_get_355ee5c2((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

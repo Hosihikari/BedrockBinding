@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BeehiveBlockActor_Nested;
 
-public sealed unsafe partial class Occupant
+public sealed unsafe partial class Occupant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class Occupant
     {
         get => NativeMethods.TablePtr->C0.hs_get_50ccb9df((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_50ccb9df((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_bb7f9be4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

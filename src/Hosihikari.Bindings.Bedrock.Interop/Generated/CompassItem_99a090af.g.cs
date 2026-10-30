@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CompassItem
+public sealed unsafe partial class CompassItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -69,6 +69,7 @@ public sealed unsafe partial class CompassItem
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult((nint)NativeMethods.TablePtr->C0.hs_method_2618e7b3((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)actor.Handle, (void*)pos.Handle, face, handSlot, (void*)clickPos.Handle));
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -277,5 +278,18 @@ public sealed unsafe partial class CompassItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_db553d01((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_db553d01((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_99a090af((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -99,6 +99,7 @@ public sealed unsafe partial class ScriptItemUseOnBeforeEvent : global::System.I
         set => NativeMethods.TablePtr->C3.hs_set_cd9480d7((void*)__hosihikari_shim_handle, value);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {

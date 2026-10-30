@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ClientboundMapItemDataPacket
+public sealed unsafe partial class ClientboundMapItemDataPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class ClientboundMapItemDataPacket
         NativeMethods.TablePtr->C0.hs_method_9aeecdc4((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCreationMapIds_Address
     {
@@ -309,5 +310,18 @@ public sealed unsafe partial class ClientboundMapItemDataPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_fdd840e1((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_fdd840e1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_e27ae113((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

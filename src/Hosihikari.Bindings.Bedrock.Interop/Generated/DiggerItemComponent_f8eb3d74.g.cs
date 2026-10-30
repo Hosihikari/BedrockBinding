@@ -77,6 +77,7 @@ public sealed unsafe partial class DiggerItemComponent : global::System.IDisposa
         set => NativeMethods.TablePtr->C1.hs_set_3475d402((void*)__hosihikari_shim_handle, value);
     }
 
+
     public nint mOwner
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_c4787ee2((void*)__hosihikari_shim_handle);

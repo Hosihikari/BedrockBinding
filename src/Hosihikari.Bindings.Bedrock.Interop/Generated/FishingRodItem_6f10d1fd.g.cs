@@ -320,6 +320,7 @@ public sealed unsafe partial class FishingRodItem : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C1.hs_method_9d86f8a5((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)player.Handle, handSlot), false);
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C1.hs_get_edfb61f9((void*)__hosihikari_shim_handle) != 0;

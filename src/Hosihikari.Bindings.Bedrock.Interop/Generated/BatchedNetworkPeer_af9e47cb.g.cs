@@ -51,9 +51,10 @@ public sealed unsafe partial class BatchedNetworkPeer : global::System.IDisposab
     public void _flush(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getNetworkStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus _getNetworkStatus()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C0.hs_method_07a4a39e((void*)__hosihikari_shim_handle));
+    }
 
     public void _sendPacket(string data, int reliability, int compressible)
     {
@@ -109,9 +110,10 @@ public sealed unsafe partial class BatchedNetworkPeer : global::System.IDisposab
     public void flush(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNetworkStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus getNetworkStatus()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C0.hs_method_7c224024((void*)__hosihikari_shim_handle));
+    }
 
     public bool mAsyncEnabled
     {

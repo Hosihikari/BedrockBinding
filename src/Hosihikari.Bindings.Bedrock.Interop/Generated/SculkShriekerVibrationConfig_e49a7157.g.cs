@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SculkShriekerVibrationConfig
+public sealed unsafe partial class SculkShriekerVibrationConfig : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -96,5 +96,19 @@ public sealed unsafe partial class SculkShriekerVibrationConfig
     public bool shouldListen(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent arg1, nint gameEventContext)
     {
         return NativeMethods.TablePtr->C3.hs_method_e2e784c7((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)arg1.Handle, (void*)gameEventContext) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_e49a7157((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

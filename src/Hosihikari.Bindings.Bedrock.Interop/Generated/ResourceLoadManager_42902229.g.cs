@@ -41,7 +41,7 @@ public sealed unsafe partial class ResourceLoadManager : global::System.IDisposa
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_f0e83e1b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f0e83e1b((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -50,7 +50,7 @@ public sealed unsafe partial class ResourceLoadManager : global::System.IDisposa
 
     public static ResourceLoadManager Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_8120c4fa();
+        var handle = NativeMethods.TablePtr->C3.hs_create_8120c4fa();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,7 +65,7 @@ public sealed unsafe partial class ResourceLoadManager : global::System.IDisposa
 
     public static ResourceLoadManager Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_4f39471f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_4f39471f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -80,65 +80,65 @@ public sealed unsafe partial class ResourceLoadManager : global::System.IDisposa
 
     public bool isComplete()
     {
-        return NativeMethods.TablePtr->C2.hs_method_38020730((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_38020730((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2466a3_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c97b623b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c97b623b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk641f6f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_73afcd06((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_73afcd06((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk833b4d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2777d130((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2777d130((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk8953d0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2a59facf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2a59facf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkb77267_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a158dccc((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a158dccc((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbc3f4e_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_6991cae0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6991cae0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc455ca_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_27ed0e9d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_27ed0e9d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkddb755_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_7e7e5e46((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7e7e5e46((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager((nint)NativeMethods.TablePtr->C2.hs_method_ad93fb5f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLoadManager((nint)NativeMethods.TablePtr->C3.hs_method_ad93fb5f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public nint queue(nint resourceLoadType, nint threadedCallback, nint mainThreadCallback, uint taskPriority) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public static void queueChild(nint threadedCallback, nint mainThreadCallback, uint taskPriority) =>
@@ -150,7 +150,7 @@ public sealed unsafe partial class ResourceLoadManager : global::System.IDisposa
 
     public void update()
     {
-        NativeMethods.TablePtr->C2.hs_method_92ac56af((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_92ac56af((void*)__hosihikari_shim_handle);
     }
 
 
@@ -160,7 +160,7 @@ public sealed unsafe partial class ResourceLoadManager : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_42902229((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_42902229((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

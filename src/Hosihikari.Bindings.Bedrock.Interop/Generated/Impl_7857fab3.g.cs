@@ -44,7 +44,7 @@ public sealed unsafe partial class Impl : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_7857fab3((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_7857fab3((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

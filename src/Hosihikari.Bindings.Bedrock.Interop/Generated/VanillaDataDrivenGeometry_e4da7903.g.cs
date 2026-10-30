@@ -40,7 +40,7 @@ public sealed unsafe partial class VanillaDataDrivenGeometry : global::System.ID
 
     public static void addComponentsToBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments arg1)
     {
-        NativeMethods.TablePtr->C3.hs_method_9cfb3834((void*)baseGameVersion.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C4.hs_method_9cfb3834((void*)baseGameVersion.Handle, (void*)arg1.Handle);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class VanillaDataDrivenGeometry : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_e4da7903((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_e4da7903((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

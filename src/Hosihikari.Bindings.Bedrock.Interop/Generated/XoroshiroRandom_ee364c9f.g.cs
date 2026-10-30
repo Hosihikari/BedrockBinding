@@ -169,6 +169,7 @@ public sealed unsafe partial class XoroshiroRandom : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.XoroshiroRandom((nint)NativeMethods.TablePtr->C4.hs_method_fd7d85f0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

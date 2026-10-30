@@ -232,6 +232,7 @@ public sealed unsafe partial class BambooStalkBlock : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_909ee3ee((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address
     {

@@ -95,6 +95,7 @@ public sealed unsafe partial class ServerNetworkHandlerFactoryArguments : global
         return new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftArguments_Nested.ServerNetworkHandlerFactoryArguments((nint)NativeMethods.TablePtr->C2.hs_method_cc0bf38a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

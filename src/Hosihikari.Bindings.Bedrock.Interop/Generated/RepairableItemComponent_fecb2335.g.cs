@@ -44,9 +44,9 @@ public sealed unsafe partial class RepairableItemComponent : global::System.IDis
         set => NativeMethods.TablePtr->C2.hs_set_d726b881((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -63,13 +63,13 @@ public sealed unsafe partial class RepairableItemComponent : global::System.IDis
         return new RepairableItemComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static RepairableItemComponent Create(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public int _repairItem(nint materialItem, nint resultItem, nint repairAmountExpression) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>
@@ -95,6 +95,7 @@ public sealed unsafe partial class RepairableItemComponent : global::System.IDis
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_d687064b((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {

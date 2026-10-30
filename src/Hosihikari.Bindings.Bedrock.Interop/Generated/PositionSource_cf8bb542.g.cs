@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.GameEvents;
 
-public sealed unsafe partial class PositionSource
+public sealed unsafe partial class PositionSource : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,5 +47,19 @@ public sealed unsafe partial class PositionSource
     public void serializeTo(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
         NativeMethods.TablePtr->C1.hs_method_15e3c585((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_cf8bb542((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

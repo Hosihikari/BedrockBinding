@@ -107,6 +107,7 @@ public sealed unsafe partial class AddActorEntityProxy : global::System.IDisposa
         NativeMethods.TablePtr->C0.hs_method_e13dc5e6((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DBStorageEnvironmentChain
+public sealed unsafe partial class DBStorageEnvironmentChain : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -88,5 +88,19 @@ public sealed unsafe partial class DBStorageEnvironmentChain
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_15881b0d((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_15881b0d((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_e85ea910((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

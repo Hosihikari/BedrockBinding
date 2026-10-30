@@ -48,9 +48,10 @@ public sealed unsafe partial class BribeableComponent : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_ae2660ba((void*)__hosihikari_shim_handle, (void*)owner.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint owner, nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C0.hs_method_9e657e8c((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle));
+    }
 
     public int mBribeCooldown
     {

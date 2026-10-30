@@ -158,6 +158,7 @@ public sealed unsafe partial class Abilities : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9805839d((void*)__hosihikari_shim_handle, permissions);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

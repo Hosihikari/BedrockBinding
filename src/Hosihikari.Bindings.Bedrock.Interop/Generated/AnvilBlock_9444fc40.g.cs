@@ -43,9 +43,9 @@ public sealed unsafe partial class AnvilBlock : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_dbaceaa9((void*)__hosihikari_shim_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool _breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool _canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte face, int type)
     {
@@ -162,9 +162,9 @@ public sealed unsafe partial class AnvilBlock : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_ed32015a((void*)__hosihikari_shim_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool canProvideSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, byte face, int type)
     {
@@ -226,6 +226,7 @@ public sealed unsafe partial class AnvilBlock : global::System.IDisposable
     {
         NativeMethods.TablePtr->C0.hs_method_c781a1fd((void*)__hosihikari_shim_handle, (void*)eventData);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ItemTag
+public sealed unsafe partial class ItemTag : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -37,5 +36,36 @@ public sealed partial class ItemTag
         var __hs_handle = __hosihikari_shim_handle;
         __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint mLastMatch
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4b5c2f48((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mStr_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5b22c8d4((void*)__hosihikari_shim_handle);
+    }
+
+    public ulong mStrHash
+    {
+        get => NativeMethods.TablePtr->C1.hs_get_a549a5d9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_a549a5d9((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_5901560d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

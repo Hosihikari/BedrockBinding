@@ -65,9 +65,9 @@ public sealed unsafe partial class StructureTemplateRegistrationContext : global
         return new StructureTemplateRegistrationContext((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static StructureTemplateRegistrationContext Create(nint manager, nint structureRegistry, nint featureRegistry, nint baseGameVersion, nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBaseGameVersion_Address

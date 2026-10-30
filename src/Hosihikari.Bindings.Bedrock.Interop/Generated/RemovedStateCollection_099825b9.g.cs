@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockType_Nested;
 
-public sealed unsafe partial class RemovedStateCollection
+public sealed unsafe partial class RemovedStateCollection : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -78,5 +78,19 @@ public sealed unsafe partial class RemovedStateCollection
     {
         var __hs_handle = NativeMethods.TablePtr->C0.hs_method_6cc64e51((void*)__hosihikari_shim_handle, (void*)blockType.Handle, blockData, stateData);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_099825b9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

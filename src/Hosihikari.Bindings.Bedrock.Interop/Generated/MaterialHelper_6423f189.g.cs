@@ -40,22 +40,22 @@ public sealed unsafe partial class MaterialHelper : global::System.IDisposable
 
     public bool _isFoundationBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_5fea971b((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_5fea971b((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
     public bool _isLavaBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_a4908de6((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_a4908de6((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
     public bool _isSolidBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_ee5c5149((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_ee5c5149((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
     public bool _isWaterBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_b4ed634a((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_b4ed634a((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -64,22 +64,22 @@ public sealed unsafe partial class MaterialHelper : global::System.IDisposable
 
     public bool isFoundationBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_c76293fa((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_c76293fa((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
     public bool isLavaBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_afd241c4((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_afd241c4((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
     public bool isSolidBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_90c0afef((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_90c0afef((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
     public bool isWaterBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_f647d695((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_f647d695((void*)__hosihikari_shim_handle, (void*)block.Handle) != 0;
     }
 
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class MaterialHelper : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_6423f189((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_6423f189((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

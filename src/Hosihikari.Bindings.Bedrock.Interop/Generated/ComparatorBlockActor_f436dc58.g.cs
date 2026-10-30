@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ComparatorBlockActor
+public sealed unsafe partial class ComparatorBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -139,6 +139,7 @@ public sealed unsafe partial class ComparatorBlockActor
         NativeMethods.TablePtr->C0.hs_method_da958ef7((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {
@@ -179,5 +180,18 @@ public sealed unsafe partial class ComparatorBlockActor
     {
         get => NativeMethods.TablePtr->C0.hs_get_0c4c4a0a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_0c4c4a0a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f436dc58((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

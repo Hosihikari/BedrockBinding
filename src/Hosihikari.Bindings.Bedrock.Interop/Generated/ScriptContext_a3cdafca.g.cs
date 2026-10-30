@@ -97,6 +97,7 @@ public sealed unsafe partial class ScriptContext : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ResultAny((nint)NativeMethods.TablePtr->C3.hs_method_82e8a998((void*)__hosihikari_shim_handle, (void*)payload.Handle, privilege ?? default(byte), privilege.HasValue));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

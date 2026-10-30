@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.BlockRules;
 
-public sealed unsafe partial class BlockMatch
+public sealed unsafe partial class BlockMatch : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -65,5 +65,19 @@ public sealed unsafe partial class BlockMatch
     public bool test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg1)
     {
         return NativeMethods.TablePtr->C4.hs_method_c7cff64f((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)arg1.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_bed9711b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -205,6 +205,7 @@ public sealed unsafe partial class InventoryContentPacket : global::System.IDisp
         NativeMethods.TablePtr->C1.hs_method_75e68b45((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFullContainerName_Address
     {

@@ -61,9 +61,10 @@ public sealed unsafe partial class TickingArea : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const Bounds' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getBoundsCopy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const Bounds' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bounds _getBoundsCopy()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bounds((nint)NativeMethods.TablePtr->C3.hs_method_17c8771c((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaDescription _getDescription()
     {
@@ -225,9 +226,10 @@ public sealed unsafe partial class TickingArea : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const Bounds' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBoundsCopy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const Bounds' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bounds getBoundsCopy()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bounds((nint)NativeMethods.TablePtr->C3.hs_method_082d8b7a((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TickingAreaDescription getDescription()
     {

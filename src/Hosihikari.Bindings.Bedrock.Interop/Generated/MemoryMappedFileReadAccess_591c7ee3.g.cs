@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MemoryMappedFileAccess_Nested;
 
-public sealed unsafe partial class MemoryMappedFileReadAccess
+public sealed unsafe partial class MemoryMappedFileReadAccess : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -50,5 +50,19 @@ public sealed unsafe partial class MemoryMappedFileReadAccess
     public ulong fread(nint buffer, ulong arg1, ulong count, nint file)
     {
         return NativeMethods.TablePtr->C2.hs_method_b850c992((void*)__hosihikari_shim_handle, (void*)buffer, arg1, count, (void*)file);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_591c7ee3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

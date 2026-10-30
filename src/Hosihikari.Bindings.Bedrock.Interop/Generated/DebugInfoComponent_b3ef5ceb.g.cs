@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DebugInfoComponent
+public sealed unsafe partial class DebugInfoComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -71,5 +71,19 @@ public sealed unsafe partial class DebugInfoComponent
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionTriggeredEvent arg0)
     {
         return NativeMethods.TablePtr->C1.hs_method_a3ffe570((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b3ef5ceb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

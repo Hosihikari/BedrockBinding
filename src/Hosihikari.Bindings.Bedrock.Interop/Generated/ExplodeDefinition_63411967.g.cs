@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExplodeDefinition
+public sealed unsafe partial class ExplodeDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -179,5 +179,19 @@ public sealed unsafe partial class ExplodeDefinition
     public void uninitialize(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
         NativeMethods.TablePtr->C1.hs_method_72175463((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_63411967((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -87,6 +87,7 @@ public sealed unsafe partial class BiomeInit : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_955f629e((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

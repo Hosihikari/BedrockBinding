@@ -335,6 +335,7 @@ public sealed unsafe partial class RaidGardenGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_cf9c1cb5((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

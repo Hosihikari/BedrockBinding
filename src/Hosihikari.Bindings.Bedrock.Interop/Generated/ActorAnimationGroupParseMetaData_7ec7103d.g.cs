@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorAnimationGroupParseMetaData
+public sealed unsafe partial class ActorAnimationGroupParseMetaData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class ActorAnimationGroupParseMetaData
     {
         get => NativeMethods.TablePtr->C0.hs_get_1ce04d7b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_1ce04d7b((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_7ec7103d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelSoundManager_Nested;
 
-public sealed unsafe partial class QueuedSoundBroadcastPacket
+public sealed unsafe partial class QueuedSoundBroadcastPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,6 +41,20 @@ public sealed unsafe partial class QueuedSoundBroadcastPacket
     // The native field type is not projected; this is the address of the field storage.
     public nint mPacket_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_80701e8a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_80701e8a((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_bd3edde7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

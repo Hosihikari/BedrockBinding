@@ -130,6 +130,7 @@ public sealed unsafe partial class ScriptSystem : global::System.IDisposable
     public nint waitTicksV1(nint factory, uint numberOfTicks) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Scripting::Promise<void, Scripting::Error>, Scripting::EngineError>' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

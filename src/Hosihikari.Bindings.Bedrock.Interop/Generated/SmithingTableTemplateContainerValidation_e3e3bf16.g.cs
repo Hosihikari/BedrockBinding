@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SmithingTableTemplateContainerValidation
+public sealed unsafe partial class SmithingTableTemplateContainerValidation : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,5 +56,19 @@ public sealed unsafe partial class SmithingTableTemplateContainerValidation
     public bool isItemAllowedInSlot(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, int arg1, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, int arg3, bool arg4)
     {
         return NativeMethods.TablePtr->C3.hs_method_3c2d253b((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, arg1, (void*)item.Handle, arg3, arg4) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_e3e3bf16((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

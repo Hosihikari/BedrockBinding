@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockEventCoordinator
+public sealed unsafe partial class BlockEventCoordinator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,6 +53,7 @@ public sealed unsafe partial class BlockEventCoordinator
         return NativeMethods.TablePtr->C0.hs_method_31fe02e3((void*)__hosihikari_shim_handle, (void*)@event);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEventsToProcess_Address
     {
@@ -93,5 +94,18 @@ public sealed unsafe partial class BlockEventCoordinator
     {
         get => NativeMethods.TablePtr->C0.hs_get_f073ac33((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C0.hs_set_f073ac33((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_15a1d02e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

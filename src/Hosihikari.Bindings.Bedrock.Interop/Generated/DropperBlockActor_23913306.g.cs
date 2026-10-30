@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DropperBlockActor
+public sealed unsafe partial class DropperBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -205,6 +205,7 @@ public sealed unsafe partial class DropperBlockActor
         return NativeMethods.TablePtr->C1.hs_method_795762f8((void*)__hosihikari_shim_handle, (void*)region.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLootTable_Address
     {
@@ -257,5 +258,18 @@ public sealed unsafe partial class DropperBlockActor
     {
         get => NativeMethods.TablePtr->C1.hs_get_9e0c45ff((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_9e0c45ff((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_23913306((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

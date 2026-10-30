@@ -154,6 +154,7 @@ public sealed unsafe partial class BaseAttributeMap : global::System.IDisposable
     public static void updateAttribute(nint attributeData, nint attributeRef, nint context) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'AttributeInstanceRef' is not a known bindable declaration.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

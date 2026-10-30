@@ -88,6 +88,7 @@ public sealed unsafe partial class ScriptButtonPushAfterEvent : global::System.I
         get => (nint)NativeMethods.TablePtr->C3.hs_get_b12ebd80((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

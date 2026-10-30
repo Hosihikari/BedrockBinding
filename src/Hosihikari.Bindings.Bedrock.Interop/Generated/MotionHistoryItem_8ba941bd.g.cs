@@ -172,6 +172,7 @@ public sealed unsafe partial class MotionHistoryItem : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.MotionHistoryItem((nint)NativeMethods.TablePtr->C2.hs_method_5d6bf809((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

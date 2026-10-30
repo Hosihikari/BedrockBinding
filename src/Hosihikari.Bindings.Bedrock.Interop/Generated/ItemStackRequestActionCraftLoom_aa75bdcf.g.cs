@@ -133,6 +133,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
         get => (nint)NativeMethods.TablePtr->C1.hs_get_ab70fa6f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

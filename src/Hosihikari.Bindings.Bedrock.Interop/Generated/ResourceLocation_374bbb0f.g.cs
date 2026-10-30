@@ -48,12 +48,12 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_dfef0501((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_dfef0501((void*)__hosihikari_shim_handle);
     }
 
     public static ResourceLocation Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_c4726a54();
+        var handle = NativeMethods.TablePtr->C3.hs_create_c4726a54();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -70,44 +70,43 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
     public static ResourceLocation Create(nint path, nint fileSystem) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.");
 
-    public string getFullPath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getFullPath()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_0d8dcc2a((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C3.hs_method_0d8dcc2a((void*)__hosihikari_shim_handle));
     }
 
     public int mFileSystem
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f391e1bb((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f391e1bb((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f391e1bb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f391e1bb((void*)__hosihikari_shim_handle, value);
     }
 
     public ulong mFullHash
     {
-        get => NativeMethods.TablePtr->C2.hs_get_14628109((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_14628109((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_14628109((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_14628109((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPath_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_adf17498((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_adf17498((void*)__hosihikari_shim_handle);
     }
 
     public ulong mPathHash
     {
-        get => NativeMethods.TablePtr->C2.hs_get_deab2ce1((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_deab2ce1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_deab2ce1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_deab2ce1((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation((nint)NativeMethods.TablePtr->C2.hs_method_01d36abc((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation((nint)NativeMethods.TablePtr->C3.hs_method_01d36abc((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void setRelativePath(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ path)
     {
-        NativeMethods.TablePtr->C2.hs_method_c60cb0b7((void*)__hosihikari_shim_handle, (void*)path.Handle);
+        NativeMethods.TablePtr->C3.hs_method_c60cb0b7((void*)__hosihikari_shim_handle, (void*)path.Handle);
     }
 
 
@@ -117,7 +116,7 @@ public sealed unsafe partial class ResourceLocation : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_374bbb0f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_374bbb0f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TradeTables
+public sealed unsafe partial class TradeTables : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -38,9 +38,9 @@ public sealed unsafe partial class TradeTables
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TradeTables::TradeTableLoadData' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
     public nint _parseAndStoreTradeTable(nint level, nint resourceLoader, nint tradeTablePath, bool usingUpcomingCreatorFeaturesExperiment, nint validator) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TradeTables::TradeTableLoadData' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TradeTable? fetchTable(string path)
     {
@@ -71,5 +71,19 @@ public sealed unsafe partial class TradeTables
     public void reload(global::Hosihikari.Bindings.Bedrock.Interop.Level level, bool usingUpcomingCreatorFeaturesExperiment, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing eventing)
     {
         NativeMethods.TablePtr->C3.hs_method_4094a254((void*)__hosihikari_shim_handle, (void*)level.Handle, usingUpcomingCreatorFeaturesExperiment, (void*)eventing.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_43a9599e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

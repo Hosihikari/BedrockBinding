@@ -40,7 +40,7 @@ public sealed unsafe partial class CoroutinePolicy : global::System.IDisposable
 
     public static CoroutinePolicy Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_248d3b17();
+        var handle = NativeMethods.TablePtr->C3.hs_create_248d3b17();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class CoroutinePolicy : global::System.IDisposable
 
     public static CoroutinePolicy Create(global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.CoroutinePolicy arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_ed7c104e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_ed7c104e((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class CoroutinePolicy : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2b34eb_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_722b1af7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_722b1af7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd19b34_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_b00b0508((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b00b0508((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.CoroutinePolicy operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.CoroutinePolicy arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.CoroutinePolicy((nint)NativeMethods.TablePtr->C2.hs_method_c7801106((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.CoroutinePolicy((nint)NativeMethods.TablePtr->C3.hs_method_c7801106((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class CoroutinePolicy : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_d7498179((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_d7498179((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

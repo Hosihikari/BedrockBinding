@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FrogSpawnBlockItem
+public sealed unsafe partial class FrogSpawnBlockItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -71,6 +71,7 @@ public sealed unsafe partial class FrogSpawnBlockItem
     {
         return NativeMethods.TablePtr->C1.hs_method_0b6df303((void*)__hosihikari_shim_handle) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -279,5 +280,18 @@ public sealed unsafe partial class FrogSpawnBlockItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_e36e7f7a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_e36e7f7a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_2301aaeb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest;
 
-public sealed unsafe partial class ScriptGameTestRegistrationBuilder
+public sealed unsafe partial class ScriptGameTestRegistrationBuilder : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -93,4 +93,18 @@ public sealed unsafe partial class ScriptGameTestRegistrationBuilder
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tag(nint tag) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestRegistrationBuilder>' requires --link-carrier or --virtual-dispatch.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_ad50197d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

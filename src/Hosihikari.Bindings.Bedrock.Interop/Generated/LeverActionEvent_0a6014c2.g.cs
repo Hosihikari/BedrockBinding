@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LeverActionEvent
+public sealed unsafe partial class LeverActionEvent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,24 +41,38 @@ public sealed unsafe partial class LeverActionEvent
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockSourceHandle_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6cc4719e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6cc4719e((void*)__hosihikari_shim_handle);
     }
 
     public bool mIsPowered
     {
-        get => NativeMethods.TablePtr->C1.hs_get_78b6c8d2((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_78b6c8d2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_78b6c8d2((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_78b6c8d2((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLeverBlockPos_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_dac95e54((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dac95e54((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlayerRef_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1ebe2a1a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1ebe2a1a((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_0a6014c2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

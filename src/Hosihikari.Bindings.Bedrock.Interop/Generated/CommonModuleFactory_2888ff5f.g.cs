@@ -98,6 +98,7 @@ public sealed unsafe partial class CommonModuleFactory : global::System.IDisposa
         }
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk13b033_Address
     {

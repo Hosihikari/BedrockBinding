@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FileArchiver_Nested;
 
-public sealed unsafe partial class WorldConverterExportSettings
+public sealed unsafe partial class WorldConverterExportSettings : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class WorldConverterExportSettings
     public nint mKeepPlayerData_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_99a4e830((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_91e23f16((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

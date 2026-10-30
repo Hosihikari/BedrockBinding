@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GlintItemComponent
+public sealed unsafe partial class GlintItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -62,9 +62,23 @@ public sealed unsafe partial class GlintItemComponent
         set => NativeMethods.TablePtr->C1.hs_set_501ac824((void*)__hosihikari_shim_handle, value);
     }
 
+
     public nint mOwner
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_6cb9b4e6((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_6cb9b4e6((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_c9724af1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

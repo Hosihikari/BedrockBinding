@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class KnockbackArmorUpdater
+public sealed unsafe partial class KnockbackArmorUpdater : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -50,5 +50,19 @@ public sealed unsafe partial class KnockbackArmorUpdater
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorEquippedArmorEvent actorEquippedArmorEvent)
     {
         return NativeMethods.TablePtr->C1.hs_method_ddb0d0e4((void*)__hosihikari_shim_handle, (void*)actorEquippedArmorEvent.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_fa2b8c77((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

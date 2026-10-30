@@ -44,7 +44,7 @@ public sealed unsafe partial class CompareLevelChunkQueuedSavingElement : global
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_0ff97914((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_0ff97914((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

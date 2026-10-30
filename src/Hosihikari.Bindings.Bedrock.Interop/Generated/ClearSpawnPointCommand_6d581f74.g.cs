@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ClearSpawnPointCommand
+public sealed unsafe partial class ClearSpawnPointCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,6 +59,7 @@ public sealed unsafe partial class ClearSpawnPointCommand
         NativeMethods.TablePtr->C0.hs_method_1b9eb5c2((void*)registry.Handle);
     }
 
+
     public int mCommandSymbol
     {
         get => NativeMethods.TablePtr->C0.hs_get_91d45de7((void*)__hosihikari_shim_handle);
@@ -86,5 +87,18 @@ public sealed unsafe partial class ClearSpawnPointCommand
     {
         get => NativeMethods.TablePtr->C0.hs_get_f4040e9f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_f4040e9f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6d581f74((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

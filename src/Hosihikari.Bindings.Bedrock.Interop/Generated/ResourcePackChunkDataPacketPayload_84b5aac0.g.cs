@@ -44,7 +44,7 @@ public sealed unsafe partial class ResourcePackChunkDataPacketPayload : global::
 
     public static ResourcePackChunkDataPacketPayload Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_61514efe();
+        var handle = NativeMethods.TablePtr->C3.hs_create_61514efe();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,27 +59,28 @@ public sealed unsafe partial class ResourcePackChunkDataPacketPayload : global::
 
     public ulong mByteOffset
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f006bda1((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f006bda1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f006bda1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f006bda1((void*)__hosihikari_shim_handle, value);
     }
 
     public int mChunkID
     {
-        get => NativeMethods.TablePtr->C2.hs_get_dfd686e2((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_dfd686e2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_dfd686e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_dfd686e2((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_5b2614b4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5b2614b4((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mResourceName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_86eb260a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_86eb260a((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {
@@ -87,7 +88,7 @@ public sealed unsafe partial class ResourcePackChunkDataPacketPayload : global::
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_84b5aac0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_84b5aac0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

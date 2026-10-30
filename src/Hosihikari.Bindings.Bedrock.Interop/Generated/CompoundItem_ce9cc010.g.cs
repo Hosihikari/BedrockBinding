@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CompoundItem
+public sealed unsafe partial class CompoundItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -98,13 +98,15 @@ public sealed unsafe partial class CompoundItem
         return new global::Hosihikari.Bindings.Bedrock.Interop.ResolvedItemIconInfo((nint)NativeMethods.TablePtr->C0.hs_method_83da0d50((void*)__hosihikari_shim_handle, (void*)item.Handle, newAnimationFrame, inInventoryPane));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'RecipeIngredient' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getIngredientForCompound(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'RecipeIngredient' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient getIngredientForCompound(byte type)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C0.hs_method_a373d37a(type));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getItemForCompound(nint type, int stackCount) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getItemForCompound(byte type, int stackCount)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C0.hs_method_9ee8f638(type, stackCount));
+    }
 
     public static bool isCompoundItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase instance)
     {
@@ -153,6 +155,7 @@ public sealed unsafe partial class CompoundItem
     {
         NativeMethods.TablePtr->C0.hs_method_d45e775e();
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -361,5 +364,18 @@ public sealed unsafe partial class CompoundItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_fd7c8e08((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_fd7c8e08((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_ce9cc010((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

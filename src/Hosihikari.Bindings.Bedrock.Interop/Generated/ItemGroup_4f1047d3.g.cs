@@ -61,6 +61,7 @@ public sealed unsafe partial class ItemGroup : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_a67cfe1f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

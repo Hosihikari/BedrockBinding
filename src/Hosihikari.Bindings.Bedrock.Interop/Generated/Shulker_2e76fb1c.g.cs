@@ -894,6 +894,7 @@ public sealed unsafe partial class Shulker : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_454f947e((void*)data.Handle, (void*)pos.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

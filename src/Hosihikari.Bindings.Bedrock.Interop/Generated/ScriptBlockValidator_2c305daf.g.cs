@@ -85,6 +85,7 @@ public sealed unsafe partial class ScriptBlockValidator : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockValidator((nint)NativeMethods.TablePtr->C3.hs_method_c68e40d9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

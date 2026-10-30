@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UnlockedRecipesPacketPayload
+public sealed unsafe partial class UnlockedRecipesPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,13 +40,27 @@ public sealed unsafe partial class UnlockedRecipesPacketPayload
 
     public uint mPacketType
     {
-        get => NativeMethods.TablePtr->C3.hs_get_0baab704((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_0baab704((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_0baab704((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_0baab704((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnlockedRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_b92d5ed1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b92d5ed1((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_613a9f19((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

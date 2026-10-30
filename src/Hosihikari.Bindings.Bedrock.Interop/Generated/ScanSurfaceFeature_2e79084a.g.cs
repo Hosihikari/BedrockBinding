@@ -40,33 +40,33 @@ public sealed unsafe partial class ScanSurfaceFeature : global::System.IDisposab
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C2.hs_get_7b8be2e4((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_7b8be2e4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_7b8be2e4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_7b8be2e4((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C2.hs_get_a82f213f((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_a82f213f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_a82f213f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_a82f213f((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_8df767b1((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_8df767b1((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureRef_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_3b52a668((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3b52a668((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_41d19081((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_41d19081((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
@@ -77,7 +77,7 @@ public sealed unsafe partial class ScanSurfaceFeature : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_2e79084a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_2e79084a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

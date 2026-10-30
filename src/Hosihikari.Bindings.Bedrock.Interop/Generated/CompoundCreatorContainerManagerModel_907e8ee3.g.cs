@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CompoundCreatorContainerManagerModel
+public sealed unsafe partial class CompoundCreatorContainerManagerModel : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -38,9 +38,10 @@ public sealed unsafe partial class CompoundCreatorContainerManagerModel
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __postInit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext __postInit()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C0.hs_method_fce2f05d((void*)__hosihikari_shim_handle));
+    }
 
     public void _broadcastChanges()
     {
@@ -75,9 +76,10 @@ public sealed unsafe partial class CompoundCreatorContainerManagerModel
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _postInit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerScreenContext' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C0.hs_method_2a89e90e((void*)__hosihikari_shim_handle));
+    }
 
     public void broadcastChanges()
     {
@@ -113,6 +115,7 @@ public sealed unsafe partial class CompoundCreatorContainerManagerModel
     {
         NativeMethods.TablePtr->C0.hs_method_6fb4adbd((void*)__hosihikari_shim_handle, slot, (void*)item.Handle, fromNetwork);
     }
+
 
     public sbyte mContainerId
     {
@@ -184,5 +187,18 @@ public sealed unsafe partial class CompoundCreatorContainerManagerModel
     public nint mScreenContext_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_4b154d83((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_907e8ee3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

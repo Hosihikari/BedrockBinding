@@ -40,12 +40,12 @@ public sealed unsafe partial class ZipFileRestrictions : global::System.IDisposa
 
     public nint _ctor()
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_8fe9059f((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_8fe9059f((void*)__hosihikari_shim_handle);
     }
 
     public static ZipFileRestrictions Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_177f69a4();
+        var handle = NativeMethods.TablePtr->C1.hs_create_177f69a4();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -76,7 +76,7 @@ public sealed unsafe partial class ZipFileRestrictions : global::System.IDisposa
                 __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
                 __hs_vectorOffset0 += __hs_length0;
             }
-            NativeMethods.TablePtr->C0.hs_method_6e3cd450((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(extensions?.Length ?? 0));
+            NativeMethods.TablePtr->C1.hs_method_6e3cd450((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(extensions?.Length ?? 0));
         }
     }
 
@@ -87,20 +87,21 @@ public sealed unsafe partial class ZipFileRestrictions : global::System.IDisposa
     // The native field type is not projected; this is the address of the field storage.
     public nint mForbiddenExtensions_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_e771360c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e771360c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mForbiddenFilenames_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_fbfaafa6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fbfaafa6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRestrictedExtensions_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_93d81aa1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_93d81aa1((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {
@@ -108,7 +109,7 @@ public sealed unsafe partial class ZipFileRestrictions : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_8e48a035((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_8e48a035((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -366,6 +366,7 @@ public sealed unsafe partial class ScriptGameTestHelper : global::System.IDispos
     public nint worldPosition(nint relativePos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<Vec3, gametest::GameTestError, gametest::GameTestCompletedError>' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

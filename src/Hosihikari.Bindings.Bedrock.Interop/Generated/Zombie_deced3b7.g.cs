@@ -799,6 +799,7 @@ public sealed unsafe partial class Zombie : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_b3ba46ae((void*)__hosihikari_shim_handle, method, (void*)@params.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -233,6 +233,7 @@ public sealed unsafe partial class TimerActorFlagBaseGoal : global::System.IDisp
         NativeMethods.TablePtr->C3.hs_method_d5fe2ec5((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

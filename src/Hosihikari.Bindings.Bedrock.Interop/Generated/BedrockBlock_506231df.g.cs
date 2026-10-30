@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BedrockBlock
+public sealed unsafe partial class BedrockBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,6 +51,7 @@ public sealed unsafe partial class BedrockBlock
     {
         return NativeMethods.TablePtr->C0.hs_method_af7d37e9((void*)__hosihikari_shim_handle, arg0) != 0;
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address
@@ -271,5 +272,18 @@ public sealed unsafe partial class BedrockBlock
     public nint mVisualShape_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_bc1caa88((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_506231df((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

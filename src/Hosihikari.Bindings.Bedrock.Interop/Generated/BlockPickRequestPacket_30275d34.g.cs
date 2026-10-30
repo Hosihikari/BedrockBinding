@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockPickRequestPacket
+public sealed unsafe partial class BlockPickRequestPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class BlockPickRequestPacket
         NativeMethods.TablePtr->C0.hs_method_b7415849((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public byte mMaxSlots
     {
         get => NativeMethods.TablePtr->C0.hs_get_0202c8b6((void*)__hosihikari_shim_handle);
@@ -243,5 +244,18 @@ public sealed unsafe partial class BlockPickRequestPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_45648d7c((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_45648d7c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_30275d34((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

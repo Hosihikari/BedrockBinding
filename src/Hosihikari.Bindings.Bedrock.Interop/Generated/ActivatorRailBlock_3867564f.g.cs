@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActivatorRailBlock
+public sealed unsafe partial class ActivatorRailBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -61,6 +61,7 @@ public sealed unsafe partial class ActivatorRailBlock
     {
         return NativeMethods.TablePtr->C0.hs_method_15515fdc((void*)__hosihikari_shim_handle, (void*)block.Handle);
     }
+
 
     public bool mUsesDataBit
     {
@@ -286,5 +287,18 @@ public sealed unsafe partial class ActivatorRailBlock
     public nint mVisualShape_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_c3827a0d((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_3867564f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

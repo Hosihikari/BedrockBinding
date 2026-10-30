@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetHudPacket
+public sealed unsafe partial class SetHudPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class SetHudPacket
         NativeMethods.TablePtr->C3.hs_method_cdbeda29((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mHudElement_Address
     {
@@ -237,5 +238,18 @@ public sealed unsafe partial class SetHudPacket
     {
         get => NativeMethods.TablePtr->C3.hs_get_a8f3eb24((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_a8f3eb24((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_558bf72c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -209,6 +209,7 @@ public sealed unsafe partial class ComplexAliasDescriptor : global::System.IDisp
     public nint toMap() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

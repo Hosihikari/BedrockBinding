@@ -151,6 +151,7 @@ public sealed unsafe partial class SquidMoveAwayFromGroundGoal : global::System.
         NativeMethods.TablePtr->C3.hs_method_cd492271((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

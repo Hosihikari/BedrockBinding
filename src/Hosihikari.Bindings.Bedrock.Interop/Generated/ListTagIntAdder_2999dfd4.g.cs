@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ListTagIntAdder
+public sealed unsafe partial class ListTagIntAdder : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,5 +47,19 @@ public sealed unsafe partial class ListTagIntAdder
     public global::Hosihikari.Bindings.Bedrock.Interop.ListTagIntAdder operator_call(int i)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ListTagIntAdder((nint)NativeMethods.TablePtr->C2.hs_method_58b90e59((void*)__hosihikari_shim_handle, i), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_2999dfd4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

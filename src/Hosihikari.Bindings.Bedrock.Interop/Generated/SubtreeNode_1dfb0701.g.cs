@@ -131,6 +131,7 @@ public sealed unsafe partial class SubtreeNode : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_68a818b1((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

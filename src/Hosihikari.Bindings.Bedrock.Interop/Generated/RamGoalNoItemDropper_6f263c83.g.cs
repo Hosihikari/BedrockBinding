@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RamAttackGoalUtils;
 
-public sealed unsafe partial class RamGoalNoItemDropper
+public sealed unsafe partial class RamGoalNoItemDropper : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class RamGoalNoItemDropper
     public void tryDropHorn(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 dropPos)
     {
         NativeMethods.TablePtr->C2.hs_method_5ca3cc33((void*)__hosihikari_shim_handle, (void*)dropPos.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_6f263c83((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

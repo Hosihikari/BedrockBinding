@@ -453,6 +453,7 @@ public sealed unsafe partial class DoublePlantBaseBlock : global::System.IDispos
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

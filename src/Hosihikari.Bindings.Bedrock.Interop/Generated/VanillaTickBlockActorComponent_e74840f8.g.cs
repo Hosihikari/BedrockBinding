@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelChunkBlockActorStorage_Nested;
 
-public sealed unsafe partial class VanillaTickBlockActorComponent
+public sealed unsafe partial class VanillaTickBlockActorComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,26 @@ public sealed unsafe partial class VanillaTickBlockActorComponent
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkBlockPos_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_802a9203((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_802a9203((void*)__hosihikari_shim_handle);
     }
 
     public nint mComponent
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_916ffe57((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_916ffe57((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_916ffe57((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_916ffe57((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e74840f8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

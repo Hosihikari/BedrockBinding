@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class JigsawSectionData
+public sealed unsafe partial class JigsawSectionData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -83,5 +83,19 @@ public sealed unsafe partial class JigsawSectionData
     public ulong push(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement? element, int depth)
     {
         return NativeMethods.TablePtr->C4.hs_method_e8b6ef8d((void*)__hosihikari_shim_handle, (void*)(element?.Handle ?? 0), depth);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_3a310b0d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

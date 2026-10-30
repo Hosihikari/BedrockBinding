@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelChunkBuilderData_Nested;
 
-public sealed unsafe partial class ChunkReadyForProcessingElement
+public sealed unsafe partial class ChunkReadyForProcessingElement : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,26 @@ public sealed unsafe partial class ChunkReadyForProcessingElement
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkPosAndExpectedState_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0963eaf2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0963eaf2((void*)__hosihikari_shim_handle);
     }
 
     public int mPriority
     {
-        get => NativeMethods.TablePtr->C1.hs_get_77fbfd2a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_77fbfd2a((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_77fbfd2a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_77fbfd2a((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ae5a6e9b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

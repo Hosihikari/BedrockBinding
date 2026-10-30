@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CodeBuilderActorInfoCommand
+public sealed unsafe partial class CodeBuilderActorInfoCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -65,6 +65,7 @@ public sealed unsafe partial class CodeBuilderActorInfoCommand
         NativeMethods.TablePtr->C0.hs_method_6de1006a((void*)registry.Handle);
     }
 
+
     public int mCommandSymbol
     {
         get => NativeMethods.TablePtr->C0.hs_get_a61d6cc1((void*)__hosihikari_shim_handle);
@@ -92,5 +93,18 @@ public sealed unsafe partial class CodeBuilderActorInfoCommand
     {
         get => NativeMethods.TablePtr->C0.hs_get_1cb47a86((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_1cb47a86((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d8836ef8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -625,6 +625,7 @@ public sealed unsafe partial class IllagerBeast : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_8d6d6b34((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)blocker.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_dad9120f((void*)__hosihikari_shim_handle);

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StringByteOutput
+public sealed unsafe partial class StringByteOutput : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -73,5 +73,19 @@ public sealed unsafe partial class StringByteOutput
     public void writeBytes(nint data, ulong bytes)
     {
         NativeMethods.TablePtr->C3.hs_method_1a6b782c((void*)__hosihikari_shim_handle, (void*)data, bytes);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_ae451fd5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

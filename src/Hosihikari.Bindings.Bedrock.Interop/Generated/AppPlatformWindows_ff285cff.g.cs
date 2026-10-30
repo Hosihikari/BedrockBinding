@@ -44,34 +44,29 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C0.hs_get_e7653b78((void*)__hosihikari_shim_handle);
     }
 
-    public string __getCurrentStoragePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ __getCurrentStoragePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_493fe7c5((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_493fe7c5((void*)__hosihikari_shim_handle));
     }
 
-    public string __getExternalStoragePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ __getExternalStoragePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_362fff0d((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_362fff0d((void*)__hosihikari_shim_handle));
     }
 
-    public string __getInternalStoragePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ __getInternalStoragePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_9353bc82((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_9353bc82((void*)__hosihikari_shim_handle));
     }
 
-    public string __getSharedDataPath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ __getSharedDataPath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_7f16267a((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_7f16267a((void*)__hosihikari_shim_handle));
     }
 
-    public string __getUserdataPath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ __getUserdataPath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_e9896d48((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_e9896d48((void*)__hosihikari_shim_handle));
     }
 
     public bool _allowContentLogWriteToDisk()
@@ -89,10 +84,9 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_41fa7642((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public string _copyImportFileToTempFolder(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filePath)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _copyImportFileToTempFolder(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filePath)
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_37e7c106((void*)__hosihikari_shim_handle, (void*)filePath.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_37e7c106((void*)__hosihikari_shim_handle, (void*)filePath.Handle));
     }
 
     public bool _devHotReloadRenderResources()
@@ -109,10 +103,9 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
     public nint _getMainThreadQueue() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public string _getPackagedShaderCachePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getPackagedShaderCachePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_bc2c204c((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_bc2c204c((void*)__hosihikari_shim_handle));
     }
 
     public bool _getPlatformTTSEnabled()
@@ -125,10 +118,9 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_2a519267((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public string _getPlatformTempPath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getPlatformTempPath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_8504c8bc((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_8504c8bc((void*)__hosihikari_shim_handle));
     }
 
     public ulong _getTotalHardwareThreadsCount()
@@ -217,34 +209,29 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_6b79765c((void*)__hosihikari_shim_handle);
     }
 
-    public string _getCurrentStoragePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getCurrentStoragePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_48727416((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_48727416((void*)__hosihikari_shim_handle));
     }
 
-    public string _getExternalStoragePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getExternalStoragePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_fedb752d((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_fedb752d((void*)__hosihikari_shim_handle));
     }
 
-    public string _getInternalStoragePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getInternalStoragePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_bad2937d((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_bad2937d((void*)__hosihikari_shim_handle));
     }
 
-    public string _getSharedDataPath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getSharedDataPath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_655e8dc3((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_655e8dc3((void*)__hosihikari_shim_handle));
     }
 
-    public string _getUserdataPath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getUserdataPath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_13f72314((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_13f72314((void*)__hosihikari_shim_handle));
     }
 
     public bool allowContentLogWriteToDisk()
@@ -262,10 +249,9 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_cf381e5e((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public string copyImportFileToTempFolder(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filePath)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ copyImportFileToTempFolder(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path filePath)
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_5c2e1094((void*)__hosihikari_shim_handle, (void*)filePath.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_5c2e1094((void*)__hosihikari_shim_handle, (void*)filePath.Handle));
     }
 
     public bool devHotReloadRenderResources()
@@ -282,10 +268,9 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
     public nint getMainThreadQueue() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public string getPackagedShaderCachePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getPackagedShaderCachePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_76ac8fca((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_76ac8fca((void*)__hosihikari_shim_handle));
     }
 
     public bool getPlatformTTSEnabled()
@@ -298,10 +283,9 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_63ff1805((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public string getPlatformTempPath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getPlatformTempPath()
     {
-        var __hs_view = NativeMethods.TablePtr->C0.hs_method_826b6d5c((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_826b6d5c((void*)__hosihikari_shim_handle));
     }
 
     public ulong getTotalHardwareThreadsCount()
@@ -395,6 +379,7 @@ public sealed unsafe partial class AppPlatformWindows : global::System.IDisposab
             NativeMethods.TablePtr->C0.hs_method_df5516de((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(activeExperiments?.Length ?? 0));
         }
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address

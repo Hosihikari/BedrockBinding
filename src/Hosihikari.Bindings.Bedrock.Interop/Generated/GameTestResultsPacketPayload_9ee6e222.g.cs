@@ -139,6 +139,7 @@ public sealed unsafe partial class GameTestResultsPacketPayload : global::System
         get => (nint)NativeMethods.TablePtr->C1.hs_get_3c488760((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

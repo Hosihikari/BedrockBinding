@@ -131,6 +131,7 @@ public sealed unsafe partial class ArmorTrimIconGenerationInfo : global::System.
         get => (nint)NativeMethods.TablePtr->C0.hs_get_fdc87f24((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

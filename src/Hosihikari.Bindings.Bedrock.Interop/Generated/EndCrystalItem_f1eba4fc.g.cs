@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EndCrystalItem
+public sealed unsafe partial class EndCrystalItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -71,6 +71,7 @@ public sealed unsafe partial class EndCrystalItem
     {
         return NativeMethods.TablePtr->C1.hs_method_3109c744((void*)__hosihikari_shim_handle, (void*)stack.Handle) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -279,5 +280,18 @@ public sealed unsafe partial class EndCrystalItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_fd80d9c2((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_fd80d9c2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_f1eba4fc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

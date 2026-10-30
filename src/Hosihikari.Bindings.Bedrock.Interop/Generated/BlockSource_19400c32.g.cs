@@ -73,13 +73,14 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_72de506b((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)blockPos.Handle, face, (void*)item.Handle, generateParticle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _clip(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult _clip(global::Hosihikari.Bindings.Bedrock.Interop.ClipParameters parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->C0.hs_method_d8f1c842((void*)__hosihikari_shim_handle, (void*)parameters.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint _clip(nint A, nint B, bool checkAgainstLiquid, nint shapeType, int maxDistance, bool ignoreBorderBlocks, bool fullOnly, nint actor, nint shouldCheckBlock, bool stopOnFirstLiquidHit) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool _containsAnyLiquid(global::Hosihikari.Bindings.Bedrock.Interop.AABB box)
     {
@@ -524,13 +525,14 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_b800f61a((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)blockPos.Handle, face, (void*)item.Handle, generateParticle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint clip(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult clip(global::Hosihikari.Bindings.Bedrock.Interop.ClipParameters parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->C0.hs_method_8a2519bf((void*)__hosihikari_shim_handle, (void*)parameters.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint clip(nint A, nint B, bool checkAgainstLiquid, nint shapeType, int maxDistance, bool ignoreBorderBlocks, bool fullOnly, nint actor, nint shouldCheckBlock, bool stopOnFirstLiquidHit) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public bool containsAnyBlockOfType(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos min, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos max, global::Hosihikari.Bindings.Bedrock.Interop.Block type)
     {
@@ -745,9 +747,10 @@ public sealed unsafe partial class BlockSource : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_828509b7((void*)__hosihikari_shim_handle, (void*)pos.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BrightnessPair' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBrightnessPair(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BrightnessPair' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BrightnessPair getBrightnessPair(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BrightnessPair((nint)NativeMethods.TablePtr->C0.hs_method_6c48bbb7((void*)__hosihikari_shim_handle, (void*)pos.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk? getChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos)
     {

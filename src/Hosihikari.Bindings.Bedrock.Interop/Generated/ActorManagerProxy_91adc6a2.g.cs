@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorManagerProxy
+public sealed unsafe partial class ActorManagerProxy : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -46,5 +46,19 @@ public sealed unsafe partial class ActorManagerProxy
     public void removeActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C0.hs_method_adfecb0e((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_91adc6a2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

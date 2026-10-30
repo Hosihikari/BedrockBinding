@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CloseWebSocketCommand
+public sealed unsafe partial class CloseWebSocketCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -57,6 +57,7 @@ public sealed unsafe partial class CloseWebSocketCommand
         NativeMethods.TablePtr->C0.hs_method_a87f7506((void*)registry.Handle, (void*)app.Handle);
     }
 
+
     public int mCommandSymbol
     {
         get => NativeMethods.TablePtr->C0.hs_get_3ad11c5c((void*)__hosihikari_shim_handle);
@@ -84,5 +85,18 @@ public sealed unsafe partial class CloseWebSocketCommand
     {
         get => NativeMethods.TablePtr->C0.hs_get_ae6d3c42((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_ae6d3c42((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_5033a7a0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

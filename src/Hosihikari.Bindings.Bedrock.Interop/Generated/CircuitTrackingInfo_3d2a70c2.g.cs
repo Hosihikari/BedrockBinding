@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CircuitTrackingInfo
+public sealed unsafe partial class CircuitTrackingInfo : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -78,5 +78,19 @@ public sealed unsafe partial class CircuitTrackingInfo
     public nint mPower_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_2ea7b4fe((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_3d2a70c2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

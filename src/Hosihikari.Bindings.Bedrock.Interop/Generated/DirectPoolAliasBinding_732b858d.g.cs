@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PoolAliasBindingInternal;
 
-public sealed unsafe partial class DirectPoolAliasBinding
+public sealed unsafe partial class DirectPoolAliasBinding : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -70,5 +70,19 @@ public sealed unsafe partial class DirectPoolAliasBinding
     public nint mTarget_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_570e85a2((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_732b858d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -89,6 +89,7 @@ public sealed unsafe partial class NativeFunctionGameTestAction : global::System
     public nint run() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -40,77 +40,77 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
 
     public void _addBiomeTintedParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString effect, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color? overrideColor)
     {
-        NativeMethods.TablePtr->C1.hs_method_2b73b72a((void*)__hosihikari_shim_handle, (void*)effect.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(overrideColor?.Handle ?? 0), overrideColor is not null);
+        NativeMethods.TablePtr->C2.hs_method_2b73b72a((void*)__hosihikari_shim_handle, (void*)effect.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(overrideColor?.Handle ?? 0), overrideColor is not null);
     }
 
     public void _addBreakingItemParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, nint data, global::Hosihikari.Bindings.Bedrock.Interop.ResolvedItemIconInfo textureInfo)
     {
-        NativeMethods.TablePtr->C1.hs_method_88bfb459((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)data, (void*)textureInfo.Handle);
+        NativeMethods.TablePtr->C2.hs_method_88bfb459((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)data, (void*)textureInfo.Handle);
     }
 
     public void _addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap arg4)
     {
-        NativeMethods.TablePtr->C1.hs_method_3e6fec60((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
+        NativeMethods.TablePtr->C2.hs_method_3e6fec60((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
     }
 
     public void _addTerrainParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition, float particleCount, float velocityScalar, float emitterRadius)
     {
-        NativeMethods.TablePtr->C1.hs_method_3930a7cc((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, particleCount, velocityScalar, emitterRadius);
+        NativeMethods.TablePtr->C2.hs_method_3930a7cc((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, particleCount, velocityScalar, emitterRadius);
     }
 
     public void _addTerrainSlideEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition, float particleCount, float velocityScalar, float emitterRadius)
     {
-        NativeMethods.TablePtr->C1.hs_method_7974a630((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, particleCount, velocityScalar, emitterRadius);
+        NativeMethods.TablePtr->C2.hs_method_7974a630((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, particleCount, velocityScalar, emitterRadius);
     }
 
     public void _allChanged()
     {
-        NativeMethods.TablePtr->C1.hs_method_b9b514d6((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_b9b514d6((void*)__hosihikari_shim_handle);
     }
 
     public void _levelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag data)
     {
-        NativeMethods.TablePtr->C1.hs_method_dd240d31((void*)__hosihikari_shim_handle, type, (void*)data.Handle);
+        NativeMethods.TablePtr->C2.hs_method_dd240d31((void*)__hosihikari_shim_handle, type, (void*)data.Handle);
     }
 
     public void _levelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data)
     {
-        NativeMethods.TablePtr->C1.hs_method_aef80efd((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data);
+        NativeMethods.TablePtr->C2.hs_method_aef80efd((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data);
     }
 
     public void _onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
     {
-        NativeMethods.TablePtr->C1.hs_method_75f271f0((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
+        NativeMethods.TablePtr->C2.hs_method_75f271f0((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
     }
 
     public void _onChunkReloaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
     {
-        NativeMethods.TablePtr->C1.hs_method_c7f8911e((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c7f8911e((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void _onChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
     {
-        NativeMethods.TablePtr->C1.hs_method_945d4495((void*)__hosihikari_shim_handle, (void*)lc.Handle);
+        NativeMethods.TablePtr->C2.hs_method_945d4495((void*)__hosihikari_shim_handle, (void*)lc.Handle);
     }
 
     public void _onEntityAdded(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        NativeMethods.TablePtr->C1.hs_method_561630d7((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_561630d7((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void _onEntityRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity)
     {
-        NativeMethods.TablePtr->C1.hs_method_31da3a1c((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+        NativeMethods.TablePtr->C2.hs_method_31da3a1c((void*)__hosihikari_shim_handle, (void*)entity.Handle);
     }
 
     public void _onLevelDataCommandsChanged(bool commandsEnabeld)
     {
-        NativeMethods.TablePtr->C1.hs_method_05095668((void*)__hosihikari_shim_handle, commandsEnabeld);
+        NativeMethods.TablePtr->C2.hs_method_05095668((void*)__hosihikari_shim_handle, commandsEnabeld);
     }
 
     public void _onLevelDataWorldTemplateOptionsUnlocked()
     {
-        NativeMethods.TablePtr->C1.hs_method_babce8f9((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_babce8f9((void*)__hosihikari_shim_handle);
     }
 
     public void _onLevelDestruction(string levelId)
@@ -128,13 +128,13 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_04f3b986((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_04f3b986((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void _onSubChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, short absoluteSubChunkIndex, bool subChunkVisibilityChanged)
     {
-        NativeMethods.TablePtr->C1.hs_method_9b01bb5b((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle, absoluteSubChunkIndex, subChunkVisibilityChanged);
+        NativeMethods.TablePtr->C2.hs_method_9b01bb5b((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle, absoluteSubChunkIndex, subChunkVisibilityChanged);
     }
 
     public void _playMusic(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, float arg3)
@@ -152,7 +152,7 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_09e29186((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, arg3);
+            NativeMethods.TablePtr->C2.hs_method_09e29186((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, arg3);
         }
     }
 
@@ -171,18 +171,18 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_976f3eeb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
+            NativeMethods.TablePtr->C2.hs_method_976f3eeb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
         }
     }
 
     public void _playerListChanged()
     {
-        NativeMethods.TablePtr->C1.hs_method_25e411fd((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_25e411fd((void*)__hosihikari_shim_handle);
     }
 
     public void _sendServerLegacyParticle(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3)
     {
-        NativeMethods.TablePtr->C1.hs_method_1d429cb6((void*)__hosihikari_shim_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
+        NativeMethods.TablePtr->C2.hs_method_1d429cb6((void*)__hosihikari_shim_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -195,77 +195,77 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
 
     public void addBiomeTintedParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString effect, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color? overrideColor)
     {
-        NativeMethods.TablePtr->C1.hs_method_93462eff((void*)__hosihikari_shim_handle, (void*)effect.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(overrideColor?.Handle ?? 0), overrideColor is not null);
+        NativeMethods.TablePtr->C2.hs_method_93462eff((void*)__hosihikari_shim_handle, (void*)effect.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(overrideColor?.Handle ?? 0), overrideColor is not null);
     }
 
     public void addBreakingItemParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, nint data, global::Hosihikari.Bindings.Bedrock.Interop.ResolvedItemIconInfo textureInfo)
     {
-        NativeMethods.TablePtr->C1.hs_method_c138c394((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)data, (void*)textureInfo.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c138c394((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)data, (void*)textureInfo.Handle);
     }
 
     public void addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg0, global::Hosihikari.Bindings.Bedrock.Interop.Actor arg1, global::Hosihikari.Bindings.Bedrock.Interop.HashedString arg2, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg3, global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap arg4)
     {
-        NativeMethods.TablePtr->C1.hs_method_03d38081((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
+        NativeMethods.TablePtr->C2.hs_method_03d38081((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)arg3.Handle, (void*)arg4.Handle);
     }
 
     public void addTerrainParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition, float particleCount, float velocityScalar, float emitterRadius)
     {
-        NativeMethods.TablePtr->C1.hs_method_8c09f62a((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, particleCount, velocityScalar, emitterRadius);
+        NativeMethods.TablePtr->C2.hs_method_8c09f62a((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, particleCount, velocityScalar, emitterRadius);
     }
 
     public void addTerrainSlideEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition, float particleCount, float velocityScalar, float emitterRadius)
     {
-        NativeMethods.TablePtr->C1.hs_method_51e0c828((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, particleCount, velocityScalar, emitterRadius);
+        NativeMethods.TablePtr->C2.hs_method_51e0c828((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, particleCount, velocityScalar, emitterRadius);
     }
 
     public void allChanged()
     {
-        NativeMethods.TablePtr->C1.hs_method_b177f799((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_b177f799((void*)__hosihikari_shim_handle);
     }
 
     public void levelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag data)
     {
-        NativeMethods.TablePtr->C1.hs_method_21f1af27((void*)__hosihikari_shim_handle, type, (void*)data.Handle);
+        NativeMethods.TablePtr->C2.hs_method_21f1af27((void*)__hosihikari_shim_handle, type, (void*)data.Handle);
     }
 
     public void levelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data)
     {
-        NativeMethods.TablePtr->C1.hs_method_8b4a2627((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data);
+        NativeMethods.TablePtr->C2.hs_method_8b4a2627((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data);
     }
 
     public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
     {
-        NativeMethods.TablePtr->C1.hs_method_1b2ddd5a((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
+        NativeMethods.TablePtr->C2.hs_method_1b2ddd5a((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
     }
 
     public void onChunkReloaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk arg1)
     {
-        NativeMethods.TablePtr->C1.hs_method_b5b1f7d2((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        NativeMethods.TablePtr->C2.hs_method_b5b1f7d2((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);
     }
 
     public void onChunkUnloaded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
     {
-        NativeMethods.TablePtr->C1.hs_method_4312cbd6((void*)__hosihikari_shim_handle, (void*)lc.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4312cbd6((void*)__hosihikari_shim_handle, (void*)lc.Handle);
     }
 
     public void onEntityAdded(global::Hosihikari.Bindings.Bedrock.Interop.Actor arg0)
     {
-        NativeMethods.TablePtr->C1.hs_method_c2f8174d((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c2f8174d((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void onEntityRemoved(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity)
     {
-        NativeMethods.TablePtr->C1.hs_method_52986e22((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+        NativeMethods.TablePtr->C2.hs_method_52986e22((void*)__hosihikari_shim_handle, (void*)entity.Handle);
     }
 
     public void onLevelDataCommandsChanged(bool commandsEnabeld)
     {
-        NativeMethods.TablePtr->C1.hs_method_11b7a39c((void*)__hosihikari_shim_handle, commandsEnabeld);
+        NativeMethods.TablePtr->C2.hs_method_11b7a39c((void*)__hosihikari_shim_handle, commandsEnabeld);
     }
 
     public void onLevelDataWorldTemplateOptionsUnlocked()
     {
-        NativeMethods.TablePtr->C1.hs_method_328a48f8((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_328a48f8((void*)__hosihikari_shim_handle);
     }
 
     public void onLevelDestruction(string levelId)
@@ -283,13 +283,13 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_1b272f6e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_1b272f6e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void onSubChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, short absoluteSubChunkIndex, bool subChunkVisibilityChanged)
     {
-        NativeMethods.TablePtr->C1.hs_method_4dd63b79((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle, absoluteSubChunkIndex, subChunkVisibilityChanged);
+        NativeMethods.TablePtr->C2.hs_method_4dd63b79((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle, absoluteSubChunkIndex, subChunkVisibilityChanged);
     }
 
     public void playMusic(string arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, float arg2, float arg3)
@@ -307,7 +307,7 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_77373f7c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, arg3);
+            NativeMethods.TablePtr->C2.hs_method_77373f7c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)arg1.Handle, arg2, arg3);
         }
     }
 
@@ -326,18 +326,18 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_cb69f448((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
+            NativeMethods.TablePtr->C2.hs_method_cb69f448((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, arg1, arg2, arg3);
         }
     }
 
     public void playerListChanged()
     {
-        NativeMethods.TablePtr->C1.hs_method_0d44942d((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_0d44942d((void*)__hosihikari_shim_handle);
     }
 
     public void sendServerLegacyParticle(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg1, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 arg2, int arg3)
     {
-        NativeMethods.TablePtr->C1.hs_method_1c227853((void*)__hosihikari_shim_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
+        NativeMethods.TablePtr->C2.hs_method_1c227853((void*)__hosihikari_shim_handle, arg0, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -351,7 +351,7 @@ public sealed unsafe partial class LevelListener : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_064288fe((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_064288fe((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

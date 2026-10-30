@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelStorageWriteBatch_Nested;
 
-public sealed unsafe partial class PerfContext
+public sealed unsafe partial class PerfContext : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,23 +41,37 @@ public sealed unsafe partial class PerfContext
     // The native field type is not projected; this is the address of the field storage.
     public nint mKey_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b4b40162((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b4b40162((void*)__hosihikari_shim_handle);
     }
 
     public ulong mOperation
     {
-        get => NativeMethods.TablePtr->C1.hs_get_ae92918b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_ae92918b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ae92918b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ae92918b((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mReason
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b8dfd44e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b8dfd44e((void*)__hosihikari_shim_handle);
     }
 
     public ulong mSize
     {
-        get => NativeMethods.TablePtr->C1.hs_get_45f533fc((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_45f533fc((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_45f533fc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_45f533fc((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b1cd12cd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

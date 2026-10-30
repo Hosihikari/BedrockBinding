@@ -38,9 +38,9 @@ public sealed unsafe partial class CerealSchemaDeprecate : global::System.IDispo
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint deprecateVersion, nint schemaKey, nint jsonMemberName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool _previousSchema(nint arg0)
     {
@@ -67,9 +67,9 @@ public sealed unsafe partial class CerealSchemaDeprecate : global::System.IDispo
         return new CerealSchemaDeprecate((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static CerealSchemaDeprecate Create(nint deprecateVersion, nint schemaKey, nint jsonMemberName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public static CerealSchemaDeprecate Create(global::Hosihikari.Bindings.Bedrock.Interop.CerealSchemaDeprecate arg0)
     {
@@ -102,6 +102,7 @@ public sealed unsafe partial class CerealSchemaDeprecate : global::System.IDispo
     {
         NativeMethods.TablePtr->C0.hs_method_f829485e((void*)__hosihikari_shim_handle, (void*)document, (void*)documentOriginalVersion.Handle);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk40e0d7_Address

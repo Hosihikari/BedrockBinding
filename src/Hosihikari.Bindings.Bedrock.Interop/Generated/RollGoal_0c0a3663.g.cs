@@ -41,19 +41,19 @@ public sealed unsafe partial class RollGoal : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_5e155a56((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5e155a56((void*)__hosihikari_shim_handle);
     }
 
     public int mRequiredControlFlags
     {
-        get => NativeMethods.TablePtr->C2.hs_get_bc93e2bc((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_bc93e2bc((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_bc93e2bc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_bc93e2bc((void*)__hosihikari_shim_handle, value);
     }
 
     public ushort mTypeId
     {
-        get => NativeMethods.TablePtr->C2.hs_get_ed9d3f59((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_ed9d3f59((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ed9d3f59((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ed9d3f59((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -62,32 +62,32 @@ public sealed unsafe partial class RollGoal : global::System.IDisposable
 
     public bool _canBeInterrupted()
     {
-        return NativeMethods.TablePtr->C2.hs_method_f2b059ae((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_f2b059ae((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _canContinueToUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_4d422bb8((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_4d422bb8((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _canUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_2137639f((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_2137639f((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void _start()
     {
-        NativeMethods.TablePtr->C2.hs_method_1e0cb2ab((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_1e0cb2ab((void*)__hosihikari_shim_handle);
     }
 
     public void _stop()
     {
-        NativeMethods.TablePtr->C2.hs_method_48e73be9((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_48e73be9((void*)__hosihikari_shim_handle);
     }
 
     public void _tick()
     {
-        NativeMethods.TablePtr->C2.hs_method_c08c373f((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_c08c373f((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -96,7 +96,7 @@ public sealed unsafe partial class RollGoal : global::System.IDisposable
 
     public static RollGoal Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_e9cf396f();
+        var handle = NativeMethods.TablePtr->C3.hs_create_e9cf396f();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -107,7 +107,7 @@ public sealed unsafe partial class RollGoal : global::System.IDisposable
 
     public static RollGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.RollGoal arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_6bc0fa59((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_6bc0fa59((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -118,7 +118,7 @@ public sealed unsafe partial class RollGoal : global::System.IDisposable
 
     public void _handleRoll(int rollCounter, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 positionDelta, nint rollX, nint rollZ)
     {
-        NativeMethods.TablePtr->C2.hs_method_ebc03a93((void*)__hosihikari_shim_handle, rollCounter, (void*)positionDelta.Handle, (void*)rollX, (void*)rollZ);
+        NativeMethods.TablePtr->C3.hs_method_ebc03a93((void*)__hosihikari_shim_handle, rollCounter, (void*)positionDelta.Handle, (void*)rollX, (void*)rollZ);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -127,62 +127,63 @@ public sealed unsafe partial class RollGoal : global::System.IDisposable
 
     public bool canBeInterrupted()
     {
-        return NativeMethods.TablePtr->C2.hs_method_fa6f4d4c((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_fa6f4d4c((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool canContinueToUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_947be41b((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_947be41b((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool canUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_9ac1a2d6((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_9ac1a2d6((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMob_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2f2cd84d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2f2cd84d((void*)__hosihikari_shim_handle);
     }
 
     public float mProbability
     {
-        get => NativeMethods.TablePtr->C2.hs_get_3785a80b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_3785a80b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_3785a80b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_3785a80b((void*)__hosihikari_shim_handle, value);
     }
 
     public float mRollXd
     {
-        get => NativeMethods.TablePtr->C2.hs_get_38ed08c3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_38ed08c3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_38ed08c3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_38ed08c3((void*)__hosihikari_shim_handle, value);
     }
 
     public float mRollZd
     {
-        get => NativeMethods.TablePtr->C2.hs_get_bda50508((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_bda50508((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_bda50508((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_bda50508((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RollGoal operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RollGoal arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RollGoal((nint)NativeMethods.TablePtr->C2.hs_method_35fa8148((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RollGoal((nint)NativeMethods.TablePtr->C3.hs_method_35fa8148((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void start()
     {
-        NativeMethods.TablePtr->C2.hs_method_8b37456f((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_8b37456f((void*)__hosihikari_shim_handle);
     }
 
     public void stop()
     {
-        NativeMethods.TablePtr->C2.hs_method_1cbb3887((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_1cbb3887((void*)__hosihikari_shim_handle);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->C2.hs_method_4c55551a((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_4c55551a((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {
@@ -190,7 +191,7 @@ public sealed unsafe partial class RollGoal : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_0c0a3663((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_0c0a3663((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

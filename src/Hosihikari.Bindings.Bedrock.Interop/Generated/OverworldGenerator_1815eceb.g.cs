@@ -98,9 +98,10 @@ public sealed unsafe partial class OverworldGenerator : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C2.hs_get_7c443a1a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _createNoiseCache(nint chunkPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache _createNoiseCache(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache((nint)NativeMethods.TablePtr->C2.hs_method_9fb794e9((void*)__hosihikari_shim_handle, (void*)chunkPos.Handle));
+    }
 
     public void _decorateWorldGenLoadChunk(global::Hosihikari.Bindings.Bedrock.Interop.Biome biome, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolumeTarget target, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos)
     {
@@ -154,9 +155,10 @@ public sealed unsafe partial class OverworldGenerator : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C2.hs_get_29f13cea((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createNoiseCache(nint chunkPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache createNoiseCache(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache((nint)NativeMethods.TablePtr->C2.hs_method_cbe2361e((void*)__hosihikari_shim_handle, (void*)chunkPos.Handle));
+    }
 
     public void decorateWorldGenLoadChunk(global::Hosihikari.Bindings.Bedrock.Interop.Biome biome, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.BlockVolumeTarget target, global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos)
     {

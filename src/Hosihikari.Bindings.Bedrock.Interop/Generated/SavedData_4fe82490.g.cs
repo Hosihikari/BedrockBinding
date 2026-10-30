@@ -40,7 +40,7 @@ public sealed unsafe partial class SavedData : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_fc164516((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_fc164516((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -53,14 +53,14 @@ public sealed unsafe partial class SavedData : global::System.IDisposable
 
     public bool mDirty
     {
-        get => NativeMethods.TablePtr->C2.hs_get_ad005ee9((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_ad005ee9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ad005ee9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_ad005ee9((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_60a2bd39((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_60a2bd39((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -74,7 +74,7 @@ public sealed unsafe partial class SavedData : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_4fe82490((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_4fe82490((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

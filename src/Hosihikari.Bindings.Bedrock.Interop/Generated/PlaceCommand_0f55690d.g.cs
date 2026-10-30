@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AgentCommands;
 
-public sealed unsafe partial class PlaceCommand
+public sealed unsafe partial class PlaceCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -104,5 +104,19 @@ public sealed unsafe partial class PlaceCommand
     {
         get => NativeMethods.TablePtr->C0.hs_get_36504b7c((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_36504b7c((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0f55690d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

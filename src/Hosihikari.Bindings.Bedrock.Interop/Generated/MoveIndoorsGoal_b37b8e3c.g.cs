@@ -204,6 +204,7 @@ public sealed unsafe partial class MoveIndoorsGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_de804b51((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -115,6 +115,7 @@ public sealed unsafe partial class AnimatedImageData : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_3c9a9c1b((void*)__hosihikari_shim_handle, (void*)image.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

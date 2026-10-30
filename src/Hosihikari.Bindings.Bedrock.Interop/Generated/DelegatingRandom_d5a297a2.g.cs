@@ -146,6 +146,7 @@ public sealed unsafe partial class DelegatingRandom : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.NoiseUtils.DelegatingRandom((nint)NativeMethods.TablePtr->C2.hs_method_d212b716((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

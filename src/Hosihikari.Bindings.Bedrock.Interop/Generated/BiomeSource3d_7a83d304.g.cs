@@ -48,9 +48,9 @@ public sealed unsafe partial class BiomeSource3d : global::System.IDisposable
     public bool _containsOnly(int xo, int yo, int zo, int r, nint allowed) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint biomeProvider, nint dimensionHeight) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void _fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache? chunkLocalNoiseCache)
     {
@@ -96,9 +96,9 @@ public sealed unsafe partial class BiomeSource3d : global::System.IDisposable
         return new BiomeSource3d((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static BiomeSource3d Create(nint biomeProvider, nint dimensionHeight) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Biome? _getBiome(nint getBiomeOptions)
     {
@@ -159,6 +159,7 @@ public sealed unsafe partial class BiomeSource3d : global::System.IDisposable
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_bb506c8d((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {

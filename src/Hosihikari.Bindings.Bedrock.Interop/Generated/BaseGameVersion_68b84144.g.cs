@@ -131,6 +131,7 @@ public sealed unsafe partial class BaseGameVersion : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_d907dcd5((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

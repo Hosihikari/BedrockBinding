@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MolangQueryFunctionPtr
+public sealed unsafe partial class MolangQueryFunctionPtr : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,5 +53,19 @@ public sealed unsafe partial class MolangQueryFunctionPtr
     {
         get => NativeMethods.TablePtr->C2.hs_get_b3b18ab1((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_b3b18ab1((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e8f50d91((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

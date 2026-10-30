@@ -72,7 +72,7 @@ public sealed unsafe partial class LevelDbWritableFile : global::System.IDisposa
 
     public static LevelDbWritableFile Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_0b7855b8();
+        var handle = NativeMethods.TablePtr->C2.hs_create_0b7855b8();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -83,7 +83,7 @@ public sealed unsafe partial class LevelDbWritableFile : global::System.IDisposa
 
     public static LevelDbWritableFile Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbWritableFile arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_43833347((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_43833347((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -103,19 +103,20 @@ public sealed unsafe partial class LevelDbWritableFile : global::System.IDisposa
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk289cca_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0f39b3e8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0f39b3e8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk7f131b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_17680eea((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_17680eea((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelDbWritableFile operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbWritableFile arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbWritableFile((nint)NativeMethods.TablePtr->C1.hs_method_20a2ff2b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbWritableFile((nint)NativeMethods.TablePtr->C2.hs_method_20a2ff2b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {
@@ -123,7 +124,7 @@ public sealed unsafe partial class LevelDbWritableFile : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_6f8e6385((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_6f8e6385((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

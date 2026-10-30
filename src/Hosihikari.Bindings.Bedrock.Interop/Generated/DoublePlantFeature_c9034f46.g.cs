@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DoublePlantFeature
+public sealed unsafe partial class DoublePlantFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,6 +53,7 @@ public sealed unsafe partial class DoublePlantFeature
         return NativeMethods.TablePtr->C1.hs_method_ef57e841((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle, (void*)plantType.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
@@ -75,5 +76,18 @@ public sealed unsafe partial class DoublePlantFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_abddd087((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_abddd087((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_c9034f46((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

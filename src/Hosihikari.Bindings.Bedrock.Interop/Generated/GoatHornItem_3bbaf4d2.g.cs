@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GoatHornItem
+public sealed unsafe partial class GoatHornItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -96,6 +96,7 @@ public sealed unsafe partial class GoatHornItem
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C1.hs_method_ddf852af((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)player.Handle, handSlot), false);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -304,5 +305,18 @@ public sealed unsafe partial class GoatHornItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_82c7040a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_82c7040a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_3bbaf4d2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

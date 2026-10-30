@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FireworksRecipe
+public sealed unsafe partial class FireworksRecipe : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -123,6 +123,7 @@ public sealed unsafe partial class FireworksRecipe
         return NativeMethods.TablePtr->C1.hs_method_b7001c87((void*)__hosihikari_shim_handle);
     }
 
+
     public int mHeight
     {
         get => NativeMethods.TablePtr->C1.hs_get_2e633458((void*)__hosihikari_shim_handle);
@@ -187,5 +188,18 @@ public sealed unsafe partial class FireworksRecipe
     {
         get => NativeMethods.TablePtr->C1.hs_get_57fc68ef((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_57fc68ef((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_cc34aaef((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

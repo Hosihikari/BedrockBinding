@@ -82,6 +82,7 @@ public sealed unsafe partial class ScriptWorldInitializeBeforeEvent : global::Sy
         get => (nint)NativeMethods.TablePtr->C3.hs_get_0a60ccb7((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -143,6 +143,7 @@ public sealed unsafe partial class IcebergFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_e47100bc((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

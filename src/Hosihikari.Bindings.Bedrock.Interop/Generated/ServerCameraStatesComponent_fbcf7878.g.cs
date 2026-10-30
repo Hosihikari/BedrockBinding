@@ -102,6 +102,7 @@ public sealed unsafe partial class ServerCameraStatesComponent : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.ServerCameraStatesComponent((nint)NativeMethods.TablePtr->C3.hs_method_1a40303d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

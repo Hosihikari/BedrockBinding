@@ -40,7 +40,7 @@ public sealed unsafe partial class ScopedChangeScheduler : global::System.IDispo
 
     public static ScopedChangeScheduler Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_0ba5c102();
+        var handle = NativeMethods.TablePtr->C3.hs_create_0ba5c102();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ScopedChangeScheduler : global::System.IDispo
 
     public static ScopedChangeScheduler Create(global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.ScopedChangeScheduler arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_ba7b6bf8((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_ba7b6bf8((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,12 +63,12 @@ public sealed unsafe partial class ScopedChangeScheduler : global::System.IDispo
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk3a05ca_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_44b6ce90((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_44b6ce90((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.ScopedChangeScheduler operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.ScopedChangeScheduler arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.ScopedChangeScheduler((nint)NativeMethods.TablePtr->C2.hs_method_797d11ab((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scheduler_Nested.ScopedChangeScheduler((nint)NativeMethods.TablePtr->C3.hs_method_797d11ab((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -77,7 +77,7 @@ public sealed unsafe partial class ScopedChangeScheduler : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_0814a0cf((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_0814a0cf((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

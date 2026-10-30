@@ -119,6 +119,7 @@ public sealed unsafe partial class CachedChunkBlockSource : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.CachedChunkBlockSource((nint)NativeMethods.TablePtr->C0.hs_method_e27afc60((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

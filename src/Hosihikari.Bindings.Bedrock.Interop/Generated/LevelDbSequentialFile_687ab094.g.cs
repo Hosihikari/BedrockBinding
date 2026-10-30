@@ -48,7 +48,7 @@ public sealed unsafe partial class LevelDbSequentialFile : global::System.IDispo
 
     public static LevelDbSequentialFile Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_bdc2a55e();
+        var handle = NativeMethods.TablePtr->C2.hs_create_bdc2a55e();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,7 +59,7 @@ public sealed unsafe partial class LevelDbSequentialFile : global::System.IDispo
 
     public static LevelDbSequentialFile Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbSequentialFile arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_c36c8c5e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_c36c8c5e((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -79,13 +79,14 @@ public sealed unsafe partial class LevelDbSequentialFile : global::System.IDispo
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk4fd923_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_adc63194((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_adc63194((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelDbSequentialFile operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbSequentialFile arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbSequentialFile((nint)NativeMethods.TablePtr->C1.hs_method_cd9a4f33((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbSequentialFile((nint)NativeMethods.TablePtr->C2.hs_method_cd9a4f33((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {
@@ -93,7 +94,7 @@ public sealed unsafe partial class LevelDbSequentialFile : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_687ab094((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_687ab094((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

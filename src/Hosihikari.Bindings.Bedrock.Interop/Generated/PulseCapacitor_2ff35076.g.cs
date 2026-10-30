@@ -279,6 +279,7 @@ public sealed unsafe partial class PulseCapacitor : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_7835c603((void*)__hosihikari_shim_handle, strength);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

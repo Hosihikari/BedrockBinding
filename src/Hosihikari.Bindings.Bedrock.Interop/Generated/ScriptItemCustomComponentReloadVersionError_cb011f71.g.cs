@@ -70,6 +70,7 @@ public sealed unsafe partial class ScriptItemCustomComponentReloadVersionError :
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ErrorBinding((nint)NativeMethods.TablePtr->C3.hs_method_c345eb91());
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1599d8_Address
     {

@@ -40,93 +40,93 @@ public sealed unsafe partial class VegetationPatchFeature : global::System.IDisp
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C3.hs_get_40f87789((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_40f87789((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_40f87789((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_40f87789((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C3.hs_get_96b3dbe5((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_96b3dbe5((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_96b3dbe5((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_96b3dbe5((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_3b008eca((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_3b008eca((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDepth_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3eddbcc4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3eddbcc4((void*)__hosihikari_shim_handle);
     }
 
     public float mExtraDeepBlockChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_b13309b4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_b13309b4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_b13309b4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_b13309b4((void*)__hosihikari_shim_handle, value);
     }
 
     public float mExtraEdgeColumnChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_34553957((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_34553957((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_34553957((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_34553957((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGroundBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f49e9f0f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f49e9f0f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mHorizontalRadius_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f8aa0ceb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f8aa0ceb((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mReplaceableBlocks_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6227587e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6227587e((void*)__hosihikari_shim_handle);
     }
 
     public int mSurface
     {
-        get => NativeMethods.TablePtr->C3.hs_get_f65a62cb((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_f65a62cb((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_f65a62cb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_f65a62cb((void*)__hosihikari_shim_handle, value);
     }
 
     public float mVegetationChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_8ae6033b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_8ae6033b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_8ae6033b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_8ae6033b((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVegetationFeature_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_8e4a9752((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8e4a9752((void*)__hosihikari_shim_handle);
     }
 
     public int mVerticalRange
     {
-        get => NativeMethods.TablePtr->C3.hs_get_0d44cc43((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_0d44cc43((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_0d44cc43((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_0d44cc43((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mWaterlogged
     {
-        get => NativeMethods.TablePtr->C3.hs_get_8a84ccbb((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_8a84ccbb((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_8a84ccbb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_8a84ccbb((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_12d51771((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_12d51771((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
@@ -137,7 +137,7 @@ public sealed unsafe partial class VegetationPatchFeature : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_5ddacbce((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_5ddacbce((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

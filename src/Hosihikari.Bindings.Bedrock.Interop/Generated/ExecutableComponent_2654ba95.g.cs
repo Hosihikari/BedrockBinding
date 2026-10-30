@@ -83,6 +83,7 @@ public sealed unsafe partial class ExecutableComponent : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockCustomComponentsComponent_Nested.ExecutableComponent((nint)NativeMethods.TablePtr->C0.hs_method_e7403a82((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

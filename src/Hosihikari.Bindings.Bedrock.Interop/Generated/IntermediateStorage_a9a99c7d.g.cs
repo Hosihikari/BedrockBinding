@@ -106,6 +106,7 @@ public sealed unsafe partial class IntermediateStorage : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentUseOnEvent_Nested.IntermediateStorage((nint)NativeMethods.TablePtr->C3.hs_method_a012dee0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

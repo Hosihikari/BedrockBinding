@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CalibratedSculkSensorVibrationConfig
+public sealed unsafe partial class CalibratedSculkSensorVibrationConfig : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -52,9 +52,23 @@ public sealed unsafe partial class CalibratedSculkSensorVibrationConfig
         return NativeMethods.TablePtr->C0.hs_method_5a5ae655((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)gameEvent.Handle, (void*)gameEventContext) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPosition_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_a82d5d8a((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_62a64f9e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

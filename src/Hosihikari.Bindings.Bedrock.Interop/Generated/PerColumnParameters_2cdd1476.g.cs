@@ -95,6 +95,7 @@ public sealed unsafe partial class PerColumnParameters : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters((nint)NativeMethods.TablePtr->C1.hs_method_e3625840((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes
+public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -65,6 +65,20 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             NativeMethods.TablePtr->C3.hs_method_1638b0d4(op, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)node.Handle, defaultValue);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f033bcba((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

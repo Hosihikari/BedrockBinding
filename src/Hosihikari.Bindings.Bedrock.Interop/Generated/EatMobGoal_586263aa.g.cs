@@ -229,6 +229,7 @@ public sealed unsafe partial class EatMobGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_380c01fb((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

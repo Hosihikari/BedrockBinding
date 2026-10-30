@@ -63,13 +63,15 @@ public sealed unsafe partial class ItemRegistry : global::System.IDisposable
     public void _preRegisterItem(nint itemName, nint item) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'SharedPtr<Item>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemRegistry::ParsedName' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _tryParseItemName(nint input) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemRegistry::ParsedName' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistry_Nested.ParsedName _tryParseItemName(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Input input)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistry_Nested.ParsedName((nint)NativeMethods.TablePtr->C1.hs_method_b305ffce((void*)__hosihikari_shim_handle, (void*)input.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemRegistryRef::LoadedItem' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _tryRegisterAndInitItem(nint loadedItemAsset, nint parseContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemRegistryRef::LoadedItem' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef_Nested.LoadedItem _tryRegisterAndInitItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistry_Nested.LoadedItemAsset loadedItemAsset, nint parseContext)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef_Nested.LoadedItem((nint)NativeMethods.TablePtr->C1.hs_method_93c6a565((void*)__hosihikari_shim_handle, (void*)loadedItemAsset.Handle, (void*)parseContext));
+    }
 
     public void alterAvailableCreativeItems(global::Hosihikari.Bindings.Bedrock.Interop.ActorInfoRegistry? registry, global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelData)
     {

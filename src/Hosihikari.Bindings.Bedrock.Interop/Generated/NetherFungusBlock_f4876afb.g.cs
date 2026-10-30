@@ -403,6 +403,7 @@ public sealed unsafe partial class NetherFungusBlock : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_2f1954f9((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -110,6 +110,7 @@ public sealed unsafe partial class ProjectileItemComponent : global::System.IDis
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

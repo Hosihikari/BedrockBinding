@@ -40,12 +40,12 @@ public sealed unsafe partial class SystemImpl
 
     public void _singleTick(nint executionContext, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
     {
-        NativeMethods.TablePtr->C3.hs_method_d98ce373((void*)__hosihikari_shim_handle, (void*)executionContext, (void*)entityContext.Handle);
+        NativeMethods.TablePtr->C4.hs_method_d98ce373((void*)__hosihikari_shim_handle, (void*)executionContext, (void*)entityContext.Handle);
     }
 
     public void _tick(nint executionContext)
     {
-        NativeMethods.TablePtr->C3.hs_method_37492e8f((void*)__hosihikari_shim_handle, (void*)executionContext);
+        NativeMethods.TablePtr->C4.hs_method_37492e8f((void*)__hosihikari_shim_handle, (void*)executionContext);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -54,21 +54,21 @@ public sealed unsafe partial class SystemImpl
 
     public bool mIsClientSide
     {
-        get => NativeMethods.TablePtr->C3.hs_get_7ce0b5ef((void*)__hosihikari_shim_handle) != 0;
+        get => NativeMethods.TablePtr->C4.hs_get_7ce0b5ef((void*)__hosihikari_shim_handle) != 0;
     }
 
     public float mSneakHeight
     {
-        get => NativeMethods.TablePtr->C3.hs_get_f03601dc((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_f03601dc((void*)__hosihikari_shim_handle);
     }
 
     public void singleTick(nint executionContext, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
     {
-        NativeMethods.TablePtr->C3.hs_method_a6c303f0((void*)__hosihikari_shim_handle, (void*)executionContext, (void*)entityContext.Handle);
+        NativeMethods.TablePtr->C4.hs_method_a6c303f0((void*)__hosihikari_shim_handle, (void*)executionContext, (void*)entityContext.Handle);
     }
 
     public void tick(nint executionContext)
     {
-        NativeMethods.TablePtr->C3.hs_method_800e1519((void*)__hosihikari_shim_handle, (void*)executionContext);
+        NativeMethods.TablePtr->C4.hs_method_800e1519((void*)__hosihikari_shim_handle, (void*)executionContext);
     }
 }

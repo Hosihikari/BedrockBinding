@@ -157,6 +157,7 @@ public sealed unsafe partial class SquidIdleGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_c2c14471((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

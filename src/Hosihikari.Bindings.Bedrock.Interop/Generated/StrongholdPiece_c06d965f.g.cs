@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StrongholdPiece
+public sealed unsafe partial class StrongholdPiece : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -69,6 +69,7 @@ public sealed unsafe partial class StrongholdPiece
     public nint generateSmallDoorChildRight(nint startPiece, nint pieces, nint random, int yOff, int zOff) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
     {
@@ -91,5 +92,18 @@ public sealed unsafe partial class StrongholdPiece
     public nint mTerrainAdjustmentToken_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_48c2bb58((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_c06d965f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

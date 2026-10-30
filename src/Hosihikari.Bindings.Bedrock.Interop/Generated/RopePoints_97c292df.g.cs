@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RopePoints
+public sealed unsafe partial class RopePoints : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,26 @@ public sealed unsafe partial class RopePoints
     // The native field type is not projected; this is the address of the field storage.
     public nint mPoints_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_1e2d0997((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_1e2d0997((void*)__hosihikari_shim_handle);
     }
 
     public ulong mSize
     {
-        get => NativeMethods.TablePtr->C2.hs_get_42dccf95((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_42dccf95((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_42dccf95((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_42dccf95((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_97c292df((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -787,6 +787,7 @@ public sealed unsafe partial class TropicalFish : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_a7f8044b((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, forceRiding) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

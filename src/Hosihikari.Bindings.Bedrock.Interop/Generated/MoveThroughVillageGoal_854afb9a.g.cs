@@ -149,6 +149,7 @@ public sealed unsafe partial class MoveThroughVillageGoal : global::System.IDisp
         NativeMethods.TablePtr->C2.hs_method_674e5fff((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

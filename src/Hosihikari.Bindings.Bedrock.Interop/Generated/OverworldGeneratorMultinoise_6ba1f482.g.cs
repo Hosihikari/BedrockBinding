@@ -147,9 +147,10 @@ public sealed unsafe partial class OverworldGeneratorMultinoise : global::System
         return NativeMethods.TablePtr->C2.hs_method_ba57fc61((void*)__hosihikari_shim_handle, (void*)cp.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _createNoiseCache(nint chunkPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache _createNoiseCache(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache((nint)NativeMethods.TablePtr->C2.hs_method_d8672e14((void*)__hosihikari_shim_handle, (void*)chunkPos.Handle));
+    }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 seed, global::Hosihikari.Bindings.Bedrock.Interop.Biome? biomeOverride)
     {
@@ -251,13 +252,15 @@ public sealed unsafe partial class OverworldGeneratorMultinoise : global::System
         return NativeMethods.TablePtr->C2.hs_method_3add6de1((void*)__hosihikari_shim_handle, (void*)cp.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createNoiseCache(nint chunkPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache createNoiseCache(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache((nint)NativeMethods.TablePtr->C2.hs_method_d2349639((void*)__hosihikari_shim_handle, (void*)chunkPos.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createNoiseCache(nint chunkPos, nint overworldNoises3d, nint testFixedChunkBlender, nint chunkBlenderFactory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkLocalNoiseCache' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache createNoiseCache(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos chunkPos, global::Hosihikari.Bindings.Bedrock.Interop.OverworldNoises3d overworldNoises3d, global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlender? testFixedChunkBlender, global::Hosihikari.Bindings.Bedrock.Interop.ChunkBlenderFactory chunkBlenderFactory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache((nint)NativeMethods.TablePtr->C2.hs_method_5f04b43f((void*)chunkPos.Handle, (void*)overworldNoises3d.Handle, (void*)(testFixedChunkBlender?.Handle ?? 0), (void*)chunkBlenderFactory.Handle));
+    }
 
     public void decorateWorldGenPostProcess(global::Hosihikari.Bindings.Bedrock.Interop.Biome arg0, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {

@@ -366,6 +366,7 @@ public sealed unsafe partial class MaceItem : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_a4db30a5((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)repairItem.Handle, (void*)arg2.Handle) != 0;
     }
 
+
     public int mDamage
     {
         get => NativeMethods.TablePtr->C2.hs_get_41a0da88((void*)__hosihikari_shim_handle);

@@ -173,6 +173,7 @@ public sealed unsafe partial class MapExtendingRecipe : global::System.IDisposab
         return NativeMethods.TablePtr->C2.hs_method_494a002b((void*)__hosihikari_shim_handle);
     }
 
+
     public int mHeight
     {
         get => NativeMethods.TablePtr->C2.hs_get_938e3a93((void*)__hosihikari_shim_handle);

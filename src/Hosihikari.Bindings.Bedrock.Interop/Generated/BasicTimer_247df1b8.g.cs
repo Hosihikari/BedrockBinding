@@ -80,6 +80,7 @@ public sealed unsafe partial class BasicTimer : global::System.IDisposable
         set => NativeMethods.TablePtr->C0.hs_set_2d311ebd((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

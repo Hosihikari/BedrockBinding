@@ -40,7 +40,7 @@ public sealed unsafe partial class VariableMaxAutoStepDefinition : global::Syste
 
     public static VariableMaxAutoStepDefinition Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_f97bd408();
+        var handle = NativeMethods.TablePtr->C4.hs_create_f97bd408();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class VariableMaxAutoStepDefinition : global::Syste
 
     public static VariableMaxAutoStepDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.VariableMaxAutoStepDefinition arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_5429a9c7((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_5429a9c7((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,30 +62,30 @@ public sealed unsafe partial class VariableMaxAutoStepDefinition : global::Syste
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->C3.hs_method_ed7d0c7b(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C4.hs_method_ed7d0c7b(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk825ef0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_137c48a1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_137c48a1((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkb88705_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_ce37f654((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ce37f654((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkfa0d76_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_5fd0c7b4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_5fd0c7b4((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.VariableMaxAutoStepDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.VariableMaxAutoStepDefinition arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.VariableMaxAutoStepDefinition((nint)NativeMethods.TablePtr->C3.hs_method_da8c2bd9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VariableMaxAutoStepDefinition((nint)NativeMethods.TablePtr->C4.hs_method_da8c2bd9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -94,7 +94,7 @@ public sealed unsafe partial class VariableMaxAutoStepDefinition : global::Syste
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_c7ef9f42((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_c7ef9f42((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -93,6 +93,7 @@ public sealed unsafe partial class ScriptPlayerInteractWithBlockEvent : global::
         set => NativeMethods.TablePtr->C3.hs_set_b9fde8c0((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HeavyCoreBlock
+public sealed unsafe partial class HeavyCoreBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -280,4 +280,18 @@ public sealed unsafe partial class HeavyCoreBlock
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'const Block &' is not supported.", false)]
     public bool liquidCanFlowIntoFromDirection(byte flowIntoFacing, nint getBlock, nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'const Block &' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_3cc5a388((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

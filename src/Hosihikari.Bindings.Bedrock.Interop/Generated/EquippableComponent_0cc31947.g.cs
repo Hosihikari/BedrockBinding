@@ -60,9 +60,10 @@ public sealed unsafe partial class EquippableComponent : global::System.IDisposa
         return new EquippableComponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createDataPacket(nint owner, nint containerID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket createDataPacket(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, sbyte containerID)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket((nint)NativeMethods.TablePtr->C1.hs_method_c24d20d7((void*)__hosihikari_shim_handle, (void*)owner.Handle, containerID));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
     public nint createTag(nint owner) =>
@@ -87,6 +88,7 @@ public sealed unsafe partial class EquippableComponent : global::System.IDisposa
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.EquippableComponent((nint)NativeMethods.TablePtr->C1.hs_method_ca2b7290((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {

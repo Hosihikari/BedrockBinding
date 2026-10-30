@@ -135,6 +135,7 @@ public sealed unsafe partial class WardenVibrationConfig : global::System.IDispo
         return NativeMethods.TablePtr->C4.hs_method_50dd784c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)arg1.Handle, (void*)gameEventContext) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DimensionFactory
+public sealed unsafe partial class DimensionFactory : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -38,7 +38,7 @@ public sealed unsafe partial class DimensionFactory
         return __hs_handle;
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? _create(string dimensionName)
+    public global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtr_Dimension_ _create(string dimensionName)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionName);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -53,8 +53,7 @@ public sealed unsafe partial class DimensionFactory
         global::System.Text.Encoding.UTF8.GetBytes(dimensionName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_463f4fe9((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtr_Dimension_((nint)NativeMethods.TablePtr->C1.hs_method_463f4fe9((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
@@ -72,7 +71,7 @@ public sealed unsafe partial class DimensionFactory
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? create(string dimensionName)
+    public global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtr_Dimension_ create(string dimensionName)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dimensionName);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -87,8 +86,7 @@ public sealed unsafe partial class DimensionFactory
         global::System.Text.Encoding.UTF8.GetBytes(dimensionName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_60ea0653((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtr_Dimension_((nint)NativeMethods.TablePtr->C1.hs_method_60ea0653((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
@@ -112,5 +110,19 @@ public sealed unsafe partial class DimensionFactory
     public nint mDimensionFactory_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_bec727c5((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_27f34ceb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

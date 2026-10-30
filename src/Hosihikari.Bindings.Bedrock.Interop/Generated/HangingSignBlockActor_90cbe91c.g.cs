@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HangingSignBlockActor
+public sealed unsafe partial class HangingSignBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -93,6 +93,7 @@ public sealed unsafe partial class HangingSignBlockActor
         return NativeMethods.TablePtr->C1.hs_method_9898177a((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+
     public bool mIsLocalProfanityFilterEnabled
     {
         get => NativeMethods.TablePtr->C1.hs_get_cf5379fd((void*)__hosihikari_shim_handle) != 0;
@@ -175,5 +176,18 @@ public sealed unsafe partial class HangingSignBlockActor
     {
         get => NativeMethods.TablePtr->C1.hs_get_bf8a2e65((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_bf8a2e65((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_90cbe91c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

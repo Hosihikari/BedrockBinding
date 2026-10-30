@@ -41,7 +41,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_fc0b26f4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fc0b26f4((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
@@ -63,7 +63,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(fname, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_d44038fa((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_d44038fa((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -105,7 +105,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 
     public ulong _NowMicros()
     {
-        return NativeMethods.TablePtr->C1.hs_method_f416676a((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C2.hs_method_f416676a((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
@@ -126,7 +126,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 
     public void _SleepForMicroseconds(int microseconds)
     {
-        NativeMethods.TablePtr->C1.hs_method_777f8367((void*)__hosihikari_shim_handle, microseconds);
+        NativeMethods.TablePtr->C2.hs_method_777f8367((void*)__hosihikari_shim_handle, microseconds);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.", false)]
@@ -139,12 +139,12 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 
     public nint _ctor(int maxOpenFiles)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_128572e0((void*)__hosihikari_shim_handle, maxOpenFiles);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_128572e0((void*)__hosihikari_shim_handle, maxOpenFiles);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_7457dd13((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_7457dd13((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -174,7 +174,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(fname, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_4e721380((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_4e721380((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -192,7 +192,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 
     public static LevelDbEnv Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_f879c899();
+        var handle = NativeMethods.TablePtr->C2.hs_create_f879c899();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -203,7 +203,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 
     public static LevelDbEnv Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_8a107bea((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_8a107bea((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -214,7 +214,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 
     public static LevelDbEnv Create(int maxOpenFiles)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_9cdeb745(maxOpenFiles);
+        var handle = NativeMethods.TablePtr->C2.hs_create_9cdeb745(maxOpenFiles);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -249,7 +249,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 
     public ulong NowMicros()
     {
-        return NativeMethods.TablePtr->C1.hs_method_e5d1601c((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C2.hs_method_e5d1601c((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
@@ -270,7 +270,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
 
     public void SleepForMicroseconds(int microseconds)
     {
-        NativeMethods.TablePtr->C1.hs_method_dbf7d90a((void*)__hosihikari_shim_handle, microseconds);
+        NativeMethods.TablePtr->C2.hs_method_dbf7d90a((void*)__hosihikari_shim_handle, microseconds);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'void (*)(void *)' is not supported.", false)]
@@ -284,18 +284,18 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkcc5166_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_af36235c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_af36235c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkfe3fa7_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_87f06630((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_87f06630((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv((nint)NativeMethods.TablePtr->C1.hs_method_f1056835((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbEnv((nint)NativeMethods.TablePtr->C2.hs_method_f1056835((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -309,7 +309,7 @@ public sealed unsafe partial class LevelDbEnv : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_f1459eaf((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_f1459eaf((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

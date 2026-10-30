@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelChunkMetaDataManager
+public sealed unsafe partial class LevelChunkMetaDataManager : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,12 +40,12 @@ public sealed unsafe partial class LevelChunkMetaDataManager
 
     public void _consolidateLevelChunkMetaData(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
     {
-        NativeMethods.TablePtr->C1.hs_method_d46e5197((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+        NativeMethods.TablePtr->C2.hs_method_d46e5197((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
     public void _onNewDimensionCreated(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
-        NativeMethods.TablePtr->C1.hs_method_82e00ea6((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+        NativeMethods.TablePtr->C2.hs_method_82e00ea6((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
     }
 
     public static void inferInitialMetaDataAfterDeserialization(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 generationSeed, int generatorType, string dimensionName, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange dimensionHeightRange, nint levelChunkMetaDataBaseGameVersionWrapper, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData metaData)
@@ -63,13 +63,13 @@ public sealed unsafe partial class LevelChunkMetaDataManager
         global::System.Text.Encoding.UTF8.GetBytes(dimensionName, __hs_stringBytes3);
         fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
-            NativeMethods.TablePtr->C1.hs_method_63759f88((void*)lc.Handle, (void*)generationSeed.Handle, generatorType, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)dimensionId.Handle, (void*)dimensionHeightRange.Handle, (void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)metaData.Handle);
+            NativeMethods.TablePtr->C2.hs_method_63759f88((void*)lc.Handle, (void*)generationSeed.Handle, generatorType, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)dimensionId.Handle, (void*)dimensionHeightRange.Handle, (void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)metaData.Handle);
         }
     }
 
     public static void inferTargetMetaData(nint levelChunkMetaDataBaseGameVersionWrapper, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionID, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData metaData)
     {
-        NativeMethods.TablePtr->C1.hs_method_95ab411f((void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)dimensionID.Handle, (void*)metaData.Handle);
+        NativeMethods.TablePtr->C2.hs_method_95ab411f((void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)dimensionID.Handle, (void*)metaData.Handle);
     }
 
     public static global::Hosihikari.Bindings.Abi.SharedHandle? initializeLevelChunkMetaData(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, string dimensionName, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange dimensionHeightRange, bool use3DBiomeMaps, global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed, int generatorType, nint levelChunkMetaDataBaseGameVersionWrapper)
@@ -87,7 +87,7 @@ public sealed unsafe partial class LevelChunkMetaDataManager
         global::System.Text.Encoding.UTF8.GetBytes(dimensionName, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_2f98ac74((void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)dimensionHeightRange.Handle, use3DBiomeMaps, (void*)levelSeed.Handle, generatorType, (void*)levelChunkMetaDataBaseGameVersionWrapper);
+            var __hs_shared = NativeMethods.TablePtr->C2.hs_method_2f98ac74((void*)dimensionId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)dimensionHeightRange.Handle, use3DBiomeMaps, (void*)levelSeed.Handle, generatorType, (void*)levelChunkMetaDataBaseGameVersionWrapper);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
@@ -95,38 +95,52 @@ public sealed unsafe partial class LevelChunkMetaDataManager
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelChunkMetaDataDictionary_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_eadf3615((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_eadf3615((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnChunkLoadedSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a388ec1c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a388ec1c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnNewDimensionCreatedSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_290047ab((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_290047ab((void*)__hosihikari_shim_handle);
     }
 
     public void registerForLevelChunkEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector levelChunkEventManagerConnector)
     {
-        NativeMethods.TablePtr->C1.hs_method_4d0bf418((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4d0bf418((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
     }
 
     public void registerOnNewDimensionCreated(global::Hosihikari.Bindings.Bedrock.Interop.IDimensionManagerConnector dimensionManagerConnector)
     {
-        NativeMethods.TablePtr->C1.hs_method_795273d4((void*)__hosihikari_shim_handle, (void*)dimensionManagerConnector.Handle);
+        NativeMethods.TablePtr->C2.hs_method_795273d4((void*)__hosihikari_shim_handle, (void*)dimensionManagerConnector.Handle);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->C1.hs_method_b1909af6((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_b1909af6((void*)__hosihikari_shim_handle);
     }
 
     public void updateLevelChunkMetaDataForSaving(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, nint levelChunkMetaDataBaseGameVersionWrapper, global::Hosihikari.Bindings.Bedrock.Interop.DimensionHeightRange dimensionHeightRange)
     {
-        NativeMethods.TablePtr->C1.hs_method_64dc6b02((void*)__hosihikari_shim_handle, (void*)lc.Handle, (void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)dimensionHeightRange.Handle);
+        NativeMethods.TablePtr->C2.hs_method_64dc6b02((void*)__hosihikari_shim_handle, (void*)lc.Handle, (void*)levelChunkMetaDataBaseGameVersionWrapper, (void*)dimensionHeightRange.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_7944d05d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

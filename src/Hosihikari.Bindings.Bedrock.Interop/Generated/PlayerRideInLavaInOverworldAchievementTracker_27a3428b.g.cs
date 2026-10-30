@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Strider_Nested;
 
-public sealed unsafe partial class PlayerRideInLavaInOverworldAchievementTracker
+public sealed unsafe partial class PlayerRideInLavaInOverworldAchievementTracker : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class PlayerRideInLavaInOverworldAchievementTracker
     {
         get => NativeMethods.TablePtr->C3.hs_get_5281e617((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_5281e617((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_27a3428b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

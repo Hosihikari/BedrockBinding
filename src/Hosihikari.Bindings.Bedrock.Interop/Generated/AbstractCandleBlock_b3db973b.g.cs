@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AbstractCandleBlock
+public sealed unsafe partial class AbstractCandleBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -169,6 +169,7 @@ public sealed unsafe partial class AbstractCandleBlock
     {
         NativeMethods.TablePtr->C0.hs_method_8cde0d01((void*)__hosihikari_shim_handle, (void*)eventData);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address
@@ -389,5 +390,18 @@ public sealed unsafe partial class AbstractCandleBlock
     public nint mVisualShape_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_6f4b9a2f((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b3db973b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

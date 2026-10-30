@@ -308,9 +308,10 @@ public sealed unsafe partial class TorchflowerCropBlock : global::System.IDispos
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getBaseSeed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance _getBaseSeed()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C3.hs_method_79696194((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB _getOutline(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.AABB bufferValue)
     {
@@ -372,9 +373,10 @@ public sealed unsafe partial class TorchflowerCropBlock : global::System.IDispos
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getBaseSeed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getBaseSeed()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C3.hs_method_665c9555((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB getOutline(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.AABB bufferValue)
     {
@@ -395,6 +397,7 @@ public sealed unsafe partial class TorchflowerCropBlock : global::System.IDispos
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C3.hs_method_4b0e5982((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)baseBlock.Handle, newGrowth, updateFlags), false);
     }
+
 
     public void Dispose()
     {

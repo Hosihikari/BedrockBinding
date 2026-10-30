@@ -136,7 +136,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public void __initializeInternal()
     {
-        NativeMethods.TablePtr->C0.hs_method_e631893e((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_e631893e((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -165,22 +165,22 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public nint _ctor(int accessType, global::Hosihikari.Bindings.Abi.SharedHandle? storageArea, int transactionFlags, global::Hosihikari.Bindings.Abi.SharedHandle? manifestTracker)
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_c1b27326((void*)__hosihikari_shim_handle, accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), transactionFlags, manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        return (nint)NativeMethods.TablePtr->C1.hs_method_c1b27326((void*)__hosihikari_shim_handle, accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), transactionFlags, manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public nint _ctor(int accessType, global::Hosihikari.Bindings.Abi.SharedHandle? storageArea, global::Hosihikari.Bindings.Abi.SharedHandle? manifestTracker)
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_8a7170e4((void*)__hosihikari_shim_handle, accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        return (nint)NativeMethods.TablePtr->C1.hs_method_8a7170e4((void*)__hosihikari_shim_handle, accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_d7ccb5af((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_d7ccb5af((void*)__hosihikari_shim_handle);
     }
 
     public int _getCrossStorageCopyMode()
     {
-        return NativeMethods.TablePtr->C0.hs_method_0ca7636d((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_0ca7636d((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -189,12 +189,12 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public ulong _getTransactionWriteSizeLimit()
     {
-        return NativeMethods.TablePtr->C0.hs_method_ad273e66((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_ad273e66((void*)__hosihikari_shim_handle);
     }
 
     public bool _shouldCommit()
     {
-        return NativeMethods.TablePtr->C0.hs_method_24e939e0((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_24e939e0((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -203,7 +203,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public static FileSystemImpl Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_154722af();
+        var handle = NativeMethods.TablePtr->C1.hs_create_154722af();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -214,7 +214,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public static FileSystemImpl Create(int accessType, global::Hosihikari.Bindings.Abi.SharedHandle? storageArea, int transactionFlags, global::Hosihikari.Bindings.Abi.SharedHandle? manifestTracker)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_b6c3459c(accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), transactionFlags, manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        var handle = NativeMethods.TablePtr->C1.hs_create_b6c3459c(accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), transactionFlags, manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -225,7 +225,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public static FileSystemImpl Create(int accessType, global::Hosihikari.Bindings.Abi.SharedHandle? storageArea, global::Hosihikari.Bindings.Abi.SharedHandle? manifestTracker)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_fd5690c7(accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        var handle = NativeMethods.TablePtr->C1.hs_create_fd5690c7(accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -236,7 +236,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public static FileSystemImpl Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystemImpl arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_d8b3e15e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_d8b3e15e((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -247,7 +247,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public void _addFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileImpl? pFile)
     {
-        NativeMethods.TablePtr->C0.hs_method_f7affbec((void*)__hosihikari_shim_handle, (void*)(pFile?.Handle ?? 0));
+        NativeMethods.TablePtr->C1.hs_method_f7affbec((void*)__hosihikari_shim_handle, (void*)(pFile?.Handle ?? 0));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -388,7 +388,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public void _initializeInternal()
     {
-        NativeMethods.TablePtr->C0.hs_method_5ae44d89((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_5ae44d89((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -493,7 +493,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public int getCrossStorageCopyMode()
     {
-        return NativeMethods.TablePtr->C0.hs_method_d085e0fc((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_d085e0fc((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -506,7 +506,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public ulong getTransactionWriteSizeLimit()
     {
-        return NativeMethods.TablePtr->C0.hs_method_febf88d3((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C1.hs_method_febf88d3((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -524,61 +524,61 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk104955_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_aeb83273((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_aeb83273((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk26049b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_7ec5fbb6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7ec5fbb6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk906cc5_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_3846845e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3846845e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk9bcf95_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_889d6f92((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_889d6f92((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka1996d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_94f03e25((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_94f03e25((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkaaf50d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_c814e42c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c814e42c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc9bc1f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_cc10db65((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cc10db65((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkdc96a2_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_25950f01((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_25950f01((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkddc461_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_53023c76((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_53023c76((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf94830_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_dede8524((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dede8524((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -587,7 +587,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystemImpl operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystemImpl arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystemImpl((nint)NativeMethods.TablePtr->C0.hs_method_f5283cdc((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystemImpl((nint)NativeMethods.TablePtr->C1.hs_method_f5283cdc((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -600,12 +600,12 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStats sStats()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStats((nint)NativeMethods.TablePtr->C0.hs_method_8af49bf2(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStats((nint)NativeMethods.TablePtr->C1.hs_method_8af49bf2(), false);
     }
 
     public bool shouldCommit()
     {
-        return NativeMethods.TablePtr->C0.hs_method_c066c844((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_c066c844((void*)__hosihikari_shim_handle) != 0;
     }
 
 
@@ -615,7 +615,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_662f7c02((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_662f7c02((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

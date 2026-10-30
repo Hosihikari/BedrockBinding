@@ -121,6 +121,7 @@ public sealed unsafe partial class MinecraftScriptTelemetryLogger : global::Syst
         return new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftScriptTelemetryLogger((nint)NativeMethods.TablePtr->C2.hs_method_0a11aaff((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

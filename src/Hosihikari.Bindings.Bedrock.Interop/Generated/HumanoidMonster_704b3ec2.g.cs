@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HumanoidMonster
+public sealed unsafe partial class HumanoidMonster : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -614,6 +614,7 @@ public sealed unsafe partial class HumanoidMonster
         NativeMethods.TablePtr->C1.hs_method_a1ba5d9b((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_152d5dec((void*)__hosihikari_shim_handle);
@@ -750,5 +751,18 @@ public sealed unsafe partial class HumanoidMonster
     public nint mLastHurtByMobId_21266e6d_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_9975a1d0((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_704b3ec2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

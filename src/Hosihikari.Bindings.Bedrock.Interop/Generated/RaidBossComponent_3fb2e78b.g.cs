@@ -191,6 +191,7 @@ public sealed unsafe partial class RaidBossComponent : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_d84090b5((void*)__hosihikari_shim_handle, visible, (void*)owner.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

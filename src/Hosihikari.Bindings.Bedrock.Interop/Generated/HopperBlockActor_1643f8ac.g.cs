@@ -431,6 +431,7 @@ public sealed unsafe partial class HopperBlockActor : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_56f9ceaf((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {

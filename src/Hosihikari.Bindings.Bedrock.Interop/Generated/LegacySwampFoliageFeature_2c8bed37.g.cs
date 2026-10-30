@@ -129,6 +129,7 @@ public sealed unsafe partial class LegacySwampFoliageFeature : global::System.ID
         return NativeMethods.TablePtr->C1.hs_method_af0fc746((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

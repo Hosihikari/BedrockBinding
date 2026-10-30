@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetBannerDetailsFunction
+public sealed unsafe partial class SetBannerDetailsFunction : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -84,5 +84,19 @@ public sealed unsafe partial class SetBannerDetailsFunction
     {
         get => NativeMethods.TablePtr->C3.hs_get_a5fd3368((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_a5fd3368((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_577b1c78((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

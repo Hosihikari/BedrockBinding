@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CollisionShapes_Nested;
 
-public sealed unsafe partial class BlockAndBlockPos
+public sealed unsafe partial class BlockAndBlockPos : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,5 +47,19 @@ public sealed unsafe partial class BlockAndBlockPos
     public nint mBlockPos_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_39c82652((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_bfd6d829((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

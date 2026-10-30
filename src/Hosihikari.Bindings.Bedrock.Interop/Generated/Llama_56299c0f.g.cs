@@ -633,6 +633,7 @@ public sealed unsafe partial class Llama : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_090e53e4((void*)__hosihikari_shim_handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C2.hs_get_27e1955d((void*)__hosihikari_shim_handle);

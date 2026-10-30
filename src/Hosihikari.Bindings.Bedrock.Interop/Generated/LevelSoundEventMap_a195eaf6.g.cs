@@ -53,24 +53,24 @@ public sealed unsafe partial class LevelSoundEventMap : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_81595047(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C2.hs_method_81595047(__hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public static string getName(uint type)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_8e31624d(type);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_8e31624d(type);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static nint map()
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_67983411();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_67983411();
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier resolve(nint name)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier((nint)NativeMethods.TablePtr->C1.hs_method_69276543((void*)name));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier((nint)NativeMethods.TablePtr->C2.hs_method_69276543((void*)name));
     }
 
     public void Dispose()
@@ -79,7 +79,7 @@ public sealed unsafe partial class LevelSoundEventMap : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_a195eaf6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_a195eaf6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

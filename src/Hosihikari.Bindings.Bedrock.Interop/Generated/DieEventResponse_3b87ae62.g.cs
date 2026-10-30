@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DieEventResponse
+public sealed unsafe partial class DieEventResponse : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -84,5 +84,19 @@ public sealed unsafe partial class DieEventResponse
     {
         get => NativeMethods.TablePtr->C1.hs_get_b8059c3d((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_b8059c3d((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_3b87ae62((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

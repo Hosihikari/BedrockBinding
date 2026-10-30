@@ -88,6 +88,7 @@ public sealed unsafe partial class ScriptPlayerInteractWithEntityBeforeEvent : g
         get => (nint)NativeMethods.TablePtr->C3.hs_get_13746308((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mTarget_Address
     {

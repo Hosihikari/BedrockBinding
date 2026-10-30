@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkBlenderFactory
+public sealed unsafe partial class ChunkBlenderFactory : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -75,5 +75,19 @@ public sealed unsafe partial class ChunkBlenderFactory
     public bool mIsClientSide
     {
         get => NativeMethods.TablePtr->C0.hs_get_af2f9bb3((void*)__hosihikari_shim_handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_3e3d2125((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

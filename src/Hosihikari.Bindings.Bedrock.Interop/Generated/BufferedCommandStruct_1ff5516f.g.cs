@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeer_Nested;
 
-public sealed unsafe partial class BufferedCommandStruct
+public sealed unsafe partial class BufferedCommandStruct : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -144,5 +144,19 @@ public sealed unsafe partial class BufferedCommandStruct
     public nint systemIdentifier_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_66971451((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_1ff5516f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

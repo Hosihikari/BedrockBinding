@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal.@internal;
 
-public sealed unsafe partial class UndefinedSchema
+public sealed unsafe partial class UndefinedSchema : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -69,4 +69,18 @@ public sealed unsafe partial class UndefinedSchema
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'cereal::DescriptionConfig' is not a known bindable declaration.", false)]
     public nint makeDescription(nint arg0, nint arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'cereal::DescriptionConfig' is not a known bindable declaration.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_0c0d6055((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

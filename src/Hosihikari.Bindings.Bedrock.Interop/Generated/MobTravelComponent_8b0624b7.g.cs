@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MobTravelComponent
+public sealed unsafe partial class MobTravelComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -78,5 +78,19 @@ public sealed unsafe partial class MobTravelComponent
     {
         get => NativeMethods.TablePtr->C2.hs_get_bd823209((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_bd823209((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8b0624b7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

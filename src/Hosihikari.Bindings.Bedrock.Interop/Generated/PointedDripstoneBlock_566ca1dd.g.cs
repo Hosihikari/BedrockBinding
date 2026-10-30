@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PointedDripstoneBlock
+public sealed unsafe partial class PointedDripstoneBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -337,6 +337,7 @@ public sealed unsafe partial class PointedDripstoneBlock
         NativeMethods.TablePtr->C2.hs_method_044b8ea3((void*)__hosihikari_shim_handle, (void*)eventData.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockToGrowOn_Address
     {
@@ -359,5 +360,18 @@ public sealed unsafe partial class PointedDripstoneBlock
     {
         get => NativeMethods.TablePtr->C2.hs_get_2a7f0265((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_2a7f0265((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_566ca1dd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

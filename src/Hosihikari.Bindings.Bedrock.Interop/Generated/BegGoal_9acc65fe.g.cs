@@ -187,6 +187,7 @@ public sealed unsafe partial class BegGoal : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_4a0a68c4((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

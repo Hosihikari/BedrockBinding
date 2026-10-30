@@ -295,6 +295,7 @@ public sealed unsafe partial class ListBlockVolume : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_c014c512((void*)__hosihikari_shim_handle, (void*)delta.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

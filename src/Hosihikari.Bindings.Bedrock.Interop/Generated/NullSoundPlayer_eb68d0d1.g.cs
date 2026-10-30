@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NullSoundPlayer
+public sealed unsafe partial class NullSoundPlayer : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -564,5 +564,19 @@ public sealed unsafe partial class NullSoundPlayer
     public void unregisterLoop(ulong arg0, bool arg1)
     {
         NativeMethods.TablePtr->C2.hs_method_d96cafd8((void*)__hosihikari_shim_handle, arg0, arg1);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_eb68d0d1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

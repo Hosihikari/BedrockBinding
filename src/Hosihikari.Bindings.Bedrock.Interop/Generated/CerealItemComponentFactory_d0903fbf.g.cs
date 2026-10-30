@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CerealItemComponentFactory
+public sealed unsafe partial class CerealItemComponentFactory : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -62,9 +62,9 @@ public sealed unsafe partial class CerealItemComponentFactory
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static void deprecateComponentStartingFromVersion(nint name, nint deprecatedVersion, nint ctx) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'SemVersion' is not supported.", false)]
     public static nint getReleasedMinFormatVersionForAnyComponent(nint ctx) =>
@@ -87,7 +87,21 @@ public sealed unsafe partial class CerealItemComponentFactory
         return new global::Hosihikari.Bindings.Bedrock.Interop.CerealItemComponentFactory((nint)NativeMethods.TablePtr->C0.hs_method_2ef56e69((void*)ctx.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static void updateReleasedMinFormatVersionForAnyComponentIfLower(nint instance, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d0903fbf((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

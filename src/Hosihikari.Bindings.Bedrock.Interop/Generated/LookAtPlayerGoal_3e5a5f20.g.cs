@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class LookAtPlayerGoal
+public sealed unsafe partial class LookAtPlayerGoal : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -37,5 +36,97 @@ public sealed partial class LookAtPlayerGoal
         var __hs_handle = __hosihikari_shim_handle;
         __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7e7221cf((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRequiredControlFlags
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_114701e8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_114701e8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mTypeId
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_35d50538((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_35d50538((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mAngleOfViewX
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_f672a4a0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_f672a4a0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mAngleOfViewY
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_87b844d8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_87b844d8((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mLookAt_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c62320c2((void*)__hosihikari_shim_handle);
+    }
+
+    public float mLookDistance
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_b465249e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_b465249e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mLookTime
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_188ebdf1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_188ebdf1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMaxLookTime
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_69d09484((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_69d09484((void*)__hosihikari_shim_handle, value);
+    }
+
+    public int mMinLookTime
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_83bde05c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_83bde05c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMob_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e1004b70((void*)__hosihikari_shim_handle);
+    }
+
+    public float mProbability
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_52a0dcd8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_52a0dcd8((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTargetFilter_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1e786ab2((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_3e5a5f20((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

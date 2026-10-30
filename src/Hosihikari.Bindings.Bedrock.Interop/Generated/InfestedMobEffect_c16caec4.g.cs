@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class InfestedMobEffect
+public sealed unsafe partial class InfestedMobEffect : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,6 +47,7 @@ public sealed unsafe partial class InfestedMobEffect
     {
         NativeMethods.TablePtr->C1.hs_method_8721a110((void*)__hosihikari_shim_handle, (void*)target.Handle, amplifier, (void*)source.Handle, damage);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAttributeBuffs_Address
@@ -159,5 +160,18 @@ public sealed unsafe partial class InfestedMobEffect
     public nint mValueAmplifier_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_a5ef4387((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_c16caec4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

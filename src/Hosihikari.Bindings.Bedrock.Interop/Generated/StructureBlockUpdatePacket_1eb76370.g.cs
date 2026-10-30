@@ -243,6 +243,7 @@ public sealed unsafe partial class StructureBlockUpdatePacket : global::System.I
         NativeMethods.TablePtr->C3.hs_method_94cc11ac((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockPos_Address
     {

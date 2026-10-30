@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VanillaWaypointManager
+public sealed unsafe partial class VanillaWaypointManager : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,18 +40,32 @@ public sealed unsafe partial class VanillaWaypointManager
 
     public bool mIsLocatorBarEnabled
     {
-        get => NativeMethods.TablePtr->C3.hs_get_13de0860((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_13de0860((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_13de0860((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_13de0860((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mWaypointGroup_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_07c0230d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_07c0230d((void*)__hosihikari_shim_handle);
     }
 
     public void update(global::Hosihikari.Bindings.Bedrock.Interop.Player self, global::Hosihikari.Bindings.Bedrock.Interop.ServerLocatorBar serverLocatorBar, bool isLocatorBarEnabled)
     {
-        NativeMethods.TablePtr->C3.hs_method_4a176b22((void*)__hosihikari_shim_handle, (void*)self.Handle, (void*)serverLocatorBar.Handle, isLocatorBarEnabled);
+        NativeMethods.TablePtr->C4.hs_method_4a176b22((void*)__hosihikari_shim_handle, (void*)self.Handle, (void*)serverLocatorBar.Handle, isLocatorBarEnabled);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_63366a33((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -239,6 +239,7 @@ public sealed unsafe partial class OfferFlowerGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_6c1aaee6((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

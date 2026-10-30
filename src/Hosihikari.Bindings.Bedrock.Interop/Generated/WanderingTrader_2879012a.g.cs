@@ -747,6 +747,7 @@ public sealed unsafe partial class WanderingTrader : global::System.IDisposable
         return new WanderingTrader((nint)handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

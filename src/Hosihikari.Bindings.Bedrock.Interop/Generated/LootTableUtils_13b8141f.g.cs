@@ -53,7 +53,7 @@ public sealed unsafe partial class LootTableUtils : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(lootTableName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->C3.hs_method_a41c544e(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_view = NativeMethods.TablePtr->C4.hs_method_a41c544e(__hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
@@ -73,7 +73,7 @@ public sealed unsafe partial class LootTableUtils : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(tableName, __hs_stringBytes3);
         fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
-            NativeMethods.TablePtr->C3.hs_method_56b49b66((void*)level.Handle, (void*)container.Handle, (void*)random.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)dimensionId.Handle, (void*)(entity?.Handle ?? 0));
+            NativeMethods.TablePtr->C4.hs_method_56b49b66((void*)level.Handle, (void*)container.Handle, (void*)random.Handle, __hs_stringData3, (nuint)__hs_stringByteCount3, (void*)dimensionId.Handle, (void*)(entity?.Handle ?? 0));
         }
     }
 
@@ -95,7 +95,7 @@ public sealed unsafe partial class LootTableUtils : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_13b8141f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_13b8141f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

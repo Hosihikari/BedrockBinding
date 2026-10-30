@@ -41,7 +41,7 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_cd147448((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cd147448((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<SoundPlayerInterface>>' is not a known bindable declaration.", false)]
@@ -70,7 +70,7 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
 
     public static LevelSoundManager Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_6426c3fc();
+        var handle = NativeMethods.TablePtr->C2.hs_create_6426c3fc();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -89,17 +89,17 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
 
     public void _stopBroadcastsForPlayer(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType? dimension)
     {
-        NativeMethods.TablePtr->C1.hs_method_e62726a0((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)(dimension?.Handle ?? 0), dimension is not null);
+        NativeMethods.TablePtr->C2.hs_method_e62726a0((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)(dimension?.Handle ?? 0), dimension is not null);
     }
 
     public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Player? primaryLocalPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
     {
-        NativeMethods.TablePtr->C1.hs_method_24b39238((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0), (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+        NativeMethods.TablePtr->C2.hs_method_24b39238((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0), (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
     }
 
     public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier soundEvent, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Player? primaryLocalPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
     {
-        NativeMethods.TablePtr->C1.hs_method_8584f99f((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)soundEvent.Handle, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0), (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+        NativeMethods.TablePtr->C2.hs_method_8584f99f((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)soundEvent.Handle, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0), (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'ServerSoundInstance' is not supported.", false)]
@@ -128,150 +128,150 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
 
     public bool mIsClientSide
     {
-        get => NativeMethods.TablePtr->C1.hs_get_c2865b53((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_c2865b53((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c2865b53((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_c2865b53((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelEventCoordinator_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f6a2bf71((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f6a2bf71((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelPacketSender_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_5b484f84((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5b484f84((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnLevelSoundEvent_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_80960797((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_80960797((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnLevelSoundEventWithVolumeAndPitch_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8002027c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8002027c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnPlayerConnectedSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0fcdcfee((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0fcdcfee((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnPlayerDisconnectedSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_5600fd78((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_5600fd78((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnPlayerLeftDimensionSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_78d99a81((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_78d99a81((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnRecordStartedEvent_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_874bcd37((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_874bcd37((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnRecordStoppedEvent_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d50c5a4d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d50c5a4d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnStopAllLevelSoundsEvent_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0b09fd8c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0b09fd8c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnStopLevelSoundEvent_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e641ac23((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e641ac23((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnStopMusicEvent_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_32893006((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_32893006((void*)__hosihikari_shim_handle);
     }
 
     public bool mServerAuthSoundEnabled
     {
-        get => NativeMethods.TablePtr->C1.hs_get_338dedc7((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_338dedc7((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_338dedc7((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_338dedc7((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mServerSoundDefinitionRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_be836cc7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_be836cc7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mServerSoundInstanceManager_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_3c9089f2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_3c9089f2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSoundPacketQueue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a61abc84((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a61abc84((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSoundPlayer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9a263132((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9a263132((void*)__hosihikari_shim_handle);
     }
 
     public void onViewRegionMoved(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, uint radius, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimension)
     {
-        NativeMethods.TablePtr->C1.hs_method_5278227e((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)position.Handle, radius, (void*)dimension.Handle);
+        NativeMethods.TablePtr->C2.hs_method_5278227e((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)position.Handle, radius, (void*)dimension.Handle);
     }
 
     public void playPredictiveSynchronizedSound(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Player? targetPlayer, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
     {
-        NativeMethods.TablePtr->C1.hs_method_c328e85c((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, (void*)(targetPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+        NativeMethods.TablePtr->C2.hs_method_c328e85c((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, (void*)(targetPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
     }
 
     public void playPredictiveSynchronizedSound(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, global::Hosihikari.Bindings.Bedrock.Interop.SoundEventIdentifier soundEvent, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Player? targetPlayer, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
     {
-        NativeMethods.TablePtr->C1.hs_method_eedcfcfa((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)soundEvent.Handle, (void*)pos.Handle, (void*)(targetPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+        NativeMethods.TablePtr->C2.hs_method_eedcfcfa((void*)__hosihikari_shim_handle, (void*)dimension.Handle, (void*)soundEvent.Handle, (void*)pos.Handle, (void*)(targetPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
     }
 
     public void playSound(uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, float volume, float pitch)
     {
-        NativeMethods.TablePtr->C1.hs_method_5178aea3((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, volume, pitch);
+        NativeMethods.TablePtr->C2.hs_method_5178aea3((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, volume, pitch);
     }
 
     public void playSound(uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal)
     {
-        NativeMethods.TablePtr->C1.hs_method_895b6cb2((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal);
+        NativeMethods.TablePtr->C2.hs_method_895b6cb2((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal);
     }
 
     public void playSoundForPlayerInDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionType, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Player? primaryLocalPlayer)
     {
-        NativeMethods.TablePtr->C1.hs_method_fd330aca((void*)__hosihikari_shim_handle, (void*)dimensionType.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_fd330aca((void*)__hosihikari_shim_handle, (void*)dimensionType.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(primaryLocalPlayer?.Handle ?? 0));
     }
 
     public void playSynchronizedSound_DEPRECATED(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Player? primaryLocalPlayer, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
     {
-        NativeMethods.TablePtr->C1.hs_method_4befe436((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, (void*)(primaryLocalPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+        NativeMethods.TablePtr->C2.hs_method_4befe436((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, (void*)(primaryLocalPlayer?.Handle ?? 0), data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
     }
 
     public void processQueuedSoundPackets()
     {
-        NativeMethods.TablePtr->C1.hs_method_a2afb7cf((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_a2afb7cf((void*)__hosihikari_shim_handle);
     }
 
     public void sendRecordStarted(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId[] recipients, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos, global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle)
@@ -285,19 +285,20 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            NativeMethods.TablePtr->C1.hs_method_619b1193((void*)__hosihikari_shim_handle, (void*)blockPos.Handle, (void*)serverSoundHandle.Handle, __hs_vectorData0, (nuint)(recipients?.Length ?? 0));
+            NativeMethods.TablePtr->C2.hs_method_619b1193((void*)__hosihikari_shim_handle, (void*)blockPos.Handle, (void*)serverSoundHandle.Handle, __hs_vectorData0, (nuint)(recipients?.Length ?? 0));
         }
     }
 
     public void subscribeToPlayerConnectionEvents(global::Hosihikari.Bindings.Bedrock.Interop.IPlayerConnectionConnector connector)
     {
-        NativeMethods.TablePtr->C1.hs_method_c5d3a498((void*)__hosihikari_shim_handle, (void*)connector.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c5d3a498((void*)__hosihikari_shim_handle, (void*)connector.Handle);
     }
 
     public void subscribeToPlayerDimensionTransfers(global::Hosihikari.Bindings.Bedrock.Interop.IPlayerDimensionTransferConnector connector)
     {
-        NativeMethods.TablePtr->C1.hs_method_d902d012((void*)__hosihikari_shim_handle, (void*)connector.Handle);
+        NativeMethods.TablePtr->C2.hs_method_d902d012((void*)__hosihikari_shim_handle, (void*)connector.Handle);
     }
+
 
     public void Dispose()
     {
@@ -305,7 +306,7 @@ public sealed unsafe partial class LevelSoundManager : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_d83b6590((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_d83b6590((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

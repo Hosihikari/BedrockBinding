@@ -89,6 +89,7 @@ public sealed unsafe partial class BlockTryDestroyByPlayerEvent : global::System
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockTryDestroyByPlayerEvent((nint)NativeMethods.TablePtr->C0.hs_method_163aff96((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

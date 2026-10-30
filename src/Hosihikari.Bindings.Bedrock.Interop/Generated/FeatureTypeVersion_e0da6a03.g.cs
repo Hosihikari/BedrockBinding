@@ -77,6 +77,7 @@ public sealed unsafe partial class FeatureTypeVersion : global::System.IDisposab
         set => NativeMethods.TablePtr->C1.hs_set_0938f851((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

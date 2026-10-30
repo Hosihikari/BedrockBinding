@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AttackDefinition
+public sealed unsafe partial class AttackDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,6 +58,7 @@ public sealed unsafe partial class AttackDefinition
         get => (nint)NativeMethods.TablePtr->C0.hs_get_466857f3((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
@@ -68,5 +69,18 @@ public sealed unsafe partial class AttackDefinition
     public nint mTreeDefinition_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_15acd623((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_471c6ac8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

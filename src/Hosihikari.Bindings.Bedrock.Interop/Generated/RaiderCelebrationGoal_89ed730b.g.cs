@@ -199,6 +199,7 @@ public sealed unsafe partial class RaiderCelebrationGoal : global::System.IDispo
         NativeMethods.TablePtr->C2.hs_method_1ab880b7((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

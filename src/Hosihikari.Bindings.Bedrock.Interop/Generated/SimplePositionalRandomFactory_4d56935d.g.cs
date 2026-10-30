@@ -91,6 +91,7 @@ public sealed unsafe partial class SimplePositionalRandomFactory : global::Syste
         return new global::Hosihikari.Bindings.Bedrock.Interop.SimplePositionalRandomFactory((nint)NativeMethods.TablePtr->C3.hs_method_84ee2052((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

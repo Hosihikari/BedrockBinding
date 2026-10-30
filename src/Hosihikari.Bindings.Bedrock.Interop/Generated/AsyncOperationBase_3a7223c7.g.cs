@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB;
 
-public sealed unsafe partial class AsyncOperationBase
+public sealed unsafe partial class AsyncOperationBase : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -98,5 +98,19 @@ public sealed unsafe partial class AsyncOperationBase
     public bool tick(global::Hosihikari.Bindings.Abi.SharedHandle? databasePtr, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord record)
     {
         return NativeMethods.TablePtr->C2.hs_method_373ad30f((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_3a7223c7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

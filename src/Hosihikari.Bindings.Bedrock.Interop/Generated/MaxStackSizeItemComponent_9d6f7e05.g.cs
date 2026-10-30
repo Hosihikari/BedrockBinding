@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MaxStackSizeItemComponent
+public sealed unsafe partial class MaxStackSizeItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class MaxStackSizeItemComponent
     {
         get => NativeMethods.TablePtr->C2.hs_get_a9f3c625((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_a9f3c625((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_9d6f7e05((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

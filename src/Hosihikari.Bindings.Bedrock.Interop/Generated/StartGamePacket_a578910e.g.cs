@@ -246,6 +246,7 @@ public sealed unsafe partial class StartGamePacket : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_696b6f30((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public bool mBlockNetworkIdsAreHashes
     {
         get => NativeMethods.TablePtr->C3.hs_get_e8f1f4a2((void*)__hosihikari_shim_handle) != 0;

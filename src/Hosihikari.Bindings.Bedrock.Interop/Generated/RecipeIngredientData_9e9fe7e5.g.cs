@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal;
 
-public sealed unsafe partial class RecipeIngredientData
+public sealed unsafe partial class RecipeIngredientData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class RecipeIngredientData
     {
         get => NativeMethods.TablePtr->C1.hs_get_ff1b562f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_ff1b562f((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9e9fe7e5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

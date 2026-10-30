@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ReflectProjectileDefinition
+public sealed unsafe partial class ReflectProjectileDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -90,5 +90,19 @@ public sealed unsafe partial class ReflectProjectileDefinition
     public nint mReflectionSound_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_5909b708((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_1012408f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

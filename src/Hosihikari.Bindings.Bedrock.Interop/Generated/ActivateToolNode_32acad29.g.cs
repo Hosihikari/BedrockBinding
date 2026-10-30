@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActivateToolNode
+public sealed unsafe partial class ActivateToolNode : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -97,6 +97,7 @@ public sealed unsafe partial class ActivateToolNode
         return NativeMethods.TablePtr->C0.hs_method_6893aca5((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
+
     public nint mComponent
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_fd0f9cc0((void*)__hosihikari_shim_handle);
@@ -130,5 +131,18 @@ public sealed unsafe partial class ActivateToolNode
     public nint mTreeDefinition_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_5f060489((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_32acad29((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

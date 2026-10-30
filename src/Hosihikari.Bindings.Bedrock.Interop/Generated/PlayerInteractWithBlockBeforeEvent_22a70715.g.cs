@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerInteractWithBlockBeforeEvent
+public sealed unsafe partial class PlayerInteractWithBlockBeforeEvent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -72,5 +72,19 @@ public sealed unsafe partial class PlayerInteractWithBlockBeforeEvent
     public nint mPlayer_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_c5485e05((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_22a70715((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

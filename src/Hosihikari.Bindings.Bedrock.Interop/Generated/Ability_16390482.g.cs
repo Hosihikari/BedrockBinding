@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Ability
+public sealed unsafe partial class Ability : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,5 +59,19 @@ public sealed unsafe partial class Ability
     public bool operator_not_equal(global::Hosihikari.Bindings.Bedrock.Interop.Ability rhs)
     {
         return NativeMethods.TablePtr->C0.hs_method_d9504ad1((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_16390482((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

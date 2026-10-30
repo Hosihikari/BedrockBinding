@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StructureTemplateDataResponsePacket
+public sealed unsafe partial class StructureTemplateDataResponsePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class StructureTemplateDataResponsePacket
         NativeMethods.TablePtr->C3.hs_method_ae2f2748((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public byte mResponseType
     {
         get => NativeMethods.TablePtr->C3.hs_get_3a8ffa9f((void*)__hosihikari_shim_handle);
@@ -243,5 +244,18 @@ public sealed unsafe partial class StructureTemplateDataResponsePacket
     public nint mStructureTag_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_f3282cff((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_6154e318((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

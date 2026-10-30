@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy;
 
-public sealed unsafe partial class OnCompleteTriggerItemComponent
+public sealed unsafe partial class OnCompleteTriggerItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,5 +47,19 @@ public sealed unsafe partial class OnCompleteTriggerItemComponent
     public nint mOnComplete_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_b7db52df((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_adfeca5f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

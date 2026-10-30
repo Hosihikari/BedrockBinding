@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested;
 
-public sealed unsafe partial class VaultSharedData
+public sealed unsafe partial class VaultSharedData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,25 +40,39 @@ public sealed unsafe partial class VaultSharedData
 
     public float connectedParticlesRange
     {
-        get => NativeMethods.TablePtr->C3.hs_get_54bf451e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_54bf451e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_54bf451e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_54bf451e((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint connectedPlayers_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_b5402e13((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b5402e13((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint displayItem_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_9453d3ca((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9453d3ca((void*)__hosihikari_shim_handle);
     }
 
     public bool isSharedDataDirty
     {
-        get => NativeMethods.TablePtr->C3.hs_get_4df9369d((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_4df9369d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_4df9369d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_4df9369d((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_3f1f5411((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

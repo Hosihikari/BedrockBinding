@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CelebrateHuntDefinition
+public sealed unsafe partial class CelebrateHuntDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -77,5 +77,19 @@ public sealed unsafe partial class CelebrateHuntDefinition
     public nint mSoundInterval_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_d59daaf5((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_9caf2c1b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

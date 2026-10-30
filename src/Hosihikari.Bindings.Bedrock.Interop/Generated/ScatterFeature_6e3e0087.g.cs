@@ -40,20 +40,20 @@ public sealed unsafe partial class ScatterFeature : global::System.IDisposable
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C2.hs_get_e169dcc4((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_e169dcc4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_e169dcc4((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_e169dcc4((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C2.hs_get_805e4062((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_805e4062((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_805e4062((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_805e4062((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? _place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_4ec3da7f((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_4ec3da7f((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
@@ -63,81 +63,81 @@ public sealed unsafe partial class ScatterFeature : global::System.IDisposable
 
     public void addCoordinateEvaluationOrder(nint scatterParamsData, nint coordinateEvaluationOrder)
     {
-        NativeMethods.TablePtr->C2.hs_method_786ae906((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)coordinateEvaluationOrder);
+        NativeMethods.TablePtr->C3.hs_method_786ae906((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)coordinateEvaluationOrder);
     }
 
     public void addCoordinateRangeDataX(nint scatterParamsData, nint coordinateRangeData)
     {
-        NativeMethods.TablePtr->C2.hs_method_b672e84a((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)coordinateRangeData);
+        NativeMethods.TablePtr->C3.hs_method_b672e84a((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)coordinateRangeData);
     }
 
     public void addCoordinateRangeDataXExpression(nint scatterParamsData, global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.ExpressionNode expressionNode)
     {
-        NativeMethods.TablePtr->C2.hs_method_e6a929aa((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)expressionNode.Handle);
+        NativeMethods.TablePtr->C3.hs_method_e6a929aa((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)expressionNode.Handle);
     }
 
     public void addCoordinateRangeDataY(nint scatterParamsData, nint coordinateRangeData)
     {
-        NativeMethods.TablePtr->C2.hs_method_5fa56561((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)coordinateRangeData);
+        NativeMethods.TablePtr->C3.hs_method_5fa56561((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)coordinateRangeData);
     }
 
     public void addCoordinateRangeDataYExpression(nint scatterParamsData, global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.ExpressionNode expressionNode)
     {
-        NativeMethods.TablePtr->C2.hs_method_cb91d24a((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)expressionNode.Handle);
+        NativeMethods.TablePtr->C3.hs_method_cb91d24a((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)expressionNode.Handle);
     }
 
     public void addCoordinateRangeDataZ(nint scatterParamsData, nint coordinateRangeData)
     {
-        NativeMethods.TablePtr->C2.hs_method_dca6a4fd((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)coordinateRangeData);
+        NativeMethods.TablePtr->C3.hs_method_dca6a4fd((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)coordinateRangeData);
     }
 
     public void addCoordinateRangeDataZExpression(nint scatterParamsData, global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.ExpressionNode expressionNode)
     {
-        NativeMethods.TablePtr->C2.hs_method_2962939c((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)expressionNode.Handle);
+        NativeMethods.TablePtr->C3.hs_method_2962939c((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)expressionNode.Handle);
     }
 
     public void addIterations(nint scatterParamsData, global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.ExpressionNode iterations)
     {
-        NativeMethods.TablePtr->C2.hs_method_6367394e((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)iterations.Handle);
+        NativeMethods.TablePtr->C3.hs_method_6367394e((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)iterations.Handle);
     }
 
     public void addScatterChance(nint scatterParamsData, nint scatterChance)
     {
-        NativeMethods.TablePtr->C2.hs_method_13f0da90((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)scatterChance);
+        NativeMethods.TablePtr->C3.hs_method_13f0da90((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)scatterChance);
     }
 
     public void addScatterChanceExpression(nint scatterParamsData, global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy.ExpressionNode scatterChance)
     {
-        NativeMethods.TablePtr->C2.hs_method_08dce48e((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)scatterChance.Handle);
+        NativeMethods.TablePtr->C3.hs_method_08dce48e((void*)__hosihikari_shim_handle, (void*)scatterParamsData, (void*)scatterChance.Handle);
     }
 
     public void addScatterParams(global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams scatterParams)
     {
-        NativeMethods.TablePtr->C2.hs_method_f21d17f2((void*)__hosihikari_shim_handle, (void*)scatterParams.Handle);
+        NativeMethods.TablePtr->C3.hs_method_f21d17f2((void*)__hosihikari_shim_handle, (void*)scatterParams.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureToScatter_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_254801a8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_254801a8((void*)__hosihikari_shim_handle);
     }
 
     public bool mProjectInputToFloor
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f73378b1((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_f73378b1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f73378b1((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_f73378b1((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mScatterParams_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2b2b8126((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2b2b8126((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos? place(global::Hosihikari.Bindings.Bedrock.Interop.IFeature_Nested.PlacementContext context)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_2c5299d9((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_2c5299d9((void*)__hosihikari_shim_handle, (void*)context.Handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
@@ -148,7 +148,7 @@ public sealed unsafe partial class ScatterFeature : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_6e3e0087((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_6e3e0087((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

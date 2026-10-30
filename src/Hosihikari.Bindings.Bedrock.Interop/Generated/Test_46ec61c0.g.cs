@@ -79,6 +79,7 @@ public sealed unsafe partial class Test : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_19ee4472((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)random.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

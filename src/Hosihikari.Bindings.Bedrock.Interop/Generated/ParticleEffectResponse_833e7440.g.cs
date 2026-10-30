@@ -125,6 +125,7 @@ public sealed unsafe partial class ParticleEffectResponse : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.ParticleEffectResponse((nint)NativeMethods.TablePtr->C2.hs_method_cc2b1baa((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

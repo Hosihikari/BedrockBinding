@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WorldGenClimateMappingAttributes
+public sealed unsafe partial class WorldGenClimateMappingAttributes : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -46,5 +46,19 @@ public sealed unsafe partial class WorldGenClimateMappingAttributes
     public nint mClimateMappings_Address
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_ba53c30b((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_fdeeb303((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MeCommand
+public sealed unsafe partial class MeCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -135,6 +135,7 @@ public sealed unsafe partial class MeCommand
         NativeMethods.TablePtr->C2.hs_method_77006aca((void*)registry.Handle);
     }
 
+
     public bool mRequireChatPerms
     {
         get => NativeMethods.TablePtr->C2.hs_get_b414f4de((void*)__hosihikari_shim_handle) != 0;
@@ -145,5 +146,18 @@ public sealed unsafe partial class MeCommand
     {
         get => NativeMethods.TablePtr->C2.hs_get_3b86d98b((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C2.hs_set_3b86d98b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_93751a89((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

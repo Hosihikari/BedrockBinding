@@ -348,6 +348,7 @@ public sealed unsafe partial class BushBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_e0dd940e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)(actor?.Handle ?? 0), fType) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

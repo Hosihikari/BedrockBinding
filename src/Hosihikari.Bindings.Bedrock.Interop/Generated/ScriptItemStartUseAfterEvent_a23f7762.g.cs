@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptItemStartUseAfterEvent
+public sealed unsafe partial class ScriptItemStartUseAfterEvent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -64,5 +64,19 @@ public sealed unsafe partial class ScriptItemStartUseAfterEvent
     {
         get => NativeMethods.TablePtr->C3.hs_get_a55c79a5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_a55c79a5((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_a23f7762((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

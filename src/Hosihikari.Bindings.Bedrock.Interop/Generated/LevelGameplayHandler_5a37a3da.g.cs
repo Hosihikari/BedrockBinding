@@ -53,7 +53,7 @@ public sealed unsafe partial class LevelGameplayHandler : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_5a37a3da((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_5a37a3da((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

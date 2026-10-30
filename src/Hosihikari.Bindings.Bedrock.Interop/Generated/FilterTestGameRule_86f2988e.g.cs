@@ -145,6 +145,7 @@ public sealed unsafe partial class FilterTestGameRule : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_117dedc9((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

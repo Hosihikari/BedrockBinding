@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class Beardifier
+public sealed unsafe partial class Beardifier : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,10 @@ public sealed unsafe partial class Beardifier
         return NativeMethods.TablePtr->C4.hs_method_50faf197((void*)__hosihikari_shim_handle, (void*)pos.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'br::worldgen::Beardifier' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint forStructuresInChunk(nint structureCache, nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'br::worldgen::Beardifier' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.Beardifier forStructuresInChunk(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureCache structureCache, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.Beardifier((nint)NativeMethods.TablePtr->C4.hs_method_4b01b411((void*)structureCache.Handle, (void*)pos.Handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mJunctions_Address
@@ -57,5 +58,19 @@ public sealed unsafe partial class Beardifier
     public nint mPieces_Address
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_5d80d42e((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_a3e23787((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

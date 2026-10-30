@@ -126,6 +126,7 @@ public sealed unsafe partial class TextObjectText : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C3.hs_method_5e94d6e4((void*)__hosihikari_shim_handle, (void*)resolveData));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

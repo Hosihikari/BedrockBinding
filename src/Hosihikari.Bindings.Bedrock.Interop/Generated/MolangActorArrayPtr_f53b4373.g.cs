@@ -63,6 +63,7 @@ public sealed unsafe partial class MolangActorArrayPtr : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->C2.hs_get_bf6bdb54((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

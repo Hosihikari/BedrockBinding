@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BrushItem
+public sealed unsafe partial class BrushItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -91,6 +91,7 @@ public sealed unsafe partial class BrushItem
     {
         return NativeMethods.TablePtr->C0.hs_method_13ef18a8((void*)__hosihikari_shim_handle) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -299,5 +300,18 @@ public sealed unsafe partial class BrushItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_5df5e575((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_5df5e575((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_96804a73((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VibrationInfo
+public sealed unsafe partial class VibrationInfo : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,41 +40,55 @@ public sealed unsafe partial class VibrationInfo
 
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.DataLoadHelper dataLoadHelper)
     {
-        NativeMethods.TablePtr->C3.hs_method_65f8af35((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
+        NativeMethods.TablePtr->C4.hs_method_65f8af35((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
     public float mDistance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_416eb82e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_416eb82e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_416eb82e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_416eb82e((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPos_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_97c64083((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_97c64083((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mProjectileOwnerID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_32b6d610((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_32b6d610((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSourceID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f36cc9a9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f36cc9a9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVibration_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_dd49f8fe((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_dd49f8fe((void*)__hosihikari_shim_handle);
     }
 
     public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->C3.hs_method_817b1e75((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+        NativeMethods.TablePtr->C4.hs_method_817b1e75((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_943aba57((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

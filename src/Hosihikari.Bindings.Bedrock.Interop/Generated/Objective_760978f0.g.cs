@@ -144,6 +144,7 @@ public sealed unsafe partial class Objective : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Objective((nint)NativeMethods.TablePtr->C2.hs_method_f5f7f284((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

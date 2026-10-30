@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v3_0_0.PackManifestDefinition;
 
-public sealed unsafe partial class LabelSetting
+public sealed unsafe partial class LabelSetting : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class LabelSetting
     {
         get => NativeMethods.TablePtr->C3.hs_get_d9032faf((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_d9032faf((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_14e9a494((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

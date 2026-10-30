@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Balloon
+public sealed unsafe partial class Balloon : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -619,5 +619,19 @@ public sealed unsafe partial class Balloon
     public void remove(bool shouldPop)
     {
         NativeMethods.TablePtr->C0.hs_method_0a6d691e((void*)__hosihikari_shim_handle, shouldPop);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_046a1a3a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

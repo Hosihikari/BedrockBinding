@@ -111,6 +111,7 @@ public sealed unsafe partial class NetherFortressFeature : global::System.IDispo
         return NativeMethods.TablePtr->C2.hs_method_1846eefa((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
     {

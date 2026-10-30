@@ -67,6 +67,7 @@ public sealed unsafe partial class CreatePhotoPacketPayload : global::System.IDi
         get => (nint)NativeMethods.TablePtr->C1.hs_get_0b91fa60((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

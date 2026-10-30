@@ -94,6 +94,7 @@ public sealed unsafe partial class ScriptItemStartUseOnAfterEvent : global::Syst
         get => (nint)NativeMethods.TablePtr->C3.hs_get_797c09b6((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

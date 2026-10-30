@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CarrotOnAStickItem
+public sealed unsafe partial class CarrotOnAStickItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -91,6 +91,7 @@ public sealed unsafe partial class CarrotOnAStickItem
     {
         return NativeMethods.TablePtr->C0.hs_method_92db031e((void*)__hosihikari_shim_handle) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -299,5 +300,18 @@ public sealed unsafe partial class CarrotOnAStickItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_19e2b004((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_19e2b004((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_5a9eee11((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -40,37 +40,37 @@ public sealed unsafe partial class VanillaDimensions : global::System.IDisposabl
 
     public static nint DimensionMap()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_d32f5d1a();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_d32f5d1a();
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.DimensionType Nether()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C3.hs_method_e7379ce2(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C4.hs_method_e7379ce2(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.DimensionType Overworld()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C3.hs_method_d548ade6(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C4.hs_method_d548ade6(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.DimensionType TheEnd()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C3.hs_method_be32882b(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C4.hs_method_be32882b(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 TheEndSpawnPoint()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C3.hs_method_82cf8150(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C4.hs_method_82cf8150(), false);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.DimensionType Undefined()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C3.hs_method_546a7ff3(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C4.hs_method_546a7ff3(), false);
     }
 
     public static bool convertPointBetweenDimensions(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 startingPosition, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 outputPosition, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromID, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType toID, global::Hosihikari.Bindings.Bedrock.Interop.DimensionConversionData data)
     {
-        return NativeMethods.TablePtr->C3.hs_method_20d08a32((void*)startingPosition.Handle, (void*)outputPosition.Handle, (void*)fromID.Handle, (void*)toID.Handle, (void*)data.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_20d08a32((void*)startingPosition.Handle, (void*)outputPosition.Handle, (void*)fromID.Handle, (void*)toID.Handle, (void*)data.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<DimensionType>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -92,13 +92,13 @@ public sealed unsafe partial class VanillaDimensions : global::System.IDisposabl
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C3.hs_method_e0ce4a41(__hs_stringData0, (nuint)__hs_stringByteCount0));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C4.hs_method_e0ce4a41(__hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
     public static string toString(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimension)
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_7a68521f((void*)dimension.Handle);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_7a68521f((void*)dimension.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -108,7 +108,7 @@ public sealed unsafe partial class VanillaDimensions : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_0e696380((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_0e696380((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

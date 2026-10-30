@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CameraInstructionOptions;
 
-public sealed unsafe partial class SetInstruction
+public sealed unsafe partial class SetInstruction : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -95,5 +95,19 @@ public sealed unsafe partial class SetInstruction
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.CameraInstructionOptions.SetInstruction other)
     {
         return NativeMethods.TablePtr->C0.hs_method_8dbb2674((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_4c063371((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

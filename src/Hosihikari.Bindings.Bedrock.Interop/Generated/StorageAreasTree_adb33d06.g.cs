@@ -40,7 +40,7 @@ public sealed unsafe partial class StorageAreasTree : global::System.IDisposable
 
     public static StorageAreasTree Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_490c7fb1();
+        var handle = NativeMethods.TablePtr->C1.hs_create_490c7fb1();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class StorageAreasTree : global::System.IDisposable
 
     public static StorageAreasTree Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_20547c6d((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_20547c6d((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -70,35 +70,35 @@ public sealed unsafe partial class StorageAreasTree : global::System.IDisposable
 
     public void insertStorageArea(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea storageArea)
     {
-        NativeMethods.TablePtr->C0.hs_method_aebb44df((void*)__hosihikari_shim_handle, (void*)storageArea.Handle);
+        NativeMethods.TablePtr->C1.hs_method_aebb44df((void*)__hosihikari_shim_handle, (void*)storageArea.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk4e6c3d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_59607e3b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_59607e3b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk616396_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_2f418161((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2f418161((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd4c9be_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_d6e9754d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d6e9754d((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree((nint)NativeMethods.TablePtr->C0.hs_method_cc9e196c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.StorageAreasTree((nint)NativeMethods.TablePtr->C1.hs_method_cc9e196c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void removeStorageArea(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea storageArea)
     {
-        NativeMethods.TablePtr->C0.hs_method_15b882e6((void*)__hosihikari_shim_handle, (void*)storageArea.Handle);
+        NativeMethods.TablePtr->C1.hs_method_15b882e6((void*)__hosihikari_shim_handle, (void*)storageArea.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -111,7 +111,7 @@ public sealed unsafe partial class StorageAreasTree : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_adb33d06((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_adb33d06((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

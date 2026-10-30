@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.GameMode_Nested;
 
-public sealed unsafe partial class BuildDelay
+public sealed unsafe partial class BuildDelay : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class BuildDelay
     public nint mNewLastBuildTimeIfBlockIsBuilt_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_a278b93e((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_cb8cee20((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

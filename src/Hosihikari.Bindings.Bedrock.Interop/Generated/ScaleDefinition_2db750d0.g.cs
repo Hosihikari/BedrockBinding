@@ -40,7 +40,7 @@ public sealed unsafe partial class ScaleDefinition : global::System.IDisposable
 
     public static ScaleDefinition Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_df5a49a6();
+        var handle = NativeMethods.TablePtr->C3.hs_create_df5a49a6();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ScaleDefinition : global::System.IDisposable
 
     public static ScaleDefinition Create(global::Hosihikari.Bindings.Bedrock.Interop.ScaleDefinition arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_5ff2d1bf((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_5ff2d1bf((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,18 +62,18 @@ public sealed unsafe partial class ScaleDefinition : global::System.IDisposable
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->C2.hs_method_f2347f27(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C3.hs_method_f2347f27(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk849fdc_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_6521039e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6521039e((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScaleDefinition operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScaleDefinition arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScaleDefinition((nint)NativeMethods.TablePtr->C2.hs_method_2c146eaf((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScaleDefinition((nint)NativeMethods.TablePtr->C3.hs_method_2c146eaf((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -82,7 +82,7 @@ public sealed unsafe partial class ScaleDefinition : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_2db750d0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_2db750d0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NoiseCellInterpolator
+public sealed unsafe partial class NoiseCellInterpolator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -144,5 +144,19 @@ public sealed unsafe partial class NoiseCellInterpolator
     {
         get => NativeMethods.TablePtr->C2.hs_get_79af8fe5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_79af8fe5((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b536afc6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

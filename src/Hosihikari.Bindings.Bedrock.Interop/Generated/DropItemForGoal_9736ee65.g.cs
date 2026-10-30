@@ -397,6 +397,7 @@ public sealed unsafe partial class DropItemForGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_ef6ed58c((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

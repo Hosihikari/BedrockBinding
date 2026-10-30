@@ -83,6 +83,7 @@ public sealed unsafe partial class SetActorMotionPacketPayload : global::System.
         get => (nint)NativeMethods.TablePtr->C3.hs_get_b3598681((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

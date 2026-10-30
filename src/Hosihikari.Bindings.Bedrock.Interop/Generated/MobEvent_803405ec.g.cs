@@ -145,6 +145,7 @@ public sealed unsafe partial class MobEvent : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_a8f41d93((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

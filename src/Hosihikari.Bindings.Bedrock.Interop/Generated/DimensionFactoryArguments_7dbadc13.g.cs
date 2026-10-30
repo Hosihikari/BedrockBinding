@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DimensionFactoryArguments
+public sealed unsafe partial class DimensionFactoryArguments : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -38,9 +38,9 @@ public sealed unsafe partial class DimensionFactoryArguments
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'DimensionFactoryArguments' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static nint create(nint deps) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'DimensionFactoryArguments' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCreate_Address
@@ -52,5 +52,19 @@ public sealed unsafe partial class DimensionFactoryArguments
     public nint mInit_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_de7ffa4b((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_7dbadc13((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

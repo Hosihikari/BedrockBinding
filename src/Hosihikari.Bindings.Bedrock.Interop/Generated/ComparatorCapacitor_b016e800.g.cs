@@ -276,6 +276,7 @@ public sealed unsafe partial class ComparatorCapacitor : global::System.IDisposa
         NativeMethods.TablePtr->C0.hs_method_98f34cfb((void*)__hosihikari_shim_handle, (void*)system.Handle, (void*)pos.Handle);
     }
 
+
     public bool mAttachedAllowed
     {
         get => NativeMethods.TablePtr->C0.hs_get_4860069e((void*)__hosihikari_shim_handle) != 0;

@@ -82,6 +82,7 @@ public sealed unsafe partial class CameraList : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets_Nested.CameraList((nint)NativeMethods.TablePtr->C0.hs_method_2260d389((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

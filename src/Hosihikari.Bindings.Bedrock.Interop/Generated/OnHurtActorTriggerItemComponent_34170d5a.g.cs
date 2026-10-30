@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.Legacy;
 
-public sealed unsafe partial class OnHurtActorTriggerItemComponent
+public sealed unsafe partial class OnHurtActorTriggerItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class OnHurtActorTriggerItemComponent
     public nint mOnHurtActor_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_6ad99a36((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_34170d5a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

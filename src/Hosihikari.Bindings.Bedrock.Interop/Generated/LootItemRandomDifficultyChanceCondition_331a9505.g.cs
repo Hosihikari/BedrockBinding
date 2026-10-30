@@ -101,6 +101,7 @@ public sealed unsafe partial class LootItemRandomDifficultyChanceCondition : glo
         return new global::Hosihikari.Bindings.Bedrock.Interop.LootItemRandomDifficultyChanceCondition((nint)NativeMethods.TablePtr->C2.hs_method_90a33675((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

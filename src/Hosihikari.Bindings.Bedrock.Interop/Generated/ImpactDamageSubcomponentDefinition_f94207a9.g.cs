@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50;
 
-public sealed unsafe partial class ImpactDamageSubcomponentDefinition
+public sealed unsafe partial class ImpactDamageSubcomponentDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -152,5 +152,19 @@ public sealed unsafe partial class ImpactDamageSubcomponentDefinition
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ImpactDamageSubcomponentDefinition arg0)
     {
         return NativeMethods.TablePtr->C3.hs_method_65818c41((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f94207a9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

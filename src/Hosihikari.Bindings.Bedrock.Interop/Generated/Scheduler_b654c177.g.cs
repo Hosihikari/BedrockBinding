@@ -41,7 +41,7 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c276cda9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c276cda9((void*)__hosihikari_shim_handle);
     }
 
     public nint _ctor(string name, uint FPS)
@@ -59,7 +59,7 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->C2.hs_method_9e0c9541((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, FPS);
+            return (nint)NativeMethods.TablePtr->C3.hs_method_9e0c9541((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, FPS);
         }
     }
 
@@ -69,7 +69,7 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
 
     public static Scheduler Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_4874d659();
+        var handle = NativeMethods.TablePtr->C3.hs_create_4874d659();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -93,7 +93,7 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->C2.hs_create_40ae2139(__hs_stringData0, (nuint)__hs_stringByteCount0, FPS);
+            var handle = NativeMethods.TablePtr->C3.hs_create_40ae2139(__hs_stringData0, (nuint)__hs_stringByteCount0, FPS);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -106,73 +106,73 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mCoroutinePolicy_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_8d9902ae((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8d9902ae((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCoroutinePool_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_e7c26ed0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_e7c26ed0((void*)__hosihikari_shim_handle);
     }
 
     public uint mEffectiveFPS
     {
-        get => NativeMethods.TablePtr->C2.hs_get_55ba701b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_55ba701b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_55ba701b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_55ba701b((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNextStarveCheckTime_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2465fba7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2465fba7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPredictedCoroutineDuration_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_14908f8c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_14908f8c((void*)__hosihikari_shim_handle);
     }
 
     public uint mPromotionFrames
     {
-        get => NativeMethods.TablePtr->C2.hs_get_1c33ee50((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_1c33ee50((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_1c33ee50((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_1c33ee50((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mStarvedFrames
     {
-        get => NativeMethods.TablePtr->C2.hs_get_8ea0cc15((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_8ea0cc15((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_8ea0cc15((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_8ea0cc15((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mTargetFPS
     {
-        get => NativeMethods.TablePtr->C2.hs_get_766d9b03((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_766d9b03((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_766d9b03((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_766d9b03((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mThreadID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a57c6066((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a57c6066((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTotalCoroutineDuration_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_bd716971((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bd716971((void*)__hosihikari_shim_handle);
     }
 
     public uint mTotalFrames
     {
-        get => NativeMethods.TablePtr->C2.hs_get_23564fbd((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_23564fbd((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_23564fbd((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_23564fbd((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mTotalRunCoroutines
     {
-        get => NativeMethods.TablePtr->C2.hs_get_51fcba26((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_51fcba26((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_51fcba26((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_51fcba26((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -186,7 +186,7 @@ public sealed unsafe partial class Scheduler : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_b654c177((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_b654c177((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

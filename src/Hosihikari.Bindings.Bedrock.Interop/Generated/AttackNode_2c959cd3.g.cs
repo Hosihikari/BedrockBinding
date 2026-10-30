@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AttackNode
+public sealed unsafe partial class AttackNode : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -80,6 +80,7 @@ public sealed unsafe partial class AttackNode
         return NativeMethods.TablePtr->C0.hs_method_82bb02ed((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
+
     public nint mComponent
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_94021753((void*)__hosihikari_shim_handle);
@@ -113,5 +114,18 @@ public sealed unsafe partial class AttackNode
     public nint mTreeDefinition_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_baab13ac((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2c959cd3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

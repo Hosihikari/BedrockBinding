@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetTimePacket
+public sealed unsafe partial class SetTimePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,9 +227,23 @@ public sealed unsafe partial class SetTimePacket
         NativeMethods.TablePtr->C3.hs_method_162bc964((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mTime
     {
         get => NativeMethods.TablePtr->C3.hs_get_705a1a9e((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_705a1a9e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_c5f562ae((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

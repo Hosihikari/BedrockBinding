@@ -40,12 +40,12 @@ public sealed unsafe partial class ResourcePackClientResponsePacketPayload : glo
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_9301e7bd((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_9301e7bd((void*)__hosihikari_shim_handle);
     }
 
     public static ResourcePackClientResponsePacketPayload Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_f55925ac();
+        var handle = NativeMethods.TablePtr->C3.hs_create_f55925ac();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,13 +56,13 @@ public sealed unsafe partial class ResourcePackClientResponsePacketPayload : glo
 
     public nint getDownloadingPacks()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_63880679((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_63880679((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mResponse_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c58741f6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c58741f6((void*)__hosihikari_shim_handle);
     }
 
 
@@ -72,7 +72,7 @@ public sealed unsafe partial class ResourcePackClientResponsePacketPayload : glo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_4229eac5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_4229eac5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

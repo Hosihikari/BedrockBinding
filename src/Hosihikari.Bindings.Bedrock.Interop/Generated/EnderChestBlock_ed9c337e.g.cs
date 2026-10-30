@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnderChestBlock
+public sealed unsafe partial class EnderChestBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -277,5 +277,19 @@ public sealed unsafe partial class EnderChestBlock
     public void animateTickBedrockLegacy(nint tickData)
     {
         NativeMethods.TablePtr->C1.hs_method_56679b47((void*)__hosihikari_shim_handle, (void*)tickData);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ed9c337e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

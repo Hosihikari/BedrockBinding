@@ -89,6 +89,7 @@ public sealed unsafe partial class LegacyOnHurtActorTriggerItemComponent : globa
         get => (nint)NativeMethods.TablePtr->C1.hs_get_e25f9a4b((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnTriggerPublisher_Address
     {

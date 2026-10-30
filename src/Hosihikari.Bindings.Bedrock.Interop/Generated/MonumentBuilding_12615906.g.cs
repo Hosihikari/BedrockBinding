@@ -124,6 +124,7 @@ public sealed unsafe partial class MonumentBuilding : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_08961cd8((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle);
     }
 
+
     public bool mDoFill
     {
         get => NativeMethods.TablePtr->C2.hs_get_d2951b4a((void*)__hosihikari_shim_handle) != 0;

@@ -819,6 +819,7 @@ public sealed unsafe partial class PigZombie : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_3434f3f8((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

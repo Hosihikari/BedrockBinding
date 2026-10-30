@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WitherRandomAttackPosGoal
+public sealed unsafe partial class WitherRandomAttackPosGoal : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -152,5 +152,19 @@ public sealed unsafe partial class WitherRandomAttackPosGoal
     public void stop()
     {
         NativeMethods.TablePtr->C4.hs_method_b0ca8f61((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_ccb0a846((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

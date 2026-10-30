@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.spawn;
 
-public sealed unsafe partial class LocalMobCapCalc
+public sealed unsafe partial class LocalMobCapCalc : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class LocalMobCapCalc
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_45564965((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C4.hs_set_45564965((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_57bc095b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

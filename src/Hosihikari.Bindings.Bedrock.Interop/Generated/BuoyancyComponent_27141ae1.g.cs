@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BuoyancyComponent
+public sealed unsafe partial class BuoyancyComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -119,5 +119,19 @@ public sealed unsafe partial class BuoyancyComponent
     public bool needToResurface(global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region)
     {
         return NativeMethods.TablePtr->C0.hs_method_583e44d8((void*)__hosihikari_shim_handle, (void*)stateVectorComponent.Handle, (void*)region.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_27141ae1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

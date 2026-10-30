@@ -103,6 +103,7 @@ public sealed unsafe partial class ScriptActorDieAfterEvent : global::System.IDi
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorDieAfterEvent((nint)NativeMethods.TablePtr->C3.hs_method_b41efd67((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

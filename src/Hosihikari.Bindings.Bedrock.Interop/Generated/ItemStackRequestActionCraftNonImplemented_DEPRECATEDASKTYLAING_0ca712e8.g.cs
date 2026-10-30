@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestActionCraftNonImplemented_DEPRECATEDASKTYLAING
+public sealed unsafe partial class ItemStackRequestActionCraftNonImplemented_DEPRECATEDASKTYLAING : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -70,5 +70,19 @@ public sealed unsafe partial class ItemStackRequestActionCraftNonImplemented_DEP
     public void _write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
         NativeMethods.TablePtr->C1.hs_method_19fc6ee9((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0ca712e8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

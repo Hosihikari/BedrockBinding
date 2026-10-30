@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DiscFragmentItem
+public sealed unsafe partial class DiscFragmentItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -63,6 +63,7 @@ public sealed unsafe partial class DiscFragmentItem
         var __hs_view = NativeMethods.TablePtr->C1.hs_method_5c8080c3((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0));
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -271,5 +272,18 @@ public sealed unsafe partial class DiscFragmentItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_03165db0((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_03165db0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_f3a10815((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

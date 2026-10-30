@@ -380,6 +380,7 @@ public sealed unsafe partial class SnifferEggBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_d1d917dc((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

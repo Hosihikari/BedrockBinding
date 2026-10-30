@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockCustomComponentsComponentDescription
+public sealed unsafe partial class BlockCustomComponentsComponentDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -79,9 +79,9 @@ public sealed unsafe partial class BlockCustomComponentsComponentDescription
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void addCustomComponent(nint compName, nint compData, bool overridePlayerInteract, bool overridePlayerPlacing) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
     public nint buildNetworkTag(nint ctx) =>
@@ -136,5 +136,19 @@ public sealed unsafe partial class BlockCustomComponentsComponentDescription
     {
         get => NativeMethods.TablePtr->C0.hs_get_fa29eedb((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C0.hs_set_fa29eedb((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_26f6ebce((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

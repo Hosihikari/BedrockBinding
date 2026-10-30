@@ -131,6 +131,7 @@ public sealed unsafe partial class ScriptGameTestModuleFactory : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptGameTestModuleFactory((nint)NativeMethods.TablePtr->C3.hs_method_05d38650((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk13b033_Address
     {

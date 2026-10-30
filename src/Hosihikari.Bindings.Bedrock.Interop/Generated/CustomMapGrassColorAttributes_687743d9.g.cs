@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CustomMapGrassColorAttributes
+public sealed unsafe partial class CustomMapGrassColorAttributes : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class CustomMapGrassColorAttributes
     {
         get => NativeMethods.TablePtr->C1.hs_get_172c9c0a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_172c9c0a((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_687743d9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

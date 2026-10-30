@@ -468,6 +468,7 @@ public sealed unsafe partial class DispenserBlock : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_a72cf7a8((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

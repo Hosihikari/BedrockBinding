@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VanillaBiomeTypeAttributes
+public sealed unsafe partial class VanillaBiomeTypeAttributes : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,7 +40,21 @@ public sealed unsafe partial class VanillaBiomeTypeAttributes
 
     public int mBiomeType
     {
-        get => NativeMethods.TablePtr->C3.hs_get_f9f74b21((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_f9f74b21((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_f9f74b21((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_f9f74b21((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_75dd700b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

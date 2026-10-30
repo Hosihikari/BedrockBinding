@@ -95,6 +95,7 @@ public sealed unsafe partial class BlockPileFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_7f72f3f9((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {

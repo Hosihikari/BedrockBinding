@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail;
 
-public sealed unsafe partial class PublisherBase
+public sealed unsafe partial class PublisherBase : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -57,5 +57,19 @@ public sealed unsafe partial class PublisherBase
     public nint mSubscriptions_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_7c520386((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b256d749((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -81,6 +81,7 @@ public sealed unsafe partial class SyncScriptGameTestFunction : global::System.I
     public nint run(nint arg0, nint fnContext) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk103145_Address
     {

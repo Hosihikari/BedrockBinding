@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AnimateEntityPacket
+public sealed unsafe partial class AnimateEntityPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class AnimateEntityPacket
         NativeMethods.TablePtr->C0.hs_method_77d8732a((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAnimation_Address
     {
@@ -267,5 +268,18 @@ public sealed unsafe partial class AnimateEntityPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_0449de22((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_0449de22((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_ac5ef4c8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

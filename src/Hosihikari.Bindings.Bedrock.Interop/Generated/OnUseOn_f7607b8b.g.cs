@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PublisherItemComponent;
 
-public sealed unsafe partial class OnUseOn
+public sealed unsafe partial class OnUseOn : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -88,5 +88,19 @@ public sealed unsafe partial class OnUseOn
     {
         get => NativeMethods.TablePtr->C2.hs_get_58279e4e((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C2.hs_set_58279e4e((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_f7607b8b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

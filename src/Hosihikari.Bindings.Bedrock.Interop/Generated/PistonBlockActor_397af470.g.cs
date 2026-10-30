@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PistonBlockActor
+public sealed unsafe partial class PistonBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -286,6 +286,7 @@ public sealed unsafe partial class PistonBlockActor
         NativeMethods.TablePtr->C2.hs_method_cc7a3013((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {
@@ -326,5 +327,18 @@ public sealed unsafe partial class PistonBlockActor
     {
         get => NativeMethods.TablePtr->C2.hs_get_4576ff0b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_4576ff0b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_397af470((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

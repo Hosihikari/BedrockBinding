@@ -1662,9 +1662,10 @@ public sealed unsafe partial class ServerPlayer : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C3.hs_method_461d2413((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getCurrentStructureFeature() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString _getCurrentStructureFeature()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C3.hs_method_89c2e3cb((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _getEditorPlayer()
     {
@@ -2218,9 +2219,10 @@ public sealed unsafe partial class ServerPlayer : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C3.hs_method_a22509f4((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCurrentStructureFeature() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getCurrentStructureFeature()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C3.hs_method_cf7db217((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getEditorPlayer()
     {

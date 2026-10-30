@@ -166,9 +166,24 @@ public sealed unsafe partial class Localization : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'OptionalString' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getSimple(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'OptionalString' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.OptionalString _getSimple(string id)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(id);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.OptionalString((nint)NativeMethods.TablePtr->C2.hs_method_c859c404((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public void addKeys(nint from) =>
@@ -264,7 +279,7 @@ public sealed unsafe partial class Localization : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public static string getLangFilePath(string langCode)
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getLangFilePath(string langCode)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(langCode);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -279,8 +294,7 @@ public sealed unsafe partial class Localization : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(langCode, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->C2.hs_method_84633ba7(__hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_84633ba7(__hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 

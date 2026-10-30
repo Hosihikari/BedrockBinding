@@ -40,7 +40,7 @@ public sealed unsafe partial class ScatteredPositions : global::System.IDisposab
 
     public static ScatteredPositions Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_ada59b99();
+        var handle = NativeMethods.TablePtr->C3.hs_create_ada59b99();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ScatteredPositions : global::System.IDisposab
 
     public static ScatteredPositions Create(global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams_Nested.ScatteredPositions arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_b6d85f9b((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_b6d85f9b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,38 +62,39 @@ public sealed unsafe partial class ScatteredPositions : global::System.IDisposab
 
     public uint mIterations
     {
-        get => NativeMethods.TablePtr->C2.hs_get_955331a4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_955331a4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_955331a4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_955331a4((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMolangParams_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_64c3a5b3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_64c3a5b3((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOrigin_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_ab6c5925((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ab6c5925((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRandom_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2dc6422e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2dc6422e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mScatterParams_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_4b5aa46d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4b5aa46d((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams_Nested.ScatteredPositions operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams_Nested.ScatteredPositions arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams_Nested.ScatteredPositions((nint)NativeMethods.TablePtr->C2.hs_method_ab82d47e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScatterParams_Nested.ScatteredPositions((nint)NativeMethods.TablePtr->C3.hs_method_ab82d47e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {
@@ -101,7 +102,7 @@ public sealed unsafe partial class ScatteredPositions : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_f13f953a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_f13f953a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

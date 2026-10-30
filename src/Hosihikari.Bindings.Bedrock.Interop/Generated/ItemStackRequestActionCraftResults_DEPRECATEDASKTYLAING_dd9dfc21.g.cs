@@ -123,6 +123,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftResults_DEPRECATED
         NativeMethods.TablePtr->C1.hs_method_a43f8af3((void*)__hosihikari_shim_handle, (void*)blockPalette.Handle, isClientSide);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -211,6 +211,7 @@ public sealed unsafe partial class ModalFormRequestPacket : global::System.IDisp
         NativeMethods.TablePtr->C2.hs_method_d094ddc0((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public uint mFormId
     {
         get => NativeMethods.TablePtr->C2.hs_get_57a1b970((void*)__hosihikari_shim_handle);

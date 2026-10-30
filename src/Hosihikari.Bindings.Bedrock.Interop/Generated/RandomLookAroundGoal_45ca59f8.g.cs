@@ -189,6 +189,7 @@ public sealed unsafe partial class RandomLookAroundGoal : global::System.IDispos
         NativeMethods.TablePtr->C2.hs_method_72cfc21e((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

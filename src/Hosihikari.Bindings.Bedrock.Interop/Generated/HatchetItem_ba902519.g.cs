@@ -137,6 +137,7 @@ public sealed unsafe partial class HatchetItem : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_61ca7dbd((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C1.hs_get_30688489((void*)__hosihikari_shim_handle) != 0;

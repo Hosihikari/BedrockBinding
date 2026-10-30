@@ -799,6 +799,7 @@ public sealed unsafe partial class FallingBlockActor : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_cdb95b9b((void*)__hosihikari_shim_handle, (void*)pos.Handle, shouldStopRiding, cause, sourceEntityType, keepVelocity);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

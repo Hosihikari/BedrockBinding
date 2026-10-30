@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes;
 
-public sealed unsafe partial class SemVersionConstraint
+public sealed unsafe partial class SemVersionConstraint : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -68,5 +68,19 @@ public sealed unsafe partial class SemVersionConstraint
     public void validateValue(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion vers, global::Hosihikari.Bindings.Bedrock.Interop.cereal.SerializerContext context)
     {
         NativeMethods.TablePtr->C3.hs_method_142b73e4((void*)__hosihikari_shim_handle, (void*)vers.Handle, (void*)context.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_fd06164b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

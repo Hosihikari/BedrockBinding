@@ -107,6 +107,7 @@ public sealed unsafe partial class LootItemRandomChanceWithLootingCondition : gl
         return new global::Hosihikari.Bindings.Bedrock.Interop.LootItemRandomChanceWithLootingCondition((nint)NativeMethods.TablePtr->C2.hs_method_4c0c788e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

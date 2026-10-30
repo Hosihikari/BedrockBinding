@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LoginPacket
+public sealed unsafe partial class LoginPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class LoginPacket
         NativeMethods.TablePtr->C2.hs_method_74d01f75((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mClientNetworkVersion
     {
         get => NativeMethods.TablePtr->C2.hs_get_cf2eadc5((void*)__hosihikari_shim_handle);
@@ -237,5 +238,18 @@ public sealed unsafe partial class LoginPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_da53c105((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_da53c105((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_3e43d6f5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

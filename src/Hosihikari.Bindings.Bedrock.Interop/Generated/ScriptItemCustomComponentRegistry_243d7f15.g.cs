@@ -48,9 +48,9 @@ public sealed unsafe partial class ScriptItemCustomComponentRegistry : global::S
         NativeMethods.TablePtr->C3.hs_method_850eec32((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint events, nint deferredEventCoordinator, nint itemRegistry, nint signals, nint parameterCache) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener _getEventListener()
     {
@@ -89,9 +89,9 @@ public sealed unsafe partial class ScriptItemCustomComponentRegistry : global::S
         return new ScriptItemCustomComponentRegistry((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static ScriptItemCustomComponentRegistry Create(nint events, nint deferredEventCoordinator, nint itemRegistry, nint signals, nint parameterCache) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public static ScriptItemCustomComponentRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemCustomComponentRegistry arg0)
     {

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChemistryStickItem
+public sealed unsafe partial class ChemistryStickItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -160,6 +160,7 @@ public sealed unsafe partial class ChemistryStickItem
     {
         return NativeMethods.TablePtr->C0.hs_method_9d34e6e6((void*)__hosihikari_shim_handle, (void*)inoutInstance.Handle, (void*)(level?.Handle ?? 0), (void*)(player?.Handle ?? 0));
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -368,5 +369,18 @@ public sealed unsafe partial class ChemistryStickItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_32c55c03((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_32c55c03((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6ab456fe((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

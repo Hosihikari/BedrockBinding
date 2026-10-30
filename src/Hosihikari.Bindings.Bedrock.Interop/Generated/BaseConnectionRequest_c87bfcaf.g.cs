@@ -254,9 +254,10 @@ public sealed unsafe partial class BaseConnectionRequest : global::System.IDispo
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MinEngineVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getSkinGeometryMinEngineVersion() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MinEngineVersion' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion getSkinGeometryMinEngineVersion()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion((nint)NativeMethods.TablePtr->C0.hs_method_e68141cc((void*)__hosihikari_shim_handle));
+    }
 
     public string getSkinId()
     {

@@ -469,9 +469,10 @@ public sealed unsafe partial class CommandRegistry : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_0ea44044((void*)__hosihikari_shim_handle, (void*)token.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'InvertableFilter<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInvertableFilter(nint token) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'InvertableFilter<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.InvertableFilter_std__basic_string_char__ getInvertableFilter(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.ParseToken token)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.InvertableFilter_std__basic_string_char__((nint)NativeMethods.TablePtr->C0.hs_method_686ffc80((void*)__hosihikari_shim_handle, (void*)token.Handle));
+    }
 
     public bool isCommandOfType(string nameIn, ushort commandType)
     {
@@ -795,9 +796,10 @@ public sealed unsafe partial class CommandRegistry : global::System.IDisposable
     public void removeSoftEnumValues(nint enumName, nint values) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'AvailableCommandsPacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint serializeAvailableCommands() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'AvailableCommandsPacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.AvailableCommandsPacket serializeAvailableCommands()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AvailableCommandsPacket((nint)NativeMethods.TablePtr->C0.hs_method_c2d39663((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void setNetworkUpdateCallback(nint callback) =>

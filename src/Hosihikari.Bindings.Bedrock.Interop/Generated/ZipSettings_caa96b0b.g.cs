@@ -40,49 +40,49 @@ public sealed unsafe partial class ZipSettings : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_d08463b1((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_d08463b1((void*)__hosihikari_shim_handle);
     }
 
     public int mCompressionLevel
     {
-        get => NativeMethods.TablePtr->C0.hs_get_70833725((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_70833725((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_70833725((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_70833725((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFileAccess_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_e5d36b93((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e5d36b93((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPassword_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_873b6513((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_873b6513((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRestrictions_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_695937e7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_695937e7((void*)__hosihikari_shim_handle);
     }
 
     public bool mSkipInaccessibleFiles
     {
-        get => NativeMethods.TablePtr->C0.hs_get_260df342((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_260df342((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_260df342((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_260df342((void*)__hosihikari_shim_handle, value);
     }
 
     public int mZip64
     {
-        get => NativeMethods.TablePtr->C0.hs_get_d522e24a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_d522e24a((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_d522e24a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_d522e24a((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mZipDirectoryContents
     {
-        get => NativeMethods.TablePtr->C0.hs_get_23dbcb32((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_23dbcb32((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_23dbcb32((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_23dbcb32((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -92,7 +92,7 @@ public sealed unsafe partial class ZipSettings : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_caa96b0b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_caa96b0b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

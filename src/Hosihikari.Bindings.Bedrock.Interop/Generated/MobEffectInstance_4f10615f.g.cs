@@ -80,9 +80,10 @@ public sealed unsafe partial class MobEffectInstance : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MobEffectInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint load(nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MobEffectInstance' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance((nint)NativeMethods.TablePtr->C2.hs_method_788d7ed3((void*)tag.Handle));
+    }
 
     public bool mAmbient
     {
@@ -169,6 +170,7 @@ public sealed unsafe partial class MobEffectInstance : global::System.IDisposabl
     {
         NativeMethods.TablePtr->C2.hs_method_e68f3717((void*)__hosihikari_shim_handle, (void*)mob.Handle);
     }
+
 
     public void Dispose()
     {

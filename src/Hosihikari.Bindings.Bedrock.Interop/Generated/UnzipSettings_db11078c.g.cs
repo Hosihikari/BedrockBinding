@@ -40,55 +40,55 @@ public sealed unsafe partial class UnzipSettings : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_5c6401cc((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_5c6401cc((void*)__hosihikari_shim_handle);
     }
 
     public bool mDeleteZipOnSuccess
     {
-        get => NativeMethods.TablePtr->C0.hs_get_4e728a57((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_4e728a57((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_4e728a57((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_4e728a57((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFileAccess_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_95f0a923((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_95f0a923((void*)__hosihikari_shim_handle);
     }
 
     public ulong mMaxDirectoryDepth
     {
-        get => NativeMethods.TablePtr->C0.hs_get_7c4d2650((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_7c4d2650((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_7c4d2650((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_7c4d2650((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPassword_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_94fdfdc7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_94fdfdc7((void*)__hosihikari_shim_handle);
     }
 
     public bool mPreventOverwrites
     {
-        get => NativeMethods.TablePtr->C0.hs_get_ab08d469((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_ab08d469((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_ab08d469((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_ab08d469((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRestrictions_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_f4e0feb2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f4e0feb2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSelectedPaths_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_f6e91d56((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_f6e91d56((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnselectedPaths_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_1a466a3a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_1a466a3a((void*)__hosihikari_shim_handle);
     }
 
 
@@ -98,7 +98,7 @@ public sealed unsafe partial class UnzipSettings : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_db11078c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_db11078c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

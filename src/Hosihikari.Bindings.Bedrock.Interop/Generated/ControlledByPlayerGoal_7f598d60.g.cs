@@ -159,6 +159,7 @@ public sealed unsafe partial class ControlledByPlayerGoal : global::System.IDisp
         NativeMethods.TablePtr->C0.hs_method_bde22e66((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

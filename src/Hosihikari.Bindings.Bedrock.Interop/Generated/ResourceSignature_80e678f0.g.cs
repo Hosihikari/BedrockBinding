@@ -40,7 +40,7 @@ public sealed unsafe partial class ResourceSignature : global::System.IDisposabl
 
     public static ResourceSignature Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_a1ac8020();
+        var handle = NativeMethods.TablePtr->C3.hs_create_a1ac8020();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ResourceSignature : global::System.IDisposabl
 
     public static ResourceSignature Create(global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_3df37d08((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_3df37d08((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,18 +62,18 @@ public sealed unsafe partial class ResourceSignature : global::System.IDisposabl
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ SIGNATURE_FILENAME()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_616d4640(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C3.hs_method_616d4640(), false);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnke8472c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_b7cdfbf4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_b7cdfbf4((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature((nint)NativeMethods.TablePtr->C2.hs_method_cc07f3b4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ResourceSignature((nint)NativeMethods.TablePtr->C3.hs_method_cc07f3b4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -82,7 +82,7 @@ public sealed unsafe partial class ResourceSignature : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_80e678f0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_80e678f0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

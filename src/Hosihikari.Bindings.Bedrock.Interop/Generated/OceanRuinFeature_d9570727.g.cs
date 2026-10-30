@@ -142,6 +142,7 @@ public sealed unsafe partial class OceanRuinFeature : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.OceanRuinFeature((nint)NativeMethods.TablePtr->C2.hs_method_b216bfe4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
     {

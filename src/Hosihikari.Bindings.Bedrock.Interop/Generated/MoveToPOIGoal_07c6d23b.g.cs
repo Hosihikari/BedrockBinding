@@ -336,6 +336,7 @@ public sealed unsafe partial class MoveToPOIGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_5e754582((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -131,6 +131,7 @@ public sealed unsafe partial class EduAppConfigs : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.EduAppConfigs((nint)NativeMethods.TablePtr->C1.hs_method_ad7f6b60((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

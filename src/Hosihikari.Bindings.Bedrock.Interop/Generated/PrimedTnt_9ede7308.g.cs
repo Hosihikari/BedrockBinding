@@ -740,6 +740,7 @@ public sealed unsafe partial class PrimedTnt : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_dd96594c((void*)__hosihikari_shim_handle, (void*)pos.Handle, shouldStopRiding, cause, sourceEntityType, keepVelocity);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

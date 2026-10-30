@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScreenHandlerHUD
+public sealed unsafe partial class ScreenHandlerHUD : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -52,5 +52,19 @@ public sealed unsafe partial class ScreenHandlerHUD
     public byte handleAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestAction requestAction)
     {
         return NativeMethods.TablePtr->C3.hs_method_acb9bda9((void*)__hosihikari_shim_handle, (void*)requestAction.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_4e2cbd11((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

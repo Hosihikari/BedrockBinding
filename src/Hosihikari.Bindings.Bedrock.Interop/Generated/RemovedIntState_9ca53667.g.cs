@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FlatteningUtils;
 
-public sealed unsafe partial class RemovedIntState
+public sealed unsafe partial class RemovedIntState : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -74,9 +74,23 @@ public sealed unsafe partial class RemovedIntState
         return NativeMethods.TablePtr->C1.hs_method_ecd127e7((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_91ca50d3((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9ca53667((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

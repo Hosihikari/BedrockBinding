@@ -97,6 +97,7 @@ public sealed unsafe partial class CompactionListenerEnv : global::System.IDispo
         return new global::Hosihikari.Bindings.Bedrock.Interop.CompactionListenerEnv((nint)NativeMethods.TablePtr->C0.hs_method_f219f597((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

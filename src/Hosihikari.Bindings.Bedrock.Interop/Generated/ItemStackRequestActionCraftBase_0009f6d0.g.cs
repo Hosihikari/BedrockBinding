@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestActionCraftBase
+public sealed unsafe partial class ItemStackRequestActionCraftBase : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -78,5 +78,19 @@ public sealed unsafe partial class ItemStackRequestActionCraftBase
     public void postLoadItems_DEPRECATEDASKTYLAING(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette blockPalette, bool isClientSide)
     {
         NativeMethods.TablePtr->C1.hs_method_0d93f809((void*)__hosihikari_shim_handle, (void*)blockPalette.Handle, isClientSide);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0009f6d0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

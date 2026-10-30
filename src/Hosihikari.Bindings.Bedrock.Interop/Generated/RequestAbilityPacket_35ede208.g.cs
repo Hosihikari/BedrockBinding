@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RequestAbilityPacket
+public sealed unsafe partial class RequestAbilityPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class RequestAbilityPacket
         NativeMethods.TablePtr->C2.hs_method_7393e029((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public sbyte mAbility
     {
         get => NativeMethods.TablePtr->C2.hs_get_9819599d((void*)__hosihikari_shim_handle);
@@ -243,5 +244,18 @@ public sealed unsafe partial class RequestAbilityPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_4d8c061a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_4d8c061a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_35ede208((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -129,6 +129,7 @@ public sealed unsafe partial class TagCacheManager : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C3.hs_get_a97072e5((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

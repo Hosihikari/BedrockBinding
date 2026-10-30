@@ -75,6 +75,7 @@ public sealed unsafe partial class RecipeCraftInputs : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeCraftInputs((nint)NativeMethods.TablePtr->C2.hs_method_b9872239((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

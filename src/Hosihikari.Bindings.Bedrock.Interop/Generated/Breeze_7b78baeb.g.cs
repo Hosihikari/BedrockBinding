@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Breeze
+public sealed unsafe partial class Breeze : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -596,6 +596,7 @@ public sealed unsafe partial class Breeze
     public float causeFallDamageToActor(float distance, float multiplier, nint source) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_a7996638((void*)__hosihikari_shim_handle);
@@ -732,5 +733,18 @@ public sealed unsafe partial class Breeze
     public nint mLastHurtByMobId_d10e3aa1_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_4dedf541((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_7b78baeb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

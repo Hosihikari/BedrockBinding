@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TimerComponent
+public sealed unsafe partial class TimerComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -105,5 +105,19 @@ public sealed unsafe partial class TimerComponent
     public void restartTimer(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
         NativeMethods.TablePtr->C3.hs_method_b446b3b3((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_2f20c4ec((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -361,6 +361,7 @@ public sealed unsafe partial class ShovelItem : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult((nint)NativeMethods.TablePtr->C3.hs_method_c0007db8((void*)instance.Handle, (void*)entity.Handle, (void*)pos.Handle, face));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

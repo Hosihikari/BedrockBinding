@@ -107,6 +107,7 @@ public sealed unsafe partial class EncryptedZipTransforms : global::System.IDisp
         }
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SchedulerDefinition
+public sealed unsafe partial class SchedulerDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,34 +40,48 @@ public sealed unsafe partial class SchedulerDefinition
 
     public static void buildSchema(global::Hosihikari.Bindings.Abi.SharedHandle? root)
     {
-        NativeMethods.TablePtr->C2.hs_method_053ac9b6(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C3.hs_method_053ac9b6(root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public uint mMaxDelayTicks
     {
-        get => NativeMethods.TablePtr->C2.hs_get_ea028fd4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_ea028fd4((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ea028fd4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ea028fd4((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mMinDelayTicks
     {
-        get => NativeMethods.TablePtr->C2.hs_get_33db04fb((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_33db04fb((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_33db04fb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_33db04fb((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTriggerDefs_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a6bf8be1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a6bf8be1((void*)__hosihikari_shim_handle);
     }
 
     public void setMaxDelayTicks(nint seconds)
     {
-        NativeMethods.TablePtr->C2.hs_method_3b6fdaac((void*)__hosihikari_shim_handle, (void*)seconds);
+        NativeMethods.TablePtr->C3.hs_method_3b6fdaac((void*)__hosihikari_shim_handle, (void*)seconds);
     }
 
     public void setMinDelayTicks(nint seconds)
     {
-        NativeMethods.TablePtr->C2.hs_method_b66e5072((void*)__hosihikari_shim_handle, (void*)seconds);
+        NativeMethods.TablePtr->C3.hs_method_b66e5072((void*)__hosihikari_shim_handle, (void*)seconds);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_60a4b6a1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

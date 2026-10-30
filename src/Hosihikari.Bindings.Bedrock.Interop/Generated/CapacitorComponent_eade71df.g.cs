@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CapacitorComponent
+public sealed unsafe partial class CapacitorComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -154,6 +154,7 @@ public sealed unsafe partial class CapacitorComponent
         get => NativeMethods.TablePtr->C0.hs_get_ace0827a((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAttachedAllowed
     {
         get => NativeMethods.TablePtr->C0.hs_get_38910f06((void*)__hosihikari_shim_handle) != 0;
@@ -175,5 +176,18 @@ public sealed unsafe partial class CapacitorComponent
     {
         get => NativeMethods.TablePtr->C0.hs_get_dda7bede((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C0.hs_set_dda7bede((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_eade71df((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

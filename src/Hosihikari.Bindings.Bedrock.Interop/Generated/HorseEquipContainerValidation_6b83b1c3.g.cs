@@ -121,6 +121,7 @@ public sealed unsafe partial class HorseEquipContainerValidation : global::Syste
         get => (nint)NativeMethods.TablePtr->C1.hs_get_48cb85ba((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

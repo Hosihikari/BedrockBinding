@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_90;
 
-public sealed unsafe partial class KineticWeaponItemComponent
+public sealed unsafe partial class KineticWeaponItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -106,5 +106,19 @@ public sealed unsafe partial class KineticWeaponItemComponent
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_90.KineticWeaponItemComponent arg0)
     {
         return NativeMethods.TablePtr->C3.hs_method_ad99aac2((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_bf6cf4d4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

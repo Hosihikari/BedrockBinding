@@ -41,75 +41,75 @@ public sealed unsafe partial class VillageStart : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint boundingBox_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_0a8db900((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_0a8db900((void*)__hosihikari_shim_handle);
     }
 
     public int chunkX
     {
-        get => NativeMethods.TablePtr->C3.hs_get_6a827667((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_6a827667((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_6a827667((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_6a827667((void*)__hosihikari_shim_handle, value);
     }
 
     public int chunkZ
     {
-        get => NativeMethods.TablePtr->C3.hs_get_8eedc760((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_8eedc760((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_8eedc760((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_8eedc760((void*)__hosihikari_shim_handle, value);
     }
 
     public int maxYSpawnOffset
     {
-        get => NativeMethods.TablePtr->C3.hs_get_f629af65((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_f629af65((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_f629af65((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_f629af65((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint pieces_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_2ec8e102((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_2ec8e102((void*)__hosihikari_shim_handle);
     }
 
     public string _getStructureName()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_1358371d((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_1358371d((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool _isValid()
     {
-        return NativeMethods.TablePtr->C3.hs_method_6167426b((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_6167426b((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _requiresNeighborAwareBlockUpgrade()
     {
-        return NativeMethods.TablePtr->C3.hs_method_962e7354((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_962e7354((void*)__hosihikari_shim_handle) != 0;
     }
 
     public string getStructureName()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_a7a7fe6d((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_a7a7fe6d((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isValid()
     {
-        return NativeMethods.TablePtr->C3.hs_method_67899ed6((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_67899ed6((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool mIsAbandoned
     {
-        get => NativeMethods.TablePtr->C3.hs_get_e75a1380((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_e75a1380((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_e75a1380((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_e75a1380((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mValid
     {
-        get => NativeMethods.TablePtr->C3.hs_get_a522d859((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_a522d859((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_a522d859((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_a522d859((void*)__hosihikari_shim_handle, value);
     }
 
     public bool requiresNeighborAwareBlockUpgrade()
     {
-        return NativeMethods.TablePtr->C3.hs_method_a0f54713((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_a0f54713((void*)__hosihikari_shim_handle) != 0;
     }
 
 
@@ -119,7 +119,7 @@ public sealed unsafe partial class VillageStart : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_3f3b02f2((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_3f3b02f2((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

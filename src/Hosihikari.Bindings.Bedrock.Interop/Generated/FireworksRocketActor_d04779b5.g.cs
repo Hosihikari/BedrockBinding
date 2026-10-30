@@ -709,6 +709,7 @@ public sealed unsafe partial class FireworksRocketActor : global::System.IDispos
         NativeMethods.TablePtr->C1.hs_method_3ae3ea82((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

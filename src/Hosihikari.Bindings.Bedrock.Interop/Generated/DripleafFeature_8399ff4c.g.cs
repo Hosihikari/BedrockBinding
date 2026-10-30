@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DripleafFeature
+public sealed unsafe partial class DripleafFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,6 +48,7 @@ public sealed unsafe partial class DripleafFeature
         return NativeMethods.TablePtr->C1.hs_method_586e118b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
@@ -70,5 +71,18 @@ public sealed unsafe partial class DripleafFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_c3d9d794((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_c3d9d794((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_8399ff4c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

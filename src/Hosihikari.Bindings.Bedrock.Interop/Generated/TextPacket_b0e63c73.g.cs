@@ -195,9 +195,24 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
     public nint _read_83ec388b(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TextPacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint createRawMessage(nint msg) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TextPacket' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.TextPacket createRawMessage(string msg)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(msg);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(msg, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.TextPacket((nint)NativeMethods.TablePtr->C3.hs_method_6b423206(__hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
 
     public bool disallowBatching()
     {
@@ -265,6 +280,7 @@ public sealed unsafe partial class TextPacket : global::System.IDisposable
     {
         NativeMethods.TablePtr->C3.hs_method_cff271f8((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBody_Address

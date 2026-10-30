@@ -76,9 +76,10 @@ public sealed unsafe partial class Aquifer : global::System.IDisposable
         return new Aquifer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Aquifer::FluidSample' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _computeAquifer(nint cellCenter) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Aquifer::FluidSample' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Aquifer_Nested.FluidSample _computeAquifer(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos cellCenter)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Aquifer_Nested.FluidSample((nint)NativeMethods.TablePtr->C0.hs_method_47f0e066((void*)__hosihikari_shim_handle, (void*)cellCenter.Handle));
+    }
 
     public static nint chunkOffset()
     {
@@ -166,6 +167,7 @@ public sealed unsafe partial class Aquifer : global::System.IDisposable
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Aquifer((nint)NativeMethods.TablePtr->C0.hs_method_07f97ced((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {

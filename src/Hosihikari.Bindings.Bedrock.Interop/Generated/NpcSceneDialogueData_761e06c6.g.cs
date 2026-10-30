@@ -38,9 +38,9 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint npc, nint sceneName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? _getActionsContainer_5a85d4de()
     {
@@ -110,9 +110,9 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
         return new NpcSceneDialogueData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static NpcSceneDialogueData Create(nint npc, nint sceneName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionContainer? getActionsContainer_c33f58f3()
     {
@@ -178,6 +178,7 @@ public sealed unsafe partial class NpcSceneDialogueData : global::System.IDispos
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_7a1bcb1f((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {

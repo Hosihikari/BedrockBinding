@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockPosIterator_Nested;
 
-public sealed unsafe partial class ManhattanDistance
+public sealed unsafe partial class ManhattanDistance : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,5 +47,19 @@ public sealed unsafe partial class ManhattanDistance
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPosIterator_Nested.ManhattanDistance operator_operator__()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPosIterator_Nested.ManhattanDistance((nint)NativeMethods.TablePtr->C0.hs_method_f25a4e40((void*)__hosihikari_shim_handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0d231c3b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

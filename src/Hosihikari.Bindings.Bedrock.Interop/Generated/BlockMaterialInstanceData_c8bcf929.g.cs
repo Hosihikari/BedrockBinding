@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription_Nested;
 
-public sealed unsafe partial class BlockMaterialInstanceData
+public sealed unsafe partial class BlockMaterialInstanceData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class BlockMaterialInstanceData
     {
         get => NativeMethods.TablePtr->C0.hs_get_a8db7149((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_a8db7149((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_c8bcf929((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

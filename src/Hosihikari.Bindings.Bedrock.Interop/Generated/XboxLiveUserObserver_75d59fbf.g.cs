@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Social;
 
-public sealed unsafe partial class XboxLiveUserObserver
+public sealed unsafe partial class XboxLiveUserObserver : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,4 +51,18 @@ public sealed unsafe partial class XboxLiveUserObserver
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void onXboxUserUnblocked(nint xuid) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_75d59fbf((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UpdateEquipPacketPayload
+public sealed unsafe partial class UpdateEquipPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,31 +40,45 @@ public sealed unsafe partial class UpdateEquipPacketPayload
 
     public sbyte mContainerId
     {
-        get => NativeMethods.TablePtr->C3.hs_get_e89fd1c0((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_e89fd1c0((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_e89fd1c0((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_e89fd1c0((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_a7b04121((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a7b04121((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntityUniqueID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3ccbb901((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3ccbb901((void*)__hosihikari_shim_handle);
     }
 
     public int mSize
     {
-        get => NativeMethods.TablePtr->C3.hs_get_604dea67((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_604dea67((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_604dea67((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_604dea67((void*)__hosihikari_shim_handle, value);
     }
 
     public sbyte mType
     {
-        get => NativeMethods.TablePtr->C3.hs_get_248b7eff((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_248b7eff((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_248b7eff((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_248b7eff((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_2dcc09cb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

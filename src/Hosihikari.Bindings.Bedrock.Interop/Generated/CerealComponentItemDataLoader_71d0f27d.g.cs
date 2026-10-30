@@ -71,6 +71,7 @@ public sealed unsafe partial class CerealComponentItemDataLoader : global::Syste
         get => (nint)NativeMethods.TablePtr->C0.hs_get_6d91b5ca((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

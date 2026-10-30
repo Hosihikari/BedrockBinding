@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.TreeHelper.AttachableDecoration_Nested;
 
-public sealed unsafe partial class DecorationBlockDescriptor
+public sealed unsafe partial class DecorationBlockDescriptor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class DecorationBlockDescriptor
     public nint count_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_00224711((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_5560c53f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

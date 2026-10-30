@@ -48,9 +48,10 @@ public sealed unsafe partial class RakNetNetworkPeer : global::System.IDisposabl
     public nint __receivePacket(nint outData, nint timepointPtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getNetworkStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus _getNetworkStatus()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C2.hs_method_a6181d08((void*)__hosihikari_shim_handle));
+    }
 
     public bool _isEncrypted()
     {
@@ -112,9 +113,10 @@ public sealed unsafe partial class RakNetNetworkPeer : global::System.IDisposabl
     public nint _receivePacket(nint outData, nint timepointPtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getNetworkStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'NetworkPeer::NetworkStatus' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus getNetworkStatus()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C2.hs_method_bcb1a054((void*)__hosihikari_shim_handle));
+    }
 
     public bool isEncrypted()
     {
@@ -196,6 +198,7 @@ public sealed unsafe partial class RakNetNetworkPeer : global::System.IDisposabl
     {
         NativeMethods.TablePtr->C2.hs_method_4bc5cd8c((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {

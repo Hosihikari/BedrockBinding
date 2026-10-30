@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ServerLocatorBar_Nested;
 
-public sealed unsafe partial class GroupStrongHandle
+public sealed unsafe partial class GroupStrongHandle : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class GroupStrongHandle
     public nint mWaypointGroup_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_6d713731((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_7b581917((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

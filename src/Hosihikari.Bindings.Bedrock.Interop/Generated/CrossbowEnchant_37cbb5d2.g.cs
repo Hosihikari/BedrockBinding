@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CrossbowEnchant
+public sealed unsafe partial class CrossbowEnchant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -93,6 +93,7 @@ public sealed unsafe partial class CrossbowEnchant
         return NativeMethods.TablePtr->C1.hs_method_31432f74((void*)__hosihikari_shim_handle, type) != 0;
     }
 
+
     public int mCompatibility
     {
         get => NativeMethods.TablePtr->C1.hs_get_5379d902((void*)__hosihikari_shim_handle);
@@ -145,5 +146,18 @@ public sealed unsafe partial class CrossbowEnchant
     public nint mStringId_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_25b01f66((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_37cbb5d2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

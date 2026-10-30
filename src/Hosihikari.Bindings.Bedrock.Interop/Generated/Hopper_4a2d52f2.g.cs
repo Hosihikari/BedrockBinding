@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Hopper
+public sealed unsafe partial class Hopper : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -74,9 +74,9 @@ public sealed unsafe partial class Hopper
         return NativeMethods.TablePtr->C1.hs_method_4ef5ee13((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)fromContainer.Handle, (void*)pos.Handle, attachedFace, canPushItems) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool _tryMoveItems(nint callbacks, nint region, nint fromContainer, nint pos, int attachedFace, bool canPushItems) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool _tryPullInItemsFromAboveContainer(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Container toContainer, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {
@@ -122,5 +122,19 @@ public sealed unsafe partial class Hopper
     {
         get => NativeMethods.TablePtr->C1.hs_get_92af1cfd((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_92af1cfd((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_4a2d52f2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -365,9 +365,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C0.hs_method_84d1c914((void*)__hosihikari_shim_handle, a));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getInteraction(nint player, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction _getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 location)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C0.hs_method_d31c6182((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)location.Handle));
+    }
 
     public float _getInterpolatedBodyRot(float a)
     {
@@ -1135,13 +1136,15 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_885772a4((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createUpdateEquipPacket(int containerID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateEquipPacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket createUpdateEquipPacket(int containerID)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateEquipPacket((nint)NativeMethods.TablePtr->C0.hs_method_236d8a77((void*)__hosihikari_shim_handle, containerID));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createUpdateTradePacket(int containerID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'UpdateTradePacket' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket createUpdateTradePacket(int containerID)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacket((nint)NativeMethods.TablePtr->C0.hs_method_485e8b52((void*)__hosihikari_shim_handle, containerID));
+    }
 
     public void deregisterTagsFromLevelCache()
     {
@@ -1610,9 +1613,10 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_fa164d32((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint player, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 location)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C0.hs_method_f68156b0((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)location.Handle));
+    }
 
     public float getInterpolatedBodyRot(float a)
     {
@@ -3215,9 +3219,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_9aae6934((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void setActorRendererId(nint actorRendererId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void setArmor(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
@@ -3492,9 +3496,9 @@ public sealed unsafe partial class Actor : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_59acb55d((void*)__hosihikari_shim_handle, (void*)region.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint traceRay(float tMax, bool includeActor, bool includeBlock, nint blockCheckFunction) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HitResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void transferTickingArea(global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
     {

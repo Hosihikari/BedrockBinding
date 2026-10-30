@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HideGoal
+public sealed unsafe partial class HideGoal : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -237,6 +237,7 @@ public sealed unsafe partial class HideGoal
         NativeMethods.TablePtr->C1.hs_method_f32ccba1((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPOIBoundingBox_Address
     {
@@ -265,5 +266,18 @@ public sealed unsafe partial class HideGoal
     {
         get => NativeMethods.TablePtr->C1.hs_get_c035c029((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_c035c029((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_805be7dd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

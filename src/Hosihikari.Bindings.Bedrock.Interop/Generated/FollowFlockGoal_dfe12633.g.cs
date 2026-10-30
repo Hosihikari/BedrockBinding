@@ -179,6 +179,7 @@ public sealed unsafe partial class FollowFlockGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_f9238c39((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

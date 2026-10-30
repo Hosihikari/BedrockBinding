@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DyePowderItem
+public sealed unsafe partial class DyePowderItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -127,6 +127,7 @@ public sealed unsafe partial class DyePowderItem
             return new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)NativeMethods.TablePtr->C1.hs_method_e7a1b57c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, id), false);
         }
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -335,5 +336,18 @@ public sealed unsafe partial class DyePowderItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_2ae460b8((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_2ae460b8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_12dbcb23((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

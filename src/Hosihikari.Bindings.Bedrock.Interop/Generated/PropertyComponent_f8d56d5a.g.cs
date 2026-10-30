@@ -166,6 +166,7 @@ public sealed unsafe partial class PropertyComponent : global::System.IDisposabl
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)__hs_handle, false) : null;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

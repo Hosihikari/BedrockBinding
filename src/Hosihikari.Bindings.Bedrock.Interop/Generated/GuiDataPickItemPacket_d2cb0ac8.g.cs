@@ -46,9 +46,9 @@ public sealed unsafe partial class GuiDataPickItemPacket : global::System.IDispo
     public nint __read(nint stream, nint reflectionCtx) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool _disallowBatching()
     {
@@ -126,9 +126,9 @@ public sealed unsafe partial class GuiDataPickItemPacket : global::System.IDispo
         return new GuiDataPickItemPacket((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static GuiDataPickItemPacket Create(nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _read(nint stream) =>
@@ -204,6 +204,7 @@ public sealed unsafe partial class GuiDataPickItemPacket : global::System.IDispo
     {
         NativeMethods.TablePtr->C1.hs_method_7c72f4a7((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemEffectName_Address

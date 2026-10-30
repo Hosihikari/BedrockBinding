@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnableEncryptionCommand
+public sealed unsafe partial class EnableEncryptionCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -102,5 +102,19 @@ public sealed unsafe partial class EnableEncryptionCommand
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftApp app)
     {
         NativeMethods.TablePtr->C1.hs_method_7f312310((void*)registry.Handle, (void*)app.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b4af0c61((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

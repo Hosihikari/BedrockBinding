@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ColoredTorchBlock
+public sealed unsafe partial class ColoredTorchBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -299,9 +299,23 @@ public sealed unsafe partial class ColoredTorchBlock
         set => NativeMethods.TablePtr->C0.hs_set_5adac845((void*)__hosihikari_shim_handle, value);
     }
 
+
     public int mFlameParticle
     {
         get => NativeMethods.TablePtr->C0.hs_get_c1c19938((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_c1c19938((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_4a48db60((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

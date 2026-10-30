@@ -65,6 +65,7 @@ public sealed unsafe partial class AddBiomeIsland : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_4a26fb05((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

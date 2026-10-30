@@ -70,6 +70,7 @@ public sealed unsafe partial class ScriptBlockCustomComponentRandomTickAfterEven
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_1eb99667());
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {

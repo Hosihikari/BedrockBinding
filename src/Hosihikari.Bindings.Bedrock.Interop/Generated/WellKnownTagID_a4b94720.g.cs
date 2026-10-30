@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WellKnownTagID
+public sealed unsafe partial class WellKnownTagID : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class WellKnownTagID
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_4cef60b8((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C4.hs_set_4cef60b8((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_a4b94720((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

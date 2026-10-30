@@ -755,6 +755,7 @@ public sealed unsafe partial class Pig : global::System.IDisposable
     public nint _hurt(nint source, float damage, nint hurtParameters) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

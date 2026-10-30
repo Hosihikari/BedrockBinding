@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelChunkMetaDataDictionary
+public sealed unsafe partial class LevelChunkMetaDataDictionary : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,7 +40,7 @@ public sealed unsafe partial class LevelChunkMetaDataDictionary
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _registerMetaData(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaData candidateMetaData)
     {
-        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_9ae6e429((void*)__hosihikari_shim_handle, (void*)candidateMetaData.Handle);
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_9ae6e429((void*)__hosihikari_shim_handle, (void*)candidateMetaData.Handle);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
@@ -50,24 +50,38 @@ public sealed unsafe partial class LevelChunkMetaDataDictionary
 
     public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.IDataInput stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_4baf1264((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_4baf1264((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDictionary_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d2b54558((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d2b54558((void*)__hosihikari_shim_handle);
     }
 
     public bool mDictionaryDirty
     {
-        get => NativeMethods.TablePtr->C1.hs_get_1b61479f((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_1b61479f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1b61479f((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1b61479f((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSharedMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_591eae1b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_591eae1b((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_67f1f36c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

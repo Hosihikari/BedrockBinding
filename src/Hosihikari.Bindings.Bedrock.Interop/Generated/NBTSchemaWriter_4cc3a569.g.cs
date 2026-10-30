@@ -399,6 +399,7 @@ public sealed unsafe partial class NBTSchemaWriter : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_715b3f6c((void*)__hosihikari_shim_handle, arg0);
     }
 
+
     public byte mSerializationTraits
     {
         get => NativeMethods.TablePtr->C2.hs_get_47e1befe((void*)__hosihikari_shim_handle);

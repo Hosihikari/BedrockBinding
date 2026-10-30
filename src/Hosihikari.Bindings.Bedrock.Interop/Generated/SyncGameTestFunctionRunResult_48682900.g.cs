@@ -93,6 +93,7 @@ public sealed unsafe partial class SyncGameTestFunctionRunResult : global::Syste
         return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.SyncGameTestFunctionRunResult((nint)NativeMethods.TablePtr->C4.hs_method_36d57e10((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

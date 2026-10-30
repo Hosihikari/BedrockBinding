@@ -42,9 +42,9 @@ public sealed unsafe partial class FileStorageSystem : global::System.IDisposabl
     public bool _getData(nint output, nint path) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void _setData(nint data, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public static FileStorageSystem Create()
     {
@@ -83,9 +83,10 @@ public sealed unsafe partial class FileStorageSystem : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.FileSecureStorage_Nested.FileStorageSystem((nint)NativeMethods.TablePtr->C1.hs_method_68040214((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void setData(nint data, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
 
     public void Dispose()
     {

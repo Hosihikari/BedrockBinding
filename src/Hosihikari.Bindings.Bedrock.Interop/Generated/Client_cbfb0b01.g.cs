@@ -40,7 +40,7 @@ public sealed unsafe partial class Client : global::System.IDisposable
 
     public static void removeDisplayEntity(global::Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested.VaultClientData clientData)
     {
-        NativeMethods.TablePtr->C3.hs_method_2679d784((void*)clientData.Handle);
+        NativeMethods.TablePtr->C4.hs_method_2679d784((void*)clientData.Handle);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class Client : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_cbfb0b01((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_cbfb0b01((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

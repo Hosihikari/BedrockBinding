@@ -133,6 +133,7 @@ public sealed unsafe partial class ScriptMessagePacketPayload : global::System.I
         get => (nint)NativeMethods.TablePtr->C3.hs_get_649af6ed((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

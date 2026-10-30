@@ -645,6 +645,7 @@ public sealed unsafe partial class Fish : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_b47ff842((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, forceRiding) != 0;
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_bd560fe9((void*)__hosihikari_shim_handle);

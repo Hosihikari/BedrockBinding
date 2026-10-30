@@ -124,6 +124,7 @@ public sealed unsafe partial class ScriptMinecraftServerUIModuleFactory : global
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptMinecraftServerUIModuleFactory((nint)NativeMethods.TablePtr->C3.hs_method_7a851086((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk13b033_Address
     {

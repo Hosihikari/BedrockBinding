@@ -197,6 +197,7 @@ public sealed unsafe partial class ActorDefinitionDiffList : global::System.IDis
         }
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

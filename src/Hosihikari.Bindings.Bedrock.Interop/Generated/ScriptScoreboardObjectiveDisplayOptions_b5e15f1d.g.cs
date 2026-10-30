@@ -74,6 +74,7 @@ public sealed unsafe partial class ScriptScoreboardObjectiveDisplayOptions : glo
         get => (nint)NativeMethods.TablePtr->C3.hs_get_c40a9286((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

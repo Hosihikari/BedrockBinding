@@ -199,6 +199,7 @@ public sealed unsafe partial class AllowList : global::System.IDisposable
         }
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

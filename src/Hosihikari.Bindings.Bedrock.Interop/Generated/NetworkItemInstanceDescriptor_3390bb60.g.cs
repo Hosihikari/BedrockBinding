@@ -86,9 +86,10 @@ public sealed unsafe partial class NetworkItemInstanceDescriptor : global::Syste
         return new NetworkItemInstanceDescriptor((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getItemInstance(nint blockPalette) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getItemInstance(global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette blockPalette)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C2.hs_method_79f0345f((void*)__hosihikari_shim_handle, (void*)blockPalette.Handle));
+    }
 
     public uint mBlockRuntimeId
     {

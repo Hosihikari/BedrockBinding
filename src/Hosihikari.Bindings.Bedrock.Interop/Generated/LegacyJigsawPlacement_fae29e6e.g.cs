@@ -86,6 +86,7 @@ public sealed unsafe partial class LegacyJigsawPlacement : global::System.IDispo
         get => NativeMethods.TablePtr->C1.hs_get_5b4bfdef((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

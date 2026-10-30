@@ -264,9 +264,9 @@ public sealed unsafe partial class LeavesBlock : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_b8e0876f((void*)__hosihikari_shim_handle, (void*)tickData);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool _breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool _canProvideMultifaceSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte face)
     {
@@ -346,9 +346,9 @@ public sealed unsafe partial class LeavesBlock : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_3d41923c((void*)__hosihikari_shim_handle, (void*)tickData);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool canProvideMultifaceSupport(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte face)
     {
@@ -417,6 +417,7 @@ public sealed unsafe partial class LeavesBlock : global::System.IDisposable
     {
         NativeMethods.TablePtr->C1.hs_method_c5850d06((void*)__hosihikari_shim_handle, (void*)eventData.Handle);
     }
+
 
     public void Dispose()
     {

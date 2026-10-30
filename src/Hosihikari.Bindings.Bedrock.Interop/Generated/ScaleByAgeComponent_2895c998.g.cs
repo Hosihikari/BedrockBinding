@@ -40,19 +40,19 @@ public sealed unsafe partial class ScaleByAgeComponent : global::System.IDisposa
 
     public void _initializeScale(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
-        NativeMethods.TablePtr->C2.hs_method_01a7f86c((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+        NativeMethods.TablePtr->C3.hs_method_01a7f86c((void*)__hosihikari_shim_handle, (void*)entity.Handle);
     }
 
     public float mEndScale
     {
-        get => NativeMethods.TablePtr->C2.hs_get_27f913a3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_27f913a3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_27f913a3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_27f913a3((void*)__hosihikari_shim_handle, value);
     }
 
     public float mStartScale
     {
-        get => NativeMethods.TablePtr->C2.hs_get_5e64f499((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_5e64f499((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_5e64f499((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5e64f499((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -61,7 +61,7 @@ public sealed unsafe partial class ScaleByAgeComponent : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_2895c998((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_2895c998((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

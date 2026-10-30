@@ -83,6 +83,7 @@ public sealed unsafe partial class JigsawStructureBlockInfo : global::System.IDi
         return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureBlockInfo((nint)NativeMethods.TablePtr->C1.hs_method_c300b40b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

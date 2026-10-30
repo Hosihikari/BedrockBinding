@@ -178,6 +178,7 @@ public sealed unsafe partial class SwimWanderGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_287c9356((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

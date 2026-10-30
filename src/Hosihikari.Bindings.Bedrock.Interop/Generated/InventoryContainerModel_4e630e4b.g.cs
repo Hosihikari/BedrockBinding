@@ -118,9 +118,10 @@ public sealed unsafe partial class InventoryContainerModel : global::System.IDis
         NativeMethods.TablePtr->C1.hs_method_605b8fc9((void*)__hosihikari_shim_handle, slot);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerWeakRef' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getContainerWeakRef() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerWeakRef' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerWeakRef _getContainerWeakRef()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerWeakRef((nint)NativeMethods.TablePtr->C1.hs_method_55c43345((void*)__hosihikari_shim_handle));
+    }
 
     public bool _isValid()
     {
@@ -184,9 +185,10 @@ public sealed unsafe partial class InventoryContainerModel : global::System.IDis
         NativeMethods.TablePtr->C1.hs_method_5befaa77((void*)__hosihikari_shim_handle, slot);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerWeakRef' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getContainerWeakRef() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerWeakRef' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerWeakRef getContainerWeakRef()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerWeakRef((nint)NativeMethods.TablePtr->C1.hs_method_12df71f7((void*)__hosihikari_shim_handle));
+    }
 
     public bool isValid()
     {

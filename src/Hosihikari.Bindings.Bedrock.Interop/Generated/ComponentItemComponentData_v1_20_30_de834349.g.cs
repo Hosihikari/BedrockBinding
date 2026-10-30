@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ComponentItemComponentData_v1_20_30
+public sealed unsafe partial class ComponentItemComponentData_v1_20_30 : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -245,5 +245,19 @@ public sealed unsafe partial class ComponentItemComponentData_v1_20_30
     public nint wearableItemComponent_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_eb14ca43((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_de834349((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

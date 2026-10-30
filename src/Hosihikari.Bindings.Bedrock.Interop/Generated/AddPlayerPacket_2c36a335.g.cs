@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AddPlayerPacket
+public sealed unsafe partial class AddPlayerPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class AddPlayerPacket
         NativeMethods.TablePtr->C0.hs_method_214d6cdd((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAbilitiesData_Address
     {
@@ -321,5 +322,18 @@ public sealed unsafe partial class AddPlayerPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_565d2f2b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_565d2f2b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2c36a335((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

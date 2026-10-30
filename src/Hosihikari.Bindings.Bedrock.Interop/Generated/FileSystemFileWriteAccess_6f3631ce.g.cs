@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FileSystemFileAccess_Nested;
 
-public sealed unsafe partial class FileSystemFileWriteAccess
+public sealed unsafe partial class FileSystemFileWriteAccess : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -50,5 +50,19 @@ public sealed unsafe partial class FileSystemFileWriteAccess
     public ulong fwrite(nint buffer, ulong size, ulong count, nint file)
     {
         return NativeMethods.TablePtr->C1.hs_method_690ddedc((void*)__hosihikari_shim_handle, (void*)buffer, size, count, (void*)file);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_6f3631ce((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GlowLichenBlock
+public sealed unsafe partial class GlowLichenBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -293,9 +293,23 @@ public sealed unsafe partial class GlowLichenBlock
         return NativeMethods.TablePtr->C1.hs_method_83aa5f1a((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)(entity?.Handle ?? 0), fType) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mSpreader_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_6d060cce((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_be88b968((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

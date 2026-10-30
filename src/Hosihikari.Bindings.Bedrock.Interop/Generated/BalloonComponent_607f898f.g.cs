@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BalloonComponent
+public sealed unsafe partial class BalloonComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -113,5 +113,19 @@ public sealed unsafe partial class BalloonComponent
     public bool shouldPop(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, nint removeAttached)
     {
         return NativeMethods.TablePtr->C0.hs_method_48d4df39((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)removeAttached) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_607f898f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

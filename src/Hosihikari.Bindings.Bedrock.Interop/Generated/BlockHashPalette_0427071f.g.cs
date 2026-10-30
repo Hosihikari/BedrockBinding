@@ -115,6 +115,7 @@ public sealed unsafe partial class BlockHashPalette : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C0.hs_get_ca12d4ff((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockFromNetworkId_Address
     {

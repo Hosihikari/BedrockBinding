@@ -119,6 +119,7 @@ public sealed unsafe partial class PlaySoundResponse : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.PlaySoundResponse((nint)NativeMethods.TablePtr->C2.hs_method_d73fe3f2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

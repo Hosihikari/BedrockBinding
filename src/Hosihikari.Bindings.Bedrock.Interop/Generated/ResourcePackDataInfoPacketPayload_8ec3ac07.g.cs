@@ -66,14 +66,14 @@ public sealed unsafe partial class ResourcePackDataInfoPacketPayload : global::S
         {
             fixed (byte* __hs_stringData4 = __hs_stringBytes4)
             {
-                return (nint)NativeMethods.TablePtr->C2.hs_method_018dfcc0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, chunkSize, nbChunk, fileSize, __hs_stringData4, (nuint)__hs_stringByteCount4, isPremium, packType);
+                return (nint)NativeMethods.TablePtr->C3.hs_method_018dfcc0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, chunkSize, nbChunk, fileSize, __hs_stringData4, (nuint)__hs_stringByteCount4, isPremium, packType);
             }
         }
     }
 
     public static ResourcePackDataInfoPacketPayload Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_d1ebb7d0();
+        var handle = NativeMethods.TablePtr->C3.hs_create_d1ebb7d0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -110,7 +110,7 @@ public sealed unsafe partial class ResourcePackDataInfoPacketPayload : global::S
         {
             fixed (byte* __hs_stringData4 = __hs_stringBytes4)
             {
-                var handle = NativeMethods.TablePtr->C2.hs_create_69cdf4a6(__hs_stringData0, (nuint)__hs_stringByteCount0, chunkSize, nbChunk, fileSize, __hs_stringData4, (nuint)__hs_stringByteCount4, isPremium, packType);
+                var handle = NativeMethods.TablePtr->C3.hs_create_69cdf4a6(__hs_stringData0, (nuint)__hs_stringByteCount0, chunkSize, nbChunk, fileSize, __hs_stringData4, (nuint)__hs_stringByteCount4, isPremium, packType);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -123,45 +123,46 @@ public sealed unsafe partial class ResourcePackDataInfoPacketPayload : global::S
 
     public uint mChunkSize
     {
-        get => NativeMethods.TablePtr->C2.hs_get_d8460f72((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_d8460f72((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_d8460f72((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d8460f72((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFileHash_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_118a2d8b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_118a2d8b((void*)__hosihikari_shim_handle);
     }
 
     public ulong mFileSize
     {
-        get => NativeMethods.TablePtr->C2.hs_get_8c5ae300((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_8c5ae300((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_8c5ae300((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_8c5ae300((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mIsPremium
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f510c06e((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_f510c06e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f510c06e((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_f510c06e((void*)__hosihikari_shim_handle, value);
     }
 
     public int mNbChunks
     {
-        get => NativeMethods.TablePtr->C2.hs_get_18535d4d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_18535d4d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_18535d4d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_18535d4d((void*)__hosihikari_shim_handle, value);
     }
 
     public sbyte mPackType
     {
-        get => NativeMethods.TablePtr->C2.hs_get_a3845d09((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_a3845d09((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_a3845d09((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_a3845d09((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mResourceName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_94b7a579((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_94b7a579((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {
@@ -169,7 +170,7 @@ public sealed unsafe partial class ResourcePackDataInfoPacketPayload : global::S
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_8ec3ac07((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_8ec3ac07((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

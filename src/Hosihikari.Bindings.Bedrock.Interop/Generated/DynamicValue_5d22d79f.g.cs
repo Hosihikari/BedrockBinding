@@ -159,13 +159,14 @@ public sealed unsafe partial class DynamicValue : global::System.IDisposable
     public static DynamicValue Create_9642241c(nint value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'cereal::DynamicValue' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint array() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::DynamicValue' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue array()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue((nint)NativeMethods.TablePtr->C4.hs_method_bd632c6a());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'cereal::DynamicValue' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'cereal::DynamicValue' is not supported.", false)]
     public static nint array(nint values) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::DynamicValue' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'cereal::DynamicValue' is not supported.");
 
     public nint asArray_07229c1e()
     {
@@ -415,13 +416,14 @@ public sealed unsafe partial class DynamicValue : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C4.hs_get_d6bf6366((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'cereal::DynamicValue' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint @object() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::DynamicValue' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue @object()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue((nint)NativeMethods.TablePtr->C4.hs_method_56a109cf());
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'cereal::DynamicValue' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<std::basic_string<char>, cereal::DynamicValue>' is not supported.", false)]
     public static nint @object(nint members) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'cereal::DynamicValue' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<std::basic_string<char>, cereal::DynamicValue>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint operator_assign(nint arg0) =>
@@ -480,13 +482,13 @@ public sealed unsafe partial class DynamicValue : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.DynamicValue((nint)NativeMethods.TablePtr->C4.hs_method_0cae0eb4((void*)__hosihikari_shim_handle, index), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint pushBack(nint element) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint push_back(nint element) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void reserve(ulong capacity)
     {
@@ -516,6 +518,7 @@ public sealed unsafe partial class DynamicValue : global::System.IDisposable
     {
         return (nint)NativeMethods.TablePtr->C4.hs_method_8d2a1ec6((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {

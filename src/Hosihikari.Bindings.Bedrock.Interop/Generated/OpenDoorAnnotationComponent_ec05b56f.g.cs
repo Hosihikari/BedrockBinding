@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OpenDoorAnnotationComponent
+public sealed unsafe partial class OpenDoorAnnotationComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -62,5 +62,19 @@ public sealed unsafe partial class OpenDoorAnnotationComponent
     public void onComponentRemoved(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity)
     {
         NativeMethods.TablePtr->C2.hs_method_2635f6cb((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ec05b56f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

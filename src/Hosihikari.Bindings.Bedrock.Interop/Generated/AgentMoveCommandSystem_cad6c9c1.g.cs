@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AgentMoveCommandSystem
+public sealed unsafe partial class AgentMoveCommandSystem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -61,5 +61,19 @@ public sealed unsafe partial class AgentMoveCommandSystem
     public static void tickMove(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, nint details, nint moveComp)
     {
         NativeMethods.TablePtr->C0.hs_method_1a7c8baa((void*)entity.Handle, (void*)details, (void*)moveComp);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_cad6c9c1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

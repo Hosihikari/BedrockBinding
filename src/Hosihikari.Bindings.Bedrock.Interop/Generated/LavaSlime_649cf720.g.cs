@@ -665,6 +665,7 @@ public sealed unsafe partial class LavaSlime : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_8bafc407((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_78ebedf5((void*)__hosihikari_shim_handle);

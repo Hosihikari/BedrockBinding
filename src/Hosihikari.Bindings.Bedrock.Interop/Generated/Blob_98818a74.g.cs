@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cg;
 
-public sealed unsafe partial class Blob
+public sealed unsafe partial class Blob : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class Blob
     {
         get => NativeMethods.TablePtr->C4.hs_get_6934d71b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C4.hs_set_6934d71b((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_98818a74((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

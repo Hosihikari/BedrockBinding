@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LegacyTelemetryEventPacket
+public sealed unsafe partial class LegacyTelemetryEventPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class LegacyTelemetryEventPacket
         NativeMethods.TablePtr->C1.hs_method_55eba405((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEventData_Address
     {
@@ -249,5 +250,18 @@ public sealed unsafe partial class LegacyTelemetryEventPacket
     {
         get => NativeMethods.TablePtr->C1.hs_get_ad4d7d39((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_ad4d7d39((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ce2efc12((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

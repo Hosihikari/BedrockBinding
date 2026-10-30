@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnchantingTableBlockActor
+public sealed unsafe partial class EnchantingTableBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -209,6 +209,7 @@ public sealed unsafe partial class EnchantingTableBlockActor
         NativeMethods.TablePtr->C1.hs_method_de79dca6((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {
@@ -249,5 +250,18 @@ public sealed unsafe partial class EnchantingTableBlockActor
     {
         get => NativeMethods.TablePtr->C1.hs_get_86d05a5f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_86d05a5f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9b5e684d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AbilityCommand
+public sealed unsafe partial class AbilityCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -77,6 +77,7 @@ public sealed unsafe partial class AbilityCommand
         NativeMethods.TablePtr->C0.hs_method_576d2d8a((void*)registry.Handle);
     }
 
+
     public int mCommandSymbol
     {
         get => NativeMethods.TablePtr->C0.hs_get_686303d4((void*)__hosihikari_shim_handle);
@@ -104,5 +105,18 @@ public sealed unsafe partial class AbilityCommand
     {
         get => NativeMethods.TablePtr->C0.hs_get_822e42d5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_822e42d5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_8da1923c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

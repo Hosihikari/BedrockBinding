@@ -53,18 +53,18 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_b8065602((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, category);
+            NativeMethods.TablePtr->C2.hs_method_b8065602((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, category);
         }
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_55bec68f((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_55bec68f((void*)__hosihikari_shim_handle);
     }
 
     public void _flush(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage db)
     {
-        NativeMethods.TablePtr->C1.hs_method_8af9c729((void*)__hosihikari_shim_handle, (void*)db.Handle);
+        NativeMethods.TablePtr->C2.hs_method_8af9c729((void*)__hosihikari_shim_handle, (void*)db.Handle);
     }
 
     public void _putKey_40bf247e(string key, string data, uint category)
@@ -95,7 +95,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C1.hs_method_40bf247e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, category);
+                NativeMethods.TablePtr->C2.hs_method_40bf247e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, category);
             }
         }
     }
@@ -132,7 +132,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C1.hs_method_d198f775((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, category);
+                NativeMethods.TablePtr->C2.hs_method_d198f775((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, category);
             }
         }
     }
@@ -152,7 +152,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_27da24f4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, data?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), category);
+            NativeMethods.TablePtr->C2.hs_method_27da24f4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, data?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), category);
         }
     }
 
@@ -175,7 +175,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_bac10bc6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, data?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), category);
+            NativeMethods.TablePtr->C2.hs_method_bac10bc6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, data?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), category);
         }
     }
 
@@ -185,7 +185,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
 
     public void clear()
     {
-        NativeMethods.TablePtr->C1.hs_method_379f17a4((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_379f17a4((void*)__hosihikari_shim_handle);
     }
 
     public void deleteKey(string key, uint category)
@@ -203,31 +203,31 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_bf403a9e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, category);
+            NativeMethods.TablePtr->C2.hs_method_bf403a9e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, category);
         }
     }
 
     public void flush(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage db)
     {
-        NativeMethods.TablePtr->C1.hs_method_a0b0add7((void*)__hosihikari_shim_handle, (void*)db.Handle);
+        NativeMethods.TablePtr->C2.hs_method_a0b0add7((void*)__hosihikari_shim_handle, (void*)db.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBatch_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4a675969((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4a675969((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFlushCallbacks_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_753f3326((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_753f3326((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFlushCallbacksMutex_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_7b35c4fa((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7b35c4fa((void*)__hosihikari_shim_handle);
     }
 
     public void putKey_9915a243(string key, string data, uint category)
@@ -258,7 +258,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C1.hs_method_9915a243((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, category);
+                NativeMethods.TablePtr->C2.hs_method_9915a243((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, category);
             }
         }
     }
@@ -295,7 +295,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C1.hs_method_f5549fcc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, category);
+                NativeMethods.TablePtr->C2.hs_method_f5549fcc((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, category);
             }
         }
     }
@@ -315,7 +315,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_0913fcdb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, data?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), category);
+            NativeMethods.TablePtr->C2.hs_method_0913fcdb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, data?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), category);
         }
     }
 
@@ -326,7 +326,7 @@ public sealed unsafe partial class LevelStorageWriteBatch : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_25ff29d5((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_25ff29d5((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

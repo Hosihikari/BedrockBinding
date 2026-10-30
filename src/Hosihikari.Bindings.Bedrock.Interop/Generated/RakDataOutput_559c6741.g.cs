@@ -81,6 +81,7 @@ public sealed unsafe partial class RakDataOutput : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_41b89c30((void*)__hosihikari_shim_handle, (void*)data, bytes);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

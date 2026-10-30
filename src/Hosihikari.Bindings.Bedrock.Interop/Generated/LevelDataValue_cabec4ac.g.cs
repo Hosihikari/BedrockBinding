@@ -40,13 +40,13 @@ public sealed unsafe partial class LevelDataValue : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_f4ba3768((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_f4ba3768((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_74342ecd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_74342ecd((void*)__hosihikari_shim_handle);
     }
 
 
@@ -56,7 +56,7 @@ public sealed unsafe partial class LevelDataValue : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_cabec4ac((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_cabec4ac((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

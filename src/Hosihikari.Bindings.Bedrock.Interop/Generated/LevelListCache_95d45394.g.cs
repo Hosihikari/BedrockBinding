@@ -41,13 +41,13 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4756d28((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e4756d28((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mQueueForThreadTaskGroup_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_18f562f0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_18f562f0((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -56,7 +56,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
 
     public void _addObserver(global::Hosihikari.Bindings.Bedrock.Interop.LevelListCacheObserver observer)
     {
-        NativeMethods.TablePtr->C1.hs_method_7bfed589((void*)__hosihikari_shim_handle, (void*)observer.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7bfed589((void*)__hosihikari_shim_handle, (void*)observer.Handle);
     }
 
     public bool _checkIfLevelIsCorruptOrMissing(string levelId)
@@ -74,7 +74,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_41a2c109((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_41a2c109((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -119,7 +119,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    NativeMethods.TablePtr->C1.hs_method_2d85efc2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                    NativeMethods.TablePtr->C2.hs_method_2d85efc2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
                 }
             }
         }
@@ -156,7 +156,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_ba67979d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_ba67979d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -175,7 +175,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_b3c0d5a8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_b3c0d5a8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -194,14 +194,13 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_ef1cfed4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_ef1cfed4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public string _getBasePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getBasePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_677aacb4((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_677aacb4((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelData? _getLevelData(string levelId)
@@ -219,7 +218,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_dc1638cb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_dc1638cb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelData((nint)__hs_handle, false) : null;
         }
     }
@@ -239,14 +238,14 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_301366f6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C2.hs_method_301366f6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
     public string _getLevelIdFromPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fullPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path worldsPath)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_d17c43f2((void*)__hosihikari_shim_handle, (void*)fullPath.Handle, (void*)worldsPath.Handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_d17c43f2((void*)__hosihikari_shim_handle, (void*)fullPath.Handle, (void*)worldsPath.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -269,7 +268,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_7513a453((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_7513a453((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
@@ -289,18 +288,18 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_4f84684f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_4f84684f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary? _getOrCreateLevelSummary(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path directory)
     {
-        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_4427b5e1((void*)__hosihikari_shim_handle, (void*)directory.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_4427b5e1((void*)__hosihikari_shim_handle, (void*)directory.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
     }
 
-    public string _getPathToLevel(string levelId)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getPathToLevel(string levelId)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -315,8 +314,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->C1.hs_method_3f2876b2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_3f2876b2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
@@ -335,14 +333,14 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_3c598369((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_3c598369((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
 
     public bool _hasCachedLevels(bool includeShallowSummaries)
     {
-        return NativeMethods.TablePtr->C1.hs_method_df1a167c((void*)__hosihikari_shim_handle, includeShallowSummaries) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_df1a167c((void*)__hosihikari_shim_handle, includeShallowSummaries) != 0;
     }
 
     public bool _hasLevelWithId(string levelId)
@@ -360,7 +358,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_1e1a3fa3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_1e1a3fa3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -379,13 +377,13 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_0e2c1b10((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_0e2c1b10((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void _onStorageChanged()
     {
-        NativeMethods.TablePtr->C1.hs_method_1e53a019((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_1e53a019((void*)__hosihikari_shim_handle);
     }
 
     public void _postDeleteLevel(string levelId)
@@ -403,7 +401,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_2c6d01f6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_2c6d01f6((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -422,13 +420,13 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_10ac97d7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_10ac97d7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void _removeObserver(global::Hosihikari.Bindings.Bedrock.Interop.LevelListCacheObserver observer)
     {
-        NativeMethods.TablePtr->C1.hs_method_77dfc793((void*)__hosihikari_shim_handle, (void*)observer.Handle);
+        NativeMethods.TablePtr->C2.hs_method_77dfc793((void*)__hosihikari_shim_handle, (void*)observer.Handle);
     }
 
     public void _renameAndSaveLevelData(string levelId, string newLevelName, global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelData)
@@ -459,7 +457,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C1.hs_method_a3f6802d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)levelData.Handle);
+                NativeMethods.TablePtr->C2.hs_method_a3f6802d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)levelData.Handle);
             }
         }
     }
@@ -492,7 +490,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C1.hs_method_e8ab3028((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                NativeMethods.TablePtr->C2.hs_method_e8ab3028((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
             }
         }
     }
@@ -512,7 +510,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_679920f2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)levelData.Handle);
+            NativeMethods.TablePtr->C2.hs_method_679920f2((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)levelData.Handle);
         }
     }
 
@@ -531,13 +529,13 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_e90e3328((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_e90e3328((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public static LevelListCache Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_ab6bcd54();
+        var handle = NativeMethods.TablePtr->C2.hs_create_ab6bcd54();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -552,7 +550,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
 
     public static LevelListCache Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelListCache arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_d4ae5fc1((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_d4ae5fc1((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -563,7 +561,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelCache? _addOrReplaceCache(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path)
     {
-        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_eff7d0c1((void*)__hosihikari_shim_handle, (void*)path.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_eff7d0c1((void*)__hosihikari_shim_handle, (void*)path.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelCache((nint)__hs_handle, false) : null;
     }
 
@@ -586,7 +584,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_8d61e302((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)directory.Handle, levelAddedType);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_8d61e302((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)directory.Handle, levelAddedType);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelCache((nint)__hs_handle, false) : null;
         }
     }
@@ -606,7 +604,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_69bc35b0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_69bc35b0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelCache((nint)__hs_handle, false) : null;
         }
     }
@@ -626,7 +624,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_4be154f5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_4be154f5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
@@ -646,7 +644,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_0ed29919((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_0ed29919((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -665,7 +663,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_3f5fa984((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, type);
+            NativeMethods.TablePtr->C2.hs_method_3f5fa984((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, type);
         }
     }
 
@@ -684,7 +682,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_a918ac1a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)cache.Handle);
+            NativeMethods.TablePtr->C2.hs_method_a918ac1a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)cache.Handle);
         }
     }
 
@@ -694,7 +692,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
 
     public void addObserver(global::Hosihikari.Bindings.Bedrock.Interop.LevelListCacheObserver observer)
     {
-        NativeMethods.TablePtr->C1.hs_method_aa6f5425((void*)__hosihikari_shim_handle, (void*)observer.Handle);
+        NativeMethods.TablePtr->C2.hs_method_aa6f5425((void*)__hosihikari_shim_handle, (void*)observer.Handle);
     }
 
     public bool checkIfLevelIsCorruptOrMissing(string levelId)
@@ -712,7 +710,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_8e124358((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_8e124358((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -757,7 +755,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
             {
                 fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                 {
-                    NativeMethods.TablePtr->C1.hs_method_d71098f1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                    NativeMethods.TablePtr->C2.hs_method_d71098f1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
                 }
             }
         }
@@ -790,7 +788,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_183bae71((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_183bae71((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -809,7 +807,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_0b1768f1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_0b1768f1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -828,14 +826,13 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_34e3cfb8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_34e3cfb8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
-    public string getBasePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getBasePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_c2300813((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_c2300813((void*)__hosihikari_shim_handle));
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelData? getLevelData(string levelId)
@@ -853,7 +850,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_54f13744((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_54f13744((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelData((nint)__hs_handle, false) : null;
         }
     }
@@ -873,14 +870,14 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->C1.hs_method_8e53d67f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C2.hs_method_8e53d67f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
     public string getLevelIdFromPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fullPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path worldsPath)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_17e22142((void*)__hosihikari_shim_handle, (void*)fullPath.Handle, (void*)worldsPath.Handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_17e22142((void*)__hosihikari_shim_handle, (void*)fullPath.Handle, (void*)worldsPath.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -903,7 +900,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_8c5e474d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_8c5e474d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
@@ -923,18 +920,18 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelName, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_0eba6b7f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_0eba6b7f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary? getOrCreateLevelSummary(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path directory)
     {
-        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_911fe7ac((void*)__hosihikari_shim_handle, (void*)directory.Handle);
+        var __hs_handle = NativeMethods.TablePtr->C2.hs_method_911fe7ac((void*)__hosihikari_shim_handle, (void*)directory.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
     }
 
-    public string getPathToLevel(string levelId)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getPathToLevel(string levelId)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -949,8 +946,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->C1.hs_method_dbb4fd22((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_dbb4fd22((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
@@ -969,14 +965,14 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_e7c86b6f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_handle = NativeMethods.TablePtr->C2.hs_method_e7c86b6f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelSummary((nint)__hs_handle, false) : null;
         }
     }
 
     public bool hasCachedLevels(bool includeShallowSummaries)
     {
-        return NativeMethods.TablePtr->C1.hs_method_2ff18396((void*)__hosihikari_shim_handle, includeShallowSummaries) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_2ff18396((void*)__hosihikari_shim_handle, includeShallowSummaries) != 0;
     }
 
     public bool hasLevelWithId(string levelId)
@@ -994,56 +990,56 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_652ff423((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_652ff423((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAppPlatform_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_52c6b07c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_52c6b07c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCacheLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8a56e1c5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8a56e1c5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCachedLevelData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_02c0c6af((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_02c0c6af((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCachedUnSyncedLevelData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8640333c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8640333c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCheckIsSafeToFlushCache_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1bb84536((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1bb84536((void*)__hosihikari_shim_handle);
     }
 
     public bool mDiscoverLevels
     {
-        get => NativeMethods.TablePtr->C1.hs_get_711402bd((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_711402bd((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_711402bd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_711402bd((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelStorageSource_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1ce80b12((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1ce80b12((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSubject_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_44f3fad2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_44f3fad2((void*)__hosihikari_shim_handle);
     }
 
     public void onSave(string levelId)
@@ -1061,18 +1057,18 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_ffb1a1ac((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_ffb1a1ac((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void onStorageChanged()
     {
-        NativeMethods.TablePtr->C1.hs_method_703c1e38((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_703c1e38((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelListCache operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelListCache arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelListCache((nint)NativeMethods.TablePtr->C1.hs_method_bc1530b5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelListCache((nint)NativeMethods.TablePtr->C2.hs_method_bc1530b5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void postDeleteLevel(string levelId)
@@ -1090,7 +1086,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_cd138455((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_cd138455((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -1109,13 +1105,13 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_d967033f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_d967033f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void removeObserver(global::Hosihikari.Bindings.Bedrock.Interop.LevelListCacheObserver observer)
     {
-        NativeMethods.TablePtr->C1.hs_method_8f3836d3((void*)__hosihikari_shim_handle, (void*)observer.Handle);
+        NativeMethods.TablePtr->C2.hs_method_8f3836d3((void*)__hosihikari_shim_handle, (void*)observer.Handle);
     }
 
     public void renameAndSaveLevelData(string levelId, string newLevelName, global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelData)
@@ -1146,7 +1142,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C1.hs_method_9c4f1bf1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)levelData.Handle);
+                NativeMethods.TablePtr->C2.hs_method_9c4f1bf1((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)levelData.Handle);
             }
         }
     }
@@ -1179,7 +1175,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C1.hs_method_a1d60908((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                NativeMethods.TablePtr->C2.hs_method_a1d60908((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
             }
         }
     }
@@ -1199,7 +1195,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_87c13772((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)levelData.Handle);
+            NativeMethods.TablePtr->C2.hs_method_87c13772((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)levelData.Handle);
         }
     }
 
@@ -1218,7 +1214,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_4a76a784((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_4a76a784((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -1229,7 +1225,7 @@ public sealed unsafe partial class LevelListCache : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_95d45394((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_95d45394((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

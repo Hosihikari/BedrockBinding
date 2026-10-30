@@ -207,9 +207,9 @@ public sealed unsafe partial class ScriptPlayer : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptPlayer_((nint)NativeMethods.TablePtr->C3.hs_method_c8fb6204((void*)player.Handle, (void*)scope.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static nint getHandle(nint entityRef, nint scope) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result_deprecated<int>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getPlayerLevel() =>
@@ -352,6 +352,7 @@ public sealed unsafe partial class ScriptPlayer : global::System.IDisposable
         var __hs_handle = NativeMethods.TablePtr->C3.hs_method_9e6001cf((void*)__hosihikari_shim_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
     }
+
 
     public void Dispose()
     {

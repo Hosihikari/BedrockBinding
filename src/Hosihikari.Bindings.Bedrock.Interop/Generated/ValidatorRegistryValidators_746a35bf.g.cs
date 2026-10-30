@@ -40,7 +40,7 @@ public sealed unsafe partial class ValidatorRegistryValidators : global::System.
 
     public static ValidatorRegistryValidators Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_c8419a43();
+        var handle = NativeMethods.TablePtr->C4.hs_create_c8419a43();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ValidatorRegistryValidators : global::System.
 
     public static ValidatorRegistryValidators Create(global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_409b9cbd((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_409b9cbd((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class ValidatorRegistryValidators : global::System.
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk25ba02_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6490b713((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6490b713((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk317db0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3406410a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3406410a((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators((nint)NativeMethods.TablePtr->C3.hs_method_3bd3581d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry_Nested.ValidatorRegistryValidators((nint)NativeMethods.TablePtr->C4.hs_method_3bd3581d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class ValidatorRegistryValidators : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_746a35bf((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_746a35bf((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

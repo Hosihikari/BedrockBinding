@@ -113,6 +113,7 @@ public sealed unsafe partial class ClimateParameters : global::System.IDisposabl
         get => (nint)NativeMethods.TablePtr->C0.hs_get_0d560987((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

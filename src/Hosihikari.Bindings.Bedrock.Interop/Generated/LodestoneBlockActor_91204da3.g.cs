@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LodestoneBlockActor
+public sealed unsafe partial class LodestoneBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -153,6 +153,7 @@ public sealed unsafe partial class LodestoneBlockActor
         NativeMethods.TablePtr->C2.hs_method_a7ad4884((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {
@@ -193,5 +194,18 @@ public sealed unsafe partial class LodestoneBlockActor
     {
         get => NativeMethods.TablePtr->C2.hs_get_059e2b15((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_059e2b15((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_91204da3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

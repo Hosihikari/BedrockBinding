@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NullLogger
+public sealed unsafe partial class NullLogger : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,5 +51,19 @@ public sealed unsafe partial class NullLogger
     public static global::Hosihikari.Bindings.Bedrock.Interop.NullLogger instance()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.NullLogger((nint)NativeMethods.TablePtr->C2.hs_method_02445b71(), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_dd0d558b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

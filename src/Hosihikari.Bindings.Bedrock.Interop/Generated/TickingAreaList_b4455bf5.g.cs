@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TickingAreaList
+public sealed unsafe partial class TickingAreaList : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -50,9 +50,23 @@ public sealed unsafe partial class TickingAreaList
     public bool removeDistantEntityAreasAndCheckForRemoved(nint playerPositions, nint requeue, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mTickingAreas_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_04970bf5((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_b4455bf5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

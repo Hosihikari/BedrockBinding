@@ -107,6 +107,7 @@ public sealed unsafe partial class MessageAndParams : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_e2829698((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.BasicSchema_Nested;
 
-public sealed unsafe partial class GetterDescriptor
+public sealed unsafe partial class GetterDescriptor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class GetterDescriptor
     public nint mPtr_Address
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_7f6a5dbd((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_43f5ff37((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

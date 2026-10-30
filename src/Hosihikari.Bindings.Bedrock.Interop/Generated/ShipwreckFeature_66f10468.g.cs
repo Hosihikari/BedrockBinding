@@ -142,6 +142,7 @@ public sealed unsafe partial class ShipwreckFeature : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ShipwreckFeature((nint)NativeMethods.TablePtr->C3.hs_method_bfa33772((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
     {

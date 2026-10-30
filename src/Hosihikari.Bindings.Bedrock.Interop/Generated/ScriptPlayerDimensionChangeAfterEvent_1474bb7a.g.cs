@@ -100,6 +100,7 @@ public sealed unsafe partial class ScriptPlayerDimensionChangeAfterEvent : globa
         get => (nint)NativeMethods.TablePtr->C3.hs_get_ac72fc9d((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

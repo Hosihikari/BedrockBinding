@@ -165,6 +165,7 @@ public sealed unsafe partial class IWebviewTelemetry : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.IWebviewTelemetry((nint)NativeMethods.TablePtr->C1.hs_method_220991c5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptCameraSetPositionOptions
+public sealed unsafe partial class ScriptCameraSetPositionOptions : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -64,5 +64,19 @@ public sealed unsafe partial class ScriptCameraSetPositionOptions
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptCameraSetPositionOptions other)
     {
         return NativeMethods.TablePtr->C3.hs_method_03a71b7a((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f20faf9d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -103,6 +103,7 @@ public sealed unsafe partial class OceanMixerOperationNode : global::System.IDis
         get => (nint)NativeMethods.TablePtr->C2.hs_get_3b19740c((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

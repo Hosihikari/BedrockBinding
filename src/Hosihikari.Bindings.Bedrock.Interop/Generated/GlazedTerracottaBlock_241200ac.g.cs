@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GlazedTerracottaBlock
+public sealed unsafe partial class GlazedTerracottaBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -293,5 +293,19 @@ public sealed unsafe partial class GlazedTerracottaBlock
     public bool isValidAuxValue(int value)
     {
         return NativeMethods.TablePtr->C1.hs_method_e8c7b567((void*)__hosihikari_shim_handle, value) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_241200ac((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

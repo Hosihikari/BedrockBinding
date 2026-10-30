@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MineshaftRoom
+public sealed unsafe partial class MineshaftRoom : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -88,6 +88,7 @@ public sealed unsafe partial class MineshaftRoom
         return NativeMethods.TablePtr->C2.hs_method_4d5e7ddd((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)arg1.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
     {
@@ -110,5 +111,18 @@ public sealed unsafe partial class MineshaftRoom
     public nint mTerrainAdjustmentToken_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_29127282((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_0a834e49((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

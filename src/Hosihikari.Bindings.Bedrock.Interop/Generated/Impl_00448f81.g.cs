@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Option_Nested;
 
-public sealed unsafe partial class Impl
+public sealed unsafe partial class Impl : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -135,5 +135,19 @@ public sealed unsafe partial class Impl
     public nint mValueResetPublisher_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_d2f44e21((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_00448f81((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

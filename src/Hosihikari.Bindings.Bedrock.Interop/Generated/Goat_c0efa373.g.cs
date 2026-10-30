@@ -680,6 +680,7 @@ public sealed unsafe partial class Goat : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_a3afb095((void*)__hosihikari_shim_handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_b4998ead((void*)__hosihikari_shim_handle);

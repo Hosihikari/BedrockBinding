@@ -214,6 +214,7 @@ public sealed unsafe partial class GoHomeGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_9cf3c2c0((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

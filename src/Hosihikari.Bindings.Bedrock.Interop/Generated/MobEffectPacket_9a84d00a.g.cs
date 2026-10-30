@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MobEffectPacket
+public sealed unsafe partial class MobEffectPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class MobEffectPacket
         NativeMethods.TablePtr->C2.hs_method_df0f0aff((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public bool mAmbient
     {
         get => NativeMethods.TablePtr->C2.hs_get_e680c6ef((void*)__hosihikari_shim_handle) != 0;
@@ -273,5 +274,18 @@ public sealed unsafe partial class MobEffectPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_2744700a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_2744700a((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_9a84d00a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

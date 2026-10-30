@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen.processors.PosRules;
 
-public sealed unsafe partial class AxisAlignedLinear
+public sealed unsafe partial class AxisAlignedLinear : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -90,5 +90,19 @@ public sealed unsafe partial class AxisAlignedLinear
     public bool test(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos worldPos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos worldReference, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
         return NativeMethods.TablePtr->C4.hs_method_5aadc352((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)worldPos.Handle, (void*)worldReference.Handle, (void*)random.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_6a98babe((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

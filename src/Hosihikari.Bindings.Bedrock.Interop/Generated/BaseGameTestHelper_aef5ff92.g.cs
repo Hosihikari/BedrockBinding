@@ -158,21 +158,36 @@ public sealed unsafe partial class BaseGameTestHelper : global::System.IDisposab
     public nint destroyBlock(nint pos, bool dropResources) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void fail(nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::optional<gametest::GameTestError>' is not supported.", false)]
     public void failIf(nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::optional<gametest::GameTestError>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gametest::GameTestError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint generateErrorWithContext(nint errorType, nint message, nint relativePos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gametest::GameTestError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestError generateErrorWithContext(int errorType, string message, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos relativePos)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestError((nint)NativeMethods.TablePtr->C4.hs_method_5f18abdf((void*)__hosihikari_shim_handle, errorType, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)relativePos.Handle));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gametest::GameTestError' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public nint generateErrorWithContext(nint errorType, nint message, nint @params, nint relativePos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gametest::GameTestError' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getBlockSource(nint blockSourceResult) =>

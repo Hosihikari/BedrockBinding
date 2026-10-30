@@ -40,48 +40,48 @@ public sealed unsafe partial class CoordinateRange : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_53cec4e7((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_53cec4e7((void*)__hosihikari_shim_handle);
     }
 
     public int _eval(int evaluatedMin, int evaluatedMax, nint stepIndex, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C2.hs_method_235b750c((void*)__hosihikari_shim_handle, evaluatedMin, evaluatedMax, (void*)stepIndex, (void*)random.Handle);
+        return NativeMethods.TablePtr->C3.hs_method_235b750c((void*)__hosihikari_shim_handle, evaluatedMin, evaluatedMax, (void*)stepIndex, (void*)random.Handle);
     }
 
     public int mDistribution
     {
-        get => NativeMethods.TablePtr->C2.hs_get_b8b17a19((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_b8b17a19((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_b8b17a19((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b8b17a19((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFastPathRange_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_4f45405b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4f45405b((void*)__hosihikari_shim_handle);
     }
 
     public uint mGridOffset
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f6bed8ab((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f6bed8ab((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f6bed8ab((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f6bed8ab((void*)__hosihikari_shim_handle, value);
     }
 
     public uint mGridStepSize
     {
-        get => NativeMethods.TablePtr->C2.hs_get_7134c641((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_7134c641((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_7134c641((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_7134c641((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMax_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_01505bff((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_01505bff((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMinOrSingleValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_df62fd4f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_df62fd4f((void*)__hosihikari_shim_handle);
     }
 
 
@@ -91,7 +91,7 @@ public sealed unsafe partial class CoordinateRange : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_9416e82d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_9416e82d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

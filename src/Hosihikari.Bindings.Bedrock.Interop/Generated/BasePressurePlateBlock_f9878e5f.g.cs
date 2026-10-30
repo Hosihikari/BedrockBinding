@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BasePressurePlateBlock
+public sealed unsafe partial class BasePressurePlateBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -199,6 +199,7 @@ public sealed unsafe partial class BasePressurePlateBlock
     {
         NativeMethods.TablePtr->C0.hs_method_62ea4ec1((void*)__hosihikari_shim_handle, (void*)eventData);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address
@@ -419,5 +420,18 @@ public sealed unsafe partial class BasePressurePlateBlock
     public nint mVisualShape_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_b9ce0784((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f9878e5f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

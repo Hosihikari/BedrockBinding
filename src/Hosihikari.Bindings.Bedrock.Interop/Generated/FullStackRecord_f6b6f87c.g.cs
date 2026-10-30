@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler_Nested.RecordGroup_Nested;
 
-public sealed unsafe partial class FullStackRecord
+public sealed unsafe partial class FullStackRecord : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,5 +60,19 @@ public sealed unsafe partial class FullStackRecord
     public nint mServer_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_29296c41((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_f6b6f87c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

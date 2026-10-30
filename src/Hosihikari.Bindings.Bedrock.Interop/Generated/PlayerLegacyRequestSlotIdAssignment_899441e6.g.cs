@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionHandler_Nested;
 
-public sealed unsafe partial class PlayerLegacyRequestSlotIdAssignment
+public sealed unsafe partial class PlayerLegacyRequestSlotIdAssignment : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,5 +53,19 @@ public sealed unsafe partial class PlayerLegacyRequestSlotIdAssignment
     public nint mSlots_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_788e2d6b((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_899441e6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

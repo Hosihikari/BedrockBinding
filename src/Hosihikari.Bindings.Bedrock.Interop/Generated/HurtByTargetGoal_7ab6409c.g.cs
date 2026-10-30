@@ -153,6 +153,7 @@ public sealed unsafe partial class HurtByTargetGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_fe5211d6((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAttackOwner
     {
         get => NativeMethods.TablePtr->C1.hs_get_d079119b((void*)__hosihikari_shim_handle) != 0;

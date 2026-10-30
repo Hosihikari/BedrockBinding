@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkTickOffsetManager
+public sealed unsafe partial class ChunkTickOffsetManager : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -90,5 +90,19 @@ public sealed unsafe partial class ChunkTickOffsetManager
     public void shuffleTickingOffsets(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
         NativeMethods.TablePtr->C0.hs_method_767624e3((void*)__hosihikari_shim_handle, (void*)random.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2a93f866((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

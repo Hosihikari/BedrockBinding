@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockExplosionResistanceVersioning;
 
-public sealed unsafe partial class BlockDestructibleByExplosion11920Upgrade
+public sealed unsafe partial class BlockDestructibleByExplosion11920Upgrade : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,6 +58,7 @@ public sealed unsafe partial class BlockDestructibleByExplosion11920Upgrade
         NativeMethods.TablePtr->C0.hs_method_b0d3c54f((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk40e0d7_Address
     {
@@ -80,5 +81,18 @@ public sealed unsafe partial class BlockDestructibleByExplosion11920Upgrade
     public nint mUnkd8210b_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_451f5cbb((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d9b2aca6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

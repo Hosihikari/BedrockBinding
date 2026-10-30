@@ -205,6 +205,7 @@ public sealed unsafe partial class AddActorPacket : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_1221e6a1((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorType_Address
     {

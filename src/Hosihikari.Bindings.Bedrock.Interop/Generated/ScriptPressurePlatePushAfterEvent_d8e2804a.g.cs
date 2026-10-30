@@ -100,6 +100,7 @@ public sealed unsafe partial class ScriptPressurePlatePushAfterEvent : global::S
         get => (nint)NativeMethods.TablePtr->C3.hs_get_31b94c7e((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

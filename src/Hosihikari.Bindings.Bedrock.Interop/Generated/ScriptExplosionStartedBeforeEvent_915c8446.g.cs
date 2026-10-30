@@ -111,6 +111,7 @@ public sealed unsafe partial class ScriptExplosionStartedBeforeEvent : global::S
         set => NativeMethods.TablePtr->C3.hs_set_4eafbf58((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -56,7 +56,7 @@ public sealed unsafe partial class ItemReplacementCommandUtil : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_dc510ac6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_dc510ac6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

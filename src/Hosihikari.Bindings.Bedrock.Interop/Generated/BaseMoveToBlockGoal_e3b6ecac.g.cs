@@ -173,6 +173,7 @@ public sealed unsafe partial class BaseMoveToBlockGoal : global::System.IDisposa
         set => NativeMethods.TablePtr->C0.hs_set_85b87591((void*)__hosihikari_shim_handle, value);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockPos_Address
     {

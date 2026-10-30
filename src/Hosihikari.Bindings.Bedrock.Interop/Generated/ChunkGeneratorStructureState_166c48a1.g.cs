@@ -52,9 +52,9 @@ public sealed unsafe partial class ChunkGeneratorStructureState : global::System
         return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.ChunkGeneratorStructureState((nint)NativeMethods.TablePtr->C4.hs_method_eb982308(levelSeed, (void*)biomeSource.Handle, (void*)allStructures.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint findNearestStructureFeature(nint dimension, nint feature, nint origin, nint biomeSource, bool mustBeInNewChunks) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public long mLevelSeed
     {

@@ -219,6 +219,7 @@ public sealed unsafe partial class BreedGoal : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_1f8b0143((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

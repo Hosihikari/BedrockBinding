@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptBlockPistonComponent
+public sealed unsafe partial class ScriptBlockPistonComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -100,6 +100,7 @@ public sealed unsafe partial class ScriptBlockPistonComponent
     public static nint tryCreate(nint region, nint position, nint scope) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockPistonComponent>' requires --link-carrier or --virtual-dispatch.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address
     {
@@ -110,5 +111,18 @@ public sealed unsafe partial class ScriptBlockPistonComponent
     public nint mScope_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_d02ca2bd((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_b38937ab((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -40,19 +40,19 @@ public sealed unsafe partial class ScoreInfo : global::System.IDisposable
 
     public nint mObjective
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_8f2267e9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8f2267e9((void*)__hosihikari_shim_handle);
     }
 
     public bool mValid
     {
-        get => NativeMethods.TablePtr->C2.hs_get_0d510106((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_0d510106((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_0d510106((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_0d510106((void*)__hosihikari_shim_handle, value);
     }
 
     public int mValue
     {
-        get => NativeMethods.TablePtr->C2.hs_get_d2047981((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_d2047981((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_d2047981((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d2047981((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -61,7 +61,7 @@ public sealed unsafe partial class ScoreInfo : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_9a91276e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_9a91276e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

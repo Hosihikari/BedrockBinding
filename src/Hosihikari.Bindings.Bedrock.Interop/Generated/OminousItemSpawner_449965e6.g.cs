@@ -684,6 +684,7 @@ public sealed unsafe partial class OminousItemSpawner : global::System.IDisposab
         NativeMethods.TablePtr->C2.hs_method_cad35084((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

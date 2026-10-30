@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TintMapColor
+public sealed unsafe partial class TintMapColor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,5 +47,19 @@ public sealed unsafe partial class TintMapColor
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.TintMapColor rhs)
     {
         return NativeMethods.TablePtr->C3.hs_method_c77a3495((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_d656d077((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

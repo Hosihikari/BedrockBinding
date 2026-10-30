@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BuriedTreasurePiece
+public sealed unsafe partial class BuriedTreasurePiece : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -64,6 +64,7 @@ public sealed unsafe partial class BuriedTreasurePiece
         return NativeMethods.TablePtr->C0.hs_method_68b9ef0e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
     {
@@ -86,5 +87,18 @@ public sealed unsafe partial class BuriedTreasurePiece
     public nint mTerrainAdjustmentToken_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_1269c545((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2814d486((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

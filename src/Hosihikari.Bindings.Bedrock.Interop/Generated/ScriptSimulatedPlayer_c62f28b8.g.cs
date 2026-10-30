@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleGameTest;
 
-public sealed unsafe partial class ScriptSimulatedPlayer
+public sealed unsafe partial class ScriptSimulatedPlayer : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -261,6 +261,7 @@ public sealed unsafe partial class ScriptSimulatedPlayer
     public nint useItemOnBlock(nint self, nint scriptItemStack, nint pos, nint face, nint faceLocation) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<bool, ScriptModuleMinecraft::ScriptInvalidActorError, gametest::GameTestError>' requires --link-carrier or --virtual-dispatch.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mAttachedComponents_Address
     {
@@ -355,5 +356,18 @@ public sealed unsafe partial class ScriptSimulatedPlayer
     public nint mScreenDisplay_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_5c5a705c((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_c62f28b8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

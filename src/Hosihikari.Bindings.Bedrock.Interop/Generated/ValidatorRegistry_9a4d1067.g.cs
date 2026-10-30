@@ -41,7 +41,7 @@ public sealed unsafe partial class ValidatorRegistry : global::System.IDisposabl
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_b9c30411((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b9c30411((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -50,7 +50,7 @@ public sealed unsafe partial class ValidatorRegistry : global::System.IDisposabl
 
     public static ValidatorRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_f39eeaac((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_f39eeaac((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,19 +61,20 @@ public sealed unsafe partial class ValidatorRegistry : global::System.IDisposabl
 
     public static nint getValidatorMap()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_5d82e4a6();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_5d82e4a6();
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk8ed098_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_4df0f1c0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_4df0f1c0((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry((nint)NativeMethods.TablePtr->C3.hs_method_9dd3d742((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ValidatorRegistry((nint)NativeMethods.TablePtr->C4.hs_method_9dd3d742((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {
@@ -81,7 +82,7 @@ public sealed unsafe partial class ValidatorRegistry : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_9a4d1067((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_9a4d1067((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

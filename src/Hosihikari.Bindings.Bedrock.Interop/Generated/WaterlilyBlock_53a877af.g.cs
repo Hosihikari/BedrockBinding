@@ -358,6 +358,7 @@ public sealed unsafe partial class WaterlilyBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_bd112a52((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

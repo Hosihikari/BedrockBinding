@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MapLockingRecipe
+public sealed unsafe partial class MapLockingRecipe : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -119,6 +119,7 @@ public sealed unsafe partial class MapLockingRecipe
         return NativeMethods.TablePtr->C2.hs_method_c762c589((void*)__hosihikari_shim_handle);
     }
 
+
     public int mHeight
     {
         get => NativeMethods.TablePtr->C2.hs_get_2e45fcf9((void*)__hosihikari_shim_handle);
@@ -183,5 +184,18 @@ public sealed unsafe partial class MapLockingRecipe
     {
         get => NativeMethods.TablePtr->C2.hs_get_567d3ce5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_567d3ce5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_d4352230((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

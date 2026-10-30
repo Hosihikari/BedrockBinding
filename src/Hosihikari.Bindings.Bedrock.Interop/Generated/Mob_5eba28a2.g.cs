@@ -1396,9 +1396,10 @@ public sealed unsafe partial class Mob : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_d714666e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'JumpPreventionResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getJumpPrevention() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'JumpPreventionResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.JumpPreventionResult getJumpPrevention()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JumpPreventionResult((nint)NativeMethods.TablePtr->C2.hs_method_f042695a((void*)__hosihikari_shim_handle));
+    }
 
     public float getMaxHeadXRot()
     {

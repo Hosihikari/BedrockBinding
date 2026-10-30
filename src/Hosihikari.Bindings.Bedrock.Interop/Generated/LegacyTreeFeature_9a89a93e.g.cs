@@ -121,6 +121,7 @@ public sealed unsafe partial class LegacyTreeFeature : global::System.IDisposabl
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

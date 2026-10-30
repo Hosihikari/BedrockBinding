@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CocoaBeanItem
+public sealed unsafe partial class CocoaBeanItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -136,6 +136,7 @@ public sealed unsafe partial class CocoaBeanItem
             return new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)NativeMethods.TablePtr->C0.hs_method_f951baa4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, id), false);
         }
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -344,5 +345,18 @@ public sealed unsafe partial class CocoaBeanItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_f5b40894((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_f5b40894((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a15994e8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

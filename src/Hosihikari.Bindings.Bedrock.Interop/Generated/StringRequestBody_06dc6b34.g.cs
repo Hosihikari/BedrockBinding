@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Http;
 
-public sealed unsafe partial class StringRequestBody
+public sealed unsafe partial class StringRequestBody : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -77,4 +77,18 @@ public sealed unsafe partial class StringRequestBody
     [global::System.Obsolete("BindingShim cannot project this member: span element type 'const unsigned char' is not supported.", false)]
     public nint getLoggableData() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const unsigned char' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_06dc6b34((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

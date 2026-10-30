@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerEventCoordinator
+public sealed unsafe partial class PlayerEventCoordinator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -97,5 +97,19 @@ public sealed unsafe partial class PlayerEventCoordinator
     public void sendPlayerKineticDamageDealt(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID target, nint dealKinematicDamageComponent)
     {
         NativeMethods.TablePtr->C2.hs_method_fe20befc((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)target.Handle, (void*)dealKinematicDamageComponent);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_a3318ffe((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

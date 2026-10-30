@@ -121,9 +121,10 @@ public sealed unsafe partial class LegacyPackIdVersion : global::System.IDisposa
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackIdVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getUpgradedPackId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackIdVersion' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion getUpgradedPackId()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion((nint)NativeMethods.TablePtr->C1.hs_method_5dbbd6e3((void*)__hosihikari_shim_handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk11a54a_Address

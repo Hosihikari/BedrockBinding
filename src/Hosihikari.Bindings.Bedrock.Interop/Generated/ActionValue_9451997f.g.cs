@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.npc;
 
-public sealed unsafe partial class ActionValue
+public sealed unsafe partial class ActionValue : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,6 +66,20 @@ public sealed unsafe partial class ActionValue
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             return new global::Hosihikari.Bindings.Bedrock.Interop.npc.ActionValue((nint)NativeMethods.TablePtr->C4.hs_method_0cece026((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_9451997f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

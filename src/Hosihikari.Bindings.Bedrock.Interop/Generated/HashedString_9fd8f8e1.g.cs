@@ -293,6 +293,7 @@ public sealed unsafe partial class HashedString : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_549e5456((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -181,6 +181,7 @@ public sealed unsafe partial class EmergeGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_ac8a4545((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

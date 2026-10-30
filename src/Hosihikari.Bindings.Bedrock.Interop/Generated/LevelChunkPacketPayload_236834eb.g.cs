@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelChunkPacketPayload
+public sealed unsafe partial class LevelChunkPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,55 +40,69 @@ public sealed unsafe partial class LevelChunkPacketPayload
 
     public bool mCacheEnabled
     {
-        get => NativeMethods.TablePtr->C1.hs_get_687c03ed((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_687c03ed((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_687c03ed((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_687c03ed((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCacheMetadata_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e90971e8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e90971e8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mClientRequestSubChunkLimit_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_490c8363((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_490c8363((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9fbce1c0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9fbce1c0((void*)__hosihikari_shim_handle);
     }
 
     public bool mIsChunkInTickRange
     {
-        get => NativeMethods.TablePtr->C1.hs_get_c06e1514((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_c06e1514((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c06e1514((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_c06e1514((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mIsClientPacket
     {
-        get => NativeMethods.TablePtr->C1.hs_get_db46f576((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_db46f576((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_db46f576((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_db46f576((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPos_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a3617a47((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a3617a47((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSerializedChunk_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0827325d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0827325d((void*)__hosihikari_shim_handle);
     }
 
     public uint mSubChunksCount
     {
-        get => NativeMethods.TablePtr->C1.hs_get_947c45c2((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_947c45c2((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_947c45c2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_947c45c2((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_236834eb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

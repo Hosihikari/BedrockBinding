@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CompoundTagUpdaterContext
+public sealed unsafe partial class CompoundTagUpdaterContext : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,5 +58,19 @@ public sealed unsafe partial class CompoundTagUpdaterContext
     public int update(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, uint version)
     {
         return NativeMethods.TablePtr->C0.hs_method_fda28358((void*)__hosihikari_shim_handle, (void*)tag.Handle, version);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_dd2b6d05((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -38,13 +38,13 @@ public sealed unsafe partial class VanillaItems : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static void registerHardCodedItemTags(nint itemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static void registerItems(nint ctx, nint itemRegistry, nint baseGameVersion, nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<LinkedAssetValidator>' is not a known bindable declaration.", false)]
     public static void serverInitCreativeItemsCallback(nint itemRegistry, nint blockDefinitionGroup, nint creativeItemRegistry, nint worldVersion, nint experiments, nint resourcePackManager, nint ctx, nint validator, nint eventing) =>
@@ -56,7 +56,7 @@ public sealed unsafe partial class VanillaItems : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_495f4b91((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_495f4b91((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

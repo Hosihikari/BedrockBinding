@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UniqueIDManager
+public sealed unsafe partial class UniqueIDManager : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,12 +40,26 @@ public sealed unsafe partial class UniqueIDManager
 
     public bool mIsClientSide
     {
-        get => NativeMethods.TablePtr->C3.hs_get_bae6f10e((void*)__hosihikari_shim_handle) != 0;
+        get => NativeMethods.TablePtr->C4.hs_get_bae6f10e((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLastUniqueID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_88bd751d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_88bd751d((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_6109242c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

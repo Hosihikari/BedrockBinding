@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BookCloningRecipe
+public sealed unsafe partial class BookCloningRecipe : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -113,6 +113,7 @@ public sealed unsafe partial class BookCloningRecipe
         return NativeMethods.TablePtr->C0.hs_method_ae40caab((void*)__hosihikari_shim_handle);
     }
 
+
     public int mHeight
     {
         get => NativeMethods.TablePtr->C0.hs_get_4f8903cd((void*)__hosihikari_shim_handle);
@@ -177,5 +178,18 @@ public sealed unsafe partial class BookCloningRecipe
     {
         get => NativeMethods.TablePtr->C0.hs_get_514b54fa((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_514b54fa((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_be819073((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

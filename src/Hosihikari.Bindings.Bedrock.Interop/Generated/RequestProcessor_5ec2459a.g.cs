@@ -182,6 +182,7 @@ public sealed unsafe partial class RequestProcessor : global::System.IDisposable
     public nint process(nint arg0, nint factory, nint requestHandle) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Promise<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraftNet::ScriptNetResponse>, Scripting::Error, ScriptModuleMinecraftNet::ScriptRequestBodyTooLargeError, ScriptModuleMinecraftNet::ScriptInternalHttpRequestError, ScriptModuleMinecraftNet::ScriptHttpRequestLimitExceededError, ScriptModuleMinecraftNet::ScriptTLSOnlyError, ScriptModuleMinecraftNet::ScriptMalformedUriError, ScriptModuleMinecraftNet::ScriptUriNotAllowedError>' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -151,6 +151,7 @@ public sealed unsafe partial class ScriptItemCustomComponentSignalCollection : g
     public void subscribeToItemForComponent(nint item, nint components) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

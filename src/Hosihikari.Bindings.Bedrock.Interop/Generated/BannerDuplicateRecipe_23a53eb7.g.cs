@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BannerDuplicateRecipe
+public sealed unsafe partial class BannerDuplicateRecipe : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -113,6 +113,7 @@ public sealed unsafe partial class BannerDuplicateRecipe
         return NativeMethods.TablePtr->C0.hs_method_1b7f9ba9((void*)__hosihikari_shim_handle);
     }
 
+
     public int mHeight
     {
         get => NativeMethods.TablePtr->C0.hs_get_b87cb286((void*)__hosihikari_shim_handle);
@@ -177,5 +178,18 @@ public sealed unsafe partial class BannerDuplicateRecipe
     {
         get => NativeMethods.TablePtr->C0.hs_get_f9348016((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_f9348016((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_23a53eb7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

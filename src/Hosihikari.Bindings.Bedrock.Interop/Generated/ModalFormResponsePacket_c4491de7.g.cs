@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ModalFormResponsePacket
+public sealed unsafe partial class ModalFormResponsePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class ModalFormResponsePacket
         NativeMethods.TablePtr->C2.hs_method_f0a00bae((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFormCancelReason_Address
     {
@@ -243,5 +244,18 @@ public sealed unsafe partial class ModalFormResponsePacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_3e87019f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_3e87019f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c4491de7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

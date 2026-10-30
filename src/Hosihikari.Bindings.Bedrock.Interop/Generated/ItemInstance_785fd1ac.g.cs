@@ -108,9 +108,10 @@ public sealed unsafe partial class ItemInstance : global::System.IDisposable
         return new ItemInstance((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromTag(nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance fromTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C1.hs_method_2fd71061((void*)tag.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance arg0)
     {
@@ -145,6 +146,7 @@ public sealed unsafe partial class ItemInstance : global::System.IDisposable
             NativeMethods.TablePtr->C1.hs_method_e9b34b9d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, count, auxValue);
         }
     }
+
 
     public short mAuxValue
     {

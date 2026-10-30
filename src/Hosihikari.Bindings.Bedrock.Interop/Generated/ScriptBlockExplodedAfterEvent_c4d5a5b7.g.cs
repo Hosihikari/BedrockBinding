@@ -115,6 +115,7 @@ public sealed unsafe partial class ScriptBlockExplodedAfterEvent : global::Syste
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockExplodedAfterEvent((nint)NativeMethods.TablePtr->C3.hs_method_d72a8483((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

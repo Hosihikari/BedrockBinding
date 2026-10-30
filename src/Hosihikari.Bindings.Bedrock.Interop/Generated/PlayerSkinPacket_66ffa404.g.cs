@@ -243,6 +243,7 @@ public sealed unsafe partial class PlayerSkinPacket : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_98e9bb4f((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mLocalizedNewSkinName_Address
     {

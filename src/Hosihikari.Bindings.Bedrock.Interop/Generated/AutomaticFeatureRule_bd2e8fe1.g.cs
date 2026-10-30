@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AutomaticFeatureRules_Nested;
 
-public sealed unsafe partial class AutomaticFeatureRule
+public sealed unsafe partial class AutomaticFeatureRule : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class AutomaticFeatureRule
     public nint mBiomeFilter_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_df9b8ed1((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_bd2e8fe1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

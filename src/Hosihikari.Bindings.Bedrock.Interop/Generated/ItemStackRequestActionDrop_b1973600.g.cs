@@ -83,6 +83,7 @@ public sealed unsafe partial class ItemStackRequestActionDrop : global::System.I
         set => NativeMethods.TablePtr->C1.hs_set_de4f1947((void*)__hosihikari_shim_handle, value);
     }
 
+
     public byte mAmount
     {
         get => NativeMethods.TablePtr->C1.hs_get_96517c16((void*)__hosihikari_shim_handle);

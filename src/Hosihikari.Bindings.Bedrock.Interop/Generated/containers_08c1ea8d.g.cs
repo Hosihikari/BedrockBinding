@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.brstd.associative_adapter_int__brstd__no_value_t__std__less_int___std__vector__4e79e072;
 
-public sealed unsafe partial class containers
+public sealed unsafe partial class containers : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class containers
     public nint values_Address
     {
         get => (nint)NativeMethods.TablePtr->C4.hs_get_d85d2610((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_08c1ea8d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

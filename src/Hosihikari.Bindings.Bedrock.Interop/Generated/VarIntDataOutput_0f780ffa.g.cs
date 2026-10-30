@@ -44,32 +44,32 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
 
     public void _writeByte(sbyte v)
     {
-        NativeMethods.TablePtr->C3.hs_method_cdbfdbed((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_cdbfdbed((void*)__hosihikari_shim_handle, v);
     }
 
     public void _writeBytes(nint data, ulong bytes)
     {
-        NativeMethods.TablePtr->C3.hs_method_3b20094a((void*)__hosihikari_shim_handle, (void*)data, bytes);
+        NativeMethods.TablePtr->C4.hs_method_3b20094a((void*)__hosihikari_shim_handle, (void*)data, bytes);
     }
 
     public void _writeDouble(double v)
     {
-        NativeMethods.TablePtr->C3.hs_method_2bb18f7a((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_2bb18f7a((void*)__hosihikari_shim_handle, v);
     }
 
     public void _writeFloat(float v)
     {
-        NativeMethods.TablePtr->C3.hs_method_32af7ac1((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_32af7ac1((void*)__hosihikari_shim_handle, v);
     }
 
     public void _writeInt(int v)
     {
-        NativeMethods.TablePtr->C3.hs_method_cde9cd9f((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_cde9cd9f((void*)__hosihikari_shim_handle, v);
     }
 
     public void _writeLongLong(long v)
     {
-        NativeMethods.TablePtr->C3.hs_method_4c756f1e((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_4c756f1e((void*)__hosihikari_shim_handle, v);
     }
 
     public void _writeLongString(string v)
@@ -87,13 +87,13 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_dd47a28d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C4.hs_method_dd47a28d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void _writeShort(short v)
     {
-        NativeMethods.TablePtr->C3.hs_method_c38c6e28((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_c38c6e28((void*)__hosihikari_shim_handle, v);
     }
 
     public void _writeString(string v)
@@ -111,13 +111,13 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_2cf28cec((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C4.hs_method_2cf28cec((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public static VarIntDataOutput Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_9ac405d8();
+        var handle = NativeMethods.TablePtr->C4.hs_create_9ac405d8();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -128,7 +128,7 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
 
     public static VarIntDataOutput Create(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream bs)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_88ce47b6((void*)bs.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_88ce47b6((void*)bs.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -139,7 +139,7 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
 
     public static VarIntDataOutput Create(global::Hosihikari.Bindings.Bedrock.Interop.VarIntDataOutput arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_a58e4d9f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_a58e4d9f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -151,42 +151,42 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mStream_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f738c827((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f738c827((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.VarIntDataOutput operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.VarIntDataOutput arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.VarIntDataOutput((nint)NativeMethods.TablePtr->C3.hs_method_988b2151((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VarIntDataOutput((nint)NativeMethods.TablePtr->C4.hs_method_988b2151((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void writeByte(sbyte v)
     {
-        NativeMethods.TablePtr->C3.hs_method_072204ca((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_072204ca((void*)__hosihikari_shim_handle, v);
     }
 
     public void writeBytes(nint data, ulong bytes)
     {
-        NativeMethods.TablePtr->C3.hs_method_b6a4d531((void*)__hosihikari_shim_handle, (void*)data, bytes);
+        NativeMethods.TablePtr->C4.hs_method_b6a4d531((void*)__hosihikari_shim_handle, (void*)data, bytes);
     }
 
     public void writeDouble(double v)
     {
-        NativeMethods.TablePtr->C3.hs_method_6dc95bde((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_6dc95bde((void*)__hosihikari_shim_handle, v);
     }
 
     public void writeFloat(float v)
     {
-        NativeMethods.TablePtr->C3.hs_method_26b07736((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_26b07736((void*)__hosihikari_shim_handle, v);
     }
 
     public void writeInt(int v)
     {
-        NativeMethods.TablePtr->C3.hs_method_d16fe767((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_d16fe767((void*)__hosihikari_shim_handle, v);
     }
 
     public void writeLongLong(long v)
     {
-        NativeMethods.TablePtr->C3.hs_method_338add97((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_338add97((void*)__hosihikari_shim_handle, v);
     }
 
     public void writeLongString(string v)
@@ -204,13 +204,13 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_a2d5644d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C4.hs_method_a2d5644d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void writeShort(short v)
     {
-        NativeMethods.TablePtr->C3.hs_method_9f440d1f((void*)__hosihikari_shim_handle, v);
+        NativeMethods.TablePtr->C4.hs_method_9f440d1f((void*)__hosihikari_shim_handle, v);
     }
 
     public void writeString(string v)
@@ -228,9 +228,10 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C3.hs_method_ff9cea0e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C4.hs_method_ff9cea0e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
+
 
     public void Dispose()
     {
@@ -238,7 +239,7 @@ public sealed unsafe partial class VarIntDataOutput : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_0f780ffa((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_0f780ffa((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

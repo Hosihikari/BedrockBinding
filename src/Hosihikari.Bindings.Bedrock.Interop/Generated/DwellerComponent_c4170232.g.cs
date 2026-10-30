@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DwellerComponent
+public sealed unsafe partial class DwellerComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -219,5 +219,19 @@ public sealed unsafe partial class DwellerComponent
     public bool tryToMigrate(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Village? oldVillage, global::Hosihikari.Bindings.Bedrock.Interop.Village? newVillage)
     {
         return NativeMethods.TablePtr->C1.hs_method_958f01df((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)(oldVillage?.Handle ?? 0), (void*)(newVillage?.Handle ?? 0)) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_c4170232((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

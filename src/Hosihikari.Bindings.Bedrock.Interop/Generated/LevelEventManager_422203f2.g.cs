@@ -56,7 +56,7 @@ public sealed unsafe partial class LevelEventManager : global::System.IDisposabl
 
     public static LevelEventManager Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_f13b5f30();
+        var handle = NativeMethods.TablePtr->C2.hs_create_f13b5f30();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,17 +71,17 @@ public sealed unsafe partial class LevelEventManager : global::System.IDisposabl
 
     public void broadcastLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? userIdentifierToExclude)
     {
-        NativeMethods.TablePtr->C1.hs_method_112b8397((void*)__hosihikari_shim_handle, type, (void*)tag.Handle, (void*)(userIdentifierToExclude?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_112b8397((void*)__hosihikari_shim_handle, type, (void*)tag.Handle, (void*)(userIdentifierToExclude?.Handle ?? 0));
     }
 
     public void broadcastLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? userIdentifierToExclude)
     {
-        NativeMethods.TablePtr->C1.hs_method_d5bfe682((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data, (void*)(userIdentifierToExclude?.Handle ?? 0));
+        NativeMethods.TablePtr->C2.hs_method_d5bfe682((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data, (void*)(userIdentifierToExclude?.Handle ?? 0));
     }
 
     public void broadcastLocalEvent(global::Hosihikari.Bindings.Bedrock.Interop.IDimension dimension, short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data)
     {
-        NativeMethods.TablePtr->C1.hs_method_d9111146((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, data);
+        NativeMethods.TablePtr->C2.hs_method_d9111146((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, data);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -94,36 +94,36 @@ public sealed unsafe partial class LevelEventManager : global::System.IDisposabl
 
     public bool mIsClientSide
     {
-        get => NativeMethods.TablePtr->C1.hs_get_fa0db114((void*)__hosihikari_shim_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_fa0db114((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelEventCompoundTagPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0d6b9962((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0d6b9962((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelEventCoordinator_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e4ef2714((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e4ef2714((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelEventDataPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_490f085b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_490f085b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPacketSender_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_bf7289f7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bf7289f7((void*)__hosihikari_shim_handle);
     }
 
     public void potionSplash(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color color, bool instantaneousEffect)
     {
-        NativeMethods.TablePtr->C1.hs_method_6206cd18((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)color.Handle, instantaneousEffect);
+        NativeMethods.TablePtr->C2.hs_method_6206cd18((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)color.Handle, instantaneousEffect);
     }
 
 
@@ -133,7 +133,7 @@ public sealed unsafe partial class LevelEventManager : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_422203f2((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_422203f2((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

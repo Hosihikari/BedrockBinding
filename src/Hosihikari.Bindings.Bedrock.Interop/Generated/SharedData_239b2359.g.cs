@@ -99,6 +99,7 @@ public sealed unsafe partial class SharedData : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.SharedData((nint)NativeMethods.TablePtr->C2.hs_method_078d9549((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CopperDoorBlock
+public sealed unsafe partial class CopperDoorBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -279,9 +279,23 @@ public sealed unsafe partial class CopperDoorBlock
         NativeMethods.TablePtr->C0.hs_method_1b3c248f((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public int mType
     {
         get => NativeMethods.TablePtr->C0.hs_get_264d6f05((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_264d6f05((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f0bb42f1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

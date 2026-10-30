@@ -127,6 +127,7 @@ public sealed unsafe partial class PackDiscoveryError : global::System.IDisposab
     public nint getLocErrorMessageMap() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mErrorParameters_Address
     {

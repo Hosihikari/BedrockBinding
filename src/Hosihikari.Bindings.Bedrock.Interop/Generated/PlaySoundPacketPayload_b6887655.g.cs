@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlaySoundPacketPayload
+public sealed unsafe partial class PlaySoundPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -84,5 +84,19 @@ public sealed unsafe partial class PlaySoundPacketPayload
     {
         get => NativeMethods.TablePtr->C2.hs_get_1aafe48c((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_1aafe48c((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b6887655((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

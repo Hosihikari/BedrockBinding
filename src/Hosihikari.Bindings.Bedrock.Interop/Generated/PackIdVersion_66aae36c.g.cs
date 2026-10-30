@@ -76,9 +76,24 @@ public sealed unsafe partial class PackIdVersion : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackIdVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromString(nint inputStr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackIdVersion' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion fromString(string inputStr)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(inputStr);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(inputStr, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion((nint)NativeMethods.TablePtr->C2.hs_method_4c7897de(__hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address
@@ -107,6 +122,7 @@ public sealed unsafe partial class PackIdVersion : global::System.IDisposable
     {
         return NativeMethods.TablePtr->C2.hs_method_093f83b4((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
+
 
     public void Dispose()
     {

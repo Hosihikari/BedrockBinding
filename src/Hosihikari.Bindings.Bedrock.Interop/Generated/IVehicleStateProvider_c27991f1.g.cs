@@ -49,7 +49,7 @@ public sealed unsafe partial class IVehicleStateProvider : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_c27991f1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_c27991f1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

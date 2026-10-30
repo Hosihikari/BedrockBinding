@@ -70,6 +70,7 @@ public sealed unsafe partial class ValueIterator : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator((nint)NativeMethods.TablePtr->C1.hs_method_a84ae80a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public bool isArray_
     {
         get => NativeMethods.TablePtr->C1.hs_get_858cf371((void*)__hosihikari_shim_handle) != 0;

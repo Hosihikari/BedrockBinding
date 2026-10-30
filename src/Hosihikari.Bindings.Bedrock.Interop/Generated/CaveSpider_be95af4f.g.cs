@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CaveSpider
+public sealed unsafe partial class CaveSpider : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -650,6 +650,7 @@ public sealed unsafe partial class CaveSpider
         return NativeMethods.TablePtr->C0.hs_method_b915a9fa((void*)__hosihikari_shim_handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_5e56dc84((void*)__hosihikari_shim_handle);
@@ -786,5 +787,18 @@ public sealed unsafe partial class CaveSpider
     public nint mLastHurtByMobId_5c5da01c_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_0f93d599((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_be95af4f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

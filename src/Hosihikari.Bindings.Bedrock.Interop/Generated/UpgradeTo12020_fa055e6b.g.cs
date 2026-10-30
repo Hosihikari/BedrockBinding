@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.WearableItemComponentVersioning;
 
-public sealed unsafe partial class UpgradeTo12020
+public sealed unsafe partial class UpgradeTo12020 : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -70,5 +70,19 @@ public sealed unsafe partial class UpgradeTo12020
     public bool previousSchema(nint component)
     {
         return NativeMethods.TablePtr->C4.hs_method_fe724eb7((void*)__hosihikari_shim_handle, (void*)component) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_fa055e6b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

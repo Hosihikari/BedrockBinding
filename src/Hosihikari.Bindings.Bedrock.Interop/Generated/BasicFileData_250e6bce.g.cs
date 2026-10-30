@@ -40,7 +40,7 @@ public sealed unsafe partial class BasicFileData : global::System.IDisposable
 
     public static BasicFileData Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_37e026d1();
+        var handle = NativeMethods.TablePtr->C1.hs_create_37e026d1();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class BasicFileData : global::System.IDisposable
 
     public static BasicFileData Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.BasicFileData arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_adbceb44((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_adbceb44((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class BasicFileData : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk7ec39a_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_8d318a7b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8d318a7b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka2f01d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_51803f1c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_51803f1c((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.BasicFileData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.BasicFileData arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.BasicFileData((nint)NativeMethods.TablePtr->C0.hs_method_942ebe8c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.BasicFileData((nint)NativeMethods.TablePtr->C1.hs_method_942ebe8c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class BasicFileData : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_250e6bce((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_250e6bce((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -655,6 +655,7 @@ public sealed unsafe partial class Dolphin : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_7103eea7((void*)__hosihikari_shim_handle, method, (void*)@params.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_68aca886((void*)__hosihikari_shim_handle);

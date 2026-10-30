@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SculkSensorVibrationConfig
+public sealed unsafe partial class SculkSensorVibrationConfig : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -86,5 +86,19 @@ public sealed unsafe partial class SculkSensorVibrationConfig
     public bool shouldListen(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent, nint gameEventContext)
     {
         return NativeMethods.TablePtr->C3.hs_method_fdb7f3bf((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)gameEvent.Handle, (void*)gameEventContext) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_95fbebcd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

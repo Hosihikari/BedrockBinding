@@ -136,9 +136,10 @@ public sealed unsafe partial class EncryptedFileAccessStrategy : global::System.
         return NativeMethods.TablePtr->C1.hs_method_942d52fe((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _readContentIdentity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity _readContentIdentity()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->C1.hs_method_2a062781((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -319,9 +320,11 @@ public sealed unsafe partial class EncryptedFileAccessStrategy : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.EncryptedFileAccessStrategy((nint)NativeMethods.TablePtr->C1.hs_method_d4e4f490((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint readContentIdentity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity readContentIdentity()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->C1.hs_method_f8b2eaee((void*)__hosihikari_shim_handle));
+    }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2ff3dc_Address

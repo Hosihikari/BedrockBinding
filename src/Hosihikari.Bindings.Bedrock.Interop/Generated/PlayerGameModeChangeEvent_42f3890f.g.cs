@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerGameModeChangeEvent
+public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class PlayerGameModeChangeEvent
     {
         get => NativeMethods.TablePtr->C2.hs_get_9be5c2ca((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_9be5c2ca((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_42f3890f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

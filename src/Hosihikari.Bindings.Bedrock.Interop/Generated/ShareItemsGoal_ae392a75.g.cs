@@ -243,6 +243,7 @@ public sealed unsafe partial class ShareItemsGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_73e898ba((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

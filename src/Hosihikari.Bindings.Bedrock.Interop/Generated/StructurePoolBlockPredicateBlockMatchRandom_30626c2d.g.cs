@@ -131,6 +131,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatchRandom :
         return NativeMethods.TablePtr->C3.hs_method_4bd5ea3a((void*)__hosihikari_shim_handle, (void*)worldPos.Handle, (void*)refPos.Handle, (void*)random.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

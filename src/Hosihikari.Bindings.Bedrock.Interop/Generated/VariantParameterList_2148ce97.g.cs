@@ -40,60 +40,60 @@ public sealed unsafe partial class VariantParameterList : global::System.IDispos
 
     public nint mBaby
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_e4781208((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_e4781208((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_e4781208((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_e4781208((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mBlock
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_553ba925((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_553ba925((void*)__hosihikari_shim_handle);
     }
 
     public nint mDamager
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_7e9eb47d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_7e9eb47d((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7e9eb47d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_7e9eb47d((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mHolder
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3b189973((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_3b189973((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3b189973((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_3b189973((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mOther
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_585f3b18((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_585f3b18((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_585f3b18((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_585f3b18((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mParent
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_766723cf((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_766723cf((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_766723cf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_766723cf((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mPlayer
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_5113918d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_5113918d((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_5113918d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_5113918d((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mSelf
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d333e64a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_d333e64a((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d333e64a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_d333e64a((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public nint mTarget
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f6d5ca86((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_f6d5ca86((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f6d5ca86((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_f6d5ca86((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterListConst operator_VariantParameterListConst()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterListConst((nint)NativeMethods.TablePtr->C3.hs_method_b5717783((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterListConst((nint)NativeMethods.TablePtr->C4.hs_method_b5717783((void*)__hosihikari_shim_handle));
     }
 
     public void Dispose()
@@ -102,7 +102,7 @@ public sealed unsafe partial class VariantParameterList : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_2148ce97((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_2148ce97((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

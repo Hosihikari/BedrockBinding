@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.WoodlandMansionPieces_Nested;
 
-public sealed unsafe partial class SimpleGrid
+public sealed unsafe partial class SimpleGrid : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -65,5 +65,19 @@ public sealed unsafe partial class SimpleGrid
     {
         get => NativeMethods.TablePtr->C4.hs_get_26032059((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C4.hs_set_26032059((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_59562170((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Recipes_Nested;
 
-public sealed unsafe partial class NormalizedRectangularRecipeResults
+public sealed unsafe partial class NormalizedRectangularRecipeResults : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,5 +60,19 @@ public sealed unsafe partial class NormalizedRectangularRecipeResults
     {
         get => NativeMethods.TablePtr->C2.hs_get_e985dbff((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_e985dbff((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c99e9dfd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

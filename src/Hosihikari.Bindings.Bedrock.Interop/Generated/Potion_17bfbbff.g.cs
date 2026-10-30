@@ -404,6 +404,7 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         set => NativeMethods.TablePtr->C2.hs_set_c5f95e0f((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

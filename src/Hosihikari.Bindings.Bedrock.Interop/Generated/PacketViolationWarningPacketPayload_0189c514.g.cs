@@ -117,6 +117,7 @@ public sealed unsafe partial class PacketViolationWarningPacketPayload : global:
         set => NativeMethods.TablePtr->C2.hs_set_062d525f((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

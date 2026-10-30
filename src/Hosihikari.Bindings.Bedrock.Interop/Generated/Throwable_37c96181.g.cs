@@ -724,6 +724,7 @@ public sealed unsafe partial class Throwable : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_4dc824b9((void*)__hosihikari_shim_handle, (void*)shooter.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

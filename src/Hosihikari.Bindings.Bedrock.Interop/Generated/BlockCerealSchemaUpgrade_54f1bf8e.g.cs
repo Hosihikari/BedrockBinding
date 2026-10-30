@@ -38,9 +38,9 @@ public sealed unsafe partial class BlockCerealSchemaUpgrade : global::System.IDi
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint targetVersion, nint mSchemaKey, nint mJsonMemberName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -57,9 +57,10 @@ public sealed unsafe partial class BlockCerealSchemaUpgrade : global::System.IDi
         return new BlockCerealSchemaUpgrade((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static BlockCerealSchemaUpgrade Create(nint targetVersion, nint mSchemaKey, nint mJsonMemberName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk40e0d7_Address

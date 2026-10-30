@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CodeBuilder;
 
-public sealed unsafe partial class CommandOutputObserver
+public sealed unsafe partial class CommandOutputObserver : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,9 +42,23 @@ public sealed unsafe partial class CommandOutputObserver
     public void onCommand(nint origin, nint output) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+
     public nint mpSubject
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_5245352c((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_5245352c((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_25e92aa8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

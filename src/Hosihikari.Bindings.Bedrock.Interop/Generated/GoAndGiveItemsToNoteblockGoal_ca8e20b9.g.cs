@@ -211,6 +211,7 @@ public sealed unsafe partial class GoAndGiveItemsToNoteblockGoal : global::Syste
         NativeMethods.TablePtr->C1.hs_method_8f0ae993((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

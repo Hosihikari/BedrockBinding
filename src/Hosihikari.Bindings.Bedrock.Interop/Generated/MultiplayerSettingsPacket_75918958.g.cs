@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MultiplayerSettingsPacket
+public sealed unsafe partial class MultiplayerSettingsPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class MultiplayerSettingsPacket
         NativeMethods.TablePtr->C2.hs_method_67a651e4((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mPacketType
     {
         get => NativeMethods.TablePtr->C2.hs_get_e50521e7((void*)__hosihikari_shim_handle);
@@ -231,5 +232,18 @@ public sealed unsafe partial class MultiplayerSettingsPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_48ba0416((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_48ba0416((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_75918958((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -319,6 +319,7 @@ public sealed unsafe partial class WorkComposterGoal : global::System.IDisposabl
         NativeMethods.TablePtr->C4.hs_method_3c1f9406((void*)__hosihikari_shim_handle);
     }
 
+
     public int mActiveTick
     {
         get => NativeMethods.TablePtr->C4.hs_get_0a2d3846((void*)__hosihikari_shim_handle);

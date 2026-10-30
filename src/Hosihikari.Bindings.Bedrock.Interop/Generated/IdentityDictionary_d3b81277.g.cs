@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IdentityDictionary
+public sealed unsafe partial class IdentityDictionary : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -107,6 +107,20 @@ public sealed unsafe partial class IdentityDictionary
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             return NativeMethods.TablePtr->C1.hs_method_de2933c6((void*)__hosihikari_shim_handle, (void*)playerId.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_d3b81277((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

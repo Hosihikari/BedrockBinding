@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Player_Nested;
 
-public sealed unsafe partial class CachedSpawnData
+public sealed unsafe partial class CachedSpawnData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -102,5 +102,19 @@ public sealed unsafe partial class CachedSpawnData
     public nint mSharedSpawnPosition_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_9f57f115((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c414ed16((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

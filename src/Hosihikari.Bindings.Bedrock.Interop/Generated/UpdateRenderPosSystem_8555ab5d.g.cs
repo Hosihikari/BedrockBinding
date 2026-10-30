@@ -40,7 +40,7 @@ public sealed unsafe partial class UpdateRenderPosSystem : global::System.IDispo
 
     public static void _doUpdateRenderPosSystem(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.StateVectorComponent stateVectorComponent, global::Hosihikari.Bindings.Bedrock.Interop.RenderPositionComponent renderPositionComponent)
     {
-        NativeMethods.TablePtr->C3.hs_method_b45eada2((void*)arg0.Handle, (void*)stateVectorComponent.Handle, (void*)renderPositionComponent.Handle);
+        NativeMethods.TablePtr->C4.hs_method_b45eada2((void*)arg0.Handle, (void*)stateVectorComponent.Handle, (void*)renderPositionComponent.Handle);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class UpdateRenderPosSystem : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_8555ab5d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_8555ab5d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

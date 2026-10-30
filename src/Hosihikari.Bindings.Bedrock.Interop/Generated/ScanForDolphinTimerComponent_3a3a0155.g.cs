@@ -40,8 +40,8 @@ public sealed unsafe partial class ScanForDolphinTimerComponent : global::System
 
     public int mValue
     {
-        get => NativeMethods.TablePtr->C2.hs_get_06df208f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_06df208f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_06df208f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_06df208f((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -50,7 +50,7 @@ public sealed unsafe partial class ScanForDolphinTimerComponent : global::System
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_3a3a0155((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_3a3a0155((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

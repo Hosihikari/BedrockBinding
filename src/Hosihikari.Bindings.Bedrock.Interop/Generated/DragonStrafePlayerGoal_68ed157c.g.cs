@@ -263,6 +263,7 @@ public sealed unsafe partial class DragonStrafePlayerGoal : global::System.IDisp
         NativeMethods.TablePtr->C1.hs_method_e83a5e2e((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

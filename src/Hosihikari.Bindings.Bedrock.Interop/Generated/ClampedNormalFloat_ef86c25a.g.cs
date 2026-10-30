@@ -40,7 +40,7 @@ public sealed unsafe partial class ClampedNormalFloat : global::System.IDisposab
 
     public static ClampedNormalFloat Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_cc053f0c();
+        var handle = NativeMethods.TablePtr->C4.hs_create_cc053f0c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class ClampedNormalFloat : global::System.IDisposab
 
     public static ClampedNormalFloat Create(global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.ClampedNormalFloat arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_2fd8e8dc((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_2fd8e8dc((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,36 +62,36 @@ public sealed unsafe partial class ClampedNormalFloat : global::System.IDisposab
 
     public float generateNext(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C3.hs_method_20d43165((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_20d43165((void*)__hosihikari_shim_handle, (void*)random.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1f8356_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6f542a10((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6f542a10((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk25b93c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_c847c639((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c847c639((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2faf21_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d0ea2f8a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d0ea2f8a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd8f4e6_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_8869fed5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8869fed5((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.ClampedNormalFloat operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.ClampedNormalFloat arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.ClampedNormalFloat((nint)NativeMethods.TablePtr->C3.hs_method_98797af8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ValueProviders.ClampedNormalFloat((nint)NativeMethods.TablePtr->C4.hs_method_98797af8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -100,7 +100,7 @@ public sealed unsafe partial class ClampedNormalFloat : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_ef86c25a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_ef86c25a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MobSpawnerPermutation
+public sealed unsafe partial class MobSpawnerPermutation : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -44,9 +44,23 @@ public sealed unsafe partial class MobSpawnerPermutation
         get => (nint)NativeMethods.TablePtr->C2.hs_get_d1ef126c((void*)__hosihikari_shim_handle);
     }
 
+
     public int mRandomWeight
     {
         get => NativeMethods.TablePtr->C2.hs_get_039752c8((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_039752c8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_fb6a31f4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

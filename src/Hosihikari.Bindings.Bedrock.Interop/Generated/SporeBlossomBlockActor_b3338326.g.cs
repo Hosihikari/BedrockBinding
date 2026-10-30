@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SporeBlossomBlockActor
+public sealed unsafe partial class SporeBlossomBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -93,6 +93,7 @@ public sealed unsafe partial class SporeBlossomBlockActor
         NativeMethods.TablePtr->C3.hs_method_86abce39((void*)__hosihikari_shim_handle, (void*)region.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {
@@ -133,5 +134,18 @@ public sealed unsafe partial class SporeBlossomBlockActor
     {
         get => NativeMethods.TablePtr->C3.hs_get_611ae561((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_611ae561((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_b3338326((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

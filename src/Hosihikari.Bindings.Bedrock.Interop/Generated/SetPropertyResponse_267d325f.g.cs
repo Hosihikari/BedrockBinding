@@ -109,6 +109,7 @@ public sealed unsafe partial class SetPropertyResponse : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.SetPropertyResponse((nint)NativeMethods.TablePtr->C3.hs_method_a8f8810b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

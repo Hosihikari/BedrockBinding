@@ -280,6 +280,7 @@ public sealed unsafe partial class OverworldBiomeBuilder : global::System.IDispo
         return new global::Hosihikari.Bindings.Bedrock.Interop.ClimateUtils.Parameter((nint)NativeMethods.TablePtr->C2.hs_method_73ab46a9(), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

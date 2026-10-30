@@ -163,6 +163,7 @@ public sealed unsafe partial class OceanRuinPiece : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_9ecdb639((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
     {

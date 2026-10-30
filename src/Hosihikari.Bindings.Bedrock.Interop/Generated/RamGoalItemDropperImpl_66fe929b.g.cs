@@ -107,6 +107,7 @@ public sealed unsafe partial class RamGoalItemDropperImpl : global::System.IDisp
         NativeMethods.TablePtr->C2.hs_method_d36dcb13((void*)__hosihikari_shim_handle, (void*)dropPos.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

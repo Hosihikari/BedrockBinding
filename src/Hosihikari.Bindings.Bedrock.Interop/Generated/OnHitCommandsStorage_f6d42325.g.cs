@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50;
 
-public sealed unsafe partial class OnHitCommandsStorage
+public sealed unsafe partial class OnHitCommandsStorage : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,23 @@ public sealed unsafe partial class OnHitCommandsStorage
         NativeMethods.TablePtr->C3.hs_method_f8910b51((void*)ctx.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mComponents_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_5c91e504((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f6d42325((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

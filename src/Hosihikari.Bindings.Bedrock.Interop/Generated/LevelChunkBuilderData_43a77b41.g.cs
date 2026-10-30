@@ -40,17 +40,17 @@ public sealed unsafe partial class LevelChunkBuilderData : global::System.IDispo
 
     public nint _ctor()
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_d2d71dcd((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_d2d71dcd((void*)__hosihikari_shim_handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_eb31fc07((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_eb31fc07((void*)__hosihikari_shim_handle);
     }
 
     public static LevelChunkBuilderData Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_56d04220();
+        var handle = NativeMethods.TablePtr->C2.hs_create_56d04220();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,67 +61,67 @@ public sealed unsafe partial class LevelChunkBuilderData : global::System.IDispo
 
     public void enqueueChunkForProcessing(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, byte state)
     {
-        NativeMethods.TablePtr->C1.hs_method_a139f246((void*)__hosihikari_shim_handle, (void*)pos.Handle, state);
+        NativeMethods.TablePtr->C2.hs_method_a139f246((void*)__hosihikari_shim_handle, (void*)pos.Handle, state);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkGenerationGridMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_24c6ca5d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_24c6ca5d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkGenerationGridMapSpinLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_bfe7b3c9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bfe7b3c9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkGenerationTasksInFlight_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_6581e4f8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_6581e4f8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkQueueDepth_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_383b0f33((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_383b0f33((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunkSortVector_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4272f608((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4272f608((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunksReadyForProcessing_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a476cd20((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a476cd20((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunksReadyForProcessingSpinLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_56cce409((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_56cce409((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunksToAddToProcessing_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f6c7139d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f6c7139d((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mChunksToAddToProcessingSpinLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_bed6592b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_bed6592b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSpawnTasksLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d2c8d9b4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d2c8d9b4((void*)__hosihikari_shim_handle);
     }
 
 
@@ -131,7 +131,7 @@ public sealed unsafe partial class LevelChunkBuilderData : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_43a77b41((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_43a77b41((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

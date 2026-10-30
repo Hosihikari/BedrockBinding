@@ -40,8 +40,8 @@ public sealed unsafe partial class SubChunkMetadata : global::System.IDisposable
 
     public ulong blobId
     {
-        get => NativeMethods.TablePtr->C1.hs_get_ff9987b3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_ff9987b3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ff9987b3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ff9987b3((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -50,7 +50,7 @@ public sealed unsafe partial class SubChunkMetadata : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_63dd37e6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_63dd37e6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

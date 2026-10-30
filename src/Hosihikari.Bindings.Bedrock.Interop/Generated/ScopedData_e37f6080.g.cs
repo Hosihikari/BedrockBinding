@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ProfilerLite_Nested;
 
-public sealed unsafe partial class ScopedData
+public sealed unsafe partial class ScopedData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -101,5 +101,19 @@ public sealed unsafe partial class ScopedData
     {
         get => NativeMethods.TablePtr->C2.hs_get_0671a942((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_0671a942((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e37f6080((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

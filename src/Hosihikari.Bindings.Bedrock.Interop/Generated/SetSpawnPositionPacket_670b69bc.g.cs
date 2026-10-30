@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetSpawnPositionPacket
+public sealed unsafe partial class SetSpawnPositionPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class SetSpawnPositionPacket
         NativeMethods.TablePtr->C3.hs_method_8877cec2((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionType_Address
     {
@@ -249,5 +250,18 @@ public sealed unsafe partial class SetSpawnPositionPacket
     {
         get => NativeMethods.TablePtr->C3.hs_get_915396ca((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_915396ca((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_670b69bc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

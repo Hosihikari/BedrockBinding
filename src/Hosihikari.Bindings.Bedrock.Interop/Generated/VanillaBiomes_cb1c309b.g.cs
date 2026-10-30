@@ -40,42 +40,42 @@ public sealed unsafe partial class VanillaBiomes : global::System.IDisposable
 
     public static void initBiomeComponentGlue(global::Hosihikari.Bindings.Bedrock.Interop.BiomeJsonDocumentGlue biomeJsonDocumentGlue)
     {
-        NativeMethods.TablePtr->C3.hs_method_45625c3f((void*)biomeJsonDocumentGlue.Handle);
+        NativeMethods.TablePtr->C4.hs_method_45625c3f((void*)biomeJsonDocumentGlue.Handle);
     }
 
     public static void initBiomeDimensionComponent(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_eb5c7c56((void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_eb5c7c56((void*)registry.Handle);
     }
 
     public static void initBiomes(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.SpawnSettings spawnSettings, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
-        NativeMethods.TablePtr->C3.hs_method_3ab5685d((void*)registry.Handle, (void*)spawnSettings.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
+        NativeMethods.TablePtr->C4.hs_method_3ab5685d((void*)registry.Handle, (void*)spawnSettings.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
     }
 
     public static void initDefaultWorldGenComponents(global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider registries)
     {
-        NativeMethods.TablePtr->C3.hs_method_72d983b0((void*)registries.Handle);
+        NativeMethods.TablePtr->C4.hs_method_72d983b0((void*)registries.Handle);
     }
 
     public static void initSurfaceBuilders(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion)
     {
-        NativeMethods.TablePtr->C3.hs_method_bb1a7a1e((void*)registry.Handle, (void*)baseGameVersion.Handle);
+        NativeMethods.TablePtr->C4.hs_method_bb1a7a1e((void*)registry.Handle, (void*)baseGameVersion.Handle);
     }
 
     public static void initVanillaBiomeTypeComponent(global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry registry)
     {
-        NativeMethods.TablePtr->C3.hs_method_c455a24f((void*)registry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_c455a24f((void*)registry.Handle);
     }
 
     public static nint mPlayerValidSpawns()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_f1cef866();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_f1cef866();
     }
 
     public static nint mSpawnBiomeType()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_fcc36cb6();
+        return (nint)NativeMethods.TablePtr->C4.hs_method_fcc36cb6();
     }
 
     public void Dispose()
@@ -84,7 +84,7 @@ public sealed unsafe partial class VanillaBiomes : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_cb1c309b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_cb1c309b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

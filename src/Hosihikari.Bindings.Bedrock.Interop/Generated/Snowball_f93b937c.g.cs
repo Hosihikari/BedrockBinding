@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class Snowball
+public sealed unsafe partial class Snowball : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -598,6 +598,7 @@ public sealed unsafe partial class Snowball
         NativeMethods.TablePtr->C3.hs_method_bb73ee60((void*)__hosihikari_shim_handle, method, (void*)@params.Handle);
     }
 
+
     public bool mInGround
     {
         get => NativeMethods.TablePtr->C3.hs_get_8586794b((void*)__hosihikari_shim_handle) != 0;
@@ -620,5 +621,18 @@ public sealed unsafe partial class Snowball
     {
         get => NativeMethods.TablePtr->C3.hs_get_43e6c19c((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_43e6c19c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_f93b937c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

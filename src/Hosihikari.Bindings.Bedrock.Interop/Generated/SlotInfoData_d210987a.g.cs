@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal;
 
-public sealed unsafe partial class SlotInfoData
+public sealed unsafe partial class SlotInfoData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class SlotInfoData
     {
         get => NativeMethods.TablePtr->C1.hs_get_c57e93c1((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_c57e93c1((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_d210987a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

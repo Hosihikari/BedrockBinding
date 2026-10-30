@@ -40,7 +40,7 @@ public sealed unsafe partial class VanillaServerNetworkHandler : global::System.
 
     public void _handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackClientResponsePacket packet)
     {
-        NativeMethods.TablePtr->C3.hs_method_6a333de8((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)packet.Handle);
+        NativeMethods.TablePtr->C4.hs_method_6a333de8((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)packet.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -49,7 +49,7 @@ public sealed unsafe partial class VanillaServerNetworkHandler : global::System.
 
     public static VanillaServerNetworkHandler Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_5d5f24ad();
+        var handle = NativeMethods.TablePtr->C4.hs_create_5d5f24ad();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,7 +60,7 @@ public sealed unsafe partial class VanillaServerNetworkHandler : global::System.
 
     public static VanillaServerNetworkHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.VanillaServerNetworkHandler arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_088171d1((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_088171d1((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,24 +71,24 @@ public sealed unsafe partial class VanillaServerNetworkHandler : global::System.
 
     public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackClientResponsePacket packet)
     {
-        NativeMethods.TablePtr->C3.hs_method_48827ac4((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)packet.Handle);
+        NativeMethods.TablePtr->C4.hs_method_48827ac4((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)packet.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBedrockHandler_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_bbf560b9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_bbf560b9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mServer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d6ff88eb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d6ff88eb((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.VanillaServerNetworkHandler operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.VanillaServerNetworkHandler arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.VanillaServerNetworkHandler((nint)NativeMethods.TablePtr->C3.hs_method_4a3246a6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.VanillaServerNetworkHandler((nint)NativeMethods.TablePtr->C4.hs_method_4a3246a6((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -98,7 +98,7 @@ public sealed unsafe partial class VanillaServerNetworkHandler : global::System.
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_bec5658f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_bec5658f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

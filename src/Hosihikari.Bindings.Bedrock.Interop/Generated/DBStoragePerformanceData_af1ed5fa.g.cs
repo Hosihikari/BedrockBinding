@@ -76,6 +76,7 @@ public sealed unsafe partial class DBStoragePerformanceData : global::System.IDi
         NativeMethods.TablePtr->C1.hs_method_c40d498b((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

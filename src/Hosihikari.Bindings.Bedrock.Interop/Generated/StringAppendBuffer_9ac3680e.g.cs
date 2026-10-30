@@ -95,6 +95,7 @@ public sealed unsafe partial class StringAppendBuffer : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_f29d6501((void*)__hosihikari_shim_handle, (void*)s, n);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

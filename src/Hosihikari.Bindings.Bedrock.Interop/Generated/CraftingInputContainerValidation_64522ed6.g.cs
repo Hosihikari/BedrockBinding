@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CraftingInputContainerValidation
+public sealed unsafe partial class CraftingInputContainerValidation : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,21 +40,35 @@ public sealed unsafe partial class CraftingInputContainerValidation
 
     public int _getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
-        return NativeMethods.TablePtr->C0.hs_method_ed457cb2((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_ed457cb2((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
     public int _getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, global::Hosihikari.Bindings.Bedrock.Interop.Container container)
     {
-        return NativeMethods.TablePtr->C0.hs_method_e971fd36((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_e971fd36((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
     }
 
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
-        return NativeMethods.TablePtr->C0.hs_method_0b10dd4e((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_0b10dd4e((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
     public int getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, global::Hosihikari.Bindings.Bedrock.Interop.Container container)
     {
-        return NativeMethods.TablePtr->C0.hs_method_dab3c005((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_dab3c005((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_64522ed6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -147,6 +147,7 @@ public sealed unsafe partial class BlockCollisionBoxDescription : global::System
         set => NativeMethods.TablePtr->C0.hs_set_514833fe((void*)__hosihikari_shim_handle, value);
     }
 
+
     public bool mInitializedFromCode
     {
         get => NativeMethods.TablePtr->C0.hs_get_ca397c19((void*)__hosihikari_shim_handle) != 0;

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ImguiProfiler_Nested;
 
-public sealed unsafe partial class ManualTimer
+public sealed unsafe partial class ManualTimer : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,6 +48,7 @@ public sealed unsafe partial class ManualTimer
         set => NativeMethods.TablePtr->C1.hs_set_779466c0((void*)__hosihikari_shim_handle, value);
     }
 
+
     public nint mGroup
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_dda0671c((void*)__hosihikari_shim_handle);
@@ -68,5 +69,18 @@ public sealed unsafe partial class ManualTimer
     public nint mStart_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_40a669bd((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_85027d22((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

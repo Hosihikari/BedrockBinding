@@ -72,6 +72,7 @@ public sealed unsafe partial class MolangClientTextureSet : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.MolangClientTextureSet((nint)NativeMethods.TablePtr->C2.hs_method_f74b43e6((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

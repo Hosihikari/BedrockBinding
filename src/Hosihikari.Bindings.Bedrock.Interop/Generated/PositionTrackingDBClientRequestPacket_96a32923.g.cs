@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PositionTrackingDBClientRequestPacket
+public sealed unsafe partial class PositionTrackingDBClientRequestPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class PositionTrackingDBClientRequestPacket
         NativeMethods.TablePtr->C2.hs_method_aeabcfef((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public byte mAction
     {
         get => NativeMethods.TablePtr->C2.hs_get_1919879e((void*)__hosihikari_shim_handle);
@@ -237,5 +238,18 @@ public sealed unsafe partial class PositionTrackingDBClientRequestPacket
     public nint mId_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_fc708bc4((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_96a32923((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

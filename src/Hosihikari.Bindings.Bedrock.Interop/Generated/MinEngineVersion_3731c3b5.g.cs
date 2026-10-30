@@ -70,9 +70,24 @@ public sealed unsafe partial class MinEngineVersion : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C2.hs_method_a1410a1a((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MinEngineVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint fromString(nint @string) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MinEngineVersion' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion fromString(string @string)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(@string);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(@string, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion((nint)NativeMethods.TablePtr->C2.hs_method_2adac2a5(__hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
 
     public int mCommandVersion
     {
@@ -96,6 +111,7 @@ public sealed unsafe partial class MinEngineVersion : global::System.IDisposable
     {
         return NativeMethods.TablePtr->C2.hs_method_be28ec59((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
+
 
     public void Dispose()
     {

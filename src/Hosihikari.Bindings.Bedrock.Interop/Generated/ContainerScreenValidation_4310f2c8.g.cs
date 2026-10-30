@@ -46,13 +46,14 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
     public nint _getCraftResults(nint craftInputs, nint numCrafts) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _tryActivate() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult _tryActivate()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_05b0c98a((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint _tryCraft(nint craftInputs, nint numCrafts) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public static ContainerScreenValidation Create()
     {
@@ -74,9 +75,10 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
         NativeMethods.TablePtr->C0.hs_method_74dbef53((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationSlotInfo' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _createContainerValidatorSlotInfo(nint slotData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationSlotInfo' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo _createContainerValidatorSlotInfo(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData slotData)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotInfo((nint)NativeMethods.TablePtr->C0.hs_method_a8aadacf((void*)__hosihikari_shim_handle, (void*)slotData.Handle));
+    }
 
     public bool _dropItems()
     {
@@ -103,9 +105,10 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
         return NativeMethods.TablePtr->C0.hs_method_18bf7c3b((void*)__hosihikari_shim_handle, (void*)slotInfo.Handle, (void*)stack.Handle, isWholeStackTransfer, allowPartialSuccess, isInternalTransfer);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _tryTransferSpecial(nint srcSlotData, int transferAmount, nint actionType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult _tryTransferSpecial(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, int transferAmount, byte actionType)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_89e881d4((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount, actionType));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint getCraftResults(nint craftInputs, nint numCrafts) =>
@@ -169,34 +172,39 @@ public sealed unsafe partial class ContainerScreenValidation : global::System.ID
     public static nint makeContainerScreenValidation(nint screenContext, nint caller, nint predictiveContainers) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ContainerScreenValidation' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryActivate() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryActivate()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_27e4024a((void*)__hosihikari_shim_handle));
+    }
 
     public bool tryCommitActionResults()
     {
         return NativeMethods.TablePtr->C0.hs_method_235e871e((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryConsume(nint srcSlotData, int transferAmount) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryConsume(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, int transferAmount)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_83f41770((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint tryCraft(nint craftInputs, nint numCrafts) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryDrop(nint srcSlotData, int transferAmount, bool dropRandomly) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryDrop(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, int transferAmount, bool dropRandomly)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_787f57ba((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, transferAmount, dropRandomly));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint trySwap(nint srcSlotData, nint dstSlotData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult trySwap(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData dstSlotData)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_a9776eea((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, (void*)dstSlotData.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryTransfer(nint srcSlotData, nint dstSlotData, int transferAmount, bool isAllowingPartialTransfer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryTransfer(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData srcSlotData, global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationSlotData dstSlotData, int transferAmount, bool isAllowingPartialTransfer)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_58c36007((void*)__hosihikari_shim_handle, (void*)srcSlotData.Handle, (void*)dstSlotData.Handle, transferAmount, isAllowingPartialTransfer));
+    }
 
 
     public void Dispose()

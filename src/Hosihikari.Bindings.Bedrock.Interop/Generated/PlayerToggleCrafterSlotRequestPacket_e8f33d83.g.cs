@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerToggleCrafterSlotRequestPacket
+public sealed unsafe partial class PlayerToggleCrafterSlotRequestPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class PlayerToggleCrafterSlotRequestPacket
         NativeMethods.TablePtr->C2.hs_method_7fe4bcc1((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public bool mIsDisabled
     {
         get => NativeMethods.TablePtr->C2.hs_get_485f7151((void*)__hosihikari_shim_handle) != 0;
@@ -243,5 +244,18 @@ public sealed unsafe partial class PlayerToggleCrafterSlotRequestPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_75500553((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_75500553((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_e8f33d83((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

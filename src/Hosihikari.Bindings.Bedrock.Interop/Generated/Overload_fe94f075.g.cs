@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested;
 
-public sealed unsafe partial class Overload
+public sealed unsafe partial class Overload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -72,5 +72,19 @@ public sealed unsafe partial class Overload
     {
         get => NativeMethods.TablePtr->C0.hs_get_61feb0a1((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_61feb0a1((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_fe94f075((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

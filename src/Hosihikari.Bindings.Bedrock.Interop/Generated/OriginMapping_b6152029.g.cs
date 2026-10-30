@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FunctionManager_Nested;
 
-public sealed unsafe partial class OriginMapping
+public sealed unsafe partial class OriginMapping : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class OriginMapping
     {
         get => NativeMethods.TablePtr->C1.hs_get_73b49348((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_73b49348((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b6152029((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

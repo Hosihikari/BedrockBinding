@@ -128,16 +128,14 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         NativeMethods.TablePtr->C1.hs_method_f3b0ad73((void*)__hosihikari_shim_handle);
     }
 
-    public string _getBasePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getBasePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_e6c05945((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_e6c05945((void*)__hosihikari_shim_handle));
     }
 
-    public string _getLevelDatFoundPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getLevelDatFoundPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_261fbd99((void*)__hosihikari_shim_handle, (void*)levelPath.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_261fbd99((void*)__hosihikari_shim_handle, (void*)levelPath.Handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<LevelDataLoadResult>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -160,7 +158,7 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string _getPathToLevel(string levelId)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ _getPathToLevel(string levelId)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -175,8 +173,7 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->C1.hs_method_b4d9e28c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_b4d9e28c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
@@ -384,16 +381,14 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         }
     }
 
-    public string getBasePath()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getBasePath()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_4c1b828c((void*)__hosihikari_shim_handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_4c1b828c((void*)__hosihikari_shim_handle));
     }
 
-    public string getLevelDatFoundPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getLevelDatFoundPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path levelPath)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_aeb9e53f((void*)__hosihikari_shim_handle, (void*)levelPath.Handle);
-        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_aeb9e53f((void*)__hosihikari_shim_handle, (void*)levelPath.Handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<LevelDataLoadResult>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -416,7 +411,7 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public string getPathToLevel(string levelId)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getPathToLevel(string levelId)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -431,8 +426,7 @@ public sealed unsafe partial class ExternalFileLevelStorageSource : global::Syst
         global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->C1.hs_method_ebedf768((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_ebedf768((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 

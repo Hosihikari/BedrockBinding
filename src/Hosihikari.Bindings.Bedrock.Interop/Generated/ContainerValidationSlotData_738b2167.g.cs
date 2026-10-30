@@ -66,6 +66,7 @@ public sealed unsafe partial class ContainerValidationSlotData : global::System.
         set => NativeMethods.TablePtr->C0.hs_set_a6217a9d((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -81,6 +81,7 @@ public sealed unsafe partial class ScriptBlockCustomComponentEntityFallOnAfterEv
         get => NativeMethods.TablePtr->C3.hs_get_158573c1((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {

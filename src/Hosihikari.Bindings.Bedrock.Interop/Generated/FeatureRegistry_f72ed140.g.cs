@@ -292,6 +292,7 @@ public sealed unsafe partial class FeatureRegistry : global::System.IDisposable
     public void setSmallFeaturePasses(nint smallFeaturePasses) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

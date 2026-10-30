@@ -691,6 +691,7 @@ public sealed unsafe partial class WitherSkull : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_1c7b3f64((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

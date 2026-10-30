@@ -356,6 +356,7 @@ public sealed unsafe partial class RamAttackGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_ec29674a((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

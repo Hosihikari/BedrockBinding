@@ -100,6 +100,7 @@ public sealed unsafe partial class IconItemComponent : global::System.IDisposabl
         }
     }
 
+
     public nint mOwner
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_b05f63ac((void*)__hosihikari_shim_handle);

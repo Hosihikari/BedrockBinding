@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetTitlePacket
+public sealed unsafe partial class SetTitlePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class SetTitlePacket
         NativeMethods.TablePtr->C3.hs_method_741bd1ed((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mFadeInTime
     {
         get => NativeMethods.TablePtr->C3.hs_get_d48197be((void*)__hosihikari_shim_handle);
@@ -273,5 +274,18 @@ public sealed unsafe partial class SetTitlePacket
     public nint mXuid_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_5af0bbdd((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_e1e69b3f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

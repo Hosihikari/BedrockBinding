@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AbstractArrow
+public sealed unsafe partial class AbstractArrow : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -163,6 +163,7 @@ public sealed unsafe partial class AbstractArrow
     {
         NativeMethods.TablePtr->C0.hs_method_0bde28ae((void*)__hosihikari_shim_handle, (void*)dir.Handle, pow, uncertainty, (void*)baseSpeed.Handle);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActionQueue_Address
@@ -708,5 +709,18 @@ public sealed unsafe partial class AbstractArrow
     {
         get => NativeMethods.TablePtr->C0.hs_get_4df7bbf9((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C0.hs_set_4df7bbf9((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_1ef10c53((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

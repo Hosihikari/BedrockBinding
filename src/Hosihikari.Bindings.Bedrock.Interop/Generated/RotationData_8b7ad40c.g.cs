@@ -41,19 +41,19 @@ public sealed unsafe partial class RotationData : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommandOriginRotation_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_cf55b4fd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_cf55b4fd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRotX_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_6eb9b57e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_6eb9b57e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRotY_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_eef35d6f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_eef35d6f((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -62,7 +62,7 @@ public sealed unsafe partial class RotationData : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_8b7ad40c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_8b7ad40c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

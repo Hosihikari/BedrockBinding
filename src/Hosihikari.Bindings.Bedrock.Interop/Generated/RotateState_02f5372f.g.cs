@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RotateState
+public sealed unsafe partial class RotateState : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,27 +41,41 @@ public sealed unsafe partial class RotateState
     // The native field type is not projected; this is the address of the field storage.
     public nint mGoal_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_71c00792((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_71c00792((void*)__hosihikari_shim_handle);
     }
 
     public void _tick()
     {
-        NativeMethods.TablePtr->C2.hs_method_79b295ba((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_79b295ba((void*)__hosihikari_shim_handle);
     }
 
     public int SETTLE_TICKS
     {
-        get => NativeMethods.TablePtr->C2.hs_get_47a46cf1((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_47a46cf1((void*)__hosihikari_shim_handle);
     }
 
     public int mSettleTicks
     {
-        get => NativeMethods.TablePtr->C2.hs_get_9bf84d08((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_9bf84d08((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_9bf84d08((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_9bf84d08((void*)__hosihikari_shim_handle, value);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->C2.hs_method_c6cb236a((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_c6cb236a((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_02f5372f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

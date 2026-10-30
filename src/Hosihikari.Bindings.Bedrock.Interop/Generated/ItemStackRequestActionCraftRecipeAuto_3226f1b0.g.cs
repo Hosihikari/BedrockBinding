@@ -83,6 +83,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftRecipeAuto : globa
         set => NativeMethods.TablePtr->C1.hs_set_7df52aa7((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

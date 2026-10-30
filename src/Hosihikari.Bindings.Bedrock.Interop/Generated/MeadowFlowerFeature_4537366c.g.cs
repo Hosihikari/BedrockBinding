@@ -104,6 +104,7 @@ public sealed unsafe partial class MeadowFlowerFeature : global::System.IDisposa
         return NativeMethods.TablePtr->C2.hs_method_42e719ad((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)arg2.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

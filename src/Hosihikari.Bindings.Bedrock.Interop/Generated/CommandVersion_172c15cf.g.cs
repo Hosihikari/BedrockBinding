@@ -49,9 +49,10 @@ public sealed unsafe partial class CommandVersion : global::System.IDisposable
         return new CommandVersion((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getLatestCompatibleSemVersion(nint currentGameSemVersion, int version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SemVersion' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.SemVersion getLatestCompatibleSemVersion(global::Hosihikari.Bindings.Bedrock.Interop.SemVersion currentGameSemVersion, int version)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SemVersion((nint)NativeMethods.TablePtr->C0.hs_method_321154da((void*)currentGameSemVersion.Handle, version));
+    }
 
     public int mFrom
     {

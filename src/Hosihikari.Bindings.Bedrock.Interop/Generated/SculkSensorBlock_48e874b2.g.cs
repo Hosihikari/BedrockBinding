@@ -457,6 +457,7 @@ public sealed unsafe partial class SculkSensorBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_99090b9a((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

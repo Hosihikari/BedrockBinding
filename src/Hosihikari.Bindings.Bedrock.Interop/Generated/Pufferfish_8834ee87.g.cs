@@ -775,6 +775,7 @@ public sealed unsafe partial class Pufferfish : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_65918356((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, forceRiding) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

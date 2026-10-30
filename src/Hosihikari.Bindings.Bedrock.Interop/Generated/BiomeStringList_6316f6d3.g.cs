@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BiomeStringList
+public sealed unsafe partial class BiomeStringList : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,4 +53,18 @@ public sealed unsafe partial class BiomeStringList
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<BiomeStringList>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint read(nint stream) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<BiomeStringList>' requires --link-carrier or --virtual-dispatch.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6316f6d3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

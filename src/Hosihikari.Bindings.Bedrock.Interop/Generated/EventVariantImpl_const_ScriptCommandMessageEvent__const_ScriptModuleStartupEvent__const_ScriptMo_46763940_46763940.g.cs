@@ -42,4 +42,8 @@ public sealed partial class EventVariantImpl_const_ScriptCommandMessageEvent__co
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public static EventVariantImpl_const_ScriptCommandMessageEvent__const_ScriptModuleStartupEvent__const_ScriptMo_46763940 Create(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 }

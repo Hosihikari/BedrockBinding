@@ -49,18 +49,18 @@ public sealed unsafe partial class UpdateAttributesPacketPayload : global::Syste
         fixed (nint* __hs_vectorHandleData2 = __hs_vectorHandles2)
         {
             var __hs_vectorData2 = (void**)__hs_vectorHandleData2;
-            return (nint)NativeMethods.TablePtr->C3.hs_method_556e9431((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)map.Handle, (void*)tick.Handle, __hs_vectorData2, (nuint)(dirtyData?.Length ?? 0));
+            return (nint)NativeMethods.TablePtr->C4.hs_method_556e9431((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)map.Handle, (void*)tick.Handle, __hs_vectorData2, (nuint)(dirtyData?.Length ?? 0));
         }
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_a71061ec((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_a71061ec((void*)__hosihikari_shim_handle);
     }
 
     public static UpdateAttributesPacketPayload Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_4f321654();
+        var handle = NativeMethods.TablePtr->C4.hs_create_4f321654();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -80,7 +80,7 @@ public sealed unsafe partial class UpdateAttributesPacketPayload : global::Syste
         fixed (nint* __hs_vectorHandleData2 = __hs_vectorHandles2)
         {
             var __hs_vectorData2 = (void**)__hs_vectorHandleData2;
-            var handle = NativeMethods.TablePtr->C3.hs_create_1df49331((void*)id.Handle, (void*)map.Handle, (void*)tick.Handle, __hs_vectorData2, (nuint)(dirtyData?.Length ?? 0));
+            var handle = NativeMethods.TablePtr->C4.hs_create_1df49331((void*)id.Handle, (void*)map.Handle, (void*)tick.Handle, __hs_vectorData2, (nuint)(dirtyData?.Length ?? 0));
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -93,19 +93,19 @@ public sealed unsafe partial class UpdateAttributesPacketPayload : global::Syste
     // The native field type is not projected; this is the address of the field storage.
     public nint mAttributeData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3aa2215c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3aa2215c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRuntimeId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3f6ea5ed((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3f6ea5ed((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_48f1dfa6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_48f1dfa6((void*)__hosihikari_shim_handle);
     }
 
 
@@ -115,7 +115,7 @@ public sealed unsafe partial class UpdateAttributesPacketPayload : global::Syste
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_ddc3e68e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_ddc3e68e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

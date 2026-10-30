@@ -163,6 +163,7 @@ public sealed unsafe partial class ChargeHeldItemGoal : global::System.IDisposab
         NativeMethods.TablePtr->C0.hs_method_1dcecbb0((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

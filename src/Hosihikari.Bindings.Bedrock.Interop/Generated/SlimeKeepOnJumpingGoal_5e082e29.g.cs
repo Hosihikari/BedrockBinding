@@ -127,6 +127,7 @@ public sealed unsafe partial class SlimeKeepOnJumpingGoal : global::System.IDisp
         NativeMethods.TablePtr->C3.hs_method_959fac2f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

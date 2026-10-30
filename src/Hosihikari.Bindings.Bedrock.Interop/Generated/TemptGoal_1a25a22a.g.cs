@@ -278,6 +278,7 @@ public sealed unsafe partial class TemptGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_9accb15f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

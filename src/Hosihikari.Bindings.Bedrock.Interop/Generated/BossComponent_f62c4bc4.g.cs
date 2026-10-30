@@ -171,6 +171,7 @@ public sealed unsafe partial class BossComponent : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_17891c41((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)(player?.Handle ?? 0));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

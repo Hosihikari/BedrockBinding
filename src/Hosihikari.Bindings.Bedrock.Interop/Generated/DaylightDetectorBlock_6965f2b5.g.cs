@@ -424,6 +424,7 @@ public sealed unsafe partial class DaylightDetectorBlock : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_2e7b2d11((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

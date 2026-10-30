@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptSystemLevelEventListener
+public sealed unsafe partial class ScriptSystemLevelEventListener : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,5 +58,19 @@ public sealed unsafe partial class ScriptSystemLevelEventListener
     public void onRunSystemTick(nint deferredTracker)
     {
         NativeMethods.TablePtr->C3.hs_method_afa5eeb2((void*)__hosihikari_shim_handle, (void*)deferredTracker);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_faba825f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AgentLookControl
+public sealed unsafe partial class AgentLookControl : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,5 +56,19 @@ public sealed unsafe partial class AgentLookControl
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
         NativeMethods.TablePtr->C0.hs_method_ca8c6fde((void*)__hosihikari_shim_handle, (void*)mob.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_56c71e79((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

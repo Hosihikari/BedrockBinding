@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MovePlayerPacket
+public sealed unsafe partial class MovePlayerPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class MovePlayerPacket
         NativeMethods.TablePtr->C2.hs_method_d549b966((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public bool mOnGround
     {
         get => NativeMethods.TablePtr->C2.hs_get_46c7d5db((void*)__hosihikari_shim_handle) != 0;
@@ -279,5 +280,18 @@ public sealed unsafe partial class MovePlayerPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_6aaab19f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_6aaab19f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_03c78cc4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

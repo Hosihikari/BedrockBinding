@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BoostItem
+public sealed unsafe partial class BoostItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,5 +59,19 @@ public sealed unsafe partial class BoostItem
     public void setReplacementItemDescriptor(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor replacementItemDescriptor)
     {
         NativeMethods.TablePtr->C0.hs_method_be9a895c((void*)__hosihikari_shim_handle, (void*)replacementItemDescriptor.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f6d89dca((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

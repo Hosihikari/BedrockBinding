@@ -124,9 +124,10 @@ public sealed unsafe partial class ByteTag : global::System.IDisposable
     public nint operator_std__byte() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::byte' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ByteTag' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint operator_subtract() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ByteTag' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ByteTag operator_subtract()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ByteTag((nint)NativeMethods.TablePtr->C0.hs_method_74f81016((void*)__hosihikari_shim_handle));
+    }
 
     public string toString()
     {
@@ -138,6 +139,7 @@ public sealed unsafe partial class ByteTag : global::System.IDisposable
     {
         NativeMethods.TablePtr->C0.hs_method_ec8487b6((void*)__hosihikari_shim_handle, (void*)dos.Handle);
     }
+
 
     public void Dispose()
     {

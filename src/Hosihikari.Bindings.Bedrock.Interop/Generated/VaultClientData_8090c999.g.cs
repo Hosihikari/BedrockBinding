@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VaultBlockActor_Nested;
 
-public sealed unsafe partial class VaultClientData
+public sealed unsafe partial class VaultClientData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,19 +40,33 @@ public sealed unsafe partial class VaultClientData
 
     public float currentSpin
     {
-        get => NativeMethods.TablePtr->C3.hs_get_c2cef35e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_c2cef35e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_c2cef35e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_c2cef35e((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint displayEntity_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_49ae30e6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_49ae30e6((void*)__hosihikari_shim_handle);
     }
 
     public float previousSpin
     {
-        get => NativeMethods.TablePtr->C3.hs_get_bf89fdaf((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_bf89fdaf((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_bf89fdaf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_bf89fdaf((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_8090c999((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

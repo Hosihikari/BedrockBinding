@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetDisplayObjectivePacket
+public sealed unsafe partial class SetDisplayObjectivePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class SetDisplayObjectivePacket
         NativeMethods.TablePtr->C3.hs_method_6930337b((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCriteriaName_Address
     {
@@ -255,5 +256,18 @@ public sealed unsafe partial class SetDisplayObjectivePacket
     {
         get => NativeMethods.TablePtr->C3.hs_get_ae0546bd((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_ae0546bd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_96c5ee0f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

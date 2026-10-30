@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptWorldSoundOptions
+public sealed unsafe partial class ScriptWorldSoundOptions : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -70,4 +70,18 @@ public sealed unsafe partial class ScriptWorldSoundOptions
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::PropertyOutOfBoundsError' is not supported.", false)]
     public nint validate() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::PropertyOutOfBoundsError' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_9f7a1d0f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorDamageByBlockSource
+public sealed unsafe partial class ActorDamageByBlockSource : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -75,6 +75,7 @@ public sealed unsafe partial class ActorDamageByBlockSource
         get => (nint)NativeMethods.TablePtr->C0.hs_get_b690daa9((void*)__hosihikari_shim_handle);
     }
 
+
     public int mCause
     {
         get => NativeMethods.TablePtr->C0.hs_get_ea5d13e2((void*)__hosihikari_shim_handle);
@@ -85,5 +86,18 @@ public sealed unsafe partial class ActorDamageByBlockSource
     public nint mDeathMessageOverride_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_7c0c9b83((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0d0ac260((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

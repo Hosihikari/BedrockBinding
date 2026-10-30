@@ -136,9 +136,10 @@ public sealed unsafe partial class ScriptPluginPackSource : global::System.IDisp
         return new ScriptPluginPackSource((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Path' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _removeRootFromPath(nint pathIn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Path' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Path _removeRootFromPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path pathIn)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Path((nint)NativeMethods.TablePtr->C3.hs_method_ba836351((void*)__hosihikari_shim_handle, (void*)pathIn.Handle));
+    }
 
     public string[] enumerateScripts(string extension)
     {
@@ -228,6 +229,7 @@ public sealed unsafe partial class ScriptPluginPackSource : global::System.IDisp
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
+
 
     public void Dispose()
     {

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ContainerScreenValidationActivate
+public sealed unsafe partial class ContainerScreenValidationActivate : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -86,15 +86,31 @@ public sealed unsafe partial class ContainerScreenValidationActivate
         get => (nint)NativeMethods.TablePtr->C0.hs_get_84a0e862((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _tryActivate() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult _tryActivate()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_0dd851dd((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint tryActivate() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContainerValidationResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult tryActivate()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationResult((nint)NativeMethods.TablePtr->C0.hs_method_98505b4b((void*)__hosihikari_shim_handle));
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_353aec3a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

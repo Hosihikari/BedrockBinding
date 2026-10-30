@@ -153,6 +153,7 @@ public sealed unsafe partial class PortalForcer : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_fb37a4f1((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
+
     public bool mDirty
     {
         get => NativeMethods.TablePtr->C2.hs_get_eaa98f68((void*)__hosihikari_shim_handle) != 0;

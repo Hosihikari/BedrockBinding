@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BedItem
+public sealed unsafe partial class BedItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -94,6 +94,7 @@ public sealed unsafe partial class BedItem
     {
         return NativeMethods.TablePtr->C0.hs_method_1f2c2e66((void*)__hosihikari_shim_handle, value) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -302,5 +303,18 @@ public sealed unsafe partial class BedItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_3a934df5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_3a934df5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f86d0128((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

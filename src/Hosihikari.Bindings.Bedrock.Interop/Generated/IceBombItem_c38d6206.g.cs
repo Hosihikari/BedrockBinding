@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class IceBombItem
+public sealed unsafe partial class IceBombItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -108,6 +108,7 @@ public sealed unsafe partial class IceBombItem
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C1.hs_method_3cf4feed((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)player.Handle, handSlot), false);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -316,5 +317,18 @@ public sealed unsafe partial class IceBombItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_ebcaa1f0((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_ebcaa1f0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_c38d6206((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

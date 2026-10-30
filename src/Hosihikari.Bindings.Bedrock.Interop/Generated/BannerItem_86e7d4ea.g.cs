@@ -157,6 +157,7 @@ public sealed unsafe partial class BannerItem : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BannerItem((nint)NativeMethods.TablePtr->C0.hs_method_2e63e663((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C0.hs_get_2a442102((void*)__hosihikari_shim_handle) != 0;

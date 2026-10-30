@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BottleItem
+public sealed unsafe partial class BottleItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -109,6 +109,7 @@ public sealed unsafe partial class BottleItem
     {
         return NativeMethods.TablePtr->C0.hs_method_a7960ed8((void*)__hosihikari_shim_handle) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -317,5 +318,18 @@ public sealed unsafe partial class BottleItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_320b4ded((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_320b4ded((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a39a6f52((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

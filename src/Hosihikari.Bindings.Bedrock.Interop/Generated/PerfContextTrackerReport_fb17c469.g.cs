@@ -215,6 +215,7 @@ public sealed unsafe partial class PerfContextTrackerReport : global::System.IDi
         return new global::Hosihikari.Bindings.Bedrock.Interop.PerfContextTrackerReport((nint)NativeMethods.TablePtr->C2.hs_method_9bc9340e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2c11f8_Address
     {

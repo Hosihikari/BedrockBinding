@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNet;
 
-public sealed unsafe partial class IRNS2_Berkley
+public sealed unsafe partial class IRNS2_Berkley : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,6 +42,7 @@ public sealed unsafe partial class IRNS2_Berkley
     public nint Bind(nint bindParameters, nint file, uint line) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk164a1f_Address
     {
@@ -70,5 +71,18 @@ public sealed unsafe partial class IRNS2_Berkley
     public nint mUnkf42590_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_4fecf851((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c0a6e55f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockPosTrackerComponent
+public sealed unsafe partial class BlockPosTrackerComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -70,5 +70,19 @@ public sealed unsafe partial class BlockPosTrackerComponent
     public void onRemove(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C0.hs_method_97e9f15e((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_80ffc063((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ScoreboardIdentityRef
+public sealed unsafe partial class ScoreboardIdentityRef : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -63,5 +63,19 @@ public sealed unsafe partial class ScoreboardIdentityRef
     public bool removeFromObjective(global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard scoreboard, global::Hosihikari.Bindings.Bedrock.Interop.Objective objective)
     {
         return NativeMethods.TablePtr->C3.hs_method_08e385ed((void*)__hosihikari_shim_handle, (void*)scoreboard.Handle, (void*)objective.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_0145c0af((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

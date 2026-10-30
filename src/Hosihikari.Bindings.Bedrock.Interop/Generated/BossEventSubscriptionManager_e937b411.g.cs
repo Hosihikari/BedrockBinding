@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BossEventSubscriptionManager
+public sealed unsafe partial class BossEventSubscriptionManager : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -63,4 +63,18 @@ public sealed unsafe partial class BossEventSubscriptionManager
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint subscribeToBossEvent_0e8cd63c(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_e937b411((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

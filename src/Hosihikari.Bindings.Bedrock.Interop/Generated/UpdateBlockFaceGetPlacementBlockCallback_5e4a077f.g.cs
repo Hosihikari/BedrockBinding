@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockTrait.PlacementPosition_Nested;
 
-public sealed unsafe partial class UpdateBlockFaceGetPlacementBlockCallback
+public sealed unsafe partial class UpdateBlockFaceGetPlacementBlockCallback : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -55,4 +55,18 @@ public sealed unsafe partial class UpdateBlockFaceGetPlacementBlockCallback
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'gsl::not_null<const Block *>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getPlacementBlock(nint block, nint arg1, nint arg2, byte face, nint arg4) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'gsl::not_null<const Block *>' requires --link-carrier or --virtual-dispatch.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_5e4a077f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

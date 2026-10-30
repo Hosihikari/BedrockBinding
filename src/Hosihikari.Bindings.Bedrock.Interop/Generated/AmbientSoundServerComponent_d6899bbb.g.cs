@@ -94,6 +94,7 @@ public sealed unsafe partial class AmbientSoundServerComponent : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.AmbientSoundServerComponent((nint)NativeMethods.TablePtr->C0.hs_method_66727685((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

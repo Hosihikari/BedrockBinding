@@ -187,6 +187,7 @@ public sealed unsafe partial class MinecraftArguments : global::System.IDisposab
         return new global::Hosihikari.Bindings.Bedrock.Interop.MinecraftArguments((nint)NativeMethods.TablePtr->C2.hs_method_582cad1f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

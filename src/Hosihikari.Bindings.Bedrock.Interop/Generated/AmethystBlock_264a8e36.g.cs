@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AmethystBlock
+public sealed unsafe partial class AmethystBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -61,6 +61,7 @@ public sealed unsafe partial class AmethystBlock
     {
         NativeMethods.TablePtr->C0.hs_method_ac09193a((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)arg2.Handle);
     }
+
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAlteredStateCollections_Address
@@ -281,5 +282,18 @@ public sealed unsafe partial class AmethystBlock
     public nint mVisualShape_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_636b5589((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_264a8e36((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

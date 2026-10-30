@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GameTestRequestPacket
+public sealed unsafe partial class GameTestRequestPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class GameTestRequestPacket
         NativeMethods.TablePtr->C1.hs_method_476e2b05((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mParams_Address
     {
@@ -237,5 +238,18 @@ public sealed unsafe partial class GameTestRequestPacket
     {
         get => NativeMethods.TablePtr->C1.hs_get_6eb98a00((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_6eb98a00((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_323e4a6b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

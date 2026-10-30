@@ -881,6 +881,7 @@ public sealed unsafe partial class Wolf : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_1eda939a((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

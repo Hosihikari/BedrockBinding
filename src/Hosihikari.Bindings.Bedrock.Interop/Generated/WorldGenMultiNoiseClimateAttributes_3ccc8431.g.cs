@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WorldGenMultiNoiseClimateAttributes
+public sealed unsafe partial class WorldGenMultiNoiseClimateAttributes : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class WorldGenMultiNoiseClimateAttributes
     {
         get => NativeMethods.TablePtr->C4.hs_get_460739ec((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C4.hs_set_460739ec((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_3ccc8431((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

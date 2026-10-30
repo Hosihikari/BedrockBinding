@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BossEventPacket
+public sealed unsafe partial class BossEventPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class BossEventPacket
         NativeMethods.TablePtr->C0.hs_method_d640f013((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBossID_Address
     {
@@ -261,5 +262,18 @@ public sealed unsafe partial class BossEventPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_0e848ec8((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_0e848ec8((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2112c537((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

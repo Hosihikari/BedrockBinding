@@ -41,30 +41,30 @@ public sealed unsafe partial class SandFeature : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_94af7c4f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_94af7c4f((void*)__hosihikari_shim_handle);
     }
 
     public nint mTransaction
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_5b6f5184((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_5b6f5184((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5b6f5184((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5b6f5184((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public bool mCanUseInternalFeature
     {
-        get => NativeMethods.TablePtr->C2.hs_get_3c45662d((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_3c45662d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_3c45662d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_3c45662d((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mInternal
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f1ee5617((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_f1ee5617((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f1ee5617((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_f1ee5617((void*)__hosihikari_shim_handle, value);
     }
 
     public bool _place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C2.hs_method_e00cc21c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_e00cc21c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -73,7 +73,7 @@ public sealed unsafe partial class SandFeature : global::System.IDisposable
 
     public static SandFeature Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_3d802ad9();
+        var handle = NativeMethods.TablePtr->C3.hs_create_3d802ad9();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -84,7 +84,7 @@ public sealed unsafe partial class SandFeature : global::System.IDisposable
 
     public static SandFeature Create(global::Hosihikari.Bindings.Bedrock.Interop.SandFeature arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_87bb74b9((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_87bb74b9((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -96,24 +96,25 @@ public sealed unsafe partial class SandFeature : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_47808f93((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_47808f93((void*)__hosihikari_shim_handle);
     }
 
     public int mRadius
     {
-        get => NativeMethods.TablePtr->C2.hs_get_4312fb5d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_4312fb5d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_4312fb5d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_4312fb5d((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SandFeature operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SandFeature arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SandFeature((nint)NativeMethods.TablePtr->C2.hs_method_30b42c22((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SandFeature((nint)NativeMethods.TablePtr->C3.hs_method_30b42c22((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public bool place(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
     {
-        return NativeMethods.TablePtr->C2.hs_method_06b2678c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_06b2678c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
+
 
     public void Dispose()
     {
@@ -121,7 +122,7 @@ public sealed unsafe partial class SandFeature : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_6a8f7a99((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_6a8f7a99((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -337,6 +337,7 @@ public sealed unsafe partial class HarvestFarmBlockGoal : global::System.IDispos
         return NativeMethods.TablePtr->C1.hs_method_9ca43d8e((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)farmlandPos.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

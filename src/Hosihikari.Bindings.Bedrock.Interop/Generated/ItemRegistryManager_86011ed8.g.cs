@@ -38,9 +38,10 @@ public sealed unsafe partial class ItemRegistryManager : global::System.IDisposa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getItemRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemRegistryRef' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef getItemRegistry()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef((nint)NativeMethods.TablePtr->C1.hs_method_eb6e2274());
+    }
 
     public static nint mThreadLocalRegistry()
     {

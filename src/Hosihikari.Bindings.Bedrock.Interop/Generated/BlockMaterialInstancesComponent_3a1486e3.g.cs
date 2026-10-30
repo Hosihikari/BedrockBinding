@@ -71,6 +71,7 @@ public sealed unsafe partial class BlockMaterialInstancesComponent : global::Sys
         get => (nint)NativeMethods.TablePtr->C0.hs_get_4025de46((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

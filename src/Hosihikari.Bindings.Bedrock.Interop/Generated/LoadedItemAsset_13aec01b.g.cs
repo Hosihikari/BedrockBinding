@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ItemRegistry_Nested;
 
-public sealed unsafe partial class LoadedItemAsset
+public sealed unsafe partial class LoadedItemAsset : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -72,5 +72,19 @@ public sealed unsafe partial class LoadedItemAsset
     {
         get => NativeMethods.TablePtr->C1.hs_get_4ad363f5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_4ad363f5((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_13aec01b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

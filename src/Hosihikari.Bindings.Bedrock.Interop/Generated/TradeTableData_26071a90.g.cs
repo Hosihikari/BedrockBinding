@@ -63,6 +63,7 @@ public sealed unsafe partial class TradeTableData : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C3.hs_get_aa4fd90d((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

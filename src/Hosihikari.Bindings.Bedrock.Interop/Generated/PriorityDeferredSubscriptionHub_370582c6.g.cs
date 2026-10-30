@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub;
 
-public sealed unsafe partial class PriorityDeferredSubscriptionHub
+public sealed unsafe partial class PriorityDeferredSubscriptionHub : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -104,5 +104,19 @@ public sealed unsafe partial class PriorityDeferredSubscriptionHub
     public nint mQueue_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_6d38b7f0((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_370582c6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

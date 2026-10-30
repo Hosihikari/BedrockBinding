@@ -143,6 +143,7 @@ public sealed unsafe partial class WorkerPoolManagerImpl : global::System.IDispo
         NativeMethods.TablePtr->C0.hs_method_bd819ab0((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

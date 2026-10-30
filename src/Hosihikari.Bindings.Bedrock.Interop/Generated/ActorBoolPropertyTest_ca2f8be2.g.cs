@@ -145,6 +145,7 @@ public sealed unsafe partial class ActorBoolPropertyTest : global::System.IDispo
         return NativeMethods.TablePtr->C0.hs_method_1b128683((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk20eb73_Address
     {

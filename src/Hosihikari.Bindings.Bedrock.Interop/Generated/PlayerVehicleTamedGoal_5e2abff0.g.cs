@@ -141,6 +141,7 @@ public sealed unsafe partial class PlayerVehicleTamedGoal : global::System.IDisp
         NativeMethods.TablePtr->C2.hs_method_6e1d0da9((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

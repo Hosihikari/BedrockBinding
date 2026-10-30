@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExplorationMapFunction
+public sealed unsafe partial class ExplorationMapFunction : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -64,9 +64,23 @@ public sealed unsafe partial class ExplorationMapFunction
         get => (nint)NativeMethods.TablePtr->C1.hs_get_f1858fc7((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPredicates_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_86c17982((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_887f1b16((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

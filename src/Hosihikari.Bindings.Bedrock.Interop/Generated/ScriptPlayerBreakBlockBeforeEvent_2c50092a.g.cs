@@ -121,6 +121,7 @@ public sealed unsafe partial class ScriptPlayerBreakBlockBeforeEvent : global::S
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptPlayerBreakBlockBeforeEvent((nint)NativeMethods.TablePtr->C3.hs_method_39e4e955((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

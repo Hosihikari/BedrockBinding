@@ -128,6 +128,7 @@ public sealed unsafe partial class ScriptStructureManager : global::System.IDisp
     public nint validateIdentifier(nint identifier) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::InvalidArgumentError' is not supported.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

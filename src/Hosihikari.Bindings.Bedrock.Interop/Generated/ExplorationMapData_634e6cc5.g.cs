@@ -38,9 +38,9 @@ public sealed unsafe partial class ExplorationMapData : global::System.IDisposab
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint mapType, nint markerType, nint featureName, nint structureType, bool featureMustBeInNewChunks, nint biomeTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void _dtor()
     {
@@ -58,9 +58,9 @@ public sealed unsafe partial class ExplorationMapData : global::System.IDisposab
         return new ExplorationMapData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static ExplorationMapData Create(nint mapType, nint markerType, nint featureName, nint structureType, bool featureMustBeInNewChunks, nint biomeTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBiomeTag_Address

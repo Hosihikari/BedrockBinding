@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class WarpedFungusOnAStickItem
+public sealed unsafe partial class WarpedFungusOnAStickItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -350,5 +350,19 @@ public sealed unsafe partial class WarpedFungusOnAStickItem
     public bool requiresInteract()
     {
         return NativeMethods.TablePtr->C4.hs_method_b52dcb7d((void*)__hosihikari_shim_handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_f4aa135e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

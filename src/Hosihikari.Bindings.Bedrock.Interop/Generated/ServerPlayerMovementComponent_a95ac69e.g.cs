@@ -130,6 +130,7 @@ public sealed unsafe partial class ServerPlayerMovementComponent : global::Syste
         return new global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayerMovementComponent((nint)NativeMethods.TablePtr->C3.hs_method_7c8a0d7c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

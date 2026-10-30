@@ -360,6 +360,7 @@ public sealed unsafe partial class LiquidBlockDynamic : global::System.IDisposab
         NativeMethods.TablePtr->C2.hs_method_563d6a0e((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

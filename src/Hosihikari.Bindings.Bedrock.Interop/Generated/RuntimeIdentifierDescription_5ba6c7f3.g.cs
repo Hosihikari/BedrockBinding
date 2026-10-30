@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RuntimeIdentifierDescription
+public sealed unsafe partial class RuntimeIdentifierDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,7 +40,7 @@ public sealed unsafe partial class RuntimeIdentifierDescription
 
     public nint _getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_e2647dc6((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_e2647dc6((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -49,12 +49,26 @@ public sealed unsafe partial class RuntimeIdentifierDescription
 
     public nint getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_8c9f96e0((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_8c9f96e0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRuntimeId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_30826734((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_30826734((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_5ba6c7f3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

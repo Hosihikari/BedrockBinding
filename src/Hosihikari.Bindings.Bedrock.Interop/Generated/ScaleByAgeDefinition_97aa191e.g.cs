@@ -40,14 +40,14 @@ public sealed unsafe partial class ScaleByAgeDefinition : global::System.IDispos
 
     public float mEndScale
     {
-        get => NativeMethods.TablePtr->C2.hs_get_55c13f11((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_55c13f11((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_55c13f11((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_55c13f11((void*)__hosihikari_shim_handle, value);
     }
 
     public float mStartScale
     {
-        get => NativeMethods.TablePtr->C2.hs_get_d9794939((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_d9794939((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_d9794939((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_d9794939((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -56,7 +56,7 @@ public sealed unsafe partial class ScaleByAgeDefinition : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_97aa191e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_97aa191e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

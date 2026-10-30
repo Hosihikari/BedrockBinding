@@ -373,6 +373,7 @@ public sealed unsafe partial class MushroomBlock : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_050544f9((void*)__hosihikari_shim_handle, (void*)eventData.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

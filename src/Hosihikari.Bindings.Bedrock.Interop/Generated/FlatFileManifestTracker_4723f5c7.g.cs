@@ -40,7 +40,7 @@ public sealed unsafe partial class FlatFileManifestTracker : global::System.IDis
 
     public static FlatFileManifestTracker Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_3bb3f4e7();
+        var handle = NativeMethods.TablePtr->C1.hs_create_3bb3f4e7();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class FlatFileManifestTracker : global::System.IDis
 
     public static FlatFileManifestTracker Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestTracker arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_f3c7c277((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_f3c7c277((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,19 +67,19 @@ public sealed unsafe partial class FlatFileManifestTracker : global::System.IDis
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk3b8242_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_97573697((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_97573697((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk6553c3_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_fa0f2c7c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_fa0f2c7c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbf53ea_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_590c8bb2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_590c8bb2((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -88,7 +88,7 @@ public sealed unsafe partial class FlatFileManifestTracker : global::System.IDis
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestTracker operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestTracker arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestTracker((nint)NativeMethods.TablePtr->C0.hs_method_8d1986e2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FlatFileManifestTracker((nint)NativeMethods.TablePtr->C1.hs_method_8d1986e2((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -101,7 +101,7 @@ public sealed unsafe partial class FlatFileManifestTracker : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_4723f5c7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_4723f5c7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

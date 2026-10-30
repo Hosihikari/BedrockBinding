@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerLocatorBar
+public sealed unsafe partial class ServerLocatorBar : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -38,9 +38,10 @@ public sealed unsafe partial class ServerLocatorBar
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ServerLocatorBar::GroupStrongHandle' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint createGroupHandle() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ServerLocatorBar::GroupStrongHandle' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerLocatorBar_Nested.GroupStrongHandle createGroupHandle()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerLocatorBar_Nested.GroupStrongHandle((nint)NativeMethods.TablePtr->C3.hs_method_eb4f98a8((void*)__hosihikari_shim_handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mWaypointGroups_Address
@@ -51,5 +52,19 @@ public sealed unsafe partial class ServerLocatorBar
     public void update(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
         NativeMethods.TablePtr->C3.hs_method_30955baf((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_dd4f4fa3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

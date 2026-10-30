@@ -211,6 +211,7 @@ public sealed unsafe partial class PlayGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_3a9e66bd((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

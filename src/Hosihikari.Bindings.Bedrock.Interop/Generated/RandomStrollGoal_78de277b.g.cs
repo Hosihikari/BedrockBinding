@@ -203,6 +203,7 @@ public sealed unsafe partial class RandomStrollGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_1f9f41d8((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

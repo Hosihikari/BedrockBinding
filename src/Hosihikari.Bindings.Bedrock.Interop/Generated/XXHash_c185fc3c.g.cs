@@ -40,7 +40,7 @@ public sealed unsafe partial class XXHash : global::System.IDisposable
 
     public static XXHash Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_323f5cad();
+        var handle = NativeMethods.TablePtr->C4.hs_create_323f5cad();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class XXHash : global::System.IDisposable
 
     public static XXHash Create(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_3dc8b5d7((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_3dc8b5d7((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,28 +62,28 @@ public sealed unsafe partial class XXHash : global::System.IDisposable
 
     public static ulong _hash64Impl(nint input, ulong len, ulong seed)
     {
-        return NativeMethods.TablePtr->C3.hs_method_d1da73e0((void*)input, len, seed);
+        return NativeMethods.TablePtr->C4.hs_method_d1da73e0((void*)input, len, seed);
     }
 
     public void _updateImpl(nint input, ulong length)
     {
-        NativeMethods.TablePtr->C3.hs_method_22fa822b((void*)__hosihikari_shim_handle, (void*)input, length);
+        NativeMethods.TablePtr->C4.hs_method_22fa822b((void*)__hosihikari_shim_handle, (void*)input, length);
     }
 
     public ulong digest()
     {
-        return NativeMethods.TablePtr->C3.hs_method_c14c63ca((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_c14c63ca((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc97579_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_21d24420((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_21d24420((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash((nint)NativeMethods.TablePtr->C3.hs_method_9cabace0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash((nint)NativeMethods.TablePtr->C4.hs_method_9cabace0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -92,7 +92,7 @@ public sealed unsafe partial class XXHash : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_c185fc3c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_c185fc3c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

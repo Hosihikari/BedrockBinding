@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen.StructureCache_Nested;
 
-public sealed unsafe partial class StructurePair
+public sealed unsafe partial class StructurePair : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class StructurePair
     {
         get => NativeMethods.TablePtr->C4.hs_get_5fba6569((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C4.hs_set_5fba6569((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_6683c1fd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -100,9 +100,9 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
         NativeMethods.TablePtr->C3.hs_method_d045e89a((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, (void*)actor.Handle, (void*)levelStorage.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void addEntityArea(nint dimensionId, nint entityId, nint bounds, bool alwaysActive, float maxDistToPlayers, nint levelStorage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void addTickingAreaListForDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Abi.SharedHandle? tickingAreaList)
     {
@@ -219,6 +219,7 @@ public sealed unsafe partial class TickingAreasManager : global::System.IDisposa
     {
         NativeMethods.TablePtr->C3.hs_method_aa9bcdd7((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)levelStorage.Handle);
     }
+
 
     public void Dispose()
     {

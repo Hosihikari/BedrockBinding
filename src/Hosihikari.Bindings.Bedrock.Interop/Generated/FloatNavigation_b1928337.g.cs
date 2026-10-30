@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FloatNavigation
+public sealed unsafe partial class FloatNavigation : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -94,5 +94,19 @@ public sealed unsafe partial class FloatNavigation
     public bool travel(global::Hosihikari.Bindings.Bedrock.Interop.NavigationComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, nint xa, nint ya, nint za)
     {
         return NativeMethods.TablePtr->C1.hs_method_2b38d210((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle, (void*)xa, (void*)ya, (void*)za) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b1928337((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

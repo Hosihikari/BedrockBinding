@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TridentRiptideEnchant
+public sealed unsafe partial class TridentRiptideEnchant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -130,5 +130,19 @@ public sealed unsafe partial class TridentRiptideEnchant
     public bool isCompatibleWith(byte type)
     {
         return NativeMethods.TablePtr->C3.hs_method_591a6e53((void*)__hosihikari_shim_handle, type) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_c93d3792((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

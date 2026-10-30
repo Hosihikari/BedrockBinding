@@ -219,6 +219,7 @@ public sealed unsafe partial class NetworkChunkSource : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C2.hs_get_6d15d451((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

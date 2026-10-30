@@ -308,6 +308,7 @@ public sealed unsafe partial class ChiseledBookshelfBlockActor : global::System.
         NativeMethods.TablePtr->C0.hs_method_336606ef((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCloseListeners_Address
     {

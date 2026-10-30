@@ -384,9 +384,9 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
     public void _loadLanguageKeywordsFromPack(nint manifest, nint accessStrategy, nint languageCodes, nint additionalLocKeys) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char>>' is abstract or not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>' is not a known bindable declaration.", false)]
     public nint _loadLanguages(nint resourcePackManager, nint resourceLoadManager, nint initLang) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>' is not a known bindable declaration.");
 
     public static I18nImpl Create()
     {
@@ -821,9 +821,9 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
     public void loadLanguageKeywordsFromPack(nint manifest, nint accessStrategy, nint languageCodes, nint additionalLocKeys) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char>>' is abstract or not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>' is not a known bindable declaration.", false)]
     public nint loadLanguages(nint resourcePackManager, nint resourceLoadManager, nint initLang) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<void>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>' is not a known bindable declaration.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAdditionalTranslationsBackup_Address
@@ -902,6 +902,7 @@ public sealed unsafe partial class I18nImpl : global::System.IDisposable
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_33fbaa35((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {

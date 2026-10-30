@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TrimPatternRegistry
+public sealed unsafe partial class TrimPatternRegistry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,9 +51,9 @@ public sealed unsafe partial class TrimPatternRegistry
     public nint getPatternIdByItem(nint itemId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'HashedString' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void initializeServer(nint itemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPatternIdToTemplateItemMap_Address
@@ -65,5 +65,19 @@ public sealed unsafe partial class TrimPatternRegistry
     public nint mTemplateItemToPatternIdMap_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_fca56e64((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_edb9e30c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

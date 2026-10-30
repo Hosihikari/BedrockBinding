@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CorrectPlayerMovePredictionPacketPayload
+public sealed unsafe partial class CorrectPlayerMovePredictionPacketPayload : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,43 +40,57 @@ public sealed unsafe partial class CorrectPlayerMovePredictionPacketPayload
 
     public bool mOnGround
     {
-        get => NativeMethods.TablePtr->C0.hs_get_807b2d03((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_807b2d03((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_807b2d03((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_807b2d03((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPos_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_cd12fb89((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cd12fb89((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPosDelta_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_ffa6ac1f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ffa6ac1f((void*)__hosihikari_shim_handle);
     }
 
     public byte mPredictionType
     {
-        get => NativeMethods.TablePtr->C0.hs_get_b33ede0e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_b33ede0e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_b33ede0e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_b33ede0e((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_c95d721c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_c95d721c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVehicleAngularVelocity_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_cee5edf2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cee5edf2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVehicleRotation_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_73b702a0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_73b702a0((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_b97405da((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

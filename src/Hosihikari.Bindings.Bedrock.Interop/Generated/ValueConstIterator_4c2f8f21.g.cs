@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Json;
 
-public sealed unsafe partial class ValueConstIterator
+public sealed unsafe partial class ValueConstIterator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,14 +48,16 @@ public sealed unsafe partial class ValueConstIterator
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator((nint)NativeMethods.TablePtr->C1.hs_method_4740e90a((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Json::ValueConstIterator' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint operator_operator__(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Json::ValueConstIterator' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator operator_operator__(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator((nint)NativeMethods.TablePtr->C1.hs_method_753a98c2((void*)__hosihikari_shim_handle, arg0));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIteratorBase other)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator((nint)NativeMethods.TablePtr->C1.hs_method_28b51496((void*)__hosihikari_shim_handle, (void*)other.Handle), false);
     }
+
 
     public bool isArray_
     {
@@ -73,5 +75,18 @@ public sealed unsafe partial class ValueConstIterator
     public nint map__Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_e4317238((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_4c2f8f21((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

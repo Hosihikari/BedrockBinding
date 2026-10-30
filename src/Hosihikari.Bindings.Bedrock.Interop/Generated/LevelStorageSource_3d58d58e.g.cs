@@ -41,7 +41,7 @@ public sealed unsafe partial class LevelStorageSource : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4dca6cbe((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4dca6cbe((void*)__hosihikari_shim_handle);
     }
 
     public void _ensureLevelInitialized(string arg0)
@@ -59,7 +59,7 @@ public sealed unsafe partial class LevelStorageSource : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_d8a1fde0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_d8a1fde0((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -102,7 +102,7 @@ public sealed unsafe partial class LevelStorageSource : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C1.hs_method_404cf541((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C2.hs_method_404cf541((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -169,7 +169,7 @@ public sealed unsafe partial class LevelStorageSource : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_3d58d58e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_3d58d58e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

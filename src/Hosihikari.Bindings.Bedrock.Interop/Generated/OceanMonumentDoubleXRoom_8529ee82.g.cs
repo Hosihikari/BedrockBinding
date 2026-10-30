@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OceanMonumentDoubleXRoom
+public sealed unsafe partial class OceanMonumentDoubleXRoom : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,6 +58,7 @@ public sealed unsafe partial class OceanMonumentDoubleXRoom
         return NativeMethods.TablePtr->C2.hs_method_7e4fad5b((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+
     public bool mDoFill
     {
         get => NativeMethods.TablePtr->C2.hs_get_29acd5d7((void*)__hosihikari_shim_handle) != 0;
@@ -92,5 +93,18 @@ public sealed unsafe partial class OceanMonumentDoubleXRoom
     public nint mTerrainAdjustmentToken_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_4148a6b4((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8529ee82((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

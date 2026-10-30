@@ -95,6 +95,7 @@ public sealed unsafe partial class GameTestLevelListener : global::System.IDispo
         return new global::Hosihikari.Bindings.Bedrock.Interop.GameTestLevelListener((nint)NativeMethods.TablePtr->C1.hs_method_9ac6c2e9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

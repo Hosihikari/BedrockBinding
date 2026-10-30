@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScoreboardCommand_Nested;
 
-public sealed unsafe partial class SetScoreOutput
+public sealed unsafe partial class SetScoreOutput : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class SetScoreOutput
     {
         get => NativeMethods.TablePtr->C3.hs_get_5cafe7eb((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_5cafe7eb((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_dd3fd2c5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

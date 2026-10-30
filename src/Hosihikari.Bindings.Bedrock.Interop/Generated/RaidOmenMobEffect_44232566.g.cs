@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RaidOmenMobEffect
+public sealed unsafe partial class RaidOmenMobEffect : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -169,5 +169,19 @@ public sealed unsafe partial class RaidOmenMobEffect
     public void onEffectExpired(global::Hosihikari.Bindings.Bedrock.Interop.Actor target)
     {
         NativeMethods.TablePtr->C2.hs_method_e18b0806((void*)__hosihikari_shim_handle, (void*)target.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_44232566((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

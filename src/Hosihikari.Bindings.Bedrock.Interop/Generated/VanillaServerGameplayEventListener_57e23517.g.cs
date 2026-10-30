@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VanillaServerGameplayEventListener
+public sealed unsafe partial class VanillaServerGameplayEventListener : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,7 +40,7 @@ public sealed unsafe partial class VanillaServerGameplayEventListener
 
     public int _onActorCreated(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, byte initializationMethod)
     {
-        return NativeMethods.TablePtr->C3.hs_method_842f633d((void*)__hosihikari_shim_handle, (void*)actor.Handle, initializationMethod);
+        return NativeMethods.TablePtr->C4.hs_method_842f633d((void*)__hosihikari_shim_handle, (void*)actor.Handle, initializationMethod);
     }
 
     public int _onActorCreationAttemptFailed(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, string message)
@@ -58,33 +58,33 @@ public sealed unsafe partial class VanillaServerGameplayEventListener
         global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->C3.hs_method_5cb602f9((void*)__hosihikari_shim_handle, (void*)actor.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return NativeMethods.TablePtr->C4.hs_method_5cb602f9((void*)__hosihikari_shim_handle, (void*)actor.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
     public int _onBlockInteractedWith(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
     {
-        return NativeMethods.TablePtr->C3.hs_method_881563b3((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)blockPos.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_881563b3((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)blockPos.Handle);
     }
 
     public int _onBlockPlacedByPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Block placedBlock, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool isUnderwater)
     {
-        return NativeMethods.TablePtr->C3.hs_method_82ac4d3d((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)placedBlock.Handle, (void*)pos.Handle, isUnderwater);
+        return NativeMethods.TablePtr->C4.hs_method_82ac4d3d((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)placedBlock.Handle, (void*)pos.Handle, isUnderwater);
     }
 
     public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtEvent actorHurtEvent)
     {
-        return NativeMethods.TablePtr->C3.hs_method_1324180b((void*)__hosihikari_shim_handle, (void*)actorHurtEvent.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_1324180b((void*)__hosihikari_shim_handle, (void*)actorHurtEvent.Handle);
     }
 
     public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDamageEvent playerDamageEvent)
     {
-        return NativeMethods.TablePtr->C3.hs_method_14562bfb((void*)__hosihikari_shim_handle, (void*)playerDamageEvent.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_14562bfb((void*)__hosihikari_shim_handle, (void*)playerDamageEvent.Handle);
     }
 
     public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerOpenContainerEvent playerOpenContainerEvent)
     {
-        return NativeMethods.TablePtr->C3.hs_method_aa4483e8((void*)__hosihikari_shim_handle, (void*)playerOpenContainerEvent.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_aa4483e8((void*)__hosihikari_shim_handle, (void*)playerOpenContainerEvent.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -105,7 +105,7 @@ public sealed unsafe partial class VanillaServerGameplayEventListener
 
     public int onActorCreated(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, byte initializationMethod)
     {
-        return NativeMethods.TablePtr->C3.hs_method_1f2d4080((void*)__hosihikari_shim_handle, (void*)actor.Handle, initializationMethod);
+        return NativeMethods.TablePtr->C4.hs_method_1f2d4080((void*)__hosihikari_shim_handle, (void*)actor.Handle, initializationMethod);
     }
 
     public int onActorCreationAttemptFailed(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, string message)
@@ -123,32 +123,46 @@ public sealed unsafe partial class VanillaServerGameplayEventListener
         global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->C3.hs_method_dae65fa9((void*)__hosihikari_shim_handle, (void*)actor.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return NativeMethods.TablePtr->C4.hs_method_dae65fa9((void*)__hosihikari_shim_handle, (void*)actor.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
     public int onBlockInteractedWith(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
     {
-        return NativeMethods.TablePtr->C3.hs_method_0696a881((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)blockPos.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_0696a881((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)blockPos.Handle);
     }
 
     public int onBlockPlacedByPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Block placedBlock, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool isUnderwater)
     {
-        return NativeMethods.TablePtr->C3.hs_method_af829ef4((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)placedBlock.Handle, (void*)pos.Handle, isUnderwater);
+        return NativeMethods.TablePtr->C4.hs_method_af829ef4((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)placedBlock.Handle, (void*)pos.Handle, isUnderwater);
     }
 
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtEvent actorHurtEvent)
     {
-        return NativeMethods.TablePtr->C3.hs_method_38838403((void*)__hosihikari_shim_handle, (void*)actorHurtEvent.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_38838403((void*)__hosihikari_shim_handle, (void*)actorHurtEvent.Handle);
     }
 
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerDamageEvent playerDamageEvent)
     {
-        return NativeMethods.TablePtr->C3.hs_method_87a1195f((void*)__hosihikari_shim_handle, (void*)playerDamageEvent.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_87a1195f((void*)__hosihikari_shim_handle, (void*)playerDamageEvent.Handle);
     }
 
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.PlayerOpenContainerEvent playerOpenContainerEvent)
     {
-        return NativeMethods.TablePtr->C3.hs_method_c68e0f37((void*)__hosihikari_shim_handle, (void*)playerOpenContainerEvent.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_c68e0f37((void*)__hosihikari_shim_handle, (void*)playerOpenContainerEvent.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_57e23517((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Bedrock.Threading;
 
-public sealed unsafe partial class SharedRecursiveMutex
+public sealed unsafe partial class SharedRecursiveMutex : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -72,6 +72,7 @@ public sealed unsafe partial class SharedRecursiveMutex
         get => (nint)NativeMethods.TablePtr->C0.hs_get_1c97660a((void*)__hosihikari_shim_handle);
     }
 
+
     public uint mExclusiveLockCount
     {
         get => NativeMethods.TablePtr->C0.hs_get_431b2c3d((void*)__hosihikari_shim_handle);
@@ -88,5 +89,18 @@ public sealed unsafe partial class SharedRecursiveMutex
     public nint mSharedLockCount_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_027f70a4((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6f06cbed((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

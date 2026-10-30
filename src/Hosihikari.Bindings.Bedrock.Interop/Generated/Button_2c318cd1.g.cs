@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.npc;
 
-public sealed unsafe partial class Button
+public sealed unsafe partial class Button : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,6 +66,20 @@ public sealed unsafe partial class Button
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             return new global::Hosihikari.Bindings.Bedrock.Interop.npc.Button((nint)NativeMethods.TablePtr->C4.hs_method_31abeb17((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_2c318cd1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

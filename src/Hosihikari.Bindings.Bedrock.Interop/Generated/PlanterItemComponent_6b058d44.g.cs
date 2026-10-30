@@ -155,6 +155,7 @@ public sealed unsafe partial class PlanterItemComponent : global::System.IDispos
         set => NativeMethods.TablePtr->C2.hs_set_0361396b((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

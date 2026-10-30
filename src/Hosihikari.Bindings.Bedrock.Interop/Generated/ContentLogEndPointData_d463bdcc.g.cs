@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ContentLog_Nested;
 
-public sealed unsafe partial class ContentLogEndPointData
+public sealed unsafe partial class ContentLogEndPointData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,5 +42,19 @@ public sealed unsafe partial class ContentLogEndPointData
     public nint mContentLogEndPoint_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_7d1bd1bc((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d463bdcc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

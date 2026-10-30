@@ -558,6 +558,7 @@ public sealed unsafe partial class ButtonBlock : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_5ea14a7c((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

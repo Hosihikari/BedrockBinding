@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ArmorStandItem
+public sealed unsafe partial class ArmorStandItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,6 +51,7 @@ public sealed unsafe partial class ArmorStandItem
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult((nint)NativeMethods.TablePtr->C0.hs_method_90a48074((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)spawningActor.Handle, (void*)pos.Handle, face, handSlot, (void*)clickPos.Handle));
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -259,5 +260,18 @@ public sealed unsafe partial class ArmorStandItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_fd4fa9f1((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_fd4fa9f1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_cf6c8b5e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

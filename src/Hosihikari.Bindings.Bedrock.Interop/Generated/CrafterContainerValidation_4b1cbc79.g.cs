@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CrafterContainerValidation
+public sealed unsafe partial class CrafterContainerValidation : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,21 +40,35 @@ public sealed unsafe partial class CrafterContainerValidation
 
     public int _getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, global::Hosihikari.Bindings.Bedrock.Interop.Container container)
     {
-        return NativeMethods.TablePtr->C0.hs_method_5d7eb3b7((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_5d7eb3b7((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
     }
 
     public bool _isItemAllowedInSlot(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg2, int arg3, bool arg4)
     {
-        return NativeMethods.TablePtr->C0.hs_method_188febaf((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)arg2.Handle, arg3, arg4) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_188febaf((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)arg2.Handle, arg3, arg4) != 0;
     }
 
     public int getContainerSize(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, global::Hosihikari.Bindings.Bedrock.Interop.Container container)
     {
-        return NativeMethods.TablePtr->C0.hs_method_5728bbef((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
+        return NativeMethods.TablePtr->C1.hs_method_5728bbef((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)container.Handle);
     }
 
     public bool isItemAllowedInSlot(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase arg2, int arg3, bool arg4)
     {
-        return NativeMethods.TablePtr->C0.hs_method_8d899402((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)arg2.Handle, arg3, arg4) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_8d899402((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, slot, (void*)arg2.Handle, arg3, arg4) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_4b1cbc79((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

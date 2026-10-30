@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VanillaSurfaceBuilders;
 
-public sealed unsafe partial class CappedSurfaceBuilder
+public sealed unsafe partial class CappedSurfaceBuilder : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,27 +40,27 @@ public sealed unsafe partial class CappedSurfaceBuilder
 
     public void _buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters globalParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters surfaceBuilderParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
     {
-        NativeMethods.TablePtr->C3.hs_method_d885a373((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
+        NativeMethods.TablePtr->C4.hs_method_d885a373((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
     }
 
     public bool _getUsesDepthValue()
     {
-        return NativeMethods.TablePtr->C3.hs_method_151c8c50((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_151c8c50((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void _initBiomeSurface(nint surfaceBuilderData)
     {
-        NativeMethods.TablePtr->C3.hs_method_bdf2818d((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
+        NativeMethods.TablePtr->C4.hs_method_bdf2818d((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
     }
 
     public void _initBuilder(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed)
     {
-        NativeMethods.TablePtr->C3.hs_method_a6815014((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
+        NativeMethods.TablePtr->C4.hs_method_a6815014((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
     }
 
     public bool _isBestBuilder(nint surfaceBuilderData)
     {
-        return NativeMethods.TablePtr->C3.hs_method_b33feeb2((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_b33feeb2((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -69,44 +69,58 @@ public sealed unsafe partial class CappedSurfaceBuilder
 
     public void buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters globalParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters surfaceBuilderParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
     {
-        NativeMethods.TablePtr->C3.hs_method_b6301d85((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
+        NativeMethods.TablePtr->C4.hs_method_b6301d85((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
     }
 
     public bool getUsesDepthValue()
     {
-        return NativeMethods.TablePtr->C3.hs_method_714ae321((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_714ae321((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void initBiomeSurface(nint surfaceBuilderData)
     {
-        NativeMethods.TablePtr->C3.hs_method_7e017604((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
+        NativeMethods.TablePtr->C4.hs_method_7e017604((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
     }
 
     public void initBuilder(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed)
     {
-        NativeMethods.TablePtr->C3.hs_method_deeb5ec3((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
+        NativeMethods.TablePtr->C4.hs_method_deeb5ec3((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
     }
 
     public bool isBestBuilder(nint surfaceBuilderData)
     {
-        return NativeMethods.TablePtr->C3.hs_method_71552a49((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_71552a49((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBeachNoise_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_82ab1ea6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_82ab1ea6((void*)__hosihikari_shim_handle);
     }
 
     public uint mLevelSeed
     {
-        get => NativeMethods.TablePtr->C3.hs_get_26fdd534((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_26fdd534((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_26fdd534((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_26fdd534((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMaterialHelper_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3a83399f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3a83399f((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_9689699a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

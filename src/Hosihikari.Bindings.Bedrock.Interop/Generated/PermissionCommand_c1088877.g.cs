@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PermissionCommand
+public sealed unsafe partial class PermissionCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -102,5 +102,19 @@ public sealed unsafe partial class PermissionCommand
     public static void setup(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry registry, global::Hosihikari.Bindings.Bedrock.Interop.PermissionsFile? permissionsFile)
     {
         NativeMethods.TablePtr->C2.hs_method_008f2632((void*)registry.Handle, (void*)(permissionsFile?.Handle ?? 0));
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c1088877((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

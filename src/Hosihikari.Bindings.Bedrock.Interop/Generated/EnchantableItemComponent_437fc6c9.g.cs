@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50;
 
-public sealed unsafe partial class EnchantableItemComponent
+public sealed unsafe partial class EnchantableItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,5 +59,19 @@ public sealed unsafe partial class EnchantableItemComponent
     {
         get => NativeMethods.TablePtr->C3.hs_get_60ce0eb9((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_60ce0eb9((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_437fc6c9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

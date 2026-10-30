@@ -38,9 +38,9 @@ public sealed unsafe partial class OnUseOnItemComponentLegacyFactoryData : globa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -57,9 +57,9 @@ public sealed unsafe partial class OnUseOnItemComponentLegacyFactoryData : globa
         return new OnUseOnItemComponentLegacyFactoryData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static OnUseOnItemComponentLegacyFactoryData Create(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public static void bindType(nint ctx, nint requiredToggles, nint releasedMinFormatVersion) =>
@@ -70,6 +70,7 @@ public sealed unsafe partial class OnUseOnItemComponentLegacyFactoryData : globa
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_0c0013bd((void*)__hosihikari_shim_handle);
     }
+
 
     public void Dispose()
     {

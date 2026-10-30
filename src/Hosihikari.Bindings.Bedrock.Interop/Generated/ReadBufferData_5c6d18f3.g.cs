@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNetConnector_Nested.RakNetNetworkPeer_Nested;
 
-public sealed unsafe partial class ReadBufferData
+public sealed unsafe partial class ReadBufferData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class ReadBufferData
     public nint mTimepoint_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_5c223e61((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_5c6d18f3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

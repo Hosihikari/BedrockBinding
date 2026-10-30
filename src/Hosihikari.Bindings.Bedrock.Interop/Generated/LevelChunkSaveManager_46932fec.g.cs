@@ -44,12 +44,12 @@ public sealed unsafe partial class LevelChunkSaveManager : global::System.IDispo
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_24b67983((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_24b67983((void*)__hosihikari_shim_handle);
     }
 
     public static LevelChunkSaveManager Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_34c287a0();
+        var handle = NativeMethods.TablePtr->C2.hs_create_34c287a0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,63 +64,63 @@ public sealed unsafe partial class LevelChunkSaveManager : global::System.IDispo
 
     public void _findRandomChunkToSave()
     {
-        NativeMethods.TablePtr->C1.hs_method_00e24b27((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_00e24b27((void*)__hosihikari_shim_handle);
     }
 
     public void _onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource chunkSource, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, int closestPlayerDistanceSquared)
     {
-        NativeMethods.TablePtr->C1.hs_method_f213b4e7((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle, closestPlayerDistanceSquared);
+        NativeMethods.TablePtr->C2.hs_method_f213b4e7((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle, closestPlayerDistanceSquared);
     }
 
     public bool _shouldDoSave()
     {
-        return NativeMethods.TablePtr->C1.hs_method_8a4fa5e6((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_8a4fa5e6((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool mChunkSaveInProgress
     {
-        get => NativeMethods.TablePtr->C1.hs_get_469d7e0d((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_469d7e0d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_469d7e0d((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_469d7e0d((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionManager_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_493575c2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_493575c2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mGameplayUserManager_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d6d4b296((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d6d4b296((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelChunkSaveManagerProxy_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9c18659e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9c18659e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelChunkSaveQueue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_25b54553((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_25b54553((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnChunkLoadedSubscription_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b46720cb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b46720cb((void*)__hosihikari_shim_handle);
     }
 
     public void registerForLevelChunkManagerEvents(global::Hosihikari.Bindings.Bedrock.Interop.ILevelChunkEventManagerConnector levelChunkEventManagerConnector)
     {
-        NativeMethods.TablePtr->C1.hs_method_786c9fc6((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
+        NativeMethods.TablePtr->C2.hs_method_786c9fc6((void*)__hosihikari_shim_handle, (void*)levelChunkEventManagerConnector.Handle);
     }
 
     public void trySaveChunks()
     {
-        NativeMethods.TablePtr->C1.hs_method_96789c9c((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_96789c9c((void*)__hosihikari_shim_handle);
     }
 
 
@@ -130,7 +130,7 @@ public sealed unsafe partial class LevelChunkSaveManager : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_46932fec((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_46932fec((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

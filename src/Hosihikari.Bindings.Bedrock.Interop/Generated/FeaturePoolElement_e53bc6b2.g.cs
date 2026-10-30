@@ -145,6 +145,7 @@ public sealed unsafe partial class FeaturePoolElement : global::System.IDisposab
         return NativeMethods.TablePtr->C1.hs_method_817036fa((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address
     {

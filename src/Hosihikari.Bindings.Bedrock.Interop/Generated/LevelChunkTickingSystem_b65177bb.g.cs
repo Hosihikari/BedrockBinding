@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelChunkTickingSystem
+public sealed unsafe partial class LevelChunkTickingSystem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,23 +40,37 @@ public sealed unsafe partial class LevelChunkTickingSystem
 
     public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C1.hs_method_3b91e8a7((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C2.hs_method_3b91e8a7((void*)__hosihikari_shim_handle, (void*)registry.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mScratchLevelChunksBlockEntitiesToTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_69a4943f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_69a4943f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mScratchLevelChunksToTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_59bf4a13((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_59bf4a13((void*)__hosihikari_shim_handle);
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
     {
-        NativeMethods.TablePtr->C1.hs_method_11428867((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+        NativeMethods.TablePtr->C2.hs_method_11428867((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b65177bb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

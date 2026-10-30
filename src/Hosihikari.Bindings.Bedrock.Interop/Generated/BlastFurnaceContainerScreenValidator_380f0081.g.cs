@@ -58,6 +58,7 @@ public sealed unsafe partial class BlastFurnaceContainerScreenValidator : global
         return new BlastFurnaceContainerScreenValidator((nint)handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mValidContainerEnumNames_Address
     {

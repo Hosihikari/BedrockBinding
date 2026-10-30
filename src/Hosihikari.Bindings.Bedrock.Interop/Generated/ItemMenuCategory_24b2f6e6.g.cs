@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_110;
 
-public sealed unsafe partial class ItemMenuCategory
+public sealed unsafe partial class ItemMenuCategory : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -64,5 +64,19 @@ public sealed unsafe partial class ItemMenuCategory
     public static void upgrade(nint oldData, global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_21_110.ItemMenuCategory newData)
     {
         NativeMethods.TablePtr->C3.hs_method_8fc55b80((void*)oldData, (void*)newData.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_24b2f6e6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

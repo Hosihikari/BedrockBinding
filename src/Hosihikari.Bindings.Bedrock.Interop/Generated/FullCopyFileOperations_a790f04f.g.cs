@@ -56,7 +56,7 @@ public sealed unsafe partial class FullCopyFileOperations : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_a790f04f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_a790f04f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

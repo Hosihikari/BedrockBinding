@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class UniformHeight
+public sealed unsafe partial class UniformHeight : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -62,5 +62,19 @@ public sealed unsafe partial class UniformHeight
     public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom randomSource, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenContext heightAccessor)
     {
         return NativeMethods.TablePtr->C4.hs_method_ce170af1((void*)__hosihikari_shim_handle, (void*)randomSource.Handle, (void*)heightAccessor.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_5c00ccb5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

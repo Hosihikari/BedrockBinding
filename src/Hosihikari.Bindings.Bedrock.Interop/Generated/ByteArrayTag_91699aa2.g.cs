@@ -139,6 +139,7 @@ public sealed unsafe partial class ByteArrayTag : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_3e5f5ec7((void*)__hosihikari_shim_handle, (void*)dos.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

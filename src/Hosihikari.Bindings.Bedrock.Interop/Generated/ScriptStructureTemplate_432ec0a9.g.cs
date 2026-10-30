@@ -88,9 +88,10 @@ public sealed unsafe partial class ScriptStructureTemplate : global::System.IDis
     public static ScriptStructureTemplate Create(nint id, nint structureManager, nint scope, nint scriptStructureManager, nint levelStorage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<StructureManager>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::InvalidArgumentError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _createBoundsError(int index, nint pos, nint size) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::InvalidArgumentError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InvalidArgumentError _createBoundsError(int index, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos size)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.InvalidArgumentError((nint)NativeMethods.TablePtr->C3.hs_method_44762c2f((void*)__hosihikari_shim_handle, index, (void*)pos.Handle, (void*)size.Handle));
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {

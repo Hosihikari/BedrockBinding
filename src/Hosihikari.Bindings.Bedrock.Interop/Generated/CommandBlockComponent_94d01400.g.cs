@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CommandBlockComponent
+public sealed unsafe partial class CommandBlockComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -106,6 +106,20 @@ public sealed unsafe partial class CommandBlockComponent
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             NativeMethods.TablePtr->C0.hs_method_a29c8a5f((void*)__hosihikari_shim_handle, (void*)owner.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_94d01400((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

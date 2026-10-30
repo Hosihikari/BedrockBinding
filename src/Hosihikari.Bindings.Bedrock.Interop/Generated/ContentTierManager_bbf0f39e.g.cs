@@ -105,6 +105,7 @@ public sealed unsafe partial class ContentTierManager : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_3e36fee0((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

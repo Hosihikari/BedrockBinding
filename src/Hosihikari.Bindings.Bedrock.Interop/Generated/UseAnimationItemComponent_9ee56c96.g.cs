@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class UseAnimationItemComponent
+public sealed unsafe partial class UseAnimationItemComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,13 +40,13 @@ public sealed unsafe partial class UseAnimationItemComponent
 
     public nint mOwner
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_76f4d8e6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_76f4d8e6((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_76f4d8e6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_76f4d8e6((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     public void __initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C3.hs_method_a4025d3b((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C4.hs_method_a4025d3b((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -55,7 +55,7 @@ public sealed unsafe partial class UseAnimationItemComponent
 
     public void _initializeComponent(global::Hosihikari.Bindings.Bedrock.Interop.ComponentItem owner)
     {
-        NativeMethods.TablePtr->C3.hs_method_0384280e((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C4.hs_method_0384280e((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -64,7 +64,21 @@ public sealed unsafe partial class UseAnimationItemComponent
 
     public byte mUseAnimation
     {
-        get => NativeMethods.TablePtr->C3.hs_get_8950981b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_8950981b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_8950981b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_8950981b((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_9ee56c96((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ClientboundCloseFormPacket
+public sealed unsafe partial class ClientboundCloseFormPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class ClientboundCloseFormPacket
         NativeMethods.TablePtr->C0.hs_method_88071a68((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mCompressible
     {
         get => NativeMethods.TablePtr->C0.hs_get_6a37ad6a((void*)__hosihikari_shim_handle);
@@ -225,5 +226,18 @@ public sealed unsafe partial class ClientboundCloseFormPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_70d609c5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_70d609c5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b240ffe1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

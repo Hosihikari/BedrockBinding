@@ -101,6 +101,7 @@ public sealed unsafe partial class TargetPoint : global::System.IDisposable
         get => NativeMethods.TablePtr->C3.hs_get_9281f675((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

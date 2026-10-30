@@ -151,6 +151,7 @@ public sealed unsafe partial class Timer : global::System.IDisposable
         set => NativeMethods.TablePtr->C3.hs_set_ee347b04((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

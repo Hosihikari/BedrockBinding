@@ -136,6 +136,7 @@ public sealed unsafe partial class SpikeFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_9ad86379((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

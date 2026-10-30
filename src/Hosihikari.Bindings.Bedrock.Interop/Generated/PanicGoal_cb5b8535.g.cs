@@ -233,6 +233,7 @@ public sealed unsafe partial class PanicGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_29de0b86((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

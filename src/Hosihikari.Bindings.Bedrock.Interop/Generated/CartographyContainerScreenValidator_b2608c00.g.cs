@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CartographyContainerScreenValidator
+public sealed unsafe partial class CartographyContainerScreenValidator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,9 +56,23 @@ public sealed unsafe partial class CartographyContainerScreenValidator
         return NativeMethods.TablePtr->C0.hs_method_b278636a((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mValidContainerEnumNames_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_2181f4fc((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b2608c00((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

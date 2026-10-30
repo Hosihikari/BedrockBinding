@@ -40,7 +40,7 @@ public sealed unsafe partial class FileStream : global::System.IDisposable
 
     public nint _ctor()
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_9065c454((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_9065c454((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -53,7 +53,7 @@ public sealed unsafe partial class FileStream : global::System.IDisposable
 
     public static FileStream Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_8c3206bf();
+        var handle = NativeMethods.TablePtr->C1.hs_create_8c3206bf();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,7 +68,7 @@ public sealed unsafe partial class FileStream : global::System.IDisposable
 
     public static FileStream Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStream arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_c242db97((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_c242db97((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -80,13 +80,13 @@ public sealed unsafe partial class FileStream : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk7e5019_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_5258e2af((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5258e2af((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkfd47eb_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_dcb7e468((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dcb7e468((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -95,8 +95,9 @@ public sealed unsafe partial class FileStream : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStream operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStream arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStream((nint)NativeMethods.TablePtr->C0.hs_method_cd22b671((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStream((nint)NativeMethods.TablePtr->C1.hs_method_cd22b671((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {
@@ -104,7 +105,7 @@ public sealed unsafe partial class FileStream : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_f0cf1a69((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_f0cf1a69((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

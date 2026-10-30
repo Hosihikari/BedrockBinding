@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.OverworldGeneratorMultinoise_Nested;
 
-public sealed unsafe partial class Noises
+public sealed unsafe partial class Noises : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -92,7 +92,22 @@ public sealed unsafe partial class Noises
         get => (nint)NativeMethods.TablePtr->C2.hs_get_ba38feb0((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'OverworldGeneratorMultinoise::Noises' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint make(nint randomFactory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'OverworldGeneratorMultinoise::Noises' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.OverworldGeneratorMultinoise_Nested.Noises make(global::Hosihikari.Bindings.Bedrock.Interop.XoroshiroPositionalRandomFactory randomFactory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.OverworldGeneratorMultinoise_Nested.Noises((nint)NativeMethods.TablePtr->C2.hs_method_60cf8515((void*)randomFactory.Handle));
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_c4b0311f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -109,6 +109,7 @@ public sealed unsafe partial class ScriptBoolBlockProperty : global::System.IDis
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBoolBlockProperty((nint)NativeMethods.TablePtr->C3.hs_method_fa4ffa7f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

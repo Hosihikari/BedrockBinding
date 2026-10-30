@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class ScriptBlockInventoryComponent
+public sealed unsafe partial class ScriptBlockInventoryComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -67,6 +67,7 @@ public sealed unsafe partial class ScriptBlockInventoryComponent
         get => (nint)NativeMethods.TablePtr->C3.hs_get_6d1b3d0a((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address
     {
@@ -77,5 +78,18 @@ public sealed unsafe partial class ScriptBlockInventoryComponent
     public nint mScope_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_4268508b((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_1b9a35a4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

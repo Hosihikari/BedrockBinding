@@ -144,10 +144,9 @@ public sealed unsafe partial class Minecraft : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)__hs_handle, false) : null;
     }
 
-    public global::Hosihikari.Bindings.Abi.SharedHandle? getServerNetworkHandler()
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_ServerNetworkHandler_ getServerNetworkHandler()
     {
-        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_9c7e2099((void*)__hosihikari_shim_handle);
-        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_ServerNetworkHandler_((nint)NativeMethods.TablePtr->C2.hs_method_9c7e2099((void*)__hosihikari_shim_handle));
     }
 
     public bool getSimPaused()

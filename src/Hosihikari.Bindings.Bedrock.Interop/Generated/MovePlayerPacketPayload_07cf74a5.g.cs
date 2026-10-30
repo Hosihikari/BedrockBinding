@@ -135,6 +135,7 @@ public sealed unsafe partial class MovePlayerPacketPayload : global::System.IDis
         set => NativeMethods.TablePtr->C2.hs_set_a32bdc28((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

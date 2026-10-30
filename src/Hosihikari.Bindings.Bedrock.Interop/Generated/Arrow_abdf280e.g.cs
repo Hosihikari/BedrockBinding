@@ -684,9 +684,9 @@ public sealed unsafe partial class Arrow : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_5cefff92((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void addMobEffect(nint effect) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getEffectColor()
     {
@@ -752,6 +752,7 @@ public sealed unsafe partial class Arrow : global::System.IDisposable
     {
         NativeMethods.TablePtr->C0.hs_method_4d296df2((void*)__hosihikari_shim_handle, (void*)dir.Handle, pow, uncertainty, (void*)baseSpeed.Handle);
     }
+
 
     public void Dispose()
     {

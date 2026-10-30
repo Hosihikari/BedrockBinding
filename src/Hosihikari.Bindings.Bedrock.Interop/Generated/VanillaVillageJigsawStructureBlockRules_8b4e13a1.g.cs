@@ -40,7 +40,7 @@ public sealed unsafe partial class VanillaVillageJigsawStructureBlockRules : glo
 
     public static void initialize(global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry jigsawRegistry)
     {
-        NativeMethods.TablePtr->C3.hs_method_a2b3bfe5((void*)jigsawRegistry.Handle);
+        NativeMethods.TablePtr->C4.hs_method_a2b3bfe5((void*)jigsawRegistry.Handle);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class VanillaVillageJigsawStructureBlockRules : glo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_8b4e13a1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_8b4e13a1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

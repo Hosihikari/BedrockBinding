@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockCustomComponentsComponent
+public sealed unsafe partial class BlockCustomComponentsComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -80,4 +80,18 @@ public sealed unsafe partial class BlockCustomComponentsComponent
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptCustomComponentToExecute<const ScriptModuleMinecraft::ScriptBlockCustomComponentInterface &, void>' is not supported.", false)]
     public nint tryGetComponentsToExecute(nint baseBlock) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ScriptModuleMinecraft::ScriptCustomComponentToExecute<const ScriptModuleMinecraft::ScriptBlockCustomComponentInterface &, void>' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_0979e716((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

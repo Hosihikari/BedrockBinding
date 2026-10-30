@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CurseBindingEnchant
+public sealed unsafe partial class CurseBindingEnchant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -68,6 +68,7 @@ public sealed unsafe partial class CurseBindingEnchant
         return NativeMethods.TablePtr->C1.hs_method_3fc591af((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     public int mCompatibility
     {
         get => NativeMethods.TablePtr->C1.hs_get_46093e01((void*)__hosihikari_shim_handle);
@@ -120,5 +121,18 @@ public sealed unsafe partial class CurseBindingEnchant
     public nint mStringId_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_e1251f2a((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_f8d17b37((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

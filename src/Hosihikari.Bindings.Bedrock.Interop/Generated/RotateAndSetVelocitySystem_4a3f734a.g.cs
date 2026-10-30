@@ -40,7 +40,7 @@ public sealed unsafe partial class RotateAndSetVelocitySystem : global::System.I
 
     public static void doTick(global::Hosihikari.Bindings.Bedrock.Interop.MoveInputComponent input, global::Hosihikari.Bindings.Bedrock.Interop.PlayerInputModeComponent arg1, global::Hosihikari.Bindings.Bedrock.Interop.LocalMoveVelocityComponent localVelocity)
     {
-        NativeMethods.TablePtr->C2.hs_method_da91ac82((void*)input.Handle, (void*)arg1.Handle, (void*)localVelocity.Handle);
+        NativeMethods.TablePtr->C3.hs_method_da91ac82((void*)input.Handle, (void*)arg1.Handle, (void*)localVelocity.Handle);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class RotateAndSetVelocitySystem : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_4a3f734a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_4a3f734a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

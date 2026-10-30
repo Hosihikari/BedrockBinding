@@ -139,6 +139,7 @@ public sealed unsafe partial class TradeWithPlayerGoal : global::System.IDisposa
         NativeMethods.TablePtr->C3.hs_method_8fd51276((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

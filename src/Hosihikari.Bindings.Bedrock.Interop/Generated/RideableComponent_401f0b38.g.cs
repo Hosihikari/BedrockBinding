@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RideableComponent
+public sealed unsafe partial class RideableComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,31 +40,46 @@ public sealed unsafe partial class RideableComponent
 
     public bool allowInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->C2.hs_method_c6ec3b9c((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_c6ec3b9c((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle) != 0;
     }
 
     public bool canAddPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor vehicle, global::Hosihikari.Bindings.Bedrock.Interop.Actor passenger)
     {
-        return NativeMethods.TablePtr->C2.hs_method_2d8d7796((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, (void*)passenger.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_2d8d7796((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, (void*)passenger.Handle) != 0;
     }
 
     public bool getFirstAvailableSeatPosition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Actor potentialPassenger, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 result)
     {
-        return NativeMethods.TablePtr->C2.hs_method_14e7d300((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)potentialPassenger.Handle, (void*)result.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_14e7d300((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)potentialPassenger.Handle, (void*)result.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint owner, nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C3.hs_method_366f3d5c((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)player.Handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_12f81c2b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_12f81c2b((void*)__hosihikari_shim_handle);
     }
 
     public bool pullInEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor vehicle, global::Hosihikari.Bindings.Bedrock.Interop.Actor passenger)
     {
-        return NativeMethods.TablePtr->C2.hs_method_25df2a63((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, (void*)passenger.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_25df2a63((void*)__hosihikari_shim_handle, (void*)vehicle.Handle, (void*)passenger.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_401f0b38((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

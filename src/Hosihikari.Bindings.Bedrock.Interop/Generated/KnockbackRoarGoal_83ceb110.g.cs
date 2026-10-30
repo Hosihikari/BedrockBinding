@@ -279,6 +279,7 @@ public sealed unsafe partial class KnockbackRoarGoal : global::System.IDisposabl
         NativeMethods.TablePtr->C1.hs_method_4037d1ad((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

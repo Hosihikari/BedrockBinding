@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetDefaultGameTypePacket
+public sealed unsafe partial class SetDefaultGameTypePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,9 +227,23 @@ public sealed unsafe partial class SetDefaultGameTypePacket
         NativeMethods.TablePtr->C3.hs_method_ba0f7b57((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mDefaultGameType
     {
         get => NativeMethods.TablePtr->C3.hs_get_7fba22dc((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_7fba22dc((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_1aeb8402((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

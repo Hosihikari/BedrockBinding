@@ -241,6 +241,7 @@ public sealed unsafe partial class MolangMemberArray : global::System.IDisposabl
         get => (nint)NativeMethods.TablePtr->C2.hs_get_e80098b0((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

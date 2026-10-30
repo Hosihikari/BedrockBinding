@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EntitySensorComponent
+public sealed unsafe partial class EntitySensorComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -77,5 +77,19 @@ public sealed unsafe partial class EntitySensorComponent
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.ActorOwnerComponent actorOwnerComponent, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
     {
         NativeMethods.TablePtr->C1.hs_method_dfc8980a((void*)__hosihikari_shim_handle, (void*)actorOwnerComponent.Handle, (void*)currentTick.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_1c7e63bb((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

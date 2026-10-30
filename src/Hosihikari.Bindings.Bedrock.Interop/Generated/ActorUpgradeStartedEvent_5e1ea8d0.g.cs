@@ -83,6 +83,7 @@ public sealed unsafe partial class ActorUpgradeStartedEvent : global::System.IDi
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUpgradeStartedEvent((nint)NativeMethods.TablePtr->C0.hs_method_65f0d7e4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

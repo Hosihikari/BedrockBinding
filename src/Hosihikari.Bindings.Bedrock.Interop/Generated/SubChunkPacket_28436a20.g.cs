@@ -238,6 +238,7 @@ public sealed unsafe partial class SubChunkPacket : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_cd0ce6ef((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public bool mCacheEnabled
     {
         get => NativeMethods.TablePtr->C3.hs_get_f99e7ab8((void*)__hosihikari_shim_handle) != 0;

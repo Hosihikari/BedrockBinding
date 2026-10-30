@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HomeComponent
+public sealed unsafe partial class HomeComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -104,5 +104,19 @@ public sealed unsafe partial class HomeComponent
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         NativeMethods.TablePtr->C1.hs_method_2df7135e((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_59b7368e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

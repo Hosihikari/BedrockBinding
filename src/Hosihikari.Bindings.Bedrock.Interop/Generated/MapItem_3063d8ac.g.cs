@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MapItem
+public sealed unsafe partial class MapItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -457,5 +457,19 @@ public sealed unsafe partial class MapItem
     public static void setMapNameIndex(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item, int mapNameIndex)
     {
         NativeMethods.TablePtr->C2.hs_method_ad8007cf((void*)item.Handle, mapNameIndex);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_3063d8ac((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

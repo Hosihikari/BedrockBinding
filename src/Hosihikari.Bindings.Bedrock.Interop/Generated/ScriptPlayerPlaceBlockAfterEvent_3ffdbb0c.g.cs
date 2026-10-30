@@ -88,6 +88,7 @@ public sealed unsafe partial class ScriptPlayerPlaceBlockAfterEvent : global::Sy
         get => (nint)NativeMethods.TablePtr->C3.hs_get_31b6115c((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

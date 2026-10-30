@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BarterComponent
+public sealed unsafe partial class BarterComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -71,5 +71,19 @@ public sealed unsafe partial class BarterComponent
     public void onBarterItemPickedUp(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorUniqueID, short barterItemId)
     {
         NativeMethods.TablePtr->C0.hs_method_c00ecbaf((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)actorUniqueID.Handle, barterItemId);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f6c74e81((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

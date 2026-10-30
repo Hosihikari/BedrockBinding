@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ConsoleChunkBlender
+public sealed unsafe partial class ConsoleChunkBlender : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -74,5 +74,19 @@ public sealed unsafe partial class ConsoleChunkBlender
     public nint mInterpTable_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_7ed92a6f((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_2bce55e1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

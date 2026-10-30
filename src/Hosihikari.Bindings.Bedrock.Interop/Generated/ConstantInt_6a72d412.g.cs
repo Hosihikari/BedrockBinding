@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ConstantInt
+public sealed unsafe partial class ConstantInt : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -76,5 +76,19 @@ public sealed unsafe partial class ConstantInt
     public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg0)
     {
         return NativeMethods.TablePtr->C0.hs_method_06f518a3((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_6a72d412((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

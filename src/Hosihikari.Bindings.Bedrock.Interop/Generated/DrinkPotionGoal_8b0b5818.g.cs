@@ -186,6 +186,7 @@ public sealed unsafe partial class DrinkPotionGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_af5e30d3((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

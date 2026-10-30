@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class ScriptBlockRecordPlayerComponentV010
+public sealed unsafe partial class ScriptBlockRecordPlayerComponentV010 : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -37,5 +36,54 @@ public sealed partial class ScriptBlockRecordPlayerComponentV010
         var __hs_handle = __hosihikari_shim_handle;
         __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public nint mBlockActor
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c43d35e2((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_c43d35e2((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    public nint mBlock
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_fbf10acf((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mBlockSource
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ac66fcf8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ac66fcf8((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mPosition_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a0b2751d((void*)__hosihikari_shim_handle);
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mId_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7d8d7450((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mScope_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a3463792((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_77d1b04b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -645,6 +645,7 @@ public sealed unsafe partial class Axolotl : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_f94d83de((void*)__hosihikari_shim_handle, method, (void*)@params.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_17d62c49((void*)__hosihikari_shim_handle);

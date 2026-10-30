@@ -794,6 +794,7 @@ public sealed unsafe partial class Panda : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_c8ba1f88((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

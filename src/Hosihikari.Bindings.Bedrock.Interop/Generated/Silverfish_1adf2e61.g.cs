@@ -803,6 +803,7 @@ public sealed unsafe partial class Silverfish : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_aaa86514((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

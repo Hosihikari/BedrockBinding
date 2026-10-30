@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockShapeComponentData
+public sealed unsafe partial class BlockShapeComponentData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,5 +59,19 @@ public sealed unsafe partial class BlockShapeComponentData
     public static void transformAABBs(global::Hosihikari.Bindings.Bedrock.Interop.BlockShapeComponentData data, global::Hosihikari.Bindings.Bedrock.Interop.Matrix transform)
     {
         NativeMethods.TablePtr->C0.hs_method_e16d80fc((void*)data.Handle, (void*)transform.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_f0dbe8e4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

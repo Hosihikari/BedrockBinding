@@ -106,6 +106,7 @@ public sealed unsafe partial class AutomaticFeatureRules : global::System.IDispo
         return new global::Hosihikari.Bindings.Bedrock.Interop.AutomaticFeatureRules((nint)NativeMethods.TablePtr->C0.hs_method_df207b6b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

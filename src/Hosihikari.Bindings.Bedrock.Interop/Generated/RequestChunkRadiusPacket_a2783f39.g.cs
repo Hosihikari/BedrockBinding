@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RequestChunkRadiusPacket
+public sealed unsafe partial class RequestChunkRadiusPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class RequestChunkRadiusPacket
         NativeMethods.TablePtr->C2.hs_method_7d15529f((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mChunkRadius
     {
         get => NativeMethods.TablePtr->C2.hs_get_9165f59a((void*)__hosihikari_shim_handle);
@@ -237,5 +238,18 @@ public sealed unsafe partial class RequestChunkRadiusPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_f9332a7d((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_f9332a7d((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_a2783f39((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

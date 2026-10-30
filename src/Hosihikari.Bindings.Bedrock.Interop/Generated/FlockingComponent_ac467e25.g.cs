@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FlockingComponent
+public sealed unsafe partial class FlockingComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -244,5 +244,19 @@ public sealed unsafe partial class FlockingComponent
     public bool validateVariantEntityTypes(global::Hosihikari.Bindings.Bedrock.Interop.Actor e0, global::Hosihikari.Bindings.Bedrock.Interop.Actor e1)
     {
         return NativeMethods.TablePtr->C1.hs_method_faa5b083((void*)__hosihikari_shim_handle, (void*)e0.Handle, (void*)e1.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ac467e25((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

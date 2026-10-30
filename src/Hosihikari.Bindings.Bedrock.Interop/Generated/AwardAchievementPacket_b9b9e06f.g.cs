@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class AwardAchievementPacket
+public sealed unsafe partial class AwardAchievementPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class AwardAchievementPacket
         NativeMethods.TablePtr->C0.hs_method_09c58ecb((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mAchievementID
     {
         get => NativeMethods.TablePtr->C0.hs_get_f4dbcb66((void*)__hosihikari_shim_handle);
@@ -231,5 +232,18 @@ public sealed unsafe partial class AwardAchievementPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_03c45ecc((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_03c45ecc((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b9b9e06f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

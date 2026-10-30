@@ -66,6 +66,7 @@ public sealed unsafe partial class PropertyBag : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_2fbced5f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

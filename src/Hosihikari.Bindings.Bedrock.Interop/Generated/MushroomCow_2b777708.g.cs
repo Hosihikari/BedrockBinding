@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MushroomCow
+public sealed unsafe partial class MushroomCow : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -738,5 +738,19 @@ public sealed unsafe partial class MushroomCow
     public bool checkSpawnRules(bool fromSpawner)
     {
         return NativeMethods.TablePtr->C2.hs_method_57ca11c3((void*)__hosihikari_shim_handle, fromSpawner) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_2b777708((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

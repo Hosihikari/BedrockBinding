@@ -358,13 +358,15 @@ public sealed unsafe partial class Value : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_650d5c7b((void*)__hosihikari_shim_handle, defaultValue);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Json::ValueConstIterator' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint begin_c85bffba() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Json::ValueConstIterator' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator begin_c85bffba()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator((nint)NativeMethods.TablePtr->C1.hs_method_c85bffba((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Json::ValueIterator' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint begin_7bc641c1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Json::ValueIterator' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator begin_7bc641c1()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator((nint)NativeMethods.TablePtr->C1.hs_method_7bc641c1((void*)__hosihikari_shim_handle));
+    }
 
     public void clear()
     {
@@ -383,13 +385,15 @@ public sealed unsafe partial class Value : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_d35785cf((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Json::ValueConstIterator' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint end_cc5d53f2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Json::ValueConstIterator' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator end_cc5d53f2()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator((nint)NativeMethods.TablePtr->C1.hs_method_cc5d53f2((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Json::ValueIterator' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint end_336c0125() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Json::ValueIterator' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator end_336c0125()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator((nint)NativeMethods.TablePtr->C1.hs_method_336c0125((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value get(nint key, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value defaultValue)
     {

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FireworkChargeItem
+public sealed unsafe partial class FireworkChargeItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -166,6 +166,7 @@ public sealed unsafe partial class FireworkChargeItem
     {
         return NativeMethods.TablePtr->C1.hs_method_ace75e65((void*)__hosihikari_shim_handle, auxValue) != 0;
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -374,5 +375,18 @@ public sealed unsafe partial class FireworkChargeItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_5c60a66f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_5c60a66f((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_fb225ad9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

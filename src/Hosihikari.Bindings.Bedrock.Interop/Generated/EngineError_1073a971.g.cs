@@ -135,6 +135,7 @@ public sealed unsafe partial class EngineError : global::System.IDisposable
         }
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

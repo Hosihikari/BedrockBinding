@@ -70,9 +70,10 @@ public sealed unsafe partial class EntityContext : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C1.hs_method_357c472d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WeakEntityRef' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getWeakRef() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WeakEntityRef' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef getWeakRef()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef((nint)NativeMethods.TablePtr->C1.hs_method_24cbca66((void*)__hosihikari_shim_handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEnTTRegistry_Address

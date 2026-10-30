@@ -828,6 +828,7 @@ public sealed unsafe partial class Parrot : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_4d0aa519((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

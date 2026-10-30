@@ -156,6 +156,7 @@ public sealed unsafe partial class SmithingTrimRecipe : global::System.IDisposab
         return NativeMethods.TablePtr->C3.hs_method_32f1c76b((void*)__hosihikari_shim_handle, (void*)craftingContainer.Handle, (void*)craftingContext.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

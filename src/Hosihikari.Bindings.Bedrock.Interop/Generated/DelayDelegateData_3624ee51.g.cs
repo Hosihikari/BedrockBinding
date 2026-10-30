@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.FallingBlockSystemOnLand;
 
-public sealed unsafe partial class DelayDelegateData
+public sealed unsafe partial class DelayDelegateData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,5 +59,19 @@ public sealed unsafe partial class DelayDelegateData
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_bda75a8e((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_bda75a8e((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_3624ee51((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -102,6 +102,7 @@ public sealed unsafe partial class GameTestInstanceLedger : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.GameTestInstanceLedger((nint)NativeMethods.TablePtr->C1.hs_method_b2b6cfbb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

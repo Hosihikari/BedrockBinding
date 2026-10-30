@@ -83,6 +83,7 @@ public sealed unsafe partial class ActorDefinitionEndedEvent : global::System.ID
         return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionEndedEvent((nint)NativeMethods.TablePtr->C0.hs_method_f397cafd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

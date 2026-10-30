@@ -99,9 +99,9 @@ public sealed unsafe partial class MinecraftCommands : global::System.IDisposabl
         NativeMethods.TablePtr->C2.hs_method_dcb32e9b((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)output.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void initCoreEnums(nint itemRegistry, nint level, nint actorFactory, nint experiments, nint worldBaseGameVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void initCoreEnumsServer(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup actorDefinitionGroup, global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets cameraPresets, global::Hosihikari.Bindings.Bedrock.Interop.Recipes recipes)
     {

@@ -38,9 +38,9 @@ public sealed unsafe partial class MultiRecipe : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint recipeId, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool _hasDataDrivenResult()
     {
@@ -72,9 +72,9 @@ public sealed unsafe partial class MultiRecipe : global::System.IDisposable
         return new MultiRecipe((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static MultiRecipe Create(nint recipeId, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool hasDataDrivenResult()
     {
@@ -90,6 +90,7 @@ public sealed unsafe partial class MultiRecipe : global::System.IDisposable
     {
         return NativeMethods.TablePtr->C2.hs_method_56e90680((void*)__hosihikari_shim_handle) != 0;
     }
+
 
     public int mHeight
     {

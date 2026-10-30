@@ -219,6 +219,7 @@ public sealed unsafe partial class DiggerItem : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.DiggerItem((nint)NativeMethods.TablePtr->C1.hs_method_dc4ee622((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C1.hs_get_8e6c7361((void*)__hosihikari_shim_handle) != 0;

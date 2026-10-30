@@ -163,6 +163,7 @@ public sealed unsafe partial class EatCarriedItemGoal : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_27d86616((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

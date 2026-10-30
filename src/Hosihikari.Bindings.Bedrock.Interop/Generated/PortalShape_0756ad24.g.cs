@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PortalShape
+public sealed unsafe partial class PortalShape : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -109,5 +109,19 @@ public sealed unsafe partial class PortalShape
     public void updateNeighboringBlocks(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource source, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 perpendicularAxis)
     {
         NativeMethods.TablePtr->C2.hs_method_5e173f86((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)perpendicularAxis.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_0756ad24((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -213,6 +213,7 @@ public sealed unsafe partial class PropertyOutOfBoundsError : global::System.IDi
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.PropertyOutOfBoundsError((nint)NativeMethods.TablePtr->C3.hs_method_96722437((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

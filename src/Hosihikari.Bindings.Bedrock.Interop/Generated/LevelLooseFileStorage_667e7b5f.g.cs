@@ -40,7 +40,7 @@ public sealed unsafe partial class LevelLooseFileStorage : global::System.IDispo
 
     public static LevelLooseFileStorage Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_3571fda3();
+        var handle = NativeMethods.TablePtr->C2.hs_create_3571fda3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class LevelLooseFileStorage : global::System.IDispo
 
     public static LevelLooseFileStorage Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelLooseFileStorage arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_d94474c3((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_d94474c3((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,12 +63,12 @@ public sealed unsafe partial class LevelLooseFileStorage : global::System.IDispo
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk49fb12_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_416b5f96((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_416b5f96((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelLooseFileStorage operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelLooseFileStorage arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelLooseFileStorage((nint)NativeMethods.TablePtr->C1.hs_method_6c3e755f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelLooseFileStorage((nint)NativeMethods.TablePtr->C2.hs_method_6c3e755f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -77,7 +77,7 @@ public sealed unsafe partial class LevelLooseFileStorage : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_667e7b5f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_667e7b5f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

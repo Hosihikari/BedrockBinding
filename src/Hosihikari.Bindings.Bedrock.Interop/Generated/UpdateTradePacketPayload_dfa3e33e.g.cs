@@ -40,12 +40,12 @@ public sealed unsafe partial class UpdateTradePacketPayload : global::System.IDi
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacketPayload other)
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_18464aa2((void*)__hosihikari_shim_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_18464aa2((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
     public static UpdateTradePacketPayload Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_c68a9c62();
+        var handle = NativeMethods.TablePtr->C4.hs_create_c68a9c62();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class UpdateTradePacketPayload : global::System.IDi
 
     public static UpdateTradePacketPayload Create(global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacketPayload other)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_4611700c((void*)other.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_4611700c((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,68 +67,69 @@ public sealed unsafe partial class UpdateTradePacketPayload : global::System.IDi
 
     public sbyte mContainerId
     {
-        get => NativeMethods.TablePtr->C3.hs_get_ebb385fe((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_ebb385fe((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_ebb385fe((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_ebb385fe((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_87d4b939((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_87d4b939((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDisplayName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_043e4976((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_043e4976((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEntityUniqueID_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f0926431((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f0926431((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLastTradingPlayer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_1e9e9cda((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_1e9e9cda((void*)__hosihikari_shim_handle);
     }
 
     public int mSize
     {
-        get => NativeMethods.TablePtr->C3.hs_get_ce21b47b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_ce21b47b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_ce21b47b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_ce21b47b((void*)__hosihikari_shim_handle, value);
     }
 
     public int mTraderTier
     {
-        get => NativeMethods.TablePtr->C3.hs_get_9b97ab38((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_9b97ab38((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_9b97ab38((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_9b97ab38((void*)__hosihikari_shim_handle, value);
     }
 
     public sbyte mType
     {
-        get => NativeMethods.TablePtr->C3.hs_get_72edaf42((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_72edaf42((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_72edaf42((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_72edaf42((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mUseNewTradeScreen
     {
-        get => NativeMethods.TablePtr->C3.hs_get_f9823e43((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_f9823e43((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_f9823e43((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_f9823e43((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mUsingEconomyTrade
     {
-        get => NativeMethods.TablePtr->C3.hs_get_ac4e23b9((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_ac4e23b9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_ac4e23b9((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_ac4e23b9((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacketPayload operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacketPayload arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacketPayload((nint)NativeMethods.TablePtr->C3.hs_method_8660dba7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UpdateTradePacketPayload((nint)NativeMethods.TablePtr->C4.hs_method_8660dba7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {
@@ -136,7 +137,7 @@ public sealed unsafe partial class UpdateTradePacketPayload : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_dfa3e33e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_dfa3e33e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

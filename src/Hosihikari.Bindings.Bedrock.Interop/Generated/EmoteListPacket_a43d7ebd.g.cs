@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EmoteListPacket
+public sealed unsafe partial class EmoteListPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class EmoteListPacket
         NativeMethods.TablePtr->C1.hs_method_1225a510((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mEmotePieceIds_Address
     {
@@ -237,5 +238,18 @@ public sealed unsafe partial class EmoteListPacket
     {
         get => NativeMethods.TablePtr->C1.hs_get_85958bdd((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_85958bdd((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_a43d7ebd((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

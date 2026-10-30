@@ -423,6 +423,7 @@ public sealed unsafe partial class WeepingVinesBlock : global::System.IDisposabl
         NativeMethods.TablePtr->C4.hs_method_92a78ca4((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -97,6 +97,7 @@ public sealed unsafe partial class ScriptBlockStateType : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptBlockStateType((nint)NativeMethods.TablePtr->C3.hs_method_e70ad29f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

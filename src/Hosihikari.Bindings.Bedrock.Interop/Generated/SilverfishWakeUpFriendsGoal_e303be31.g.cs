@@ -127,6 +127,7 @@ public sealed unsafe partial class SilverfishWakeUpFriendsGoal : global::System.
         NativeMethods.TablePtr->C3.hs_method_0497d499((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

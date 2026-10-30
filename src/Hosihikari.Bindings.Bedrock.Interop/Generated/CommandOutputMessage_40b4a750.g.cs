@@ -97,6 +97,7 @@ public sealed unsafe partial class CommandOutputMessage : global::System.IDispos
         return NativeMethods.TablePtr->C0.hs_method_bc74c6aa((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

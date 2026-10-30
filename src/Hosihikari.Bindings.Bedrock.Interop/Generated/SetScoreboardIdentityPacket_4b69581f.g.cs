@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SetScoreboardIdentityPacket
+public sealed unsafe partial class SetScoreboardIdentityPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class SetScoreboardIdentityPacket
         NativeMethods.TablePtr->C3.hs_method_50bb30d5((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mIdentityInfo_Address
     {
@@ -237,5 +238,18 @@ public sealed unsafe partial class SetScoreboardIdentityPacket
     {
         get => NativeMethods.TablePtr->C3.hs_get_92f70f94((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_92f70f94((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_4b69581f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

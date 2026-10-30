@@ -146,6 +146,7 @@ public sealed unsafe partial class OceanMonumentPiece : global::System.IDisposab
         NativeMethods.TablePtr->C2.hs_method_e7ce667d((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)chunkBB.Handle, x, y, z);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
     {

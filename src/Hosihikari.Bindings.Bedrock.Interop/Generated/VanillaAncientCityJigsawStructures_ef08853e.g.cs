@@ -48,7 +48,7 @@ public sealed unsafe partial class VanillaAncientCityJigsawStructures : global::
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_ef08853e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_ef08853e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

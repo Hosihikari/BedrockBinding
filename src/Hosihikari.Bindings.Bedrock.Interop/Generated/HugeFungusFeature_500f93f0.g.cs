@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HugeFungusFeature
+public sealed unsafe partial class HugeFungusFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -84,6 +84,7 @@ public sealed unsafe partial class HugeFungusFeature
         return NativeMethods.TablePtr->C1.hs_method_0dc7f563((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
+
     public bool mCanUseInternalFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_60307088((void*)__hosihikari_shim_handle) != 0;
@@ -94,5 +95,18 @@ public sealed unsafe partial class HugeFungusFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_e3ee1e05((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_e3ee1e05((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_500f93f0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

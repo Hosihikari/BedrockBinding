@@ -210,6 +210,7 @@ public sealed unsafe partial class InventoryTransactionPacket : global::System.I
         NativeMethods.TablePtr->C1.hs_method_b05c29cb((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public bool mIsClientSide
     {
         get => NativeMethods.TablePtr->C1.hs_get_64b113e4((void*)__hosihikari_shim_handle) != 0;

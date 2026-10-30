@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestActionSwap
+public sealed unsafe partial class ItemStackRequestActionSwap : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,6 +48,7 @@ public sealed unsafe partial class ItemStackRequestActionSwap
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
+
     public byte mAmount
     {
         get => NativeMethods.TablePtr->C1.hs_get_0fb50895((void*)__hosihikari_shim_handle);
@@ -76,5 +77,18 @@ public sealed unsafe partial class ItemStackRequestActionSwap
     public nint mSrc_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_3e1c5422((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ce2e5ba6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -168,6 +168,7 @@ public sealed unsafe partial class BreakDoorGoal : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_3c1927ef((void*)__hosihikari_shim_handle);
     }
 
+
     public nint mDoorBlock
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_a3e3fac4((void*)__hosihikari_shim_handle);

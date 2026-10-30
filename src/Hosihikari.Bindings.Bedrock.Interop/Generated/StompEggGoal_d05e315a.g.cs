@@ -298,6 +298,7 @@ public sealed unsafe partial class StompEggGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_4d98da03((void*)__hosihikari_shim_handle, interval);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

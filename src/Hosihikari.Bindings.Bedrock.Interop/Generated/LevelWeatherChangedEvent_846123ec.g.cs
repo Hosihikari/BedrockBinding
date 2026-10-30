@@ -40,36 +40,36 @@ public sealed unsafe partial class LevelWeatherChangedEvent : global::System.IDi
 
     public bool mIsLightning
     {
-        get => NativeMethods.TablePtr->C1.hs_get_d2592658((void*)__hosihikari_shim_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_d2592658((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool mIsRaining
     {
-        get => NativeMethods.TablePtr->C1.hs_get_2598181e((void*)__hosihikari_shim_handle) != 0;
+        get => NativeMethods.TablePtr->C2.hs_get_2598181e((void*)__hosihikari_shim_handle) != 0;
     }
 
     public int mLightningTime
     {
-        get => NativeMethods.TablePtr->C1.hs_get_efe0562e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_efe0562e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_efe0562e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_efe0562e((void*)__hosihikari_shim_handle, value);
     }
 
     public int mRainTime
     {
-        get => NativeMethods.TablePtr->C1.hs_get_1b05f850((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_1b05f850((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1b05f850((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_1b05f850((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mWillBeLightning
     {
-        get => NativeMethods.TablePtr->C1.hs_get_de3a0392((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_de3a0392((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_de3a0392((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_de3a0392((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mWillBeRaining
     {
-        get => NativeMethods.TablePtr->C1.hs_get_3cd23a49((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_3cd23a49((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_3cd23a49((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_3cd23a49((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -78,7 +78,7 @@ public sealed unsafe partial class LevelWeatherChangedEvent : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_846123ec((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_846123ec((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

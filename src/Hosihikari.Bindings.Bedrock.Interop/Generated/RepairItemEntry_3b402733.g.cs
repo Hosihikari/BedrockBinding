@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.RepairableItemComponent_Nested;
 
-public sealed unsafe partial class RepairItemEntry
+public sealed unsafe partial class RepairItemEntry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -53,5 +53,19 @@ public sealed unsafe partial class RepairItemEntry
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_20_50.RepairableItemComponent_Nested.RepairItemEntry a)
     {
         return NativeMethods.TablePtr->C3.hs_method_ef641c18((void*)__hosihikari_shim_handle, (void*)a.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_3b402733((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

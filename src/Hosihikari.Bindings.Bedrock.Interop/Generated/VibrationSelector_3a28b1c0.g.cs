@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VibrationSelector
+public sealed unsafe partial class VibrationSelector : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,23 +40,37 @@ public sealed unsafe partial class VibrationSelector
 
     public void addCandidate(global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick, global::Hosihikari.Bindings.Bedrock.Interop.GameEvent gameEvent, nint gameEventContext, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos destinationPos)
     {
-        NativeMethods.TablePtr->C3.hs_method_4d5a4436((void*)__hosihikari_shim_handle, (void*)currentTick.Handle, (void*)gameEvent.Handle, (void*)gameEventContext, (void*)destinationPos.Handle);
+        NativeMethods.TablePtr->C4.hs_method_4d5a4436((void*)__hosihikari_shim_handle, (void*)currentTick.Handle, (void*)gameEvent.Handle, (void*)gameEventContext, (void*)destinationPos.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCandidateVibrationInfo_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_73f39610((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_73f39610((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFirstCandidateTick_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_908daf40((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_908daf40((void*)__hosihikari_shim_handle);
     }
 
     public void save(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->C3.hs_method_dde83352((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+        NativeMethods.TablePtr->C4.hs_method_dde83352((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_3a28b1c0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

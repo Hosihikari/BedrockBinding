@@ -167,9 +167,9 @@ public sealed unsafe partial class CompoundTagVariant : global::System.IDisposab
     public static CompoundTagVariant Create_dcf9391c(nint tag) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag, ByteArrayTag, StringTag, ListTag, CompoundTag, IntArrayTag>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTagVariant' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'CompoundTagVariant' is not supported.", false)]
     public static nint array(nint init) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTagVariant' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'CompoundTagVariant' is not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_false_ begin_9c7bbc0f()
     {
@@ -351,9 +351,9 @@ public sealed unsafe partial class CompoundTagVariant : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C0.hs_get_76fd3c9f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CompoundTagVariant' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'std::pair<const std::basic_string<char>, CompoundTagVariant>' is not supported.", false)]
     public static nint @object(nint init) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CompoundTagVariant' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'std::pair<const std::basic_string<char>, CompoundTagVariant>' is not supported.");
 
     public string operator_basic_string_view()
     {
@@ -445,9 +445,9 @@ public sealed unsafe partial class CompoundTagVariant : global::System.IDisposab
     public static nint parse(nint snbt, nint parsedLength) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: expected value type 'CompoundTagVariant': by-value return type 'CompoundTagVariant' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void push_back(nint val) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public ulong size()
     {
@@ -475,6 +475,7 @@ public sealed unsafe partial class CompoundTagVariant : global::System.IDisposab
         var __hs_view = NativeMethods.TablePtr->C0.hs_method_51ec6b28((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
+
 
     public void Dispose()
     {

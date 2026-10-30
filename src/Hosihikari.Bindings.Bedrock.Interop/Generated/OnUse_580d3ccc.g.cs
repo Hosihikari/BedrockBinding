@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.PublisherItemComponent;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class OnUse
+public sealed unsafe partial class OnUse : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -37,5 +36,37 @@ public sealed partial class OnUse
         var __hs_handle = __hosihikari_shim_handle;
         __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    public uint mSubscriberCount
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_713b6a9c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_713b6a9c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSubscriptions_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a0e3e17d((void*)__hosihikari_shim_handle);
+    }
+
+    public nint mOwner
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_cdc2d62c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_cdc2d62c((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_580d3ccc((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class VanillaOffsetComponent
+public sealed unsafe partial class VanillaOffsetComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,18 +41,32 @@ public sealed unsafe partial class VanillaOffsetComponent
     // The native field type is not projected; this is the address of the field storage.
     public nint mClimbingOffset_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_22b898aa((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_22b898aa((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCurrentOffset_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_91f29f7e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_91f29f7e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPreviousOffset_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_ca422ce2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ca422ce2((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_ec28280c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

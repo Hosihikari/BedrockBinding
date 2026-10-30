@@ -177,6 +177,7 @@ public sealed unsafe partial class SlimeAttackGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_e9ef5e46((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

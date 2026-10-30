@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ServerCorrectionPolicy
+public sealed unsafe partial class ServerCorrectionPolicy : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,9 +48,10 @@ public sealed unsafe partial class ServerCorrectionPolicy
         NativeMethods.TablePtr->C3.hs_method_602de3bd((void*)__hosihikari_shim_handle, frame);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MovementCorrection' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _shouldCorrectMovement(nint entity, nint packet, ulong frame, nint currentCounter, bool isStrictMovement) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MovementCorrection' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MovementCorrection _shouldCorrectMovement(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.PlayerAuthInputPacket packet, ulong frame, byte currentCounter, bool isStrictMovement)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MovementCorrection((nint)NativeMethods.TablePtr->C3.hs_method_181652e8((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)packet.Handle, frame, currentCounter, isStrictMovement));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -84,7 +85,22 @@ public sealed unsafe partial class ServerCorrectionPolicy
         NativeMethods.TablePtr->C3.hs_method_9ace10a2((void*)__hosihikari_shim_handle, frame);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'MovementCorrection' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint shouldCorrectMovement(nint entity, nint packet, ulong frame, nint currentCounter, bool isStrictMovement) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'MovementCorrection' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MovementCorrection shouldCorrectMovement(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, global::Hosihikari.Bindings.Bedrock.Interop.PlayerAuthInputPacket packet, ulong frame, byte currentCounter, bool isStrictMovement)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MovementCorrection((nint)NativeMethods.TablePtr->C3.hs_method_5507fd09((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)packet.Handle, frame, currentCounter, isStrictMovement));
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_024798df((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

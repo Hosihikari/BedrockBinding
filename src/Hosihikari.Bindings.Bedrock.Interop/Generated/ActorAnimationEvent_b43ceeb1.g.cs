@@ -128,6 +128,7 @@ public sealed unsafe partial class ActorAnimationEvent : global::System.IDisposa
         set => NativeMethods.TablePtr->C0.hs_set_08c3983b((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

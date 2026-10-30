@@ -125,6 +125,7 @@ public sealed unsafe partial class JigsawPlacer : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.JigsawPlacer((nint)NativeMethods.TablePtr->C4.hs_method_e0f40b66((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

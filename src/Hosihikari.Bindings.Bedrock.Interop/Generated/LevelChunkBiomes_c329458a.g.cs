@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelChunkBiomes
+public sealed unsafe partial class LevelChunkBiomes : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -99,4 +99,18 @@ public sealed unsafe partial class LevelChunkBiomes
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<SubChunkStorage<Biome>>' is not supported.", false)]
     public void setBiomes(nint biomes, ushort biomeStackSize) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<SubChunkStorage<Biome>>' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_c329458a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

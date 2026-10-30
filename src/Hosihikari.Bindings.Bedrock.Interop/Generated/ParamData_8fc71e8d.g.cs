@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AvailableCommandsPacketPayload_Nested;
 
-public sealed unsafe partial class ParamData
+public sealed unsafe partial class ParamData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,5 +60,19 @@ public sealed unsafe partial class ParamData
     {
         get => NativeMethods.TablePtr->C0.hs_get_83ea311d((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_83ea311d((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_8fc71e8d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

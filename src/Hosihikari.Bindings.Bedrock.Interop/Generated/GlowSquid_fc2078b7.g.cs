@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GlowSquid
+public sealed unsafe partial class GlowSquid : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -648,6 +648,7 @@ public sealed unsafe partial class GlowSquid
         NativeMethods.TablePtr->C1.hs_method_19b0f7f8((void*)__hosihikari_shim_handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_1c992a68((void*)__hosihikari_shim_handle);
@@ -868,5 +869,18 @@ public sealed unsafe partial class GlowSquid
     {
         get => NativeMethods.TablePtr->C1.hs_get_3d935df2((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_3d935df2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_fc2078b7((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

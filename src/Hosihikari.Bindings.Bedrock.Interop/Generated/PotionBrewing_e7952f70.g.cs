@@ -48,9 +48,10 @@ public sealed unsafe partial class PotionBrewing : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_06ca6c83((void*)from.Handle, (void*)ingredient.Handle, (void*)to.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint getChemistryMix(nint from, nint ingredient) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getChemistryMix(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor from, global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor ingredient)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C2.hs_method_9e7691f4((void*)from.Handle, (void*)ingredient.Handle));
+    }
 
     public static int getFuelValue(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor item)
     {
@@ -117,9 +118,10 @@ public sealed unsafe partial class PotionBrewing : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C2.hs_method_0264b92b();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint mix(nint ingredient, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance mix(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor ingredient, global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance source)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C2.hs_method_4fb20991((void*)ingredient.Handle, (void*)source.Handle));
+    }
 
     public static void shutdown()
     {

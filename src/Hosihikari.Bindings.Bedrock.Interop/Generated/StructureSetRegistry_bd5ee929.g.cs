@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class StructureSetRegistry
+public sealed unsafe partial class StructureSetRegistry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -60,6 +60,20 @@ public sealed unsafe partial class StructureSetRegistry
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             NativeMethods.TablePtr->C4.hs_method_f8010eff((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, set?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_bd5ee929((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
         }
     }
 }

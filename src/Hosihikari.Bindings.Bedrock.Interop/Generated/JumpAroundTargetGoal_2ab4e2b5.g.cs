@@ -349,6 +349,7 @@ public sealed unsafe partial class JumpAroundTargetGoal : global::System.IDispos
         NativeMethods.TablePtr->C1.hs_method_93c09dd2((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -192,6 +192,7 @@ public sealed unsafe partial class RandomHoverGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_a5b4866f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

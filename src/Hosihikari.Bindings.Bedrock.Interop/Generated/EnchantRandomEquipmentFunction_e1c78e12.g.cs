@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnchantRandomEquipmentFunction
+public sealed unsafe partial class EnchantRandomEquipmentFunction : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -64,9 +64,23 @@ public sealed unsafe partial class EnchantRandomEquipmentFunction
         set => NativeMethods.TablePtr->C1.hs_set_04c1c997((void*)__hosihikari_shim_handle, value);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPredicates_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_e5353314((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_e1c78e12((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

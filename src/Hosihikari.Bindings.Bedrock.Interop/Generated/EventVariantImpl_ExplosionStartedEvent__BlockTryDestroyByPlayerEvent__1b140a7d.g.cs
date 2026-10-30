@@ -42,4 +42,8 @@ public sealed partial class EventVariantImpl_ExplosionStartedEvent__BlockTryDest
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public static EventVariantImpl_ExplosionStartedEvent__BlockTryDestroyByPlayerEvent_ Create(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AgentComponents.Actions;
 
-public sealed unsafe partial class PlaceBlock
+public sealed unsafe partial class PlaceBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class PlaceBlock
     {
         get => NativeMethods.TablePtr->C0.hs_get_a3f8e9ec((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_a3f8e9ec((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_8f6d7a78((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

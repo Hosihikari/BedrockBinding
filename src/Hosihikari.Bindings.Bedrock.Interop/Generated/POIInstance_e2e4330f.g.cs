@@ -265,6 +265,7 @@ public sealed unsafe partial class POIInstance : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_ab8d0586((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, particleType);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

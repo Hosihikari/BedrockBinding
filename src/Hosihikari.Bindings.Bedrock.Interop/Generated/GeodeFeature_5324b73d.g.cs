@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GeodeFeature
+public sealed unsafe partial class GeodeFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -178,6 +178,7 @@ public sealed unsafe partial class GeodeFeature
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+
     public bool mCanUseInternalFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_c1af1943((void*)__hosihikari_shim_handle) != 0;
@@ -188,5 +189,18 @@ public sealed unsafe partial class GeodeFeature
     {
         get => NativeMethods.TablePtr->C1.hs_get_a0fd71c3((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_a0fd71c3((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_5324b73d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

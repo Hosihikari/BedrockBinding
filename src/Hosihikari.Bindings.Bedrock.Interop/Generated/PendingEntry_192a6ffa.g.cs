@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CircuitSceneGraph_Nested;
 
-public sealed unsafe partial class PendingEntry
+public sealed unsafe partial class PendingEntry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class PendingEntry
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_48b32d24((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_48b32d24((void*)__hosihikari_shim_handle, (void*)value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_192a6ffa((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

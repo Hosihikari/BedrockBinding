@@ -371,6 +371,7 @@ public sealed unsafe partial class RandomSearchAndDigGoal : global::System.IDisp
         NativeMethods.TablePtr->C2.hs_method_793f8310((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

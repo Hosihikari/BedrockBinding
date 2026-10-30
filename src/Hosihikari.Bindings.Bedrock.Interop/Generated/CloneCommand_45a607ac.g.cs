@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CloneCommand
+public sealed unsafe partial class CloneCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -101,6 +101,7 @@ public sealed unsafe partial class CloneCommand
         NativeMethods.TablePtr->C0.hs_method_77838d18((void*)registry.Handle);
     }
 
+
     public int mCommandSymbol
     {
         get => NativeMethods.TablePtr->C0.hs_get_67b79bc0((void*)__hosihikari_shim_handle);
@@ -128,5 +129,18 @@ public sealed unsafe partial class CloneCommand
     {
         get => NativeMethods.TablePtr->C0.hs_get_ccc76ae5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_ccc76ae5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_45a607ac((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

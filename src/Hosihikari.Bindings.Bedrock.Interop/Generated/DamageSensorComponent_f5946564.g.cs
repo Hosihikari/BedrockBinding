@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DamageSensorComponent
+public sealed unsafe partial class DamageSensorComponent : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -85,5 +85,19 @@ public sealed unsafe partial class DamageSensorComponent
     public byte recordGenericDamageAndCheckIfDealt(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float amount, float preDamageHealth, global::Hosihikari.Bindings.Bedrock.Interop.VariantParameterList parameters, bool willTrigger)
     {
         return NativeMethods.TablePtr->C1.hs_method_fbf29c2e((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)source.Handle, amount, preDamageHealth, (void*)parameters.Handle, willTrigger);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_f5946564((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

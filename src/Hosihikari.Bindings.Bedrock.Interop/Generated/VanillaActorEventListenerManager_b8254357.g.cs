@@ -40,12 +40,12 @@ public sealed unsafe partial class VanillaActorEventListenerManager : global::Sy
 
     public nint _ctor()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_35298aef((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_35298aef((void*)__hosihikari_shim_handle);
     }
 
     public static VanillaActorEventListenerManager Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_3adff7fa();
+        var handle = NativeMethods.TablePtr->C4.hs_create_3adff7fa();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,25 +57,26 @@ public sealed unsafe partial class VanillaActorEventListenerManager : global::Sy
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorHeldItemUpdater_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_ac545edd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ac545edd((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mKnockbackArmorUpdater_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_db540d54((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_db540d54((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNetheriteArmorEquippedListener_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_7a73dd62((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7a73dd62((void*)__hosihikari_shim_handle);
     }
 
     public void registerWithActorEventCoordinator(global::Hosihikari.Bindings.Bedrock.Interop.ActorEventCoordinator actorEventCoordinator)
     {
-        NativeMethods.TablePtr->C3.hs_method_289e7356((void*)__hosihikari_shim_handle, (void*)actorEventCoordinator.Handle);
+        NativeMethods.TablePtr->C4.hs_method_289e7356((void*)__hosihikari_shim_handle, (void*)actorEventCoordinator.Handle);
     }
+
 
     public void Dispose()
     {
@@ -83,7 +84,7 @@ public sealed unsafe partial class VanillaActorEventListenerManager : global::Sy
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_b8254357((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_b8254357((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

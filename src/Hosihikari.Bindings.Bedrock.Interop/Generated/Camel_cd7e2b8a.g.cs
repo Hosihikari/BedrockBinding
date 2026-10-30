@@ -669,6 +669,7 @@ public sealed unsafe partial class Camel : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_77d837af((void*)__hosihikari_shim_handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_489ade4b((void*)__hosihikari_shim_handle);

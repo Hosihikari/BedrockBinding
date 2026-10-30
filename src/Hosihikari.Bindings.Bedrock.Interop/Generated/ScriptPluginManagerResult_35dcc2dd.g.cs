@@ -60,9 +60,9 @@ public sealed unsafe partial class ScriptPluginManagerResult : global::System.ID
         return new ScriptPluginManagerResult((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint getOrCreatePluginResults(nint packId, nint descriptor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void logMessages()
     {

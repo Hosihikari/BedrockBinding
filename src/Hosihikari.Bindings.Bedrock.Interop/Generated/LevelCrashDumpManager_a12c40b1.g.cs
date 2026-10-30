@@ -40,7 +40,7 @@ public sealed unsafe partial class LevelCrashDumpManager : global::System.IDispo
 
     public void _setCrashDumpLogStringID(ushort crashDumpLogStringID)
     {
-        NativeMethods.TablePtr->C1.hs_method_bace2e17((void*)__hosihikari_shim_handle, crashDumpLogStringID);
+        NativeMethods.TablePtr->C2.hs_method_bace2e17((void*)__hosihikari_shim_handle, crashDumpLogStringID);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -49,7 +49,7 @@ public sealed unsafe partial class LevelCrashDumpManager : global::System.IDispo
 
     public static LevelCrashDumpManager Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_00b07cd7();
+        var handle = NativeMethods.TablePtr->C2.hs_create_00b07cd7();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -60,7 +60,7 @@ public sealed unsafe partial class LevelCrashDumpManager : global::System.IDispo
 
     public static LevelCrashDumpManager Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_18ad0953((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_18ad0953((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,23 +72,23 @@ public sealed unsafe partial class LevelCrashDumpManager : global::System.IDispo
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd9b23f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b5582c97((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b5582c97((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf2302b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_c5fb2c86((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_c5fb2c86((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager((nint)NativeMethods.TablePtr->C1.hs_method_e22a7089((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelCrashDumpManager((nint)NativeMethods.TablePtr->C2.hs_method_e22a7089((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void setCrashDumpLogStringID(ushort crashDumpLogStringID)
     {
-        NativeMethods.TablePtr->C1.hs_method_6a27d891((void*)__hosihikari_shim_handle, crashDumpLogStringID);
+        NativeMethods.TablePtr->C2.hs_method_6a27d891((void*)__hosihikari_shim_handle, crashDumpLogStringID);
     }
 
 
@@ -98,7 +98,7 @@ public sealed unsafe partial class LevelCrashDumpManager : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_a12c40b1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_a12c40b1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

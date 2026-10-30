@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockPatternBuilder
+public sealed unsafe partial class BlockPatternBuilder : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -42,9 +42,10 @@ public sealed unsafe partial class BlockPatternBuilder
     public nint aisle(nint patterns) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'BlockPatternData' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint buildOrAssert() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'BlockPatternData' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPatternData buildOrAssert()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPatternData((nint)NativeMethods.TablePtr->C0.hs_method_3eb611f2((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint define(byte pattern, nint tester) =>
@@ -54,5 +55,19 @@ public sealed unsafe partial class BlockPatternBuilder
     public nint mData_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_11a39e92((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_022b19c5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

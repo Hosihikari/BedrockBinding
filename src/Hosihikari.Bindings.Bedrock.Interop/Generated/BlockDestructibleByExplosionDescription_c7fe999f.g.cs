@@ -103,6 +103,7 @@ public sealed unsafe partial class BlockDestructibleByExplosionDescription : glo
         set => NativeMethods.TablePtr->C0.hs_set_ccc2f047((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

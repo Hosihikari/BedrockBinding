@@ -173,6 +173,7 @@ public sealed unsafe partial class MapCloningRecipe : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_e85e0a37((void*)__hosihikari_shim_handle);
     }
 
+
     public int mHeight
     {
         get => NativeMethods.TablePtr->C2.hs_get_e52eb6a8((void*)__hosihikari_shim_handle);

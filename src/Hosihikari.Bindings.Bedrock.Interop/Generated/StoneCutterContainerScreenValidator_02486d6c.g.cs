@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class StoneCutterContainerScreenValidator
+public sealed unsafe partial class StoneCutterContainerScreenValidator : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -57,9 +57,10 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getResultFromId(nint screenContext, nint recipeNetId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance _getResultFromId(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, nint recipeNetId)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C3.hs_method_0ac16525((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)recipeNetId));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint getCraftResult(nint screenContext, nint screenValidation, nint craftInputs, nint numCrafts) =>
@@ -68,5 +69,19 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator
     public bool isCraftingImplemented()
     {
         return NativeMethods.TablePtr->C3.hs_method_02253267((void*)__hosihikari_shim_handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_02486d6c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

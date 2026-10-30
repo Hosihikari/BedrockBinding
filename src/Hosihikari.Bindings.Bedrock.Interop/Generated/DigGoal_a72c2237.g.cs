@@ -249,6 +249,7 @@ public sealed unsafe partial class DigGoal : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_de952c69((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

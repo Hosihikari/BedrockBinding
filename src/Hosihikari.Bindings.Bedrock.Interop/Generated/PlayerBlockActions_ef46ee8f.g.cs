@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerBlockActions
+public sealed unsafe partial class PlayerBlockActions : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,5 +51,19 @@ public sealed unsafe partial class PlayerBlockActions
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.PlayerBlockActions other)
     {
         return NativeMethods.TablePtr->C2.hs_method_fdd00e64((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ef46ee8f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

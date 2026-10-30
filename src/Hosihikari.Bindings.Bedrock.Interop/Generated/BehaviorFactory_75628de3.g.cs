@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BehaviorFactory
+public sealed unsafe partial class BehaviorFactory : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,4 +56,18 @@ public sealed unsafe partial class BehaviorFactory
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<BehaviorDefinition>' is not supported.", false)]
     public void registerNodePair(nint id, nint definitionCreator, nint nodeCreator) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<BehaviorDefinition>' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_75628de3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

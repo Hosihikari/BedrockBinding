@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerTickProxy
+public sealed unsafe partial class PlayerTickProxy : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -86,5 +86,19 @@ public sealed unsafe partial class PlayerTickProxy
     public void processDimensionPlayerReplication(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
     {
         NativeMethods.TablePtr->C2.hs_method_a3eaaf8f((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_5bea4726((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

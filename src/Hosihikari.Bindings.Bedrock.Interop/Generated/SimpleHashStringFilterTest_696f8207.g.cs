@@ -117,6 +117,7 @@ public sealed unsafe partial class SimpleHashStringFilterTest : global::System.I
         return NativeMethods.TablePtr->C3.hs_method_d78fe4d5((void*)__hosihikari_shim_handle, (void*)definition.Handle, (void*)inputs.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

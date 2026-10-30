@@ -93,7 +93,7 @@ public sealed unsafe partial class UnzipFile : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_57cce9f1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_57cce9f1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

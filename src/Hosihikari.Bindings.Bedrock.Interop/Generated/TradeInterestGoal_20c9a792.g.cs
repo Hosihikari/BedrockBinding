@@ -291,6 +291,7 @@ public sealed unsafe partial class TradeInterestGoal : global::System.IDisposabl
         NativeMethods.TablePtr->C3.hs_method_b6943f07((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

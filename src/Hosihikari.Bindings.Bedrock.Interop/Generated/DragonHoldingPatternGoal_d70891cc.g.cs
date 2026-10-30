@@ -163,6 +163,7 @@ public sealed unsafe partial class DragonHoldingPatternGoal : global::System.IDi
         NativeMethods.TablePtr->C1.hs_method_5098e7dd((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

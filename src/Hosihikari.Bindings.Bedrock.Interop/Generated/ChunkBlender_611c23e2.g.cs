@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ChunkBlender
+public sealed unsafe partial class ChunkBlender : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -63,5 +63,19 @@ public sealed unsafe partial class ChunkBlender
     {
         var __hs_handle = NativeMethods.TablePtr->C0.hs_method_1acdb352((void*)__hosihikari_shim_handle, (void*)worldQuartPos, (void*)biomeRegistry.Handle, (void*)shiftNoise);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_611c23e2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

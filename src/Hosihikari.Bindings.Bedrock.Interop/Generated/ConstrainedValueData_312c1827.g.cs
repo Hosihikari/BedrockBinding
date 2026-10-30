@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.AvailableCommandsPacketPayload_Nested;
 
-public sealed unsafe partial class ConstrainedValueData
+public sealed unsafe partial class ConstrainedValueData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class ConstrainedValueData
     {
         get => NativeMethods.TablePtr->C0.hs_get_b6d1828f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_b6d1828f((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_312c1827((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

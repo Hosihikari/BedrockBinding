@@ -210,6 +210,7 @@ public sealed unsafe partial class GoAndGiveItemsToOwnerGoal : global::System.ID
         NativeMethods.TablePtr->C1.hs_method_d985f364((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

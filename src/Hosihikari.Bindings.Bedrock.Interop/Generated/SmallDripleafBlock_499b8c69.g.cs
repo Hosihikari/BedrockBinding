@@ -463,6 +463,7 @@ public sealed unsafe partial class SmallDripleafBlock : global::System.IDisposab
         return NativeMethods.TablePtr->C3.hs_method_315794fb((void*)region.Handle, (void*)pos.Handle, directionState, updateFlags) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

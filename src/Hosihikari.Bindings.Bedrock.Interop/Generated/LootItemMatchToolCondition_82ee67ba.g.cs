@@ -142,6 +142,7 @@ public sealed unsafe partial class LootItemMatchToolCondition : global::System.I
         return new global::Hosihikari.Bindings.Bedrock.Interop.LootItemMatchToolCondition((nint)NativeMethods.TablePtr->C2.hs_method_dabd0ff4((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

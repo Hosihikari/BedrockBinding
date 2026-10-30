@@ -69,6 +69,7 @@ public sealed unsafe partial class SoftEnum : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C0.hs_get_ba16f044((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

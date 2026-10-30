@@ -170,6 +170,7 @@ public sealed unsafe partial class DirectionalProducerComponent : global::System
         get => (nint)NativeMethods.TablePtr->C1.hs_get_671b0b5e((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAttachedAllowed
     {
         get => NativeMethods.TablePtr->C1.hs_get_0ec1b009((void*)__hosihikari_shim_handle) != 0;

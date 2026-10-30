@@ -70,6 +70,7 @@ public sealed unsafe partial class ItemStackNetIdVariant : global::System.IDispo
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

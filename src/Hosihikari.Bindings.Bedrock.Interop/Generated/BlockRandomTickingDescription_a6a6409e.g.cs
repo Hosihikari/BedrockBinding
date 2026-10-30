@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockRandomTickingDescription
+public sealed unsafe partial class BlockRandomTickingDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -85,5 +85,19 @@ public sealed unsafe partial class BlockRandomTickingDescription
     public nint mOnTimeDown_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_e8744127((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_a6a6409e((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

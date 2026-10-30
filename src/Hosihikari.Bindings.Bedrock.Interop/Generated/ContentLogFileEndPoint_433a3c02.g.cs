@@ -44,9 +44,9 @@ public sealed unsafe partial class ContentLogFileEndPoint : global::System.IDisp
         get => (nint)NativeMethods.TablePtr->C0.hs_get_b919c8aa((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public nint _ctor(nint debugLogDirectory, nint fileName, nint minLogLevel) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public void _dtor()
     {
@@ -89,9 +89,9 @@ public sealed unsafe partial class ContentLogFileEndPoint : global::System.IDisp
         return new ContentLogFileEndPoint((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public static ContentLogFileEndPoint Create(nint debugLogDirectory, nint fileName, nint minLogLevel) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public static ContentLogFileEndPoint Create(global::Hosihikari.Bindings.Bedrock.Interop.ContentLogFileEndPoint arg0)
     {

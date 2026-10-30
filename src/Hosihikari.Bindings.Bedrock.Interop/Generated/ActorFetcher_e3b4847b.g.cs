@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorFetcher
+public sealed unsafe partial class ActorFetcher : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -50,13 +50,28 @@ public sealed unsafe partial class ActorFetcher
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Mob((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint fetchStrictActorAllDimensions(nint actorId, bool getRemoved) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'StrictEntityContext' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext fetchStrictActorAllDimensions(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorId, bool getRemoved)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext((nint)NativeMethods.TablePtr->C0.hs_method_2e413ed9((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionManager_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_245a92e5((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_e3b4847b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

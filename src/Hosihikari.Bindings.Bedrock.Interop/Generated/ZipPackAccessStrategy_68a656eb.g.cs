@@ -134,9 +134,10 @@ public sealed unsafe partial class ZipPackAccessStrategy : global::System.IDispo
         return NativeMethods.TablePtr->C4.hs_method_1cc24073((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _readContentIdentity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity _readContentIdentity()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->C4.hs_method_1dda55a5((void*)__hosihikari_shim_handle));
+    }
 
     public bool _supportsSignatureVerification()
     {
@@ -306,9 +307,10 @@ public sealed unsafe partial class ZipPackAccessStrategy : global::System.IDispo
         return new global::Hosihikari.Bindings.Bedrock.Interop.ZipPackAccessStrategy((nint)NativeMethods.TablePtr->C4.hs_method_fc0982c7((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint readContentIdentity() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentIdentity' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity readContentIdentity()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity((nint)NativeMethods.TablePtr->C4.hs_method_0a5b4329((void*)__hosihikari_shim_handle));
+    }
 
     public bool supportsSignatureVerification()
     {

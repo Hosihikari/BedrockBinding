@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CherryLeavesBlock
+public sealed unsafe partial class CherryLeavesBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -269,6 +269,7 @@ public sealed unsafe partial class CherryLeavesBlock
         NativeMethods.TablePtr->C0.hs_method_afd3c413((void*)__hosihikari_shim_handle, (void*)tickData);
     }
 
+
     public bool mHasTransparentLeaves
     {
         get => NativeMethods.TablePtr->C0.hs_get_c3fb5196((void*)__hosihikari_shim_handle) != 0;
@@ -285,5 +286,18 @@ public sealed unsafe partial class CherryLeavesBlock
     public nint mSapling_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_91039a56((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_3a463311((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

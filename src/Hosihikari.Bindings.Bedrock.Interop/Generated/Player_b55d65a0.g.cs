@@ -1270,9 +1270,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_f15e3e60((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getCurrentStructureFeature() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString _getCurrentStructureFeature()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C2.hs_method_9e828b1b((void*)__hosihikari_shim_handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack _getEquippedTotem()
     {
@@ -2515,9 +2516,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C2.hs_method_ead203e6((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getCurrentStructureFeature() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'HashedString' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getCurrentStructureFeature()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C2.hs_method_1bb446d6((void*)__hosihikari_shim_handle));
+    }
 
     public static uint? getCustomHurtSound(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, int cause)
     {

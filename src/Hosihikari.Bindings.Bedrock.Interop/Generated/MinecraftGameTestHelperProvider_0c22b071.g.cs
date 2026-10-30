@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class MinecraftGameTestHelperProvider
+public sealed unsafe partial class MinecraftGameTestHelperProvider : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -58,4 +57,18 @@ public sealed partial class MinecraftGameTestHelperProvider
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::BaseGameTestHelper' has no accessible destructor.", false)]
     public nint createGameTestHelper(nint testInstance) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::BaseGameTestHelper' has no accessible destructor.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_0c22b071((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

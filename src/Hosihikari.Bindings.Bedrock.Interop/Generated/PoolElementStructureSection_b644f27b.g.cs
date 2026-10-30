@@ -94,6 +94,7 @@ public sealed unsafe partial class PoolElementStructureSection : global::System.
     public nint serialize() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SharedTypes::v1_21_50::PoolElementStructureSection' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

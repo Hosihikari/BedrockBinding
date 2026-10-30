@@ -150,6 +150,7 @@ public sealed unsafe partial class NpcI18nObserver : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.NpcI18nObserver((nint)NativeMethods.TablePtr->C2.hs_method_9c76907c((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

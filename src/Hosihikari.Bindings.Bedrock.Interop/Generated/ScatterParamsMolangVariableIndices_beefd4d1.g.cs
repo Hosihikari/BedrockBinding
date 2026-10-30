@@ -40,12 +40,12 @@ public sealed unsafe partial class ScatterParamsMolangVariableIndices : global::
 
     public nint _ctor()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_9cf5fac7((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_9cf5fac7((void*)__hosihikari_shim_handle);
     }
 
     public static ScatterParamsMolangVariableIndices Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_416284ed();
+        var handle = NativeMethods.TablePtr->C3.hs_create_416284ed();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,26 +56,26 @@ public sealed unsafe partial class ScatterParamsMolangVariableIndices : global::
 
     public ushort mVariableOriginXIndex
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f5fdc9b3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f5fdc9b3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f5fdc9b3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f5fdc9b3((void*)__hosihikari_shim_handle, value);
     }
 
     public ushort mVariableOriginYIndex
     {
-        get => NativeMethods.TablePtr->C2.hs_get_0aa3fa15((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_0aa3fa15((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_0aa3fa15((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_0aa3fa15((void*)__hosihikari_shim_handle, value);
     }
 
     public ushort mVariableOriginZIndex
     {
-        get => NativeMethods.TablePtr->C2.hs_get_65c88aee((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_65c88aee((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_65c88aee((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_65c88aee((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mVariableWorldIndex_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_25c2c397((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_25c2c397((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -84,7 +84,7 @@ public sealed unsafe partial class ScatterParamsMolangVariableIndices : global::
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_beefd4d1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_beefd4d1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

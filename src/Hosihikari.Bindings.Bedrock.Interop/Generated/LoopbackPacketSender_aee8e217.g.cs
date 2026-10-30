@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LoopbackPacketSender
+public sealed unsafe partial class LoopbackPacketSender : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -189,9 +189,23 @@ public sealed unsafe partial class LoopbackPacketSender
         NativeMethods.TablePtr->C2.hs_method_7e4cb600((void*)__hosihikari_shim_handle, (void*)packet.Handle);
     }
 
+
     public byte mSubId
     {
         get => NativeMethods.TablePtr->C2.hs_get_07c27f19((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_07c27f19((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_aee8e217((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

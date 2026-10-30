@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CrafterBlockActor_Nested;
 
-public sealed unsafe partial class LruCache
+public sealed unsafe partial class LruCache : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,12 +41,26 @@ public sealed unsafe partial class LruCache
     // The native field type is not projected; this is the address of the field storage.
     public nint mCachedValues_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_2abf0de3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2abf0de3((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRecencyOrderedIndexes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_dbf23654((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_dbf23654((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0d06c502((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

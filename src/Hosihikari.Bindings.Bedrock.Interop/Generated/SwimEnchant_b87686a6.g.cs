@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SwimEnchant
+public sealed unsafe partial class SwimEnchant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -135,5 +135,19 @@ public sealed unsafe partial class SwimEnchant
     public int getMinCost(int level)
     {
         return NativeMethods.TablePtr->C3.hs_method_d2606580((void*)__hosihikari_shim_handle, level);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_b87686a6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

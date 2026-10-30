@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class SpawnerData
+public sealed unsafe partial class SpawnerData : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -56,9 +56,24 @@ public sealed unsafe partial class SpawnerData
         get => (nint)NativeMethods.TablePtr->C4.hs_get_5e9f203f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'br::worldgen::SpawnerData' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint make(nint id, short probabilityWeight, short minCount, short maxCount) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'br::worldgen::SpawnerData' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.SpawnerData make(string id, short probabilityWeight, short minCount, short maxCount)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(id);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.SpawnerData((nint)NativeMethods.TablePtr->C4.hs_method_74b59893(__hs_stringData0, (nuint)__hs_stringByteCount0, probabilityWeight, minCount, maxCount));
+        }
+    }
 
     public short maxCount
     {
@@ -94,5 +109,19 @@ public sealed unsafe partial class SpawnerData
     {
         get => NativeMethods.TablePtr->C4.hs_get_0848d3e4((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C4.hs_set_0848d3e4((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_ce22e0c3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

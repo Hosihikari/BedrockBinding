@@ -219,6 +219,7 @@ public sealed unsafe partial class WoodlandMansionPiece : global::System.IDispos
         NativeMethods.TablePtr->C4.hs_method_93381684((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

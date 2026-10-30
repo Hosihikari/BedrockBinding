@@ -126,6 +126,7 @@ public sealed unsafe partial class ScriptGameTestSequence : global::System.IDisp
     public nint thenWaitAfter(int tickDelay, nint fn) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::WeakTypedObjectHandle<ScriptModuleGameTest::ScriptGameTestSequence>' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

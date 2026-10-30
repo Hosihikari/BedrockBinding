@@ -400,6 +400,7 @@ public sealed unsafe partial class WeaponItem : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C4.hs_method_70424b9d((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)player.Handle, handSlot), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

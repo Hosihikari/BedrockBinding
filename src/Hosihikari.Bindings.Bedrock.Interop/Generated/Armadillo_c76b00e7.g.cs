@@ -632,6 +632,7 @@ public sealed unsafe partial class Armadillo : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_243b8ad3((void*)__hosihikari_shim_handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_a9b45bbd((void*)__hosihikari_shim_handle);

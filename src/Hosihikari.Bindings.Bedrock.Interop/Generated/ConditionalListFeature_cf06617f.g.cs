@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ConditionalListFeature
+public sealed unsafe partial class ConditionalListFeature : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -64,6 +64,7 @@ public sealed unsafe partial class ConditionalListFeature
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)__hs_handle) : null;
     }
 
+
     public bool mCanUseInternalFeature
     {
         get => NativeMethods.TablePtr->C0.hs_get_4533ab68((void*)__hosihikari_shim_handle) != 0;
@@ -74,5 +75,18 @@ public sealed unsafe partial class ConditionalListFeature
     {
         get => NativeMethods.TablePtr->C0.hs_get_70ed30ab((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C0.hs_set_70ed30ab((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_cf06617f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

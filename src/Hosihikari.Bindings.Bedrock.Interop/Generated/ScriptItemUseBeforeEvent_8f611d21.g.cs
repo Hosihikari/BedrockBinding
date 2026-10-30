@@ -93,6 +93,7 @@ public sealed unsafe partial class ScriptItemUseBeforeEvent : global::System.IDi
         set => NativeMethods.TablePtr->C3.hs_set_f8c355e4((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

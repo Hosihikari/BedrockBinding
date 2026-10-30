@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DoorItem
+public sealed unsafe partial class DoorItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -57,6 +57,7 @@ public sealed unsafe partial class DoorItem
         get => NativeMethods.TablePtr->C1.hs_get_5d2fce04((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_5d2fce04((void*)__hosihikari_shim_handle, value);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -265,5 +266,18 @@ public sealed unsafe partial class DoorItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_5e6edbc6((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_5e6edbc6((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_bb7c92b3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

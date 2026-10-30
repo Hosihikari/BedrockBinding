@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EventingRequest
+public sealed unsafe partial class EventingRequest : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -38,13 +38,42 @@ public sealed unsafe partial class EventingRequest
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'EventingRequest' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint addPersonaEmotePlayed(nint emoteProductId, bool isEmoteEndedEarly, int emoteSlotId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'EventingRequest' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.EventingRequest addPersonaEmotePlayed(string emoteProductId, bool isEmoteEndedEarly, int emoteSlotId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(emoteProductId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(emoteProductId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.EventingRequest((nint)NativeMethods.TablePtr->C1.hs_method_e807ae32(__hs_stringData0, (nuint)__hs_stringByteCount0, isEmoteEndedEarly, emoteSlotId));
+        }
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mData_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_e2a188d9((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_c6b45c00((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

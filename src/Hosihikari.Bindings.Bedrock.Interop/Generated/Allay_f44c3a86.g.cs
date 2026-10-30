@@ -661,6 +661,7 @@ public sealed unsafe partial class Allay : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_403691e6((void*)__hosihikari_shim_handle, method, (void*)@params.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_5f23240a((void*)__hosihikari_shim_handle);

@@ -93,6 +93,7 @@ public sealed unsafe partial class ObjectFactory : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.QuickJS.ObjectFactory((nint)NativeMethods.TablePtr->C3.hs_method_e42cb832((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

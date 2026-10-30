@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.br.worldgen;
 
-public sealed unsafe partial class WorldGenRandom
+public sealed unsafe partial class WorldGenRandom : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -91,9 +91,10 @@ public sealed unsafe partial class WorldGenRandom
         NativeMethods.TablePtr->C4.hs_method_ac9185ac((void*)__hosihikari_shim_handle, count);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'br::worldgen::WorldGenRandom' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint forkPositional(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'br::worldgen::WorldGenRandom' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom forkPositional(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom((nint)NativeMethods.TablePtr->C4.hs_method_edcbf1c3((void*)__hosihikari_shim_handle, (void*)pos.Handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
     public nint forkPositional() =>
@@ -148,5 +149,19 @@ public sealed unsafe partial class WorldGenRandom
     public global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom setLargeFeatureSeed(long seed, int chunkX, int chunkZ)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.WorldGenRandom((nint)NativeMethods.TablePtr->C4.hs_method_85a44937((void*)__hosihikari_shim_handle, seed, chunkX, chunkZ), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_7956bc46((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

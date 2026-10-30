@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HungerAttributeDelegate
+public sealed unsafe partial class HungerAttributeDelegate : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -90,5 +90,19 @@ public sealed unsafe partial class HungerAttributeDelegate
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.AttributeInstance mutableInstance, nint context)
     {
         NativeMethods.TablePtr->C1.hs_method_a6675854((void*)__hosihikari_shim_handle, (void*)mutableInstance.Handle, (void*)context);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_e4823df2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

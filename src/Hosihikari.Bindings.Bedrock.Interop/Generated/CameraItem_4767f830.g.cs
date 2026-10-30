@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CameraItem
+public sealed unsafe partial class CameraItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,6 +41,7 @@ public sealed unsafe partial class CameraItem
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
+
 
     public bool mAnimatesInToolbar
     {
@@ -249,5 +250,18 @@ public sealed unsafe partial class CameraItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_c01f9e10((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_c01f9e10((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_4767f830((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

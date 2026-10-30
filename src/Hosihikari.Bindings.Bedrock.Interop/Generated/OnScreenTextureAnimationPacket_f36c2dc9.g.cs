@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class OnScreenTextureAnimationPacket
+public sealed unsafe partial class OnScreenTextureAnimationPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class OnScreenTextureAnimationPacket
         NativeMethods.TablePtr->C2.hs_method_d2a6bb8f((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public uint mEffectID
     {
         get => NativeMethods.TablePtr->C2.hs_get_3832d93a((void*)__hosihikari_shim_handle);
@@ -231,5 +232,18 @@ public sealed unsafe partial class OnScreenTextureAnimationPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_ab70edce((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_ab70edce((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_f36c2dc9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

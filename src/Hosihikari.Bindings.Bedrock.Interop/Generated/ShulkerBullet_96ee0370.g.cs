@@ -681,6 +681,7 @@ public sealed unsafe partial class ShulkerBullet : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_b0c284a2((void*)__hosihikari_shim_handle, arg0, (void*)arg1.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

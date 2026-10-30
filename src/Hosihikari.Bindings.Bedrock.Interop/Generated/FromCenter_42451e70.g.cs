@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockPosIterator_Nested;
 
-public sealed unsafe partial class FromCenter
+public sealed unsafe partial class FromCenter : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -95,5 +95,19 @@ public sealed unsafe partial class FromCenter
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPosIterator_Nested.FromCenter operator_operator__()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPosIterator_Nested.FromCenter((nint)NativeMethods.TablePtr->C0.hs_method_ad3645db((void*)__hosihikari_shim_handle), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_42451e70((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

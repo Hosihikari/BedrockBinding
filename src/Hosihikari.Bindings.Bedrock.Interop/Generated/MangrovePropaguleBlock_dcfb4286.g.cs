@@ -403,6 +403,7 @@ public sealed unsafe partial class MangrovePropaguleBlock : global::System.IDisp
         NativeMethods.TablePtr->C2.hs_method_d78997aa((void*)__hosihikari_shim_handle, (void*)eventData.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

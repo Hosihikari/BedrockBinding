@@ -67,6 +67,7 @@ public sealed unsafe partial class StoredCommand : global::System.IDisposable
         set => NativeMethods.TablePtr->C4.hs_set_d830720b((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

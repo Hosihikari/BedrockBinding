@@ -75,13 +75,15 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_a1983f68((void*)__hosihikari_shim_handle, (void*)baseGameVersion.Handle, (void*)arg1.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const RecipeIngredient' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _loadIngredientFromJson(nint obj, nint molangVersion, bool allowItemCount, bool allowItemGroup) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const RecipeIngredient' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient _loadIngredientFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value obj, short molangVersion, bool allowItemCount, bool allowItemGroup)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C2.hs_method_bb17cb1c((void*)__hosihikari_shim_handle, (void*)obj.Handle, molangVersion, allowItemCount, allowItemGroup));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'const RecipeIngredient' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _loadInputIngredientFromJson(nint obj, nint minEngineVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'const RecipeIngredient' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient _loadInputIngredientFromJson(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value obj, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C2.hs_method_20b5744d((void*)__hosihikari_shim_handle, (void*)obj.Handle, (void*)minEngineVersion.Handle));
+    }
 
     public bool _loadRecipe(string recipeId, byte type, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value objData, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion minEngineVersion, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion formatVersion, bool isBaseGamePack, global::Hosihikari.Bindings.Bedrock.Interop.Recipes_Nested.Buffers buffers)
     {
@@ -106,9 +108,9 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
     public nint _loadUnlockingRequirementFromJson(nint obj, nint molangVersion, nint recipeId) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'RecipeUnlockingRequirement' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void addDyedItemRecipe(nint recipeId, nint result, nint itemToDye, nint dye, nint unlockingReq, nint priority, nint formatVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapedRecipe>' is not supported.", false)]
     public void addShapedRecipe(nint recipeId, nint result, nint r0, nint r1, nint r2, nint types, nint tags, int priority, nint constructor, nint unlockingReq, nint formatVersion, bool assumeSymmetry) =>
@@ -147,9 +149,10 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
     public void forEachRecipeFor(nint tag, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getFurnaceRecipeResult(nint item, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ItemInstance' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance getFurnaceRecipeResult(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item, global::Hosihikari.Bindings.Bedrock.Interop.HashedString tag)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C2.hs_method_9cdc66df((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)tag.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Recipe? getRecipeByNetId(nint netId)
     {

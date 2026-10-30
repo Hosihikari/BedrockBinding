@@ -252,6 +252,7 @@ public sealed unsafe partial class ServerSettingsResponsePacket : global::System
         NativeMethods.TablePtr->C3.hs_method_d258e994((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public uint mFormId
     {
         get => NativeMethods.TablePtr->C3.hs_get_44cc9552((void*)__hosihikari_shim_handle);

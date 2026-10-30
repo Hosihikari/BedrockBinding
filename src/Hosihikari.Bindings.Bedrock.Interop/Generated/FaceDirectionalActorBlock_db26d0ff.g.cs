@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FaceDirectionalActorBlock
+public sealed unsafe partial class FaceDirectionalActorBlock : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -309,5 +309,19 @@ public sealed unsafe partial class FaceDirectionalActorBlock
     {
         get => NativeMethods.TablePtr->C1.hs_get_e7042b02((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_e7042b02((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_db26d0ff((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -66,6 +66,7 @@ public sealed unsafe partial class BlockMaterialData : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockMaterialInstancesDescription_Nested.BlockMaterialData((nint)NativeMethods.TablePtr->C0.hs_method_e5223111((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

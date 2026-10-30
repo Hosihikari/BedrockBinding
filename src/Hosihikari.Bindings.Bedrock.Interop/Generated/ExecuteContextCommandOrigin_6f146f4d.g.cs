@@ -291,6 +291,7 @@ public sealed unsafe partial class ExecuteContextCommandOrigin : global::System.
         NativeMethods.TablePtr->C1.hs_method_c65916a7((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

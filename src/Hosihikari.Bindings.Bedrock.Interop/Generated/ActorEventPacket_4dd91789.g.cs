@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ActorEventPacket
+public sealed unsafe partial class ActorEventPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class ActorEventPacket
         NativeMethods.TablePtr->C0.hs_method_7a089fa1((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mData
     {
         get => NativeMethods.TablePtr->C0.hs_get_2691aa5b((void*)__hosihikari_shim_handle);
@@ -249,5 +250,18 @@ public sealed unsafe partial class ActorEventPacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_019575d0((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_019575d0((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_4dd91789((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -81,6 +81,7 @@ public sealed unsafe partial class HoverTextColorItemComponent : global::System.
         get => (nint)NativeMethods.TablePtr->C1.hs_get_ae4fff3a((void*)__hosihikari_shim_handle);
     }
 
+
     public nint mOwner
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_cbebd253((void*)__hosihikari_shim_handle);

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class GetAttachPositionViews
+public sealed unsafe partial class GetAttachPositionViews : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -108,5 +108,19 @@ public sealed unsafe partial class GetAttachPositionViews
     public nint mVehicles_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_496b8b34((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_6c387cb3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptSystemBeforeEvents_Nested;
 
-public sealed unsafe partial class SignalNameSubscriberCount
+public sealed unsafe partial class SignalNameSubscriberCount : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class SignalNameSubscriberCount
     public nint name_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_29c36128((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_91f26206((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CavifierNoises
+public sealed unsafe partial class CavifierNoises : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -134,7 +134,22 @@ public sealed unsafe partial class CavifierNoises
         get => (nint)NativeMethods.TablePtr->C0.hs_get_c84c6ad9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CavifierNoises' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint make(nint randomFactory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CavifierNoises' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.CavifierNoises make(global::Hosihikari.Bindings.Bedrock.Interop.XoroshiroPositionalRandomFactory randomFactory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CavifierNoises((nint)NativeMethods.TablePtr->C0.hs_method_0b27088b((void*)randomFactory.Handle));
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_5c6ac0af((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

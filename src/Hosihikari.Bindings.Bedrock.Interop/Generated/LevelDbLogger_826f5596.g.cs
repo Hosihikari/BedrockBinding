@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class LevelDbLogger
+public sealed unsafe partial class LevelDbLogger : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,11 +40,25 @@ public sealed unsafe partial class LevelDbLogger
 
     public void _Logv(nint format, nint ap)
     {
-        NativeMethods.TablePtr->C1.hs_method_3c8bb9cf((void*)__hosihikari_shim_handle, (void*)format, (void*)ap);
+        NativeMethods.TablePtr->C2.hs_method_3c8bb9cf((void*)__hosihikari_shim_handle, (void*)format, (void*)ap);
     }
 
     public void Logv(nint format, nint ap)
     {
-        NativeMethods.TablePtr->C1.hs_method_ee32b7df((void*)__hosihikari_shim_handle, (void*)format, (void*)ap);
+        NativeMethods.TablePtr->C2.hs_method_ee32b7df((void*)__hosihikari_shim_handle, (void*)format, (void*)ap);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_826f5596((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

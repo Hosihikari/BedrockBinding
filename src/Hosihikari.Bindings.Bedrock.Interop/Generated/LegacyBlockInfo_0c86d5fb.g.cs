@@ -105,6 +105,7 @@ public sealed unsafe partial class LegacyBlockInfo : global::System.IDisposable
         set => NativeMethods.TablePtr->C1.hs_set_d93d3cdd((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

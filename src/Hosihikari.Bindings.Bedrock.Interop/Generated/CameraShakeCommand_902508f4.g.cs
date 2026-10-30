@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CameraShakeCommand
+public sealed unsafe partial class CameraShakeCommand : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -89,6 +89,7 @@ public sealed unsafe partial class CameraShakeCommand
         NativeMethods.TablePtr->C0.hs_method_575bcf03((void*)registry.Handle);
     }
 
+
     public int mCommandSymbol
     {
         get => NativeMethods.TablePtr->C0.hs_get_eab2bc32((void*)__hosihikari_shim_handle);
@@ -116,5 +117,18 @@ public sealed unsafe partial class CameraShakeCommand
     {
         get => NativeMethods.TablePtr->C0.hs_get_463dfa28((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_463dfa28((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_902508f4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

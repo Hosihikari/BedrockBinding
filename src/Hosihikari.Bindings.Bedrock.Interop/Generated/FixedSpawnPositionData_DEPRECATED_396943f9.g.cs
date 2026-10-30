@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Player_Nested;
 
-public sealed unsafe partial class FixedSpawnPositionData_DEPRECATED
+public sealed unsafe partial class FixedSpawnPositionData_DEPRECATED : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class FixedSpawnPositionData_DEPRECATED
     public nint mPosition_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_2f8b08b6((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_396943f9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

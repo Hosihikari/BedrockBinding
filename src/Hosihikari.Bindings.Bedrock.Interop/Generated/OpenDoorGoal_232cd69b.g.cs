@@ -222,6 +222,7 @@ public sealed unsafe partial class OpenDoorGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_26a7f93c((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

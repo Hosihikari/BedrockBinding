@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BreachEnchant
+public sealed unsafe partial class BreachEnchant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -88,6 +88,7 @@ public sealed unsafe partial class BreachEnchant
         return NativeMethods.TablePtr->C0.hs_method_ceaf9c43((void*)__hosihikari_shim_handle, level);
     }
 
+
     public int mCompatibility
     {
         get => NativeMethods.TablePtr->C0.hs_get_f2e45625((void*)__hosihikari_shim_handle);
@@ -140,5 +141,18 @@ public sealed unsafe partial class BreachEnchant
     public nint mStringId_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_f8ad7691((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_b049aeb3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MoveTowardsDwellingRestrictionGoal
+public sealed unsafe partial class MoveTowardsDwellingRestrictionGoal : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -78,6 +78,7 @@ public sealed unsafe partial class MoveTowardsDwellingRestrictionGoal
         return NativeMethods.TablePtr->C2.hs_method_ccdfce5c((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mMob_Address
     {
@@ -94,5 +95,18 @@ public sealed unsafe partial class MoveTowardsDwellingRestrictionGoal
     public nint mWantedPosition_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_6dffb4af((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_f94f7c72((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

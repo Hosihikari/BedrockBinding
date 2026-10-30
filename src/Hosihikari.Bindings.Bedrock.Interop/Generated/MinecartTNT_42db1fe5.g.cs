@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MinecartTNT
+public sealed unsafe partial class MinecartTNT : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -691,5 +691,19 @@ public sealed unsafe partial class MinecartTNT
     public void primeFuse(int cause)
     {
         NativeMethods.TablePtr->C2.hs_method_861c24bd((void*)__hosihikari_shim_handle, cause);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_42db1fe5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -61,6 +61,7 @@ public sealed unsafe partial class LevelBlockDestroyer : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->C1.hs_get_1317fd0b((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

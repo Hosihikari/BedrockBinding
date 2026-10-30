@@ -635,6 +635,7 @@ public sealed unsafe partial class Cat : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_bc6dc134((void*)__hosihikari_shim_handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_e58c43fb((void*)__hosihikari_shim_handle);

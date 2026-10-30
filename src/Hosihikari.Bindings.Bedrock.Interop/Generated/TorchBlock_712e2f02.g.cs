@@ -422,6 +422,7 @@ public sealed unsafe partial class TorchBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_bf60d702((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

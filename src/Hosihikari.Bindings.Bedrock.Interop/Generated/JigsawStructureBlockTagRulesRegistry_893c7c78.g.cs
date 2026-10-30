@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class JigsawStructureBlockTagRulesRegistry
+public sealed unsafe partial class JigsawStructureBlockTagRulesRegistry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -72,4 +72,18 @@ public sealed unsafe partial class JigsawStructureBlockTagRulesRegistry
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockTagRule>>' has no generated wrapper.", false)]
     public void registerBlockTagRules(nint name, nint ruleList) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolBlockTagRule>>' has no generated wrapper.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_893c7c78((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

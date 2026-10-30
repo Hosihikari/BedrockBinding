@@ -175,6 +175,7 @@ public sealed unsafe partial class NetworkConnection : global::System.IDisposabl
     public nint receivePacket(nint receiveBuffer, nint timepointPtr) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

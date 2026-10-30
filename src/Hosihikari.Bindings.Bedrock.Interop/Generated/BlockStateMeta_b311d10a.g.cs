@@ -127,6 +127,7 @@ public sealed unsafe partial class BlockStateMeta : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockStateMeta((nint)NativeMethods.TablePtr->C0.hs_method_fc00a8ed((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

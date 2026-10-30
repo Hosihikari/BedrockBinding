@@ -125,6 +125,7 @@ public sealed unsafe partial class HoeItem : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_f0cd72fc((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAnimatesInToolbar
     {
         get => NativeMethods.TablePtr->C1.hs_get_0123f4e3((void*)__hosihikari_shim_handle) != 0;

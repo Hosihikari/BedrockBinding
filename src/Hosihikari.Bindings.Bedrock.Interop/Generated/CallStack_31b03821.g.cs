@@ -63,6 +63,7 @@ public sealed unsafe partial class CallStack : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C0.hs_get_80e5da6a((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -109,6 +109,7 @@ public sealed unsafe partial class ScriptIntBlockProperty : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptIntBlockProperty((nint)NativeMethods.TablePtr->C3.hs_method_9032612d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

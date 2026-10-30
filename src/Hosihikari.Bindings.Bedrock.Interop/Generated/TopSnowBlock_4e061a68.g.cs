@@ -264,9 +264,9 @@ public sealed unsafe partial class TopSnowBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_9af44d57((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool _breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool _canBeBuiltOver(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
@@ -454,9 +454,9 @@ public sealed unsafe partial class TopSnowBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_56038c26((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)(newBlock?.Handle ?? 0)) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public bool breaksFallingBlocks(nint block, nint version) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool canBeBuiltOver(global::Hosihikari.Bindings.Bedrock.Interop.Block arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
@@ -606,6 +606,7 @@ public sealed unsafe partial class TopSnowBlock : global::System.IDisposable
     {
         return NativeMethods.TablePtr->C3.hs_method_2439cf69((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(syncMsg?.Handle ?? 0)) != 0;
     }
+
 
     public void Dispose()
     {

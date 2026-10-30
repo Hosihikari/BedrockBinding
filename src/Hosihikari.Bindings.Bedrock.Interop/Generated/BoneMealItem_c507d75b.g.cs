@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BoneMealItem
+public sealed unsafe partial class BoneMealItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -126,6 +126,7 @@ public sealed unsafe partial class BoneMealItem
             return new global::Hosihikari.Bindings.Bedrock.Interop.Item((nint)NativeMethods.TablePtr->C0.hs_method_d09219c4((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, id), false);
         }
     }
+
 
     public byte mType
     {
@@ -340,5 +341,18 @@ public sealed unsafe partial class BoneMealItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_c421c9c2((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_c421c9c2((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_c507d75b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

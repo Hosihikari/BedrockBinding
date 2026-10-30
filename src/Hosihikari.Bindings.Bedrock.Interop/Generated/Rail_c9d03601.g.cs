@@ -131,6 +131,7 @@ public sealed unsafe partial class Rail : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_2df327fe((void*)__hosihikari_shim_handle, direction);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -99,6 +99,7 @@ public sealed unsafe partial class ToggleControl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ToggleControl((nint)NativeMethods.TablePtr->C3.hs_method_f2c01739((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

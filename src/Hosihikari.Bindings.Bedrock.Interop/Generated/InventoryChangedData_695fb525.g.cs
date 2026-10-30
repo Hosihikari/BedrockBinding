@@ -77,6 +77,7 @@ public sealed unsafe partial class InventoryChangedData : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeUnlockingSystem_Nested.InventoryChangedData((nint)NativeMethods.TablePtr->C2.hs_method_f0934749((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

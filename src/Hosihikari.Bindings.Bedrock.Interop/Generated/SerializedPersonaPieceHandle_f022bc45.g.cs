@@ -177,6 +177,7 @@ public sealed unsafe partial class SerializedPersonaPieceHandle : global::System
         return NativeMethods.TablePtr->C3.hs_method_9f5de890((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

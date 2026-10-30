@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PillagerOutpostStart
+public sealed unsafe partial class PillagerOutpostStart : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -70,6 +70,7 @@ public sealed unsafe partial class PillagerOutpostStart
         return NativeMethods.TablePtr->C2.hs_method_1ff98b32((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle, (void*)chunkBB.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint boundingBox_Address
     {
@@ -98,5 +99,18 @@ public sealed unsafe partial class PillagerOutpostStart
     public nint pieces_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_173bc892((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_50de00ae((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

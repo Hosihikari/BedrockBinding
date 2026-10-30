@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RemoveVolumeEntityPacket
+public sealed unsafe partial class RemoveVolumeEntityPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class RemoveVolumeEntityPacket
         NativeMethods.TablePtr->C2.hs_method_727acfe9((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionType_Address
     {
@@ -237,5 +238,18 @@ public sealed unsafe partial class RemoveVolumeEntityPacket
     public nint mEntityNetId_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_ad7c1b54((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_80a85e54((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

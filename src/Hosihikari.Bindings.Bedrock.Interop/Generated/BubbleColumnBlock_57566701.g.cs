@@ -517,6 +517,7 @@ public sealed unsafe partial class BubbleColumnBlock : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_9e595a56((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

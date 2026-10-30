@@ -663,6 +663,7 @@ public sealed unsafe partial class IronGolem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_3ba90098((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)settings.Handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C1.hs_get_7247a5d6((void*)__hosihikari_shim_handle);

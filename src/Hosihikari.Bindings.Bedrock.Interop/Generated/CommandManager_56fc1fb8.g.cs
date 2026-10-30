@@ -96,6 +96,7 @@ public sealed unsafe partial class CommandManager : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_dde6d65f((void*)__hosihikari_shim_handle, (void*)command.Handle, (void*)origin.Handle, originSystem);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

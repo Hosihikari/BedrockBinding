@@ -116,6 +116,7 @@ public sealed unsafe partial class AgentActionEventPacketPayload : global::Syste
         get => (nint)NativeMethods.TablePtr->C0.hs_get_1b1cea24((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

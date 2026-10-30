@@ -91,6 +91,7 @@ public sealed unsafe partial class GameTestNetworkListener : global::System.IDis
         return new global::Hosihikari.Bindings.Bedrock.Interop.GameTestNetworkAdapter_Nested.GameTestNetworkListener((nint)NativeMethods.TablePtr->C1.hs_method_5cc26825((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

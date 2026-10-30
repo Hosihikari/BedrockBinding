@@ -42,4 +42,8 @@ public sealed partial class EventVariantImpl_const_PlayerSkinLoadedClientEvent__
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public static EventVariantImpl_const_PlayerSkinLoadedClientEvent__const_PlayerAddEvent__const_PlayerAddExpEven_a317765f Create(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 }

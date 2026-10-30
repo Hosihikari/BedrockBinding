@@ -40,7 +40,7 @@ public sealed unsafe partial class VariableMaxAutoStepSystem : global::System.ID
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo createSystem(bool isClientSide)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo((nint)NativeMethods.TablePtr->C3.hs_method_aa6541c6(isClientSide));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo((nint)NativeMethods.TablePtr->C4.hs_method_aa6541c6(isClientSide));
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class VariableMaxAutoStepSystem : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_b8f1e40c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_b8f1e40c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

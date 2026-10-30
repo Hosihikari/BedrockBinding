@@ -205,6 +205,7 @@ public sealed unsafe partial class CommandRequestPacket : global::System.IDispos
         NativeMethods.TablePtr->C0.hs_method_699bf374((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommand_Address
     {

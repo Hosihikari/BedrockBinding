@@ -100,6 +100,7 @@ public sealed unsafe partial class SemVersion : global::System.IDisposable
         }
     }
 
+
     public bool mAnyVersion
     {
         get => NativeMethods.TablePtr->C3.hs_get_eea5c485((void*)__hosihikari_shim_handle) != 0;

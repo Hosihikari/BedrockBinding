@@ -739,6 +739,7 @@ public sealed unsafe partial class ExperienceOrb : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_5d04e138((void*)region.Handle, (void*)pos.Handle, xpValue, dropType, (void*)(owner?.Handle ?? 0));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

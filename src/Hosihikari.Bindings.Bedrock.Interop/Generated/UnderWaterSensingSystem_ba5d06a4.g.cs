@@ -40,12 +40,12 @@ public sealed unsafe partial class UnderWaterSensingSystem
 
     public void _singleTick(nint context, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
     {
-        NativeMethods.TablePtr->C3.hs_method_d2482456((void*)__hosihikari_shim_handle, (void*)context, (void*)entityContext.Handle);
+        NativeMethods.TablePtr->C4.hs_method_d2482456((void*)__hosihikari_shim_handle, (void*)context, (void*)entityContext.Handle);
     }
 
     public void _tick(nint context)
     {
-        NativeMethods.TablePtr->C3.hs_method_7f8e1e5b((void*)__hosihikari_shim_handle, (void*)context);
+        NativeMethods.TablePtr->C4.hs_method_7f8e1e5b((void*)__hosihikari_shim_handle, (void*)context);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -58,11 +58,11 @@ public sealed unsafe partial class UnderWaterSensingSystem
 
     public void singleTick(nint context, global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext entityContext)
     {
-        NativeMethods.TablePtr->C3.hs_method_a6e3e8e0((void*)__hosihikari_shim_handle, (void*)context, (void*)entityContext.Handle);
+        NativeMethods.TablePtr->C4.hs_method_a6e3e8e0((void*)__hosihikari_shim_handle, (void*)context, (void*)entityContext.Handle);
     }
 
     public void tick(nint context)
     {
-        NativeMethods.TablePtr->C3.hs_method_5b4b51c1((void*)__hosihikari_shim_handle, (void*)context);
+        NativeMethods.TablePtr->C4.hs_method_5b4b51c1((void*)__hosihikari_shim_handle, (void*)context);
     }
 }

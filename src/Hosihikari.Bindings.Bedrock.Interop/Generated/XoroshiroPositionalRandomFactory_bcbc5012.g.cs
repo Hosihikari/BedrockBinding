@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class XoroshiroPositionalRandomFactory
+public sealed unsafe partial class XoroshiroPositionalRandomFactory : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -73,5 +73,19 @@ public sealed unsafe partial class XoroshiroPositionalRandomFactory
     public static global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Hash.md5 mThreadLocalDigest()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Crypto.Hash.md5((nint)NativeMethods.TablePtr->C4.hs_method_540bade5(), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_bcbc5012((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

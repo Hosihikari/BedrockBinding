@@ -40,12 +40,12 @@ public sealed unsafe partial class LevelStorageResult : global::System.IDisposab
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_a3691951((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_a3691951((void*)__hosihikari_shim_handle);
     }
 
     public static LevelStorageResult Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_19a8073d();
+        var handle = NativeMethods.TablePtr->C1.hs_create_19a8073d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class LevelStorageResult : global::System.IDisposab
 
     public static LevelStorageResult Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.LevelStorageResult arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_fdb201f6((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_fdb201f6((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,18 +68,18 @@ public sealed unsafe partial class LevelStorageResult : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk70f08c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4baf61b9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4baf61b9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkaa5b88_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_cc49a16d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cc49a16d((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.LevelStorageResult operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.LevelStorageResult arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.LevelStorageResult((nint)NativeMethods.TablePtr->C0.hs_method_fbe69090((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.LevelStorageResult((nint)NativeMethods.TablePtr->C1.hs_method_fbe69090((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class LevelStorageResult : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_089ce93c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_089ce93c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

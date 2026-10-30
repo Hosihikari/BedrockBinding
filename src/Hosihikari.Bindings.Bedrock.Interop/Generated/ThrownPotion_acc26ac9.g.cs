@@ -689,6 +689,7 @@ public sealed unsafe partial class ThrownPotion : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_e1a89b61((void*)__hosihikari_shim_handle, aux);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

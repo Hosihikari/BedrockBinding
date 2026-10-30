@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RakNet.RakPeer_Nested;
 
-public sealed unsafe partial class RequestedConnectionStruct
+public sealed unsafe partial class RequestedConnectionStruct : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -126,5 +126,19 @@ public sealed unsafe partial class RequestedConnectionStruct
     {
         get => NativeMethods.TablePtr->C2.hs_get_2af75c6a((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_2af75c6a((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8540a4c2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

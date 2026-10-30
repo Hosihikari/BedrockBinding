@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.RepairableItemComponentVersioning;
 
-public sealed unsafe partial class UpgradeTo118
+public sealed unsafe partial class UpgradeTo118 : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -85,5 +85,19 @@ public sealed unsafe partial class UpgradeTo118
     public void upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg1)
     {
         NativeMethods.TablePtr->C2.hs_method_0377b9b2((void*)__hosihikari_shim_handle, (void*)document, (void*)arg1.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_24ecf2b8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

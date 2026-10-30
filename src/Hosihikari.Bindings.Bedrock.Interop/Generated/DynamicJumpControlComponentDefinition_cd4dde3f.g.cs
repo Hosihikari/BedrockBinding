@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_40;
 
-public sealed unsafe partial class DynamicJumpControlComponentDefinition
+public sealed unsafe partial class DynamicJumpControlComponentDefinition : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -44,6 +44,7 @@ public sealed unsafe partial class DynamicJumpControlComponentDefinition
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mFastSkipData_Address
     {
@@ -60,5 +61,18 @@ public sealed unsafe partial class DynamicJumpControlComponentDefinition
     public nint mRegularSkipData_Address
     {
         get => (nint)NativeMethods.TablePtr->C3.hs_get_1a5d42d2((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_cd4dde3f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

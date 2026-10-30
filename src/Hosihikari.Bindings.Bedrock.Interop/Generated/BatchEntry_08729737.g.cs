@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelStorageWriteBatch_Nested;
 
-public sealed unsafe partial class BatchEntry
+public sealed unsafe partial class BatchEntry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,19 +40,33 @@ public sealed unsafe partial class BatchEntry
 
     public uint mCategory
     {
-        get => NativeMethods.TablePtr->C1.hs_get_ad721acb((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_ad721acb((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_ad721acb((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_ad721acb((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mDeleted
     {
-        get => NativeMethods.TablePtr->C1.hs_get_c25721fa((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_c25721fa((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c25721fa((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_c25721fa((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLatestValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_119a8bb1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_119a8bb1((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_08729737((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

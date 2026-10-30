@@ -115,6 +115,7 @@ public sealed unsafe partial class PlayerData : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.PlayerData((nint)NativeMethods.TablePtr->C2.hs_method_a87267e9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

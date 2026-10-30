@@ -107,6 +107,7 @@ public sealed unsafe partial class ScriptActorRemoveAfterEvent : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptActorRemoveAfterEvent((nint)NativeMethods.TablePtr->C3.hs_method_802fb705((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

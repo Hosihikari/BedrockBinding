@@ -40,7 +40,7 @@ public sealed unsafe partial class FileTransferProgress : global::System.IDispos
 
     public static FileTransferProgress Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_d68afbe0();
+        var handle = NativeMethods.TablePtr->C1.hs_create_d68afbe0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class FileTransferProgress : global::System.IDispos
 
     public static FileTransferProgress Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.FileTransferProgress arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_1198e8d4((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_1198e8d4((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,24 +63,24 @@ public sealed unsafe partial class FileTransferProgress : global::System.IDispos
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1ae043_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_9bf94e03((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_9bf94e03((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd6dcba_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_17fff217((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_17fff217((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnke8d3af_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_0614cfde((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0614cfde((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.FileTransferProgress operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.FileTransferProgress arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.FileTransferProgress((nint)NativeMethods.TablePtr->C0.hs_method_e70d16b5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem_Nested.FileTransferProgress((nint)NativeMethods.TablePtr->C1.hs_method_e70d16b5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -89,7 +89,7 @@ public sealed unsafe partial class FileTransferProgress : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_c0858ffa((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_c0858ffa((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

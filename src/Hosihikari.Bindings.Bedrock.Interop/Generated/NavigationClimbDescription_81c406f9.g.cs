@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NavigationClimbDescription
+public sealed unsafe partial class NavigationClimbDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,6 +47,7 @@ public sealed unsafe partial class NavigationClimbDescription
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_1f238be6((void*)__hosihikari_shim_handle);
     }
+
 
     public bool mAvoidDamageBlocks
     {
@@ -172,5 +173,18 @@ public sealed unsafe partial class NavigationClimbDescription
     {
         get => NativeMethods.TablePtr->C2.hs_get_9ef52ebf((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C2.hs_set_9ef52ebf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_81c406f9((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

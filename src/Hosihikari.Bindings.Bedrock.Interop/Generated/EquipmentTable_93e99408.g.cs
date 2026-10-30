@@ -96,6 +96,7 @@ public sealed unsafe partial class EquipmentTable : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_10d1e50a((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

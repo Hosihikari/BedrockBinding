@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DecoratedPotBlockItem
+public sealed unsafe partial class DecoratedPotBlockItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -61,6 +61,7 @@ public sealed unsafe partial class DecoratedPotBlockItem
     {
         NativeMethods.TablePtr->C1.hs_method_93f8ac4f((void*)__hosihikari_shim_handle, (void*)stack.Handle);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -269,5 +270,18 @@ public sealed unsafe partial class DecoratedPotBlockItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_cb84613e((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_cb84613e((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_a593b832((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

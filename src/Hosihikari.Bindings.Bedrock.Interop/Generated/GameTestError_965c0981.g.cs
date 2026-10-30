@@ -190,6 +190,7 @@ public sealed unsafe partial class GameTestError : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestError((nint)NativeMethods.TablePtr->C4.hs_method_6cd35845((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -115,9 +115,9 @@ public sealed unsafe partial class BaseGameTestInstance : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestSequence((nint)NativeMethods.TablePtr->C4.hs_method_77031d63((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void fail(nint error, bool canRetry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint getStructureBlockPivot() =>

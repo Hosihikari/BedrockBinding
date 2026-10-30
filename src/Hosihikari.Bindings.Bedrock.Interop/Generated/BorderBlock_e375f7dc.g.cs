@@ -395,6 +395,7 @@ public sealed unsafe partial class BorderBlock : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_b5397dae((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

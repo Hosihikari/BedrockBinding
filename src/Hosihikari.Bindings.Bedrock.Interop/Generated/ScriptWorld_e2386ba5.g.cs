@@ -188,6 +188,7 @@ public sealed unsafe partial class ScriptWorld : global::System.IDisposable
     public nint setDynamicProperty(nint contextConfig, nint key, nint value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, Scripting::ArgumentOutOfBoundsError>' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

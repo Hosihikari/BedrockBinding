@@ -92,6 +92,7 @@ public sealed unsafe partial class ScriptFormRejectError : global::System.IDispo
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.ScriptFormRejectError((nint)NativeMethods.TablePtr->C3.hs_method_7bab788f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1599d8_Address
     {

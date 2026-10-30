@@ -99,6 +99,7 @@ public sealed unsafe partial class ActorInfo : global::System.IDisposable
     public nint save() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

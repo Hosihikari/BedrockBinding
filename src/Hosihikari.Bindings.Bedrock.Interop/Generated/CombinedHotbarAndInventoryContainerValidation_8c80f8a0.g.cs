@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CombinedHotbarAndInventoryContainerValidation
+public sealed unsafe partial class CombinedHotbarAndInventoryContainerValidation : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -66,5 +66,19 @@ public sealed unsafe partial class CombinedHotbarAndInventoryContainerValidation
     public bool isItemAllowedToRemove(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {
         return NativeMethods.TablePtr->C0.hs_method_a3f63c68((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)item.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_8c80f8a0((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

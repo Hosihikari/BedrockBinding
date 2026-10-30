@@ -692,6 +692,7 @@ public sealed unsafe partial class Blaze : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_77c1b9ff((void*)__hosihikari_shim_handle, method);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_9356def6((void*)__hosihikari_shim_handle);

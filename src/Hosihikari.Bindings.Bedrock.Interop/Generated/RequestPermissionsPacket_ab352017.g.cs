@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class RequestPermissionsPacket
+public sealed unsafe partial class RequestPermissionsPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -227,6 +227,7 @@ public sealed unsafe partial class RequestPermissionsPacket
         NativeMethods.TablePtr->C2.hs_method_4469ce17((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public ushort mCustomPermissionFlags
     {
         get => NativeMethods.TablePtr->C2.hs_get_fff8685b((void*)__hosihikari_shim_handle);
@@ -243,5 +244,18 @@ public sealed unsafe partial class RequestPermissionsPacket
     public nint mTargetPlayerId_Address
     {
         get => (nint)NativeMethods.TablePtr->C2.hs_get_dc01e6cf((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ab352017((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

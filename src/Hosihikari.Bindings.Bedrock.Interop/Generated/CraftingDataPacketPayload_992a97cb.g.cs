@@ -40,84 +40,84 @@ public sealed unsafe partial class CraftingDataPacketPayload : global::System.ID
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_d8394757((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_d8394757((void*)__hosihikari_shim_handle);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.CraftingDataPacketPayload fromRecipes(global::Hosihikari.Bindings.Bedrock.Interop.Recipes levelRecipes, bool onlyCraftingRecipes)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CraftingDataPacketPayload((nint)NativeMethods.TablePtr->C0.hs_method_5444bda7((void*)levelRecipes.Handle, onlyCraftingRecipes));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CraftingDataPacketPayload((nint)NativeMethods.TablePtr->C1.hs_method_5444bda7((void*)levelRecipes.Handle, onlyCraftingRecipes));
     }
 
     public bool mClearRecipes
     {
-        get => NativeMethods.TablePtr->C0.hs_get_ec0b61bd((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_ec0b61bd((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_ec0b61bd((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_ec0b61bd((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainerMixEntries_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_161a15d6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_161a15d6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMaterialReducerEntries_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_8ad40454((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8ad40454((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mMultiRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_8a172915((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8a172915((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPotionMixEntries_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_eff6985e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_eff6985e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mShapedChemistryRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_aeef8255((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_aeef8255((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mShapedRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_26b283ce((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_26b283ce((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mShapelessChemistryRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_492e261a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_492e261a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mShapelessRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_b2a5dc77((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b2a5dc77((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSmithingTransformRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_99ae2248((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_99ae2248((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSmithingTrimRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_46f507f0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_46f507f0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUserDataShapelessRecipes_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_2d2edb6e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2d2edb6e((void*)__hosihikari_shim_handle);
     }
 
 
@@ -127,7 +127,7 @@ public sealed unsafe partial class CraftingDataPacketPayload : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_992a97cb((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_992a97cb((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -96,6 +96,7 @@ public sealed unsafe partial class InterventionPublishers : global::System.IDisp
         get => (nint)NativeMethods.TablePtr->C1.hs_get_bf21a7b6((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

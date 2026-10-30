@@ -99,6 +99,7 @@ public sealed unsafe partial class ChangeFakePlayerScore : global::System.IDispo
         return NativeMethods.TablePtr->C0.hs_method_69713635((void*)__hosihikari_shim_handle, (void*)arg0.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

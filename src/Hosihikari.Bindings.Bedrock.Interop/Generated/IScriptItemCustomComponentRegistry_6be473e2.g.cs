@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft;
 
-public sealed unsafe partial class IScriptItemCustomComponentRegistry
+public sealed unsafe partial class IScriptItemCustomComponentRegistry : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -47,6 +47,7 @@ public sealed unsafe partial class IScriptItemCustomComponentRegistry
         NativeMethods.TablePtr->C3.hs_method_96d2366e((void*)__hosihikari_shim_handle, (void*)ctx.Handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mInitializeCompleteSub_Address
     {
@@ -69,5 +70,18 @@ public sealed unsafe partial class IScriptItemCustomComponentRegistry
     {
         get => NativeMethods.TablePtr->C3.hs_get_ee6fa5a1((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_ee6fa5a1((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_6be473e2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

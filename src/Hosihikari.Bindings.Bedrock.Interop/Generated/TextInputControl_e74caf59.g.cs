@@ -105,6 +105,7 @@ public sealed unsafe partial class TextInputControl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraftServerUI.TextInputControl((nint)NativeMethods.TablePtr->C3.hs_method_9746df02((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

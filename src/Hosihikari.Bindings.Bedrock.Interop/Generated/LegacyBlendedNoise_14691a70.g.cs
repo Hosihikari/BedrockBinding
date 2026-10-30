@@ -83,6 +83,7 @@ public sealed unsafe partial class LegacyBlendedNoise : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C1.hs_get_d4ba008f((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -86,9 +86,9 @@ public sealed unsafe partial class MerchantRecipe : global::System.IDisposable
         return new MerchantRecipe((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters must be trivially destructible.", false)]
     public void calculateDemandPrices(int minorPositiveGossip, int majorPositiveGossip, int nearbyCuredDiscount, int heroEffectAmplifier, bool hasHeroOfTheVillage, nint baseGameVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters must be trivially destructible.");
 
     public bool isSame(global::Hosihikari.Bindings.Bedrock.Interop.MerchantRecipe lhs)
     {

@@ -288,6 +288,7 @@ public sealed unsafe partial class MoveOutdoorsGoal : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_1c885d90((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

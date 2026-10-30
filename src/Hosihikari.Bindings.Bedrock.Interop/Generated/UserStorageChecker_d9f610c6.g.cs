@@ -44,7 +44,7 @@ public sealed unsafe partial class UserStorageChecker : global::System.IDisposab
 
     public static UserStorageChecker Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_5e3e8fc4();
+        var handle = NativeMethods.TablePtr->C4.hs_create_5e3e8fc4();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,7 +55,7 @@ public sealed unsafe partial class UserStorageChecker : global::System.IDisposab
 
     public static UserStorageChecker Create(global::Hosihikari.Bindings.Bedrock.Interop.UserStorageChecker arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_30ec6fb9((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_30ec6fb9((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,18 +71,18 @@ public sealed unsafe partial class UserStorageChecker : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk6cf0ff_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_da6c3c49((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_da6c3c49((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkb0f536_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_88ed3871((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_88ed3871((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.UserStorageChecker operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.UserStorageChecker arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.UserStorageChecker((nint)NativeMethods.TablePtr->C3.hs_method_0532129f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UserStorageChecker((nint)NativeMethods.TablePtr->C4.hs_method_0532129f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Core::PathView' is not a known bindable declaration.", false)]
@@ -95,7 +95,7 @@ public sealed unsafe partial class UserStorageChecker : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_d9f610c6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_d9f610c6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

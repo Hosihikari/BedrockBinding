@@ -609,6 +609,7 @@ public sealed unsafe partial class SpeleothemBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_e39a6b9f((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

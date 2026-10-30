@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.LevelChunk_Nested;
 
-public sealed unsafe partial class SpawningArea
+public sealed unsafe partial class SpawningArea : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class SpawningArea
     {
         get => NativeMethods.TablePtr->C1.hs_get_6d11f681((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_6d11f681((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ce172de4((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

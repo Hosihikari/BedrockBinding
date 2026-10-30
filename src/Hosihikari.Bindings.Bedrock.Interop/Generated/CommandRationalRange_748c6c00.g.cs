@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class CommandRationalRange
+public sealed unsafe partial class CommandRationalRange : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -38,9 +38,10 @@ public sealed unsafe partial class CommandRationalRange
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'CommandRationalRange' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint changeToValueType(nint valueType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'CommandRationalRange' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CommandRationalRange changeToValueType(nint valueType)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CommandRationalRange((nint)NativeMethods.TablePtr->C0.hs_method_3b6dfe5d((void*)__hosihikari_shim_handle, (void*)valueType));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool isWithinRange(nint value) =>
@@ -84,4 +85,18 @@ public sealed unsafe partial class CommandRationalRange
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void setValue(nint value, nint type) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_748c6c00((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

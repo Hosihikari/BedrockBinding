@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SkullItem
+public sealed unsafe partial class SkullItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -349,5 +349,19 @@ public sealed unsafe partial class SkullItem
     public int getRarity(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase stack)
     {
         return NativeMethods.TablePtr->C3.hs_method_ef792318((void*)__hosihikari_shim_handle, (void*)stack.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_104e6818((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BellBlockItem
+public sealed unsafe partial class BellBlockItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,6 +51,7 @@ public sealed unsafe partial class BellBlockItem
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.InteractionResult((nint)NativeMethods.TablePtr->C0.hs_method_d6c697e9((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)entity.Handle, (void*)pos.Handle, face, handSlot, (void*)clickPos.Handle));
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -259,5 +260,18 @@ public sealed unsafe partial class BellBlockItem
     {
         get => NativeMethods.TablePtr->C0.hs_get_989ff208((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_989ff208((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_46faf97d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

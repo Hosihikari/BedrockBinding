@@ -328,6 +328,7 @@ public sealed unsafe partial class SoulTorchBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_e84c9929((void*)__hosihikari_shim_handle, (void*)experiments.Handle);
     }
 
+
     public int mFlameParticle
     {
         get => NativeMethods.TablePtr->C3.hs_get_6ef43a37((void*)__hosihikari_shim_handle);

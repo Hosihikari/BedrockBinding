@@ -73,9 +73,10 @@ public sealed unsafe partial class SpawnClimateFinder : global::System.IDisposab
         return NativeMethods.TablePtr->C3.hs_method_f6ad948b((void*)__hosihikari_shim_handle, (void*)pos.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SpawnClimateFinder::ResultDetails' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _findSpawnPositionDetailedResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SpawnClimateFinder::ResultDetails' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.SpawnClimateFinder_Nested.ResultDetails _findSpawnPositionDetailedResult()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SpawnClimateFinder_Nested.ResultDetails((nint)NativeMethods.TablePtr->C3.hs_method_e665b589((void*)__hosihikari_shim_handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDimensionHeightRange_Address
@@ -99,6 +100,7 @@ public sealed unsafe partial class SpawnClimateFinder : global::System.IDisposab
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.SpawnClimateFinder((nint)NativeMethods.TablePtr->C3.hs_method_9957c8f8((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {

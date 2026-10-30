@@ -221,6 +221,7 @@ public sealed unsafe partial class ActorSkeletalAnimationPlayer : global::System
     public void visit(nint dispatcher) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

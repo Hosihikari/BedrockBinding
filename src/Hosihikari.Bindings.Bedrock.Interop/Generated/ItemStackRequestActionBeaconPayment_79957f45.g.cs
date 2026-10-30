@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ItemStackRequestActionBeaconPayment
+public sealed unsafe partial class ItemStackRequestActionBeaconPayment : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -76,5 +76,19 @@ public sealed unsafe partial class ItemStackRequestActionBeaconPayment
     {
         get => NativeMethods.TablePtr->C1.hs_get_948d0228((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_948d0228((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_79957f45((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

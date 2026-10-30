@@ -472,6 +472,7 @@ public sealed unsafe partial class ActorDefinition : global::System.IDisposable
     public static void parseEvents(nint eventHandlers, nint root, nint minEngineVersion, nint formatVersion, nint responseFactory, nint experiments) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'ActorDefinitionEvent' is not supported.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -108,4 +108,8 @@ public sealed partial class _unnamed_struct_at_C__Users_root_source_repos_hosihi
         get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name is not a valid C++ qualified name.");
         set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name is not a valid C++ qualified name.");
     }
+
+    [global::System.Obsolete("BindingShim cannot project this member: the native name is not a valid C++ qualified name.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name is not a valid C++ qualified name.");
 }

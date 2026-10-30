@@ -133,6 +133,7 @@ public sealed unsafe partial class WorldSessionEndPoint : global::System.IDispos
         NativeMethods.TablePtr->C4.hs_method_74304046((void*)__hosihikari_shim_handle, newState);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

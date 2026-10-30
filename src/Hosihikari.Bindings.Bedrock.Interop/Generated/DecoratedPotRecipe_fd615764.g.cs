@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DecoratedPotRecipe
+public sealed unsafe partial class DecoratedPotRecipe : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -113,6 +113,7 @@ public sealed unsafe partial class DecoratedPotRecipe
         return NativeMethods.TablePtr->C1.hs_method_0c43d562((void*)__hosihikari_shim_handle);
     }
 
+
     public int mHeight
     {
         get => NativeMethods.TablePtr->C1.hs_get_6e1d8466((void*)__hosihikari_shim_handle);
@@ -177,5 +178,18 @@ public sealed unsafe partial class DecoratedPotRecipe
     {
         get => NativeMethods.TablePtr->C1.hs_get_15d52d1b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_15d52d1b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_fd615764((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

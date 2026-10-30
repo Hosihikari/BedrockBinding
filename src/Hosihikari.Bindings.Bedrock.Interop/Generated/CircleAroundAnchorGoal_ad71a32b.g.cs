@@ -235,6 +235,7 @@ public sealed unsafe partial class CircleAroundAnchorGoal : global::System.IDisp
         NativeMethods.TablePtr->C0.hs_method_889bb4e6((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

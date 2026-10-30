@@ -241,6 +241,7 @@ public sealed unsafe partial class NearestAttackableTargetGoal : global::System.
         NativeMethods.TablePtr->C2.hs_method_5ba46f81((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mAttackOwner
     {
         get => NativeMethods.TablePtr->C2.hs_get_7f054daf((void*)__hosihikari_shim_handle) != 0;

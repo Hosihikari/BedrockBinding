@@ -131,6 +131,7 @@ public sealed unsafe partial class PostLevelArgs : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance_Nested.PostLevelArgs((nint)NativeMethods.TablePtr->C3.hs_method_24d3dc04((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

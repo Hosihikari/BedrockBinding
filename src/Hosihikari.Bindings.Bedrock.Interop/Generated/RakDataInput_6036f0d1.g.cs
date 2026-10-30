@@ -93,6 +93,7 @@ public sealed unsafe partial class RakDataInput : global::System.IDisposable
     public nint readBytesResult(nint data, ulong bytes) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void>' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

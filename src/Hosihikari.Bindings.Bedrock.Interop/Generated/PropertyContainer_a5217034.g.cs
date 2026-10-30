@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PropertyContainer
+public sealed unsafe partial class PropertyContainer : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -89,4 +89,18 @@ public sealed unsafe partial class PropertyContainer
     [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
     public void setAliasProperties(nint aliasProperties, nint aliasName, nint canonicalName) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'HashedString' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_a5217034((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

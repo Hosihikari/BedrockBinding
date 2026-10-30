@@ -73,6 +73,7 @@ public sealed unsafe partial class HeightmapData : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C3.hs_get_ad9ce38a((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

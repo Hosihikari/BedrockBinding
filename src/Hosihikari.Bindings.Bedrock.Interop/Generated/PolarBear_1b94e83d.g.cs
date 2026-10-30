@@ -747,6 +747,7 @@ public sealed unsafe partial class PolarBear : global::System.IDisposable
         return new PolarBear((nint)handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

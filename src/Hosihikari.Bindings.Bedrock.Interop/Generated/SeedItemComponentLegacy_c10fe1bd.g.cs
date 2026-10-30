@@ -119,6 +119,7 @@ public sealed unsafe partial class SeedItemComponentLegacy : global::System.IDis
         return NativeMethods.TablePtr->C3.hs_method_ef9bd4d8((void*)__hosihikari_shim_handle, (void*)instance.Handle, (void*)actor.Handle, (void*)blockPos.Handle, face, (void*)clickPos.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -100,6 +100,7 @@ public sealed unsafe partial class ScriptItemUseOnEvent : global::System.IDispos
         get => (nint)NativeMethods.TablePtr->C3.hs_get_be67b15b((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

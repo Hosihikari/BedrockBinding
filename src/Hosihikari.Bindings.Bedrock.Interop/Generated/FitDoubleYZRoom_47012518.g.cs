@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FitDoubleYZRoom
+public sealed unsafe partial class FitDoubleYZRoom : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class FitDoubleYZRoom
     public bool fits(global::Hosihikari.Bindings.Bedrock.Interop.RoomDefinition definition)
     {
         return NativeMethods.TablePtr->C1.hs_method_84edb941((void*)__hosihikari_shim_handle, (void*)definition.Handle) != 0;
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_47012518((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

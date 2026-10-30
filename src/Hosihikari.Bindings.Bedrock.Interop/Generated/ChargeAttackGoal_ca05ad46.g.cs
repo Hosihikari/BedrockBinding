@@ -181,6 +181,7 @@ public sealed unsafe partial class ChargeAttackGoal : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_5ed8da5d((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -88,6 +88,7 @@ public sealed unsafe partial class ChannelTransform : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C0.hs_get_602a23cd((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

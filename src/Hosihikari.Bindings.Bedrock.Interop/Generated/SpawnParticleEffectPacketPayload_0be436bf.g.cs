@@ -87,6 +87,7 @@ public sealed unsafe partial class SpawnParticleEffectPacketPayload : global::Sy
         set => NativeMethods.TablePtr->C3.hs_set_a17b68ab((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

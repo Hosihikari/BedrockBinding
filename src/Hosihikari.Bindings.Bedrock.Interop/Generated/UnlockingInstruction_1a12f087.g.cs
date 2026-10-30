@@ -40,12 +40,12 @@ public sealed unsafe partial class UnlockingInstruction : global::System.IDispos
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_2aa3582f((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_2aa3582f((void*)__hosihikari_shim_handle);
     }
 
     public static UnlockingInstruction Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_13a6732b();
+        var handle = NativeMethods.TablePtr->C4.hs_create_13a6732b();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class UnlockingInstruction : global::System.IDispos
 
     public static UnlockingInstruction Create(global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_8a9f6c26((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_8a9f6c26((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,18 +68,18 @@ public sealed unsafe partial class UnlockingInstruction : global::System.IDispos
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk5660a8_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_b36defff((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b36defff((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf225ff_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_edb9d0c2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_edb9d0c2((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction((nint)NativeMethods.TablePtr->C3.hs_method_27732734((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.UnlockedRecipesServerComponent_Nested.UnlockingInstruction((nint)NativeMethods.TablePtr->C4.hs_method_27732734((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class UnlockingInstruction : global::System.IDispos
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_1a12f087((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_1a12f087((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

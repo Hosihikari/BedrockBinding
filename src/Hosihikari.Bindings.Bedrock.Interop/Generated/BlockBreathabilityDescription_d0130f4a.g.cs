@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BlockBreathabilityDescription
+public sealed unsafe partial class BlockBreathabilityDescription : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -94,9 +94,23 @@ public sealed unsafe partial class BlockBreathabilityDescription
         set => NativeMethods.TablePtr->C0.hs_set_3bdd9a83((void*)__hosihikari_shim_handle, value);
     }
 
+
     public bool mInitializedFromCode
     {
         get => NativeMethods.TablePtr->C0.hs_get_80700470((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C0.hs_set_80700470((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d0130f4a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -88,6 +88,7 @@ public sealed unsafe partial class ChestCloser : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.ChestBlockActor_Nested.ChestCloser((nint)NativeMethods.TablePtr->C0.hs_method_f2f4c315((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

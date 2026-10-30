@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class FlowerPotBlockActor
+public sealed unsafe partial class FlowerPotBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -141,6 +141,7 @@ public sealed unsafe partial class FlowerPotBlockActor
         return NativeMethods.TablePtr->C1.hs_method_76ffcba4((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)saveContext) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mBB_Address
     {
@@ -181,5 +182,18 @@ public sealed unsafe partial class FlowerPotBlockActor
     {
         get => NativeMethods.TablePtr->C1.hs_get_11062cd7((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_11062cd7((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_ce2db26f((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

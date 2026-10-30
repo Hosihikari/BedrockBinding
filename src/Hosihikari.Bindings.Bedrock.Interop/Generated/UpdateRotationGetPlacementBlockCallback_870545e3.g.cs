@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockTrait.PlacementDirection_Nested;
 
-public sealed unsafe partial class UpdateRotationGetPlacementBlockCallback
+public sealed unsafe partial class UpdateRotationGetPlacementBlockCallback : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -59,5 +59,19 @@ public sealed unsafe partial class UpdateRotationGetPlacementBlockCallback
     public float mRotationOffset
     {
         get => NativeMethods.TablePtr->C0.hs_get_5f035ecb((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_870545e3((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

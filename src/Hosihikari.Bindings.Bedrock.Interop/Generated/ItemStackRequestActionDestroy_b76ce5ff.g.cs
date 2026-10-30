@@ -59,6 +59,7 @@ public sealed unsafe partial class ItemStackRequestActionDestroy : global::Syste
         return new ItemStackRequestActionDestroy((nint)handle);
     }
 
+
     public byte mAmount
     {
         get => NativeMethods.TablePtr->C1.hs_get_32a26746((void*)__hosihikari_shim_handle);

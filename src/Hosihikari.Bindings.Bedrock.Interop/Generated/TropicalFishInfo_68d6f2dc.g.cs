@@ -123,6 +123,7 @@ public sealed unsafe partial class TropicalFishInfo : global::System.IDisposable
         set => NativeMethods.TablePtr->C3.hs_set_51d35eca((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

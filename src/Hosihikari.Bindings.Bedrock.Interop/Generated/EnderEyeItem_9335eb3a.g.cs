@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnderEyeItem
+public sealed unsafe partial class EnderEyeItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -61,6 +61,7 @@ public sealed unsafe partial class EnderEyeItem
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C1.hs_method_240b6691((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)player.Handle, handSlot), false);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -269,5 +270,18 @@ public sealed unsafe partial class EnderEyeItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_c5e21544((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_c5e21544((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9335eb3a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

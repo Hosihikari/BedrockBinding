@@ -41,61 +41,61 @@ public sealed unsafe partial class FileSystem_windows : global::System.IDisposab
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk104955_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_78134bef((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_78134bef((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk26049b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_0e080dfa((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_0e080dfa((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk906cc5_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_6f1b9a40((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6f1b9a40((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk9bcf95_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_47a3dba9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_47a3dba9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka1996d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_2120af33((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_2120af33((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkaaf50d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_ba5b1c5f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_ba5b1c5f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkc9bc1f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_5b273f7b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_5b273f7b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkdc96a2_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_146821d0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_146821d0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkddc461_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_cb01bb61((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_cb01bb61((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkf94830_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4ac2a6b0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4ac2a6b0((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.", false)]
@@ -156,12 +156,12 @@ public sealed unsafe partial class FileSystem_windows : global::System.IDisposab
 
     public nint _ctor(int accessType, global::Hosihikari.Bindings.Abi.SharedHandle? storageArea, global::Hosihikari.Bindings.Abi.SharedHandle? manifestTracker)
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_0b65eed9((void*)__hosihikari_shim_handle, accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        return (nint)NativeMethods.TablePtr->C1.hs_method_0b65eed9((void*)__hosihikari_shim_handle, accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public static FileSystem_windows Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_5ad3c9f0();
+        var handle = NativeMethods.TablePtr->C1.hs_create_5ad3c9f0();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -172,7 +172,7 @@ public sealed unsafe partial class FileSystem_windows : global::System.IDisposab
 
     public static FileSystem_windows Create(int accessType, global::Hosihikari.Bindings.Abi.SharedHandle? storageArea, global::Hosihikari.Bindings.Abi.SharedHandle? manifestTracker)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_5687e86e(accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        var handle = NativeMethods.TablePtr->C1.hs_create_5687e86e(accessType, storageArea?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), manifestTracker?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -241,13 +241,14 @@ public sealed unsafe partial class FileSystem_windows : global::System.IDisposab
     public nint _renameFile(nint sourceFilePath, nint targetFilePath) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Core::Result' requires --link-carrier or --virtual-dispatch.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_a1e5b2bd((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_a1e5b2bd((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

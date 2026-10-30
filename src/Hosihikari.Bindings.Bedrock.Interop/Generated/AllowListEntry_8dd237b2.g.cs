@@ -233,6 +233,7 @@ public sealed unsafe partial class AllowListEntry : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C0.hs_method_59d7de43((void*)__hosihikari_shim_handle));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

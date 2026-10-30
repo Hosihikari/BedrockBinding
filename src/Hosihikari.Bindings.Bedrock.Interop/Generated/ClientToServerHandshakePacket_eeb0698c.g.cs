@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ClientToServerHandshakePacket
+public sealed unsafe partial class ClientToServerHandshakePacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class ClientToServerHandshakePacket
         NativeMethods.TablePtr->C0.hs_method_94f8fcf4((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     public int mCompressible
     {
         get => NativeMethods.TablePtr->C0.hs_get_d58a3985((void*)__hosihikari_shim_handle);
@@ -225,5 +226,18 @@ public sealed unsafe partial class ClientToServerHandshakePacket
     {
         get => NativeMethods.TablePtr->C0.hs_get_6f96d092((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_6f96d092((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_eeb0698c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

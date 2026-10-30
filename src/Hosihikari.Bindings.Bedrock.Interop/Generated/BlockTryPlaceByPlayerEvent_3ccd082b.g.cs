@@ -94,6 +94,7 @@ public sealed unsafe partial class BlockTryPlaceByPlayerEvent : global::System.I
         return new global::Hosihikari.Bindings.Bedrock.Interop.BlockTryPlaceByPlayerEvent((nint)NativeMethods.TablePtr->C0.hs_method_992a50b1((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

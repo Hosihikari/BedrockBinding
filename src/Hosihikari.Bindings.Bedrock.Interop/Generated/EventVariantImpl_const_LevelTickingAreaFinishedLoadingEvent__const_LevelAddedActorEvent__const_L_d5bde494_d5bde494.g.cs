@@ -42,4 +42,8 @@ public sealed partial class EventVariantImpl_const_LevelTickingAreaFinishedLoadi
     [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
     public static EventVariantImpl_const_LevelTickingAreaFinishedLoadingEvent__const_LevelAddedActorEvent__const_L_d5bde494 Create(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+
+    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
+    public void Destroy() =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
 }

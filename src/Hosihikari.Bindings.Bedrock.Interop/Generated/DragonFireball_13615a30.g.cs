@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class DragonFireball
+public sealed unsafe partial class DragonFireball : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -616,6 +616,7 @@ public sealed unsafe partial class DragonFireball
         return NativeMethods.TablePtr->C1.hs_method_c698f611((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     public bool mInGround
     {
         get => NativeMethods.TablePtr->C1.hs_get_c3deb758((void*)__hosihikari_shim_handle) != 0;
@@ -626,5 +627,18 @@ public sealed unsafe partial class DragonFireball
     public nint ownerId_Address
     {
         get => (nint)NativeMethods.TablePtr->C1.hs_get_0d834d56((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_13615a30((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

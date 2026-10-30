@@ -90,6 +90,7 @@ public sealed unsafe partial class CentralSpikedFeature : global::System.IDispos
         return NativeMethods.TablePtr->C0.hs_method_95602b59((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)random.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mPlacerID_Address
     {

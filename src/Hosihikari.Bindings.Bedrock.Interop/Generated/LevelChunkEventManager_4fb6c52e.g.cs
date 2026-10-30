@@ -60,7 +60,7 @@ public sealed unsafe partial class LevelChunkEventManager : global::System.IDisp
 
     public static LevelChunkEventManager Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_75f52515();
+        var handle = NativeMethods.TablePtr->C2.hs_create_75f52515();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -88,25 +88,25 @@ public sealed unsafe partial class LevelChunkEventManager : global::System.IDisp
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelChunkEventManagerProxy_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_d41a76a5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_d41a76a5((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnChunkDiscardedPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_61e45660((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_61e45660((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnChunkLoadedPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e30c60c3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e30c60c3((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mOnChunkReloadedPublisher_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0565b689((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0565b689((void*)__hosihikari_shim_handle);
     }
 
 
@@ -116,7 +116,7 @@ public sealed unsafe partial class LevelChunkEventManager : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_4fb6c52e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_4fb6c52e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

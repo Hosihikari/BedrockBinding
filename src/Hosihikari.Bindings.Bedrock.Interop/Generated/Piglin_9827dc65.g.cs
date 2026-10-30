@@ -727,9 +727,10 @@ public sealed unsafe partial class Piglin : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C2.hs_method_0e564e10((void*)__hosihikari_shim_handle, (void*)(definitions?.Handle ?? 0), (void*)definitionName.Handle, (void*)entityContext.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getInteraction(nint player, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction _getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 location)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C2.hs_method_6cc8f12d((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)location.Handle));
+    }
 
     public bool _isDarkEnoughToSpawn()
     {
@@ -758,14 +759,16 @@ public sealed unsafe partial class Piglin : global::System.IDisposable
         return new Piglin((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getInteraction(nint player, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Interaction' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Interaction getInteraction(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 location)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Interaction((nint)NativeMethods.TablePtr->C2.hs_method_69a73e41((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)location.Handle));
+    }
 
     public bool isDarkEnoughToSpawn()
     {
         return NativeMethods.TablePtr->C2.hs_method_9c24fad3((void*)__hosihikari_shim_handle) != 0;
     }
+
 
     public void Dispose()
     {

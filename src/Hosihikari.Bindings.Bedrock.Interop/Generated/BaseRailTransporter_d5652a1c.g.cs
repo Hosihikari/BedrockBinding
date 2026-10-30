@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BaseRailTransporter
+public sealed unsafe partial class BaseRailTransporter : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -183,5 +183,19 @@ public sealed unsafe partial class BaseRailTransporter
     {
         get => NativeMethods.TablePtr->C0.hs_get_441e7b29((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_441e7b29((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_d5652a1c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

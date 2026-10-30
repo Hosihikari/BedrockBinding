@@ -455,6 +455,7 @@ public sealed unsafe partial class SeaPickleBlock : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_34f959ad((void*)__hosihikari_shim_handle, (void*)eventData);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

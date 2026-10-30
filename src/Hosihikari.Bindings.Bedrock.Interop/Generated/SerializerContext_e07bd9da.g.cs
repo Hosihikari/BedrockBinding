@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.cereal;
 
-public sealed unsafe partial class SerializerContext
+public sealed unsafe partial class SerializerContext : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -105,5 +105,19 @@ public sealed unsafe partial class SerializerContext
     public global::Hosihikari.Bindings.Bedrock.Interop.cereal.SerializerContext pushContext(uint containerIndex)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.SerializerContext((nint)NativeMethods.TablePtr->C4.hs_method_80bda479((void*)__hosihikari_shim_handle, containerIndex), false);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_e07bd9da((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

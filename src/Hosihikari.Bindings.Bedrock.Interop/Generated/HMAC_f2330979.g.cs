@@ -115,6 +115,7 @@ public sealed unsafe partial class HMAC : global::System.IDisposable
         set => NativeMethods.TablePtr->C1.hs_set_61ded2bc((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

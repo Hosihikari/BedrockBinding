@@ -44,7 +44,7 @@ public sealed unsafe partial class string_hash : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_6b3e417b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_6b3e417b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

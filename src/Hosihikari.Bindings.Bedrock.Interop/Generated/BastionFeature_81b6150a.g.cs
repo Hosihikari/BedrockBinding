@@ -119,6 +119,7 @@ public sealed unsafe partial class BastionFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_3543ed9b((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
     {

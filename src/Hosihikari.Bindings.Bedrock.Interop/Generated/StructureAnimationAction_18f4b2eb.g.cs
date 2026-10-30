@@ -158,6 +158,7 @@ public sealed unsafe partial class StructureAnimationAction : global::System.IDi
         NativeMethods.TablePtr->C3.hs_method_4cb2bd8f((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -611,6 +611,7 @@ public sealed unsafe partial class Chicken : global::System.IDisposable
         return new Chicken((nint)handle);
     }
 
+
     public float mAttackAnim
     {
         get => NativeMethods.TablePtr->C0.hs_get_9b941985((void*)__hosihikari_shim_handle);

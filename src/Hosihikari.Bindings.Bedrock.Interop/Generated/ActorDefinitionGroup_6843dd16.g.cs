@@ -68,9 +68,24 @@ public sealed unsafe partial class ActorDefinitionGroup : global::System.IDispos
         return new ActorDefinitionGroup((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorDefinitionGroup::LoadActorResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _loadActorDefinition(nint level, nint packLoadContext, nint relativeResourceFilepath, nint root, nint definitions, nint logArea) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorDefinitionGroup::LoadActorResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup_Nested.LoadActorResult _loadActorDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Level level, nint packLoadContext, string relativeResourceFilepath, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root, nint definitions, uint logArea)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(relativeResourceFilepath);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(relativeResourceFilepath, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup_Nested.LoadActorResult((nint)NativeMethods.TablePtr->C0.hs_method_c1ad98ff((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)packLoadContext, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)root.Handle, (void*)definitions, logArea));
+        }
+    }
 
     public static void _setupCommonResourceDefinitionMap(global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinition def, global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {

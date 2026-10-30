@@ -121,6 +121,7 @@ public sealed unsafe partial class LegacyForestFoliageFeature : global::System.I
         return NativeMethods.TablePtr->C1.hs_method_6291d907((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)origin.Handle, (void*)random.Handle) != 0;
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

@@ -194,6 +194,7 @@ public sealed unsafe partial class InvestigateSuspiciousLocationGoal : global::S
         NativeMethods.TablePtr->C1.hs_method_eab22852((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

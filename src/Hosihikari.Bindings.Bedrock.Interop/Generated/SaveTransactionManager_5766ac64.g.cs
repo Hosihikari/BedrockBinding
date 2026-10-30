@@ -41,7 +41,7 @@ public sealed unsafe partial class SaveTransactionManager : global::System.IDisp
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_5e750a73((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5e750a73((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -54,7 +54,7 @@ public sealed unsafe partial class SaveTransactionManager : global::System.IDisp
 
     public static SaveTransactionManager Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_db68c912();
+        var handle = NativeMethods.TablePtr->C3.hs_create_db68c912();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -69,7 +69,7 @@ public sealed unsafe partial class SaveTransactionManager : global::System.IDisp
 
     public static SaveTransactionManager Create(global::Hosihikari.Bindings.Bedrock.Interop.SaveTransactionManager arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_96e186f3((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_96e186f3((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -80,35 +80,35 @@ public sealed unsafe partial class SaveTransactionManager : global::System.IDisp
 
     public void _hideGlobalSaveIcon()
     {
-        NativeMethods.TablePtr->C2.hs_method_d1e8d15d((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_d1e8d15d((void*)__hosihikari_shim_handle);
     }
 
     public void _showGlobalSaveIcon()
     {
-        NativeMethods.TablePtr->C2.hs_method_f2f86c3f((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_f2f86c3f((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk54446c_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_52ab3390((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_52ab3390((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk97a76d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_2a3376ea((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_2a3376ea((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd2a688_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_94a487b6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_94a487b6((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SaveTransactionManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.SaveTransactionManager arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SaveTransactionManager((nint)NativeMethods.TablePtr->C2.hs_method_0222336b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SaveTransactionManager((nint)NativeMethods.TablePtr->C3.hs_method_0222336b((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -118,7 +118,7 @@ public sealed unsafe partial class SaveTransactionManager : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_5766ac64((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_5766ac64((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

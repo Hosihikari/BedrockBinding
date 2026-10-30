@@ -72,6 +72,7 @@ public sealed unsafe partial class CopyWorldResult : global::System.IDisposable
         set => NativeMethods.TablePtr->C1.hs_set_b8074b05((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

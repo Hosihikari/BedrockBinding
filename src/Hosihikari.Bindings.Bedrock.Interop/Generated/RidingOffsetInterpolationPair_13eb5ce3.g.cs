@@ -40,7 +40,7 @@ public sealed unsafe partial class RidingOffsetInterpolationPair : global::Syste
 
     public static RidingOffsetInterpolationPair Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_2ebe8e45();
+        var handle = NativeMethods.TablePtr->C3.hs_create_2ebe8e45();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class RidingOffsetInterpolationPair : global::Syste
 
     public static RidingOffsetInterpolationPair Create(global::Hosihikari.Bindings.Bedrock.Interop.RidingOffsetInterpolationPair arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_d8109f32((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_d8109f32((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,18 +63,18 @@ public sealed unsafe partial class RidingOffsetInterpolationPair : global::Syste
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkaaecd5_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_7994a2c7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7994a2c7((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkced4c9_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a1a493e8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a1a493e8((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.RidingOffsetInterpolationPair operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.RidingOffsetInterpolationPair arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.RidingOffsetInterpolationPair((nint)NativeMethods.TablePtr->C2.hs_method_937f26ec((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RidingOffsetInterpolationPair((nint)NativeMethods.TablePtr->C3.hs_method_937f26ec((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -83,7 +83,7 @@ public sealed unsafe partial class RidingOffsetInterpolationPair : global::Syste
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_13eb5ce3((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_13eb5ce3((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

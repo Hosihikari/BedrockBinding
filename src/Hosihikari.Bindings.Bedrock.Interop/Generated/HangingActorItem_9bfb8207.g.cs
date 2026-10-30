@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class HangingActorItem
+public sealed unsafe partial class HangingActorItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -57,6 +57,7 @@ public sealed unsafe partial class HangingActorItem
         get => NativeMethods.TablePtr->C1.hs_get_9f08c661((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_9f08c661((void*)__hosihikari_shim_handle, value);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -265,5 +266,18 @@ public sealed unsafe partial class HangingActorItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_02af5ede((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_02af5ede((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_9bfb8207((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

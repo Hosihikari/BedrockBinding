@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NetworkStackLatencyPacket
+public sealed unsafe partial class NetworkStackLatencyPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class NetworkStackLatencyPacket
         NativeMethods.TablePtr->C2.hs_method_4e74c6a3((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mCreateTime_Address
     {
@@ -237,5 +238,18 @@ public sealed unsafe partial class NetworkStackLatencyPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_f7c43e1c((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_f7c43e1c((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_77baa49c((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

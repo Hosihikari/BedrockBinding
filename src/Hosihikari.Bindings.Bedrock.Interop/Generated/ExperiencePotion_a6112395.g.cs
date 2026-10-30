@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class ExperiencePotion
+public sealed unsafe partial class ExperiencePotion : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -618,6 +618,7 @@ public sealed unsafe partial class ExperiencePotion
         return NativeMethods.TablePtr->C1.hs_method_5cb21bd7((void*)__hosihikari_shim_handle);
     }
 
+
     public bool mInGround
     {
         get => NativeMethods.TablePtr->C1.hs_get_7922953d((void*)__hosihikari_shim_handle) != 0;
@@ -640,5 +641,18 @@ public sealed unsafe partial class ExperiencePotion
     {
         get => NativeMethods.TablePtr->C1.hs_get_2d4a44bf((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_2d4a44bf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_a6112395((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

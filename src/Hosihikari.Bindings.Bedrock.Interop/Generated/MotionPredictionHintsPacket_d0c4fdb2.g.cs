@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class MotionPredictionHintsPacket
+public sealed unsafe partial class MotionPredictionHintsPacket : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -186,6 +186,7 @@ public sealed unsafe partial class MotionPredictionHintsPacket
         NativeMethods.TablePtr->C2.hs_method_c71b7b79((void*)__hosihikari_shim_handle, (void*)stream.Handle, (void*)reflectionCtx.Handle, overrideMode ?? default(int), overrideMode.HasValue);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mMotion_Address
     {
@@ -243,5 +244,18 @@ public sealed unsafe partial class MotionPredictionHintsPacket
     {
         get => NativeMethods.TablePtr->C2.hs_get_49ddb87b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_49ddb87b((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_d0c4fdb2((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

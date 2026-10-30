@@ -131,6 +131,7 @@ public sealed unsafe partial class ServerSoundInstanceManager : global::System.I
     public void tickSounds(nint now) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

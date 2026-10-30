@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class TimerActorFlag3Goal
+public sealed unsafe partial class TimerActorFlag3Goal : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -37,5 +36,85 @@ public sealed partial class TimerActorFlag3Goal
         var __hs_handle = __hosihikari_shim_handle;
         __hosihikari_shim_handle = 0;
         return __hs_handle;
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mName_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_400d121b((void*)__hosihikari_shim_handle);
+    }
+
+    public int mRequiredControlFlags
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_25077abf((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_25077abf((void*)__hosihikari_shim_handle, value);
+    }
+
+    public ushort mTypeId
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_c8f66a2e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_c8f66a2e((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public int mActorFlag
+    {
+        get => NativeMethods.TablePtr->C3.hs_get_b2f8a39c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_b2f8a39c((void*)__hosihikari_shim_handle, value);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCooldownEndTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3c123621((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mCooldownRangeTicks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f66e2797((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mDurationRangeTicks_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9b869976((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mGoalEndTick_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_7740d70d((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mMob_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_02931011((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnEndEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_da140013((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mOnStartEvent_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9baf0f98((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_fcee1316((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

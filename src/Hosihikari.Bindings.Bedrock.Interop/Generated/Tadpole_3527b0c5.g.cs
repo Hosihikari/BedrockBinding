@@ -767,6 +767,7 @@ public sealed unsafe partial class Tadpole : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_864f1a68((void*)__hosihikari_shim_handle, method, (void*)@params.Handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

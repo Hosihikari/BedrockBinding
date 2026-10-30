@@ -94,6 +94,7 @@ public sealed unsafe partial class ScriptActorHitBlockAfterEvent : global::Syste
         get => (nint)NativeMethods.TablePtr->C3.hs_get_3735198d((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

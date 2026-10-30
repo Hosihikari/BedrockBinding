@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class EnchantedBookItem
+public sealed unsafe partial class EnchantedBookItem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -77,6 +77,7 @@ public sealed unsafe partial class EnchantedBookItem
         get => NativeMethods.TablePtr->C1.hs_get_b2628d1e((void*)__hosihikari_shim_handle) != 0;
         set => NativeMethods.TablePtr->C1.hs_set_b2628d1e((void*)__hosihikari_shim_handle, value);
     }
+
 
     public bool mAnimatesInToolbar
     {
@@ -285,5 +286,18 @@ public sealed unsafe partial class EnchantedBookItem
     {
         get => NativeMethods.TablePtr->C1.hs_get_49dfd7e5((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C1.hs_set_49dfd7e5((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_8650c2f6((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

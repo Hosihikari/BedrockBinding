@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.VillageManager_Nested;
 
-public sealed unsafe partial class VillageInfo
+public sealed unsafe partial class VillageInfo : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -40,19 +40,33 @@ public sealed unsafe partial class VillageInfo
 
     public float distanceToClosestEdgeOfVillage
     {
-        get => NativeMethods.TablePtr->C3.hs_get_a47d0a76((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_a47d0a76((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_a47d0a76((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_a47d0a76((void*)__hosihikari_shim_handle, value);
     }
 
     public bool positionIsWithinVillageBounds
     {
-        get => NativeMethods.TablePtr->C3.hs_get_f14c28c8((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_f14c28c8((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_f14c28c8((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_f14c28c8((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint village_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_8c00fda0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8c00fda0((void*)__hosihikari_shim_handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_d3a6af1d((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

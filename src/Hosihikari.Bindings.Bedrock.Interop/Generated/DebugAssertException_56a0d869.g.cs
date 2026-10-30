@@ -82,6 +82,7 @@ public sealed unsafe partial class DebugAssertException : global::System.IDispos
         return (nint)NativeMethods.TablePtr->C1.hs_method_fba34b2e((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

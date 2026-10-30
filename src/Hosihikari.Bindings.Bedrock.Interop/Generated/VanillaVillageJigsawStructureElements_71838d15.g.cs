@@ -48,7 +48,7 @@ public sealed unsafe partial class VanillaVillageJigsawStructureElements : globa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_71838d15((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_71838d15((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

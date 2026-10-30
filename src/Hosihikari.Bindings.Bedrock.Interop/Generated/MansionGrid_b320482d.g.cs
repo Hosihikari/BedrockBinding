@@ -121,6 +121,7 @@ public sealed unsafe partial class MansionGrid : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.WoodlandMansionPieces_Nested.MansionGrid((nint)NativeMethods.TablePtr->C4.hs_method_cddd6d5e((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

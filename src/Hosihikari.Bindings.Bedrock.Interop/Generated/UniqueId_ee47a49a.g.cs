@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.MapItemTrackedActor_Nested;
 
-public sealed unsafe partial class UniqueId
+public sealed unsafe partial class UniqueId : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -54,5 +54,19 @@ public sealed unsafe partial class UniqueId
     {
         get => NativeMethods.TablePtr->C2.hs_get_89d88f6f((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_89d88f6f((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_ee47a49a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

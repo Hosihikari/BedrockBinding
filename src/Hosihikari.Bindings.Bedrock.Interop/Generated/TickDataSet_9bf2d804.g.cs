@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.BlockTickingQueue_Nested;
 
-public sealed unsafe partial class TickDataSet
+public sealed unsafe partial class TickDataSet : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -43,9 +43,23 @@ public sealed unsafe partial class TickDataSet
         NativeMethods.TablePtr->C0.hs_method_75d59937((void*)__hosihikari_shim_handle);
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mC_Address
     {
         get => (nint)NativeMethods.TablePtr->C0.hs_get_f683c83a((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_9bf2d804((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

@@ -217,6 +217,7 @@ public sealed unsafe partial class SneezeGoal : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_01571a91((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

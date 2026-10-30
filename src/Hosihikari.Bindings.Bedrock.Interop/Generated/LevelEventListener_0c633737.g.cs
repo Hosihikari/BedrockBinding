@@ -40,42 +40,42 @@ public sealed unsafe partial class LevelEventListener : global::System.IDisposab
 
     public int _onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent @event)
     {
-        return NativeMethods.TablePtr->C1.hs_method_a0d0f2d1((void*)__hosihikari_shim_handle, (void*)@event.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_a0d0f2d1((void*)__hosihikari_shim_handle, (void*)@event.Handle);
     }
 
     public int _onLevelAddedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->C1.hs_method_9bc3c2ed((void*)__hosihikari_shim_handle, (void*)player.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_9bc3c2ed((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     public int _onLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->C1.hs_method_70eab77f((void*)__hosihikari_shim_handle, (void*)level.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_70eab77f((void*)__hosihikari_shim_handle, (void*)level.Handle);
     }
 
     public int _onLevelRemovedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return NativeMethods.TablePtr->C1.hs_method_b0a76514((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_b0a76514((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
     public int _onLevelRemovedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->C1.hs_method_d61682ce((void*)__hosihikari_shim_handle, (void*)player.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_d61682ce((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     public int _onLevelTick(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->C1.hs_method_9ff752a4((void*)__hosihikari_shim_handle, (void*)level.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_9ff752a4((void*)__hosihikari_shim_handle, (void*)level.Handle);
     }
 
     public int _onLevelTickEnd(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
     {
-        return NativeMethods.TablePtr->C1.hs_method_68373305((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_68373305((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public int _onLevelTickStart(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->C1.hs_method_20c74577((void*)__hosihikari_shim_handle, (void*)level.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_20c74577((void*)__hosihikari_shim_handle, (void*)level.Handle);
     }
 
     public int _onLevelWeatherChange(string dimension, bool wasRaining, bool wasLightning, bool isRaining, bool isLightning)
@@ -93,7 +93,7 @@ public sealed unsafe partial class LevelEventListener : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(dimension, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_3803ea6c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, wasRaining, wasLightning, isRaining, isLightning);
+            return NativeMethods.TablePtr->C2.hs_method_3803ea6c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, wasRaining, wasLightning, isRaining, isLightning);
         }
     }
 
@@ -112,7 +112,7 @@ public sealed unsafe partial class LevelEventListener : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(storyData, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_41a8737a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C2.hs_method_41a8737a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -134,42 +134,42 @@ public sealed unsafe partial class LevelEventListener : global::System.IDisposab
 
     public int onEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelNotificationEvent @event)
     {
-        return NativeMethods.TablePtr->C1.hs_method_c9f94791((void*)__hosihikari_shim_handle, (void*)@event.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_c9f94791((void*)__hosihikari_shim_handle, (void*)@event.Handle);
     }
 
     public int onLevelAddedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->C1.hs_method_fc2ba800((void*)__hosihikari_shim_handle, (void*)player.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_fc2ba800((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     public int onLevelInitialized(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->C1.hs_method_925d1d72((void*)__hosihikari_shim_handle, (void*)level.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_925d1d72((void*)__hosihikari_shim_handle, (void*)level.Handle);
     }
 
     public int onLevelRemovedActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {
-        return NativeMethods.TablePtr->C1.hs_method_1a1bc7ff((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_1a1bc7ff((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
     public int onLevelRemovedPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        return NativeMethods.TablePtr->C1.hs_method_a072a092((void*)__hosihikari_shim_handle, (void*)player.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_a072a092((void*)__hosihikari_shim_handle, (void*)player.Handle);
     }
 
     public int onLevelTick(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->C1.hs_method_a7636f7d((void*)__hosihikari_shim_handle, (void*)level.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_a7636f7d((void*)__hosihikari_shim_handle, (void*)level.Handle);
     }
 
     public int onLevelTickEnd(global::Hosihikari.Bindings.Bedrock.Interop.Level arg0)
     {
-        return NativeMethods.TablePtr->C1.hs_method_3e08cb13((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_3e08cb13((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public int onLevelTickStart(global::Hosihikari.Bindings.Bedrock.Interop.Level level)
     {
-        return NativeMethods.TablePtr->C1.hs_method_3f7c6bfd((void*)__hosihikari_shim_handle, (void*)level.Handle);
+        return NativeMethods.TablePtr->C2.hs_method_3f7c6bfd((void*)__hosihikari_shim_handle, (void*)level.Handle);
     }
 
     public int onLevelWeatherChange(string dimension, bool wasRaining, bool wasLightning, bool isRaining, bool isLightning)
@@ -187,7 +187,7 @@ public sealed unsafe partial class LevelEventListener : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(dimension, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_3f7fd36a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, wasRaining, wasLightning, isRaining, isLightning);
+            return NativeMethods.TablePtr->C2.hs_method_3f7fd36a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, wasRaining, wasLightning, isRaining, isLightning);
         }
     }
 
@@ -206,7 +206,7 @@ public sealed unsafe partial class LevelEventListener : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(storyData, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->C1.hs_method_8b27194e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->C2.hs_method_8b27194e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -233,7 +233,7 @@ public sealed unsafe partial class LevelEventListener : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_0c633737((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_0c633737((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -44,7 +44,7 @@ public sealed unsafe partial class LevelDbRandomAccessFile : global::System.IDis
 
     public static LevelDbRandomAccessFile Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_674207b5();
+        var handle = NativeMethods.TablePtr->C2.hs_create_674207b5();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,7 +55,7 @@ public sealed unsafe partial class LevelDbRandomAccessFile : global::System.IDis
 
     public static LevelDbRandomAccessFile Create(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbRandomAccessFile arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_59e4859a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_59e4859a((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,19 +71,20 @@ public sealed unsafe partial class LevelDbRandomAccessFile : global::System.IDis
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2c0e30_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_383244c0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_383244c0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkd171ca_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_e053da1d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_e053da1d((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LevelDbRandomAccessFile operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.LevelDbRandomAccessFile arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbRandomAccessFile((nint)NativeMethods.TablePtr->C1.hs_method_b8497efb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelDbRandomAccessFile((nint)NativeMethods.TablePtr->C2.hs_method_b8497efb((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
+
 
     public void Dispose()
     {
@@ -91,7 +92,7 @@ public sealed unsafe partial class LevelDbRandomAccessFile : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_efb32988((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_efb32988((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

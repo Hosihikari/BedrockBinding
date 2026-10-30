@@ -137,9 +137,10 @@ public sealed unsafe partial class OverworldNoises3d : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Bedrock.Interop.OverworldNoises3d((nint)NativeMethods.TablePtr->C2.hs_method_0cdc4ebd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'TargetPoint' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint sample(nint position) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'TargetPoint' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.TargetPoint sample(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TargetPoint((nint)NativeMethods.TablePtr->C2.hs_method_ed2ca240((void*)__hosihikari_shim_handle, (void*)position.Handle));
+    }
 
 
     public void Dispose()

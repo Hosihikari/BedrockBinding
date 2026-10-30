@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlaceBlockNode
+public sealed unsafe partial class PlaceBlockNode : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -97,5 +97,19 @@ public sealed unsafe partial class PlaceBlockNode
     public int tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
         return NativeMethods.TablePtr->C2.hs_method_c38e2995((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_b6be0731((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

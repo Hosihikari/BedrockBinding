@@ -199,6 +199,7 @@ public sealed unsafe partial class TextObjectLocalizedTextWithParams : global::S
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C3.hs_method_fe13e4db((void*)__hosihikari_shim_handle, (void*)resolveData));
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

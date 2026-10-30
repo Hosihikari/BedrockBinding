@@ -94,6 +94,7 @@ public sealed unsafe partial class Attribute : global::System.IDisposable
         set => NativeMethods.TablePtr->C0.hs_set_945efac0((void*)__hosihikari_shim_handle, value);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)

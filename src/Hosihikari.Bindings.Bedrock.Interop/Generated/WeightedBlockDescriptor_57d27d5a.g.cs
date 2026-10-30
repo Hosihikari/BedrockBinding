@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.SingleBlockFeature_Nested;
 
-public sealed unsafe partial class WeightedBlockDescriptor
+public sealed unsafe partial class WeightedBlockDescriptor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -48,5 +48,19 @@ public sealed unsafe partial class WeightedBlockDescriptor
     {
         get => NativeMethods.TablePtr->C3.hs_get_de2d1b1b((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_de2d1b1b((void*)__hosihikari_shim_handle, value);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_57d27d5a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

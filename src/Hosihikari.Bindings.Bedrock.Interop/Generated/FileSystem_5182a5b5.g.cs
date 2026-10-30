@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.Core;
 
-public sealed unsafe partial class FileSystem
+public sealed unsafe partial class FileSystem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -41,7 +41,7 @@ public sealed unsafe partial class FileSystem
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_d55ae908((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d55ae908((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -166,7 +166,7 @@ public sealed unsafe partial class FileSystem
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem get()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem((nint)NativeMethods.TablePtr->C0.hs_method_086f6616(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileSystem((nint)NativeMethods.TablePtr->C1.hs_method_086f6616(), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
@@ -264,4 +264,18 @@ public sealed unsafe partial class FileSystem
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint writeFile(nint filePath, nint data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_5182a5b5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

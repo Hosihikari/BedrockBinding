@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class BeehiveBlockActor
+public sealed unsafe partial class BeehiveBlockActor : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -122,6 +122,7 @@ public sealed unsafe partial class BeehiveBlockActor
         return NativeMethods.TablePtr->C0.hs_method_a3334f8d((void*)__hosihikari_shim_handle, (void*)actor.Handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainer_Address
     {
@@ -191,5 +192,18 @@ public sealed unsafe partial class BeehiveBlockActor
     {
         get => NativeMethods.TablePtr->C0.hs_get_b7e5d520((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C0.hs_set_b7e5d520((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C0.hs_destroy_7e2f50d1((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

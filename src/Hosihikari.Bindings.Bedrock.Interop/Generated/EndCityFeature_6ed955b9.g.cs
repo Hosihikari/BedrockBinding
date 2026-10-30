@@ -111,6 +111,7 @@ public sealed unsafe partial class EndCityFeature : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_a9e7c8b0((void*)__hosihikari_shim_handle) != 0;
     }
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mActiveBlueprintCreateCount_Address
     {

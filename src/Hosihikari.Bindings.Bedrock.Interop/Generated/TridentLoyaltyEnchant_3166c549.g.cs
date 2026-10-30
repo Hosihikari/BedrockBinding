@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class TridentLoyaltyEnchant
+public sealed unsafe partial class TridentLoyaltyEnchant : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -120,5 +120,19 @@ public sealed unsafe partial class TridentLoyaltyEnchant
     public int getMinCost(int level)
     {
         return NativeMethods.TablePtr->C3.hs_method_8b393de6((void*)__hosihikari_shim_handle, level);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_3166c549((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

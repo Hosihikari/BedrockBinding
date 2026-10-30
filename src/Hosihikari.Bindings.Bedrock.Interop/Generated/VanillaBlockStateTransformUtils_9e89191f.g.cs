@@ -40,51 +40,51 @@ public sealed unsafe partial class VanillaBlockStateTransformUtils : global::Sys
 
     public static int _mirror(int direction, byte mirror)
     {
-        return NativeMethods.TablePtr->C3.hs_method_4270b3b8(direction, mirror);
+        return NativeMethods.TablePtr->C4.hs_method_4270b3b8(direction, mirror);
     }
 
     public static int _rotate(int direction, byte rotation)
     {
-        return NativeMethods.TablePtr->C3.hs_method_2ce4b672(direction, rotation);
+        return NativeMethods.TablePtr->C4.hs_method_2ce4b672(direction, rotation);
     }
 
     public static bool hasTransformableConnectionStates(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_a55320ce((void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_a55320ce((void*)block.Handle) != 0;
     }
 
     public static bool hasTransformableWallStates(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return NativeMethods.TablePtr->C3.hs_method_93243c56((void*)block.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_93243c56((void*)block.Handle) != 0;
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block? transformBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block, int targetDirection)
     {
-        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_1dd2a794((void*)block.Handle, targetDirection);
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_1dd2a794((void*)block.Handle, targetDirection);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block? transformBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte targetDirection)
     {
-        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_5542ccee((void*)block.Handle, targetDirection);
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_5542ccee((void*)block.Handle, targetDirection);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block? transformBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte rotation, byte mirror)
     {
-        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_ef633792((void*)block.Handle, rotation, mirror);
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_ef633792((void*)block.Handle, rotation, mirror);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block? transformConnectionStates(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte rotation, byte mirror)
     {
-        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_035b34a3((void*)block.Handle, rotation, mirror);
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_035b34a3((void*)block.Handle, rotation, mirror);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Block? transformWallConnectionTypes(global::Hosihikari.Bindings.Bedrock.Interop.Block block, byte rotation, byte mirror)
     {
-        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_424cb858((void*)block.Handle, rotation, mirror);
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_424cb858((void*)block.Handle, rotation, mirror);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
     }
 
@@ -94,7 +94,7 @@ public sealed unsafe partial class VanillaBlockStateTransformUtils : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_9e89191f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_9e89191f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

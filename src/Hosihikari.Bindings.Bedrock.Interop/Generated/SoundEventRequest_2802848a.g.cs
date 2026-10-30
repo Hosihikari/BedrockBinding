@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class SoundEventRequest
+public sealed unsafe partial class SoundEventRequest : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -67,4 +67,18 @@ public sealed unsafe partial class SoundEventRequest
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'SoundEventRequest' is not supported.", false)]
     public static nint tryPlaySound(nint actorFlags, nint identifier, nint actorId, nint dimension, nint type, nint entity, nint location, int data) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'SoundEventRequest' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C3.hs_destroy_2802848a((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

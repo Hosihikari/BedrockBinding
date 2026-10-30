@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class PlayerUIContainer
+public sealed unsafe partial class PlayerUIContainer : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -117,6 +117,7 @@ public sealed unsafe partial class PlayerUIContainer
     public nint save(nint saveContext) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ListTag' has no accessible destructor.");
 
+
     // The native field type is not projected; this is the address of the field storage.
     public nint mItems_Address
     {
@@ -127,5 +128,18 @@ public sealed unsafe partial class PlayerUIContainer
     {
         get => NativeMethods.TablePtr->C2.hs_get_cc9eac88((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C2.hs_set_cc9eac88((void*)__hosihikari_shim_handle, value);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_8e60e5f8((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

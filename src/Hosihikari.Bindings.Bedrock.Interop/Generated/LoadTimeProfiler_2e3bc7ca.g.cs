@@ -41,12 +41,12 @@ public sealed unsafe partial class LoadTimeProfiler : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mControlBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_62103f1d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_62103f1d((void*)__hosihikari_shim_handle);
     }
 
     public nint _ctor()
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_dff310f0((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_dff310f0((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -55,7 +55,7 @@ public sealed unsafe partial class LoadTimeProfiler : global::System.IDisposable
 
     public static LoadTimeProfiler Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_3a35e773();
+        var handle = NativeMethods.TablePtr->C1.hs_create_3a35e773();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,7 +66,7 @@ public sealed unsafe partial class LoadTimeProfiler : global::System.IDisposable
 
     public static LoadTimeProfiler Create(global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_ef5be685((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_ef5be685((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -78,42 +78,42 @@ public sealed unsafe partial class LoadTimeProfiler : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk3beda8_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_94395d77((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_94395d77((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk58830a_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_80864110((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_80864110((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk69a966_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4b93c4b9((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4b93c4b9((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka79572_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_063571a0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_063571a0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkec42a1_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_3bcc451e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_3bcc451e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkfa6b3f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_e04e8dff((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_e04e8dff((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler((nint)NativeMethods.TablePtr->C0.hs_method_c58ed6cf((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.LoadTimeProfiler((nint)NativeMethods.TablePtr->C1.hs_method_c58ed6cf((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -123,7 +123,7 @@ public sealed unsafe partial class LoadTimeProfiler : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_2e3bc7ca((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_2e3bc7ca((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

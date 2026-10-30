@@ -4,7 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-public sealed unsafe partial class NpcSystem
+public sealed unsafe partial class NpcSystem : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -51,5 +51,19 @@ public sealed unsafe partial class NpcSystem
     public static void tickCountdown(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext entity, nint leaveMenuCountdownComponent)
     {
         NativeMethods.TablePtr->C2.hs_method_a2a0829e((void*)entity.Handle, (void*)leaveMenuCountdownComponent);
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_f1d3824b((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
     }
 }

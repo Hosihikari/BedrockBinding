@@ -127,6 +127,7 @@ public sealed unsafe partial class ActorSkeletalAnimation : global::System.IDisp
         get => (nint)NativeMethods.TablePtr->C0.hs_get_21d077bc((void*)__hosihikari_shim_handle);
     }
 
+
     public void Dispose()
     {
         if (__hosihikari_shim_handle != 0)
