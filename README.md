@@ -57,9 +57,18 @@ The generated shim directories contain `hosihikari_abi.h` from `BindingAbi`, so 
 
 `tests/runtime-smoke/` is a plugin script that loads the shim inside a real server, checks two static accessors, and constructs a `HashedString`, a `Core::Random`, and a `TextPacket` before calling instance methods. `scripts/run-runtime-smoke.ps1 -ServerRoot <dir>` builds everything, deploys the plugin, starts the server, and requires `result=OK`.
 
-## Release
+## Distribution
 
-`release.yml` runs on `v*` tags: it builds and verifies the committed surface, packs `Hosihikari.Bindings.Bedrock.Interop.<version>.nupkg`, builds the Windows shim, zips it as `Hosihikari.Bindings.Bedrock.Shim-win-x64-server.zip`, and attaches both to the GitHub release. The package version lives in the csproj (`1.26.51-r0`).
+The surface is distributed as the NuGet package `Hosihikari.Bindings.Bedrock.Interop` (version `1.26.51-r0`). Pack and push it with:
+
+```shell
+powershell -File native/BindingShim/build.ps1 -Output artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll
+dotnet pack src/Hosihikari.Bindings.Bedrock.Interop/Hosihikari.Bindings.Bedrock.Interop.csproj -c Release `
+  -p:BedrockShimDll=artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll -o artifacts/pack
+dotnet nuget push artifacts/pack/*.nupkg --api-key <key> --source https://api.nuget.org/v3/index.json
+```
+
+The package depends on `Hosihikari.Bindings.Abi` and carries the Windows shim under `runtimes/win-x64/native/`; without `-p:BedrockShimDll` it contains the managed assembly only.
 
 ## Generated-source gate
 

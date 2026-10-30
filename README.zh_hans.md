@@ -57,9 +57,18 @@ powershell -File native/BindingShim/build.ps1
 
 `tests/runtime-smoke/` 是一个插件脚本：在真实服务器进程内加载垫片，校验两个静态访问器，并构造 `HashedString`、`Core::Random` 与 `TextPacket` 后调用实例方法。`scripts/run-runtime-smoke.ps1 -ServerRoot <目录>` 会构建、部署插件、启动服务器并要求 `result=OK`。
 
-## 发布
+## 分发
 
-`release.yml` 在 `v*` 标签上运行：构建并校验已提交的面，打包 `Hosihikari.Bindings.Bedrock.Interop.<version>.nupkg`，构建 Windows 垫片并压缩为 `Hosihikari.Bindings.Bedrock.Shim-win-x64-server.zip`，两者附加到 GitHub Release。包版本写在 csproj 里（`1.26.51-r0`）。
+面通过 NuGet 包 `Hosihikari.Bindings.Bedrock.Interop` 分发（版本 `1.26.51-r0`）。打包与推送：
+
+```shell
+powershell -File native/BindingShim/build.ps1 -Output artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll
+dotnet pack src/Hosihikari.Bindings.Bedrock.Interop/Hosihikari.Bindings.Bedrock.Interop.csproj -c Release `
+  -p:BedrockShimDll=artifacts/native/Hosihikari.Bindings.Bedrock.Shim.dll -o artifacts/pack
+dotnet nuget push artifacts/pack/*.nupkg --api-key <key> --source https://api.nuget.org/v3/index.json
+```
+
+包依赖 `Hosihikari.Bindings.Abi`，并在 `runtimes/win-x64/native/` 下携带 Windows 垫片；不传 `-p:BedrockShimDll` 时只含托管程序集。
 
 ## 生成源校验
 
