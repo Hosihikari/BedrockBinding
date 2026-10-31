@@ -596,9 +596,10 @@ public sealed unsafe partial class WitherSkull : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C4.hs_get_7f5e5d74((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __hurt(nint source, float damage, nint hurtParameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult __hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage, nint hurtParameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C4.hs_method_3d77e4f0((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)hurtParameters));
+    }
 
     public bool _canDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
@@ -656,9 +657,10 @@ public sealed unsafe partial class WitherSkull : global::System.IDisposable
         return new WitherSkull((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _hurt(nint source, float damage, nint hurtParameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult _hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage, nint hurtParameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C4.hs_method_d846474d((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)hurtParameters));
+    }
 
     public bool canDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {

@@ -38,9 +38,9 @@ public sealed unsafe partial class JsepTransportController : global::System.IDis
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::PayloadType' is not a known bindable declaration.", false)]
     public nint _AddLocalMapping(nint mid, nint payload_type, nint codec) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::PayloadType' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCErrorOr<webrtc::PayloadType>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _SuggestPayloadType(nint mid, nint codec) =>
@@ -59,17 +59,18 @@ public sealed unsafe partial class JsepTransportController : global::System.IDis
     public static nint _vftableForPayloadTypeSuggester() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::PayloadType' is not a known bindable declaration.", false)]
     public nint AddLocalMapping(nint mid, nint payload_type, nint codec) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::PayloadType' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'webrtc::Candidate' is not supported.", false)]
     public nint AddRemoteCandidates(nint transport_name, nint candidates) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'webrtc::Candidate' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ApplyDescription_n(bool local, nint type, nint local_desc, nint remote_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError ApplyDescription_n(bool local, int type, nint local_desc, nint remote_desc)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_5f08fe9c((void*)__hosihikari_shim_handle, local, type, (void*)local_desc, (void*)remote_desc));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'webrtc::DtlsTransportInternal' is not a known bindable declaration.", false)]
     public nint CreateDtlsTransport(nint content_info, nint ice) =>
@@ -262,9 +263,10 @@ public sealed unsafe partial class JsepTransportController : global::System.IDis
     public nint LookupDtlsTransportByMid(nint mid) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::DtlsTransport>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint MaybeCreateJsepTransport(bool local, nint content_info, nint description) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError MaybeCreateJsepTransport(bool local, nint content_info, nint description)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_d3040f02((void*)__hosihikari_shim_handle, local, (void*)content_info, (void*)description));
+    }
 
     public void MaybeStartGathering()
     {
@@ -324,9 +326,10 @@ public sealed unsafe partial class JsepTransportController : global::System.IDis
         return NativeMethods.TablePtr->C4.hs_method_6d8d42d5((void*)__hosihikari_shim_handle, (void*)c) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint RollbackTransports() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError RollbackTransports()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_e1c0018a((void*)__hosihikari_shim_handle));
+    }
 
     public void SetActiveResetSrtpParams(bool active_reset_srtp_params)
     {
@@ -348,18 +351,20 @@ public sealed unsafe partial class JsepTransportController : global::System.IDis
         return NativeMethods.TablePtr->C4.hs_method_772a9c2f((void*)__hosihikari_shim_handle, (void*)certificate) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint SetLocalDescription(nint type, nint local_desc, nint remote_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError SetLocalDescription(int type, nint local_desc, nint remote_desc)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_de64b603((void*)__hosihikari_shim_handle, type, (void*)local_desc, (void*)remote_desc));
+    }
 
     public void SetNeedsIceRestartFlag()
     {
         NativeMethods.TablePtr->C4.hs_method_426f7322((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint SetRemoteDescription(nint type, nint local_desc, nint remote_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError SetRemoteDescription(int type, nint local_desc, nint remote_desc)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_adb9c146((void*)__hosihikari_shim_handle, type, (void*)local_desc, (void*)remote_desc));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCErrorOr<webrtc::PayloadType>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint SuggestPayloadType(nint mid, nint codec) =>
@@ -370,13 +375,15 @@ public sealed unsafe partial class JsepTransportController : global::System.IDis
         NativeMethods.TablePtr->C4.hs_method_c296e143((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ValidateAndMaybeUpdateBundleGroups(bool local, nint type, nint local_desc, nint remote_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError ValidateAndMaybeUpdateBundleGroups(bool local, int type, nint local_desc, nint remote_desc)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_a9ce98cd((void*)__hosihikari_shim_handle, local, type, (void*)local_desc, (void*)remote_desc));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint ValidateContent(nint content_info) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError ValidateContent(nint content_info)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_16fd2843((void*)__hosihikari_shim_handle, (void*)content_info));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1421b4_Address

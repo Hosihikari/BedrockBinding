@@ -584,9 +584,10 @@ public sealed unsafe partial class Boat : global::System.IDisposable
         set => NativeMethods.TablePtr->C0.hs_set_dc57c21b((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __hurt(nint source, float damage, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult __hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage, nint arg2)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C0.hs_method_45253e9f((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)arg2));
+    }
 
     public bool _canAddPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor passenger)
     {
@@ -680,9 +681,10 @@ public sealed unsafe partial class Boat : global::System.IDisposable
         return new Boat((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _hurt(nint source, float damage, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult _hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage, nint arg2)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C0.hs_method_dd9a7569((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)arg2));
+    }
 
     public bool canAddPassenger(global::Hosihikari.Bindings.Bedrock.Interop.Actor passenger)
     {

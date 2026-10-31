@@ -46,7 +46,7 @@ public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
     {
         fixed (byte* __hs_vectorData3 = buffer)
         {
-            return NativeMethods.TablePtr->C3.hs_method_9559d5ad((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0));
+            return NativeMethods.TablePtr->C4.hs_method_9559d5ad((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0));
         }
     }
 
@@ -58,13 +58,13 @@ public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
     {
         fixed (byte* __hs_vectorData3 = buffer)
         {
-            return NativeMethods.TablePtr->C3.hs_method_fe57e798((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_fe57e798((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0)) != 0;
         }
     }
 
     public static SystemFilePicker Create(global::Hosihikari.Bindings.Bedrock.Interop.SystemFilePicker arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_8b7f34e7((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_8b7f34e7((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -81,7 +81,7 @@ public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
     {
         fixed (byte* __hs_vectorData3 = buffer)
         {
-            return NativeMethods.TablePtr->C3.hs_method_1fcb5796((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0));
+            return NativeMethods.TablePtr->C4.hs_method_1fcb5796((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0));
         }
     }
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
     {
         fixed (byte* __hs_vectorData3 = buffer)
         {
-            return NativeMethods.TablePtr->C3.hs_method_d3ae8fb1((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_d3ae8fb1((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0)) != 0;
         }
     }
 
@@ -100,7 +100,7 @@ public sealed unsafe partial class SystemFilePicker : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_643ace1e((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_643ace1e((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

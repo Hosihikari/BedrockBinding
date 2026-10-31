@@ -584,9 +584,10 @@ public sealed unsafe partial class Minecart : global::System.IDisposable
         set => NativeMethods.TablePtr->C2.hs_set_4a58505d((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __hurt(nint source, float damage, nint hurtParameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult __hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage, nint hurtParameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C2.hs_method_d5097c2e((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)hurtParameters));
+    }
 
     public void __lazyInitDisplayBlock()
     {
@@ -691,9 +692,10 @@ public sealed unsafe partial class Minecart : global::System.IDisposable
         return new Minecart((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _hurt(nint source, float damage, nint hurtParameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult _hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage, nint hurtParameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C2.hs_method_6a9e6821((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)hurtParameters));
+    }
 
     public void _lazyInitDisplayBlock()
     {

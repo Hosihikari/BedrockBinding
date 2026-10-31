@@ -40,7 +40,7 @@ public sealed unsafe partial class CCRakNetSlidingWindow : global::System.IDispo
 
     public static CCRakNetSlidingWindow Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.CCRakNetSlidingWindow arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_178cba2a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_178cba2a((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,31 +51,31 @@ public sealed unsafe partial class CCRakNetSlidingWindow : global::System.IDispo
 
     public uint MAXIMUM_MTU_INCLUDING_UDP_HEADER
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f8f0705f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f8f0705f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f8f0705f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f8f0705f((void*)__hosihikari_shim_handle, value);
     }
 
     public bool _isContinuousSend
     {
-        get => NativeMethods.TablePtr->C2.hs_get_e3226aeb((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_e3226aeb((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_e3226aeb((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_e3226aeb((void*)__hosihikari_shim_handle, value);
     }
 
     public bool backoffThisBlock
     {
-        get => NativeMethods.TablePtr->C2.hs_get_6bc60e21((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_6bc60e21((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_6bc60e21((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_6bc60e21((void*)__hosihikari_shim_handle, value);
     }
 
     public double cwnd
     {
-        get => NativeMethods.TablePtr->C2.hs_get_f1bac16b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_f1bac16b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_f1bac16b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_f1bac16b((void*)__hosihikari_shim_handle, value);
     }
 
     public double deviationRtt
     {
-        get => NativeMethods.TablePtr->C2.hs_get_0b43ba64((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_0b43ba64((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_0b43ba64((void*)__hosihikari_shim_handle, value);
     }
 
@@ -134,7 +134,7 @@ public sealed unsafe partial class CCRakNetSlidingWindow : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_94be5e78((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_94be5e78((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

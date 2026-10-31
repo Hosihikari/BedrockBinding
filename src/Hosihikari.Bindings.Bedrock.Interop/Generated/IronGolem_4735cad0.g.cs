@@ -594,9 +594,10 @@ public sealed unsafe partial class IronGolem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_9aa415cd((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _doHurtTarget(nint target, nint cause) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult _doHurtTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor? target, nint cause)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C1.hs_method_156a87f5((void*)__hosihikari_shim_handle, (void*)(target?.Handle ?? 0), (void*)cause));
+    }
 
     public float _getShadowRadius()
     {
@@ -644,9 +645,10 @@ public sealed unsafe partial class IronGolem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_629a90c7((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint doHurtTarget(nint target, nint cause) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult doHurtTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor? target, nint cause)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C1.hs_method_296c4df0((void*)__hosihikari_shim_handle, (void*)(target?.Handle ?? 0), (void*)cause));
+    }
 
     public float getShadowRadius()
     {

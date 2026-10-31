@@ -88,9 +88,31 @@ if (-not $SkipFrontend) {
     if (-not [string]::IsNullOrWhiteSpace($EnttRoot)) {
         $FrontendArgs["EnttRoot"] = (Resolve-Path $EnttRoot).Path
     }
+    # A by-value result such as Bedrock::Result<T> only enters the AST once something
+    # instantiates it. Parse once to discover the return spellings, then append explicit
+    # instantiations to the umbrella for the pass that is emitted.
+    $FirstPassIr = Join-Path $Output "header-ir-pass1"
+    $FirstPassArgs = $FrontendArgs.Clone()
+    $FirstPassArgs["Output"] = $FirstPassIr
     # The umbrella hits a handful of known header defects (a deleted copy assignment in
     # MolangScriptArg, incomplete types in a few packets). The frontend records them in the
     # manifest diagnostics and exits non-zero; that is tolerable as long as it wrote the IR.
+    try {
+        & $FrontendDriver @FirstPassArgs
+    } catch {
+        Write-Warning "IR frontend reported errors (discovery pass): $($_.Exception.Message)"
+    }
+
+    $Prelude = Join-Path $Output "result-instantiation.hpp"
+    $PreludeScript = Join-Path $GeneratorRoot "frontend\make-result-prelude.py"
+    & python $PreludeScript $FirstPassIr $Prelude
+    if ($LASTEXITCODE -ne 0) {
+        throw "make-result-prelude.py exited with $LASTEXITCODE"
+    }
+    if ((Get-Item $Prelude).Length -gt 200) {
+        $FrontendArgs["AppendSource"] = $Prelude
+    }
+
     try {
         & $FrontendDriver @FrontendArgs
     } catch {

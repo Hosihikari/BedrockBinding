@@ -14,10 +14,10 @@ This branch targets **BDS 1.26.51.1** through the headers of LeviLamina `ee049f1
 
 ## Current state
 
-- Interop: 9,112 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
-- Binding Shim: 137,407 functions in `native/BindingShim/generated/win-x64-server/bedrock/`.
-- Coverage: 12,045 declarations and 100,918 members bound for `win-x64-server`.
-- `scripts/headers-26.51.txt` lists the 5,194 headers parsed for the surface. Every declaration reachable from them is emitted; layouts and field offsets come from the frontend's AST record layout, so a record keeps its fields as long as the headers prove them.
+- Interop: 9,132 generated C# files under `src/Hosihikari.Bindings.Bedrock.Interop/Generated/`.
+- Binding Shim: 137,720 functions in `native/BindingShim/generated/win-x64-server/bedrock/`.
+- Coverage: 12,065 declarations and 100,991 members bound for `win-x64-server`.
+- `scripts/headers-26.51.txt` lists the 5,197 headers parsed for the surface. Every declaration reachable from them is emitted; layouts and field offsets come from the frontend's AST record layout, so a record keeps its fields as long as the headers prove them.
 
 The shim is emitted in `--symbol-dispatch --resolve-by-name` mode. Supported ABI:
 

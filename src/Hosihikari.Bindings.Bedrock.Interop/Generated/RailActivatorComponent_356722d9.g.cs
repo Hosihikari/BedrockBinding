@@ -40,7 +40,7 @@ public sealed unsafe partial class RailActivatorComponent : global::System.IDisp
 
     public void ejectAllPassengers(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        NativeMethods.TablePtr->C2.hs_method_33ff5e57((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C3.hs_method_33ff5e57((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class RailActivatorComponent : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_356722d9((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_356722d9((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

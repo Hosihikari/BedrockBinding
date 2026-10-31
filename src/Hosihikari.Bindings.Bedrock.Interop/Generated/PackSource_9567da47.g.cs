@@ -90,21 +90,23 @@ public sealed unsafe partial class PackSource : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_514cbf85((void*)__hosihikari_shim_handle, pack?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _applyAndFinishLoadTask(nint task) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSourceLoadResult _applyAndFinishLoadTask(global::Hosihikari.Bindings.Abi.SharedHandle? task)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackSourceLoadResult((nint)NativeMethods.TablePtr->C2.hs_method_403a353e((void*)__hosihikari_shim_handle, task?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'gsl::not_null<PackSource *>' is not supported.", false)]
     public void _buildSourcesForLoad(nint sources) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'gsl::not_null<PackSource *>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _createImmediateLoadResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSourceLoadResult _createImmediateLoadResult()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackSourceLoadResult((nint)NativeMethods.TablePtr->C2.hs_method_142c2be9((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'PackSourceLoadResult' is not supported.", false)]
     public nint _getTaskData(nint task) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'PackSourceLoadResult' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint _loadImpl(nint options) =>
@@ -129,9 +131,10 @@ public sealed unsafe partial class PackSource : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.PackSourceReport((nint)NativeMethods.TablePtr->C2.hs_method_020aaadf((void*)__hosihikari_shim_handle, (void*)manifestFactory.Handle, (void*)keyProvider));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint loadImmediate(nint manifestFactory, nint keyProvider) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PackSourceLoadResult loadImmediate(global::Hosihikari.Bindings.Bedrock.Interop.IPackManifestFactory manifestFactory, nint keyProvider)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PackSourceLoadResult((nint)NativeMethods.TablePtr->C2.hs_method_c27584e5((void*)__hosihikari_shim_handle, (void*)manifestFactory.Handle, (void*)keyProvider));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mContainer_Address
@@ -151,9 +154,9 @@ public sealed unsafe partial class PackSource : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C2.hs_get_c831757a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint requestLoad(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
 
     public void Dispose()

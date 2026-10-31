@@ -73,9 +73,9 @@ public sealed unsafe partial class VanillaDimensions : global::System.IDisposabl
         return NativeMethods.TablePtr->C4.hs_method_20d08a32((void*)startingPosition.Handle, (void*)outputPosition.Handle, (void*)fromID.Handle, (void*)toID.Handle, (void*)data.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<DimensionType>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public static nint fromSerializedInt(nint i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<DimensionType>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromString(string name)
     {

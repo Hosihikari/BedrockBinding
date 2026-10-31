@@ -40,12 +40,12 @@ public sealed unsafe partial class RailMovementUtility : global::System.IDisposa
 
     public static nint RAIL_EXITS()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_1e42839f();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_1e42839f();
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculateGoldenRailSpeedIncrease(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int direction, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 posDelta)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_7093dc8f((void*)region.Handle, (void*)pos.Handle, direction, (void*)posDelta.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C3.hs_method_7093dc8f((void*)region.Handle, (void*)pos.Handle, direction, (void*)posDelta.Handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -54,12 +54,12 @@ public sealed unsafe partial class RailMovementUtility : global::System.IDisposa
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Vec3 calculatePostRailMovementMinecartPosition(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 originalEntityPosition, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 entityPos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int railDirection, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 posDelta)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C2.hs_method_28ea5999((void*)region.Handle, (void*)originalEntityPosition.Handle, (void*)entityPos.Handle, (void*)pos.Handle, railDirection, (void*)posDelta.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C3.hs_method_28ea5999((void*)region.Handle, (void*)originalEntityPosition.Handle, (void*)entityPos.Handle, (void*)pos.Handle, railDirection, (void*)posDelta.Handle));
     }
 
     public static bool getPos(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 valueVec, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
     {
-        return NativeMethods.TablePtr->C2.hs_method_67bfc2af((void*)region.Handle, (void*)valueVec.Handle, (void*)pos.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_67bfc2af((void*)region.Handle, (void*)valueVec.Handle, (void*)pos.Handle) != 0;
     }
 
     public void Dispose()
@@ -68,7 +68,7 @@ public sealed unsafe partial class RailMovementUtility : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_1a3a2506((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_1a3a2506((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

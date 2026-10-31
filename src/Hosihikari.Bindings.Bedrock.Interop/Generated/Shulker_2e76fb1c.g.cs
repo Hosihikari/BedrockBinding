@@ -721,9 +721,10 @@ public sealed unsafe partial class Shulker : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_53c9dfae((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __hurt(nint source, float damage, nint hurtParameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult __hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage, nint hurtParameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C3.hs_method_fd69c135((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)hurtParameters));
+    }
 
     public void _addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
@@ -806,9 +807,10 @@ public sealed unsafe partial class Shulker : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_5f549013((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _hurt(nint source, float damage, nint hurtParameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult _hurt(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source, float damage, nint hurtParameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C3.hs_method_ce4ac9ce((void*)__hosihikari_shim_handle, (void*)source.Handle, damage, (void*)hurtParameters));
+    }
 
     public bool _isPosOccupiedByOtherShulker(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
     {

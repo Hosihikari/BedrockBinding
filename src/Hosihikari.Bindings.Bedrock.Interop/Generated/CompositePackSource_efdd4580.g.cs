@@ -48,9 +48,9 @@ public sealed unsafe partial class CompositePackSource : global::System.IDisposa
     public void __buildSourcesForLoad(nint sources) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'gsl::not_null<PackSource *>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint __loadImpl(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void _forEachPackShared(nint callback) =>
@@ -75,9 +75,9 @@ public sealed unsafe partial class CompositePackSource : global::System.IDisposa
     public void _buildSourcesForLoad(nint sources) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'gsl::not_null<PackSource *>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint _loadImpl(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachPackShared(nint callback) =>

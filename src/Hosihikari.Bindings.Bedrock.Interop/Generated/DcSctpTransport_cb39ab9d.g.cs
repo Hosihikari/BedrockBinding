@@ -139,9 +139,10 @@ public sealed unsafe partial class DcSctpTransport : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_4bba85ec((void*)__hosihikari_shim_handle, sid) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _SendData(int sid, nint @params, nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError _SendData(int sid, nint @params, nint payload)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_bee0cb4d((void*)__hosihikari_shim_handle, sid, (void*)@params, (void*)payload));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const unsigned char>' is not a known bindable declaration.", false)]
     public nint _SendPacketWithStatus(nint data) =>
@@ -388,9 +389,10 @@ public sealed unsafe partial class DcSctpTransport : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_fd756839((void*)__hosihikari_shim_handle, sid) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint SendData(int sid, nint @params, nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError SendData(int sid, nint @params, nint payload)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_802b6fa8((void*)__hosihikari_shim_handle, sid, (void*)@params, (void*)payload));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const unsigned char>' is not a known bindable declaration.", false)]
     public nint SendPacketWithStatus(nint data) =>

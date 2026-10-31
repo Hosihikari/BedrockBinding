@@ -44,9 +44,9 @@ public sealed unsafe partial class DirectoryPackSource : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->C1.hs_get_f64d2106((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint __loadImpl(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DirectoryPackSourceOptions' is not a known bindable declaration.", false)]
     public nint _ctor(nint options) =>
@@ -81,9 +81,9 @@ public sealed unsafe partial class DirectoryPackSource : global::System.IDisposa
     public static DirectoryPackSource Create(nint options) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DirectoryPackSourceOptions' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint _loadImpl(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PackSourceLoadResult' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     public static void checkAndRemoveIncompletePacks(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path)
     {

@@ -58,9 +58,10 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_af8880a1((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint __readAssetFileInternal(nint filename) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_std__basic_string_char___std__error_code_ __readAssetFileInternal(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filename)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_std__basic_string_char___std__error_code_((nint)NativeMethods.TablePtr->C0.hs_method_87d6a7da((void*)__hosihikari_shim_handle, (void*)filename.Handle));
+    }
 
     public void __teardownFileStorageAreas()
     {
@@ -1451,9 +1452,10 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_12e5176b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _readAssetFileInternal(nint filename) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_std__basic_string_char___std__error_code_ _readAssetFileInternal(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filename)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_std__basic_string_char___std__error_code_((nint)NativeMethods.TablePtr->C0.hs_method_0d81caac((void*)__hosihikari_shim_handle, (void*)filename.Handle));
+    }
 
     public void _setDeviceTier(string tier)
     {
@@ -2486,9 +2488,10 @@ public sealed unsafe partial class AppPlatform : global::System.IDisposable
     public void queueForMainThread_DEPRECATED(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint readAssetFile(nint filename, nint readMode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_std__basic_string_char___std__error_code_ readAssetFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filename, global::Hosihikari.Bindings.Bedrock.Interop.AppPlatform_Nested.ReadMode readMode)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_std__basic_string_char___std__error_code_((nint)NativeMethods.TablePtr->C0.hs_method_7baa3fd5((void*)__hosihikari_shim_handle, (void*)filename.Handle, (void*)readMode.Handle));
+    }
 
     public void readyForApplicationExitInfo()
     {

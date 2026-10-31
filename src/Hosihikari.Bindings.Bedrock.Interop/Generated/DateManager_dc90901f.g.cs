@@ -126,9 +126,24 @@ public sealed unsafe partial class DateManager : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.DateManager((nint)NativeMethods.TablePtr->C1.hs_method_f027b6a5((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint parseImfFixdate(nint dateHeader) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<long long>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_long_long__std__error_code_ parseImfFixdate(string dateHeader)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(dateHeader);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(dateHeader, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_long_long__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_264e565d(__hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<std::chrono::duration<long long>>' requires --link-carrier or --virtual-dispatch.", false)]
     public static nint parseNetTimeSpan(nint str) =>

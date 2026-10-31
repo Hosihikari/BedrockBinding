@@ -737,9 +737,10 @@ public sealed unsafe partial class Skeleton : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_223d65b8((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _doHurtTarget(nint target, nint cause) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult _doHurtTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor? target, nint cause)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C3.hs_method_23a7a75b((void*)__hosihikari_shim_handle, (void*)(target?.Handle ?? 0), (void*)cause));
+    }
 
     public void _getDebugText(string[] outputInfo)
     {
@@ -813,9 +814,10 @@ public sealed unsafe partial class Skeleton : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_d5005d5b((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint doHurtTarget(nint target, nint cause) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ActorHurtResult' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult doHurtTarget(global::Hosihikari.Bindings.Bedrock.Interop.Actor? target, nint cause)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorHurtResult((nint)NativeMethods.TablePtr->C3.hs_method_e958b418((void*)__hosihikari_shim_handle, (void*)(target?.Handle ?? 0), (void*)cause));
+    }
 
     public void getDebugText(string[] outputInfo)
     {

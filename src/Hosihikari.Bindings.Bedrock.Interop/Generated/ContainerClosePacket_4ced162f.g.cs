@@ -253,14 +253,14 @@ public sealed unsafe partial class ContainerClosePacket : global::System.IDispos
 
     public int mReliability
     {
-        get => NativeMethods.TablePtr->C0.hs_get_e58f53df((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_e58f53df((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_e58f53df((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_e58f53df((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mSenderSubId
     {
-        get => NativeMethods.TablePtr->C0.hs_get_8d0db73c((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_8d0db73c((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_8d0db73c((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_8d0db73c((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()

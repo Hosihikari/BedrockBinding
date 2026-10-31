@@ -1315,6 +1315,7 @@ mc/external/webrtc/DtlsTransport.h
 mc/external/webrtc/Event.h
 mc/external/webrtc/Mutex.h
 mc/external/webrtc/PeerConnection.h
+mc/external/webrtc/RTCError.h
 mc/external/webrtc/RtpVideoSender.h
 mc/external/webrtc/SocketDispatcher.h
 mc/external/webrtc/VideoChannel.h
@@ -1693,6 +1694,7 @@ mc/resources/PackSettingsError.h
 mc/resources/PackSettingsFactory.h
 mc/resources/PackSource.h
 mc/resources/PackSourceFactory.h
+mc/resources/PackSourceLoadResult.h
 mc/resources/PackSourceReport.h
 mc/resources/RealmsUnknownPackSource.h
 mc/resources/ResourceLoadManager.h
@@ -2530,6 +2532,7 @@ mc/world/actor/ActorFactory.h
 mc/world/actor/ActorFactoryData.h
 mc/world/actor/ActorFilterGroup.h
 mc/world/actor/ActorHistory.h
+mc/world/actor/ActorHurtResult.h
 mc/world/actor/ActorInfo.h
 mc/world/actor/ActorInfoRegistry.h
 mc/world/actor/ActorLegacySaveConverter.h

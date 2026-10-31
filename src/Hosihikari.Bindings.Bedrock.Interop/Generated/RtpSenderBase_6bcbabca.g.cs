@@ -53,18 +53,41 @@ public sealed unsafe partial class RtpSenderBase : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_2df3a948((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _CheckCodecParameters(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError _CheckCodecParameters(nint parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_bf68e829((void*)__hosihikari_shim_handle, (void*)parameters));
+    }
 
     public void _DetachTrack()
     {
         NativeMethods.TablePtr->C4.hs_method_7a0a1b25((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _DisableEncodingLayers(nint rids) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError _DisableEncodingLayers(string[] rids)
+    {
+        var __hs_vectorItems0 = rids ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_8328840e((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(rids?.Length ?? 0)));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::FrameEncryptorInterface>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint _GetFrameEncryptor() =>
@@ -118,9 +141,10 @@ public sealed unsafe partial class RtpSenderBase : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_c9b23391((void*)__hosihikari_shim_handle, (void*)observer);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _SetParameters(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError _SetParameters(nint parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_5768fc64((void*)__hosihikari_shim_handle, (void*)parameters));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void (webrtc::RTCError) &&>' is not supported.", false)]
     public void _SetParametersAsync(nint parameters, nint callback) =>
@@ -130,9 +154,10 @@ public sealed unsafe partial class RtpSenderBase : global::System.IDisposable
     public void _SetParametersInternal(nint parameters, nint callback, bool blocking) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void (webrtc::RTCError) &&>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _SetParametersInternalWithAllLayers(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError _SetParametersInternalWithAllLayers(nint parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_3cbd87b0((void*)__hosihikari_shim_handle, (void*)parameters));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'webrtc::Codec' is not supported.", false)]
     public void _SetSendCodecs(nint send_codecs) =>
@@ -304,13 +329,15 @@ public sealed unsafe partial class RtpSenderBase : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_e2c8c840((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint CheckCodecParameters(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError CheckCodecParameters(nint parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_5791ef11((void*)__hosihikari_shim_handle, (void*)parameters));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint CheckSetParameters(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError CheckSetParameters(nint parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_218973d3((void*)__hosihikari_shim_handle, (void*)parameters));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void ClearSend() =>
@@ -321,9 +348,31 @@ public sealed unsafe partial class RtpSenderBase : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_03eea3bf((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint DisableEncodingLayers(nint rids) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError DisableEncodingLayers(string[] rids)
+    {
+        var __hs_vectorItems0 = rids ?? global::System.Array.Empty<string>();
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+        {
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
+            {
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
+            }
+            return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_5b36e886((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(rids?.Length ?? 0)));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public nint GenerateKeyFrame(nint rids) =>
@@ -433,9 +482,10 @@ public sealed unsafe partial class RtpSenderBase : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_84f1d236((void*)__hosihikari_shim_handle, (void*)observer);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint SetParameters(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError SetParameters(nint parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_f8a0bc5f((void*)__hosihikari_shim_handle, (void*)parameters));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void (webrtc::RTCError) &&>' is not supported.", false)]
     public void SetParametersAsync(nint parameters, nint callback) =>
@@ -445,9 +495,10 @@ public sealed unsafe partial class RtpSenderBase : global::System.IDisposable
     public void SetParametersInternal(nint parameters, nint callback, bool blocking) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void (webrtc::RTCError) &&>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint SetParametersInternalWithAllLayers(nint parameters) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError SetParametersInternalWithAllLayers(nint parameters)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_738ef72d((void*)__hosihikari_shim_handle, (void*)parameters));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void SetSend() =>

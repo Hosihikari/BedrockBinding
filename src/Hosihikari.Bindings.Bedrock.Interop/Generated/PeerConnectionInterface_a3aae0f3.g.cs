@@ -188,9 +188,9 @@ public sealed unsafe partial class PeerConnectionInterface : global::System.IDis
     public void RemoveStream(nint a1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::RtpSenderInterface>' is not a known bindable declaration.", false)]
     public nint RemoveTrackOrError(nint a1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::RtpSenderInterface>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
     public void RestartIce() =>

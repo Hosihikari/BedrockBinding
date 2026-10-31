@@ -40,7 +40,7 @@ public sealed unsafe partial class SystemTiming : global::System.IDisposable
 
     public static SystemTiming Create(global::Hosihikari.Bindings.Bedrock.Interop.SystemTiming arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_8e8dab3c((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_8e8dab3c((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -52,13 +52,13 @@ public sealed unsafe partial class SystemTiming : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mCategory_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_abe4e54c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_abe4e54c((void*)__hosihikari_shim_handle);
     }
 
     public ulong mEntityCount
     {
-        get => NativeMethods.TablePtr->C3.hs_get_7d2668e8((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_7d2668e8((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_7d2668e8((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_7d2668e8((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
@@ -80,7 +80,7 @@ public sealed unsafe partial class SystemTiming : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_1c16af16((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_1c16af16((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

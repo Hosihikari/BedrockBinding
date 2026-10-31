@@ -150,9 +150,10 @@ public sealed unsafe partial class PeerConnection : global::System.IDisposable
     public nint _CreateSender(nint kind, nint stream_id) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::RtpSenderInterface>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::RTCError' is not a known bindable declaration.", false)]
-    public void _DestroyDataChannelTransport(nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::RTCError' is not a known bindable declaration.");
+    public void _DestroyDataChannelTransport(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError error)
+    {
+        NativeMethods.TablePtr->C4.hs_method_566389f4((void*)__hosihikari_shim_handle, (void*)error.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'webrtc::AudioDeviceModule::Stats' is not supported.", false)]
     public nint _GetAudioDeviceStats() =>
@@ -367,9 +368,9 @@ public sealed unsafe partial class PeerConnection : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_b835c3a3((void*)__hosihikari_shim_handle, (void*)local_stream);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::RtpSenderInterface>' is not a known bindable declaration.", false)]
     public nint _RemoveTrackOrError(nint sender) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::RtpSenderInterface>' is not a known bindable declaration.");
 
     public void _ReportSdpBundleUsage(nint remote_description)
     {
@@ -395,13 +396,15 @@ public sealed unsafe partial class PeerConnection : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_a0c9adbe((void*)__hosihikari_shim_handle, recording);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _SetBitrate(nint bitrate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError _SetBitrate(nint bitrate)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_4e678e04((void*)__hosihikari_shim_handle, (void*)bitrate));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _SetConfiguration(nint configuration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError _SetConfiguration(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionInterface_Nested.RTCConfiguration configuration)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_89dba21e((void*)__hosihikari_shim_handle, (void*)configuration.Handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::DataChannelEventObserverInterface' has no generated wrapper.", false)]
     public void _SetDataChannelEventObserver(nint observer) =>
@@ -457,9 +460,10 @@ public sealed unsafe partial class PeerConnection : global::System.IDisposable
     public bool _StartRtcEventLog(nint output, long output_period_ms) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::RtcEventLogOutput' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _StartSctpTransport(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError _StartSctpTransport(nint options)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_bc246c86((void*)__hosihikari_shim_handle, (void*)options));
+    }
 
     public void _StopRtcEventLog()
     {
@@ -807,9 +811,10 @@ public sealed unsafe partial class PeerConnection : global::System.IDisposable
     public nint CreateSender(nint kind, nint stream_id) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::RtpSenderInterface>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::RTCError' is not a known bindable declaration.", false)]
-    public void DestroyDataChannelTransport(nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::RTCError' is not a known bindable declaration.");
+    public void DestroyDataChannelTransport(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError error)
+    {
+        NativeMethods.TablePtr->C4.hs_method_28bd5f83((void*)__hosihikari_shim_handle, (void*)error.Handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::RtpTransceiverProxyWithInternal<webrtc::RtpTransceiver>>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint FindTransceiverBySender(nint sender) =>
@@ -1078,9 +1083,9 @@ public sealed unsafe partial class PeerConnection : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_4af9ca36((void*)__hosihikari_shim_handle, (void*)local_stream);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::RtpSenderInterface>' is not a known bindable declaration.", false)]
     public nint RemoveTrackOrError(nint sender) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::RtpSenderInterface>' is not a known bindable declaration.");
 
     public void ReportFirstConnectUsageMetrics()
     {
@@ -1120,13 +1125,15 @@ public sealed unsafe partial class PeerConnection : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_41d741e0((void*)__hosihikari_shim_handle, recording);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint SetBitrate(nint bitrate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError SetBitrate(nint bitrate)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_251051c3((void*)__hosihikari_shim_handle, (void*)bitrate));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint SetConfiguration(nint configuration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError SetConfiguration(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionInterface_Nested.RTCConfiguration configuration)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_d692ef9a((void*)__hosihikari_shim_handle, (void*)configuration.Handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::DataChannelEventObserverInterface' has no generated wrapper.", false)]
     public void SetDataChannelEventObserver(nint observer) =>
@@ -1222,18 +1229,20 @@ public sealed unsafe partial class PeerConnection : global::System.IDisposable
     public bool StartRtcEventLog(nint output, long output_period_ms) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::RtcEventLogOutput' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint StartSctpTransport(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCError' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError StartSctpTransport(nint options)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_28f0e6ff((void*)__hosihikari_shim_handle, (void*)options));
+    }
 
     public void StopRtcEventLog()
     {
         NativeMethods.TablePtr->C4.hs_method_8bfd1411((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::RTCError' is not a known bindable declaration.", false)]
-    public void TeardownDataChannelTransport_n(nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::RTCError' is not a known bindable declaration.");
+    public void TeardownDataChannelTransport_n(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError error)
+    {
+        NativeMethods.TablePtr->C4.hs_method_1326dc55((void*)__hosihikari_shim_handle, (void*)error.Handle);
+    }
 
     public bool ValidateBundleSettings(nint desc, nint bundle_groups_by_mid)
     {
