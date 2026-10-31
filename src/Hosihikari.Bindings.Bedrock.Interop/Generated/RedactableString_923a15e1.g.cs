@@ -160,21 +160,36 @@ public sealed unsafe partial class RedactableString : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString((nint)NativeMethods.TablePtr->C0.hs_method_def9e56d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString operator_assign_3833e972(nint unredactedCString)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString operator_assign(nint unredactedCString)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString((nint)NativeMethods.TablePtr->C0.hs_method_3833e972((void*)__hosihikari_shim_handle, (void*)unredactedCString), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
-    public nint operator_assign_00b73b9f(nint unredactedString) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString operator_assign(string unredactedString)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(unredactedString);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(unredactedString, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString((nint)NativeMethods.TablePtr->C0.hs_method_00b73b9f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
+        }
+    }
 
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString rhs)
     {
         return NativeMethods.TablePtr->C0.hs_method_fdee0791((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
     }
 
-    public void set(string unredactedString)
+    public void set_69f25b29(string unredactedString)
     {
         var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(unredactedString);
         scoped global::System.Span<byte> __hs_stringBytes0;
@@ -193,9 +208,24 @@ public sealed unsafe partial class RedactableString : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
-    public void set(nint unredactedString) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");
+    public void set_ee5aef84(string unredactedString)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(unredactedString);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(unredactedString, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C0.hs_method_ee5aef84((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
 
 
     public void Dispose()

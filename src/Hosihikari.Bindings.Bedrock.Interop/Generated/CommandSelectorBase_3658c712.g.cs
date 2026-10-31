@@ -121,9 +121,9 @@ public sealed unsafe partial class CommandSelectorBase : global::System.IDisposa
         NativeMethods.TablePtr->C0.hs_method_26d6a170((void*)__hosihikari_shim_handle, (void*)filter.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool compile(nint origin, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public bool filter(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
     {

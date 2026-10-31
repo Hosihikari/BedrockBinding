@@ -38,9 +38,9 @@ public sealed unsafe partial class BatchedNetworkPeer : global::System.IDisposab
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public nint __receivePacket(nint outData, nint timepointPtr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public nint _ctor(global::Hosihikari.Bindings.Abi.SharedHandle? peer, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler scheduler)
     {
@@ -102,9 +102,9 @@ public sealed unsafe partial class BatchedNetworkPeer : global::System.IDisposab
         return new BatchedNetworkPeer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public nint _receivePacket(nint outData, nint timepointPtr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void flush(nint callback) =>

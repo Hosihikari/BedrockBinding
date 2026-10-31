@@ -170,17 +170,17 @@ public sealed unsafe partial class ResourcePackManager : global::System.IDisposa
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _load(nint resourceLocation, nint resourceStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _load_77cd0e1d(nint resourceLocation, nint resourceStream, nint extensionList) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _load_962aec2f(nint resourceLocationPair, nint resourceStream, nint extensionList) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LoadedResourceData[] _loadAllVersionsOf(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation resourceLocation)
     {
@@ -194,9 +194,9 @@ public sealed unsafe partial class ResourcePackManager : global::System.IDisposa
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _loadText(nint resourceLocation, nint resourceStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public static ResourcePackManager Create()
     {
@@ -377,17 +377,17 @@ public sealed unsafe partial class ResourcePackManager : global::System.IDisposa
     public void iteratePacks(nint pred) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool load(nint resourceLocation, nint resourceStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool load_e1babf95(nint resourceLocation, nint resourceStream, nint extensionList) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool load_559644dd(nint resourceLocationPair, nint resourceStream, nint extensionList) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LoadedResourceData[] loadAllVersionsOf(global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation resourceLocation)
     {
@@ -401,9 +401,9 @@ public sealed unsafe partial class ResourcePackManager : global::System.IDisposa
         return __hs_result;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool loadText(nint resourceLocation, nint resourceStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBaseGameStack_Address

@@ -302,18 +302,34 @@ public sealed unsafe partial class DBChunkStorage : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_7942125c((void*)__hosihikari_shim_handle, (void*)lc.Handle, (void*)generatedChunk.Handle, (void*)neighborhood.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PersistentBlendData' is not a known bindable declaration.", false)]
     public void _saveBlendData(nint batch, nint prefix, nint buffer, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PersistentBlendData' is not a known bindable declaration.");
 
     public void _serializeChunk(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageWriteBatch batch, bool markEntitiesProcesedOnChunkDiscard)
     {
         NativeMethods.TablePtr->C1.hs_method_c95a531d((void*)__hosihikari_shim_handle, (void*)lc.Handle, (void*)batch.Handle, markEntitiesProcesedOnChunkDiscard);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void _serializeEntities(nint lc, nint batch, nint buffer, bool markEntitiesProcesedOnChunkDiscard) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+    public string _serializeEntities(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageWriteBatch batch, string buffer, bool markEntitiesProcesedOnChunkDiscard)
+    {
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(buffer);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(buffer, __hs_stringBytes2);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_fa96c7f1((void*)__hosihikari_shim_handle, (void*)lc.Handle, (void*)batch.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, markEntitiesProcesedOnChunkDiscard);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? _tryGetOrLoadStructureInstanceAt(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos cp, global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.Structure structure)
     {
@@ -321,9 +337,9 @@ public sealed unsafe partial class DBChunkStorage : global::System.IDisposable
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: mutable string_view references are not supported.", false)]
     public nint _upgradeActorStorage(nint chunkKey, nint legacyActorData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: mutable string_view references are not supported.");
 
     public static void _writeActorDigest(global::Hosihikari.Bindings.Bedrock.Interop.LevelStorageWriteBatch batch, global::Hosihikari.Bindings.Bedrock.Interop.ChunkKey chunkKey, string digestBuffer)
     {

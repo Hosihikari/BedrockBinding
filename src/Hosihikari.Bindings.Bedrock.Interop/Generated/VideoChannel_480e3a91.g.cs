@@ -212,13 +212,13 @@ public sealed unsafe partial class VideoChannel : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VoiceChannel((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _SetLocalContent_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _SetRemoteContent_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public void _UpdateMediaSendRecvState_w()
     {
@@ -282,13 +282,13 @@ public sealed unsafe partial class VideoChannel : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VoiceChannel((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool SetLocalContent_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool SetRemoteContent_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public void UpdateMediaSendRecvState_w()
     {

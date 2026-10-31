@@ -40,7 +40,7 @@ public sealed unsafe partial class StartGlidingActionSystem : global::System.IDi
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo createSystem(bool isClientSide)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo((nint)NativeMethods.TablePtr->C3.hs_method_db912f1f(isClientSide));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingSystemWithInfo((nint)NativeMethods.TablePtr->C4.hs_method_db912f1f(isClientSide));
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class StartGlidingActionSystem : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_84000c03((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_84000c03((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

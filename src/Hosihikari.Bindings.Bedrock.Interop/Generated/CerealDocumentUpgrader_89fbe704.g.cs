@@ -91,9 +91,9 @@ public sealed unsafe partial class CerealDocumentUpgrader : global::System.IDisp
     public nint parseJsonAndUpgrade(nint outDocumentVersion, nint document, nint json, nint resourceName, bool allowMissingVersionAsZero, bool betaApis, nint minVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool parseUpgradeAndStringifyJsonString(nint json, nint outDocumentVersion, nint document, nint resourceName, bool betaApis, nint minVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public void registerUpgrade(global::Hosihikari.Bindings.Abi.SharedHandle? upgrade)
     {

@@ -56,9 +56,9 @@ public sealed unsafe partial class DirectoryPackWithEncryptionAccessStrategy : g
         return NativeMethods.TablePtr->C1.hs_method_c1cac920((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _getAsset(nint packRelativePath, nint result, bool trustedContentOnly) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation _getPackLocation()
     {
@@ -162,9 +162,9 @@ public sealed unsafe partial class DirectoryPackWithEncryptionAccessStrategy : g
         return NativeMethods.TablePtr->C1.hs_method_4038199d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool getAsset(nint packRelativePath, nint result, bool trustedContentOnly) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ResourceLocation getPackLocation()
     {

@@ -74,18 +74,18 @@ public sealed unsafe partial class ChannelInterface : global::System.IDisposable
     public void SetFirstPacketSentCallback(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool SetLocalContent(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public bool SetPayloadTypeDemuxingEnabled(bool enabled)
     {
         return NativeMethods.TablePtr->C4.hs_method_acccdf2b((void*)__hosihikari_shim_handle, enabled) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool SetRemoteContent(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public bool SetRtpTransport(nint rtp_transport)
     {

@@ -92,9 +92,9 @@ public sealed unsafe partial class ScriptDebuggerTransport : global::System.IDis
         return NativeMethods.TablePtr->C3.hs_method_6c9a3d0f((void*)__hosihikari_shim_handle, (void*)buffer, length) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _selectClient(nint outClient) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public void _send(nint buffer, ulong length)
     {
@@ -217,9 +217,9 @@ public sealed unsafe partial class ScriptDebuggerTransport : global::System.IDis
         return NativeMethods.TablePtr->C3.hs_method_7275c517((void*)__hosihikari_shim_handle, (void*)buffer, length) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool selectClient(nint outClient) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public void send(nint buffer, ulong length)
     {

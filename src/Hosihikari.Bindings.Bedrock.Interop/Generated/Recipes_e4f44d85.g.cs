@@ -162,9 +162,9 @@ public sealed unsafe partial class Recipes : global::System.IDisposable
     public void addShapelessRecipe(nint recipeId, nint result, nint types, nint tags, int priority, nint constructor, nint unlockingReq, nint formatVersion) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'std::unique_ptr<ShapelessRecipe>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
     public void addShulkerBoxRecipe(nint recipeId, nint result, nint types, nint tags, nint unlockingReq, nint formatVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public void clearRecipes()
     {

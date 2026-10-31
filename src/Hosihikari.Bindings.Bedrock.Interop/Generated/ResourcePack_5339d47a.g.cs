@@ -95,9 +95,9 @@ public sealed unsafe partial class ResourcePack : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_0a2234d4((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool getResource(nint resourceName, nint resourceStream, int subpackIndex) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public bool hasResource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path resourceName, int subpackIndex)
     {

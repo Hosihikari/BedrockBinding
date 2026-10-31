@@ -40,17 +40,17 @@ public sealed unsafe partial class PositionTrackingDBServer : global::System.IDi
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler callbackContext)
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_df1e6508((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)callbackContext.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_df1e6508((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)callbackContext.Handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_8b789468((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_8b789468((void*)__hosihikari_shim_handle);
     }
 
     public static PositionTrackingDBServer Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_7e9f3f8d();
+        var handle = NativeMethods.TablePtr->C3.hs_create_7e9f3f8d();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,7 @@ public sealed unsafe partial class PositionTrackingDBServer : global::System.IDi
 
     public static PositionTrackingDBServer Create(global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.Scheduler callbackContext)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_adab887f((void*)level.Handle, (void*)callbackContext.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_adab887f((void*)level.Handle, (void*)callbackContext.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,7 +72,7 @@ public sealed unsafe partial class PositionTrackingDBServer : global::System.IDi
 
     public static PositionTrackingDBServer Create(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_d7ff99f3((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_d7ff99f3((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -83,22 +83,22 @@ public sealed unsafe partial class PositionTrackingDBServer : global::System.IDi
 
     public void _beginWriteTrackingRecordToLevelStorage(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord? record, bool forceWrite)
     {
-        NativeMethods.TablePtr->C2.hs_method_930cdda6((void*)__hosihikari_shim_handle, (void*)(record?.Handle ?? 0), forceWrite);
+        NativeMethods.TablePtr->C3.hs_method_930cdda6((void*)__hosihikari_shim_handle, (void*)(record?.Handle ?? 0), forceWrite);
     }
 
     public void _broadcastUpdateToClients(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord? record)
     {
-        NativeMethods.TablePtr->C2.hs_method_bbee4900((void*)__hosihikari_shim_handle, (void*)(record?.Handle ?? 0));
+        NativeMethods.TablePtr->C3.hs_method_bbee4900((void*)__hosihikari_shim_handle, (void*)(record?.Handle ?? 0));
     }
 
     public void _initializeNewPositionTrackerId(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId inOut, bool writeToPersistent)
     {
-        NativeMethods.TablePtr->C2.hs_method_fe407db9((void*)__hosihikari_shim_handle, (void*)inOut.Handle, writeToPersistent);
+        NativeMethods.TablePtr->C3.hs_method_fe407db9((void*)__hosihikari_shim_handle, (void*)inOut.Handle, writeToPersistent);
     }
 
     public sbyte destroyTracker(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId id, bool forceLocalCacheEntry)
     {
-        return NativeMethods.TablePtr->C2.hs_method_a8085a57((void*)__hosihikari_shim_handle, (void*)id.Handle, forceLocalCacheEntry);
+        return NativeMethods.TablePtr->C3.hs_method_a8085a57((void*)__hosihikari_shim_handle, (void*)id.Handle, forceLocalCacheEntry);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -108,52 +108,52 @@ public sealed unsafe partial class PositionTrackingDBServer : global::System.IDi
     // The native field type is not projected; this is the address of the field storage.
     public nint mAsyncTaskGroup_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_93e0bfdf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_93e0bfdf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCallbackContext_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_8b8e51a6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_8b8e51a6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevel_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_5fd02acf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_5fd02acf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelStorage_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_9f3691f2((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9f3691f2((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLocalCache_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_16b21daf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_16b21daf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPendingUpdateQueue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_f7285625((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f7285625((void*)__hosihikari_shim_handle);
     }
 
     public void onReceivePacket(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDBClientRequestPacket packet)
     {
-        NativeMethods.TablePtr->C2.hs_method_bda3a3f3((void*)__hosihikari_shim_handle, (void*)packet.Handle);
+        NativeMethods.TablePtr->C3.hs_method_bda3a3f3((void*)__hosihikari_shim_handle, (void*)packet.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer((nint)NativeMethods.TablePtr->C2.hs_method_7781374d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer((nint)NativeMethods.TablePtr->C3.hs_method_7781374d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public bool tick()
     {
-        return NativeMethods.TablePtr->C2.hs_method_00f2e8e9((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_00f2e8e9((void*)__hosihikari_shim_handle) != 0;
     }
 
 
@@ -163,7 +163,7 @@ public sealed unsafe partial class PositionTrackingDBServer : global::System.IDi
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_a6080821((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_a6080821((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

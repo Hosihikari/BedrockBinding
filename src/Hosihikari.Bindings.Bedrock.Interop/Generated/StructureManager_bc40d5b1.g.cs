@@ -194,9 +194,9 @@ public sealed unsafe partial class StructureManager : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public static bool _findResource(nint structurePath, nint pack, nint resourceStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public static void _removePlacementQueueItem(string dimensionPrefix, global::Hosihikari.Bindings.Bedrock.Interop.StructureAnimationData structureAnimationData)
     {

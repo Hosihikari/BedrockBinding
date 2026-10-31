@@ -54,9 +54,9 @@ public sealed unsafe partial class DynamicPropertiesDefinition : global::System.
         return new DynamicPropertiesDefinition((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _canMergeDefinitions(nint other, nint identifier, ulong sizeLimit, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public int? defineProperty(string identifier, global::Hosihikari.Bindings.Bedrock.Interop.DynamicPropertyDefinition definition)
     {

@@ -110,12 +110,28 @@ public sealed unsafe partial class Parser : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_7e674786((void*)val.Handle, (void*)variable, (void*)jsonName, defaultValue);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public static void parse_545d0567(nint val, nint variable, nint jsonName, nint defaultValue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+    public static string parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, string variable, nint jsonName, nint defaultValue)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(variable);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(variable, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var __hs_view = NativeMethods.TablePtr->C2.hs_method_545d0567((void*)val.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)jsonName, (void*)defaultValue);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.", false)]
-    public static void parse_76e106d2(nint val, nint variable, nint jsonName, nint defaultValue) =>
+    public static void parse(nint val, nint variable, nint jsonName, nint defaultValue) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the vector element type is not supported by symbol dispatch.");
 
     public static void parse(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val, uint[] variable, nint jsonName, nint defaultValue)

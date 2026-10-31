@@ -265,9 +265,9 @@ public sealed unsafe partial class CommandRegistry : global::System.IDisposable
     public nint buildRules(nint signature, nint overloads, ulong firstParam) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'gsl::not_null<CommandRegistry::Overload *>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool buildSelector(nint args, nint output, nint error) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.ParseToken? collapse(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.ParseToken parent, global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry_Nested.Symbol symbol)
     {
@@ -707,29 +707,29 @@ public sealed unsafe partial class CommandRegistry : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_2d6c72a7((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)command.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool parseSelector(nint args, nint token, nint origin, int version, nint error, nint errorParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool parseSelector(nint output, nint token, nint origin, int version, nint error, nint errorParams, bool wildcard) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public static bool readFloat(nint value, nint token, nint error, nint errorParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public static bool readInt(nint value, nint token, nint error, nint errorParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public static bool readRelativeCoordinate(nint relative, nint offset, nint token, bool readIntegerAsCentered, nint error, nint errorParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: multiple mutable string references are not supported.", false)]
     public static bool readString(nint value, nint token, nint error, nint errorParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: multiple mutable string references are not supported.");
 
     public void registerAlias(string name, string alias)
     {

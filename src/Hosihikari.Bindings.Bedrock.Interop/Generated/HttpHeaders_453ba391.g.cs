@@ -60,9 +60,9 @@ public sealed unsafe partial class HttpHeaders : global::System.IDisposable
         return new HttpHeaders((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool getHeader(nint name, nint outValue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk283a8f_Address

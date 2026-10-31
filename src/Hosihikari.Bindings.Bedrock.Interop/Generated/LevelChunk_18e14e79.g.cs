@@ -917,9 +917,9 @@ public sealed unsafe partial class LevelChunk : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_77da99e9((void*)__hosihikari_shim_handle, (void*)stream.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void serializeEntities(nint buffer, bool markProcessedOnChunkDisard, nint addLiveActorCallback, nint addActorKeyCallback, nint addSerializedActor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void serializeEntityRemovals(nint callback) =>

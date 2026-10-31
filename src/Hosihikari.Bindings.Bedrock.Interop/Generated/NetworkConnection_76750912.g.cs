@@ -182,9 +182,9 @@ public sealed unsafe partial class NetworkConnection : global::System.IDisposabl
         set => NativeMethods.TablePtr->C2.hs_set_564ae063((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public nint receivePacket(nint receiveBuffer, nint timepointPtr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
 
     public void Dispose()

@@ -93,9 +93,9 @@ public sealed unsafe partial class ActiveTransfersManager : global::System.IDisp
         get => (nint)NativeMethods.TablePtr->C0.hs_get_bd3086e9((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public nint rememberBlob(ulong id, nint data, bool isChunkInTickRange) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ClientBlobCache.Server.TransferBuilder startTransfer(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier client)
     {

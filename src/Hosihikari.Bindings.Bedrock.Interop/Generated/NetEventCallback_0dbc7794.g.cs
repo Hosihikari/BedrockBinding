@@ -1245,9 +1245,24 @@ public sealed unsafe partial class NetEventCallback : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_af5c43e3((void*)__hosihikari_shim_handle, (void*)source.Handle, packet?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
-    public void _handlePacketViolation(nint packetSecurityController, nint errorCode, nint response, nint packetId, nint context, nint netId, nint clientSubId, nint senderSubId, nint packetSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");
+    public void _handlePacketViolation(global::Hosihikari.Bindings.Abi.SharedHandle? packetSecurityController, nint errorCode, int response, int packetId, string context, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier netId, byte clientSubId, byte senderSubId, uint packetSize)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(context);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(context, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            NativeMethods.TablePtr->C2.hs_method_65d91177((void*)__hosihikari_shim_handle, packetSecurityController?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)errorCode, response, packetId, __hs_stringData4, (nuint)__hs_stringByteCount4, (void*)netId.Handle, clientSubId, senderSubId, packetSize);
+        }
+    }
 
     public void _onConnect(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id)
     {
@@ -2637,9 +2652,24 @@ public sealed unsafe partial class NetEventCallback : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_3562216a((void*)__hosihikari_shim_handle, (void*)source.Handle, packet?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.", false)]
-    public void handlePacketViolation(nint packetSecurityController, nint errorCode, nint response, nint packetId, nint context, nint netId, nint clientSubId, nint senderSubId, nint packetSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: rvalue string references are not supported by symbol dispatch.");
+    public void handlePacketViolation(global::Hosihikari.Bindings.Abi.SharedHandle? packetSecurityController, nint errorCode, int response, int packetId, string context, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier netId, byte clientSubId, byte senderSubId, uint packetSize)
+    {
+        var __hs_stringByteCount4 = global::System.Text.Encoding.UTF8.GetByteCount(context);
+        scoped global::System.Span<byte> __hs_stringBytes4;
+        if (__hs_stringByteCount4 <= 256)
+        {
+            __hs_stringBytes4 = stackalloc byte[__hs_stringByteCount4 == 0 ? 1 : __hs_stringByteCount4];
+        }
+        else
+        {
+            __hs_stringBytes4 = new byte[__hs_stringByteCount4];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(context, __hs_stringBytes4);
+        fixed (byte* __hs_stringData4 = __hs_stringBytes4)
+        {
+            NativeMethods.TablePtr->C2.hs_method_cc877377((void*)__hosihikari_shim_handle, packetSecurityController?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)errorCode, response, packetId, __hs_stringData4, (nuint)__hs_stringByteCount4, (void*)netId.Handle, clientSubId, senderSubId, packetSize);
+        }
+    }
 
     public void onConnect(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id)
     {

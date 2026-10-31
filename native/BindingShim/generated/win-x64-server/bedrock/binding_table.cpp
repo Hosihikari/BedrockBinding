@@ -11697,6 +11697,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_fc5c36bd(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$buildDebugInfo@Actor@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_384b23f4(void* hs_self, void* passenger) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canAddPassenger@Actor@@QEBA_NAEAV1@@Z");
@@ -15498,6 +15524,64 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_262587fa(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?buildDebugGroupInfo@Actor@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
+static HosihikariStringView hs_method_59bfd94e(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?buildDebugInfo@Actor@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[100];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_method_b4e09707(void* hs_self, std::int32_t damage, bool inFire) try
@@ -86755,6 +86839,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_47ff213f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@AdmireItemGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_d60b05c8(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@AdmireItemGoal@@QEAA_NXZ");
@@ -86968,6 +87078,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_76b65d6a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@AdmireItemGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_ad8b3849(void* hs_self) try
@@ -91737,6 +91879,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c9104478(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@AgentCommandExecutionGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_46e07e61(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@AgentCommandExecutionGoal@@QEAA_NXZ");
@@ -91877,6 +92045,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_3ed4df3a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@AgentCommandExecutionGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_cccbc04f(void* hs_self) try
@@ -175670,6 +175870,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9a781fbe(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@AvoidBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_f305a521(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@AvoidBlockGoal@@QEAA_NXZ");
@@ -175879,6 +176105,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_fe4d99ad(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@AvoidBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_4aac3a5d(void* hs_self) try
@@ -176488,6 +176746,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c49f7a6f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@AvoidMobTypeGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_32884db7(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@AvoidMobTypeGoal@@QEAA_NXZ");
@@ -176701,6 +176985,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c468ddb5(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@AvoidMobTypeGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_7e93373e(void* hs_self) try
@@ -202906,6 +203222,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_b3d64f2f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@BarterGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7b2509ef(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@BarterGoal@@QEAA_NXZ");
@@ -203023,6 +203365,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b029774f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@BarterGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_31b7ccd6(void* hs_self) try
@@ -209984,6 +210358,33 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_4a79d6f9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[7];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_7e874bd9(void* hs_self) try
@@ -240003,6 +240404,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_a0e3cb64(void* hs_self, const char* dest_data, std::size_t dest_size) try
+{
+    std::basic_string<char> hs_str0(dest_data, dest_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?toJSONString@Node@JSONObject@Bedrock@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void* hs_get_ef56a223(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(static_cast<unsigned char const*>(hs_self) + 0));
@@ -246692,6 +247119,33 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_f038e097(void* hs_self, const char* arg0_data, std::size_t arg0_size) try
+{
+    std::basic_string<char> hs_str0(arg0_data, arg0_size);
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[1];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void hs_destroy_cd601419(void* hs_self) try
 {
     void const* const hs_dtor = nullptr;
@@ -248915,6 +249369,30 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_00b73b9f(void* hs_self, const char* unredactedString_data, std::size_t unredactedString_size) try
+{
+    std::basic_string<char> hs_str0(unredactedString_data, unredactedString_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "??4RedactableString@Safety@Bedrock@@QEAAAEAV012@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    using HsFn = void* (*)(void*, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    return hs_fn(hs_self, std::move(hs_str0));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static bool hs_method_fdee0791(void* hs_self, void* rhs) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "??8RedactableString@Safety@Bedrock@@QEBA_NAEBV012@@Z");
@@ -248950,6 +249428,30 @@ static void hs_method_69f25b29(void* hs_self, const char* unredactedString_data,
     using HsFn = void (*)(void*, const std::basic_string<char> &);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, hs_str0);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_ee5aef84(void* hs_self, const char* unredactedString_data, std::size_t unredactedString_size) try
+{
+    std::basic_string<char> hs_str0(unredactedString_data, unredactedString_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?set@RedactableString@Safety@Bedrock@@QEAAX$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, std::move(hs_str0));
 }
 catch (std::exception const& hs_error)
 {
@@ -272789,6 +273291,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_95887ff9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@BegGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_53a5441d(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@BegGoal@@QEAA_NXZ");
@@ -272952,6 +273480,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_aac7dbc8(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@BegGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_125688b2(void* hs_self) try
@@ -382452,6 +383012,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_2eb3c105(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@BreakDoorGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_d52b5d57(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@BreakDoorGoal@@QEAA_NXZ");
@@ -382615,6 +383201,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_defb97fb(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@BreakDoorGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_45671fbd(void* hs_self) try
@@ -384248,6 +384866,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c548441b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@BreedGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ef691da4(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@BreedGoal@@QEAA_NXZ");
@@ -384488,6 +385132,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_29de93b1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@BreedGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_8172f8fd(void* hs_self) try
@@ -464472,6 +465148,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_1e43bbbd(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@ChargeAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_080f7833(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@ChargeAttackGoal@@QEAA_NXZ");
@@ -464635,6 +465337,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_4129a2a9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@ChargeAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e91f7f76(void* hs_self) try
@@ -465064,6 +465798,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_35ee06ef(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@ChargeHeldItemGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9ebb2704(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@ChargeHeldItemGoal@@QEAA_NXZ");
@@ -465227,6 +465987,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_079d931b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@ChargeHeldItemGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_0199329a(void* hs_self) try
@@ -504544,6 +505336,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_d5bc2a1a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@CircleAroundAnchorGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_448b2fdf(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@CircleAroundAnchorGoal@@QEAA_NXZ");
@@ -504730,6 +505548,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_12eaaf59(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@CircleAroundAnchorGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_dd4335e9(void* hs_self) try
@@ -549982,6 +550832,30 @@ catch (...)
     return nullptr;
 }
 
+static void hs_method_7feb5490(void* hs_self, std::int32_t successCount, const char* messages_data, std::size_t messages_size) try
+{
+    std::basic_string<char> hs_str1(messages_data, messages_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$handleCommandOutputCallback@CommandOrigin@@QEBAXH$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::int32_t, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, successCount, std::move(hs_str1));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static bool hs_method_c17d1dd5(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$hasChatPerms@CommandOrigin@@QEBA_NXZ");
@@ -550901,6 +551775,36 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static void hs_method_2bedcdb7(void* hs_self, std::int32_t successCount, const char* messages_data, std::size_t messages_size) try
+{
+    std::basic_string<char> hs_str1(messages_data, messages_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?handleCommandOutputCallback@CommandOrigin@@UEBAXH$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[28];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::int32_t, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, successCount, std::move(hs_str1));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
 }
 
 static bool hs_method_efc45503(void* hs_self) try
@@ -613865,6 +614769,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_5ac85df6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@ControlledByPlayerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_218e6584(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@ControlledByPlayerGoal@@QEAA_NXZ");
@@ -614005,6 +614935,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b4393f5e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@ControlledByPlayerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_5d4110f7(void* hs_self) try
@@ -641129,6 +642091,32 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_7920e5b6(const char* path_data, std::size_t path_size) try
+{
+    std::basic_string<char> hs_str0(path_data, path_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "??0Path@Core@@QEAA@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(32), 8));
+    using HsFn = void (*)(void*, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, std::move(hs_str0));
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static bool hs_method_94e6b556(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?empty@Path@Core@@QEBA_NXZ");
@@ -645213,6 +646201,33 @@ catch (...)
 {
     setLastError("unknown native exception");
     return 0;
+}
+
+static HosihikariStringView hs_method_d824a536(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[7];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_destroy_966d03d5(void* hs_self) try
@@ -667109,6 +668124,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_61ef955e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@CroakGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_bbe58c12(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@CroakGoal@@QEAA_NXZ");
@@ -667249,6 +668290,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_cf632f51(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@CroakGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_5edec4c9(void* hs_self) try
@@ -673989,6 +675062,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_b98b86f9(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?_final@HMAC@Hash@Crypto@@QEAAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void* hs_get_3e24b571(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(static_cast<unsigned char const*>(hs_self) + 0));
@@ -675015,6 +676114,34 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_e3f4ebdd(void* hs_self, const char* ciphertext_data, std::size_t ciphertext_size, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(ciphertext_data, ciphertext_size);
+    std::basic_string<char> hs_str1(out_data, out_size);
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[3];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_8687f272(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
 {
     HosihikariSpanView hs_vec0{ input_count, input_data };
@@ -675039,6 +676166,34 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_80659576(void* hs_self, const char* plaintext_data, std::size_t plaintext_size, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(plaintext_data, plaintext_size);
+    std::basic_string<char> hs_str1(out_data, out_size);
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[2];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_3a21c632(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
@@ -675208,6 +676363,33 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_1689abc2(void* hs_self, const char* ciphertext_data, std::size_t ciphertext_size, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(ciphertext_data, ciphertext_size);
+    std::basic_string<char> hs_str1(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$decrypt@OpenSSLSymmetricInterface@Symmetric@Crypto@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV45@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_0a679d3b(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
 {
     HosihikariSpanView hs_vec0{ input_count, input_data };
@@ -675231,6 +676413,33 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_2898ee82(void* hs_self, const char* plaintext_data, std::size_t plaintext_size, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(plaintext_data, plaintext_size);
+    std::basic_string<char> hs_str1(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$encrypt@OpenSSLSymmetricInterface@Symmetric@Crypto@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV45@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e5f1a18b(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
@@ -675425,6 +676634,39 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_e6e4a26e(void* hs_self, const char* ciphertext_data, std::size_t ciphertext_size, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(ciphertext_data, ciphertext_size);
+    std::basic_string<char> hs_str1(out_data, out_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?decrypt@OpenSSLSymmetricInterface@Symmetric@Crypto@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV45@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[3];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_58e172e0(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
 {
     HosihikariSpanView hs_vec0{ input_count, input_data };
@@ -675454,6 +676696,39 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_f3ef5b54(void* hs_self, const char* plaintext_data, std::size_t plaintext_size, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(plaintext_data, plaintext_size);
+    std::basic_string<char> hs_str1(out_data, out_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?encrypt@OpenSSLSymmetricInterface@Symmetric@Crypto@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV45@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[2];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_a2c2bfc0(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
@@ -675736,6 +677011,33 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ac1c3a82(void* hs_self, const char* ciphertext_data, std::size_t ciphertext_size, const char* output_data, std::size_t output_size) try
+{
+    std::basic_string<char> hs_str0(ciphertext_data, ciphertext_size);
+    std::basic_string<char> hs_str1(output_data, output_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$decrypt@Symmetric@1Crypto@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV34@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ba9d96e2(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
 {
     HosihikariSpanView hs_vec0{ input_count, input_data };
@@ -675759,6 +677061,33 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_f491d331(void* hs_self, const char* plaintext_data, std::size_t plaintext_size, const char* output_data, std::size_t output_size) try
+{
+    std::basic_string<char> hs_str0(plaintext_data, plaintext_size);
+    std::basic_string<char> hs_str1(output_data, output_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$encrypt@Symmetric@1Crypto@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV34@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_1b5fb3e2(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
@@ -675953,6 +677282,39 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_3a5f6a12(void* hs_self, const char* ciphertext_data, std::size_t ciphertext_size, const char* output_data, std::size_t output_size) try
+{
+    std::basic_string<char> hs_str0(ciphertext_data, ciphertext_size);
+    std::basic_string<char> hs_str1(output_data, output_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?decrypt@Symmetric@1Crypto@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV34@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[3];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_db11dcfd(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
 {
     HosihikariSpanView hs_vec0{ input_count, input_data };
@@ -675982,6 +677344,39 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_dc980959(void* hs_self, const char* plaintext_data, std::size_t plaintext_size, const char* output_data, std::size_t output_size) try
+{
+    std::basic_string<char> hs_str0(plaintext_data, plaintext_size);
+    std::basic_string<char> hs_str1(output_data, output_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?encrypt@Symmetric@1Crypto@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV34@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[2];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_f0eebe3f(void* hs_self, void* bytesWritten, const std::int8_t* input_data, std::size_t input_count, const std::int8_t* output_data, std::size_t output_count) try
@@ -680093,6 +681488,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_fa96c7f1(void* hs_self, void* lc, void* batch, const char* buffer_data, std::size_t buffer_size, bool markEntitiesProcesedOnChunkDiscard) try
+{
+    std::basic_string<char> hs_str2(buffer_data, buffer_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?_serializeEntities@DBChunkStorage@@QEAAXAEAVLevelChunk@@AEAVLevelStorageWriteBatch@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, void*, void*, std::basic_string<char> &, bool);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, lc, batch, hs_str2, markEntitiesProcesedOnChunkDiscard);
+    g_stringResult.assign(hs_str2);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static HosihikariSharedHandle hs_method_cc2704b4(void* hs_self, void* cp, void* structure) try
 {
     static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?_tryGetOrLoadStructureInstanceAt@DBChunkStorage@@UEAA?AV?$shared_ptr@VStructureInstance@worldgen@br@@@std@@AEBVChunkPos@@AEBUStructure@worldgen@br@@@Z");
@@ -681434,6 +682855,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_2ba429db(void* hs_self, const char* outStats_data, std::size_t outStats_size, std::uint32_t statsType) try
+{
+    std::basic_string<char> hs_str0(outStats_data, outStats_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$getStatistics@DBStorage@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4StatsType@LevelStorage@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, statsType);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_5f35593d(void* hs_self, const char* key_data, std::size_t key_size, std::uint32_t category) try
 {
     std::basic_string_view<char> hs_str0(key_data, key_size);
@@ -681585,6 +683032,33 @@ static void* hs_method_18783e95(void* hs_self, void* batch) try
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, static_cast<void*>(hs_record), batch);
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_4f831d95(void* hs_self, const char* key_data, std::size_t key_size, const char* data_data, std::size_t data_size, std::uint32_t category) try
+{
+    std::basic_string<char> hs_str0(key_data, key_size);
+    std::basic_string<char> hs_str1(data_data, data_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$saveData@DBStorage@@QEAA?AV?$Async@X@Threading@Bedrock@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$QEAV56@W4Category@DBHelpers@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
+    using HsFn = void (*)(void*, void*, const std::basic_string<char> &, std::basic_string<char> &&, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, static_cast<void*>(hs_record), hs_str0, std::move(hs_str1), category);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -682107,6 +683581,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_3288c19b(void* hs_self, const char* outStats_data, std::size_t outStats_size, std::uint32_t statsType) try
+{
+    std::basic_string<char> hs_str0(outStats_data, outStats_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?getStatistics@DBStorage@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4StatsType@LevelStorage@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[13];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, statsType);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_9f03c7b1(void* hs_self, const char* key_data, std::size_t key_size, std::uint32_t category) try
@@ -683007,6 +684513,39 @@ static void* hs_method_182417cc(void* hs_self, void* batch) try
     using HsFn = void (*)(void*, void*, void*);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, static_cast<void*>(hs_record), batch);
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_6b18b97b(void* hs_self, const char* key_data, std::size_t key_size, const char* data_data, std::size_t data_size, std::uint32_t category) try
+{
+    std::basic_string<char> hs_str0(key_data, key_size);
+    std::basic_string<char> hs_str1(data_data, data_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?saveData@DBStorage@@UEAA?AV?$Async@X@Threading@Bedrock@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$QEAV56@W4Category@DBHelpers@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[11];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
+    using HsFn = void (*)(void*, void*, const std::basic_string<char> &, std::basic_string<char> &&, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, static_cast<void*>(hs_record), hs_str0, std::move(hs_str1), category);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -705056,6 +706595,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_d3d46d33(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DefendTrustedTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_6d620beb(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@DefendTrustedTargetGoal@@QEAA_NXZ");
@@ -705226,6 +706791,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_431bf290(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DefendTrustedTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_c90760dc(void* hs_self) try
@@ -706145,6 +707742,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_5c14fc0d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DefendVillageTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_8fab0ae2(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DefendVillageTargetGoal@@QEAA_NXZ");
@@ -706312,6 +707935,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_1b25e06e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DefendVillageTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_94c69404(void* hs_self) try
@@ -709106,6 +710761,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ef735e15(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DelayedAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4a02510a(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DelayedAttackGoal@@QEAA_NXZ");
@@ -709365,6 +711046,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_a18de0f3(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DelayedAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_21b5b477(void* hs_self) try
@@ -716847,6 +718560,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_b8ee2335(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DigGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9b948803(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DigGoal@@QEAA_NXZ");
@@ -717060,6 +718799,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_f404b676(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DigGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_470c241d(void* hs_self) try
@@ -745177,6 +746948,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_e196bd19(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DoorInteractGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9c9a1312(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DoorInteractGoal@@QEAA_NXZ");
@@ -745363,6 +747160,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_e74d2fd4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DoorInteractGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_1e395db8(void* hs_self) try
@@ -751350,6 +753179,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_57e1ac7d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DragonChargePlayerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_0594b900(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DragonChargePlayerGoal@@QEAA_NXZ");
@@ -751488,6 +753343,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_24170c5f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DragonChargePlayerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_ae8a6c41(void* hs_self) try
@@ -751789,6 +753676,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_b3caebb0(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DragonDeathGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_e3722c13(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DragonDeathGoal@@QEAA_NXZ");
@@ -751952,6 +753865,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_5866f22d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DragonDeathGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e010425e(void* hs_self) try
@@ -755815,6 +757760,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9776ff18(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DragonFlamingGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_76476ca0(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DragonFlamingGoal@@QEAA_NXZ");
@@ -756028,6 +757999,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_e500eb13(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DragonFlamingGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_f5ce0935(void* hs_self) try
@@ -756547,6 +758550,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_7fed320f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DragonHoldingPatternGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7c34d656(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DragonHoldingPatternGoal@@QEAA_NXZ");
@@ -756710,6 +758739,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_0984eb6e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DragonHoldingPatternGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_84ee83ed(void* hs_self) try
@@ -757034,6 +759095,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9eefbfde(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DragonLandingGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4db73ff9(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DragonLandingGoal@@QEAA_NXZ");
@@ -757197,6 +759284,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_68070b45(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DragonLandingGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_ef253667(void* hs_self) try
@@ -757521,6 +759640,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_6a81d23c(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DragonScanningGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7465a574(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DragonScanningGoal@@QEAA_NXZ");
@@ -757684,6 +759829,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b176fa9c(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DragonScanningGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_92a4f431(void* hs_self) try
@@ -758113,6 +760290,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_bd7404d9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DragonStrafePlayerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_84d99ec0(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DragonStrafePlayerGoal@@QEAA_NXZ");
@@ -758301,6 +760504,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_095dfcc4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DragonStrafePlayerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_60746427(void* hs_self) try
@@ -758812,6 +761047,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_2ccc2e61(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DragonTakeoffGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ac7cc702(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DragonTakeoffGoal@@QEAA_NXZ");
@@ -758975,6 +761236,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_2b5e1df0(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DragonTakeoffGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6eae8876(void* hs_self) try
@@ -760048,6 +762341,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_f23cfcb4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DrinkMilkGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4509f52b(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DrinkMilkGoal@@QEAA_NXZ");
@@ -760211,6 +762530,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_d652ff14(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DrinkMilkGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_d8f7c6da(void* hs_self) try
@@ -760684,6 +763035,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_18a63bc1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DrinkPotionGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_5cd0c00f(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DrinkPotionGoal@@QEAA_NXZ");
@@ -760870,6 +763247,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_5ddcf4b0(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DrinkPotionGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_95009782(void* hs_self) try
@@ -761965,6 +764374,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_fa04e21f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@DropItemForGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_68c6a75f(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@DropItemForGoal@@QEAA_NXZ");
@@ -762224,6 +764659,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c1a3e10d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@DropItemForGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_ac8ffba0(void* hs_self) try
@@ -770739,6 +773206,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ddde1bb2(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@EatBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_554dd1ee(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@EatBlockGoal@@QEAA_NXZ");
@@ -770952,6 +773445,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_4865ea9f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@EatBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_d03a697a(void* hs_self) try
@@ -771336,6 +773861,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ee908bf7(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@EatCarriedItemGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_446d95df(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@EatCarriedItemGoal@@QEAA_NXZ");
@@ -771499,6 +774050,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_1df8fd78(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@EatCarriedItemGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e804e64b(void* hs_self) try
@@ -771838,6 +774421,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_fd2be9de(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@EatMobGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_0f6145e7(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@EatMobGoal@@QEAA_NXZ");
@@ -772001,6 +774610,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c58a3493(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@EatMobGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_99831605(void* hs_self) try
@@ -784966,6 +787607,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_5cc71ec8(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@EmergeGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_df2a2d8e(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@EmergeGoal@@QEAA_NXZ");
@@ -785129,6 +787796,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_106fc606(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@EmergeGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e59972da(void* hs_self) try
@@ -832993,6 +835692,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_7bcc4c1e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@EquipItemGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_a898f071(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@EquipItemGoal@@QEAA_NXZ");
@@ -833164,6 +835889,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_b7f51e91(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@EquipItemGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_506b81a0(void* hs_self) try
@@ -853408,6 +856165,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_7f58ed53(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@ExploreOutskirtsGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_45974785(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@ExploreOutskirtsGoal@@QEAA_NXZ");
@@ -853571,6 +856354,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_9cf37005(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@ExploreOutskirtsGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_edd84393(void* hs_self) try
@@ -878184,6 +880999,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_4c584925(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FertilizeFarmBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_0cf9a2ae(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@FertilizeFarmBlockGoal@@QEAA_NXZ");
@@ -878420,6 +881261,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_a662167b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FertilizeFarmBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e08da2dc(void* hs_self) try
@@ -882980,6 +885853,32 @@ static HosihikariStringView hs_method_9b4501a9(void* hs_self, const char* codedD
     auto& hs_result = *reinterpret_cast<HsString*>(hs_stringStorage);
     g_stringResult.assign(hs_result.data(), hs_result.size());
     hs_result.~HsString();
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
+static HosihikariStringView hs_method_441edd1d(void* hs_self, const char* symmetricKey_data, std::size_t symmetricKey_size, bool force) try
+{
+    std::basic_string<char> hs_str0(symmetricKey_data, symmetricKey_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?_initalizeSymmetricEncyrption@FileSecureStorage@@QEAAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &, bool);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, force);
+    g_stringResult.assign(hs_str0);
     return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
 }
 catch (std::exception const& hs_error)
@@ -894872,6 +897771,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_68756bac(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FindCoverGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_6b696ce9(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@FindCoverGoal@@QEAA_NXZ");
@@ -895012,6 +897937,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_d6b8507a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FindCoverGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_88b45442(void* hs_self) try
@@ -895375,6 +898332,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c8a6b296(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FindMountGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_1deeff91(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@FindMountGoal@@QEAA_NXZ");
@@ -895538,6 +898521,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_088ec41e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FindMountGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_3088338c(void* hs_self) try
@@ -896140,6 +899155,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_d0e11330(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FindUnderwaterTreasureGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b8b8a048(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@FindUnderwaterTreasureGoal@@QEAA_NXZ");
@@ -896326,6 +899367,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_492d5b02(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FindUnderwaterTreasureGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_fa9b0c69(void* hs_self) try
@@ -896874,6 +899947,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ec83c777(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FireAtTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_f66a4ba7(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@FireAtTargetGoal@@QEAA_NXZ");
@@ -897087,6 +900186,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_75dcf763(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FireAtTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_95f08131(void* hs_self) try
@@ -920722,6 +923853,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_a4452855(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FleeSunGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ca690892(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@FleeSunGoal@@QEAA_NXZ");
@@ -920768,6 +923925,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b07126d2(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FleeSunGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_83fe88d4(void* hs_self) try
@@ -922093,6 +925282,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_87120401(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FloatGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4b58a944(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@FloatGoal@@QEAA_NXZ");
@@ -922210,6 +925425,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_3db1b1a7(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FloatGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_81925a5c(void* hs_self) try
@@ -923369,6 +926616,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c8e5ba34(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FloatWanderGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b5c02828(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@FloatWanderGoal@@QEAA_NXZ");
@@ -923561,6 +926834,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_7e2027f6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FloatWanderGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_cb8214a7(void* hs_self) try
@@ -931686,6 +934991,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_31439826(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FollowCaravanGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_157f15f7(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@FollowCaravanGoal@@QEAA_NXZ");
@@ -931849,6 +935180,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_240de624(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FollowCaravanGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_992aa43e(void* hs_self) try
@@ -932324,6 +935687,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_7319a2ad(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FollowFlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_57339b45(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@FollowFlockGoal@@QEAA_NXZ");
@@ -932510,6 +935899,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_775f168a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FollowFlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_a6ade922(void* hs_self) try
@@ -932908,6 +936329,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_8f367043(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FollowMobGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ddfc52b2(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@FollowMobGoal@@QEAA_NXZ");
@@ -933096,6 +936543,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariArrayView{nullptr, 0};
+}
+
+static HosihikariStringView hs_method_ea59830a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FollowMobGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_cf6102dc(void* hs_self) try
@@ -933600,6 +937079,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_917cd21d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FollowOwnerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_01ee3cc1(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@FollowOwnerGoal@@QEAA_NXZ");
@@ -933882,6 +937387,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_5c83fd8a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FollowOwnerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6fd7acae(void* hs_self) try
@@ -934565,6 +938102,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_3d64f656(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@FollowParentGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_6aeb7ef0(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@FollowParentGoal@@QEAA_NXZ");
@@ -934778,6 +938341,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_f98daf0e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@FollowParentGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_a3d92650(void* hs_self) try
@@ -963897,6 +967492,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_f9888738(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?buildDebugInfo@GeneticsComponent@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void hs_method_4eeb0ee8(void* hs_self, void* owner) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?fireGeneEvents@GeneticsComponent@@QEBAXAEAVActor@@@Z");
@@ -982695,6 +986316,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c7a77578(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@GoAndGiveItemsToNoteblockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_54afce79(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@GoAndGiveItemsToNoteblockGoal@@QEAA_NXZ");
@@ -982858,6 +986505,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b91df56a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@GoAndGiveItemsToNoteblockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_f742f3e7(void* hs_self) try
@@ -983392,6 +987071,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_8b43a260(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@GoAndGiveItemsToOwnerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_2c53bdfb(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@GoAndGiveItemsToOwnerGoal@@QEAA_NXZ");
@@ -983578,6 +987283,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_73bc1016(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@GoAndGiveItemsToOwnerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_ba33b476(void* hs_self) try
@@ -984082,6 +987819,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9948ef00(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@GoHomeGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_adfdb869(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@GoHomeGoal@@QEAA_NXZ");
@@ -984316,6 +988079,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_5d241967(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@GoHomeGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e3f037c5(void* hs_self) try
@@ -984977,6 +988772,32 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_625f5548(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?buildDebugInfo@GoalSelectorComponent@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_method_372d9745(void* hs_self) try
@@ -1000443,6 +1004264,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9b0c1301(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@GuardianAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9ab0b3f6(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@GuardianAttackGoal@@QEAA_NXZ");
@@ -1000606,6 +1004453,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_9b7267c4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@GuardianAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_53999e6c(void* hs_self) try
@@ -1011014,6 +1014893,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_524c38d9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@HarvestFarmBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_30faf2e1(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@HarvestFarmBlockGoal@@QEAA_NXZ");
@@ -1011250,6 +1015155,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_6b07dd6d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@HarvestFarmBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_3d8d64d1(void* hs_self) try
@@ -1012090,6 +1016027,32 @@ static void* hs_create_0d67d647(const char* s_data, std::size_t s_size) try
     using HsFn = void (*)(void*, const std::basic_string<char> &);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_memory, hs_str0);
+    return hs_memory;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_3881f610(const char* s_data, std::size_t s_size) try
+{
+    std::basic_string<char> hs_str0(s_data, s_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "??0HashedString@@QEAA@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_memory = static_cast<void*>(hs_allocate(static_cast<std::size_t>(48), 8));
+    using HsFn = void (*)(void*, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_memory, std::move(hs_str0));
     return hs_memory;
 }
 catch (std::exception const& hs_error)
@@ -1017262,6 +1021225,32 @@ catch (...)
     return 0;
 }
 
+static HosihikariStringView hs_method_e2a7ddef(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@HideGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_88eb7c7b(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@HideGoal@@QEAA_NXZ");
@@ -1017440,6 +1021429,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_6f122904(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@HideGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_85c6b600(void* hs_self) try
@@ -1019783,6 +1023804,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_f8f4b957(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@HoldGroundGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_07370e10(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@HoldGroundGoal@@QEAA_NXZ");
@@ -1019946,6 +1023993,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_7ef96451(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@HoldGroundGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_d7a021dc(void* hs_self) try
@@ -1033373,6 +1037452,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_6eef227b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@HoverGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_971ec8fd(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@HoverGoal@@QEAA_NXZ");
@@ -1033513,6 +1037618,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_cb653e1c(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@HoverGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e5f1963d(void* hs_self) try
@@ -1044656,6 +1048793,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9224801e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@HurtByTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_70e28c57(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@HurtByTargetGoal@@QEAA_NXZ");
@@ -1044829,6 +1048992,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_1ca95e12(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@HurtByTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_f8d4c1ea(void* hs_self) try
@@ -1071849,6 +1076044,34 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_7c693463(void* hs_self, void* properties, const char* message_data, std::size_t message_size, const char* level_data, std::size_t level_size) try
+{
+    std::basic_string<char> hs_str1(message_data, message_size);
+    std::basic_string<char> hs_str2(level_data, level_size);
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[200];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, properties, hs_str1, hs_str2);
+    g_stringResult.assign(hs_str2);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_method_72732dab(void* hs_self, const char* action_data, std::size_t action_size) try
@@ -1108900,6 +1113123,32 @@ catch (...)
     return false;
 }
 
+static HosihikariStringView hs_method_37f02838(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@InspectBookshelfGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_91745bdd(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@InspectBookshelfGoal@@QEAA_NXZ");
@@ -1109119,6 +1113368,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_c6266ef4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@InspectBookshelfGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_48834103(void* hs_self) try
@@ -1124467,6 +1128748,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9c3f3db6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@InvestigateSuspiciousLocationGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_99c4a78a(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@InvestigateSuspiciousLocationGoal@@QEAA_NXZ");
@@ -1124662,6 +1128969,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_ddcda2dd(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@InvestigateSuspiciousLocationGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_926a459f(void* hs_self) try
@@ -1189067,6 +1193406,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_f8f226fe(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@JumpAroundTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9d0c674c(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@JumpAroundTargetGoal@@QEAA_NXZ");
@@ -1189303,6 +1193668,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_e5ba71f8(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@JumpAroundTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_bbb8063e(void* hs_self) try
@@ -1191460,6 +1195857,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ed1a5507(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@JumpToBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_789d4f81(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@JumpToBlockGoal@@QEAA_NXZ");
@@ -1191811,6 +1196234,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_e2ebeac6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@JumpToBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_8cb14874(void* hs_self) try
@@ -1196250,6 +1200705,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_85f9e0f1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@KnockbackRoarGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ca133237(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@KnockbackRoarGoal@@QEAA_NXZ");
@@ -1196463,6 +1200944,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_d823f990(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@KnockbackRoarGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_457307b4(void* hs_self) try
@@ -1207904,6 +1212417,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_92e00031(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@LayDownGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_05e12b52(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@LayDownGoal@@QEAA_NXZ");
@@ -1208067,6 +1212606,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_994f5111(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@LayDownGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_9a1d4e0b(void* hs_self) try
@@ -1208939,6 +1213510,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_6f0785ac(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@LayEggGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9ba4c71c(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@LayEggGoal@@QEAA_NXZ");
@@ -1209129,6 +1213726,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_b3146fe4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@LayEggGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_8eeb77ae(void* hs_self) try
@@ -1209915,6 +1214544,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_04059c4a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@LeapAtTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_1f90d36a(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@LeapAtTargetGoal@@QEAA_NXZ");
@@ -1210032,6 +1214687,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_58e164b0(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@LeapAtTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_626d9df3(void* hs_self) try
@@ -1291865,6 +1296552,33 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_229a3ec8(void* hs_self, const char* outStats_data, std::size_t outStats_size, std::uint32_t statsType) try
+{
+    std::basic_string<char> hs_str0(outStats_data, outStats_size);
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[13];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, statsType);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_88600724(void* hs_self, const char* key_data, std::size_t key_size, std::uint32_t category) try
 {
     std::basic_string_view<char> hs_str0(key_data, key_size);
@@ -1292113,6 +1296827,34 @@ static void* hs_method_b1076ac8(void* hs_self, const char* key_data, std::size_t
     using HsFn = void (*)(void*, void*, const std::basic_string<char> &, void*, std::uint32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, static_cast<void*>(hs_record), hs_str0, tag, category);
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_5ec423ab(void* hs_self, const char* key_data, std::size_t key_size, const char* data_data, std::size_t data_size, std::uint32_t category) try
+{
+    std::basic_string<char> hs_str0(key_data, key_size);
+    std::basic_string<char> hs_str1(data_data, data_size);
+    auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+    auto const hs_target = hs_vtable[11];
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(16), 8));
+    using HsFn = void (*)(void*, void*, const std::basic_string<char> &, std::basic_string<char> &&, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, static_cast<void*>(hs_record), hs_str0, std::move(hs_str1), category);
     return hs_record;
 }
 catch (std::exception const& hs_error)
@@ -1293782,6 +1298524,31 @@ catch (...)
     return;
 }
 
+static void hs_method_61dcc4fe(void* hs_self, const char* key_data, std::size_t key_size, const char* data_data, std::size_t data_size, std::uint32_t category) try
+{
+    std::basic_string<char> hs_str0(key_data, key_size);
+    std::basic_string<char> hs_str1(data_data, data_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$putKey@LevelStorageWriteBatch@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$QEAV23@W4Category@DBHelpers@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &&, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, std::move(hs_str1), category);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_d198f775(void* hs_self, const char* key_data, std::size_t key_size, const char* data_data, std::size_t data_size, std::uint32_t category) try
 {
     std::basic_string<char> hs_str0(key_data, key_size);
@@ -1294028,6 +1298795,37 @@ static void hs_method_9915a243(void* hs_self, const char* key_data, std::size_t 
     using HsFn = void (*)(void*, const std::basic_string<char> &, const std::basic_string<char> &, std::uint32_t);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, hs_str0, hs_str1, category);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_71d5e83d(void* hs_self, const char* key_data, std::size_t key_size, const char* data_data, std::size_t data_size, std::uint32_t category) try
+{
+    std::basic_string<char> hs_str0(key_data, key_size);
+    std::basic_string<char> hs_str1(data_data, data_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?putKey@LevelStorageWriteBatch@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$QEAV23@W4Category@DBHelpers@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[2];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, const std::basic_string<char> &, std::basic_string<char> &&, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, std::move(hs_str1), category);
 }
 catch (std::exception const& hs_error)
 {
@@ -1321788,6 +1326586,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_6f007d34(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@LookAtActorGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_61fc94d9(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@LookAtActorGoal@@QEAA_NXZ");
@@ -1322001,6 +1326825,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_d2da7f9a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@LookAtActorGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_2444c45a(void* hs_self) try
@@ -1324860,6 +1329716,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_9df15ae4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@LookAtTradingPlayerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7ddb5ea5(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@LookAtTradingPlayerGoal@@QEAA_NXZ");
@@ -1324954,6 +1329836,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_dc45af91(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@LookAtTradingPlayerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_7f83b579(void* hs_self) try
@@ -1338072,6 +1342986,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c2d50e44(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MakeLoveGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7931e559(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MakeLoveGoal@@QEAA_NXZ");
@@ -1338258,6 +1343198,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_af2404ea(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MakeLoveGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_efce531e(void* hs_self) try
@@ -1359645,6 +1364617,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_e91e68cb(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MeleeAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void* hs_method_f2998228(void* hs_self, void* mob, const char* name_data, std::size_t name_size, void* goalId) try
 {
     std::basic_string<char> hs_str1(name_data, name_size);
@@ -1359904,6 +1364902,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_fbfb641f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MeleeAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void* hs_get_709232dd(void* hs_self) try
@@ -1360509,6 +1365539,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_3095a8f3(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MeleeBoxAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void* hs_method_cecb1c9c(void* hs_self, void* mob, const char* name_data, std::size_t name_size, void* goalId) try
 {
     std::basic_string<char> hs_str1(name_data, name_size);
@@ -1360630,6 +1365686,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_55202bf1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MeleeBoxAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static float hs_get_3f5b9aa8(void* hs_self) try
@@ -1389565,6 +1394653,33 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_a64dbfcb(void* hs_self, void* properties, const char* message_data, std::size_t message_size, const char* level_data, std::size_t level_size) try
+{
+    std::basic_string<char> hs_str1(message_data, message_size);
+    std::basic_string<char> hs_str2(level_data, level_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$fireEventCodeBuilderLog@MinecraftEventing@@QEBAXAEBUTelemetryCommonProperties@Webview@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV45@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, properties, hs_str1, hs_str2);
+    g_stringResult.assign(hs_str2);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void hs_method_982234dd(void* hs_self, const char* action_data, std::size_t action_size) try
 {
     std::basic_string<char> hs_str0(action_data, action_size);
@@ -1398338,6 +1403453,39 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_19aba17e(void* hs_self, void* properties, const char* message_data, std::size_t message_size, const char* level_data, std::size_t level_size) try
+{
+    std::basic_string<char> hs_str1(message_data, message_size);
+    std::basic_string<char> hs_str2(level_data, level_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?fireEventCodeBuilderLog@MinecraftEventing@@UEBAXAEBUTelemetryCommonProperties@Webview@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV45@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[200];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, void*, const std::basic_string<char> &, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, properties, hs_str1, hs_str2);
+    g_stringResult.assign(hs_str2);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_method_6193ea0d(void* hs_self, const char* action_data, std::size_t action_size) try
@@ -1415077,6 +1420225,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_54f694e4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MingleGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_52484f1c(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MingleGoal@@QEAA_NXZ");
@@ -1415259,6 +1420433,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_c352ab6c(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MingleGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6688bdcc(void* hs_self) try
@@ -1418368,6 +1423574,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_cd61972e(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$buildDebugInfo@Mob@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_d1ff29b5(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBePulledIntoVehicle@Mob@@QEBA_NXZ");
@@ -1420654,6 +1425886,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_54b76cc1(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?buildDebugInfo@Mob@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[100];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static float hs_method_cd30ab26(void* hs_self, std::int32_t travelType) try
@@ -1454760,6 +1460024,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_38218a8e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MountPathingGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_02f920bb(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MountPathingGoal@@QEAA_NXZ");
@@ -1454923,6 +1460213,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_3e39491e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MountPathingGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_d25ba56b(void* hs_self) try
@@ -1460875,6 +1466197,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_26c8bcdc(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveIndoorsGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_f4ed337c(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MoveIndoorsGoal@@QEAA_NXZ");
@@ -1461061,6 +1466409,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_d85df1a6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveIndoorsGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6ebc65a0(void* hs_self) try
@@ -1462845,6 +1468225,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_e2ae040a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveOutdoorsGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4e1c4108(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@MoveOutdoorsGoal@@QEAA_NXZ");
@@ -1463035,6 +1468441,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c418ce05(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveOutdoorsGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_0a708a06(void* hs_self) try
@@ -1465112,6 +1470550,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_849e70a7(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveThroughVillageGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_d36ca973(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MoveThroughVillageGoal@@QEAA_NXZ");
@@ -1465252,6 +1470716,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_5bf52bac(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveThroughVillageGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_198c157c(void* hs_self) try
@@ -1465547,6 +1471043,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ac09be0d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveToBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_916ba50d(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MoveToBlockGoal@@QEAA_NXZ");
@@ -1465779,6 +1471301,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_98ed3086(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveToBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_8c3a0191(void* hs_self) try
@@ -1467378,6 +1472932,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_fd5959b1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveToLandGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_a9443128(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MoveToLandGoal@@QEAA_NXZ");
@@ -1467499,6 +1473079,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_a267a418(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveToLandGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b60f7635(void* hs_self) try
@@ -1468851,6 +1474463,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_28ed0783(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveToLiquidGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_20c67fe4(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MoveToLiquidGoal@@QEAA_NXZ");
@@ -1469041,6 +1474679,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_a1673a2d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveToLiquidGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e88414b0(void* hs_self) try
@@ -1470154,6 +1475824,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_264bb5a6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveToPOIGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_07d0fe31(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@MoveToPOIGoal@@QEAA_NXZ");
@@ -1470461,6 +1476157,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_408a5ee1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveToPOIGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6f0c51fe(void* hs_self) try
@@ -1470816,6 +1476544,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_31315a48(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveToRandomBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_aad6fbca(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MoveToRandomBlockGoal@@QEAA_NXZ");
@@ -1470979,6 +1476733,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_3c6611ff(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveToRandomBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b5bc88b4(void* hs_self) try
@@ -1471936,6 +1477722,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_21197178(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveToVillageGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b0993a89(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MoveToVillageGoal@@QEAA_NXZ");
@@ -1472238,6 +1478050,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariStringView hs_method_c2ac70ae(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveToVillageGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_7f175722(void* hs_self) try
@@ -1473280,6 +1479124,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_85afafa7(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveTowardsDwellingRestrictionGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9b83a127(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@MoveTowardsDwellingRestrictionGoal@@QEAA_NXZ");
@@ -1473326,6 +1479196,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b1afb299(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveTowardsDwellingRestrictionGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_ccdfce5c(void* hs_self) try
@@ -1473511,6 +1479413,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_b3cc63f5(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveTowardsHomeRestrictionGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_0012bee7(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@MoveTowardsHomeRestrictionGoal@@QEAA_NXZ");
@@ -1473557,6 +1479485,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_56568bf6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveTowardsHomeRestrictionGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_87a4f63d(void* hs_self) try
@@ -1474096,6 +1480056,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_51e76164(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@MoveTowardsTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_8ce0bdba(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@MoveTowardsTargetGoal@@QEAA_NXZ");
@@ -1474236,6 +1480222,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_10a610be(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@MoveTowardsTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b3dc990e(void* hs_self) try
@@ -1496977,6 +1502995,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_2f7ebcf9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@NapGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_38de215e(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@NapGoal@@QEAA_NXZ");
@@ -1497190,6 +1503234,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_8d8f6128(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@NapGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_9ee33ac0(void* hs_self) try
@@ -1504006,6 +1510082,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_b43b8a8b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@NearestAttackableTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_e5d97b3c(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@NearestAttackableTargetGoal@@QEAA_NXZ");
@@ -1504219,6 +1510321,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_c2c86f69(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@NearestAttackableTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_1feafc93(void* hs_self) try
@@ -1505415,6 +1511549,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_01d596d7(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@NearestPrioritizedAttackableTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void* hs_method_9a2e9573(void* hs_self, void* mob, const char* name_data, std::size_t name_size, void* goalId) try
 {
     std::basic_string<char> hs_str1(name_data, name_size);
@@ -1505513,6 +1511673,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_149e9b3a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@NearestPrioritizedAttackableTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_get_db3ce4d6(void* hs_self) try
@@ -1511576,6 +1517768,31 @@ static void hs_method_af5c43e3(void* hs_self, void* source, HosihikariSharedHand
     using HsFn = void (*)(void*, void*, std::shared_ptr<void>);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, source, hs_shared1);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_65d91177(void* hs_self, HosihikariSharedHandle packetSecurityController, void* errorCode, std::int32_t response, std::int32_t packetId, const char* context_data, std::size_t context_size, void* netId, std::uint8_t clientSubId, std::uint8_t senderSubId, std::uint32_t packetSize) try
+{
+    std::basic_string<char> hs_str4(context_data, context_size);
+    auto hs_shared0 = hs_shared_from_handle<void>(packetSecurityController);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$handlePacketViolation@NetEventCallback@@QEAAXAEBV?$shared_ptr@VIPacketSecurityController@@@std@@AEBVerror_code@3@W4PacketViolationResponse@@W4MinecraftPacketIds@@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@AEBVNetworkIdentifier@@W4SubClientId@@6I@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::shared_ptr<void>, void*, std::int32_t, std::int32_t, std::basic_string<char> &&, void*, std::uint8_t, std::uint8_t, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_shared0, errorCode, response, packetId, std::move(hs_str4), netId, clientSubId, senderSubId, packetSize);
 }
 catch (std::exception const& hs_error)
 {
@@ -1518857,6 +1525074,37 @@ static void hs_method_3562216a(void* hs_self, void* source, HosihikariSharedHand
     using HsFn = void (*)(void*, void*, std::shared_ptr<void>);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, source, hs_shared1);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_cc877377(void* hs_self, HosihikariSharedHandle packetSecurityController, void* errorCode, std::int32_t response, std::int32_t packetId, const char* context_data, std::size_t context_size, void* netId, std::uint8_t clientSubId, std::uint8_t senderSubId, std::uint32_t packetSize) try
+{
+    std::basic_string<char> hs_str4(context_data, context_size);
+    auto hs_shared0 = hs_shared_from_handle<void>(packetSecurityController);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?handlePacketViolation@NetEventCallback@@UEAAXAEBV?$shared_ptr@VIPacketSecurityController@@@std@@AEBVerror_code@3@W4PacketViolationResponse@@W4MinecraftPacketIds@@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@AEBVNetworkIdentifier@@W4SubClientId@@6I@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[12];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::shared_ptr<void>, void*, std::int32_t, std::int32_t, std::basic_string<char> &&, void*, std::uint8_t, std::uint8_t, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_shared0, errorCode, response, packetId, std::move(hs_str4), netId, clientSubId, senderSubId, packetSize);
 }
 catch (std::exception const& hs_error)
 {
@@ -1553718,6 +1559966,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_6b1d486d(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$buildDebugInfo@Npc@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_8643e508(void* hs_self, std::uint32_t id) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeAffected@Npc@@QEBA_NI@Z");
@@ -1554123,6 +1560397,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_96b8c5ae(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?buildDebugInfo@Npc@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[100];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b2019d29(void* hs_self, std::uint32_t id) try
@@ -1575353,6 +1581659,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_b582772e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@OcelotAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_a5dc2bba(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@OcelotAttackGoal@@QEAA_NXZ");
@@ -1575493,6 +1581825,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c37fa832(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@OcelotAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_7ae660d8(void* hs_self) try
@@ -1576606,6 +1582970,32 @@ catch (...)
     return false;
 }
 
+static HosihikariStringView hs_method_abf56554(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@OcelotSitOnBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b811132d(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@OcelotSitOnBlockGoal@@QEAA_NXZ");
@@ -1576848,6 +1583238,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_a256f593(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@OcelotSitOnBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6870f6de(void* hs_self) try
@@ -1577127,6 +1583549,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_290fa695(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@OfferFlowerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7951ae15(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@OfferFlowerGoal@@QEAA_NXZ");
@@ -1577340,6 +1583788,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_680615e0(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@OfferFlowerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_d8298c6e(void* hs_self) try
@@ -1587669,6 +1594149,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9c16caf6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@OpenDoorGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_cf8de4f9(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@OpenDoorGoal@@QEAA_NXZ");
@@ -1587832,6 +1594338,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_2aad2249(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@OpenDoorGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_c01dcb73(void* hs_self) try
@@ -1620769,6 +1627307,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_42c2313c(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@PanicGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_363fb173(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@PanicGoal@@QEAA_NXZ");
@@ -1620932,6 +1627496,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_7c6067eb(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@PanicGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6f1844c7(void* hs_self) try
@@ -1625138,6 +1631734,32 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_545d0567(void* val, const char* variable_data, std::size_t variable_size, void* jsonName, void* defaultValue) try
+{
+    std::basic_string<char> hs_str1(variable_data, variable_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?parse@Parser@@SAXAEBVValue@Json@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBD2@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &, void*, void*);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(val, hs_str1, jsonName, defaultValue);
+    g_stringResult.assign(hs_str1);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_method_1d37a7ac(void* val, void* jsonName, void* defaultValue, const std::uint32_t* variable_data, std::size_t variable_count) try
@@ -1635089,6 +1641711,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ad41b3b9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@PetSleepWithOwnerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7f01fbb9(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@PetSleepWithOwnerGoal@@QEAA_NXZ");
@@ -1635302,6 +1641950,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_57693f90(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@PetSleepWithOwnerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_ca009ff7(void* hs_self) try
@@ -1642876,6 +1649556,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_430d0a0f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@PickupItemsGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_8b81d49b(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@PickupItemsGoal@@QEAA_NXZ");
@@ -1643181,6 +1649887,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_c3e8e8f1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@PickupItemsGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6afaadc3(void* hs_self) try
@@ -1668434,6 +1675172,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_58d780e5(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@PlayDeadGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4c69e083(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@PlayDeadGoal@@QEAA_NXZ");
@@ -1668574,6 +1675338,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_a97ab0c5(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@PlayDeadGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_281800e3(void* hs_self) try
@@ -1669109,6 +1675905,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_121adff4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@PlayGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_e1101e6f(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@PlayGoal@@QEAA_NXZ");
@@ -1669272,6 +1676094,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c44769ba(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@PlayGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_f139e596(void* hs_self) try
@@ -1723063,6 +1729917,32 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_d8badc85(const char* message_data, std::size_t message_size) try
+{
+    std::basic_string<char> hs_str0(message_data, message_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?createSystem@ValidationSystem@PlayerValidation@@SA?AUTickingSystemWithInfo@@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return nullptr;
+    }
+    auto* const hs_record = static_cast<void*>(hs_allocate(static_cast<std::size_t>(208), 8));
+    using HsFn = void (*)(void*, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(static_cast<void*>(hs_record), std::move(hs_str0));
+    return hs_record;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_get_93067c9c(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(static_cast<unsigned char const*>(hs_self) + 8));
@@ -1723199,6 +1730079,32 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_67a29e83(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@PlayerVehicleTamedGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6a5ef798(void* hs_self) try
@@ -1723341,6 +1730247,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_165ec7df(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@PlayerVehicleTamedGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_c850b7a6(void* hs_self) try
@@ -1782946,6 +1789884,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_782c6e71(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RaidGardenGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_5df70b20(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RaidGardenGoal@@QEAA_NXZ");
@@ -1783159,6 +1790123,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_f4f6e98b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RaidGardenGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b2973d29(void* hs_self) try
@@ -1784305,6 +1791301,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_db993c07(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RaiderCelebrationGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_358ff0e3(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RaiderCelebrationGoal@@QEAA_NXZ");
@@ -1784468,6 +1791490,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_e3d98fd9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RaiderCelebrationGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b6c87cba(void* hs_self) try
@@ -1809092,6 +1816146,33 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static HosihikariStringView hs_method_b0efa844(void* hs_self, const char* originalAddressToSet_data, std::size_t originalAddressToSet_size, const char* ip_data, std::size_t ip_size) try
+{
+    std::basic_string<char> hs_str0(originalAddressToSet_data, originalAddressToSet_size);
+    std::basic_string<char> hs_str1(ip_data, ip_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?_getServerOriginalAddress@RakNetServerLocator@@QEAAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV23@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &, const std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0, hs_str1);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void hs_method_37ebd77c(void* hs_self) try
 {
     static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?_onDisable@RakNetServerLocator@@UEAAXXZ");
@@ -1813756,6 +1820837,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_d0ea0356(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RamAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_6a3ae314(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RamAttackGoal@@QEAA_NXZ");
@@ -1814038,6 +1821145,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_260cddd6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RamAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_f0ff9f4d(void* hs_self) try
@@ -1816549,6 +1823688,32 @@ catch (...)
     return false;
 }
 
+static HosihikariStringView hs_method_1eca9e62(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomBreachingGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_8f2577e8(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@RandomBreachingGoal@@QEAA_NXZ");
@@ -1816716,6 +1823881,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_5e445020(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomBreachingGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_9472bdbd(void* hs_self) try
@@ -1817487,6 +1824684,32 @@ catch (...)
     return false;
 }
 
+static HosihikariStringView hs_method_f3e5f744(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomFlyingGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ef399cbd(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@RandomFlyingGoal@@QEAA_NXZ");
@@ -1817562,6 +1824785,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_618c0d55(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomFlyingGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_da6f26e8(void* hs_self) try
@@ -1817912,6 +1825167,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_5f9f88dc(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomHoverGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_e5489359(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RandomHoverGoal@@QEAA_NXZ");
@@ -1818075,6 +1825356,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_a0c18c1f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomHoverGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_1e1542dd(void* hs_self) try
@@ -1818505,6 +1825818,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_023f32a0(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomLookAroundAndSitGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4c4bdaea(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RandomLookAroundAndSitGoal@@QEAA_NXZ");
@@ -1818718,6 +1826057,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_dcac62b2(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomLookAroundAndSitGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_48c00483(void* hs_self) try
@@ -1819409,6 +1826780,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_6e9fe3bd(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomLookAroundGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_6d71d8d9(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RandomLookAroundGoal@@QEAA_NXZ");
@@ -1819549,6 +1826946,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c96ce70e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomLookAroundGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_397549e2(void* hs_self) try
@@ -1821221,6 +1828650,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c3703bf9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomSearchAndDigGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_65b851c2(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RandomSearchAndDigGoal@@QEAA_NXZ");
@@ -1821491,6 +1828946,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_e30e490c(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomSearchAndDigGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_93ec70be(void* hs_self) try
@@ -1822400,6 +1829887,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_8dd90127(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomSitGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_c6d13e36(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RandomSitGoal@@QEAA_NXZ");
@@ -1822540,6 +1830053,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_6179d973(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomSitGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_7149983b(void* hs_self) try
@@ -1823275,6 +1830820,32 @@ catch (...)
     return false;
 }
 
+static HosihikariStringView hs_method_2d77a95a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomStrollGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_614de07c(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RandomStrollGoal@@QEAA_NXZ");
@@ -1823467,6 +1831038,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_cd36c399(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomStrollGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e1d63787(void* hs_self) try
@@ -1824144,6 +1831747,32 @@ catch (...)
     return false;
 }
 
+static HosihikariStringView hs_method_8fa48ac5(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RandomSwimmingGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_385162ad(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RandomSwimmingGoal@@QEAA_NXZ");
@@ -1824242,6 +1831871,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_b56c9253(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RandomSwimmingGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_22e1a6ef(void* hs_self) try
@@ -1826831,6 +1834492,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_621385cb(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RangedAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_c14dafe6(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RangedAttackGoal@@QEAA_NXZ");
@@ -1827067,6 +1834754,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_ab27b0e7(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RangedAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_db019594(void* hs_self) try
@@ -1832362,6 +1840081,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_23cc46b9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@ReceiveLoveGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_c90bf833(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@ReceiveLoveGoal@@QEAA_NXZ");
@@ -1832479,6 +1840224,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_dea65383(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@ReceiveLoveGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_55ae992e(void* hs_self) try
@@ -1887461,6 +1895238,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9fe3d188(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RestrictOpenDoorGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_20763ad2(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RestrictOpenDoorGoal@@QEAA_NXZ");
@@ -1887601,6 +1895404,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_1dd28ccc(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RestrictOpenDoorGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_d58a6822(void* hs_self) try
@@ -1887851,6 +1895686,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_f7aa5030(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RestrictSunGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_e80482ef(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@RestrictSunGoal@@QEAA_NXZ");
@@ -1887968,6 +1895829,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_08df5fc3(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RestrictSunGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_70b6748c(void* hs_self) try
@@ -1890083,6 +1897976,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_dc387ed9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RiseToLiquidLevelGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_976719e9(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@RiseToLiquidLevelGoal@@QEAA_NXZ");
@@ -1890177,6 +1898096,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_5faa1315(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RiseToLiquidLevelGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b01c98a3(void* hs_self) try
@@ -1890459,6 +1898410,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_8dbe858e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RiverFollowingGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b6f2f263(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RiverFollowingGoal@@QEAA_NXZ");
@@ -1890622,6 +1898599,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_51a67072(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RiverFollowingGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_7f430cd6(void* hs_self) try
@@ -1890976,6 +1898985,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_cb53afb3(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RoarGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_3952fd68(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RoarGoal@@QEAA_NXZ");
@@ -1891139,6 +1899174,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_f3f43651(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RoarGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b685ee4d(void* hs_self) try
@@ -1891730,6 +1899797,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_df0402db(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RollGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_f2b059ae(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@RollGoal@@QEAA_NXZ");
@@ -1891939,6 +1900032,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_83a06481(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RollGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_fa6f4d4c(void* hs_self) try
@@ -1897966,6 +1906091,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_4ad3bfa4(void* hs_self, const char* debugInfo_data, std::size_t debugInfo_size) try
+{
+    std::basic_string<char> hs_str0(debugInfo_data, debugInfo_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@RunAroundLikeCrazyGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_cbba8a8a(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@RunAroundLikeCrazyGoal@@QEAA_NXZ");
@@ -1898083,6 +1906234,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_a34a9192(void* hs_self, const char* debugInfo_data, std::size_t debugInfo_size) try
+{
+    std::basic_string<char> hs_str0(debugInfo_data, debugInfo_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@RunAroundLikeCrazyGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_73254ab5(void* hs_self) try
@@ -1914105,6 +1922288,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_7af82d66(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@ScaredGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_f507d685(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@ScaredGoal@@QEAA_NXZ");
@@ -1914268,6 +1922477,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_ac651d40(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@ScaredGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_879255e6(void* hs_self) try
@@ -1925636,6 +1933877,30 @@ catch (...)
     return nullptr;
 }
 
+static void hs_method_1cc1178a(void* hs_self, std::int32_t successCount, const char* messages_data, std::size_t messages_size) try
+{
+    std::basic_string<char> hs_str1(messages_data, messages_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$handleCommandOutputCallback@ScriptCommandOrigin@@QEBAXH$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::int32_t, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, successCount, std::move(hs_str1));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static bool hs_method_e892d265(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$isSelectorExpansionAllowed@ScriptCommandOrigin@@QEBA_NXZ");
@@ -1926070,6 +1934335,36 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static void hs_method_41415c55(void* hs_self, std::int32_t successCount, const char* messages_data, std::size_t messages_size) try
+{
+    std::basic_string<char> hs_str1(messages_data, messages_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?handleCommandOutputCallback@ScriptCommandOrigin@@UEBAXH$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[28];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::int32_t, std::basic_string<char> &&);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, successCount, std::move(hs_str1));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
 }
 
 static bool hs_method_fc299318(void* hs_self) try
@@ -2057700,6 +2065995,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_346f1506(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SendEventGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4b9d4195(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SendEventGoal@@QEAA_NXZ");
@@ -2057863,6 +2066184,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_022b3c6a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SendEventGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e8a69fdc(void* hs_self) try
@@ -2079065,6 +2087418,31 @@ catch (...)
     return;
 }
 
+static void hs_method_a88f5b41(void* hs_self, HosihikariSharedHandle packetSecurityController, void* errorCode, std::int32_t response, std::int32_t packetId, const char* context_data, std::size_t context_size, void* netId, std::uint8_t clientSubId, std::uint8_t senderSubId, std::uint32_t packetSize) try
+{
+    std::basic_string<char> hs_str4(context_data, context_size);
+    auto hs_shared0 = hs_shared_from_handle<void>(packetSecurityController);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$handlePacketViolation@ServerNetworkHandler@@QEAAXAEBV?$shared_ptr@VIPacketSecurityController@@@std@@AEBVerror_code@3@W4PacketViolationResponse@@W4MinecraftPacketIds@@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@AEBVNetworkIdentifier@@W4SubClientId@@6I@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::shared_ptr<void>, void*, std::int32_t, std::int32_t, std::basic_string<char> &&, void*, std::uint8_t, std::uint8_t, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_shared0, errorCode, response, packetId, std::move(hs_str4), netId, clientSubId, senderSubId, packetSize);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_80734b66(void* hs_self, void* id) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$onConnect@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@@Z");
@@ -2082512,6 +2090890,37 @@ static void hs_method_ff542d0d(void* hs_self, void* source, HosihikariSharedHand
     using HsFn = void (*)(void*, void*, std::shared_ptr<void>);
     auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
     hs_fn(hs_self, source, hs_shared1);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_f16eadcb(void* hs_self, HosihikariSharedHandle packetSecurityController, void* errorCode, std::int32_t response, std::int32_t packetId, const char* context_data, std::size_t context_size, void* netId, std::uint8_t clientSubId, std::uint8_t senderSubId, std::uint32_t packetSize) try
+{
+    std::basic_string<char> hs_str4(context_data, context_size);
+    auto hs_shared0 = hs_shared_from_handle<void>(packetSecurityController);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?handlePacketViolation@ServerNetworkHandler@@UEAAXAEBV?$shared_ptr@VIPacketSecurityController@@@std@@AEBVerror_code@3@W4PacketViolationResponse@@W4MinecraftPacketIds@@$$QEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@AEBVNetworkIdentifier@@W4SubClientId@@6I@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[12];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return;
+    }
+    using HsFn = void (*)(void*, std::shared_ptr<void>, void*, std::int32_t, std::int32_t, std::basic_string<char> &&, void*, std::uint8_t, std::uint8_t, std::uint32_t);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_shared0, errorCode, response, packetId, std::move(hs_str4), netId, clientSubId, senderSubId, packetSize);
 }
 catch (std::exception const& hs_error)
 {
@@ -2134614,6 +2143023,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_7fe51e19(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@ShareItemsGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b2930464(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@ShareItemsGoal@@QEAA_NXZ");
@@ -2134827,6 +2143262,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b45b3691(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@ShareItemsGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_92e96711(void* hs_self) try
@@ -2202825,6 +2211292,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_a153321d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SilverfishMergeWithStoneGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_e280e6cd(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SilverfishMergeWithStoneGoal@@QEAA_NXZ");
@@ -2202942,6 +2211435,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_289cd9df(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SilverfishMergeWithStoneGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_69f1b919(void* hs_self) try
@@ -2203223,6 +2211748,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_33f845ae(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SilverfishWakeUpFriendsGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_dc98b84b(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@SilverfishWakeUpFriendsGoal@@QEAA_NXZ");
@@ -2203317,6 +2211868,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b1c01b63(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SilverfishWakeUpFriendsGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_f576333e(void* hs_self) try
@@ -2219193,6 +2227776,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_41d71f0d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SitGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_3ec240ae(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@SitGoal@@QEAA_NXZ");
@@ -2219310,6 +2227919,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_26b522ad(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SitGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_b360d995(void* hs_self) try
@@ -2222867,6 +2231508,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_829aa583(void* hs_self, const char* debugInfo_data, std::size_t debugInfo_size) try
+{
+    std::basic_string<char> hs_str0(debugInfo_data, debugInfo_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SkeletonHorseTrapGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_1ce34fe1(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@SkeletonHorseTrapGoal@@QEAA_NXZ");
@@ -2222984,6 +2231651,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_81ec8c5e(void* hs_self, const char* debugInfo_data, std::size_t debugInfo_size) try
+{
+    std::basic_string<char> hs_str0(debugInfo_data, debugInfo_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SkeletonHorseTrapGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_d4aeae4a(void* hs_self) try
@@ -2229914,6 +2238613,32 @@ catch (...)
     return 0;
 }
 
+static HosihikariStringView hs_method_5999c5a1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SleepGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_a37688f6(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SleepGoal@@QEAA_NXZ");
@@ -2230156,6 +2238881,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return 0;
+}
+
+static HosihikariStringView hs_method_01ac5305(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SleepGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_28378605(void* hs_self) try
@@ -2234790,6 +2243547,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_2e285a16(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SlimeAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_2432d154(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SlimeAttackGoal@@QEAA_NXZ");
@@ -2234930,6 +2243713,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_ca2cd479(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SlimeAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_654b4217(void* hs_self) try
@@ -2236288,6 +2245103,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_54308e00(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SlimeFloatGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_60491dac(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@SlimeFloatGoal@@QEAA_NXZ");
@@ -2236382,6 +2245223,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_a9d5c713(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SlimeFloatGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_cef874e4(void* hs_self) try
@@ -2236634,6 +2245507,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_77db0cc4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SlimeKeepOnJumpingGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_40458c3c(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@SlimeKeepOnJumpingGoal@@QEAA_NXZ");
@@ -2236728,6 +2245627,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_1772bb40(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SlimeKeepOnJumpingGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_c43f7784(void* hs_self) try
@@ -2237289,6 +2246220,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_5ab19c97(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SlimeRandomDirectionGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_1907b825(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@SlimeRandomDirectionGoal@@QEAA_NXZ");
@@ -2237383,6 +2246340,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_0d9c45cb(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SlimeRandomDirectionGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_f124a038(void* hs_self) try
@@ -2248937,6 +2257926,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_8729189b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SnackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_651414d8(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SnackGoal@@QEAA_NXZ");
@@ -2249169,6 +2258184,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_84a40783(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SnackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_9fbf3f4d(void* hs_self) try
@@ -2251339,6 +2260386,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_f040e15a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SneezeGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_84e62456(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SneezeGoal@@QEAA_NXZ");
@@ -2251502,6 +2260575,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_1fd9eddd(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SneezeGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_03de4908(void* hs_self) try
@@ -2252081,6 +2261186,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_0710068c(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SniffGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ac87a71d(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SniffGoal@@QEAA_NXZ");
@@ -2252244,6 +2261375,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_5a8f560a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SniffGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_881bc719(void* hs_self) try
@@ -2266945,6 +2276108,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_d55e3f7a(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SonicBoomGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_30003628(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SonicBoomGoal@@QEAA_NXZ");
@@ -2267108,6 +2276297,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c4d6bcb6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SonicBoomGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_2ba9b3ed(void* hs_self) try
@@ -2300037,6 +2309258,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_0fb146b4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SquidDiveGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_afa1ca41(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SquidDiveGoal@@QEAA_NXZ");
@@ -2300200,6 +2309447,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_158cd22f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SquidDiveGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_c700645b(void* hs_self) try
@@ -2300479,6 +2309758,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_b92f8ac3(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SquidFleeGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_4e2097f3(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SquidFleeGoal@@QEAA_NXZ");
@@ -2300642,6 +2309947,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_20e86b66(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SquidFleeGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_687c66e2(void* hs_self) try
@@ -2300951,6 +2310288,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_70739871(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SquidIdleGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_0b7332cb(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SquidIdleGoal@@QEAA_NXZ");
@@ -2301114,6 +2310477,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_37678302(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SquidIdleGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_a35b9631(void* hs_self) try
@@ -2301423,6 +2310818,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_464b7c9d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SquidMoveAwayFromGroundGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b4e11423(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SquidMoveAwayFromGroundGoal@@QEAA_NXZ");
@@ -2301586,6 +2311007,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_62554342(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SquidMoveAwayFromGroundGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_013a8d83(void* hs_self) try
@@ -2301865,6 +2311318,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_781c4669(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SquidOutOfWaterGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_a347ff13(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SquidOutOfWaterGoal@@QEAA_NXZ");
@@ -2302028,6 +2311507,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_320e82a6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SquidOutOfWaterGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_838f43c6(void* hs_self) try
@@ -2305613,6 +2315124,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_d249cd41(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@StalkAndPounceOnTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ad96791f(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@StalkAndPounceOnTargetGoal@@QEAA_NXZ");
@@ -2305799,6 +2315336,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_c44f1c5d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@StalkAndPounceOnTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_077c8595(void* hs_self) try
@@ -2309204,6 +2318773,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_585a582d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@StayNearNoteblockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_3a24673d(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@StayNearNoteblockGoal@@QEAA_NXZ");
@@ -2309399,6 +2318994,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_f9ea001b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@StayNearNoteblockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_a772b4e6(void* hs_self) try
@@ -2311843,6 +2321470,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_1f098557(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@StompAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7d831938(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@StompAttackGoal@@QEAA_NXZ");
@@ -2311981,6 +2321634,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_fd7e277c(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@StompAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_6729b418(void* hs_self) try
@@ -2312938,6 +2322623,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_564a5343(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@StompBlockGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b90b2a6d(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@StompBlockGoal@@QEAA_NXZ");
@@ -2313379,6 +2323090,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_8b330ae2(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@StompBlockGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_9ca47124(void* hs_self) try
@@ -2314378,6 +2324121,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_ae76f311(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@StompEggGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void* hs_method_9c73fde8(void* hs_self, void* mob, const char* name_data, std::size_t name_size, void* goalId) try
 {
     std::basic_string<char> hs_str1(name_data, name_size);
@@ -2314623,6 +2324392,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_9ddd94f8(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@StompEggGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_method_4d98da03(void* hs_self, std::int32_t interval) try
@@ -2327143,6 +2336944,32 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_1db9dc31(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@StrollTowardsVillageGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_a8c8577a(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@StrollTowardsVillageGoal@@QEAA_NXZ");
@@ -2327295,6 +2337122,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_cfa4b070(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@StrollTowardsVillageGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_98879d2b(void* hs_self) try
@@ -2359622,6 +2369481,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_54b796c1(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SummonActorGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ddd824ed(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SummonActorGoal@@QEAA_NXZ");
@@ -2359817,6 +2369702,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_33bd6114(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SummonActorGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_96f39eaf(void* hs_self) try
@@ -2367567,6 +2377484,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_98814d00(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SwellGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_3ba22101(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@SwellGoal@@QEAA_NXZ");
@@ -2367757,6 +2377700,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_505a7754(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SwellGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_997d0fa2(void* hs_self) try
@@ -2369066,6 +2379041,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_6aee3e67(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SwimIdleGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_963b807f(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SwimIdleGoal@@QEAA_NXZ");
@@ -2369206,6 +2379207,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_d78d30b4(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SwimIdleGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_efba8080(void* hs_self) try
@@ -2369743,6 +2379776,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9c479cdf(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SwimWanderGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_14eb0f58(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SwimWanderGoal@@QEAA_NXZ");
@@ -2369906,6 +2379965,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_e210621e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SwimWanderGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_73424d75(void* hs_self) try
@@ -2370321,6 +2380412,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_bd5a67cf(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SwimWithEntityGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_ca4cabec(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@SwimWithEntityGoal@@QEAA_NXZ");
@@ -2370530,6 +2380647,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_55264e81(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SwimWithEntityGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_69151c49(void* hs_self) try
@@ -2371429,6 +2381578,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_e946e401(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@SwoopAttackGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_76a5936a(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@SwoopAttackGoal@@QEAA_NXZ");
@@ -2371592,6 +2381767,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_0936fd1b(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@SwoopAttackGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_58afa7a7(void* hs_self) try
@@ -2379390,6 +2389597,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_006c1ff5(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@TakeFlowerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_c753e152(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@TakeFlowerGoal@@QEAA_NXZ");
@@ -2379553,6 +2389786,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_cb73a14f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@TakeFlowerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_650e9d67(void* hs_self) try
@@ -2384336,6 +2394601,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_39e70ec9(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@TargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9d9cd05e(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@TargetGoal@@QEAA_NXZ");
@@ -2384545,6 +2394836,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static HosihikariStringView hs_method_6292cf84(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@TargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_8acb88dc(void* hs_self) try
@@ -2385922,6 +2396245,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_22906eaa(void* hs_self, const char* arg0_data, std::size_t arg0_size) try
+{
+    std::basic_string<char> hs_str0(arg0_data, arg0_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@TargetWhenPushedGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_e4081f74(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canBeInterrupted@TargetWhenPushedGoal@@QEAA_NXZ");
@@ -2386085,6 +2396434,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_4c8b630b(void* hs_self, const char* arg0_data, std::size_t arg0_size) try
+{
+    std::basic_string<char> hs_str0(arg0_data, arg0_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@TargetWhenPushedGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e9ed6ff7(void* hs_self) try
@@ -2393846,6 +2404227,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_e1cce420(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@TemptGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_195acbe8(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@TemptGoal@@QEAA_NXZ");
@@ -2394032,6 +2404439,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_dc849fc5(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@TemptGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_767198eb(void* hs_self) try
@@ -2431584,6 +2442023,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_77937475(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@TimerActorFlagBaseGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_d08deb83(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@TimerActorFlagBaseGoal@@QEAA_NXZ");
@@ -2431797,6 +2442262,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_b3e5159d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@TimerActorFlagBaseGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_5db1c357(void* hs_self) try
@@ -2445707,6 +2456204,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_9e3afd38(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@TradeInterestGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9c7d85e2(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@TradeInterestGoal@@QEAA_NXZ");
@@ -2445920,6 +2456443,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_6ebdf85f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@TradeInterestGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_e9399467(void* hs_self) try
@@ -2447369,6 +2457924,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_8ca3917f(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@TradeWithPlayerGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_cce7f940(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@TradeWithPlayerGoal@@QEAA_NXZ");
@@ -2447486,6 +2458067,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_e4fdb131(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@TradeWithPlayerGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_1ba4d6ae(void* hs_self) try
@@ -2525031,6 +2535644,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_546e53ab(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@VexCopyOwnerTargetGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_b8245954(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canUse@VexCopyOwnerTargetGoal@@QEAA_NXZ");
@@ -2525125,6 +2535764,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_bbe42594(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@VexCopyOwnerTargetGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_9a307821(void* hs_self) try
@@ -2525279,6 +2535950,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_a65ddb3d(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@VexRandomMoveGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_e76f96d1(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@VexRandomMoveGoal@@QEAA_NXZ");
@@ -2525396,6 +2536093,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_95705e84(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@VexRandomMoveGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_1f1a71aa(void* hs_self) try
@@ -2533739,6 +2544468,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_2f542b5c(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$buildDebugInfo@Villager@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void hs_method_0bdfa615(void* hs_self, std::uint8_t method, void* params) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$reloadHardcoded@Villager@@QEAAXW4ActorInitializationMethod@@AEBUVariantParameterList@@@Z");
@@ -2533760,6 +2544515,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_781a01b7(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?buildDebugInfo@Villager@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[100];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_method_3d10f3fd(void* hs_self, std::uint8_t method, void* params) try
@@ -2537157,6 +2547944,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_1250ea8e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@VillagerCelebrationGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_9e697e0f(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@VillagerCelebrationGoal@@QEAA_NXZ");
@@ -2537320,6 +2548133,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_6ecf0322(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@VillagerCelebrationGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_cd5729f4(void* hs_self) try
@@ -2540434,6 +2551279,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_c4f5f408(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$buildDebugInfo@VillagerV2@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static void* hs_method_66e1106b(void* hs_self, void* definitions, void* definitionName, void* entityContext) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$ctor@VillagerV2@@QEAAPEAXPEAVActorDefinitionGroup@@AEBUActorDefinitionIdentifier@@AEAVEntityContext@@@Z");
@@ -2540668,6 +2551539,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariStringView hs_method_a22830b6(void* hs_self, const char* out_data, std::size_t out_size) try
+{
+    std::basic_string<char> hs_str0(out_data, out_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?buildDebugInfo@VillagerV2@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[100];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_method_f9e720d4(void* hs_self, void* source) try
@@ -2595702,6 +2606605,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_124273dd(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@WitherTargetHighestDamage@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_bb04a90a(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@WitherTargetHighestDamage@@QEAA_NXZ");
@@ -2595869,6 +2606798,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_6efad2c6(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@WitherTargetHighestDamage@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_ead46699(void* hs_self) try
@@ -2607717,6 +2618678,32 @@ catch (...)
     return;
 }
 
+static HosihikariStringView hs_method_d077678e(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$appendDebugInfo@WorkGoal@@QEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_7d4124ec(void* hs_self) try
 {
     static auto const hs_target = hs_resolve(std::uintptr_t{0}, "?$canContinueToUse@WorkGoal@@QEAA_NXZ");
@@ -2607928,6 +2618915,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_19dd2dcd(void* hs_self, const char* str_data, std::size_t str_size) try
+{
+    std::basic_string<char> hs_str0(str_data, str_size);
+    static auto const hs_symbol = hs_resolve(std::uintptr_t{0}, "?appendDebugInfo@WorkGoal@@UEBAXAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z");
+    void const* hs_target = hs_symbol;
+    if (hs_target == nullptr)
+    {
+        auto* const hs_vtable = *reinterpret_cast<void***>(hs_self);
+        hs_target = hs_vtable[7];
+    }
+    if (hs_target == nullptr)
+    {
+        setLastError("symbol was not resolved");
+        return HosihikariStringView{nullptr, 0};
+    }
+    using HsFn = void (*)(void*, std::basic_string<char> &);
+    auto const hs_fn = reinterpret_cast<HsFn>(const_cast<void*>(hs_target));
+    hs_fn(hs_self, hs_str0);
+    g_stringResult.assign(hs_str0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
 }
 
 static bool hs_method_7e3282dd(void* hs_self) try
@@ -2721082,6 +2732101,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a235c88a,
     &hs_method_85e85940,
     &hs_method_6f3d6ae0,
+    &hs_method_fc5c36bd,
     &hs_method_384b23f4,
     &hs_method_f6a31390,
     &hs_method_592f9d8f,
@@ -2721241,6 +2732261,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_48aaa03b,
     &hs_method_782a14b9,
     &hs_method_22d4d62a,
+    &hs_method_262587fa,
+    &hs_method_59bfd94e,
     &hs_method_b4e09707,
     &hs_method_49e8dc71,
     &hs_method_6a2ad681,
@@ -2724695,6 +2735717,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_43ae3ec4,
     &hs_method_d7f78d6f,
     &hs_destroy_8d895666,
+    &hs_method_47ff213f,
     &hs_method_d60b05c8,
     &hs_method_43ab9c9a,
     &hs_method_3a423387,
@@ -2724704,6 +2735727,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_1d4c5ffe,
     &hs_create_33fba891,
     &hs_create_13265a58,
+    &hs_method_76b65d6a,
     &hs_method_ad8b3849,
     &hs_method_0630583f,
     &hs_get_3a02eef9,
@@ -2724941,12 +2735965,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_eb5428cb,
     &hs_get_0882de40,
     &hs_destroy_6eb3947b,
+    &hs_method_c9104478,
     &hs_method_46e07e61,
     &hs_method_40cacc7c,
     &hs_method_1658b23d,
     &hs_method_7563531d,
     &hs_create_a4a6b407,
     &hs_create_109c8dff,
+    &hs_method_3ed4df3a,
     &hs_method_cccbc04f,
     &hs_method_53301764,
     &hs_get_0e3d2638,
@@ -2729248,6 +2740274,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_853f5a2d,
     &hs_set_853f5a2d,
     &hs_destroy_c599be1c,
+    &hs_method_9a781fbe,
     &hs_method_f305a521,
     &hs_method_f5d53e29,
     &hs_method_3fdc7f65,
@@ -2729257,6 +2740284,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_cbf1ffc8,
     &hs_create_959dd2b4,
     &hs_method_5c33209e,
+    &hs_method_fe4d99ad,
     &hs_method_4aac3a5d,
     &hs_method_dffe6557,
     &hs_get_c2e88fc4,
@@ -2729292,6 +2740320,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_7135a1ad,
     &hs_set_7135a1ad,
     &hs_destroy_0b910cb4,
+    &hs_method_c49f7a6f,
     &hs_method_32884db7,
     &hs_method_dcb571a7,
     &hs_method_6840d7b2,
@@ -2729301,6 +2740330,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_a0bdf802,
     &hs_create_b0c99e52,
     &hs_create_55ffd261,
+    &hs_method_c468ddb5,
     &hs_method_7e93373e,
     &hs_method_60d77ae1,
     &hs_method_db7e43d9,
@@ -2730792,11 +2741822,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_127642a2,
     &hs_method_c00ecbaf,
     &hs_destroy_23de2a2c,
+    &hs_method_b3d64f2f,
     &hs_method_7b2509ef,
     &hs_method_bffd5b54,
     &hs_method_5eae6459,
     &hs_create_6e48fe19,
     &hs_create_8c69ce20,
+    &hs_method_b029774f,
     &hs_method_31b7ccd6,
     &hs_method_25baefad,
     &hs_get_3322823a,
@@ -2731116,6 +2742148,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_fa033dee,
     &hs_method_dd4cf3bd,
     &hs_create_04e44f47,
+    &hs_method_4a79d6f9,
     &hs_method_7e874bd9,
     &hs_method_72f54a69,
     &hs_method_19c443e1,
@@ -2732693,6 +2743726,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_1223d350,
     &hs_destroy_53af4fce,
     &hs_create_dee2fdae,
+    &hs_method_a0e3cb64,
     &hs_get_ef56a223,
     &hs_destroy_6d799b5b,
     &hs_create_e644035c,
@@ -2733039,6 +2744073,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_da8a39a5,
     &hs_destroy_740c25c4,
     &hs_create_112319c9,
+    &hs_method_f038e097,
     &hs_destroy_cd601419,
     &hs_destroy_fd3f96c4,
     &hs_destroy_1bb0e6ba,
@@ -2733139,8 +2744174,10 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_8fe8c72d,
     &hs_method_def9e56d,
     &hs_method_3833e972,
+    &hs_method_00b73b9f,
     &hs_method_fdee0791,
     &hs_method_69f25b29,
+    &hs_method_ee5aef84,
     &hs_destroy_fc7845c0,
     &hs_create_d70683d2,
     &hs_create_d5977371,
@@ -2734373,6 +2745410,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_6ce97220,
     &hs_get_658fe080,
     &hs_set_658fe080,
+    &hs_method_95887ff9,
     &hs_method_53a5441d,
     &hs_method_b44991bb,
     &hs_method_2d7e201d,
@@ -2734380,6 +2745418,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5837fe38,
     &hs_create_5934d0a2,
     &hs_create_dd56289c,
+    &hs_method_aac7dbc8,
     &hs_method_125688b2,
     &hs_method_1f9eb05b,
     &hs_get_25fb46be,
@@ -2739820,6 +2750859,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_92ddf1d0,
     &hs_get_6e7266ae,
     &hs_set_6e7266ae,
+    &hs_method_2eb3c105,
     &hs_method_d52b5d57,
     &hs_method_01fa09f2,
     &hs_method_8047f9e5,
@@ -2739827,6 +2750867,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_de3bb5d9,
     &hs_create_c4933342,
     &hs_create_31b0da31,
+    &hs_method_defb97fb,
     &hs_method_45671fbd,
     &hs_method_52845ca3,
     &hs_get_bdc2b208,
@@ -2739921,6 +2750962,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_14e4f15c,
     &hs_get_08498c42,
     &hs_set_08498c42,
+    &hs_method_c548441b,
     &hs_method_ef691da4,
     &hs_method_1c4199ee,
     &hs_method_be216b09,
@@ -2739931,6 +2750973,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_2bc7dd5f,
     &hs_method_f66b6682,
     &hs_method_9624930a,
+    &hs_method_29de93b1,
     &hs_method_8172f8fd,
     &hs_method_efb0609c,
     &hs_get_9619154b,
@@ -2744301,6 +2755344,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_3c36fa71,
     &hs_get_b35f7f58,
     &hs_set_b35f7f58,
+    &hs_method_1e43bbbd,
     &hs_method_080f7833,
     &hs_method_a31758e1,
     &hs_method_298caacc,
@@ -2744308,6 +2755352,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d5bb7a65,
     &hs_create_1ec53862,
     &hs_create_094e0d77,
+    &hs_method_4129a2a9,
     &hs_method_e91f7f76,
     &hs_method_7c00af70,
     &hs_get_179008d1,
@@ -2744331,6 +2755376,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_a34d959a,
     &hs_get_2f2e26bd,
     &hs_set_2f2e26bd,
+    &hs_method_35ee06ef,
     &hs_method_9ebb2704,
     &hs_method_c47d2fc9,
     &hs_method_63f0267c,
@@ -2744338,6 +2755384,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_591cc45d,
     &hs_create_b735f92c,
     &hs_create_42596b0d,
+    &hs_method_079d931b,
     &hs_method_0199329a,
     &hs_method_a2354111,
     &hs_get_837fcfc1,
@@ -2746509,6 +2757556,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_39a28ef4,
     &hs_get_924829ad,
     &hs_set_924829ad,
+    &hs_method_d5bc2a1a,
     &hs_method_448b2fdf,
     &hs_method_5dd9f0bb,
     &hs_method_de35ff58,
@@ -2746517,6 +2757565,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_7174167c,
     &hs_method_68c3f856,
     &hs_method_141bfbdd,
+    &hs_method_12eaaf59,
     &hs_method_dd4335e9,
     &hs_get_ffb5c4f4,
     &hs_get_af451bff,
@@ -2748821,6 +2759870,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_7ffbcc5c,
     &hs_method_5b2bcabd,
     &hs_method_21c40ecf,
+    &hs_method_7feb5490,
     &hs_method_c17d1dd5,
     &hs_method_3ebe5893,
     &hs_method_803f3c4c,
@@ -2748855,6 +2759905,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_696e40e9,
     &hs_method_684be209,
     &hs_method_cf8dbb44,
+    &hs_method_2bedcdb7,
     &hs_method_efc45503,
     &hs_method_fb2a41af,
     &hs_method_0b9d662e,
@@ -2751962,12 +2763013,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_2399f097,
     &hs_get_c016984d,
     &hs_set_c016984d,
+    &hs_method_5ac85df6,
     &hs_method_218e6584,
     &hs_method_bcd6b92f,
     &hs_method_8c8ec98a,
     &hs_method_a7ff365a,
     &hs_create_7daaafab,
     &hs_create_f57b3f1d,
+    &hs_method_b4393f5e,
     &hs_method_5d4110f7,
     &hs_get_a5670665,
     &hs_set_a5670665,
@@ -2753275,6 +2764328,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_41bbb082,
     &hs_create_4bbd1bf0,
     &hs_create_eb029255,
+    &hs_create_7920e5b6,
     &hs_method_94e6b556,
     &hs_method_45915f0e,
     &hs_method_5bbfb1f5,
@@ -2753462,6 +2764516,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a0522a8e,
     &hs_method_4e22be17,
     &hs_method_c76f5ce4,
+    &hs_method_d824a536,
     &hs_destroy_966d03d5,
     &hs_create_a22b41f0,
     &hs_create_4d51fe0c,
@@ -2754627,12 +2765682,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_deb5927e,
     &hs_get_58a009d8,
     &hs_set_58a009d8,
+    &hs_method_61ef955e,
     &hs_method_bbe58c12,
     &hs_method_887e8e42,
     &hs_method_47edba92,
     &hs_method_56ed4255,
     &hs_create_30bf3e55,
     &hs_create_8ff5c648,
+    &hs_method_cf632f51,
     &hs_method_5edec4c9,
     &hs_method_6b5ddd10,
     &hs_get_e26662e3,
@@ -2754971,6 +2766028,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_b20f9b93,
     &hs_create_4a998cfe,
     &hs_create_9a079510,
+    &hs_method_b98b86f9,
     &hs_get_3e24b571,
     &hs_get_75980dfa,
     &hs_get_61ded2bc,
@@ -2755021,7 +2766079,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5a34c388,
     &hs_destroy_c656120c,
     &hs_create_aec2dc0e,
+    &hs_method_e3f4ebdd,
     &hs_method_8687f272,
+    &hs_method_80659576,
     &hs_method_3a21c632,
     &hs_method_af0ebe13,
     &hs_method_904974e1,
@@ -2755029,7 +2766089,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_069d5c47,
     &hs_method_e899f505,
     &hs_destroy_b0401503,
+    &hs_method_1689abc2,
     &hs_method_0a679d3b,
+    &hs_method_2898ee82,
     &hs_method_e5f1a18b,
     &hs_method_b2ddb405,
     &hs_method_169de4d6,
@@ -2755038,7 +2766100,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_91228812,
     &hs_create_db84d97d,
     &hs_create_f2001a18,
+    &hs_method_e6e4a26e,
     &hs_method_58e172e0,
+    &hs_method_f3ef5b54,
     &hs_method_a2c2bfc0,
     &hs_method_19d390a4,
     &hs_method_c03c5c3d,
@@ -2755051,7 +2766115,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_e25ce0e2,
     &hs_method_e4bb78ef,
     &hs_destroy_bcaf70de,
+    &hs_method_ac1c3a82,
     &hs_method_ba9d96e2,
+    &hs_method_f491d331,
     &hs_method_1b5fb3e2,
     &hs_method_c5025f78,
     &hs_method_b399b831,
@@ -2755060,7 +2766126,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ec910b4b,
     &hs_create_037e9576,
     &hs_create_d473066d,
+    &hs_method_3a5f6a12,
     &hs_method_db11dcfd,
+    &hs_method_dc980959,
     &hs_method_f0eebe3f,
     &hs_method_9087d98d,
     &hs_method_831e46e4,
@@ -2755269,6 +2766337,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d8584cca,
     &hs_method_7942125c,
     &hs_method_c95a531d,
+    &hs_method_fa96c7f1,
     &hs_method_cc2704b4,
     &hs_method_14503e8f,
     &hs_method_a91b6a55,
@@ -2755327,6 +2766396,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_33cd0f92,
     &hs_method_ec487915,
     &hs_method_ae4628f8,
+    &hs_method_2ba429db,
     &hs_method_5f35593d,
     &hs_method_d0b4bef1,
     &hs_method_f817d4e1,
@@ -2755334,6 +2766404,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1e1913e2,
     &hs_method_9241bb60,
     &hs_method_18783e95,
+    &hs_method_4f831d95,
     &hs_method_eaad99d4,
     &hs_method_484ebbaf,
     &hs_method_bd42edcd,
@@ -2755352,6 +2766423,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2c4959c7,
     &hs_method_4ebd2427,
     &hs_method_034b9434,
+    &hs_method_3288c19b,
     &hs_method_9f03c7b1,
     &hs_method_7800d5a1,
     &hs_method_ccf07493,
@@ -2755406,6 +2766478,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_83db57e3,
     &hs_method_acd803f3,
     &hs_method_182417cc,
+    &hs_method_6b18b97b,
     &hs_method_8e9b9615,
     &hs_method_648f78dc,
     &hs_method_720097c0,
@@ -2756553,6 +2767626,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_4e6e2e7c,
     &hs_get_49cc722c,
     &hs_set_49cc722c,
+    &hs_method_d3d46d33,
     &hs_method_6d620beb,
     &hs_method_ac9ad5d5,
     &hs_method_9f87e9b1,
@@ -2756560,6 +2767634,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_2f40861b,
     &hs_create_fa65992e,
     &hs_method_d67af08e,
+    &hs_method_431bf290,
     &hs_method_c90760dc,
     &hs_get_c29b8aa4,
     &hs_set_c29b8aa4,
@@ -2756619,6 +2767694,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_bfd342cd,
     &hs_get_53b33ee9,
     &hs_set_53b33ee9,
+    &hs_method_5c14fc0d,
     &hs_method_8fab0ae2,
     &hs_method_7d671855,
     &hs_method_0bd8c678,
@@ -2756626,6 +2767702,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_48844604,
     &hs_create_9e719a78,
     &hs_create_36baebeb,
+    &hs_method_1b25e06e,
     &hs_method_94c69404,
     &hs_method_aee37ed5,
     &hs_get_f75c3bc8,
@@ -2756770,6 +2767847,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_8b5a9f8c,
     &hs_get_721aea03,
     &hs_set_721aea03,
+    &hs_method_ef735e15,
     &hs_method_4a02510a,
     &hs_method_85d2b973,
     &hs_method_9aa5d14a,
@@ -2756781,6 +2767859,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_d5c0503f,
     &hs_create_41e2843a,
     &hs_method_fc1650d1,
+    &hs_method_a18de0f3,
     &hs_method_21b5b477,
     &hs_method_ea2dfda7,
     &hs_method_6ded0e52,
@@ -2757179,6 +2768258,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_d25484fd,
     &hs_get_2c1a94ac,
     &hs_set_2c1a94ac,
+    &hs_method_b8ee2335,
     &hs_method_9b948803,
     &hs_method_e5bc5074,
     &hs_method_6bffefc4,
@@ -2757188,6 +2768268,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_3b8e451b,
     &hs_create_54233d9f,
     &hs_create_53a84996,
+    &hs_method_f404b676,
     &hs_method_470c241d,
     &hs_method_41863e3f,
     &hs_get_56960c40,
@@ -2758647,6 +2769728,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_c7847dc6,
     &hs_get_40282f83,
     &hs_set_40282f83,
+    &hs_method_e196bd19,
     &hs_method_9c9a1312,
     &hs_method_7895b70b,
     &hs_method_dd8be105,
@@ -2758655,6 +2769737,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_485af47b,
     &hs_method_69c22133,
     &hs_method_4e82e1b5,
+    &hs_method_e74d2fd4,
     &hs_method_1e395db8,
     &hs_method_a25b5d47,
     &hs_get_db3a7ae2,
@@ -2758994,12 +2770077,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_ead6d72c,
     &hs_get_8f0d80ce,
     &hs_set_8f0d80ce,
+    &hs_method_57e1ac7d,
     &hs_method_0594b900,
     &hs_method_b69bfb94,
     &hs_method_75b69ba1,
     &hs_method_097ded37,
     &hs_method_74f05a1e,
     &hs_create_411a0f3f,
+    &hs_method_24170c5f,
     &hs_method_ae8a6c41,
     &hs_method_afc00597,
     &hs_get_3bfad29f,
@@ -2759015,6 +2770100,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_30f27149,
     &hs_get_e1676c14,
     &hs_set_e1676c14,
+    &hs_method_b3caebb0,
     &hs_method_e3722c13,
     &hs_method_3cce6af0,
     &hs_method_ef8e0a9b,
@@ -2759022,6 +2770108,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_164eaace,
     &hs_create_8f21dea0,
     &hs_create_95fa3d32,
+    &hs_method_5866f22d,
     &hs_method_e010425e,
     &hs_method_e7d87f8e,
     &hs_get_246b9bbc,
@@ -2759257,6 +2770344,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_b6b94b26,
     &hs_get_c6606669,
     &hs_set_c6606669,
+    &hs_method_9776ff18,
     &hs_method_76476ca0,
     &hs_method_40013670,
     &hs_method_7b0cba6b,
@@ -2759266,6 +2770354,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_fe17a19c,
     &hs_create_91d82d15,
     &hs_create_8d2f3ee9,
+    &hs_method_e500eb13,
     &hs_method_f5ce0935,
     &hs_method_7e5e9db9,
     &hs_get_e7c10dff,
@@ -2759295,6 +2770384,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_1a15c373,
     &hs_get_30db47fa,
     &hs_set_30db47fa,
+    &hs_method_7fed320f,
     &hs_method_7c34d656,
     &hs_method_db339575,
     &hs_method_e1f48cf5,
@@ -2759302,6 +2770392,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_97ee303b,
     &hs_create_7c5e7bd3,
     &hs_create_84dde835,
+    &hs_method_0984eb6e,
     &hs_method_84ee83ed,
     &hs_method_513aa109,
     &hs_get_188c861f,
@@ -2759318,6 +2770409,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_747e64fc,
     &hs_get_9c17f7e5,
     &hs_set_9c17f7e5,
+    &hs_method_9eefbfde,
     &hs_method_4db73ff9,
     &hs_method_6b841d8a,
     &hs_method_4518cf41,
@@ -2759325,6 +2770417,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_47c4bfd1,
     &hs_create_5b04476c,
     &hs_create_42fbe059,
+    &hs_method_68070b45,
     &hs_method_ef253667,
     &hs_method_58ece1dc,
     &hs_get_2798ec7f,
@@ -2759341,6 +2770434,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_348dbddf,
     &hs_get_6e8a703b,
     &hs_set_6e8a703b,
+    &hs_method_6a81d23c,
     &hs_method_7465a574,
     &hs_method_979b1f71,
     &hs_method_1a94e96e,
@@ -2759348,6 +2770442,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_0de9b342,
     &hs_create_72331349,
     &hs_create_35c82110,
+    &hs_method_b176fa9c,
     &hs_method_92a4f431,
     &hs_method_a884b1e2,
     &hs_get_fc1171b4,
@@ -2759371,6 +2770466,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_7d481497,
     &hs_get_a5c623e7,
     &hs_set_a5c623e7,
+    &hs_method_bd7404d9,
     &hs_method_84d99ec0,
     &hs_method_cceb6727,
     &hs_method_d2a90af3,
@@ -2759379,6 +2770475,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_4c8f569e,
     &hs_create_64d29063,
     &hs_create_3a8b3876,
+    &hs_method_095dfcc4,
     &hs_method_60746427,
     &hs_method_33354c17,
     &hs_get_426c6831,
@@ -2759408,6 +2770505,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_cffa79da,
     &hs_get_e1c5ca06,
     &hs_set_e1c5ca06,
+    &hs_method_2ccc2e61,
     &hs_method_ac7cc702,
     &hs_method_27ce6d38,
     &hs_method_aebd9f8e,
@@ -2759415,6 +2770513,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_19b01a83,
     &hs_create_f498b3e7,
     &hs_create_a6e53378,
+    &hs_method_2b5e1df0,
     &hs_method_6eae8876,
     &hs_method_8b160056,
     &hs_get_1f24699b,
@@ -2759480,6 +2770579,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_d7cbc309,
     &hs_get_e503ebf1,
     &hs_set_e503ebf1,
+    &hs_method_f23cfcb4,
     &hs_method_4509f52b,
     &hs_method_8ab81d31,
     &hs_method_5821f4b3,
@@ -2759487,6 +2770587,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_c6b4d5fe,
     &hs_create_880f6db6,
     &hs_create_ff12fc0a,
+    &hs_method_d652ff14,
     &hs_method_d8f7c6da,
     &hs_method_553b84b6,
     &hs_get_06b92df8,
@@ -2759512,6 +2770613,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_7f007702,
     &hs_get_92a15a36,
     &hs_set_92a15a36,
+    &hs_method_18a63bc1,
     &hs_method_5cd0c00f,
     &hs_method_dd37f018,
     &hs_method_dd0b0bd7,
@@ -2759520,6 +2770622,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_4dd1e8bf,
     &hs_create_e6c426fb,
     &hs_method_4dfd8e67,
+    &hs_method_5ddcf4b0,
     &hs_method_95009782,
     &hs_method_86bbb66d,
     &hs_get_2a1b03b2,
@@ -2759585,6 +2770688,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_b0b1cf75,
     &hs_get_e4d66b61,
     &hs_set_e4d66b61,
+    &hs_method_fa04e21f,
     &hs_method_68c6a75f,
     &hs_method_bbd7a356,
     &hs_method_071d7b2f,
@@ -2759596,6 +2770700,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_6b97a321,
     &hs_create_a37727b8,
     &hs_create_4eec9cd6,
+    &hs_method_c1a3e10d,
     &hs_method_ac8ffba0,
     &hs_method_aeaed9cc,
     &hs_method_7d98dbb7,
@@ -2760052,6 +2771157,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_0ea752e3,
     &hs_get_964584aa,
     &hs_set_964584aa,
+    &hs_method_ddde1bb2,
     &hs_method_554dd1ee,
     &hs_method_c8ee6be7,
     &hs_method_148da314,
@@ -2760061,6 +2771167,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_97d87ea6,
     &hs_create_7297677f,
     &hs_create_b7525cd1,
+    &hs_method_4865ea9f,
     &hs_method_d03a697a,
     &hs_method_1a9e63d5,
     &hs_get_5a511749,
@@ -2760081,6 +2771188,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_727951b9,
     &hs_get_13fa9a98,
     &hs_set_13fa9a98,
+    &hs_method_ee908bf7,
     &hs_method_446d95df,
     &hs_method_ab188930,
     &hs_method_063bbbe3,
@@ -2760088,6 +2771196,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_7aa8e0d1,
     &hs_create_eaebd16c,
     &hs_create_dbd18781,
+    &hs_method_1df8fd78,
     &hs_method_e804e64b,
     &hs_method_18db6673,
     &hs_get_88b13f1d,
@@ -2760105,6 +2771214,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_256604cd,
     &hs_get_c3accacb,
     &hs_set_c3accacb,
+    &hs_method_fd2be9de,
     &hs_method_0f6145e7,
     &hs_method_d1d0874a,
     &hs_method_b9635b49,
@@ -2760112,6 +2771222,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d7445747,
     &hs_create_4b5adbc4,
     &hs_create_effd7321,
+    &hs_method_c58a3493,
     &hs_method_99831605,
     &hs_method_ce2a4da5,
     &hs_get_24ab46fd,
@@ -2760779,6 +2771890,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_79076f7b,
     &hs_get_f14942a9,
     &hs_set_f14942a9,
+    &hs_method_5cc71ec8,
     &hs_method_df2a2d8e,
     &hs_method_6f35aa84,
     &hs_method_8a7c5f19,
@@ -2760786,6 +2771898,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_fbc716c7,
     &hs_create_a6c330dc,
     &hs_create_2cf11ae7,
+    &hs_method_106fc606,
     &hs_method_e59972da,
     &hs_method_5bd0a7e1,
     &hs_get_6dcc003b,
@@ -2763465,6 +2774578,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_e6900178,
     &hs_get_19041175,
     &hs_set_19041175,
+    &hs_method_7bcc4c1e,
     &hs_method_a898f071,
     &hs_method_6d86d286,
     &hs_method_9bb0ba7e,
@@ -2763472,6 +2774586,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_ac83e0c6,
     &hs_method_1ea4fe73,
     &hs_method_e537cba2,
+    &hs_method_b7f51e91,
     &hs_method_506b81a0,
     &hs_method_dbb6e0ee,
     &hs_get_a0b1b6fe,
@@ -2764646,6 +2775761,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_3fbf9e6e,
     &hs_get_c464285d,
     &hs_set_c464285d,
+    &hs_method_7f58ed53,
     &hs_method_45974785,
     &hs_method_e495f7bc,
     &hs_method_3319acef,
@@ -2764653,6 +2775769,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_6ed4428d,
     &hs_create_e1999664,
     &hs_create_7065de74,
+    &hs_method_9cf37005,
     &hs_method_edd84393,
     &hs_method_3158a33c,
     &hs_get_066c90b5,
@@ -2765990,6 +2777107,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_b8e7a2bf,
     &hs_get_a034a803,
     &hs_set_a034a803,
+    &hs_method_4c584925,
     &hs_method_0cf9a2ae,
     &hs_method_d7efb42b,
     &hs_method_ed9678c2,
@@ -2766000,6 +2777118,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_7ab38b75,
     &hs_create_95315a85,
     &hs_create_daabc9b5,
+    &hs_method_a662167b,
     &hs_method_e08da2dc,
     &hs_method_5a174cad,
     &hs_method_6f2a4b55,
@@ -2766246,6 +2777365,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_3d901d09,
     &hs_create_b535d217,
     &hs_method_9b4501a9,
+    &hs_method_441edd1d,
     &hs_method_398eca07,
     &hs_method_2d348816,
     &hs_method_4c511f0c,
@@ -2766812,12 +2777932,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_79067665,
     &hs_get_b837cbe4,
     &hs_set_b837cbe4,
+    &hs_method_68756bac,
     &hs_method_6b696ce9,
     &hs_method_ac3ece62,
     &hs_method_2d6be9b3,
     &hs_method_122adb4a,
     &hs_create_2024b36e,
     &hs_create_3e5c728e,
+    &hs_method_d6b8507a,
     &hs_method_88b45442,
     &hs_method_0f5981d5,
     &hs_method_b328b517,
@@ -2766837,6 +2777959,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_83258284,
     &hs_get_924fe409,
     &hs_set_924fe409,
+    &hs_method_c8a6b296,
     &hs_method_1deeff91,
     &hs_method_e4d02e6d,
     &hs_method_69b416dd,
@@ -2766844,6 +2777967,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_65e89466,
     &hs_create_1b800f61,
     &hs_create_8fb7855d,
+    &hs_method_088ec41e,
     &hs_method_3088338c,
     &hs_method_8f958a2d,
     &hs_method_75b23e4a,
@@ -2766878,6 +2778002,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_eb1a52b5,
     &hs_get_19e5c534,
     &hs_set_19e5c534,
+    &hs_method_d0e11330,
     &hs_method_b8b8a048,
     &hs_method_4e54f861,
     &hs_method_8d8c1b05,
@@ -2766886,6 +2778011,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2cbd7a81,
     &hs_create_ac02f774,
     &hs_create_d16d01d6,
+    &hs_method_492d5b02,
     &hs_method_fa9b0c69,
     &hs_method_a6b9d89a,
     &hs_method_0347070b,
@@ -2766916,6 +2778042,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_8476d115,
     &hs_get_72321d8a,
     &hs_set_72321d8a,
+    &hs_method_ec83c777,
     &hs_method_f66a4ba7,
     &hs_method_f91b395d,
     &hs_method_b1588001,
@@ -2766925,6 +2778052,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_a0b15ab5,
     &hs_create_9efe3b0c,
     &hs_create_a11d8d30,
+    &hs_method_75dcf763,
     &hs_method_95f08131,
     &hs_method_301b75a4,
     &hs_method_b506e608,
@@ -2768289,8 +2779417,10 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_fb7e46ac,
     &hs_set_fb7e46ac,
     &hs_get_d56f9afc,
+    &hs_method_a4452855,
     &hs_method_ca690892,
     &hs_create_135d758e,
+    &hs_method_b07126d2,
     &hs_method_83fe88d4,
     &hs_destroy_4a53e64e,
     &hs_method_2b3ac535,
@@ -2768368,11 +2779498,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_49574b6d,
     &hs_get_a0e805a0,
     &hs_set_a0e805a0,
+    &hs_method_87120401,
     &hs_method_4b58a944,
     &hs_method_2158588f,
     &hs_method_1eb4f22e,
     &hs_create_1415a09b,
     &hs_create_54e36e6e,
+    &hs_method_3db1b1a7,
     &hs_method_81925a5c,
     &hs_get_860da918,
     &hs_set_860da918,
@@ -2768426,6 +2779558,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_df5e4b19,
     &hs_get_1c2879e7,
     &hs_set_1c2879e7,
+    &hs_method_c8e5ba34,
     &hs_method_b5c02828,
     &hs_method_d05e6b47,
     &hs_method_c3308888,
@@ -2768434,6 +2779567,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_af7aabfe,
     &hs_method_dd43ead0,
     &hs_method_9c53062c,
+    &hs_method_7e2027f6,
     &hs_method_cb8214a7,
     &hs_get_255346fe,
     &hs_set_255346fe,
@@ -2768876,6 +2780010,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_514a9a07,
     &hs_get_eb3522f3,
     &hs_set_eb3522f3,
+    &hs_method_31439826,
     &hs_method_157f15f7,
     &hs_method_74379c2b,
     &hs_method_edecb7a5,
@@ -2768883,6 +2780018,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f83b5a8d,
     &hs_create_ea487d5d,
     &hs_create_51089276,
+    &hs_method_240de624,
     &hs_method_992aa43e,
     &hs_method_490898c9,
     &hs_method_fd650870,
@@ -2768908,6 +2780044,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_c2a7a254,
     &hs_get_32cb743f,
     &hs_set_32cb743f,
+    &hs_method_7319a2ad,
     &hs_method_57339b45,
     &hs_method_fc4847db,
     &hs_method_bcca4202,
@@ -2768916,6 +2780053,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_565106da,
     &hs_create_a241f271,
     &hs_create_76add5f9,
+    &hs_method_775f168a,
     &hs_method_a6ade922,
     &hs_method_9fc1c7f5,
     &hs_method_3e80efb6,
@@ -2768936,6 +2780074,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_4ebc227b,
     &hs_get_071111ef,
     &hs_set_071111ef,
+    &hs_method_8f367043,
     &hs_method_ddfc52b2,
     &hs_method_80133da8,
     &hs_method_7548365e,
@@ -2768944,6 +2780083,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_50796ee4,
     &hs_create_11d9c8f2,
     &hs_method_16d23913,
+    &hs_method_ea59830a,
     &hs_method_cf6102dc,
     &hs_method_ade24292,
     &hs_get_6affff7a,
@@ -2768972,6 +2780112,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_00111199,
     &hs_get_fbfdcedd,
     &hs_set_fbfdcedd,
+    &hs_method_917cd21d,
     &hs_method_01ee3cc1,
     &hs_method_d4299cec,
     &hs_method_9f550ddc,
@@ -2768984,6 +2780125,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_04307fe3,
     &hs_method_a10f01c2,
     &hs_method_06453ece,
+    &hs_method_5c83fd8a,
     &hs_method_6fd7acae,
     &hs_method_5c16636c,
     &hs_get_3c41714c,
@@ -2769023,6 +2780165,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_bfa65207,
     &hs_get_ffef9c92,
     &hs_set_ffef9c92,
+    &hs_method_3d64f656,
     &hs_method_6aeb7ef0,
     &hs_method_0e237ed3,
     &hs_method_d7eb3c61,
@@ -2769032,6 +2780175,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_65426a51,
     &hs_create_d091770f,
     &hs_create_ffd8ad5d,
+    &hs_method_f98daf0e,
     &hs_method_a3d92650,
     &hs_method_6771d576,
     &hs_get_1903348f,
@@ -2770505,6 +2781649,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_b9301ffe,
     &hs_method_609c94e2,
     &hs_method_b626ea30,
+    &hs_method_f9888738,
     &hs_method_4eeb0ee8,
     &hs_method_9e66c88a,
     &hs_get_067207ab,
@@ -2771634,6 +2782779,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_abbc9440,
     &hs_get_28f1e8c3,
     &hs_set_28f1e8c3,
+    &hs_method_c7a77578,
     &hs_method_54afce79,
     &hs_method_9949bf8a,
     &hs_method_c2b2f30e,
@@ -2771641,6 +2782787,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_4aeec098,
     &hs_create_086495ed,
     &hs_create_fc47a8e4,
+    &hs_method_b91df56a,
     &hs_method_f742f3e7,
     &hs_method_899b8904,
     &hs_get_0ae4ab45,
@@ -2771671,6 +2782818,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_44256d4a,
     &hs_get_de52916b,
     &hs_set_de52916b,
+    &hs_method_8b43a260,
     &hs_method_2c53bdfb,
     &hs_method_f3965ea8,
     &hs_method_fc9db493,
@@ -2771679,6 +2782827,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_7324cb33,
     &hs_create_f1ad7e5b,
     &hs_method_17114c5d,
+    &hs_method_73bc1016,
     &hs_method_ba33b476,
     &hs_method_3d5dada4,
     &hs_get_9c3fe361,
@@ -2771707,6 +2782856,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_d120b1fb,
     &hs_get_a4b5edec,
     &hs_set_a4b5edec,
+    &hs_method_9948ef00,
     &hs_method_adfdb869,
     &hs_method_ac53d932,
     &hs_method_78b72440,
@@ -2771717,6 +2782867,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_df1dbfbf,
     &hs_method_d83d54fc,
     &hs_method_8d71604c,
+    &hs_method_5d241967,
     &hs_method_e3f037c5,
     &hs_method_2ce1a41c,
     &hs_get_9a767897,
@@ -2771750,6 +2782901,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2d2e0d80,
     &hs_destroy_c900dbf7,
     &hs_create_48cfcb8f,
+    &hs_method_625f5548,
     &hs_method_372d9745,
     &hs_get_d17f32ba,
     &hs_method_b8a7eeae,
@@ -2772646,6 +2783798,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_b639d498,
     &hs_get_1baa65b8,
     &hs_set_1baa65b8,
+    &hs_method_9b0c1301,
     &hs_method_9ab0b3f6,
     &hs_method_98a71ef1,
     &hs_method_30588862,
@@ -2772653,6 +2783806,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9c64bc1d,
     &hs_create_8d62446d,
     &hs_create_7cf76bbc,
+    &hs_method_9b7267c4,
     &hs_method_53999e6c,
     &hs_method_db9b7283,
     &hs_get_4e64f03c,
@@ -2773256,6 +2784410,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_ed19dc5f,
     &hs_get_dfbafac3,
     &hs_set_dfbafac3,
+    &hs_method_524c38d9,
     &hs_method_30faf2e1,
     &hs_method_48280938,
     &hs_method_97fabc7c,
@@ -2773266,6 +2784421,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_d700ea9c,
     &hs_create_f7443a36,
     &hs_create_f4aace45,
+    &hs_method_6b07dd6d,
     &hs_method_3d8d64d1,
     &hs_method_df72f20a,
     &hs_method_f5f8c74f,
@@ -2773308,6 +2784464,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_8f85d7af,
     &hs_create_1ba7a4e8,
     &hs_create_0d67d647,
+    &hs_create_3881f610,
     &hs_create_b7694618,
     &hs_create_82cc41eb,
     &hs_method_2296be94,
@@ -2773605,6 +2784762,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_98f21b0d,
     &hs_method_fd1d1ffe,
     &hs_method_cfe1d1bd,
+    &hs_method_e2a7ddef,
     &hs_method_88eb7c7b,
     &hs_method_9153e389,
     &hs_method_003f08b8,
@@ -2773612,6 +2784770,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1bf4b6eb,
     &hs_method_9b8c524d,
     &hs_method_451d0843,
+    &hs_method_6f122904,
     &hs_method_85c6b600,
     &hs_method_df45ccf6,
     &hs_get_8daa54bd,
@@ -2773749,6 +2784908,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_c61a35aa,
     &hs_get_9d241878,
     &hs_set_9d241878,
+    &hs_method_f8f4b957,
     &hs_method_07370e10,
     &hs_method_ede71921,
     &hs_method_8a180a77,
@@ -2773756,6 +2784916,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d32836a0,
     &hs_create_1fb1c203,
     &hs_create_707a6261,
+    &hs_method_7ef96451,
     &hs_method_d7a021dc,
     &hs_method_7db74405,
     &hs_get_bef03fbf,
@@ -2774478,12 +2785639,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_1596c4e8,
     &hs_get_32e8d57e,
     &hs_set_32e8d57e,
+    &hs_method_6eef227b,
     &hs_method_971ec8fd,
     &hs_method_c37c7cfa,
     &hs_method_86aa41e2,
     &hs_method_2718e5b4,
     &hs_create_f8224ea5,
     &hs_create_16eea9dd,
+    &hs_method_cb653e1c,
     &hs_method_e5f1963d,
     &hs_get_203760c0,
     &hs_get_89e47e85,
@@ -2775094,6 +2786257,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_5e43c586,
     &hs_set_5e43c586,
     &hs_method_f08cd473,
+    &hs_method_9224801e,
     &hs_method_70e28c57,
     &hs_method_a9f9c8f9,
     &hs_method_d9d0acd7,
@@ -2775101,6 +2786265,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_53bd132a,
     &hs_create_5308d649,
     &hs_method_26710129,
+    &hs_method_1ca95e12,
     &hs_method_f8d4c1ea,
     &hs_method_fe5211d6,
     &hs_get_d079119b,
@@ -2776221,6 +2787386,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_037c564d,
     &hs_method_f010f9c6,
     &hs_method_cdf3f758,
+    &hs_method_7c693463,
     &hs_method_72732dab,
     &hs_method_161c5cd1,
     &hs_method_7a91d446,
@@ -2777997,6 +2789163,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_7b56702b,
     &hs_set_7b56702b,
     &hs_method_92996474,
+    &hs_method_37f02838,
     &hs_method_91745bdd,
     &hs_method_ae8d08c9,
     &hs_method_f4fa6ff2,
@@ -2778006,6 +2789173,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_cc17e598,
     &hs_create_cc3114df,
     &hs_method_75362dfe,
+    &hs_method_c6266ef4,
     &hs_method_48834103,
     &hs_method_bbc45991,
     &hs_method_32210ad2,
@@ -2778733,6 +2789901,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_d9a296f3,
     &hs_get_884ed482,
     &hs_set_884ed482,
+    &hs_method_9c3f3db6,
     &hs_method_99c4a78a,
     &hs_method_6d5955de,
     &hs_method_dc58c8aa,
@@ -2778741,6 +2789910,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_68174ed3,
     &hs_create_7fbb4fd6,
     &hs_method_7e6deb13,
+    &hs_method_ddcda2dd,
     &hs_method_926a459f,
     &hs_method_316f22ec,
     &hs_get_0bf6b592,
@@ -2781941,6 +2793111,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_3cc95069,
     &hs_get_3ca12f4c,
     &hs_set_3ca12f4c,
+    &hs_method_f8f226fe,
     &hs_method_9d0c674c,
     &hs_method_3ba40199,
     &hs_method_4364eb4c,
@@ -2781951,6 +2793122,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_44866c56,
     &hs_create_59944287,
     &hs_create_618c871e,
+    &hs_method_e5ba71f8,
     &hs_method_bbb8063e,
     &hs_method_4ec4a63f,
     &hs_method_73eeec45,
@@ -2782068,6 +2793240,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_f3ac5575,
     &hs_get_d157b135,
     &hs_set_d157b135,
+    &hs_method_ed1a5507,
     &hs_method_789d4f81,
     &hs_method_4399f772,
     &hs_method_e5c1de13,
@@ -2782083,6 +2793256,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a6289046,
     &hs_method_2b000dde,
     &hs_method_1cde7a08,
+    &hs_method_e2ebeac6,
     &hs_method_8cb14874,
     &hs_method_c85d810c,
     &hs_method_ec9a91b9,
@@ -2782322,6 +2793496,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_41195d9b,
     &hs_get_8ae72158,
     &hs_set_8ae72158,
+    &hs_method_85f9e0f1,
     &hs_method_ca133237,
     &hs_method_5932c4d9,
     &hs_method_430b0324,
@@ -2782331,6 +2793506,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_479d633d,
     &hs_create_1e64b86f,
     &hs_create_8e8c41f5,
+    &hs_method_d823f990,
     &hs_method_457307b4,
     &hs_method_daf80690,
     &hs_get_c91e5108,
@@ -2783002,6 +2794178,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_718f8ae6,
     &hs_get_38898ee8,
     &hs_set_38898ee8,
+    &hs_method_92e00031,
     &hs_method_05e12b52,
     &hs_method_27141daa,
     &hs_method_8caa3393,
@@ -2783009,6 +2794186,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d6794031,
     &hs_create_a0c9f38b,
     &hs_create_edbe1c41,
+    &hs_method_994f5111,
     &hs_method_9a1d4e0b,
     &hs_method_4a9c93e8,
     &hs_get_086f80f9,
@@ -2783061,6 +2794239,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_d2b53101,
     &hs_set_d2b53101,
     &hs_method_5db056f5,
+    &hs_method_6f0785ac,
     &hs_method_9ba4c71c,
     &hs_method_6d54593c,
     &hs_method_c50521a6,
@@ -2783069,6 +2794248,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ccf60458,
     &hs_create_3a513472,
     &hs_method_24aa7918,
+    &hs_method_b3146fe4,
     &hs_method_8eeb77ae,
     &hs_method_1ea5cc37,
     &hs_method_bd062e86,
@@ -2783109,11 +2794289,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_d283a15b,
     &hs_get_51fb5232,
     &hs_set_51fb5232,
+    &hs_method_04059c4a,
     &hs_method_1f90d36a,
     &hs_method_ae07384a,
     &hs_method_1a7544fd,
     &hs_create_e2616b05,
     &hs_create_467062f5,
+    &hs_method_58e164b0,
     &hs_method_626d9df3,
     &hs_method_fba14fcd,
     &hs_get_71023034,
@@ -2787110,6 +2798292,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_31baca31,
     &hs_method_858221ae,
     &hs_method_7cc8f982,
+    &hs_method_229a3ec8,
     &hs_method_88600724,
     &hs_method_93baa3b0,
     &hs_method_337e2e86,
@@ -2787120,6 +2798303,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_0edd214c,
     &hs_method_f4f12afc,
     &hs_method_b1076ac8,
+    &hs_method_5ec423ab,
     &hs_method_e5c40b72,
     &hs_method_da06e5d1,
     &hs_method_c2c118ae,
@@ -2787200,6 +2798384,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_55bec68f,
     &hs_method_8af9c729,
     &hs_method_40bf247e,
+    &hs_method_61dcc4fe,
     &hs_method_d198f775,
     &hs_method_27da24f4,
     &hs_create_a7aa562c,
@@ -2787211,6 +2798396,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_753f3326,
     &hs_get_7b35c4fa,
     &hs_method_9915a243,
+    &hs_method_71d5e83d,
     &hs_method_f5549fcc,
     &hs_method_0913fcdb,
     &hs_destroy_08729737,
@@ -2788791,6 +2799977,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_084deb8a,
     &hs_get_e17b5589,
     &hs_set_e17b5589,
+    &hs_method_6f007d34,
     &hs_method_61fc94d9,
     &hs_method_3b7818ab,
     &hs_method_6a7c2e2a,
@@ -2788800,6 +2799987,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_6916afe4,
     &hs_create_6b293b6e,
     &hs_create_a34f4702,
+    &hs_method_d2da7f9a,
     &hs_method_2444c45a,
     &hs_method_999592ec,
     &hs_get_aa6b1460,
@@ -2788971,10 +2800159,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_429752f2,
     &hs_set_429752f2,
     &hs_get_5d9713d1,
+    &hs_method_9df15ae4,
     &hs_method_7ddb5ea5,
     &hs_method_3ee009d5,
     &hs_create_304ab95a,
     &hs_create_1b38ccc3,
+    &hs_method_dc45af91,
     &hs_method_7f83b579,
     &hs_method_31534249,
     &hs_get_cca9ab9e,
@@ -2789655,6 +2800845,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_6b1c25b9,
     &hs_get_7749f860,
     &hs_set_7749f860,
+    &hs_method_c2d50e44,
     &hs_method_7931e559,
     &hs_method_8265afde,
     &hs_method_7531b36b,
@@ -2789663,6 +2800854,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_b4e6fdb4,
     &hs_create_ef09de69,
     &hs_method_9a77f0fb,
+    &hs_method_af2404ea,
     &hs_method_efce531e,
     &hs_method_b59cc6f4,
     &hs_get_86b1eda3,
@@ -2790798,6 +2801990,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_0e65cf6e,
     &hs_set_0e65cf6e,
     &hs_get_9a6186a4,
+    &hs_method_e91e68cb,
     &hs_method_f2998228,
     &hs_method_48d0f01d,
     &hs_method_3bfea78e,
@@ -2790809,6 +2802002,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d6c65021,
     &hs_method_6686cbf5,
     &hs_method_cd5ed8ac,
+    &hs_method_fbfb641f,
     &hs_get_709232dd,
     &hs_get_aa64d546,
     &hs_get_bd16bbde,
@@ -2790848,11 +2802042,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_c0984d0c,
     &hs_set_c0984d0c,
     &hs_get_e2ae2126,
+    &hs_method_3095a8f3,
     &hs_method_cecb1c9c,
     &hs_method_39d94a70,
     &hs_create_17855be8,
     &hs_create_b97aba22,
     &hs_create_a5dbfd2f,
+    &hs_method_55202bf1,
     &hs_get_3f5b9aa8,
     &hs_set_3f5b9aa8,
     &hs_method_4fd16180,
@@ -2792542,6 +2803738,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_b0a27973,
     &hs_method_d16d8b8c,
     &hs_method_75d84e3c,
+    &hs_method_a64dbfcb,
     &hs_method_982234dd,
     &hs_method_a790a90b,
     &hs_method_d9698621,
@@ -2792890,6 +2804087,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_7b4b41bc,
     &hs_method_74f9b26f,
     &hs_method_b41c95f3,
+    &hs_method_19aba17e,
     &hs_method_6193ea0d,
     &hs_method_8b3ef12b,
     &hs_method_2891b726,
@@ -2793582,6 +2804780,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_e56b2b21,
     &hs_get_0bbce052,
     &hs_set_0bbce052,
+    &hs_method_54f694e4,
     &hs_method_52484f1c,
     &hs_method_da655cb1,
     &hs_method_9947e15a,
@@ -2793590,6 +2804789,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a3c86f8a,
     &hs_method_76c79996,
     &hs_method_7c0ec962,
+    &hs_method_c352ab6c,
     &hs_method_6688bdcc,
     &hs_method_4c199965,
     &hs_get_fbf910c8,
@@ -2793785,6 +2804985,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_58885dea,
     &hs_method_fd2f6e4e,
     &hs_method_ead822a9,
+    &hs_method_cd61972e,
     &hs_method_d1ff29b5,
     &hs_method_ade08ce3,
     &hs_method_2ba78961,
@@ -2793880,6 +2805081,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_053ab711,
     &hs_method_0209a4da,
     &hs_method_e3f18550,
+    &hs_method_54b76cc1,
     &hs_method_cd30ab26,
     &hs_method_fef08d80,
     &hs_method_be58f7fb,
@@ -2795609,6 +2806811,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_52a0faa0,
     &hs_get_d87d7670,
     &hs_set_d87d7670,
+    &hs_method_38218a8e,
     &hs_method_02f920bb,
     &hs_method_9c5088b9,
     &hs_method_16ffa63d,
@@ -2795616,6 +2806819,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e317be07,
     &hs_create_54bbacb1,
     &hs_create_14831d98,
+    &hs_method_3e39491e,
     &hs_method_d25ba56b,
     &hs_method_e85f1d4f,
     &hs_get_3f14a926,
@@ -2795910,6 +2807114,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_fe4227f9,
     &hs_get_0483283f,
     &hs_set_0483283f,
+    &hs_method_26c8bcdc,
     &hs_method_f4ed337c,
     &hs_method_b6e8c23a,
     &hs_method_82a26ebd,
@@ -2795918,6 +2807123,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_e8db92b0,
     &hs_create_50ebb507,
     &hs_method_ff1d8c52,
+    &hs_method_d85df1a6,
     &hs_method_6ebc65a0,
     &hs_method_baad1bf8,
     &hs_get_9004deaa,
@@ -2796025,6 +2807231,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_d39b447f,
     &hs_get_33d43003,
     &hs_set_33d43003,
+    &hs_method_e2ae040a,
     &hs_method_4e1c4108,
     &hs_method_ef4fc5f8,
     &hs_method_190006bf,
@@ -2796033,6 +2807240,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_6af806f7,
     &hs_create_76fa0ef9,
     &hs_create_eadf7f1a,
+    &hs_method_c418ce05,
     &hs_method_0a708a06,
     &hs_method_66907881,
     &hs_get_a22185fb,
@@ -2796138,12 +2807346,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_e2948f02,
     &hs_get_e9975a35,
     &hs_set_e9975a35,
+    &hs_method_849e70a7,
     &hs_method_d36ca973,
     &hs_method_9d3b00a8,
     &hs_method_70fe6c5e,
     &hs_method_3d93fe70,
     &hs_create_b6849f7b,
     &hs_create_2956d9b4,
+    &hs_method_5bf52bac,
     &hs_method_198c157c,
     &hs_method_f461bbe0,
     &hs_get_5588255b,
@@ -2796159,6 +2807369,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_4a7a20da,
     &hs_get_a748d693,
     &hs_set_a748d693,
+    &hs_method_ac09be0d,
     &hs_method_916ba50d,
     &hs_method_58a4fca0,
     &hs_method_f3f08e54,
@@ -2796169,6 +2807380,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_177b0a98,
     &hs_method_bf5a92bf,
     &hs_method_9c75318d,
+    &hs_method_98ed3086,
     &hs_method_8c3a0191,
     &hs_method_5d34a6e7,
     &hs_get_c68dc254,
@@ -2796266,11 +2807478,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_8613f6e1,
     &hs_set_8613f6e1,
     &hs_method_66a11b6c,
+    &hs_method_fd5959b1,
     &hs_method_a9443128,
     &hs_method_e6216dfb,
     &hs_method_d7bae7ef,
     &hs_create_f5152bf2,
     &hs_method_523ea945,
+    &hs_method_a267a418,
     &hs_method_b60f7635,
     &hs_method_a74940c0,
     &hs_method_231eeea0,
@@ -2796357,6 +2807571,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_08e32792,
     &hs_get_99efcdba,
     &hs_set_99efcdba,
+    &hs_method_28ed0783,
     &hs_method_20c67fe4,
     &hs_method_67d5764c,
     &hs_method_0ccaf7da,
@@ -2796365,6 +2807580,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_f000418f,
     &hs_create_6c7693d2,
     &hs_create_e56ce42b,
+    &hs_method_a1673a2d,
     &hs_method_e88414b0,
     &hs_method_b60967d6,
     &hs_method_8a0c4476,
@@ -2796429,6 +2807645,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5a5ad610,
     &hs_method_57e5aa2d,
     &hs_method_efb92634,
+    &hs_method_264bb5a6,
     &hs_method_07d0fe31,
     &hs_method_4d72b377,
     &hs_method_33a9950b,
@@ -2796441,6 +2807658,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_03e1e594,
     &hs_method_3d512daa,
     &hs_method_5fbc6e11,
+    &hs_method_408a5ee1,
     &hs_method_6f0c51fe,
     &hs_method_79caa92a,
     &hs_method_ed08ebbd,
@@ -2796460,6 +2807678,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_164705e2,
     &hs_get_bbf12c74,
     &hs_set_bbf12c74,
+    &hs_method_31315a48,
     &hs_method_aad6fbca,
     &hs_method_1088fb8b,
     &hs_method_a3f74d8a,
@@ -2796467,6 +2807686,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_79a0385e,
     &hs_create_33501164,
     &hs_create_05b9a4d7,
+    &hs_method_3c6611ff,
     &hs_method_b5bc88b4,
     &hs_method_741e2e79,
     &hs_get_29c6a791,
@@ -2796524,6 +2807744,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_dd2b0591,
     &hs_method_356cc5e7,
     &hs_method_bd856744,
+    &hs_method_21197178,
     &hs_method_b0993a89,
     &hs_method_e34df2fc,
     &hs_method_ed652106,
@@ -2796536,6 +2807757,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1514ce31,
     &hs_method_c918f117,
     &hs_method_5b9b17a8,
+    &hs_method_c2ac70ae,
     &hs_method_7f175722,
     &hs_method_571c73e1,
     &hs_method_5ea6af8f,
@@ -2796598,8 +2807820,10 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_982aba45,
     &hs_get_f9e9d9c8,
     &hs_set_f9e9d9c8,
+    &hs_method_85afafa7,
     &hs_method_9b83a127,
     &hs_create_342cfcd5,
+    &hs_method_b1afb299,
     &hs_method_ccdfce5c,
     &hs_get_6cc73cc5,
     &hs_get_bfde7e61,
@@ -2796611,8 +2807835,10 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_725bbcde,
     &hs_get_b9fd4ef4,
     &hs_set_b9fd4ef4,
+    &hs_method_b3cc63f5,
     &hs_method_0012bee7,
     &hs_create_f55a4482,
+    &hs_method_56568bf6,
     &hs_method_87a4f63d,
     &hs_get_a07eb237,
     &hs_get_d448928e,
@@ -2796642,12 +2807868,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_aef17df6,
     &hs_get_08cfef6b,
     &hs_set_08cfef6b,
+    &hs_method_51e76164,
     &hs_method_8ce0bdba,
     &hs_method_5b50e0f8,
     &hs_method_84da09a0,
     &hs_method_1c04da0c,
     &hs_create_c889ec96,
     &hs_create_d5cc937a,
+    &hs_method_10a610be,
     &hs_method_b3dc990e,
     &hs_method_29bd6419,
     &hs_get_addb7528,
@@ -2797870,6 +2809098,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_f75f17b9,
     &hs_get_a54182b4,
     &hs_set_a54182b4,
+    &hs_method_2f7ebcf9,
     &hs_method_38de215e,
     &hs_method_be59ab84,
     &hs_method_c9b20c06,
@@ -2797879,6 +2809108,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_45181f1b,
     &hs_create_d4e6930f,
     &hs_method_b123bac2,
+    &hs_method_8d8f6128,
     &hs_method_9ee33ac0,
     &hs_method_f5327e98,
     &hs_get_32b5dd83,
@@ -2798301,6 +2809531,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_618894ce,
     &hs_get_9ffd6672,
     &hs_set_9ffd6672,
+    &hs_method_b43b8a8b,
     &hs_method_e5d97b3c,
     &hs_method_26c36c6a,
     &hs_method_244ed474,
@@ -2798310,6 +2809541,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_5ccda13a,
     &hs_method_e9ac2171,
     &hs_method_4133fbfb,
+    &hs_method_c2c86f69,
     &hs_method_1feafc93,
     &hs_method_38335860,
     &hs_method_aa83810e,
@@ -2798386,10 +2809618,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_33a9a91c,
     &hs_get_21e97fc6,
     &hs_set_21e97fc6,
+    &hs_method_01d596d7,
     &hs_method_9a2e9573,
     &hs_create_20bc4ab7,
     &hs_create_2264ab03,
     &hs_create_8fa7e472,
+    &hs_method_149e9b3a,
     &hs_get_db3ce4d6,
     &hs_set_db3ce4d6,
     &hs_get_4c5288d9,
@@ -2798665,6 +2809899,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_837d4b58,
     &hs_method_471d0d12,
     &hs_method_af5c43e3,
+    &hs_method_65d91177,
     &hs_method_d303a85a,
     &hs_method_5c6533f2,
     &hs_method_8063c636,
@@ -2798918,6 +2810153,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_4ba4a7d2,
     &hs_method_9a8ba1cc,
     &hs_method_3562216a,
+    &hs_method_cc877377,
     &hs_method_b458f77c,
     &hs_method_cd3bb390,
     &hs_method_fed2d5b4,
@@ -2800776,6 +2812012,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_49091e79,
     &hs_set_49091e79,
     &hs_method_1f5bcc4b,
+    &hs_method_6b1d486d,
     &hs_method_8643e508,
     &hs_method_ea9498c6,
     &hs_method_67dd2391,
@@ -2800793,6 +2812030,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_04777a01,
     &hs_method_ac9dd5f9,
     &hs_method_899ed874,
+    &hs_method_96b8c5ae,
     &hs_method_b2019d29,
     &hs_method_f5b96974,
     &hs_method_d39bfffa,
@@ -2801890,12 +2813128,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_5cf7ce8b,
     &hs_get_c5ba4461,
     &hs_set_c5ba4461,
+    &hs_method_b582772e,
     &hs_method_a5dc2bba,
     &hs_method_a6d121f7,
     &hs_method_d89ba650,
     &hs_method_446405a3,
     &hs_create_fa30a40d,
     &hs_create_3a438153,
+    &hs_method_c37fa832,
     &hs_method_7ae660d8,
     &hs_method_1989836a,
     &hs_get_b09d3482,
@@ -2801965,6 +2813205,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_66847ba6,
     &hs_set_66847ba6,
     &hs_method_cc5362f6,
+    &hs_method_abf56554,
     &hs_method_b811132d,
     &hs_method_bf60c250,
     &hs_method_337d2e7b,
@@ -2801975,6 +2813216,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_03397ec9,
     &hs_create_2cf6727e,
     &hs_method_5c0746c1,
+    &hs_method_a256f593,
     &hs_method_6870f6de,
     &hs_method_3644addf,
     &hs_get_62d1c37b,
@@ -2801988,6 +2813230,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_c980cb33,
     &hs_get_26d54ef4,
     &hs_set_26d54ef4,
+    &hs_method_290fa695,
     &hs_method_7951ae15,
     &hs_method_1d782e8e,
     &hs_method_e13fe7a3,
@@ -2801997,6 +2813240,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_893451f2,
     &hs_create_f17feb43,
     &hs_create_0de6a7e8,
+    &hs_method_680615e0,
     &hs_method_d8298c6e,
     &hs_method_518cdba1,
     &hs_get_b3d7efa6,
@@ -2802551,6 +2813795,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_d720744d,
     &hs_get_0d72ca51,
     &hs_set_0d72ca51,
+    &hs_method_9c16caf6,
     &hs_method_cf8de4f9,
     &hs_method_b02affd7,
     &hs_method_16001ff4,
@@ -2802558,6 +2813803,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_64a5012b,
     &hs_create_c6ff57b3,
     &hs_create_ed5e6ec7,
+    &hs_method_2aad2249,
     &hs_method_c01dcb73,
     &hs_method_a16a23c8,
     &hs_get_42b8d0c6,
@@ -2804330,6 +2815576,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_c10cba5a,
     &hs_get_202370f1,
     &hs_set_202370f1,
+    &hs_method_42c2313c,
     &hs_method_363fb173,
     &hs_method_22b29733,
     &hs_method_b0ade0bf,
@@ -2804337,6 +2815584,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f5330169,
     &hs_create_a2e4ddd0,
     &hs_create_f808c7d6,
+    &hs_method_7c6067eb,
     &hs_method_6f1844c7,
     &hs_method_89485efd,
     &hs_get_3c11d4ad,
@@ -2804589,6 +2815837,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d6a9886f,
     &hs_method_f2b3301c,
     &hs_method_7e674786,
+    &hs_method_545d0567,
     &hs_method_1d37a7ac,
     &hs_method_fee5f1a5,
     &hs_method_b8f28fa4,
@@ -2805107,6 +2816356,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_245752bd,
     &hs_get_9249000a,
     &hs_set_9249000a,
+    &hs_method_ad41b3b9,
     &hs_method_7f01fbb9,
     &hs_method_5a30e1ee,
     &hs_method_82694384,
@@ -2805116,6 +2816366,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_a17621d6,
     &hs_create_9c5f89f8,
     &hs_create_058f7600,
+    &hs_method_57693f90,
     &hs_method_ca009ff7,
     &hs_method_bd68c7e2,
     &hs_get_5f0d5dca,
@@ -2805561,6 +2816812,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_e223c018,
     &hs_get_a7f9fa3c,
     &hs_set_a7f9fa3c,
+    &hs_method_430d0a0f,
     &hs_method_8b81d49b,
     &hs_method_12a09f65,
     &hs_method_3246f208,
@@ -2805574,6 +2816826,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_65034cc5,
     &hs_method_713189ca,
     &hs_method_e329b8fc,
+    &hs_method_c3e8e8f1,
     &hs_method_6afaadc3,
     &hs_method_ba15a705,
     &hs_get_91153d35,
@@ -2807082,12 +2818335,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_6ffa299e,
     &hs_get_ea658d59,
     &hs_set_ea658d59,
+    &hs_method_58d780e5,
     &hs_method_4c69e083,
     &hs_method_b8b9bf2a,
     &hs_method_9c722dff,
     &hs_method_1b74ea5c,
     &hs_create_e26e478f,
     &hs_create_e9ceb645,
+    &hs_method_a97ab0c5,
     &hs_method_281800e3,
     &hs_method_4d080da7,
     &hs_get_2aaf329a,
@@ -2807119,6 +2818374,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_af58e037,
     &hs_get_ad714a69,
     &hs_set_ad714a69,
+    &hs_method_121adff4,
     &hs_method_e1101e6f,
     &hs_method_5f1c5c25,
     &hs_method_a5cd7672,
@@ -2807126,6 +2818382,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_8e8eca80,
     &hs_create_a86b5dc9,
     &hs_create_035ffd62,
+    &hs_method_c44769ba,
     &hs_method_f139e596,
     &hs_method_5e983957,
     &hs_get_5a4b87d0,
@@ -2809745,6 +2821002,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_0aa288df,
     &hs_method_2fed4266,
     &hs_create_c1cc3b66,
+    &hs_method_d8badc85,
     &hs_get_93067c9c,
     &hs_method_7388c20e,
     &hs_destroy_5e2abff0,
@@ -2809753,12 +2821011,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_4c35f66f,
     &hs_get_721d6750,
     &hs_set_721d6750,
+    &hs_method_67a29e83,
     &hs_method_6a5ef798,
     &hs_method_8faea3a9,
     &hs_method_ce6f2dc7,
     &hs_method_2f6e9c8a,
     &hs_create_e31986b9,
     &hs_create_4aae3ebf,
+    &hs_method_165ec7df,
     &hs_method_c850b7a6,
     &hs_method_93d6a0ba,
     &hs_get_a6c5958c,
@@ -2813084,6 +2824344,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_705cb69f,
     &hs_get_2cbc161a,
     &hs_set_2cbc161a,
+    &hs_method_782c6e71,
     &hs_method_5df70b20,
     &hs_method_03d5adb1,
     &hs_method_0fd19589,
@@ -2813093,6 +2824354,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_7e4e7996,
     &hs_create_7365f8e9,
     &hs_create_b164c247,
+    &hs_method_f4f6e98b,
     &hs_method_b2973d29,
     &hs_method_313be89a,
     &hs_method_8f566288,
@@ -2813157,6 +2824419,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_fb64fd36,
     &hs_get_cef2972b,
     &hs_set_cef2972b,
+    &hs_method_db993c07,
     &hs_method_358ff0e3,
     &hs_method_b417f51a,
     &hs_method_ae632aa9,
@@ -2813164,6 +2824427,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_3081456b,
     &hs_create_9186d999,
     &hs_create_e63f0473,
+    &hs_method_e3d98fd9,
     &hs_method_b6c87cba,
     &hs_method_e6d5e942,
     &hs_get_bc0ce8bb,
@@ -2814379,6 +2825643,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_69408231,
     &hs_method_e4dc0c0f,
     &hs_method_3e69814a,
+    &hs_method_b0efa844,
     &hs_method_37ebd77c,
     &hs_method_758592f3,
     &hs_method_5e6509d4,
@@ -2814619,6 +2825884,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_5a44e52a,
     &hs_get_12847fef,
     &hs_set_12847fef,
+    &hs_method_d0ea0356,
     &hs_method_6a3ae314,
     &hs_method_3666dfb0,
     &hs_method_17575c5b,
@@ -2814631,6 +2825897,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_77980aab,
     &hs_method_3076ec2a,
     &hs_method_463f7152,
+    &hs_method_260cddd6,
     &hs_method_f0ff9f4d,
     &hs_method_45aa9985,
     &hs_get_7a675fdc,
@@ -2814755,6 +2826022,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_5cb4d3cb,
     &hs_set_5cb4d3cb,
     &hs_method_1d9ab41e,
+    &hs_method_1eca9e62,
     &hs_method_8f2577e8,
     &hs_method_2792c6e8,
     &hs_method_ca998e2c,
@@ -2814762,6 +2826030,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_b1531124,
     &hs_create_7ab93ef2,
     &hs_method_93626bbc,
+    &hs_method_5e445020,
     &hs_method_9472bdbd,
     &hs_method_e8cdb51e,
     &hs_method_cb45cb37,
@@ -2814803,9 +2826072,11 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_4afa0def,
     &hs_set_4afa0def,
     &hs_method_a6762428,
+    &hs_method_f3e5f744,
     &hs_method_ef399cbd,
     &hs_create_fd731be6,
     &hs_method_9125e0cd,
+    &hs_method_618c0d55,
     &hs_method_da6f26e8,
     &hs_get_ce3eed64,
     &hs_set_ce3eed64,
@@ -2814828,6 +2826099,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_4af95467,
     &hs_get_0a2da5c8,
     &hs_set_0a2da5c8,
+    &hs_method_5f9f88dc,
     &hs_method_e5489359,
     &hs_method_984628b3,
     &hs_method_db6f5270,
@@ -2814835,6 +2826107,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_cbc69b18,
     &hs_create_cc7bbe9d,
     &hs_method_4140d182,
+    &hs_method_a0c18c1f,
     &hs_method_1e1542dd,
     &hs_method_fe9754f2,
     &hs_get_ab6e6e11,
@@ -2814859,6 +2826132,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_1a174f26,
     &hs_get_4b31ee00,
     &hs_set_4b31ee00,
+    &hs_method_023f32a0,
     &hs_method_4c4bdaea,
     &hs_method_537ea691,
     &hs_method_18e123a1,
@@ -2814868,6 +2826142,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_c6bd08c8,
     &hs_create_6e40994b,
     &hs_create_c5966be2,
+    &hs_method_dcac62b2,
     &hs_method_48c00483,
     &hs_method_3119857f,
     &hs_get_b05b9da8,
@@ -2814909,12 +2826184,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_c721be89,
     &hs_get_3a505f67,
     &hs_set_3a505f67,
+    &hs_method_6e9fe3bd,
     &hs_method_6d71d8d9,
     &hs_method_66e68dd8,
     &hs_method_bd8cc4da,
     &hs_method_779839ae,
     &hs_create_67b88d2c,
     &hs_create_86e7d7ea,
+    &hs_method_c96ce70e,
     &hs_method_397549e2,
     &hs_method_5bd67a6c,
     &hs_get_ef8e717a,
@@ -2815001,6 +2826278,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_fb6a0c87,
     &hs_get_4b080b62,
     &hs_set_4b080b62,
+    &hs_method_c3703bf9,
     &hs_method_65b851c2,
     &hs_method_a6919a3b,
     &hs_method_0af52fd6,
@@ -2815012,6 +2826290,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_db475afa,
     &hs_method_b34801e9,
     &hs_method_3f26ebd1,
+    &hs_method_e30e490c,
     &hs_method_93ec70be,
     &hs_method_522d9b64,
     &hs_get_d861535e,
@@ -2815067,12 +2826346,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_af697a57,
     &hs_get_b84e17a5,
     &hs_set_b84e17a5,
+    &hs_method_8dd90127,
     &hs_method_c6d13e36,
     &hs_method_9ce25d14,
     &hs_method_28eed93a,
     &hs_method_ace8dfdb,
     &hs_create_3cd8e0d9,
     &hs_create_30738397,
+    &hs_method_6179d973,
     &hs_method_7149983b,
     &hs_method_1c8cb2f4,
     &hs_get_f842bf83,
@@ -2815112,6 +2826393,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_f7c41638,
     &hs_set_f7c41638,
     &hs_method_51a585d8,
+    &hs_method_2d77a95a,
     &hs_method_614de07c,
     &hs_method_9a8b83b9,
     &hs_method_e2ac8dff,
@@ -2815120,6 +2826402,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_d57f0948,
     &hs_create_134b71ec,
     &hs_method_9759c6d2,
+    &hs_method_cd36c399,
     &hs_method_e1d63787,
     &hs_method_9fc2162f,
     &hs_get_f895e191,
@@ -2815159,10 +2826442,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_e2d2f0c8,
     &hs_set_e2d2f0c8,
     &hs_method_4749f91b,
+    &hs_method_8fa48ac5,
     &hs_method_385162ad,
     &hs_method_3665ad47,
     &hs_create_d37136ac,
     &hs_method_a53549a2,
+    &hs_method_b56c9253,
     &hs_method_22e1a6ef,
     &hs_method_904c5694,
     &hs_get_3e3cca8b,
@@ -2815303,6 +2826588,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_85a94be2,
     &hs_get_10205c21,
     &hs_set_10205c21,
+    &hs_method_621385cb,
     &hs_method_c14dafe6,
     &hs_method_2ccbb855,
     &hs_method_dd9a8c46,
@@ -2815313,6 +2826599,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_cd6b1e4e,
     &hs_create_d4d281fe,
     &hs_method_40711042,
+    &hs_method_ab27b0e7,
     &hs_method_db019594,
     &hs_method_3c1ad0ec,
     &hs_get_583ef778,
@@ -2815602,11 +2826889,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_3032e1e1,
     &hs_get_cea243dc,
     &hs_set_cea243dc,
+    &hs_method_23cc46b9,
     &hs_method_c90bf833,
     &hs_method_d06ec229,
     &hs_method_9095e7d8,
     &hs_create_a8410962,
     &hs_create_d549f4b0,
+    &hs_method_dea65383,
     &hs_method_55ae992e,
     &hs_method_e8cc01b3,
     &hs_get_5327ff53,
@@ -2818381,12 +2829670,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_7a0a90f6,
     &hs_get_4414ada3,
     &hs_set_4414ada3,
+    &hs_method_9fe3d188,
     &hs_method_20763ad2,
     &hs_method_450a63b5,
     &hs_method_c96f1368,
     &hs_method_fda764c9,
     &hs_create_c1c6e58d,
     &hs_create_a5b13090,
+    &hs_method_1dd28ccc,
     &hs_method_d58a6822,
     &hs_method_650b7a9e,
     &hs_get_6a8fda79,
@@ -2818399,11 +2829690,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_679ad931,
     &hs_get_5e4132dc,
     &hs_set_5e4132dc,
+    &hs_method_f7aa5030,
     &hs_method_e80482ef,
     &hs_method_8634c04a,
     &hs_method_38968f03,
     &hs_create_efe8605c,
     &hs_create_55dacb61,
+    &hs_method_08df5fc3,
     &hs_method_70b6748c,
     &hs_get_003ffccd,
     &hs_method_eeec921f,
@@ -2818522,10 +2829815,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_df0cea4b,
     &hs_get_86e56c51,
     &hs_set_86e56c51,
+    &hs_method_dc387ed9,
     &hs_method_976719e9,
     &hs_method_2653da83,
     &hs_create_08b2b81f,
     &hs_create_17739473,
+    &hs_method_5faa1315,
     &hs_method_b01c98a3,
     &hs_get_011924e9,
     &hs_set_011924e9,
@@ -2818542,6 +2829837,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_3396ccaf,
     &hs_get_e78c1c6b,
     &hs_set_e78c1c6b,
+    &hs_method_8dbe858e,
     &hs_method_b6f2f263,
     &hs_method_9ae3d2e6,
     &hs_method_1b0d7bd1,
@@ -2818549,6 +2829845,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_0d18657c,
     &hs_create_55ed691f,
     &hs_create_caaf6cb3,
+    &hs_method_51a67072,
     &hs_method_7f430cd6,
     &hs_method_508a16f4,
     &hs_get_a344b0aa,
@@ -2818567,6 +2829864,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_bf3d30c7,
     &hs_get_ae668ae8,
     &hs_set_ae668ae8,
+    &hs_method_cb53afb3,
     &hs_method_3952fd68,
     &hs_method_2f958c33,
     &hs_method_8c08bfd1,
@@ -2818574,6 +2829872,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_46b9613c,
     &hs_create_f0beceea,
     &hs_create_242eb988,
+    &hs_method_f3f43651,
     &hs_method_b685ee4d,
     &hs_method_29f52acd,
     &hs_get_36869532,
@@ -2818603,6 +2829902,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_bc93e2bc,
     &hs_get_ed9d3f59,
     &hs_set_ed9d3f59,
+    &hs_method_df0402db,
     &hs_method_f2b059ae,
     &hs_method_4d422bb8,
     &hs_method_2137639f,
@@ -2818612,6 +2829912,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_e9cf396f,
     &hs_create_6bc0fa59,
     &hs_method_ebc03a93,
+    &hs_method_83a06481,
     &hs_method_fa6f4d4c,
     &hs_method_947be41b,
     &hs_method_9ac1a2d6,
@@ -2818963,11 +2830264,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_dfeb7401,
     &hs_get_8196829e,
     &hs_set_8196829e,
+    &hs_method_4ad3bfa4,
     &hs_method_cbba8a8a,
     &hs_method_275e64d6,
     &hs_method_30ff9f6d,
     &hs_create_f28e02af,
     &hs_create_c3ad926e,
+    &hs_method_a34a9192,
     &hs_method_73254ab5,
     &hs_method_0ba2f188,
     &hs_get_2b0c0c82,
@@ -2819887,6 +2831190,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_89e707d4,
     &hs_get_a396d22a,
     &hs_set_a396d22a,
+    &hs_method_7af82d66,
     &hs_method_f507d685,
     &hs_method_ecd68187,
     &hs_method_bf57642c,
@@ -2819894,6 +2831198,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_b021e31d,
     &hs_create_567bbc4e,
     &hs_create_7b733a72,
+    &hs_method_ac651d40,
     &hs_method_879255e6,
     &hs_method_a459362b,
     &hs_get_d0bd57ae,
@@ -2820461,6 +2831766,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_29cdf1ca,
     &hs_method_0cd839ca,
     &hs_method_66b97305,
+    &hs_method_1cc1178a,
     &hs_method_e892d265,
     &hs_method_53f8203e,
     &hs_create_c95b36bd,
@@ -2820476,6 +2831782,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_8a14dbfc,
     &hs_method_aacbd087,
     &hs_method_71f76729,
+    &hs_method_41415c55,
     &hs_method_fc299318,
     &hs_method_be3a35ba,
     &hs_get_619af253,
@@ -2826926,6 +2838233,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_23eca040,
     &hs_get_075065c6,
     &hs_set_075065c6,
+    &hs_method_346f1506,
     &hs_method_4b9d4195,
     &hs_method_1ee91833,
     &hs_method_4819d505,
@@ -2826933,6 +2838241,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_dd0ec1bf,
     &hs_create_7ef1dac1,
     &hs_create_1e77561a,
+    &hs_method_022b3c6a,
     &hs_method_e8a69fdc,
     &hs_method_8c0679e0,
     &hs_get_5720d5e9,
@@ -2827995,6 +2839304,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1f9ee19d,
     &hs_method_0af11fb9,
     &hs_method_7a5222df,
+    &hs_method_a88f5b41,
     &hs_method_80734b66,
     &hs_method_1e6179bf,
     &hs_method_355a130e,
@@ -2828121,6 +2839431,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e033f948,
     &hs_method_8f45f4a5,
     &hs_method_ff542d0d,
+    &hs_method_f16eadcb,
     &hs_get_d874169c,
     &hs_set_d874169c,
     &hs_get_7f554d91,
@@ -2830676,6 +2841987,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_5d21ccf9,
     &hs_get_f96d5fe2,
     &hs_set_f96d5fe2,
+    &hs_method_7fe51e19,
     &hs_method_b2930464,
     &hs_method_f7ce79f4,
     &hs_method_348c221b,
@@ -2830685,6 +2841997,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_ac536ec1,
     &hs_create_063a851c,
     &hs_create_e091c809,
+    &hs_method_b45b3691,
     &hs_method_92e96711,
     &hs_method_2f26dd92,
     &hs_get_8b445f41,
@@ -2834417,11 +2845730,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_8b9f76f2,
     &hs_get_368d963d,
     &hs_set_368d963d,
+    &hs_method_a153321d,
     &hs_method_e280e6cd,
     &hs_method_5910658f,
     &hs_method_ca13a2a8,
     &hs_create_e7e01540,
     &hs_create_876bf341,
+    &hs_method_289cd9df,
     &hs_method_69f1b919,
     &hs_method_fe304aef,
     &hs_get_be1fa6e5,
@@ -2834437,10 +2845752,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_c2b6421e,
     &hs_get_81201dae,
     &hs_set_81201dae,
+    &hs_method_33f845ae,
     &hs_method_dc98b84b,
     &hs_method_69436cca,
     &hs_create_7f0f9d6c,
     &hs_create_a5346828,
+    &hs_method_b1c01b63,
     &hs_method_f576333e,
     &hs_get_2f03cb33,
     &hs_set_2f03cb33,
@@ -2835300,11 +2846617,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_8a3da975,
     &hs_get_75d02af7,
     &hs_set_75d02af7,
+    &hs_method_41d71f0d,
     &hs_method_3ec240ae,
     &hs_method_f9d26492,
     &hs_method_75c3bf23,
     &hs_create_26827918,
     &hs_create_102221bd,
+    &hs_method_26b522ad,
     &hs_method_b360d995,
     &hs_get_4aca743c,
     &hs_method_b0f22d18,
@@ -2835525,11 +2846844,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_e811ffc6,
     &hs_get_8b106db5,
     &hs_set_8b106db5,
+    &hs_method_829aa583,
     &hs_method_1ce34fe1,
     &hs_method_338962e4,
     &hs_method_c4df0ed4,
     &hs_create_d8ba3bb6,
     &hs_create_2997901b,
+    &hs_method_81ec8c5e,
     &hs_method_d4aeae4a,
     &hs_get_12ddeb6a,
     &hs_get_f3731458,
@@ -2835922,6 +2847243,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_dcd462b4,
     &hs_set_dcd462b4,
     &hs_method_dbcc4c43,
+    &hs_method_5999c5a1,
     &hs_method_a37688f6,
     &hs_method_a13bf94d,
     &hs_method_c876db66,
@@ -2835932,6 +2847254,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_a1164813,
     &hs_create_306f4faa,
     &hs_method_82c789ec,
+    &hs_method_01ac5305,
     &hs_method_28378605,
     &hs_method_76a76dc1,
     &hs_get_dc107c47,
@@ -2836210,12 +2847533,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_6949cc30,
     &hs_get_fc6e3dc2,
     &hs_set_fc6e3dc2,
+    &hs_method_2e285a16,
     &hs_method_2432d154,
     &hs_method_4ef70673,
     &hs_method_fa355d64,
     &hs_method_fa053d9e,
     &hs_create_d7f74399,
     &hs_create_d776a505,
+    &hs_method_ca2cd479,
     &hs_method_654b4217,
     &hs_method_e8a62f3e,
     &hs_get_58f39182,
@@ -2836296,10 +2847621,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_6b6df0ad,
     &hs_get_557a7d2d,
     &hs_set_557a7d2d,
+    &hs_method_54308e00,
     &hs_method_60491dac,
     &hs_method_41868bd4,
     &hs_create_a02c8c38,
     &hs_create_6a1d9e82,
+    &hs_method_a9d5c713,
     &hs_method_cef874e4,
     &hs_get_23dfde4b,
     &hs_set_23dfde4b,
@@ -2836314,10 +2847641,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_61f44e5a,
     &hs_get_bae30510,
     &hs_set_bae30510,
+    &hs_method_77db0cc4,
     &hs_method_40458c3c,
     &hs_method_a83bcd02,
     &hs_create_35f00ee2,
     &hs_create_b6b10a7c,
+    &hs_method_1772bb40,
     &hs_method_c43f7784,
     &hs_get_4c3874d0,
     &hs_get_a390ed6c,
@@ -2836345,10 +2847674,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_9b760ff7,
     &hs_get_41c8e8de,
     &hs_set_41c8e8de,
+    &hs_method_5ab19c97,
     &hs_method_1907b825,
     &hs_method_830eaad7,
     &hs_create_da6e10e9,
     &hs_create_f7c61f1f,
+    &hs_method_0d9c45cb,
     &hs_method_f124a038,
     &hs_get_61c1451a,
     &hs_set_61c1451a,
@@ -2837025,6 +2848356,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_e2a335ae,
     &hs_get_9700b1cc,
     &hs_set_9700b1cc,
+    &hs_method_8729189b,
     &hs_method_651414d8,
     &hs_method_cf552593,
     &hs_method_b54214f3,
@@ -2837035,6 +2848367,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_ba7325a2,
     &hs_method_8f908d19,
     &hs_method_9a7d1e90,
+    &hs_method_84a40783,
     &hs_method_9fbf3f4d,
     &hs_method_0d5ce1e2,
     &hs_method_1a1b1b68,
@@ -2837144,6 +2848477,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_7039ea31,
     &hs_get_6629bff7,
     &hs_set_6629bff7,
+    &hs_method_f040e15a,
     &hs_method_84e62456,
     &hs_method_5d6bc1d4,
     &hs_method_1cd269e9,
@@ -2837151,6 +2848485,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2133caa3,
     &hs_create_46d4899e,
     &hs_create_a696ea41,
+    &hs_method_1fd9eddd,
     &hs_method_03de4908,
     &hs_method_6b35ad6a,
     &hs_get_887c78d7,
@@ -2837184,6 +2848519,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_2ccb7db9,
     &hs_get_4f0417e7,
     &hs_set_4f0417e7,
+    &hs_method_0710068c,
     &hs_method_ac87a71d,
     &hs_method_5a6fe197,
     &hs_method_d4b07ed0,
@@ -2837191,6 +2848527,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_daa58894,
     &hs_create_72de0bb0,
     &hs_create_d30ab68f,
+    &hs_method_5a8f560a,
     &hs_method_881bc719,
     &hs_method_43845f71,
     &hs_get_c2529177,
@@ -2838053,6 +2849390,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_4f96fe73,
     &hs_get_37c08279,
     &hs_set_37c08279,
+    &hs_method_d55e3f7a,
     &hs_method_30003628,
     &hs_method_8c9b9bac,
     &hs_method_bf72a36e,
@@ -2838060,6 +2849398,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_69a49021,
     &hs_create_aeadf720,
     &hs_create_c83677b0,
+    &hs_method_c4d6bcb6,
     &hs_method_2ba9b3ed,
     &hs_method_41eecd95,
     &hs_get_733f9479,
@@ -2839876,6 +2851215,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_98cc1cad,
     &hs_get_fc8b55b1,
     &hs_set_fc8b55b1,
+    &hs_method_0fb146b4,
     &hs_method_afa1ca41,
     &hs_method_7c5af463,
     &hs_method_da9a50ba,
@@ -2839883,6 +2851223,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9c4580d6,
     &hs_create_6f1d0d98,
     &hs_create_10e68b11,
+    &hs_method_158cd22f,
     &hs_method_c700645b,
     &hs_method_b276e21b,
     &hs_get_10c7558e,
@@ -2839896,6 +2851237,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_b3e2acac,
     &hs_get_fd6ae362,
     &hs_set_fd6ae362,
+    &hs_method_b92f8ac3,
     &hs_method_4e2097f3,
     &hs_method_1829779a,
     &hs_method_ad5f06d9,
@@ -2839903,6 +2851245,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_4d0c6fdf,
     &hs_create_482fb39a,
     &hs_create_35f991b8,
+    &hs_method_20e86b66,
     &hs_method_687c66e2,
     &hs_method_88bd36a6,
     &hs_get_309beaff,
@@ -2839918,6 +2851261,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_587994fa,
     &hs_get_19857d0b,
     &hs_set_19857d0b,
+    &hs_method_70739871,
     &hs_method_0b7332cb,
     &hs_method_1e20fa2f,
     &hs_method_1504c4b4,
@@ -2839925,6 +2851269,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_4f9acfad,
     &hs_create_74f85665,
     &hs_create_c61a2862,
+    &hs_method_37678302,
     &hs_method_a35b9631,
     &hs_method_13c4745f,
     &hs_get_855167f5,
@@ -2839940,6 +2851285,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_00d25f73,
     &hs_get_c9c1431a,
     &hs_set_c9c1431a,
+    &hs_method_464b7c9d,
     &hs_method_b4e11423,
     &hs_method_93d862d9,
     &hs_method_9f241434,
@@ -2839947,6 +2851293,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_dce29ba2,
     &hs_create_f1a54d0d,
     &hs_create_5dedafbc,
+    &hs_method_62554342,
     &hs_method_013a8d83,
     &hs_method_02fe8e9f,
     &hs_get_905e048a,
@@ -2839960,6 +2851307,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_6853a415,
     &hs_get_84e27cef,
     &hs_set_84e27cef,
+    &hs_method_781c4669,
     &hs_method_a347ff13,
     &hs_method_0280c7c4,
     &hs_method_6c2cc722,
@@ -2839967,6 +2851315,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_fae50fe9,
     &hs_create_9ab660b6,
     &hs_create_e1393ba6,
+    &hs_method_320e82a6,
     &hs_method_838f43c6,
     &hs_method_12af56fe,
     &hs_get_3ddbaac9,
@@ -2840154,6 +2851503,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_ee53bfa8,
     &hs_get_7900b685,
     &hs_set_7900b685,
+    &hs_method_d249cd41,
     &hs_method_ad96791f,
     &hs_method_a2552d23,
     &hs_method_461d3639,
@@ -2840162,6 +2851512,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_cf7e0c59,
     &hs_create_9e956c76,
     &hs_create_b7d448a2,
+    &hs_method_c44f1c5d,
     &hs_method_077c8595,
     &hs_method_f371624e,
     &hs_method_2a212159,
@@ -2840347,6 +2851698,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_4e910ba8,
     &hs_get_dda6256c,
     &hs_set_dda6256c,
+    &hs_method_585a582d,
     &hs_method_3a24673d,
     &hs_method_f7984024,
     &hs_method_106b8af5,
@@ -2840355,6 +2851707,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_f3e9f960,
     &hs_create_933b9221,
     &hs_method_b0b837fd,
+    &hs_method_f9ea001b,
     &hs_method_a772b4e6,
     &hs_method_82db38fd,
     &hs_get_81ee0d2a,
@@ -2840491,12 +2851844,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_bca97141,
     &hs_get_efcef15f,
     &hs_set_efcef15f,
+    &hs_method_1f098557,
     &hs_method_7d831938,
     &hs_method_640354d7,
     &hs_method_2dc1ef9c,
     &hs_method_7eb82d5a,
     &hs_method_da513e71,
     &hs_create_9ef63ad6,
+    &hs_method_fd7e277c,
     &hs_method_6729b418,
     &hs_method_6526b202,
     &hs_get_8f9538eb,
@@ -2840552,6 +2851907,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_18eab168,
     &hs_method_71955f54,
     &hs_method_fead8ed5,
+    &hs_method_564a5343,
     &hs_method_b90b2a6d,
     &hs_method_07f4e2fe,
     &hs_method_2ea8526f,
@@ -2840569,6 +2851925,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_adc046da,
     &hs_method_293a16e6,
     &hs_method_0fea9c1c,
+    &hs_method_8b330ae2,
     &hs_method_9ca47124,
     &hs_method_1ac0834b,
     &hs_method_6583265f,
@@ -2840626,6 +2851983,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_62c30ca6,
     &hs_method_ac8884a6,
     &hs_method_b12ba0fb,
+    &hs_method_ae76f311,
     &hs_method_9c73fde8,
     &hs_method_d261323c,
     &hs_create_2fdbe850,
@@ -2840635,6 +2851993,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1efeb6a4,
     &hs_method_267345f6,
     &hs_method_a660c7c8,
+    &hs_method_9ddd94f8,
     &hs_method_4d98da03,
     &hs_destroy_c913b35e,
     &hs_get_0ce57354,
@@ -2841342,12 +2852701,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_66eb034c,
     &hs_set_66eb034c,
     &hs_method_f6961c5c,
+    &hs_method_1db9dc31,
     &hs_method_a8c8577a,
     &hs_method_78b6f62e,
     &hs_create_8b012902,
     &hs_create_0fc61517,
     &hs_create_b872c5bb,
     &hs_method_c2ac9561,
+    &hs_method_cfa4b070,
     &hs_method_98879d2b,
     &hs_get_191f3e64,
     &hs_set_191f3e64,
@@ -2842925,6 +2854286,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_ac6bd007,
     &hs_get_324e0b46,
     &hs_set_324e0b46,
+    &hs_method_54b796c1,
     &hs_method_ddd824ed,
     &hs_method_922a1215,
     &hs_method_ff2e2430,
@@ -2842933,6 +2854295,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_91da2780,
     &hs_create_f80ae7f9,
     &hs_method_e16af206,
+    &hs_method_33bd6114,
     &hs_method_96f39eaf,
     &hs_method_6791cd63,
     &hs_get_36913962,
@@ -2843357,6 +2854720,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_c659828a,
     &hs_get_17a5c4b3,
     &hs_set_17a5c4b3,
+    &hs_method_98814d00,
     &hs_method_3ba22101,
     &hs_method_aae721d4,
     &hs_method_fa50f239,
@@ -2843365,6 +2854729,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_76702d43,
     &hs_create_96085742,
     &hs_create_9d99a06c,
+    &hs_method_505a7754,
     &hs_method_997d0fa2,
     &hs_get_228dc1b7,
     &hs_get_84d184c3,
@@ -2843432,12 +2854797,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_230974fb,
     &hs_get_d2b981e1,
     &hs_set_d2b981e1,
+    &hs_method_6aee3e67,
     &hs_method_963b807f,
     &hs_method_46ddf915,
     &hs_method_df703f15,
     &hs_method_75c98c5d,
     &hs_create_f4263417,
     &hs_create_1d923967,
+    &hs_method_d78d30b4,
     &hs_method_efba8080,
     &hs_method_c32188b1,
     &hs_get_50dc9f73,
@@ -2843465,6 +2854832,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_758d6e6f,
     &hs_get_c45992b2,
     &hs_set_c45992b2,
+    &hs_method_9c479cdf,
     &hs_method_14eb0f58,
     &hs_method_63a041cf,
     &hs_method_87c545f7,
@@ -2843472,6 +2854840,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_db2c2a9d,
     &hs_create_1f8bb581,
     &hs_method_0a2a8022,
+    &hs_method_e210621e,
     &hs_method_73424d75,
     &hs_method_50b6a102,
     &hs_get_73077f3f,
@@ -2843495,6 +2854864,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_b7a9a747,
     &hs_get_3a4a9802,
     &hs_set_3a4a9802,
+    &hs_method_bd5a67cf,
     &hs_method_ca4cabec,
     &hs_method_50381986,
     &hs_method_26b767ac,
@@ -2843504,6 +2854874,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_eaf684ce,
     &hs_create_9651e7c3,
     &hs_method_97297346,
+    &hs_method_55264e81,
     &hs_method_69151c49,
     &hs_method_d5619974,
     &hs_method_6d4f238f,
@@ -2843551,6 +2854922,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_5b553970,
     &hs_get_757c6b07,
     &hs_set_757c6b07,
+    &hs_method_e946e401,
     &hs_method_76a5936a,
     &hs_method_ea841d75,
     &hs_method_f35977da,
@@ -2843558,6 +2854930,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_4a0d48a2,
     &hs_create_7fb40916,
     &hs_create_49032f2f,
+    &hs_method_0936fd1b,
     &hs_method_58afa7a7,
     &hs_method_aeeb69d6,
     &hs_get_6036e781,
@@ -2843981,6 +2855354,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_922bfc27,
     &hs_get_68f97fb1,
     &hs_set_68f97fb1,
+    &hs_method_006c1ff5,
     &hs_method_c753e152,
     &hs_method_0d98fb0b,
     &hs_method_901bd453,
@@ -2843988,6 +2855362,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1433362b,
     &hs_create_dbb54416,
     &hs_create_cc844b8e,
+    &hs_method_cb73a14f,
     &hs_method_650e9d67,
     &hs_method_f59d2ac1,
     &hs_get_01565989,
@@ -2844245,6 +2855620,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_454ee287,
     &hs_get_4b477adf,
     &hs_set_4b477adf,
+    &hs_method_39e70ec9,
     &hs_method_9d9cd05e,
     &hs_method_70972a35,
     &hs_method_27596d51,
@@ -2844254,6 +2855630,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_7267a639,
     &hs_create_63772eaf,
     &hs_method_237fde2f,
+    &hs_method_6292cf84,
     &hs_method_8acb88dc,
     &hs_method_e44e7ec8,
     &hs_get_561599d0,
@@ -2844332,6 +2855709,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_fee5d1a7,
     &hs_get_9cdb4a02,
     &hs_set_9cdb4a02,
+    &hs_method_22906eaa,
     &hs_method_e4081f74,
     &hs_method_8d2e4e08,
     &hs_method_7dd3ea66,
@@ -2844339,6 +2855717,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_6bebf6d9,
     &hs_create_df523a73,
     &hs_create_0c919ac5,
+    &hs_method_4c8b630b,
     &hs_method_e9ed6ff7,
     &hs_method_dde84896,
     &hs_method_7ed8c52c,
@@ -2844751,6 +2856130,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_196f5fdd,
     &hs_get_65e7fe2b,
     &hs_set_65e7fe2b,
+    &hs_method_e1cce420,
     &hs_method_195acbe8,
     &hs_method_b0af6eb7,
     &hs_method_cf1a3b6b,
@@ -2844759,6 +2856139,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f297fade,
     &hs_create_3819dac8,
     &hs_create_f428295e,
+    &hs_method_dc849fc5,
     &hs_method_767198eb,
     &hs_get_9f7996ec,
     &hs_set_9f7996ec,
@@ -2846837,6 +2858218,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_8781352c,
     &hs_get_dfa806ea,
     &hs_set_dfa806ea,
+    &hs_method_77937475,
     &hs_method_d08deb83,
     &hs_method_202a0960,
     &hs_method_06c15dee,
@@ -2846846,6 +2858228,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_2f00d24b,
     &hs_create_8b92562f,
     &hs_create_61471611,
+    &hs_method_b3e5159d,
     &hs_method_5db1c357,
     &hs_method_29f058c1,
     &hs_get_a178fcc0,
@@ -2847590,6 +2858973,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_f1c273a2,
     &hs_get_c69f6165,
     &hs_set_c69f6165,
+    &hs_method_9e3afd38,
     &hs_method_9c7d85e2,
     &hs_method_a4eee424,
     &hs_method_cd516bee,
@@ -2847599,6 +2858983,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_62f102ba,
     &hs_create_f6c19968,
     &hs_create_040f9d89,
+    &hs_method_6ebdf85f,
     &hs_method_e9399467,
     &hs_method_60dedcb9,
     &hs_get_fdd6da1c,
@@ -2847679,11 +2859064,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_09aeecc0,
     &hs_get_0dff2ad5,
     &hs_set_0dff2ad5,
+    &hs_method_8ca3917f,
     &hs_method_cce7f940,
     &hs_method_6cc30c7c,
     &hs_method_ce7ecbb4,
     &hs_create_6e26cef1,
     &hs_create_0296a871,
+    &hs_method_e4fdb131,
     &hs_method_1ba4d6ae,
     &hs_method_a19b79e6,
     &hs_get_d95ffe4f,
@@ -2851701,10 +2863088,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_b950cbb4,
     &hs_get_79ca56d4,
     &hs_set_79ca56d4,
+    &hs_method_546e53ab,
     &hs_method_b8245954,
     &hs_method_3bfa5108,
     &hs_create_81261b90,
     &hs_create_e234d095,
+    &hs_method_bbe42594,
     &hs_method_9a307821,
     &hs_method_4e69de95,
     &hs_destroy_0c00f18a,
@@ -2851713,11 +2863102,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_5a65fea9,
     &hs_get_99f2ba6e,
     &hs_set_99f2ba6e,
+    &hs_method_a65ddb3d,
     &hs_method_e76f96d1,
     &hs_method_e1a63be0,
     &hs_method_ccc64c04,
     &hs_create_f95af0f6,
     &hs_create_c500cb0a,
+    &hs_method_95705e84,
     &hs_method_1f1a71aa,
     &hs_method_63cc3c1c,
     &hs_get_8b9b516f,
@@ -2852185,7 +2863576,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_27f450a7,
     &hs_get_9b4fae13,
     &hs_set_9b4fae13,
+    &hs_method_2f542b5c,
     &hs_method_0bdfa615,
+    &hs_method_781a01b7,
     &hs_method_3d10f3fd,
     &hs_get_9c0e299a,
     &hs_set_9c0e299a,
@@ -2852401,6 +2863794,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_04fae5cd,
     &hs_get_871d5c42,
     &hs_set_871d5c42,
+    &hs_method_1250ea8e,
     &hs_method_9e697e0f,
     &hs_method_51c77a00,
     &hs_method_6bdf3f33,
@@ -2852408,6 +2863802,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5dbd1eca,
     &hs_create_a6c9e6db,
     &hs_create_d2bfe20f,
+    &hs_method_6ecf0322,
     &hs_method_cd5729f4,
     &hs_method_44ca8754,
     &hs_get_5c418fcc,
@@ -2852610,6 +2864005,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_aa2c598f,
     &hs_get_81f6423d,
     &hs_set_81f6423d,
+    &hs_method_c4f5f408,
     &hs_method_66e1106b,
     &hs_method_36da3367,
     &hs_method_a4dd67f7,
@@ -2852620,6 +2864016,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_4a0bd158,
     &hs_create_d91e0dac,
     &hs_method_1944d7b4,
+    &hs_method_a22830b6,
     &hs_method_f9e720d4,
     &hs_method_d611b343,
     &hs_method_8ab2e6e1,
@@ -2855794,6 +2867191,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_7ce159f5,
     &hs_get_c8383fb6,
     &hs_set_c8383fb6,
+    &hs_method_124273dd,
     &hs_method_bb04a90a,
     &hs_method_11e0eafb,
     &hs_method_c473192c,
@@ -2855801,6 +2867199,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_a28ff051,
     &hs_create_17cc2620,
     &hs_create_8c6dffad,
+    &hs_method_6efad2c6,
     &hs_method_ead46699,
     &hs_method_13410659,
     &hs_method_ca531741,
@@ -2856480,6 +2867879,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_set_6ecc770e,
     &hs_get_3525bdd4,
     &hs_set_3525bdd4,
+    &hs_method_d077678e,
     &hs_method_7d4124ec,
     &hs_method_8a36592c,
     &hs_method_c6af4d0c,
@@ -2856489,6 +2867889,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f62bb3fc,
     &hs_create_8302239f,
     &hs_create_a7e6abd2,
+    &hs_method_19dd2dcd,
     &hs_method_7e3282dd,
     &hs_method_0ca7db71,
     &hs_get_7c435783,

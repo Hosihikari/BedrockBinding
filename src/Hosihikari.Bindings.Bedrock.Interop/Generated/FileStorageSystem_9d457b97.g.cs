@@ -38,9 +38,9 @@ public sealed unsafe partial class FileStorageSystem : global::System.IDisposabl
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _getData(nint output, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public void _setData(string data, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path)
     {
@@ -83,9 +83,9 @@ public sealed unsafe partial class FileStorageSystem : global::System.IDisposabl
         return new FileStorageSystem((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool getData(nint output, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk915657_Address

@@ -109,9 +109,9 @@ public sealed unsafe partial class FileSecureStorage : global::System.IDisposabl
         return (nint)NativeMethods.TablePtr->C1.hs_method_2c38ba3f((void*)__hosihikari_shim_handle, (void*)settingsPath.Handle, (void*)baseSettingsPath.Handle, (void*)(sskSystem?.Handle ?? 0), (void*)userDataPath.Handle, (void*)(storage?.Handle ?? 0));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _get(nint key, nint outValue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public bool _remove(string key)
     {
@@ -199,9 +199,25 @@ public sealed unsafe partial class FileSecureStorage : global::System.IDisposabl
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
-    public void _initalizeSymmetricEncyrption(nint symmetricKey, bool force) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+    public string _initalizeSymmetricEncyrption(string symmetricKey, bool force)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(symmetricKey);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(symmetricKey, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_441edd1d((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, force);
+            return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+        }
+    }
 
     public void _rebuildSecureStorageFile()
     {
@@ -274,9 +290,9 @@ public sealed unsafe partial class FileSecureStorage : global::System.IDisposabl
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool get(nint key, nint outValue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2b701a_Address

@@ -40,27 +40,27 @@ public sealed unsafe partial class AsyncOperationBase : global::System.IDisposab
 
     public bool __quit(global::Hosihikari.Bindings.Abi.SharedHandle? arg0, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord arg1)
     {
-        return NativeMethods.TablePtr->C2.hs_method_ee243a6e((void*)__hosihikari_shim_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_ee243a6e((void*)__hosihikari_shim_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle) != 0;
     }
 
     public bool _isAsync()
     {
-        return NativeMethods.TablePtr->C2.hs_method_2c6fbb6b((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_2c6fbb6b((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _isComplete()
     {
-        return NativeMethods.TablePtr->C2.hs_method_5a921a60((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_5a921a60((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _tick_f9182268(global::Hosihikari.Bindings.Abi.SharedHandle? databasePtr, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord record)
     {
-        return NativeMethods.TablePtr->C2.hs_method_f9182268((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_f9182268((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
     }
 
     public static AsyncOperationBase Create(global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.AsyncOperationBase arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_1512ac58((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_1512ac58((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,44 +71,44 @@ public sealed unsafe partial class AsyncOperationBase : global::System.IDisposab
 
     public bool _init(global::Hosihikari.Bindings.Abi.SharedHandle? databasePtr, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord record)
     {
-        return NativeMethods.TablePtr->C2.hs_method_271a0cfb((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_271a0cfb((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
     }
 
     public bool _quit(global::Hosihikari.Bindings.Abi.SharedHandle? arg0, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord arg1)
     {
-        return NativeMethods.TablePtr->C2.hs_method_2d27bb70((void*)__hosihikari_shim_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_2d27bb70((void*)__hosihikari_shim_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle) != 0;
     }
 
     public bool _tick_2202acb5(global::Hosihikari.Bindings.Abi.SharedHandle? arg0, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord arg1)
     {
-        return NativeMethods.TablePtr->C2.hs_method_2202acb5((void*)__hosihikari_shim_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_2202acb5((void*)__hosihikari_shim_handle, arg0?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)arg1.Handle) != 0;
     }
 
     public bool isAsync()
     {
-        return NativeMethods.TablePtr->C2.hs_method_a1860639((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_a1860639((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool isComplete()
     {
-        return NativeMethods.TablePtr->C2.hs_method_cf3c39bb((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_cf3c39bb((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool mErrored
     {
-        get => NativeMethods.TablePtr->C2.hs_get_4a5bc357((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C2.hs_set_4a5bc357((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_4a5bc357((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C3.hs_set_4a5bc357((void*)__hosihikari_shim_handle, value);
     }
 
     public int mInternalState
     {
-        get => NativeMethods.TablePtr->C2.hs_get_ed2d08a6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_ed2d08a6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ed2d08a6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ed2d08a6((void*)__hosihikari_shim_handle, value);
     }
 
     public bool tick(global::Hosihikari.Bindings.Abi.SharedHandle? databasePtr, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord record)
     {
-        return NativeMethods.TablePtr->C2.hs_method_373ad30f((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_373ad30f((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
     }
 
 
@@ -118,7 +118,7 @@ public sealed unsafe partial class AsyncOperationBase : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_3a7223c7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_3a7223c7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

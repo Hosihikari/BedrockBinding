@@ -81,9 +81,9 @@ public sealed unsafe partial class PackInstance : global::System.IDisposable
     public static PackInstance Create(nint pack, int subpackIndex, bool isDependent, nint packSettings) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<std::shared_ptr<ResourcePack>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool getResource(nint resourceName, nint resourceStream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPack_Address

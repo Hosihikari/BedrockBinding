@@ -149,9 +149,9 @@ public sealed unsafe partial class ExpressionNode : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_7cb3e452((void*)__hosihikari_shim_handle, sideEffectsReturnZero);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool getTreeString(nint dest, bool sideEffectsReturnZero) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public bool isValid()
     {

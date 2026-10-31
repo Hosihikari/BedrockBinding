@@ -168,9 +168,9 @@ public sealed unsafe partial class OpenSSLInterface : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: multiple mutable string references are not supported.", false)]
     public bool _generateKeyPair(nint privateKey, nint publicKey) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: multiple mutable string references are not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_std__basic_string_char___std__error_code_ _parsePrivateKey(string privateKey, int format)
     {
@@ -428,9 +428,9 @@ public sealed unsafe partial class OpenSSLInterface : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: multiple mutable string references are not supported.", false)]
     public bool generateKeyPair(nint privateKey, nint publicKey) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: multiple mutable string references are not supported.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_Crypto__Asymmetric__System__std__error_code_ inferSystemFromPublicKey(string publicKey)
     {

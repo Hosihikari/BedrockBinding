@@ -325,9 +325,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
     public static nint MOON_BRIGHTNESS_PER_PHASE() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'const float (&)[]' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void _addActorUnloadedChunkTransferToQueue(nint fromChunkPos, nint toChunkPos, nint dimId, nint actorStorageKey, nint entityTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public void _completeEntityTransfer(nint entity) =>

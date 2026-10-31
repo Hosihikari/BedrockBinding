@@ -48,7 +48,7 @@ public sealed unsafe partial class StandingVehiclePostPositionPassengerSystem : 
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_06503a2d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_06503a2d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

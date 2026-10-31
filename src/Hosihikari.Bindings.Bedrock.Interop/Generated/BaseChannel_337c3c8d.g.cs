@@ -66,9 +66,9 @@ public sealed unsafe partial class BaseChannel : global::System.IDisposable
     public void _SetFirstPacketSentCallback(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _SetLocalContent(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public int _SetOption(int type, int opt, int value)
     {
@@ -80,9 +80,9 @@ public sealed unsafe partial class BaseChannel : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_6d4de666((void*)__hosihikari_shim_handle, enabled) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _SetRemoteContent(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public bool _SetRtpTransport(nint rtp_transport)
     {
@@ -249,13 +249,13 @@ public sealed unsafe partial class BaseChannel : global::System.IDisposable
     public void SetFirstPacketSentCallback(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool SetLocalContent(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool SetLocalContent_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public int SetOption(int type, int opt, int value)
     {
@@ -267,13 +267,13 @@ public sealed unsafe partial class BaseChannel : global::System.IDisposable
         return NativeMethods.TablePtr->C4.hs_method_7c72dd24((void*)__hosihikari_shim_handle, enabled) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool SetRemoteContent(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool SetRemoteContent_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public bool SetRtpTransport(nint rtp_transport)
     {
@@ -295,9 +295,9 @@ public sealed unsafe partial class BaseChannel : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_7782d19b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool UpdateRemoteStreams_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public nint local_streams()
     {

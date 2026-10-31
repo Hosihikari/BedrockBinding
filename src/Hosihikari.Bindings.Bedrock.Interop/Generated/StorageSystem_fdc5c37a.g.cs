@@ -38,9 +38,9 @@ public sealed unsafe partial class StorageSystem : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool _getData(nint output, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public void _setData(string data, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path)
     {
@@ -72,9 +72,9 @@ public sealed unsafe partial class StorageSystem : global::System.IDisposable
         return new StorageSystem((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: a mutable string reference requires a void return.", false)]
     public bool getData(nint output, nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: a mutable string reference requires a void return.");
 
     public void setData(string data, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path)
     {
