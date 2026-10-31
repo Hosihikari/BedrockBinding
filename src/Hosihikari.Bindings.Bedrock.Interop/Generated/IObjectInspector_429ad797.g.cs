@@ -49,29 +49,34 @@ public sealed unsafe partial class IObjectInspector : global::System.IDisposable
         return new IObjectInspector((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint getDataBufferByteLength(nint handle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint getDataBufferByteLength(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_2ed75620((void*)__hosihikari_shim_handle, (void*)handle.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDataBufferBytes(nint handle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getDataBufferBytes(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_ab55e96a((void*)__hosihikari_shim_handle, (void*)handle.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint getDataBufferLength(nint handle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint getDataBufferLength(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_9cc4e35b((void*)__hosihikari_shim_handle, (void*)handle.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ResultAny' is not supported.", false)]
     public nint getPropertyValue(nint handle, nint name, nint expectedType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ResultAny' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasBooleanPropertyValue(nint handle, nint name, bool expectedValue) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasBooleanPropertyValue(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handle, nint name, bool expectedValue)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_d6395e23((void*)__hosihikari_shim_handle, (void*)handle.Handle, (void*)name, expectedValue) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isSameObject(nint handleA, nint handleB) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isSameObject(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handleA, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle handleB)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_83422853((void*)__hosihikari_shim_handle, (void*)handleA.Handle, (void*)handleB.Handle) != 0;
+    }
 
 
     public void Dispose()

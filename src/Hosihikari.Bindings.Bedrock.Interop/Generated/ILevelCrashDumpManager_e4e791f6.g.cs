@@ -49,9 +49,10 @@ public sealed unsafe partial class ILevelCrashDumpManager : global::System.IDisp
         return new ILevelCrashDumpManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setCrashDumpLogStringID(nint crashDumpLogStringID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setCrashDumpLogStringID(ushort crashDumpLogStringID)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5a55768c((void*)__hosihikari_shim_handle, crashDumpLogStringID);
+    }
 
 
     public void Dispose()

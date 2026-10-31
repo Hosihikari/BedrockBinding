@@ -53,9 +53,9 @@ public sealed unsafe partial class FrameTransformerHost : global::System.IDispos
         return new FrameTransformerHost((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::FrameTransformerInterface>' is not a known bindable declaration.", false)]
     public void SetFrameTransformer(nint a1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::FrameTransformerInterface>' is not a known bindable declaration.");
 
 
     public void Dispose()

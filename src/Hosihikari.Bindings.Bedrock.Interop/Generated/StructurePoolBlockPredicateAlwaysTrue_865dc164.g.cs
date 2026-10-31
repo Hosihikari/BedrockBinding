@@ -40,22 +40,22 @@ public sealed unsafe partial class StructurePoolBlockPredicateAlwaysTrue : globa
 
     public void _appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
-        NativeMethods.TablePtr->C3.hs_method_978fed10((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+        NativeMethods.TablePtr->C4.hs_method_978fed10((void*)__hosihikari_shim_handle, (void*)hash.Handle);
     }
 
     public int _getType()
     {
-        return NativeMethods.TablePtr->C3.hs_method_59bcb771((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_59bcb771((void*)__hosihikari_shim_handle);
     }
 
     public bool _test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return NativeMethods.TablePtr->C3.hs_method_bc0058b5((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_bc0058b5((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)random.Handle) != 0;
     }
 
     public bool _test(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg2)
     {
-        return NativeMethods.TablePtr->C3.hs_method_ba2800c9((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_ba2800c9((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -64,7 +64,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateAlwaysTrue : globa
 
     public static StructurePoolBlockPredicateAlwaysTrue Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockPredicateAlwaysTrue arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_f28dc272((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_f28dc272((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,22 +75,22 @@ public sealed unsafe partial class StructurePoolBlockPredicateAlwaysTrue : globa
 
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
-        NativeMethods.TablePtr->C3.hs_method_e2fba31f((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+        NativeMethods.TablePtr->C4.hs_method_e2fba31f((void*)__hosihikari_shim_handle, (void*)hash.Handle);
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->C3.hs_method_57adbbf8((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_57adbbf8((void*)__hosihikari_shim_handle);
     }
 
     public bool test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return NativeMethods.TablePtr->C3.hs_method_1cb23a00((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_1cb23a00((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)random.Handle) != 0;
     }
 
     public bool test(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg2)
     {
-        return NativeMethods.TablePtr->C3.hs_method_15ea5af7((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_15ea5af7((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
 
@@ -100,7 +100,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateAlwaysTrue : globa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_865dc164((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_865dc164((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

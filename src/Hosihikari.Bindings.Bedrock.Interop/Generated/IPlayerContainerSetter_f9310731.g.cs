@@ -49,17 +49,20 @@ public sealed unsafe partial class IPlayerContainerSetter : global::System.IDisp
         return new IPlayerContainerSetter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setArmor(int slot, nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setArmor(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        NativeMethods.TablePtr->C1.hs_method_dbec0d1c((void*)__hosihikari_shim_handle, slot, (void*)item.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setOffhandSlot(nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setOffhandSlot(global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        NativeMethods.TablePtr->C1.hs_method_82b25b0f((void*)__hosihikari_shim_handle, (void*)item.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPlayerUIItem(int slot, nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPlayerUIItem(int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
+    {
+        NativeMethods.TablePtr->C1.hs_method_fd1e76ce((void*)__hosihikari_shim_handle, slot, (void*)item.Handle);
+    }
 
 
     public void Dispose()

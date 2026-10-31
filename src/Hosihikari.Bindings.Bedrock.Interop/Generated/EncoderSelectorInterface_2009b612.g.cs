@@ -49,17 +49,18 @@ public sealed unsafe partial class EncoderSelectorInterface : global::System.IDi
         return new EncoderSelectorInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'webrtc::SdpVideoFormat' is not supported.", false)]
     public nint OnAvailableBitrate(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'webrtc::SdpVideoFormat' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnCurrentEncoder(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnCurrentEncoder(nint arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_a8d118ac((void*)__hosihikari_shim_handle, (void*)arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'webrtc::SdpVideoFormat' is not supported.", false)]
     public nint OnEncoderBroken() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'webrtc::SdpVideoFormat' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'webrtc::SdpVideoFormat' is not supported.", false)]
     public nint OnResolutionChange(nint arg0) =>

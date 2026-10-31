@@ -58,9 +58,10 @@ public sealed unsafe partial class AudioObserver : global::System.IDisposable
         return new AudioObserver((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnSetVolume(double volume) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnSetVolume(double volume)
+    {
+        NativeMethods.TablePtr->C4.hs_method_83ec8839((void*)__hosihikari_shim_handle, volume);
+    }
 
 
     public void Dispose()

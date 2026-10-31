@@ -38,9 +38,10 @@ public sealed unsafe partial class SetStreamsObserver : global::System.IDisposab
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnSetStreams() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnSetStreams()
+    {
+        NativeMethods.TablePtr->C4.hs_method_66dd33e5((void*)__hosihikari_shim_handle);
+    }
 
     public static SetStreamsObserver Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RtpSenderBase_Nested.SetStreamsObserver arg0)
     {

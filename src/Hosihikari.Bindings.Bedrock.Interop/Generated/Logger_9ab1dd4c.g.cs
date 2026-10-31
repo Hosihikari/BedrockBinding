@@ -40,17 +40,17 @@ public sealed unsafe partial class Logger : global::System.IDisposable
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger arg0)
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_12bae36a((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_12bae36a((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_8b6b2372((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_8b6b2372((void*)__hosihikari_shim_handle);
     }
 
     public static Logger Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_4ec7f23e();
+        var handle = NativeMethods.TablePtr->C3.hs_create_4ec7f23e();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,7 @@ public sealed unsafe partial class Logger : global::System.IDisposable
 
     public static Logger Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_66fd613f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_66fd613f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -93,7 +93,7 @@ public sealed unsafe partial class Logger : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(msg, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger((nint)NativeMethods.TablePtr->C2.hs_method_c9e29b6f((void*)__hosihikari_shim_handle, res, __hs_stringData1, (nuint)__hs_stringByteCount1), false);
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger((nint)NativeMethods.TablePtr->C3.hs_method_c9e29b6f((void*)__hosihikari_shim_handle, res, __hs_stringData1, (nuint)__hs_stringByteCount1), false);
         }
     }
 
@@ -104,53 +104,53 @@ public sealed unsafe partial class Logger : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2f69a4_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_3f2710ed((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3f2710ed((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk3c26f9_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_d26af342((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d26af342((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk9fdd72_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_06836a7a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_06836a7a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka0317f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_a55c4efa((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_a55c4efa((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka1ba32_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_18a56928((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_18a56928((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkb27419_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_f15c4305((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_f15c4305((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbcb18b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_961c65ca((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_961c65ca((void*)__hosihikari_shim_handle);
     }
 
     public void merge(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger log)
     {
-        NativeMethods.TablePtr->C2.hs_method_0ba89ecf((void*)__hosihikari_shim_handle, (void*)log.Handle);
+        NativeMethods.TablePtr->C3.hs_method_0ba89ecf((void*)__hosihikari_shim_handle, (void*)log.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger((nint)NativeMethods.TablePtr->C2.hs_method_08ee7537((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger((nint)NativeMethods.TablePtr->C3.hs_method_08ee7537((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -160,7 +160,7 @@ public sealed unsafe partial class Logger : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_9ab1dd4c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_9ab1dd4c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

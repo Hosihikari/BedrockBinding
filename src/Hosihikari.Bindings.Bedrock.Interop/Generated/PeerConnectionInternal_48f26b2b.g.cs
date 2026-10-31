@@ -43,45 +43,91 @@ public sealed unsafe partial class PeerConnectionInternal : global::System.IDisp
         NativeMethods.TablePtr->C4.hs_method_1699ba19((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'webrtc::AudioDeviceModule::Stats' is not supported.", false)]
     public nint GetAudioDeviceStats() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'webrtc::AudioDeviceModule::Stats' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint GetCallStats() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.Call_Nested.Stats GetCallStats()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.Call_Nested.Stats((nint)NativeMethods.TablePtr->C4.hs_method_b7cc00d0((void*)__hosihikari_shim_handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'webrtc::DataChannelStats' is not supported.", false)]
     public nint GetDataChannelStats() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'webrtc::DataChannelStats' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool GetLocalCertificate(nint transport_name, nint certificate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool GetLocalCertificate(string transport_name, nint certificate)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(transport_name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(transport_name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C4.hs_method_d108a21f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)certificate) != 0;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'webrtc::CandidateStats' is not supported.", false)]
     public nint GetPooledCandidateStats() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'webrtc::CandidateStats' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'webrtc::SSLCertChain' is not a known bindable declaration.", false)]
     public nint GetRemoteSSLCertChain(nint transport_name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'webrtc::SSLCertChain' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool GetSslRole(nint content_name, nint role) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool GetSslRole(string content_name, nint role)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(content_name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(content_name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C4.hs_method_283943e8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)role) != 0;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'webrtc::scoped_refptr<webrtc::RtpTransceiverProxyWithInternal<webrtc::RtpTransceiver>>' is not supported.", false)]
     public nint GetTransceiversInternal() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'webrtc::scoped_refptr<webrtc::RtpTransceiverProxyWithInternal<webrtc::RtpTransceiver>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, webrtc::TransportStats>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetTransportStatsByNames(nint transport_names) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, webrtc::TransportStats>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool IceRestartPending(nint content_name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool IceRestartPending(string content_name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(content_name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(content_name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C4.hs_method_49df3514((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
 
     public void NoteDataAddedEvent()
     {
@@ -104,21 +150,27 @@ public sealed unsafe partial class PeerConnectionInternal : global::System.IDisp
         return new PeerConnectionInternal((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool initial_offerer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool initial_offerer()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_8c671585((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint network_thread() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint network_thread()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_c35ed65d((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint sctp_transport_name() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string? sctp_transport_name()
+    {
+        var __hs_hasValue = false;
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_9f946cda((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint worker_thread() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint worker_thread()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_6b73d39a((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

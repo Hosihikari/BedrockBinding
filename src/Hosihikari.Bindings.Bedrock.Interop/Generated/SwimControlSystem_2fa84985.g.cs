@@ -44,7 +44,7 @@ public sealed unsafe partial class SwimControlSystem : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_2fa84985((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_2fa84985((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

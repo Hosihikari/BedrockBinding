@@ -319,9 +319,10 @@ public sealed unsafe partial class MeleeAttackBaseGoal : global::System.IDisposa
         NativeMethods.TablePtr->C2.hs_method_8348b3ef((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tick()
+    {
+        NativeMethods.TablePtr->C2.hs_method_e1c5ad7f((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

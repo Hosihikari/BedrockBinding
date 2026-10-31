@@ -53,13 +53,15 @@ public sealed unsafe partial class IFileChunkUploader : global::System.IDisposab
         return new IFileChunkUploader((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canCancelUpload(nint file) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canCancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_8d71ec07((void*)__hosihikari_shim_handle, (void*)file.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void cancelUpload(nint file) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void cancelUpload(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
+    {
+        NativeMethods.TablePtr->C1.hs_method_60a052b4((void*)__hosihikari_shim_handle, (void*)file.Handle);
+    }
 
     public void confirmChunkReceived(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo chunk)
     {
@@ -71,21 +73,23 @@ public sealed unsafe partial class IFileChunkUploader : global::System.IDisposab
         return new global::Hosihikari.Bindings.Bedrock.Interop.FileChunkInfo((nint)NativeMethods.TablePtr->C1.hs_method_1257b67f((void*)__hosihikari_shim_handle, (void*)file.Handle, chunkID));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getInitErrorCode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getInitErrorCode()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_fdfb662c((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void getServerMissingChunks(nint file, nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public float getUploadProgress(nint file) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public float getUploadProgress(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a19e1769((void*)__hosihikari_shim_handle, (void*)file.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void initFileUploader(nint uploadId, nint file, int chunkSize, nint uploadOptions, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public void uploadChunk(nint file, nint chunk, nint data, nint onCompleteCallback) =>

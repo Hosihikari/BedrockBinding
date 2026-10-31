@@ -49,9 +49,9 @@ public sealed unsafe partial class IDependencyLoader : global::System.IDisposabl
         return new IDependencyLoader((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.", false)]
     public nint onLoadScript(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'Scripting::ScriptData' is not supported.");
 
 
     public void Dispose()

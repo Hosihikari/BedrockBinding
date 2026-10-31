@@ -40,12 +40,12 @@ public sealed unsafe partial class UpgradeLogEntry : global::System.IDisposable
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger_Nested.UpgradeLogEntry arg0)
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_2ff358ee((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_2ff358ee((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public static UpgradeLogEntry Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_60917a8b();
+        var handle = NativeMethods.TablePtr->C3.hs_create_60917a8b();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class UpgradeLogEntry : global::System.IDisposable
 
     public static UpgradeLogEntry Create(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger_Nested.UpgradeLogEntry arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_f3ffe6ca((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_f3ffe6ca((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,30 +68,30 @@ public sealed unsafe partial class UpgradeLogEntry : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk4f5fdc_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_4589a71b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_4589a71b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk615a04_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_42429d7e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_42429d7e((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk89974d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_98bc9fba((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_98bc9fba((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkecd095_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_77c77520((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_77c77520((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger_Nested.UpgradeLogEntry operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger_Nested.UpgradeLogEntry arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger_Nested.UpgradeLogEntry((nint)NativeMethods.TablePtr->C2.hs_method_bbf02a6f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Puv.Logger_Nested.UpgradeLogEntry((nint)NativeMethods.TablePtr->C3.hs_method_bbf02a6f((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -100,7 +100,7 @@ public sealed unsafe partial class UpgradeLogEntry : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_a60c9265((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_a60c9265((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

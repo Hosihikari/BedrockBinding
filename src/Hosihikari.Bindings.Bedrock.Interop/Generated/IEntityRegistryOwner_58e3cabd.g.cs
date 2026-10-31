@@ -55,13 +55,17 @@ public sealed unsafe partial class IEntityRegistryOwner : global::System.IDispos
         return new IEntityRegistryOwner((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEntityRegistry_88e9fbad() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_88e9fbad()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_88e9fbad((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEntityRegistry_4c889bd0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_4c889bd0()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_4c889bd0((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
 
     public void Dispose()

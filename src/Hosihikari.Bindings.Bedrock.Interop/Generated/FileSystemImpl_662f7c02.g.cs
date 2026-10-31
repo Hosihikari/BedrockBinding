@@ -203,7 +203,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
     public nint __writeOperation(nint arg0, nint result, nint observerCallOrNull, ulong numBytesWritten) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _copyTimeAndAccessRights(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView sourceFilePath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetFilePath)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _copyTimeAndAccessRights_ad250ed5(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView sourceFilePath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetFilePath)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_ad250ed5((void*)__hosihikari_shim_handle, (void*)sourceFilePath.Handle, (void*)targetFilePath.Handle));
     }
@@ -228,7 +228,7 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_0ca7636d((void*)__hosihikari_shim_handle);
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getLastModificationTime(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView entryPath, nint lastModificationTime)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getLastModificationTime_15173b20(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView entryPath, nint lastModificationTime)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_15173b20((void*)__hosihikari_shim_handle, (void*)entryPath.Handle, (void*)lastModificationTime));
     }
@@ -341,9 +341,10 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _copyTimeAndAccessRights(nint sourceEntryPath, nint targetEntryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _copyTimeAndAccessRights_ed8f6dab(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView sourceEntryPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetEntryPath)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_ed8f6dab((void*)__hosihikari_shim_handle, (void*)sourceEntryPath.Handle, (void*)targetEntryPath.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _createDirectoryRecursively(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView directoryPath)
     {
@@ -360,9 +361,10 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_1ad2379d((void*)__hosihikari_shim_handle, (void*)sourceDirectoryPath.Handle, (void*)targetDirectoryPath.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _createOneDirectory(nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _createOneDirectory(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView directoryPath)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_b208aabe((void*)__hosihikari_shim_handle, (void*)directoryPath.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _createOneDirectoryIfNotExisting(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView directoryPath)
     {
@@ -379,13 +381,15 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_beb3f829((void*)__hosihikari_shim_handle, (void*)directoryPath.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _deleteEmptyDirectory(nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _deleteEmptyDirectory(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView directoryPath)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_d10a299b((void*)__hosihikari_shim_handle, (void*)directoryPath.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _deleteFile(nint path) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _deleteFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView path)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_1d35ee75((void*)__hosihikari_shim_handle, (void*)path.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _deleteFilePriority(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath)
     {
@@ -397,22 +401,25 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_c63e6dbc((void*)__hosihikari_shim_handle, (void*)directoryPath.Handle, deleteFileType));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool _directoryExists(nint directoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool _directoryExists(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView directoryPath)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_decbb49c((void*)__hosihikari_shim_handle, (void*)directoryPath.Handle) != 0;
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _endTransaction()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_003068d3((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool _fileExists(nint filePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool _fileExists(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_66f0fe3e((void*)__hosihikari_shim_handle, (void*)filePath.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool _fileOrDirectoryExists(nint entryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool _fileOrDirectoryExists(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView entryPath)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a971a46d((void*)__hosihikari_shim_handle, (void*)entryPath.Handle) != 0;
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _flatFileDeleteFileOrDirectory(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView fileOrDirectoryPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView manifestPath, bool directoryDeleteEnabled, bool deleteRecursively)
     {
@@ -456,22 +463,25 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_94e1d774((void*)__hosihikari_shim_handle, (void*)totalSize, (void*)directoryPath.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getEntryType(nint entryPath, nint fileTypeOut) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getEntryType(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView entryPath, nint fileTypeOut)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_d06cb13b((void*)__hosihikari_shim_handle, (void*)entryPath.Handle, (void*)fileTypeOut));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getFileOrDirectorySize(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView entryName, nint pFileSizeOut)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_a3637794((void*)__hosihikari_shim_handle, (void*)entryName.Handle, (void*)pFileSizeOut));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getFileSize(nint filePath, nint pFileSizeOut) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getFileSize(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath, nint pFileSizeOut)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_170c9002((void*)__hosihikari_shim_handle, (void*)filePath.Handle, (void*)pFileSizeOut));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getLastModificationTime(nint filePath, nint pModificationTime) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _getLastModificationTime_3fbe1e68(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath, nint pModificationTime)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_3fbe1e68((void*)__hosihikari_shim_handle, (void*)filePath.Handle, (void*)pModificationTime));
+    }
 
     public void _initializeInternal()
     {
@@ -483,13 +493,14 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_6d562da3((void*)__hosihikari_shim_handle, (void*)directoryPath.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'Core::Result' is not supported.", false)]
     public nint _iterateOverDirectory(nint directoryPath, nint flags, nint fx) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'Core::Result' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _openFile(nint uptFileOut, nint filename, nint fileOpenMode, nint bufferingMode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _openFile(nint uptFileOut, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filename, global::Hosihikari.Bindings.Bedrock.Interop.Core.FileOpenMode fileOpenMode, int bufferingMode)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_b8c121b8((void*)__hosihikari_shim_handle, (void*)uptFileOut, (void*)filename.Handle, (void*)fileOpenMode.Handle, bufferingMode));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: callback return type 'void *' is not supported.", false)]
     public nint _readFileData(nint filePath, nint data, nint bytesRead) =>
@@ -504,13 +515,15 @@ public sealed unsafe partial class FileSystemImpl : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_0d90bef5((void*)__hosihikari_shim_handle, (void*)arg0.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _renameDirectory(nint sourceDirectoryPath, nint targetDirectoryPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _renameDirectory(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView sourceDirectoryPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetDirectoryPath)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_d91ed6b1((void*)__hosihikari_shim_handle, (void*)sourceDirectoryPath.Handle, (void*)targetDirectoryPath.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _renameFile(nint sourceFilePath, nint targetFilePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _renameFile(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView sourceFilePath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView targetFilePath)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_91ba074f((void*)__hosihikari_shim_handle, (void*)sourceFilePath.Handle, (void*)targetFilePath.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _writeFileData(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath, nint data, ulong size)
     {

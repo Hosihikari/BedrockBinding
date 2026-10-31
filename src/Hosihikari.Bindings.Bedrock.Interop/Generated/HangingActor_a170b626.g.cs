@@ -681,22 +681,25 @@ public sealed unsafe partial class HangingActor : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_1e3bf453((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void dropItem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void dropItem()
+    {
+        NativeMethods.TablePtr->C1.hs_method_c245c80d((void*)__hosihikari_shim_handle);
+    }
 
     public float getBrightness(float a, global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region)
     {
         return NativeMethods.TablePtr->C1.hs_method_b9511a00((void*)__hosihikari_shim_handle, a, (void*)region.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getHeight() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getHeight()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_3069c296((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getWidth() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getWidth()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2dce3837((void*)__hosihikari_shim_handle);
+    }
 
     public bool isInvulnerableTo(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
     {

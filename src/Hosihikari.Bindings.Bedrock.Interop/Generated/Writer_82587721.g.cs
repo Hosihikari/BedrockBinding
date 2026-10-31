@@ -40,7 +40,7 @@ public sealed unsafe partial class Writer : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_b3e85d5c((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_b3e85d5c((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -49,7 +49,7 @@ public sealed unsafe partial class Writer : global::System.IDisposable
 
     public static Writer Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.Writer arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_77119ab8((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_77119ab8((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -58,9 +58,11 @@ public sealed unsafe partial class Writer : global::System.IDisposable
         return new Writer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint write(nint root) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string write(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root)
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_2c2376cf((void*)__hosihikari_shim_handle, (void*)root.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
 
     public void Dispose()
@@ -69,7 +71,7 @@ public sealed unsafe partial class Writer : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_82587721((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_82587721((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

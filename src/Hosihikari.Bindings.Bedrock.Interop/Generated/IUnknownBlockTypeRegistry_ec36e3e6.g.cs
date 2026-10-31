@@ -55,9 +55,10 @@ public sealed unsafe partial class IUnknownBlockTypeRegistry : global::System.ID
         return new IUnknownBlockTypeRegistry((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getUnknownBlock(nint serId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getUnknownBlock(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag serId)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_71cc68a9((void*)__hosihikari_shim_handle, (void*)serId.Handle), false);
+    }
 
 
     public void Dispose()

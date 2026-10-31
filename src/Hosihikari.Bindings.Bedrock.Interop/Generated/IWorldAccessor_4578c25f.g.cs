@@ -49,33 +49,43 @@ public sealed unsafe partial class IWorldAccessor : global::System.IDisposable
         return new IWorldAccessor((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool areChunksFullyLoaded(nint min, int r) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool areChunksFullyLoaded(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos min, int r)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_9495358e((void*)__hosihikari_shim_handle, (void*)min.Handle, r) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint fetchAnyInteractablePlayer(nint searchPos, float maxDist) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? fetchAnyInteractablePlayer(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 searchPos, float maxDist)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_0b247e0a((void*)__hosihikari_shim_handle, (void*)searchPos.Handle, maxDist);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorNoActionTime(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int? getActorNoActionTime(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C1.hs_method_0d6f0f01((void*)__hosihikari_shim_handle, (void*)actor.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getChanceRandom() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.IRandom getChanceRandom()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)NativeMethods.TablePtr->C1.hs_method_843be2dc((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint getChunkTickRange() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint getChunkTickRange()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_87ffa770((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasUntickedNeighborChunk(nint pos, int chunkRadius) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasUntickedNeighborChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, int chunkRadius)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_7d0dcdca((void*)__hosihikari_shim_handle, (void*)pos.Handle, chunkRadius) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void resetActorNoActionTime(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void resetActorNoActionTime(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C1.hs_method_792489b2((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
 
 
     public void Dispose()

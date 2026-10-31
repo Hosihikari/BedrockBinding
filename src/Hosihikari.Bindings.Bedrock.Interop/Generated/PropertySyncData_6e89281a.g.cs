@@ -40,17 +40,17 @@ public sealed unsafe partial class PropertySyncData : global::System.IDisposable
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData arg0)
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_baa2ca0f((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C3.hs_method_baa2ca0f((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C2.hs_method_b24ede6d((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_b24ede6d((void*)__hosihikari_shim_handle);
     }
 
     public static PropertySyncData Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_656f4594();
+        var handle = NativeMethods.TablePtr->C3.hs_create_656f4594();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,7 @@ public sealed unsafe partial class PropertySyncData : global::System.IDisposable
 
     public static PropertySyncData Create(global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_dc166438((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_dc166438((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -73,13 +73,13 @@ public sealed unsafe partial class PropertySyncData : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mFloatEntries_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_c36c9c0a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_c36c9c0a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mIntEntries_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_df841dfd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_df841dfd((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
@@ -88,7 +88,7 @@ public sealed unsafe partial class PropertySyncData : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData((nint)NativeMethods.TablePtr->C2.hs_method_ee0267f0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData((nint)NativeMethods.TablePtr->C3.hs_method_ee0267f0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -98,7 +98,7 @@ public sealed unsafe partial class PropertySyncData : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_6e89281a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_6e89281a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

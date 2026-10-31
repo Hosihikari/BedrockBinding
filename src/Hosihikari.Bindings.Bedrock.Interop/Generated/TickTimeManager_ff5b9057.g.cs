@@ -54,13 +54,17 @@ public sealed unsafe partial class TickTimeManager : global::System.IDisposable
         return new TickTimeManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldClockRegistry_c2df79bc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getWorldClockRegistry_c2df79bc()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C4.hs_method_c2df79bc((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldClockRegistry_d5880b48() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getWorldClockRegistry_d5880b48()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C4.hs_method_d5880b48((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLevelData_Address

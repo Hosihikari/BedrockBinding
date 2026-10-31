@@ -49,17 +49,19 @@ public sealed unsafe partial class IGameModeTimer : global::System.IDisposable
         return new IGameModeTimer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
     public nint getCurrentDestroyDelayTime() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the return type needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public double getDestroyProgressSeconds() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public double getDestroyProgressSeconds()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_96dbe381((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tick()
+    {
+        NativeMethods.TablePtr->C1.hs_method_33aa8870((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

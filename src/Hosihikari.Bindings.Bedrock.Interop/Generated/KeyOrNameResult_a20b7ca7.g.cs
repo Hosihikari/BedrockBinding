@@ -40,12 +40,12 @@ public sealed unsafe partial class KeyOrNameResult : global::System.IDisposable
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_bebf0c6c((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_bebf0c6c((void*)__hosihikari_shim_handle);
     }
 
     public static KeyOrNameResult Create(global::Hosihikari.Bindings.Bedrock.Interop.KeyOrNameResult arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_a982a095((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_a982a095((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,13 +57,13 @@ public sealed unsafe partial class KeyOrNameResult : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mString_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_b975ce8f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_b975ce8f((void*)__hosihikari_shim_handle);
     }
 
     public int mType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_c0378541((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_c0378541((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_c0378541((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_c0378541((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -73,7 +73,7 @@ public sealed unsafe partial class KeyOrNameResult : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_a20b7ca7((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_a20b7ca7((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

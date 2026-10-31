@@ -47,9 +47,10 @@ public sealed unsafe partial class DtmfProviderInterface : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool CanInsertDtmf() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool CanInsertDtmf()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_1d0dd8c2((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public static DtmfProviderInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.DtmfProviderInterface arg0)
     {
@@ -62,9 +63,10 @@ public sealed unsafe partial class DtmfProviderInterface : global::System.IDispo
         return new DtmfProviderInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool InsertDtmf(int code, int duration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool InsertDtmf(int code, int duration)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_a972b186((void*)__hosihikari_shim_handle, code, duration) != 0;
+    }
 
 
     public void Dispose()

@@ -49,49 +49,56 @@ public sealed unsafe partial class DeferredSubscriptionHub : global::System.IDis
         return new DeferredSubscriptionHub((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void _enqueue(nint fn, nint at, nint group) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public void _join(nint subscription) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void clear() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void clear()
+    {
+        NativeMethods.TablePtr->C0.hs_method_934e1a05((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool empty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool empty()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_f51492ea((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong erase(nint subscription) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong erase(nint subscription)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a3e20edc((void*)__hosihikari_shim_handle, (void*)subscription);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void flushPendingEvents() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void flushPendingEvents()
+    {
+        NativeMethods.TablePtr->C0.hs_method_dc6cd11e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getHubType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getHubType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_bd66c58a((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Bedrock::PubSub::DeferredSubscriptionHub' has no accessible destructor.", false)]
     public static nint makePriorityHub() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Bedrock::PubSub::DeferredSubscriptionHub' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong runDeferredEvents(ulong maxToRun) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong runDeferredEvents(ulong maxToRun)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_4755ca99((void*)__hosihikari_shim_handle, maxToRun);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public ulong runDeferredEventsForDuration(nint msec) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong size() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong size()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_781a92ca((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

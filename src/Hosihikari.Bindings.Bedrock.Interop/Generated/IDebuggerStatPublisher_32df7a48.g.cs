@@ -49,13 +49,14 @@ public sealed unsafe partial class IDebuggerStatPublisher : global::System.IDisp
         return new IDebuggerStatPublisher((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isStatPublisherEnabled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isStatPublisherEnabled()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_9d8f215a((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'DebuggerStat' is not supported.", false)]
     public void publishStats(ulong collectedTick, nint stats) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'DebuggerStat' is not supported.");
 
 
     public void Dispose()

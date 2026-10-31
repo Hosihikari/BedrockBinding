@@ -43,9 +43,10 @@ public sealed unsafe partial class DataChannelInterface : global::System.IDispos
         NativeMethods.TablePtr->C4.hs_method_911e56ab((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void Close() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void Close()
+    {
+        NativeMethods.TablePtr->C4.hs_method_b71f21db((void*)__hosihikari_shim_handle);
+    }
 
     public static DataChannelInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.DataChannelInterface arg0)
     {
@@ -63,9 +64,10 @@ public sealed unsafe partial class DataChannelInterface : global::System.IDispos
         return NativeMethods.TablePtr->C4.hs_method_237cd58d();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void RegisterObserver(nint observer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void RegisterObserver(nint observer)
+    {
+        NativeMethods.TablePtr->C4.hs_method_86024e3c((void*)__hosihikari_shim_handle, (void*)observer);
+    }
 
     public bool Send(nint buffer)
     {
@@ -76,38 +78,46 @@ public sealed unsafe partial class DataChannelInterface : global::System.IDispos
     public void SendAsync(nint buffer, nint on_complete) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::DataBuffer' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void UnregisterObserver() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void UnregisterObserver()
+    {
+        NativeMethods.TablePtr->C4.hs_method_85daabf2((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong buffered_amount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong buffered_amount()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_335599a2((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong bytes_received() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong bytes_received()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_ec00a866((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong bytes_send_buffer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong bytes_send_buffer()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_e9081320((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong bytes_sent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong bytes_sent()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_a14f5782((void*)__hosihikari_shim_handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError error()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_7d69189b((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int id() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int id()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_6698d5e9((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint label() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string label()
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_a6464cbc((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public int? maxPacketLifeTime()
     {
@@ -123,13 +133,15 @@ public sealed unsafe partial class DataChannelInterface : global::System.IDispos
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint messages_received() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint messages_received()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_0e08f961((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint messages_sent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint messages_sent()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_02c238b9((void*)__hosihikari_shim_handle);
+    }
 
     public bool negotiated()
     {
@@ -151,13 +163,15 @@ public sealed unsafe partial class DataChannelInterface : global::System.IDispos
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool reliable() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool reliable()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_ab3f050a((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint state() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int state()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_f0444df3((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

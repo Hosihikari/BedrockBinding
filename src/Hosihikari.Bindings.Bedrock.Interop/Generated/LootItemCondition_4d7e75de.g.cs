@@ -60,17 +60,19 @@ public sealed unsafe partial class LootItemCondition : global::System.IDisposabl
         return new LootItemCondition((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool _applies(nint random, nint context) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool _applies(global::Hosihikari.Bindings.Bedrock.Interop.Random random, global::Hosihikari.Bindings.Bedrock.Interop.LootTableContext context)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0f2232ca((void*)__hosihikari_shim_handle, (void*)random.Handle, (void*)context.Handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'LootItemCondition' has no accessible destructor.", false)]
     public static nint deserialize(nint @object, bool arg1) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'LootItemCondition' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getConditionType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getConditionType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_66dd08ba((void*)__hosihikari_shim_handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk7dec2c_Address

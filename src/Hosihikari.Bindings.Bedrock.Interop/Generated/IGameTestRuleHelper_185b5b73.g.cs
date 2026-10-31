@@ -49,17 +49,20 @@ public sealed unsafe partial class IGameTestRuleHelper : global::System.IDisposa
         return new IGameTestRuleHelper((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addRuleToClear(int ruleID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addRuleToClear(int ruleID)
+    {
+        NativeMethods.TablePtr->C4.hs_method_4c4e9d1e((void*)__hosihikari_shim_handle, ruleID);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void clearRules() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void clearRules()
+    {
+        NativeMethods.TablePtr->C4.hs_method_c04f8dc5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void restoreRules() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void restoreRules()
+    {
+        NativeMethods.TablePtr->C4.hs_method_e93116eb((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

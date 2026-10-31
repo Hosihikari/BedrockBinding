@@ -49,17 +49,20 @@ public sealed unsafe partial class ThermalMonitorInterface : global::System.IDis
         return new ThermalMonitorInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getThermalState() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getThermalState()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_b5b32e78((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public float getThermalValueCelsius() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public float getThermalValueCelsius()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_65da7299((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isLowBatteryModeEnabled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isLowBatteryModeEnabled()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_e751b1d3((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

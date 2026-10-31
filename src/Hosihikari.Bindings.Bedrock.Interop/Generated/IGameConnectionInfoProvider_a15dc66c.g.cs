@@ -49,13 +49,17 @@ public sealed unsafe partial class IGameConnectionInfoProvider : global::System.
         return new IGameConnectionInfoProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getConnectionInfo() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo getConnectionInfo()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Social.GameConnectionInfo((nint)NativeMethods.TablePtr->C3.hs_method_67f57023((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getNetworkInfoString() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string? getNetworkInfoString()
+    {
+        var __hs_hasValue = false;
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_490495ff((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+    }
 
 
     public void Dispose()

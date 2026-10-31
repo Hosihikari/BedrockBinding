@@ -49,33 +49,47 @@ public sealed unsafe partial class FloorRoomCollection : global::System.IDisposa
         return new FloorRoomCollection((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint get1x1(nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string get1x1(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_4c18ef8e((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint get1x1Secret(nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string get1x1Secret(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_33a4c76e((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint get1x2FrontEntrance(nint random, bool isStairsRoom) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string get1x2FrontEntrance(global::Hosihikari.Bindings.Bedrock.Interop.Random random, bool isStairsRoom)
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_44527453((void*)__hosihikari_shim_handle, (void*)random.Handle, isStairsRoom);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint get1x2Secret(nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string get1x2Secret(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_7cd18780((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint get1x2SideEntrance(nint random, bool isStairsRoom) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string get1x2SideEntrance(global::Hosihikari.Bindings.Bedrock.Interop.Random random, bool isStairsRoom)
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_1e175668((void*)__hosihikari_shim_handle, (void*)random.Handle, isStairsRoom);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint get2x2(nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string get2x2(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_34ea0a3b((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint get2x2Secret(nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string get2x2Secret(global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_8e458e78((void*)__hosihikari_shim_handle, (void*)random.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
 
     public void Dispose()

@@ -110,9 +110,10 @@ public sealed unsafe partial class ScriptContainer : global::System.IDisposable
         return new ScriptContainer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getItemContext(int slot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemContext _getItemContext(int slot)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemContext((nint)NativeMethods.TablePtr->C3.hs_method_b943e2e6((void*)__hosihikari_shim_handle, slot));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'Scripting::Error' is not supported.", false)]
     public static nint _isSlotBeyondMaxCapacity(nint container, int slot) =>
@@ -127,9 +128,11 @@ public sealed unsafe partial class ScriptContainer : global::System.IDisposable
         NativeMethods.TablePtr->C3.hs_method_1fd78126((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _tryGetContainer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Container? _tryGetContainer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_39979d4b((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Container((nint)__hs_handle, false) : null;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>>, ScriptModuleMinecraft::ScriptContainerRulesError, Scripting::Error>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint addItem(nint scriptItemStack) =>

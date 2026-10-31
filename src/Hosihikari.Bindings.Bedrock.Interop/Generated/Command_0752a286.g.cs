@@ -85,9 +85,10 @@ public sealed unsafe partial class Command : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_4e03e907((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isDone() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isDone()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_1c573a23((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public int mActionType
     {

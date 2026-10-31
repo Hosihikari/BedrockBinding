@@ -53,9 +53,10 @@ public sealed unsafe partial class IPacketHandlerDispatcher : global::System.IDi
         return new IPacketHandlerDispatcher((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void handle(nint source, nint callback, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void handle(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier source, global::Hosihikari.Bindings.Bedrock.Interop.NetEventCallback callback, global::Hosihikari.Bindings.Abi.SharedHandle? packet)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c079d0e1((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)callback.Handle, packet?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
 
     public void Dispose()

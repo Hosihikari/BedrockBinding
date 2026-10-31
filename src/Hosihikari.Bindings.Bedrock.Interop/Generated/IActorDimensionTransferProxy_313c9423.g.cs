@@ -49,17 +49,19 @@ public sealed unsafe partial class IActorDimensionTransferProxy : global::System
         return new IActorDimensionTransferProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void removeActorFromLevelChunk(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void removeActorFromLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C1.hs_method_04420c90((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void transferActorToDimension(nint actor, nint dimension, nint targetPosition, nint saveTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void transferTickingArea(nint actor, nint dimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void transferTickingArea(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        NativeMethods.TablePtr->C1.hs_method_cf540241((void*)__hosihikari_shim_handle, (void*)actor.Handle, (void*)dimension.Handle);
+    }
 
 
     public void Dispose()

@@ -40,7 +40,7 @@ public sealed unsafe partial class PreventMobEjectionFromLegacyVehicleSystem : g
 
     public static void _preventEjectionIfNeeded(global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext strictEntityContext, global::Hosihikari.Bindings.Bedrock.Interop.PassengerComponent passengerComponent, global::Hosihikari.Bindings.Bedrock.Interop.AABBShapeComponent aabbShapeComponent, nint vehicleView, nint modifier)
     {
-        NativeMethods.TablePtr->C2.hs_method_d8032bd3((void*)strictEntityContext.Handle, (void*)passengerComponent.Handle, (void*)aabbShapeComponent.Handle, (void*)vehicleView, (void*)modifier);
+        NativeMethods.TablePtr->C3.hs_method_d8032bd3((void*)strictEntityContext.Handle, (void*)passengerComponent.Handle, (void*)aabbShapeComponent.Handle, (void*)vehicleView, (void*)modifier);
     }
 
     public void Dispose()
@@ -49,7 +49,7 @@ public sealed unsafe partial class PreventMobEjectionFromLegacyVehicleSystem : g
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_3f8ea80f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_3f8ea80f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

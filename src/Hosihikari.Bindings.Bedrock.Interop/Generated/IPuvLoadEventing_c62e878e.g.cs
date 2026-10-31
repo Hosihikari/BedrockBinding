@@ -49,9 +49,9 @@ public sealed unsafe partial class IPuvLoadEventing : global::System.IDisposable
         return new IPuvLoadEventing((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public void fireEventPUVLoad(nint resourceCategory, nint loadData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
 
     public void Dispose()

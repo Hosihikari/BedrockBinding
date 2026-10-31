@@ -49,25 +49,30 @@ public sealed unsafe partial class IPathBlockSource : global::System.IDisposable
         return new IPathBlockSource((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isInLava() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isInLava()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5a10d142((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isInWater() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isInWater()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_aae3e87e((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isLavaBlock(nint blockPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isLavaBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_7ce84b1d((void*)__hosihikari_shim_handle, (void*)blockPos.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isSolidBlock(nint blockPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isSolidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0e8554d9((void*)__hosihikari_shim_handle, (void*)blockPos.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isWaterBlock(nint blockPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isWaterBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos blockPos)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f65f0fec((void*)__hosihikari_shim_handle, (void*)blockPos.Handle) != 0;
+    }
 
 
     public void Dispose()

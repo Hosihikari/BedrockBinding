@@ -54,9 +54,12 @@ public sealed unsafe partial class AlteredStateCollection : global::System.IDisp
         return NativeMethods.TablePtr->C0.hs_method_2d3803db((void*)removedSupportVersion.Handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getState(nint blockType, int blockData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int? getState(global::Hosihikari.Bindings.Bedrock.Interop.BlockType blockType, int blockData)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C0.hs_method_123ba4cd((void*)__hosihikari_shim_handle, (void*)blockType.Handle, blockData, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockState_Address
@@ -64,9 +67,11 @@ public sealed unsafe partial class AlteredStateCollection : global::System.IDisp
         get => (nint)NativeMethods.TablePtr->C0.hs_get_005d4984((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint setState(nint blockType, int blockData, int stateData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block? setState(global::Hosihikari.Bindings.Bedrock.Interop.BlockType blockType, int blockData, int stateData)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_0873f63f((void*)__hosihikari_shim_handle, (void*)blockType.Handle, blockData, stateData);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
+    }
 
 
     public void Dispose()

@@ -71,13 +71,17 @@ public sealed unsafe partial class ICerealDefinitionSerializer : global::System.
         return new global::Hosihikari.Bindings.Bedrock.Interop.ICerealDefinitionSerializer((nint)NativeMethods.TablePtr->C1.hs_method_d211e972((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint serializeDefinitionInstance_15456ae8(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? serializeDefinitionInstance(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg2)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_15456ae8((void*)__hosihikari_shim_handle, (void*)arg0, (void*)arg1.Handle, (void*)arg2.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint serializeDefinitionInstance_e10e24eb(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? serializeDefinitionInstance(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? arg0, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx arg2)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_e10e24eb((void*)__hosihikari_shim_handle, (void*)(arg0?.Handle ?? 0), (void*)arg1.Handle, (void*)arg2.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
 
     public void Dispose()

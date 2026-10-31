@@ -49,9 +49,10 @@ public sealed unsafe partial class DefaultLocalAddressProvider : global::System.
         return new DefaultLocalAddressProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool GetDefaultLocalAddress(int family, nint ipaddr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool GetDefaultLocalAddress(int family, nint ipaddr)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_d230ff96((void*)__hosihikari_shim_handle, family, (void*)ipaddr) != 0;
+    }
 
 
     public void Dispose()

@@ -49,17 +49,20 @@ public sealed unsafe partial class RamGoalItemDropperInterface : global::System.
         return new RamGoalItemDropperInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void checkForHornDropOnCollision(nint collisionPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void checkForHornDropOnCollision(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 collisionPos)
+    {
+        NativeMethods.TablePtr->C3.hs_method_92ca7796((void*)__hosihikari_shim_handle, (void*)collisionPos.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void dontDropHorn() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void dontDropHorn()
+    {
+        NativeMethods.TablePtr->C3.hs_method_e62c65b6((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tryDropHorn(nint dropPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tryDropHorn(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 dropPos)
+    {
+        NativeMethods.TablePtr->C3.hs_method_779ef428((void*)__hosihikari_shim_handle, (void*)dropPos.Handle);
+    }
 
 
     public void Dispose()

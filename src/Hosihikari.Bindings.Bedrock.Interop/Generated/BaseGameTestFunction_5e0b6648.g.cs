@@ -96,9 +96,9 @@ public sealed unsafe partial class BaseGameTestFunction : global::System.IDispos
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionContext' has no accessible destructor.", false)]
     public nint createContext(nint helper) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionContext' has no accessible destructor.");
 
     public bool hasTag(string tag)
     {
@@ -202,9 +202,9 @@ public sealed unsafe partial class BaseGameTestFunction : global::System.IDispos
         return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestFunction((nint)NativeMethods.TablePtr->C4.hs_method_2f32d563((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.", false)]
     public nint run(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestFunctionRunResult' has no accessible destructor.");
 
 
     public void Dispose()

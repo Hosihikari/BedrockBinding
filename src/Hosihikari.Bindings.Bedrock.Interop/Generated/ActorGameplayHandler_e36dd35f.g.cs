@@ -49,21 +49,23 @@ public sealed unsafe partial class ActorGameplayHandler : global::System.IDispos
         return new ActorGameplayHandler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint handleEvent_a3cad182(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint handleEvent_a40389bd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint handleEvent_7abecdb2(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int handleEvent_7abecdb2(nint @event)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_7abecdb2((void*)__hosihikari_shim_handle, (void*)@event);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint handleEvent_ff68af10(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorGameplayEvent_void_ arg0)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ff68af10((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
 
     public void Dispose()

@@ -1416,13 +1416,25 @@ public sealed unsafe partial class NetEventCallback : global::System.IDisposable
         return new NetEventCallback((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint allowIncomingPacketId(nint id, nint packetId, ulong packetSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int allowIncomingPacketId(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId id, int packetId, ulong packetSize)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_276ad2c8((void*)__hosihikari_shim_handle, (void*)id.Handle, packetId, packetSize);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint allowOutgoingPacket(nint ids, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int allowOutgoingPacket(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId[] ids, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet)
+    {
+        var __hs_vectorItems0 = ids;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            return NativeMethods.TablePtr->C2.hs_method_cf79944d((void*)__hosihikari_shim_handle, (void*)packet.Handle, __hs_vectorData0, (nuint)(ids?.Length ?? 0));
+        }
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.GameSpecificNetEventCallback? getGameSpecificNetEventCallback()
     {

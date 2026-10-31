@@ -49,21 +49,37 @@ public sealed unsafe partial class IWorldConverter : global::System.IDisposable
         return new IWorldConverter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<FileArchiver::ProgressReporter>>' is not a known bindable declaration.", false)]
     public void enqueueConvertExportingWorldTasks(nint exportData, nint progress, nint prevTaskHandle, nint interventionPublishers, nint exportSetting) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<FileArchiver::ProgressReporter>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<FileArchiver::ProgressReporter>>' is not a known bindable declaration.", false)]
     public void enqueueConvertImportingWorldTasks(nint sharedResult, nint progress, nint prevTaskHandle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<FileArchiver::ProgressReporter>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool prepareEditorProjectForSaveSnapshot(nint level, nint generatedLevelDataFile) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool prepareEditorProjectForSaveSnapshot(global::Hosihikari.Bindings.Bedrock.Interop.Level level, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ generatedLevelDataFile)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_8e1d4e05((void*)__hosihikari_shim_handle, (void*)level.Handle, (void*)generatedLevelDataFile.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool shouldCopyWorldForConversion(nint levelId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool shouldCopyWorldForConversion(string levelId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_f135463c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
 
 
     public void Dispose()

@@ -40,17 +40,17 @@ public sealed unsafe partial class SwimMoveControl : global::System.IDisposable
 
     public void _initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
-        NativeMethods.TablePtr->C3.hs_method_df180333((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
+        NativeMethods.TablePtr->C4.hs_method_df180333((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
     }
 
     public void _tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->C3.hs_method_f91a0b85((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+        NativeMethods.TablePtr->C4.hs_method_f91a0b85((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
     }
 
     public static SwimMoveControl Create(global::Hosihikari.Bindings.Bedrock.Interop.SwimMoveControl arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_4d8b77a8((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_4d8b77a8((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,12 +61,12 @@ public sealed unsafe partial class SwimMoveControl : global::System.IDisposable
 
     public void initializeInternal(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, global::Hosihikari.Bindings.Bedrock.Interop.MoveControlDescription? description)
     {
-        NativeMethods.TablePtr->C3.hs_method_68499e35((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
+        NativeMethods.TablePtr->C4.hs_method_68499e35((void*)__hosihikari_shim_handle, (void*)mob.Handle, (void*)(description?.Handle ?? 0));
     }
 
     public void tick(global::Hosihikari.Bindings.Bedrock.Interop.MoveControlComponent parent, global::Hosihikari.Bindings.Bedrock.Interop.Mob mob)
     {
-        NativeMethods.TablePtr->C3.hs_method_3ecd895e((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
+        NativeMethods.TablePtr->C4.hs_method_3ecd895e((void*)__hosihikari_shim_handle, (void*)parent.Handle, (void*)mob.Handle);
     }
 
 
@@ -76,7 +76,7 @@ public sealed unsafe partial class SwimMoveControl : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_7edb5405((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_7edb5405((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

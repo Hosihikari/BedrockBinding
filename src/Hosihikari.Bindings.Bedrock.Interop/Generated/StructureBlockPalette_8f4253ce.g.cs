@@ -40,12 +40,12 @@ public sealed unsafe partial class StructureBlockPalette : global::System.IDispo
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_f6800bcd((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_f6800bcd((void*)__hosihikari_shim_handle);
     }
 
     public static StructureBlockPalette Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_3567ad66((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_3567ad66((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,32 +56,32 @@ public sealed unsafe partial class StructureBlockPalette : global::System.IDispo
 
     public int _parseBlockPalette(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        return NativeMethods.TablePtr->C3.hs_method_bca27e24((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_bca27e24((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
     public int _parseBlockPositionDataList(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        return NativeMethods.TablePtr->C3.hs_method_7a2a8a56((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_7a2a8a56((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
     public void _saveBlockPalette(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->C3.hs_method_6fc71456((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+        NativeMethods.TablePtr->C4.hs_method_6fc71456((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
     public void _saveBlockPositionDataList(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        NativeMethods.TablePtr->C3.hs_method_ac989103((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+        NativeMethods.TablePtr->C4.hs_method_ac989103((void*)__hosihikari_shim_handle, (void*)tag.Handle);
     }
 
     public void addBlockPositionData(ulong id, global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette_Nested.BlockPositionData blockPositionData)
     {
-        NativeMethods.TablePtr->C3.hs_method_14ae33a7((void*)__hosihikari_shim_handle, id, (void*)blockPositionData.Handle);
+        NativeMethods.TablePtr->C4.hs_method_14ae33a7((void*)__hosihikari_shim_handle, id, (void*)blockPositionData.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette clone()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette((nint)NativeMethods.TablePtr->C3.hs_method_987120f8((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette((nint)NativeMethods.TablePtr->C4.hs_method_987120f8((void*)__hosihikari_shim_handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry>' is not a known bindable declaration.", false)]
@@ -90,20 +90,20 @@ public sealed unsafe partial class StructureBlockPalette : global::System.IDispo
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette_Nested.BlockPositionData? getBlockPositionData(ulong blockIndex)
     {
-        var __hs_handle = NativeMethods.TablePtr->C3.hs_method_ed007965((void*)__hosihikari_shim_handle, blockIndex);
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_ed007965((void*)__hosihikari_shim_handle, blockIndex);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.StructureBlockPalette_Nested.BlockPositionData((nint)__hs_handle, false) : null;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockPositionData_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_bd6179dc((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_bd6179dc((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructurePaletteIdToSerializationId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_b4c3c2bd((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b4c3c2bd((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompoundTag' has no accessible destructor.", false)]
@@ -121,7 +121,7 @@ public sealed unsafe partial class StructureBlockPalette : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_8f4253ce((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_8f4253ce((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

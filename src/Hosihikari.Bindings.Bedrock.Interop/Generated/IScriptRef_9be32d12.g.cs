@@ -49,17 +49,20 @@ public sealed unsafe partial class IScriptRef : global::System.IDisposable
         return new IScriptRef((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onFinalize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onFinalize()
+    {
+        NativeMethods.TablePtr->C3.hs_method_ab4c792a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onPromoteToMultipleOwners() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onPromoteToMultipleOwners()
+    {
+        NativeMethods.TablePtr->C3.hs_method_d988f535((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onReduceToSingleOwner() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onReduceToSingleOwner()
+    {
+        NativeMethods.TablePtr->C3.hs_method_3fc05479((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

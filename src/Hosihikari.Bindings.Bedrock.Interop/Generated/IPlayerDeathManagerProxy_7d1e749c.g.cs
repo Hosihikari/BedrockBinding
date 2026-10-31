@@ -49,17 +49,21 @@ public sealed unsafe partial class IPlayerDeathManagerProxy : global::System.IDi
         return new IPlayerDeathManagerProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint fetchActor(nint actorUniqueID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchActor(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorUniqueID)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_99287f2f((void*)__hosihikari_shim_handle, (void*)actorUniqueID.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onWorldOwnerHasDied() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onWorldOwnerHasDied()
+    {
+        NativeMethods.TablePtr->C1.hs_method_9face91d((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool shouldShowDeathMessages() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool shouldShowDeathMessages()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_b5614c7d((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

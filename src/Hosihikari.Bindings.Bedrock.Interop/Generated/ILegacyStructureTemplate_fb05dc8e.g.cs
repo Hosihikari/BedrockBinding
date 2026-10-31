@@ -49,13 +49,14 @@ public sealed unsafe partial class ILegacyStructureTemplate : global::System.IDi
         return new ILegacyStructureTemplate((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'BlockPos' is not supported.", false)]
     public nint getMarkers(nint position, nint settings) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'BlockPos' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void placeInWorld(nint region, nint pos, nint settings, nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void placeInWorld(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.LegacyStructureSettings settings, global::Hosihikari.Bindings.Bedrock.Interop.Random random)
+    {
+        NativeMethods.TablePtr->C1.hs_method_68145f33((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, (void*)settings.Handle, (void*)random.Handle);
+    }
 
     public void Dispose()
     {

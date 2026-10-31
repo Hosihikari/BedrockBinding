@@ -49,53 +49,63 @@ public sealed unsafe partial class UnzipFile : global::System.IDisposable
         return new UnzipFile((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool _isGood() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool _isGood()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_3c696c9a((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint closeCurrentFile() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int closeCurrentFile()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_49344f2f((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::UnzipFile' has no accessible destructor.", false)]
     public static nint create(nint fileAccess, nint zipPath, nint library) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::UnzipFile' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCurrentFileName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string getCurrentFileName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_4d93c493((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong getCurrentFileUncompressedSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong getCurrentFileUncompressedSize()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_31c657b4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong getTotalFilesInZip() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong getTotalFilesInZip()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ad7ddb0d((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint goToFirstFile() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int goToFirstFile()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a4d15bc6((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint goToNextFile() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int goToNextFile()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a0522a8e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint locateFile(nint fileName, int caseSensitivity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int locateFile(nint fileName, int caseSensitivity)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_4e22be17((void*)__hosihikari_shim_handle, (void*)fileName, caseSensitivity);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint openCurrentFileForReading() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int openCurrentFileForReading()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c76f5ce4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void readCurrentFileContents(ulong bufferSize, nint onReadCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void readCurrentFileContentsIntoMemory(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
 
     public void Dispose()

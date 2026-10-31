@@ -54,21 +54,23 @@ public sealed unsafe partial class DtlsTransportInterface : global::System.IDisp
         return new DtlsTransportInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::DtlsTransportInformation' requires --link-carrier or --virtual-dispatch.", false)]
     public nint Information() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::DtlsTransportInformation' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void RegisterObserver(nint observer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void RegisterObserver(nint observer)
+    {
+        NativeMethods.TablePtr->C4.hs_method_d712a0a8((void*)__hosihikari_shim_handle, (void*)observer);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void UnregisterObserver() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void UnregisterObserver()
+    {
+        NativeMethods.TablePtr->C4.hs_method_001f282f((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::IceTransportInterface>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint ice_transport() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::IceTransportInterface>' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()

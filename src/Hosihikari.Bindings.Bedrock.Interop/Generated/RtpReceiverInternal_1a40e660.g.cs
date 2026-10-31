@@ -43,9 +43,10 @@ public sealed unsafe partial class RtpReceiverInternal : global::System.IDisposa
         NativeMethods.TablePtr->C4.hs_method_f7373390((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int AttachmentId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int AttachmentId()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_5bb3a50a((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector return type 'webrtc::scoped_refptr<webrtc::MediaStreamInterface>' is not supported.", false)]
     public static nint CreateStreamsFromIds(nint stream_ids) =>
@@ -56,9 +57,10 @@ public sealed unsafe partial class RtpReceiverInternal : global::System.IDisposa
         return NativeMethods.TablePtr->C4.hs_method_f6ec040f();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void NotifyFirstPacketReceived() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void NotifyFirstPacketReceived()
+    {
+        NativeMethods.TablePtr->C4.hs_method_e9b31b1e((void*)__hosihikari_shim_handle);
+    }
 
     public static RtpReceiverInternal Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RtpReceiverInternal arg0)
     {
@@ -71,37 +73,44 @@ public sealed unsafe partial class RtpReceiverInternal : global::System.IDisposa
         return new RtpReceiverInternal((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetMediaChannel(nint media_channel) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetMediaChannel(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.MediaReceiveChannelInterface? media_channel)
+    {
+        NativeMethods.TablePtr->C4.hs_method_bdc972c1((void*)__hosihikari_shim_handle, (void*)(media_channel?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'webrtc::scoped_refptr<webrtc::MediaStreamInterface>' is not supported.", false)]
     public void SetStreams(nint streams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'webrtc::scoped_refptr<webrtc::MediaStreamInterface>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetupMediaChannel(uint ssrc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetupMediaChannel(uint ssrc)
+    {
+        NativeMethods.TablePtr->C4.hs_method_78844b9d((void*)__hosihikari_shim_handle, ssrc);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetupUnsignaledMediaChannel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetupUnsignaledMediaChannel()
+    {
+        NativeMethods.TablePtr->C4.hs_method_e16abf55((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void Stop() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void Stop()
+    {
+        NativeMethods.TablePtr->C4.hs_method_1ec42981((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public void set_stream_ids(nint stream_ids) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::DtlsTransportInterface>' is not a known bindable declaration.", false)]
     public void set_transport(nint dtls_transport) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::DtlsTransportInterface>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint ssrc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint? ssrc()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C4.hs_method_2c485c6f((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (uint?)null;
+    }
 
 
     public void Dispose()

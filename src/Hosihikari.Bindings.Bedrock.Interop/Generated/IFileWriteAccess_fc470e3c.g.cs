@@ -49,9 +49,10 @@ public sealed unsafe partial class IFileWriteAccess : global::System.IDisposable
         return new IFileWriteAccess((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong fwrite(nint buffer, ulong size, ulong count, nint file) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong fwrite(nint buffer, ulong size, ulong count, nint file)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_909ae2bd((void*)__hosihikari_shim_handle, (void*)buffer, size, count, (void*)file);
+    }
 
 
     public void Dispose()

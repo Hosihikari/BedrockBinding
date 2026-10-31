@@ -49,9 +49,10 @@ public sealed unsafe partial class IPlayerSleepPercentageGetter : global::System
         return new IPlayerSleepPercentageGetter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public float getPlayerSleepPercentageGoal() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public float getPlayerSleepPercentageGoal()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_309f643c((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

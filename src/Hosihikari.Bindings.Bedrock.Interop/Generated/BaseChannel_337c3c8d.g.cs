@@ -253,9 +253,9 @@ public sealed unsafe partial class BaseChannel : global::System.IDisposable
     public bool SetLocalContent(nint content, nint type, nint error_desc) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public bool SetLocalContent_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     public int SetOption(int type, int opt, int value)
     {
@@ -271,9 +271,9 @@ public sealed unsafe partial class BaseChannel : global::System.IDisposable
     public bool SetRemoteContent(nint content, nint type, nint error_desc) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public bool SetRemoteContent_w(nint content, nint type, nint error_desc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     public bool SetRtpTransport(nint rtp_transport)
     {
@@ -290,9 +290,10 @@ public sealed unsafe partial class BaseChannel : global::System.IDisposable
     public bool UpdateLocalStreams_w(nint streams, nint type, nint error_desc) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'webrtc::StreamParams' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void UpdateMediaSendRecvState_w() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void UpdateMediaSendRecvState_w()
+    {
+        NativeMethods.TablePtr->C4.hs_method_7782d19b((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public bool UpdateRemoteStreams_w(nint content, nint type, nint error_desc) =>

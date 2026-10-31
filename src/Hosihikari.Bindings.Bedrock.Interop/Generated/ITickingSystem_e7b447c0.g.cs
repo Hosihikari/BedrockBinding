@@ -69,9 +69,10 @@ public sealed unsafe partial class ITickingSystem : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_3ae80006((void*)__hosihikari_shim_handle, (void*)registry.Handle, (void*)entityContext.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tick(nint registry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tick(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7325f8ea((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
 
 
     public void Dispose()

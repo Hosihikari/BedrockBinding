@@ -38,17 +38,20 @@ public sealed unsafe partial class RNS2EventHandler : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint AllocRNS2RecvStruct(nint file, uint line) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint AllocRNS2RecvStruct(nint file, uint line)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_d7fbcb33((void*)__hosihikari_shim_handle, (void*)file, line);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void DeallocRNS2RecvStruct(nint s, nint file, uint line) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void DeallocRNS2RecvStruct(nint s, nint file, uint line)
+    {
+        NativeMethods.TablePtr->C3.hs_method_6366231b((void*)__hosihikari_shim_handle, (void*)s, (void*)file, line);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnRNS2Recv(nint recvStruct) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnRNS2Recv(nint recvStruct)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ba53359c((void*)__hosihikari_shim_handle, (void*)recvStruct);
+    }
 
     public static RNS2EventHandler Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.RNS2EventHandler arg0)
     {

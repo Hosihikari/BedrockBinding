@@ -38,9 +38,11 @@ public sealed unsafe partial class CommandChainedSubcommand : global::System.IDi
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCommandName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string getCommandName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C0.hs_method_24cf3666((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCommand_Address

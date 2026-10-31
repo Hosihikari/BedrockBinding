@@ -94,9 +94,10 @@ public sealed unsafe partial class BaseMobSpawner : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_53d3f941((void*)__hosihikari_shim_handle, (void*)source.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPos() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getPos()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C0.hs_method_24ecceff((void*)__hosihikari_shim_handle), false);
+    }
 
     public void load(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag data)
     {

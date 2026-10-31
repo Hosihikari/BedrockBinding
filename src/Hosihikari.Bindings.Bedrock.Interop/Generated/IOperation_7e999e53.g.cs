@@ -67,17 +67,21 @@ public sealed unsafe partial class IOperation : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_e68b86ba((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _processRedo(nint services) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Editor.Transactions.IOperation_Nested.ProcessResult _processRedo(nint services)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Editor.Transactions.IOperation_Nested.ProcessResult((nint)NativeMethods.TablePtr->C1.hs_method_8e863313((void*)__hosihikari_shim_handle, (void*)services));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _processUndo(nint services) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Editor.Transactions.IOperation_Nested.ProcessResult _processUndo(nint services)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Editor.Transactions.IOperation_Nested.ProcessResult((nint)NativeMethods.TablePtr->C1.hs_method_cfde9b10((void*)__hosihikari_shim_handle, (void*)services));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_313d489e((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
 
     public void Dispose()

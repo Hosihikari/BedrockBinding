@@ -60,17 +60,20 @@ public sealed unsafe partial class IWatchdog : global::System.IDisposable
         return new IWatchdog((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void beginTiming(nint contextId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void beginTiming(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId)
+    {
+        NativeMethods.TablePtr->C3.hs_method_48323789((void*)__hosihikari_shim_handle, (void*)contextId.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void endFrame() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void endFrame()
+    {
+        NativeMethods.TablePtr->C3.hs_method_2235bd66((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void endTiming(nint contextId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void endTiming(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ContextId contextId)
+    {
+        NativeMethods.TablePtr->C3.hs_method_044fdcea((void*)__hosihikari_shim_handle, (void*)contextId.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk4aaa86_Address
@@ -83,25 +86,28 @@ public sealed unsafe partial class IWatchdog : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.IWatchdog((nint)NativeMethods.TablePtr->C3.hs_method_5d8a2683((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void popPhase() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void popPhase()
+    {
+        NativeMethods.TablePtr->C3.hs_method_b9ed9aa2((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void pushPhase(nint namedPhase, nint frameBaseLine) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void resetTimings() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void resetTimings()
+    {
+        NativeMethods.TablePtr->C3.hs_method_6b51657c((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void setWatchdogEventHandler(nint watchdogEventHandler) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setWatchdogInterruptPollCounter(uint counter) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setWatchdogInterruptPollCounter(uint counter)
+    {
+        NativeMethods.TablePtr->C3.hs_method_084af4ca((void*)__hosihikari_shim_handle, counter);
+    }
 
 
     public void Dispose()

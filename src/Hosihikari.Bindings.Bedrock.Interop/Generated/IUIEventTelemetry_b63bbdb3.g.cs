@@ -49,9 +49,9 @@ public sealed unsafe partial class IUIEventTelemetry : global::System.IDisposabl
         return new IUIEventTelemetry((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void fireScreenLoadTimeUpdateEvent(nint userId, nint screenName, nint duration, nint loadInstanceId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
     public void Dispose()

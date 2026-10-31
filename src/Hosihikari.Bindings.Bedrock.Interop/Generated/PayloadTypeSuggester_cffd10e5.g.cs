@@ -42,9 +42,9 @@ public sealed unsafe partial class PayloadTypeSuggester : global::System.IDispos
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::PayloadType' is not a known bindable declaration.", false)]
     public nint AddLocalMapping(nint mid, nint payload_type, nint codec) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::PayloadType' is not a known bindable declaration.");
 
     public static PayloadTypeSuggester Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PayloadTypeSuggester arg0)
     {
@@ -57,9 +57,9 @@ public sealed unsafe partial class PayloadTypeSuggester : global::System.IDispos
         return new PayloadTypeSuggester((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCErrorOr<webrtc::PayloadType>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint SuggestPayloadType(nint mid, nint codec) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCErrorOr<webrtc::PayloadType>' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()

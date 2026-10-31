@@ -55,13 +55,17 @@ public sealed unsafe partial class IVillageManager : global::System.IDisposable
         return new IVillageManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint fetchClosestVillage(nint position, int maxDistFromVillageBounds, uint searchRadius) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? fetchClosestVillage(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos position, int maxDistFromVillageBounds, uint searchRadius)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_364199a9((void*)__hosihikari_shim_handle, (void*)position.Handle, maxDistFromVillageBounds, searchRadius);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getVillageByID(nint villageID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getVillageByID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID villageID)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_388985ba((void*)__hosihikari_shim_handle, (void*)villageID.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
 
     public void Dispose()

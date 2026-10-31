@@ -55,37 +55,57 @@ public sealed unsafe partial class GameModuleServer : global::System.IDisposable
         return new GameModuleServer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void configureDocumentation(nint moduleDocumentation, nint docItemRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void configureDocumentation(nint moduleDocumentation, global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef docItemRegistry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_fc437c81((void*)__hosihikari_shim_handle, (void*)moduleDocumentation, (void*)docItemRegistry.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.", false)]
     public void configureLevel(nint level, nint experiments, nint resourcePackManager, nint baseGameVersion, nint scriptManager, nint biomeIdToResolvedData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void configureNewPlayer(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void configureNewPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C1.hs_method_207f29a4((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ServerNetworkHandler>>' is not a known bindable declaration.", false)]
     public void configureServerNetworkHandler(nint server, nint handler) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'gsl::not_null<Bedrock::NonOwnerPointer<ServerNetworkHandler>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void init(nint server, nint level) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void init(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstance server, nint level)
+    {
+        NativeMethods.TablePtr->C1.hs_method_eed74cd1((void*)__hosihikari_shim_handle, (void*)server.Handle, (void*)level);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void initializeBehaviorStack(nint experiments, nint repo, nint stack, nint baseGameVersion, bool includeEditorPacks, nint worldId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void initializeBehaviorStack(global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments, nint repo, global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackStack stack, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, bool includeEditorPacks, string? worldId)
+    {
+        var __hs_stringByteCount5 = global::System.Text.Encoding.UTF8.GetByteCount(worldId ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes5;
+        if (__hs_stringByteCount5 <= 256)
+        {
+            __hs_stringBytes5 = stackalloc byte[__hs_stringByteCount5 == 0 ? 1 : __hs_stringByteCount5];
+        }
+        else
+        {
+            __hs_stringBytes5 = new byte[__hs_stringByteCount5];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(worldId ?? string.Empty, __hs_stringBytes5);
+        fixed (byte* __hs_stringData5 = __hs_stringBytes5)
+        {
+            NativeMethods.TablePtr->C1.hs_method_3f7f0885((void*)__hosihikari_shim_handle, (void*)experiments.Handle, (void*)repo, (void*)stack.Handle, (void*)baseGameVersion.Handle, includeEditorPacks, __hs_stringData5, (nuint)__hs_stringByteCount5, worldId is not null);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setupCommands(nint commandRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setupCommands(global::Hosihikari.Bindings.Bedrock.Interop.CommandRegistry commandRegistry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a3316af7((void*)__hosihikari_shim_handle, (void*)commandRegistry.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tick()
+    {
+        NativeMethods.TablePtr->C1.hs_method_fadb4740((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

@@ -85,9 +85,10 @@ public sealed unsafe partial class BackgroundTaskBase : global::System.IDisposab
         return new BackgroundTaskBase((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void cancel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void cancel()
+    {
+        NativeMethods.TablePtr->C0.hs_method_711ecea6((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint gCurrentTask() =>
@@ -98,9 +99,10 @@ public sealed unsafe partial class BackgroundTaskBase : global::System.IDisposab
         return NativeMethods.TablePtr->C0.hs_method_b4a94884((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isReady() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isReady()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b6269795((void*)__hosihikari_shim_handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAffinity_Address
@@ -160,9 +162,10 @@ public sealed unsafe partial class BackgroundTaskBase : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->C0.hs_get_710ae08a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint run(nint executionContext, bool isAsyncContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int run(global::Hosihikari.Bindings.Bedrock.Interop.ITaskExecutionContext? executionContext, bool isAsyncContext)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_eef16ed1((void*)__hosihikari_shim_handle, (void*)(executionContext?.Handle ?? 0), isAsyncContext);
+    }
 
 
     public void Dispose()

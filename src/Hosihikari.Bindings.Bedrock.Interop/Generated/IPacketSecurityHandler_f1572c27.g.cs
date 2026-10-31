@@ -49,13 +49,15 @@ public sealed unsafe partial class IPacketSecurityHandler : global::System.IDisp
         return new IPacketSecurityHandler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint checkForViolation(nint packetId, nint result, nint outIsNewOrUpdatedViolation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int checkForViolation(int packetId, nint result, nint outIsNewOrUpdatedViolation)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_61825df3((void*)__hosihikari_shim_handle, packetId, (void*)result, (void*)outIsNewOrUpdatedViolation);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint getTelemetryData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint getTelemetryData()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6bce645a((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

@@ -41,19 +41,19 @@ public sealed unsafe partial class RaiderCelebrationGoal : global::System.IDispo
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_362b327a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_362b327a((void*)__hosihikari_shim_handle);
     }
 
     public int mRequiredControlFlags
     {
-        get => NativeMethods.TablePtr->C2.hs_get_fb64fd36((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_fb64fd36((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_fb64fd36((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_fb64fd36((void*)__hosihikari_shim_handle, value);
     }
 
     public ushort mTypeId
     {
-        get => NativeMethods.TablePtr->C2.hs_get_cef2972b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_cef2972b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_cef2972b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_cef2972b((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -62,27 +62,27 @@ public sealed unsafe partial class RaiderCelebrationGoal : global::System.IDispo
 
     public bool _canContinueToUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_358ff0e3((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_358ff0e3((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool _canUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_b417f51a((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_b417f51a((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void _start()
     {
-        NativeMethods.TablePtr->C2.hs_method_ae632aa9((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_ae632aa9((void*)__hosihikari_shim_handle);
     }
 
     public void _stop()
     {
-        NativeMethods.TablePtr->C2.hs_method_0958de3a((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_0958de3a((void*)__hosihikari_shim_handle);
     }
 
     public void _tick()
     {
-        NativeMethods.TablePtr->C2.hs_method_3081456b((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_3081456b((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -91,7 +91,7 @@ public sealed unsafe partial class RaiderCelebrationGoal : global::System.IDispo
 
     public static RaiderCelebrationGoal Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_9186d999();
+        var handle = NativeMethods.TablePtr->C3.hs_create_9186d999();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -102,7 +102,7 @@ public sealed unsafe partial class RaiderCelebrationGoal : global::System.IDispo
 
     public static RaiderCelebrationGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.RaiderCelebrationGoal arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_e63f0473((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_e63f0473((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -117,23 +117,23 @@ public sealed unsafe partial class RaiderCelebrationGoal : global::System.IDispo
 
     public bool canContinueToUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_b6c87cba((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_b6c87cba((void*)__hosihikari_shim_handle) != 0;
     }
 
     public bool canUse()
     {
-        return NativeMethods.TablePtr->C2.hs_method_e6d5e942((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_e6d5e942((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCelebrationEndEvent_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_bc0ce8bb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_bc0ce8bb((void*)__hosihikari_shim_handle);
     }
 
     public float mDuration
     {
-        get => NativeMethods.TablePtr->C2.hs_get_90a8a9b0((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C3.hs_get_90a8a9b0((void*)__hosihikari_shim_handle);
         set => NativeMethods.TablePtr->C3.hs_set_90a8a9b0((void*)__hosihikari_shim_handle, value);
     }
 
@@ -206,7 +206,7 @@ public sealed unsafe partial class RaiderCelebrationGoal : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_89ed730b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_89ed730b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

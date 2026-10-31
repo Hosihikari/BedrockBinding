@@ -58,9 +58,10 @@ public sealed unsafe partial class SavedData : global::System.IDisposable
         return new SavedData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void deserialize(nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C3.hs_method_232debee((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
 
     public bool mDirty
     {
@@ -74,9 +75,10 @@ public sealed unsafe partial class SavedData : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C3.hs_get_60a2bd39((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void serialize(nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C3.hs_method_fc8ce06a((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
 
 
     public void Dispose()

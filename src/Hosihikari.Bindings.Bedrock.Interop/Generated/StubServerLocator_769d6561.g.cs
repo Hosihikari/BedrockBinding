@@ -41,13 +41,13 @@ public sealed unsafe partial class StubServerLocator : global::System.IDisposabl
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk1d223d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d6549768((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d6549768((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkaf3b65_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_17f303f7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_17f303f7((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -60,7 +60,7 @@ public sealed unsafe partial class StubServerLocator : global::System.IDisposabl
 
     public static StubServerLocator Create(global::Hosihikari.Bindings.Bedrock.Interop.StubServerLocator arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_6088ec0e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_6088ec0e((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,7 +71,7 @@ public sealed unsafe partial class StubServerLocator : global::System.IDisposabl
 
     public void addCustomServer(global::Hosihikari.Bindings.Bedrock.Interop.AsynchronousIPResolver futureIP, int port)
     {
-        NativeMethods.TablePtr->C3.hs_method_4511a764((void*)__hosihikari_shim_handle, (void*)futureIP.Handle, port);
+        NativeMethods.TablePtr->C4.hs_method_4511a764((void*)__hosihikari_shim_handle, (void*)futureIP.Handle, port);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -114,7 +114,7 @@ public sealed unsafe partial class StubServerLocator : global::System.IDisposabl
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                NativeMethods.TablePtr->C3.hs_method_948dc854((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, gameType, numPlayers, maxNumPlayers, isJoinableThroughServerScreen, isEditorWorld, isHardcore, (void*)supportedAuth.Handle, (void*)nonce.Handle);
+                NativeMethods.TablePtr->C4.hs_method_948dc854((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, gameType, numPlayers, maxNumPlayers, isJoinableThroughServerScreen, isEditorWorld, isHardcore, (void*)supportedAuth.Handle, (void*)nonce.Handle);
             }
         }
     }
@@ -125,17 +125,17 @@ public sealed unsafe partial class StubServerLocator : global::System.IDisposabl
 
     public void stopAnnouncingServer()
     {
-        NativeMethods.TablePtr->C3.hs_method_1751168b((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_1751168b((void*)__hosihikari_shim_handle);
     }
 
     public void stopServerDiscovery()
     {
-        NativeMethods.TablePtr->C3.hs_method_452d5f38((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_452d5f38((void*)__hosihikari_shim_handle);
     }
 
     public void update()
     {
-        NativeMethods.TablePtr->C3.hs_method_207bff19((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_207bff19((void*)__hosihikari_shim_handle);
     }
 
 
@@ -145,7 +145,7 @@ public sealed unsafe partial class StubServerLocator : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_769d6561((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_769d6561((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

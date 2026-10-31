@@ -49,9 +49,11 @@ public sealed unsafe partial class IAppExtensionsNonOwner : global::System.IDisp
         return new IAppExtensionsNonOwner((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint tryGetExtensions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? tryGetExtensions()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_c35bde51((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
 
     public void Dispose()

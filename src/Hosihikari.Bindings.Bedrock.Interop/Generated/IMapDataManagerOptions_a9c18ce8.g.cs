@@ -49,21 +49,25 @@ public sealed unsafe partial class IMapDataManagerOptions : global::System.IDisp
         return new IMapDataManagerOptions((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldCenter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getWorldCenter()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_20df32af((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasMapsCenteredToOrigin() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasMapsCenteredToOrigin()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_72135134((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isLegacyLevel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isLegacyLevel()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d7971a28((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isPremiumWorldTemplate() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isPremiumWorldTemplate()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e5ef841b((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

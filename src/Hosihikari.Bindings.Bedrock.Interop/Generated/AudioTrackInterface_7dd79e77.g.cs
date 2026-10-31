@@ -52,9 +52,10 @@ public sealed unsafe partial class AudioTrackInterface : global::System.IDisposa
         NativeMethods.TablePtr->C4.hs_method_0db1231d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void AddSink(nint a1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void AddSink(nint a1)
+    {
+        NativeMethods.TablePtr->C4.hs_method_e30de8a7((void*)__hosihikari_shim_handle, (void*)a1);
+    }
 
     public static AudioTrackInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioTrackInterface arg0)
     {
@@ -76,13 +77,16 @@ public sealed unsafe partial class AudioTrackInterface : global::System.IDisposa
         return NativeMethods.TablePtr->C4.hs_method_bd3a7f0b((void*)__hosihikari_shim_handle, (void*)a1) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint GetSource() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioSourceInterface? GetSource()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C4.hs_method_20dff959((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioSourceInterface((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void RemoveSink(nint a1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void RemoveSink(nint a1)
+    {
+        NativeMethods.TablePtr->C4.hs_method_1d8c5d46((void*)__hosihikari_shim_handle, (void*)a1);
+    }
 
 
     public void Dispose()

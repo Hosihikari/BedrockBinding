@@ -95,9 +95,10 @@ public sealed unsafe partial class DeferredSubscriptionHubBase : global::System.
     public void _join(nint subscription) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool _runOneEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool _runOneEvent()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e77be9e1((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public void clear()
     {

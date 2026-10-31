@@ -49,49 +49,58 @@ public sealed unsafe partial class IGameModeMessenger : global::System.IDisposab
         return new IGameModeMessenger((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void ()>>' is not supported.", false)]
     public nint createBlockBreakCaptureScope(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'gsl::final_action<std::function<void ()>>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendChangeContinueDestroyBlock(nint pos, int face) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendChangeContinueDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int face)
+    {
+        NativeMethods.TablePtr->C1.hs_method_ec403e59((void*)__hosihikari_shim_handle, (void*)pos.Handle, face);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendContinueDestroyAboutToDestroyBlock(nint pos, int face) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendContinueDestroyAboutToDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int face)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7dde2721((void*)__hosihikari_shim_handle, (void*)pos.Handle, face);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendDenyDestroyBlock(nint pos, int face) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendDenyDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int face)
+    {
+        NativeMethods.TablePtr->C1.hs_method_deff21bc((void*)__hosihikari_shim_handle, (void*)pos.Handle, face);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendDestroyBlock(nint oldBlock, nint pos, int variantData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block oldBlock, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int variantData)
+    {
+        NativeMethods.TablePtr->C1.hs_method_86872c52((void*)__hosihikari_shim_handle, (void*)oldBlock.Handle, (void*)pos.Handle, variantData);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendStartDestroyBlock(nint pos, int face) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendStartDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int face)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f4de06e4((void*)__hosihikari_shim_handle, (void*)pos.Handle, face);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendStartItemUseOn(nint pos, nint buildPos, int face) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendStartItemUseOn(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos buildPos, int face)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d635f590((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)buildPos.Handle, face);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendStopDestroyBlock(nint arg0, float arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendStopDestroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, float arg1)
+    {
+        NativeMethods.TablePtr->C1.hs_method_df936fca((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendStopItemUseOn(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendStopItemUseOn(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        NativeMethods.TablePtr->C1.hs_method_55453658((void*)__hosihikari_shim_handle, (void*)pos.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool sendTryDestroyBlock(nint pos, int face, nint tryDestroy) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tryRotateTowardsAimAssist() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tryRotateTowardsAimAssist()
+    {
+        NativeMethods.TablePtr->C1.hs_method_2dfea077((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

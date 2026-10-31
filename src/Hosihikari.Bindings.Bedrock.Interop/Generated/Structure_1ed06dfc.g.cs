@@ -74,9 +74,9 @@ public sealed unsafe partial class Structure : global::System.IDisposable
         return new Structure((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'br::worldgen::GenerationStub' is not supported.", false)]
     public nint findValidGenerationPoint(nint context) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'br::worldgen::GenerationStub' is not supported.");
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? generate(global::Hosihikari.Bindings.Bedrock.Interop.br.worldgen.GenerationContext context)
     {

@@ -49,9 +49,9 @@ public sealed unsafe partial class AudioSender : global::System.IDisposable
         return new AudioSender((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::AudioFrame' has no generated wrapper.", false)]
     public void SendAudioData(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::AudioFrame' has no generated wrapper.");
 
 
     public void Dispose()

@@ -49,17 +49,25 @@ public sealed unsafe partial class IFilePicker : global::System.IDisposable
         return new IFilePicker((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void initFilePick(nint filePath, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong readBytes(nint file, ulong offset, ulong bufferSize, nint buffer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong readBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, ulong offset, ulong bufferSize, byte[] buffer)
+    {
+        fixed (byte* __hs_vectorData3 = buffer)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_488f24fa((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool writeBytes(nint file, ulong offset, ulong bufferSize, nint buffer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool writeBytes(global::Hosihikari.Bindings.Bedrock.Interop.FileInfo file, ulong offset, ulong bufferSize, byte[] buffer)
+    {
+        fixed (byte* __hs_vectorData3 = buffer)
+        {
+            return NativeMethods.TablePtr->C1.hs_method_82d7d01f((void*)__hosihikari_shim_handle, (void*)file.Handle, offset, bufferSize, __hs_vectorData3, (nuint)(buffer?.Length ?? 0)) != 0;
+        }
+    }
 
 
     public void Dispose()

@@ -68,9 +68,10 @@ public sealed unsafe partial class VideoTrackInterface : global::System.IDisposa
         NativeMethods.TablePtr->C4.hs_method_8301a8f5((void*)__hosihikari_shim_handle, (void*)a1, (void*)a2);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint GetSource() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint GetSource()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_621485da((void*)__hosihikari_shim_handle);
+    }
 
     public void RemoveSink(nint a1)
     {

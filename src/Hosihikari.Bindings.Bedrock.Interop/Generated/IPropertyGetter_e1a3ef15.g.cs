@@ -64,17 +64,19 @@ public sealed unsafe partial class IPropertyGetter : global::System.IDisposable
         return new IPropertyGetter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
     public nint get(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getReturnPolicy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public byte getReturnPolicy()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_199aed2a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isReferenceType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isReferenceType()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_a80d3d74((void*)__hosihikari_shim_handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2af62d_Address
@@ -93,13 +95,13 @@ public sealed unsafe partial class IPropertyGetter : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.Reflection.IPropertyGetter((nint)NativeMethods.TablePtr->C3.hs_method_4f57f5c9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'entt::meta_type' is not supported.", false)]
     public nint ownerType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'entt::meta_type' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_type' requires --link-carrier or --virtual-dispatch.", false)]
     public nint type() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_type' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()

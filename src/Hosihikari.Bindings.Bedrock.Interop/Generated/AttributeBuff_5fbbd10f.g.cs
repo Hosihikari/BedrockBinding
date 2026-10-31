@@ -93,13 +93,15 @@ public sealed unsafe partial class AttributeBuff : global::System.IDisposable
     public static AttributeBuff Create(float amount, int operand, nint source, nint type, nint hurtEffectsSettings) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isInstantaneous() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isInstantaneous()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_e67dd404((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isSerializable() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isSerializable()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0f5de210((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public float mAmount
     {

@@ -49,9 +49,10 @@ public sealed unsafe partial class Flusher : global::System.IDisposable
         return new Flusher((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _flushBuffer(nint data, ulong amount) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result _flushBuffer(nint data, ulong amount)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C0.hs_method_c882605d((void*)__hosihikari_shim_handle, (void*)data, amount));
+    }
 
 
     public void Dispose()

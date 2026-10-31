@@ -49,13 +49,14 @@ public sealed unsafe partial class IPacketLimitAlgorithm : global::System.IDispo
         return new IPacketLimitAlgorithm((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint checkPacket(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint checkPacket(int packet)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_4e7605b0((void*)__hosihikari_shim_handle, packet);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPacketLimitAlgorithm' has no accessible destructor.", false)]
     public nint copy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPacketLimitAlgorithm' has no accessible destructor.");
 
 
     public void Dispose()

@@ -55,153 +55,283 @@ public sealed unsafe partial class SoundPlayerInterface : global::System.IDispos
         return new SoundPlayerInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fade(nint serverSoundHandle, float duration, float targetVolume) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fade(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle, float duration, float targetVolume)
+    {
+        NativeMethods.TablePtr->C3.hs_method_c43817d6((void*)__hosihikari_shim_handle, (void*)serverSoundHandle.Handle, duration, targetVolume);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fadeOut(ulong handle, float duration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fadeOut(ulong handle, float duration)
+    {
+        NativeMethods.TablePtr->C3.hs_method_50854f7d((void*)__hosihikari_shim_handle, handle, duration);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fadeToStopMusic(float fadeSeconds) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fadeToStopMusic(float fadeSeconds)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f4f18ed5((void*)__hosihikari_shim_handle, fadeSeconds);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCurrentlyPlayingMusicPath() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView getCurrentlyPlayingMusicPath()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView((nint)NativeMethods.TablePtr->C3.hs_method_1535ea04((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getItem(nint eventName, nint soundPath, nint soundItem) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool getItem(string eventName, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView soundPath, nint soundItem)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(eventName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(eventName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C3.hs_method_f1373fb7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)soundPath.Handle, (void*)soundItem) != 0;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSubtitle(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string? getSubtitle(string name)
+    {
+        var __hs_hasValue = false;
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_view = NativeMethods.TablePtr->C3.hs_method_e9a4d902((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, &__hs_hasValue);
+            return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isLoadingMusic() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isLoadingMusic()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_f8486ccd((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isPlayingMusic(nint soundPath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isPlayingMusic(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView soundPath)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_4782c364((void*)__hosihikari_shim_handle, (void*)soundPath.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isPlayingMusicEvent(nint eventName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isPlayingMusicEvent(string eventName)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(eventName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(eventName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C3.hs_method_80b6c6e3((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isPlayingSound_38c076ed(nint serverSoundHandle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isPlayingSound(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_38c076ed((void*)__hosihikari_shim_handle, (void*)serverSoundHandle.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isPlayingSound_4fe8322e(nint soundName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isPlayingSound(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path soundName)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_4fe8322e((void*)__hosihikari_shim_handle, (void*)soundName.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isPlayingSound(ulong handle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isPlayingSound(ulong handle)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_1ee9d9d3((void*)__hosihikari_shim_handle, handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void pause(nint serverSoundHandle, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void pause(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle, byte source)
+    {
+        NativeMethods.TablePtr->C3.hs_method_af4a8e7c((void*)__hosihikari_shim_handle, (void*)serverSoundHandle.Handle, source);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void pauseAllPlayingSounds(nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void pauseAllPlayingSounds(byte source)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ce750602((void*)__hosihikari_shim_handle, source);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void pauseMusic(bool state) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void pauseMusic(bool state)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f2d8b4bc((void*)__hosihikari_shim_handle, state);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'PlaySoundOptions' is not a known bindable declaration.", false)]
     public ulong play(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'PlaySoundOptions' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public ulong play(nint name, nint pos, float volume, float pitch, nint serverSoundHandle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public ulong playAttached(nint eventName, nint getSoundProperties) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playMusic(nint eventName, float volume) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playMusic(string eventName, float volume)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(eventName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(eventName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C3.hs_method_9ad90df5((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, volume);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playMusic(nint eventName, float volume, nint playlistIndex) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playMusic(string eventName, float volume, nint playlistIndex)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(eventName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(eventName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C3.hs_method_4754dc16((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, volume, (void*)playlistIndex);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong playUI(nint name, float volume, float pitch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong playUI(string name, float volume, float pitch)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C3.hs_method_2dd52c64((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, volume, pitch);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public ulong registerLoop(nint name, nint getSoundState, float fadeInDuration, float fadeOutDuration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void resume(nint serverSoundHandle, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void resume(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle, byte source)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f02896cf((void*)__hosihikari_shim_handle, (void*)serverSoundHandle.Handle, source);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void resumeAllPreviouslyPlayingSounds(nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void resumeAllPreviouslyPlayingSounds(byte source)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bb026b5f((void*)__hosihikari_shim_handle, source);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setMusicCommandVolumeMultiplier(float volumeMultiplier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setMusicCommandVolumeMultiplier(float volumeMultiplier)
+    {
+        NativeMethods.TablePtr->C3.hs_method_f2617638((void*)__hosihikari_shim_handle, volumeMultiplier);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPitch(nint serverSoundHandle, float pitch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPitch(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle, float pitch)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1e9b2596((void*)__hosihikari_shim_handle, (void*)serverSoundHandle.Handle, pitch);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPlaybackPosition(nint serverSoundHandle, float seconds) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPlaybackPosition(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle, float seconds)
+    {
+        NativeMethods.TablePtr->C3.hs_method_48d76b06((void*)__hosihikari_shim_handle, (void*)serverSoundHandle.Handle, seconds);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setVolume(nint serverSoundHandle, float volume) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setVolume(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle, float volume)
+    {
+        NativeMethods.TablePtr->C3.hs_method_9831fc5d((void*)__hosihikari_shim_handle, (void*)serverSoundHandle.Handle, volume);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void stop_a58678f8(nint serverSoundHandle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void stop(global::Hosihikari.Bindings.Bedrock.Interop.ServerSoundHandle serverSoundHandle)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a58678f8((void*)__hosihikari_shim_handle, (void*)serverSoundHandle.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void stop_5d555501(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void stop(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C3.hs_method_5d555501((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void stop(ulong handle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void stop(ulong handle)
+    {
+        NativeMethods.TablePtr->C3.hs_method_2eba5a5d((void*)__hosihikari_shim_handle, handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void stopAllSounds() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void stopAllSounds()
+    {
+        NativeMethods.TablePtr->C3.hs_method_7020e21e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void stopMusic() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void stopMusic()
+    {
+        NativeMethods.TablePtr->C3.hs_method_1723fc25((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'LoopingSoundAttributes' is not supported.", false)]
     public nint tryGetLoopingSoundAttributes(ulong handle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'LoopingSoundAttributes' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.", false)]
     public nint tryGetPlayingSoundAttributes(nint serverSoundHandle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.", false)]
     public nint tryGetPlayingSoundAttributes(ulong handle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'PlayingSoundAttributes' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void unregisterLoop(ulong handle, bool hard) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void unregisterLoop(ulong handle, bool hard)
+    {
+        NativeMethods.TablePtr->C3.hs_method_98d124a5((void*)__hosihikari_shim_handle, handle, hard);
+    }
 
 
     public void Dispose()

@@ -49,21 +49,25 @@ public sealed unsafe partial class IPlayerData : global::System.IDisposable
         return new IPlayerData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isAbilityEnabled(nint ability) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isAbilityEnabled(sbyte ability)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_47723007((void*)__hosihikari_shim_handle, ability) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isExternalPlayerCommunicationAllowed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isExternalPlayerCommunicationAllowed()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0eb8b372((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isOperator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isOperator()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_bf81c8d2((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isTeacher() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isTeacher()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_c6ac67e4((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

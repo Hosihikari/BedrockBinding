@@ -49,13 +49,15 @@ public sealed unsafe partial class MediaSourceInterface : global::System.IDispos
         return new MediaSourceInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool remote() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool remote()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_4edfd0c6((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint state() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int state()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_5cce1d5c((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

@@ -94,9 +94,10 @@ public sealed unsafe partial class BytesDataInput : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_unsigned_char__std__error_code_((nint)NativeMethods.TablePtr->C0.hs_method_42f6361b((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint readBytesResult(nint data, ulong bytes) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ readBytesResult(nint data, ulong bytes)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C0.hs_method_af8bfaf0((void*)__hosihikari_shim_handle, (void*)data, bytes));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_double__std__error_code_ readDoubleResult()
     {

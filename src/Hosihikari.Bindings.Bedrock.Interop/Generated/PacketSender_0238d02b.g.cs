@@ -55,13 +55,14 @@ public sealed unsafe partial class PacketSender : global::System.IDisposable
         return new PacketSender((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void flush(nint id, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isInitialized() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isInitialized()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_87ac4a03((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public byte mSubId
     {
@@ -69,37 +70,55 @@ public sealed unsafe partial class PacketSender : global::System.IDisposable
         set => NativeMethods.TablePtr->C2.hs_set_b5df139b((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void send(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void send(global::Hosihikari.Bindings.Bedrock.Interop.Packet packet)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0a895c65((void*)__hosihikari_shim_handle, (void*)packet.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendBroadcast(nint exceptId, nint exceptSubid, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendBroadcast(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier exceptId, byte exceptSubid, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c489cf1b((void*)__hosihikari_shim_handle, (void*)exceptId.Handle, exceptSubid, (void*)packet.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendBroadcast(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendBroadcast(global::Hosihikari.Bindings.Bedrock.Interop.Packet packet)
+    {
+        NativeMethods.TablePtr->C2.hs_method_670ce8fa((void*)__hosihikari_shim_handle, (void*)packet.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendTo(nint id, nint subid, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendTo(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, byte subid, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6bb7bc27((void*)__hosihikari_shim_handle, (void*)id.Handle, subid, (void*)packet.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendToClient(nint id, nint packet, nint recipientSubId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendToClient(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet, byte recipientSubId)
+    {
+        NativeMethods.TablePtr->C2.hs_method_d53cfaab((void*)__hosihikari_shim_handle, (void*)id.Handle, (void*)packet.Handle, recipientSubId);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendToClient(nint userIdentifier, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendToClient(global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? userIdentifier, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet)
+    {
+        NativeMethods.TablePtr->C2.hs_method_121bf035((void*)__hosihikari_shim_handle, (void*)(userIdentifier?.Handle ?? 0), (void*)packet.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendToClients(nint ids, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendToClients(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifierWithSubId[] ids, global::Hosihikari.Bindings.Bedrock.Interop.Packet packet)
+    {
+        var __hs_vectorItems0 = ids;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            NativeMethods.TablePtr->C2.hs_method_801e3048((void*)__hosihikari_shim_handle, (void*)packet.Handle, __hs_vectorData0, (nuint)(ids?.Length ?? 0));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendToServer(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendToServer(global::Hosihikari.Bindings.Bedrock.Interop.Packet packet)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3c82d587((void*)__hosihikari_shim_handle, (void*)packet.Handle);
+    }
 
 
     public void Dispose()

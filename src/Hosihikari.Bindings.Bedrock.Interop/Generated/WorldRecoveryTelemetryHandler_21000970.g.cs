@@ -55,9 +55,10 @@ public sealed unsafe partial class WorldRecoveryTelemetryHandler : global::Syste
         return new WorldRecoveryTelemetryHandler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fireWorldRecoveryTelemetryEvent(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fireWorldRecoveryTelemetryEvent(nint data)
+    {
+        NativeMethods.TablePtr->C0.hs_method_dce0c179((void*)__hosihikari_shim_handle, (void*)data);
+    }
 
 
     public void Dispose()

@@ -49,9 +49,10 @@ public sealed unsafe partial class IScriptItemCustomComponentRegistry : global::
         return new IScriptItemCustomComponentRegistry((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEventListener() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener getEventListener()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventListener((nint)NativeMethods.TablePtr->C3.hs_method_b67fe3b6((void*)__hosihikari_shim_handle), false);
+    }
 
     public void setCerealContext(global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx ctx)
     {

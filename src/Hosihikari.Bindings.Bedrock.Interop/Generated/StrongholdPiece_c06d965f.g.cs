@@ -40,7 +40,7 @@ public sealed unsafe partial class StrongholdPiece : global::System.IDisposable
 
     public static StrongholdPiece Create(global::Hosihikari.Bindings.Bedrock.Interop.StrongholdPiece arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_59993c20((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_59993c20((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,8 +51,8 @@ public sealed unsafe partial class StrongholdPiece : global::System.IDisposable
 
     public int entryDoor
     {
-        get => NativeMethods.TablePtr->C3.hs_get_23547aa1((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_23547aa1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_23547aa1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_23547aa1((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'StructurePiece' has no accessible destructor.", false)]
@@ -69,7 +69,7 @@ public sealed unsafe partial class StrongholdPiece : global::System.IDisposable
 
     public void generateSmallDoor(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Random arg1, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB, int doorType, int footX, int footY, int footZ)
     {
-        NativeMethods.TablePtr->C3.hs_method_a1bbd6bd((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)arg1.Handle, (void*)chunkBB.Handle, doorType, footX, footY, footZ);
+        NativeMethods.TablePtr->C4.hs_method_a1bbd6bd((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)arg1.Handle, (void*)chunkBB.Handle, doorType, footX, footY, footZ);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<StructurePiece>' is not supported.", false)]
@@ -84,25 +84,25 @@ public sealed unsafe partial class StrongholdPiece : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mBoundingBox_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6d2ba568((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6d2ba568((void*)__hosihikari_shim_handle);
     }
 
     public int mGenDepth
     {
-        get => NativeMethods.TablePtr->C3.hs_get_db58fd76((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_db58fd76((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_db58fd76((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_db58fd76((void*)__hosihikari_shim_handle, value);
     }
 
     public int mOrientation
     {
-        get => NativeMethods.TablePtr->C3.hs_get_f16eadd1((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_f16eadd1((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_f16eadd1((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_f16eadd1((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTerrainAdjustmentToken_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_48c2bb58((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_48c2bb58((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -111,7 +111,7 @@ public sealed unsafe partial class StrongholdPiece : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_c06d965f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_c06d965f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

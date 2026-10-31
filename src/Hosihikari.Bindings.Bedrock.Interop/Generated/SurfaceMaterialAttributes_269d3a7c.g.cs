@@ -44,7 +44,7 @@ public sealed unsafe partial class SurfaceMaterialAttributes : global::System.ID
 
     public static SurfaceMaterialAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAttributes arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_22f7815b((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_22f7815b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,33 +55,33 @@ public sealed unsafe partial class SurfaceMaterialAttributes : global::System.ID
 
     public nint mFoundation
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_a58880bb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a58880bb((void*)__hosihikari_shim_handle);
     }
 
     public nint mMid
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_d72ca5c1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_d72ca5c1((void*)__hosihikari_shim_handle);
     }
 
     public nint mSea
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_eb93a7fb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_eb93a7fb((void*)__hosihikari_shim_handle);
     }
 
     public nint mSeaFloor
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_5e9f99e6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_5e9f99e6((void*)__hosihikari_shim_handle);
     }
 
     public int mSeaFloorDepth
     {
-        get => NativeMethods.TablePtr->C3.hs_get_0bacff45((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_0bacff45((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_0bacff45((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_0bacff45((void*)__hosihikari_shim_handle, value);
     }
 
     public nint mTop
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_9d0e1a1a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9d0e1a1a((void*)__hosihikari_shim_handle);
     }
 
 
@@ -91,7 +91,7 @@ public sealed unsafe partial class SurfaceMaterialAttributes : global::System.ID
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_269d3a7c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_269d3a7c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

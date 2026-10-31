@@ -60,18 +60,21 @@ public sealed unsafe partial class BaseGameTestBatchRunner : global::System.IDis
         return new BaseGameTestBatchRunner((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _createGameTestInstance(nint function) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _createGameTestInstance(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestFunction function)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C4.hs_method_5c70337a((void*)__hosihikari_shim_handle, (void*)function.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public void _runBatch(int batchIndex)
     {
         NativeMethods.TablePtr->C4.hs_method_be5e96a2((void*)__hosihikari_shim_handle, batchIndex);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void _runTest(nint test, nint ticker) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void _runTest(global::Hosihikari.Bindings.Abi.SharedHandle? test, global::Hosihikari.Bindings.Bedrock.Interop.gametest.GameTestTicker ticker)
+    {
+        NativeMethods.TablePtr->C4.hs_method_b3de7d47((void*)__hosihikari_shim_handle, test?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)ticker.Handle);
+    }
 
     public void forceStop()
     {

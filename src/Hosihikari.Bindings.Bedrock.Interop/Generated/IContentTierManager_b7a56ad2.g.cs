@@ -55,13 +55,14 @@ public sealed unsafe partial class IContentTierManager : global::System.IDisposa
         return new IContentTierManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'ContentTierInfo' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getContentTierInfo() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ContentTierInfo' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool shouldDeviceAllowAnimation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool shouldDeviceAllowAnimation()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2754666d((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

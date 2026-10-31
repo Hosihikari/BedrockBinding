@@ -49,9 +49,10 @@ public sealed unsafe partial class DeferredCommandBase : global::System.IDisposa
         return new DeferredCommandBase((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void execute(nint commands) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void execute(global::Hosihikari.Bindings.Bedrock.Interop.MinecraftCommands commands)
+    {
+        NativeMethods.TablePtr->C1.hs_method_527f1bfe((void*)__hosihikari_shim_handle, (void*)commands.Handle);
+    }
 
 
     public void Dispose()

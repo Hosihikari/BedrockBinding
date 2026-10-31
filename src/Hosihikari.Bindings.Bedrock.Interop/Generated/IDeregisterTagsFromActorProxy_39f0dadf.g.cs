@@ -49,9 +49,10 @@ public sealed unsafe partial class IDeregisterTagsFromActorProxy : global::Syste
         return new IDeregisterTagsFromActorProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void deregisterTagsFromActor(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void deregisterTagsFromActor(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C1.hs_method_3c078e50((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
 
 
     public void Dispose()

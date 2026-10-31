@@ -165,9 +165,10 @@ public sealed unsafe partial class RakWebSocket : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint _genMaskingKey() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint _genMaskingKey()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_68366f3a((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool _processPacket(nint processStep, bool acceptNewConnection) =>
@@ -221,9 +222,10 @@ public sealed unsafe partial class RakWebSocket : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void _updateState() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void _updateState()
+    {
+        NativeMethods.TablePtr->C3.hs_method_0d5b5321((void*)__hosihikari_shim_handle);
+    }
 
     public byte connect(string uri)
     {

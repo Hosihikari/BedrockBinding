@@ -49,13 +49,13 @@ public sealed unsafe partial class IScriptItemCustomComponentWriter : global::Sy
         return new IScriptItemCustomComponentWriter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tryRegisterComponent(nint componentName, nint closures) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint tryRegisterComponentV1(nint componentName, nint closures) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<void, ScriptModuleMinecraft::ScriptCustomComponentInvalidRegistryError, ScriptModuleMinecraft::ScriptItemCustomComponentAlreadyRegisteredError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadVersionError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewEventError, ScriptModuleMinecraft::ScriptItemCustomComponentReloadNewComponentError>' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()

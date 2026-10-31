@@ -49,13 +49,14 @@ public sealed unsafe partial class LevelGameplayHandler : global::System.IDispos
         return new LevelGameplayHandler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint handleEvent_2e0e4ced(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
+    public nint handleEvent(nint @event) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint handleEvent_0a6b4582(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelGameplayEvent_void_ arg0)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_0a6b4582((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
 
     public void Dispose()

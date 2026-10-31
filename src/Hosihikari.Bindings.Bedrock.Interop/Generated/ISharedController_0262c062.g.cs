@@ -49,21 +49,25 @@ public sealed unsafe partial class ISharedController : global::System.IDisposabl
         return new ISharedController((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canChat(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canChat(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_c2dbb3c8((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canMessage(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canMessage(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_1566d906((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canOpenChat(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canOpenChat(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_7cb7cd28((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canTell(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canTell(global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.IPlayerData player)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_fe0a2c3b((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
 
 
     public void Dispose()

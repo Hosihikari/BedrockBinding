@@ -40,12 +40,12 @@ public sealed unsafe partial class ValueIterator : global::System.IDisposable
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator other)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_9c1b80d8((void*)__hosihikari_shim_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_9c1b80d8((void*)__hosihikari_shim_handle, (void*)other.Handle);
     }
 
     public static ValueIterator Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_61c45558();
+        var handle = NativeMethods.TablePtr->C2.hs_create_61c45558();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class ValueIterator : global::System.IDisposable
 
     public static ValueIterator Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueConstIterator other)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_ff59e756((void*)other.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_ff59e756((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,7 +67,7 @@ public sealed unsafe partial class ValueIterator : global::System.IDisposable
 
     public static ValueIterator Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_32579752((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_32579752((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -78,26 +78,26 @@ public sealed unsafe partial class ValueIterator : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator((nint)NativeMethods.TablePtr->C1.hs_method_a84ae80a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.ValueIterator((nint)NativeMethods.TablePtr->C2.hs_method_a84ae80a((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
     public bool isArray_
     {
-        get => NativeMethods.TablePtr->C1.hs_get_858cf371((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_858cf371((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_858cf371((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_858cf371((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint array__Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_97650200((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_97650200((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint map__Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_4a8c290a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_4a8c290a((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -106,7 +106,7 @@ public sealed unsafe partial class ValueIterator : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_3fe202bf((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_3fe202bf((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

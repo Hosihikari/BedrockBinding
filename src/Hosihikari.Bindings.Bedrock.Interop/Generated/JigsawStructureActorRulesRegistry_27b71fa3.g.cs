@@ -40,7 +40,7 @@ public sealed unsafe partial class JigsawStructureActorRulesRegistry : global::S
 
     public static JigsawStructureActorRulesRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureActorRulesRegistry arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_245791b6((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_245791b6((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,20 +64,20 @@ public sealed unsafe partial class JigsawStructureActorRulesRegistry : global::S
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->C1.hs_method_1458db8c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C2.hs_method_1458db8c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorRuleLookupMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_9aaa5b12((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_9aaa5b12((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorRulesRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_10a2ae30((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_10a2ae30((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'std::vector<std::unique_ptr<StructurePoolActorRule>>' has no generated wrapper.", false)]
@@ -91,7 +91,7 @@ public sealed unsafe partial class JigsawStructureActorRulesRegistry : global::S
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_27b71fa3((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_27b71fa3((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

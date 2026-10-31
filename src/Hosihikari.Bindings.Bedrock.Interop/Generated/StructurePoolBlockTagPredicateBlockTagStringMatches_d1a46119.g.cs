@@ -40,7 +40,7 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
 
     public void _appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
-        NativeMethods.TablePtr->C3.hs_method_9261a68d((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+        NativeMethods.TablePtr->C4.hs_method_9261a68d((void*)__hosihikari_shim_handle, (void*)hash.Handle);
     }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Block block, string tag, string value)
@@ -71,14 +71,14 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                return (nint)NativeMethods.TablePtr->C3.hs_method_cc0f0a0e((void*)__hosihikari_shim_handle, (void*)block.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                return (nint)NativeMethods.TablePtr->C4.hs_method_cc0f0a0e((void*)__hosihikari_shim_handle, (void*)block.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
             }
         }
     }
 
     public bool _test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        return NativeMethods.TablePtr->C3.hs_method_f9af40c9((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)tag.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_f9af40c9((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)tag.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -87,7 +87,7 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
 
     public static StructurePoolBlockTagPredicateBlockTagStringMatches Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_8354139e();
+        var handle = NativeMethods.TablePtr->C4.hs_create_8354139e();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -124,7 +124,7 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var handle = NativeMethods.TablePtr->C3.hs_create_6c7d5908((void*)block.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
+                var handle = NativeMethods.TablePtr->C4.hs_create_6c7d5908((void*)block.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -137,7 +137,7 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
 
     public static StructurePoolBlockTagPredicateBlockTagStringMatches Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_2d57bc20((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_2d57bc20((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -148,35 +148,35 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
 
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
-        NativeMethods.TablePtr->C3.hs_method_40879e81((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+        NativeMethods.TablePtr->C4.hs_method_40879e81((void*)__hosihikari_shim_handle, (void*)hash.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_7a9f4840((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_7a9f4840((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTagKey_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_f81d76db((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_f81d76db((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTagValue_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_bd10fb8b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_bd10fb8b((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches((nint)NativeMethods.TablePtr->C3.hs_method_66191344((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockTagPredicateBlockTagStringMatches((nint)NativeMethods.TablePtr->C4.hs_method_66191344((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public bool test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
-        return NativeMethods.TablePtr->C3.hs_method_ab9609b5((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)tag.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_ab9609b5((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)tag.Handle) != 0;
     }
 
 
@@ -186,7 +186,7 @@ public sealed unsafe partial class StructurePoolBlockTagPredicateBlockTagStringM
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_d1a46119((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_d1a46119((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

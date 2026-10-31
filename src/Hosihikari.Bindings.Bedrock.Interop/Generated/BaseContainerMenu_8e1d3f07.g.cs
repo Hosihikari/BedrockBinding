@@ -114,9 +114,11 @@ public sealed unsafe partial class BaseContainerMenu : global::System.IDisposabl
         return new BaseContainerMenu((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getContainer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Container? _getContainer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_6ebe6598((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Container((nint)__hs_handle, false) : null;
+    }
 
     public void broadcastChanges()
     {
@@ -138,13 +140,14 @@ public sealed unsafe partial class BaseContainerMenu : global::System.IDisposabl
         return NativeMethods.TablePtr->C0.hs_method_3604e4db((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'ItemStack' is not supported.", false)]
     public nint getItemCopies() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'ItemStack' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSlot(int slot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack getSlot(int slot)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C0.hs_method_ea5a48b2((void*)__hosihikari_shim_handle, slot), false);
+    }
 
     public bool isResultSlot(int slot)
     {
@@ -213,13 +216,15 @@ public sealed unsafe partial class BaseContainerMenu : global::System.IDisposabl
     public nint registerContainerTypeListener(nint callback) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void removeSlot(int slot, int count) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void removeSlot(int slot, int count)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5c040b3a((void*)__hosihikari_shim_handle, slot, count);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void serverInitItemStackIds() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void serverInitItemStackIds()
+    {
+        NativeMethods.TablePtr->C0.hs_method_66841fc0((void*)__hosihikari_shim_handle);
+    }
 
     public void setContainerId(sbyte id)
     {
@@ -236,9 +241,10 @@ public sealed unsafe partial class BaseContainerMenu : global::System.IDisposabl
         NativeMethods.TablePtr->C0.hs_method_51e16494((void*)__hosihikari_shim_handle, id, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setSlot(int arg0, nint arg1, bool arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setSlot(int arg0, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack arg1, bool arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_3b62caae((void*)__hosihikari_shim_handle, arg0, (void*)arg1.Handle, arg2);
+    }
 
 
     public void Dispose()

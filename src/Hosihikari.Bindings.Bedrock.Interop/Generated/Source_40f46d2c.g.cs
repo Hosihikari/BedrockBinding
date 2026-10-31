@@ -38,13 +38,15 @@ public sealed unsafe partial class Source : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint GetAudioFrameWithInfo(int arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int GetAudioFrameWithInfo(int arg0, nint arg1)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_c1ed41ab((void*)__hosihikari_shim_handle, arg0, (void*)arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int PreferredSampleRate() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int PreferredSampleRate()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_11f609b6((void*)__hosihikari_shim_handle);
+    }
 
     public static Source Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.AudioMixer_Nested.Source arg0)
     {
@@ -57,9 +59,10 @@ public sealed unsafe partial class Source : global::System.IDisposable
         return new Source((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int Ssrc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int Ssrc()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_13ca43a8((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

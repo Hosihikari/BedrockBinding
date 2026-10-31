@@ -49,9 +49,10 @@ public sealed unsafe partial class PublisherDisconnector : global::System.IDispo
         return new PublisherDisconnector((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void _disconnect(nint body) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void _disconnect(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.PubSub.Detail.SubscriptionBodyBase body)
+    {
+        NativeMethods.TablePtr->C0.hs_method_760cfbc1((void*)__hosihikari_shim_handle, (void*)body.Handle);
+    }
 
 
     public void Dispose()

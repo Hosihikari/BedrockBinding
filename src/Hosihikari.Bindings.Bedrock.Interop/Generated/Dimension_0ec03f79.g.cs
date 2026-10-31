@@ -342,13 +342,14 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_45c3ca43((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void _upgradeOldLimboEntity(nint tag, nint vers) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void _upgradeOldLimboEntity(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, sbyte vers)
+    {
+        NativeMethods.TablePtr->C1.hs_method_deec7a33((void*)__hosihikari_shim_handle, (void*)tag.Handle, vers);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'ChunkSource' has no accessible destructor.", false)]
     public nint _wrapStorageForVersionCompatibility(nint storageSource, nint levelVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'ChunkSource' has no accessible destructor.");
 
     public void addWither(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID id)
     {
@@ -370,9 +371,9 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'WorldGenerator' has no accessible destructor.", false)]
     public nint createGenerator(nint structureSetRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'WorldGenerator' has no accessible destructor.");
 
     public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {
@@ -391,9 +392,10 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fixWallChunk(nint source, nint lc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fixWallChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        NativeMethods.TablePtr->C1.hs_method_1dd9c4f2((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
+    }
 
     public void flagEntityforChunkMove(global::Hosihikari.Bindings.Bedrock.Interop.Actor e)
     {
@@ -533,9 +535,10 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_873d1e85((void*)__hosihikari_shim_handle, x, z) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool levelChunkNeedsUpgrade(nint lc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool levelChunkNeedsUpgrade(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2159b8a8((void*)__hosihikari_shim_handle, (void*)lc.Handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mActorChunkTransferQueue_Address
@@ -998,9 +1001,10 @@ public sealed unsafe partial class Dimension : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_0713a8a8((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)removed.Handle, (void*)placed.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void upgradeLevelChunk(nint source, nint lc, nint generatedChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void upgradeLevelChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk generatedChunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_6a6793c2((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle, (void*)generatedChunk.Handle);
+    }
 
 
     public bool mDirty

@@ -120,9 +120,10 @@ public sealed unsafe partial class DcSctpSocketCallbacks : global::System.IDispo
         return new DcSctpSocketCallbacks((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint GetRandomInt(uint low, uint high) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint GetRandomInt(uint low, uint high)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_fa685527((void*)__hosihikari_shim_handle, low, high);
+    }
 
     public void NotifyOutgoingMessageBufferEmpty()
     {
@@ -133,33 +134,66 @@ public sealed unsafe partial class DcSctpSocketCallbacks : global::System.IDispo
     public nint Now() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::Timestamp' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnAborted(nint error, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnAborted(int error, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C4.hs_method_ca9d5ed2((void*)__hosihikari_shim_handle, error, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::StrongAlias<dcsctp::StreamIDTag, unsigned short>' is not a known bindable declaration.", false)]
     public void OnBufferedAmountLow(nint stream_id) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::StrongAlias<dcsctp::StreamIDTag, unsigned short>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnClosed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnClosed()
+    {
+        NativeMethods.TablePtr->C4.hs_method_bfb1ba59((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnConnected() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnConnected()
+    {
+        NativeMethods.TablePtr->C4.hs_method_59be00a7((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnConnectionRestarted() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnConnectionRestarted()
+    {
+        NativeMethods.TablePtr->C4.hs_method_12f7b320((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnError(nint error, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnError(int error, string message)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(message);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(message, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            NativeMethods.TablePtr->C4.hs_method_9540f418((void*)__hosihikari_shim_handle, error, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const webrtc::StrongAlias<dcsctp::StreamIDTag, unsigned short>>' is not a known bindable declaration.", false)]
     public void OnIncomingStreamsReset(nint incoming_streams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const webrtc::StrongAlias<dcsctp::StreamIDTag, unsigned short>>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'dcsctp::LifecycleId' is not a known bindable declaration.", false)]
     public void OnLifecycleEnd(nint lifecycle_id) =>
@@ -182,17 +216,17 @@ public sealed unsafe partial class DcSctpSocketCallbacks : global::System.IDispo
         NativeMethods.TablePtr->C4.hs_method_d6c2f770((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'dcsctp::DcSctpMessage' is not a known bindable declaration.", false)]
     public void OnMessageReceived(nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'dcsctp::DcSctpMessage' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const webrtc::StrongAlias<dcsctp::StreamIDTag, unsigned short>>' is not a known bindable declaration.", false)]
     public void OnStreamsResetFailed(nint outgoing_streams, nint reason) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const webrtc::StrongAlias<dcsctp::StreamIDTag, unsigned short>>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const webrtc::StrongAlias<dcsctp::StreamIDTag, unsigned short>>' is not a known bindable declaration.", false)]
     public void OnStreamsResetPerformed(nint outgoing_streams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const webrtc::StrongAlias<dcsctp::StreamIDTag, unsigned short>>' is not a known bindable declaration.");
 
     public void OnTotalBufferedAmountLow()
     {

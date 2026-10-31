@@ -49,25 +49,30 @@ public sealed unsafe partial class ISurfaceBuilder : global::System.IDisposable
         return new ISurfaceBuilder((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void buildSurfaceAt(nint globalParams, nint surfaceBuilderParams, nint columnParams) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void buildSurfaceAt(global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.GlobalParameters globalParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.SurfaceBuilderParameters surfaceBuilderParams, global::Hosihikari.Bindings.Bedrock.Interop.ISurfaceBuilder_Nested.PerColumnParameters columnParams)
+    {
+        NativeMethods.TablePtr->C1.hs_method_bda64c5e((void*)__hosihikari_shim_handle, (void*)globalParams.Handle, (void*)surfaceBuilderParams.Handle, (void*)columnParams.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getUsesDepthValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool getUsesDepthValue()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6b187016((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void initBiomeSurface(nint surfaceBuilderData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void initBiomeSurface(nint surfaceBuilderData)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7e35b1ac((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void initBuilder(nint levelSeed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void initBuilder(global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 levelSeed)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8ed33f49((void*)__hosihikari_shim_handle, (void*)levelSeed.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isBestBuilder(nint surfaceBuilderData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isBestBuilder(nint surfaceBuilderData)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_857a5387((void*)__hosihikari_shim_handle, (void*)surfaceBuilderData) != 0;
+    }
 
 
     public void Dispose()

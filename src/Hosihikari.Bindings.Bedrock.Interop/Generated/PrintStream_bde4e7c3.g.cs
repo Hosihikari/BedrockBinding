@@ -40,7 +40,7 @@ public sealed unsafe partial class PrintStream : global::System.IDisposable
 
     public static PrintStream Create(global::Hosihikari.Bindings.Bedrock.Interop.PrintStream arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_a99259a5((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_a99259a5((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,7 +64,7 @@ public sealed unsafe partial class PrintStream : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(s, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C2.hs_method_c700ec9a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C3.hs_method_c700ec9a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -83,7 +83,7 @@ public sealed unsafe partial class PrintStream : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(s, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C2.hs_method_a9c968bd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            NativeMethods.TablePtr->C3.hs_method_a9c968bd((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -94,7 +94,7 @@ public sealed unsafe partial class PrintStream : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_bde4e7c3((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_bde4e7c3((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

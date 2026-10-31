@@ -49,13 +49,15 @@ public sealed unsafe partial class IJsonSerializable : global::System.IDisposabl
         return new IJsonSerializable((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void deserialize(nint root) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void deserialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7cc65ab9((void*)__hosihikari_shim_handle, (void*)root.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint serialize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value serialize()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C1.hs_method_89eb28c9((void*)__hosihikari_shim_handle));
+    }
 
 
     public void Dispose()

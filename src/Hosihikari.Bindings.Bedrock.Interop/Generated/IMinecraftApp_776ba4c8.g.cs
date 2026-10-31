@@ -49,41 +49,53 @@ public sealed unsafe partial class IMinecraftApp : global::System.IDisposable
         return new IMinecraftApp((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getAutomationClient() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getAutomationClient()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_780a818c((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getFileArchiver() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getFileArchiver()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_4cc9db77((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getGameModuleShared() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getGameModuleShared()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_8fe2e690((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPrimaryMinecraft() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPrimaryMinecraft()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_c9dd247c((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isDedicatedServer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isDedicatedServer()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_71983c0b((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isEduMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isEduMode()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5632080b((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onNetworkMaxPlayersChanged(uint newMaxPlayerCount) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onNetworkMaxPlayersChanged(uint newMaxPlayerCount)
+    {
+        NativeMethods.TablePtr->C1.hs_method_05f30f6d((void*)__hosihikari_shim_handle, newMaxPlayerCount);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool requestInGamePause(nint subClient, bool status) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool requestInGamePause(nint subClient, bool status)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_25f801f7((void*)__hosihikari_shim_handle, (void*)subClient, status) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void requestServerShutdown() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void requestServerShutdown()
+    {
+        NativeMethods.TablePtr->C1.hs_method_4a4febd5((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

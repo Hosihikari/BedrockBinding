@@ -43,53 +43,60 @@ public sealed unsafe partial class RtpVideoSenderInterface : global::System.IDis
         NativeMethods.TablePtr->C4.hs_method_522e4e7d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const unsigned char>' is not a known bindable declaration.", false)]
     public void DeliverRtcp(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const unsigned char>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint GetPayloadBitrateBps() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint GetPayloadBitrateBps()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_78b7522a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint GetProtectionBitrateBps() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint GetProtectionBitrateBps()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_1817b1d0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::map<unsigned int, webrtc::RtpPayloadState>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetRtpPayloadStates() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<unsigned int, webrtc::RtpPayloadState>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::map<unsigned int, webrtc::RtpState>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetRtpStates() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::map<unsigned int, webrtc::RtpState>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const unsigned short>' is not a known bindable declaration.", false)]
     public nint GetSentRtpPacketInfos(uint ssrc, nint sequence_numbers) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const unsigned short>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool IsActive() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool IsActive()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_4d4b9b57((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnBitrateAllocationUpdated(nint bitrate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnBitrateAllocationUpdated(nint bitrate)
+    {
+        NativeMethods.TablePtr->C4.hs_method_30978d4e((void*)__hosihikari_shim_handle, (void*)bitrate);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::BitrateAllocationUpdate' is not a known bindable declaration.", false)]
     public void OnBitrateUpdated(nint update, int framerate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::BitrateAllocationUpdate' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnNetworkAvailability(bool network_available) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnNetworkAvailability(bool network_available)
+    {
+        NativeMethods.TablePtr->C4.hs_method_5e143007((void*)__hosihikari_shim_handle, network_available);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnTransportOverheadChanged(ulong transport_overhead_bytes_per_packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnTransportOverheadChanged(ulong transport_overhead_bytes_per_packet)
+    {
+        NativeMethods.TablePtr->C4.hs_method_b845d68e((void*)__hosihikari_shim_handle, transport_overhead_bytes_per_packet);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnVideoLayersAllocationUpdated(nint allocation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnVideoLayersAllocationUpdated(nint allocation)
+    {
+        NativeMethods.TablePtr->C4.hs_method_6677f54f((void*)__hosihikari_shim_handle, (void*)allocation);
+    }
 
     public static RtpVideoSenderInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RtpVideoSenderInterface arg0)
     {
@@ -102,21 +109,24 @@ public sealed unsafe partial class RtpVideoSenderInterface : global::System.IDis
         return new RtpVideoSenderInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const unsigned int>' is not a known bindable declaration.", false)]
     public void SetCsrcs(nint csrcs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::ArrayView<const unsigned int>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetEncodingData(ulong width, ulong height, ulong num_temporal_layers) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetEncodingData(ulong width, ulong height, ulong num_temporal_layers)
+    {
+        NativeMethods.TablePtr->C4.hs_method_59f4796e((void*)__hosihikari_shim_handle, width, height, num_temporal_layers);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetFecAllowed(bool fec_allowed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetFecAllowed(bool fec_allowed)
+    {
+        NativeMethods.TablePtr->C4.hs_method_508f1168((void*)__hosihikari_shim_handle, fec_allowed);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetSending(bool enabled) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetSending(bool enabled)
+    {
+        NativeMethods.TablePtr->C4.hs_method_a5200f30((void*)__hosihikari_shim_handle, enabled);
+    }
 
 
     public void Dispose()

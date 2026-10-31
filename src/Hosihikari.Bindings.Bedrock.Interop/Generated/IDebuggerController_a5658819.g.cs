@@ -49,21 +49,24 @@ public sealed unsafe partial class IDebuggerController : global::System.IDisposa
         return new IDebuggerController((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool attach(bool performHandshake, nint targetModuleUuid, nint handler) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool closed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool closed()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b58ad40f((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void detach() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void detach()
+    {
+        NativeMethods.TablePtr->C3.hs_method_d04e66fa((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void pumpMessages() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void pumpMessages()
+    {
+        NativeMethods.TablePtr->C3.hs_method_8f7f6d9a((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

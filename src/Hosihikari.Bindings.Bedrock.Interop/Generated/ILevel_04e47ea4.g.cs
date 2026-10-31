@@ -60,90 +60,106 @@ public sealed unsafe partial class ILevel : global::System.IDisposable
         return new ILevel((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _cerealContext() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx _cerealContext()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx((nint)NativeMethods.TablePtr->C1.hs_method_1e02a041((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getMapDataManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapDataManager _getMapDataManager()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MapDataManager((nint)NativeMethods.TablePtr->C1.hs_method_9583fa3d((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getPlayerDeathManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerDeathManager? _getPlayerDeathManager()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_e86a4447((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PlayerDeathManager((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getTickTimeManager_e46a32f9() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.TickTimeManager _getTickTimeManager_e46a32f9()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickTimeManager((nint)NativeMethods.TablePtr->C1.hs_method_e46a32f9((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getTickTimeManager_43391c93() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.TickTimeManager _getTickTimeManager_43391c93()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickTimeManager((nint)NativeMethods.TablePtr->C1.hs_method_43391c93((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void _onLowMemory() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void _onLowMemory()
+    {
+        NativeMethods.TablePtr->C1.hs_method_057b0fb7((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addAutonomousEntity(nint region, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addBiomeTintedParticleEffect(nint effect, nint pos, nint block, nint overrideColor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addBiomeTintedParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString effect, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color? overrideColor)
+    {
+        NativeMethods.TablePtr->C1.hs_method_ba18d7fd((void*)__hosihikari_shim_handle, (void*)effect.Handle, (void*)pos.Handle, (void*)block.Handle, (void*)(overrideColor?.Handle ?? 0), overrideColor is not null);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addBreakingItemParticleEffect(nint pos, nint data, nint textureInfo) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addBreakingItemParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, nint data, global::Hosihikari.Bindings.Bedrock.Interop.ResolvedItemIconInfo textureInfo)
+    {
+        NativeMethods.TablePtr->C1.hs_method_1fd1f21c((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)data, (void*)textureInfo.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addChunkViewTracker(nint chunkViewSource) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addChunkViewTracker(global::Hosihikari.Bindings.Abi.SharedHandle? chunkViewSource)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8994669e((void*)__hosihikari_shim_handle, chunkViewSource?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addDisplayEntity(nint region, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addEntity(nint region, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addGlobalEntity(nint region, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addListener(nint listener) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelListener listener)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f718f364((void*)__hosihikari_shim_handle, (void*)listener.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint addParticle(nint id, nint pos, nint dir, int data, nint tag, bool isGlobal) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint addParticle(int id, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 dir, int data, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? tag, bool isGlobal)
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_394b4a31((void*)__hosihikari_shim_handle, id, (void*)pos.Handle, (void*)dir.Handle, data, (void*)(tag?.Handle ?? 0), isGlobal);
+    }
 
     public void addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString effect, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition)
     {
         NativeMethods.TablePtr->C1.hs_method_e5c8a7e5((void*)__hosihikari_shim_handle, (void*)effect.Handle, (void*)emitterPosition.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addParticleEffect(nint effect, nint emitterPosition, nint molangVariables) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.HashedString effect, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition, global::Hosihikari.Bindings.Bedrock.Interop.MolangVariableMap molangVariables)
+    {
+        NativeMethods.TablePtr->C1.hs_method_ca7bb54e((void*)__hosihikari_shim_handle, (void*)effect.Handle, (void*)emitterPosition.Handle, (void*)molangVariables.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addTerrainParticleEffect(nint pos, nint block, nint emitterPosition, float intensity, float velocityScalar, float emitterRadius) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addTerrainParticleEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition, float intensity, float velocityScalar, float emitterRadius)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e236ba1e((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, intensity, velocityScalar, emitterRadius);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addTerrainSlideEffect(nint pos, nint block, nint emitterPosition, float intensity, float velocityScalar, float emitterRadius) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addTerrainSlideEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 emitterPosition, float intensity, float velocityScalar, float emitterRadius)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a23e69dc((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle, (void*)emitterPosition.Handle, intensity, velocityScalar, emitterRadius);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addTickingAreaList(nint dimensionId, nint tickingAreas) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addTickingAreaList(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionId, global::Hosihikari.Bindings.Abi.SharedHandle? tickingAreas)
+    {
+        NativeMethods.TablePtr->C1.hs_method_85a67259((void*)__hosihikari_shim_handle, (void*)dimensionId.Handle, tickingAreas?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public void addUser(nint userEntity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
     public nint asClientLevel()
     {
@@ -156,1033 +172,1476 @@ public sealed unsafe partial class ILevel : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool blockNetworkIdsAreHashes() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool blockNetworkIdsAreHashes()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_162d8d29((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastActorEvent(nint actor, nint eventId, int data, nint fireAtPosition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastActorEvent(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor, byte eventId, int data, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        NativeMethods.TablePtr->C1.hs_method_cf9274a7((void*)__hosihikari_shim_handle, (void*)actor.Handle, eventId, data, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastLevelEvent(nint type, nint tag, nint userIdentifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? userIdentifier)
+    {
+        NativeMethods.TablePtr->C1.hs_method_304a25dc((void*)__hosihikari_shim_handle, type, (void*)tag.Handle, (void*)(userIdentifier?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastLevelEvent(nint type, nint pos, int data, nint userIdentifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, global::Hosihikari.Bindings.Bedrock.Interop.UserEntityIdentifierComponent? userIdentifier)
+    {
+        NativeMethods.TablePtr->C1.hs_method_9ccd849e((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data, (void*)(userIdentifier?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastLocalEvent(nint region, nint type, nint pos, nint block) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastLocalEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e6106cf6((void*)__hosihikari_shim_handle, (void*)region.Handle, type, (void*)pos.Handle, (void*)block.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastLocalEvent(nint region, nint type, nint pos, int data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastLocalEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data)
+    {
+        NativeMethods.TablePtr->C1.hs_method_661fcc12((void*)__hosihikari_shim_handle, (void*)region.Handle, type, (void*)pos.Handle, data);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastSoundEvent(nint region, nint type, nint pos, nint block, nint actorSoundIdentifier, bool isGlobal, nint fireAtPosition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        NativeMethods.TablePtr->C1.hs_method_1c1304d7((void*)__hosihikari_shim_handle, (void*)region.Handle, type, (void*)pos.Handle, (void*)block.Handle, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastSoundEvent_7c16134c(nint region, nint type, nint pos, int data, nint actorSoundIdentifier, bool isGlobal, nint fireAtPosition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7c16134c((void*)__hosihikari_shim_handle, (void*)region.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastSoundEvent_b10e3f48(nint dimension, nint type, nint pos, int data, nint actorSoundIdentifier, bool isGlobal, nint fireAtPosition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastSoundEvent(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal, global::Hosihikari.Bindings.Bedrock.Interop.Vec3? fireAtPosition)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b10e3f48((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal, (void*)(fireAtPosition?.Handle ?? 0), fireAtPosition is not null);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canUseSkin(nint skin, nint networkIdentifier, nint playerId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canUseSkin(global::Hosihikari.Bindings.Bedrock.Interop.SerializedSkinRef skin, global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier networkIdentifier, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID playerId)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6bf13591((void*)__hosihikari_shim_handle, (void*)skin.Handle, (void*)networkIdentifier.Handle, (void*)playerId.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint cerealContext_fd972070() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx cerealContext_fd972070()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx((nint)NativeMethods.TablePtr->C1.hs_method_fd972070((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint cerealContext_ffad2399() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx cerealContext_ffad2399()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx((nint)NativeMethods.TablePtr->C1.hs_method_ffad2399((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void clearAllGenerationRequests(nint player, nint clientId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void clearAllGenerationRequests(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier player, byte clientId)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f44e03a3((void*)__hosihikari_shim_handle, (void*)player.Handle, clientId);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool copyAndLockMap(nint originalMapUuid, nint newMapUuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool copyAndLockMap(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID originalMapUuid, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID newMapUuid)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_51c33ddd((void*)__hosihikari_shim_handle, (void*)originalMapUuid.Handle, (void*)newMapUuid.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int countUsersWithMatchingNetworkId(nint networkId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int countUsersWithMatchingNetworkId(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier networkId)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_08624e9c((void*)__hosihikari_shim_handle, (void*)networkId.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint createMapSavedData_54de809b(nint uuid, nint origin, nint dimension, int returnScaleLevel) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData createMapSavedData(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uuid, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimension, int returnScaleLevel)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)NativeMethods.TablePtr->C1.hs_method_54de809b((void*)__hosihikari_shim_handle, (void*)uuid.Handle, (void*)origin.Handle, (void*)dimension.Handle, returnScaleLevel), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint createMapSavedData_1e45b29a(nint mapIds, nint origin, nint dimension, int returnScaleLevel) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData createMapSavedData(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID[] mapIds, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos origin, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimension, int returnScaleLevel)
+    {
+        var __hs_vectorItems0 = mapIds;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            return new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)NativeMethods.TablePtr->C1.hs_method_1e45b29a((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)dimension.Handle, returnScaleLevel, __hs_vectorData0, (nuint)(mapIds?.Length ?? 0)), false);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameModeExt::MessengerFactory' requires --link-carrier or --virtual-dispatch.", false)]
     public nint createMessengerFactory() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameModeExt::MessengerFactory' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void createPhotoStorage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void createPhotoStorage()
+    {
+        NativeMethods.TablePtr->C1.hs_method_3abf1fe4((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void decrementTagCache(nint tag, nint tagRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void decrementTagCache(string tag, global::Hosihikari.Bindings.Bedrock.Interop.TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__ tagRegistry)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(tag);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_f8d4b3ee((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)tagRegistry.Handle);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void denyEffect(nint region, nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void denyEffect(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
+    {
+        NativeMethods.TablePtr->C1.hs_method_802b8fa9((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool destroyBlock(nint region, nint pos, bool dropResources, nint changeSourceContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool destroyBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, bool dropResources, nint changeSourceContext)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d2770c86((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, dropResources, (void*)changeSourceContext) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void digestServerBlockProperties(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void digestServerBlockProperties(global::Hosihikari.Bindings.Bedrock.Interop.StartGamePacket packet)
+    {
+        NativeMethods.TablePtr->C1.hs_method_959af0dc((void*)__hosihikari_shim_handle, (void*)packet.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void entityChangeDimension(nint entity, nint actorDimensionTransferRequest) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void entityChangeDimension(global::Hosihikari.Bindings.Bedrock.Interop.Actor entity, nint actorDimensionTransferRequest)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a74757e0((void*)__hosihikari_shim_handle, (void*)entity.Handle, (void*)actorDimensionTransferRequest);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint expandMapByID(nint uuid, bool wasInit) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID expandMapByID(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uuid, bool wasInit)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C1.hs_method_f50333ba((void*)__hosihikari_shim_handle, (void*)uuid.Handle, wasInit));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool explode(nint region, nint source, nint pos, float explosionRadius, bool fire, bool breaksBlocks, float maxResistance, bool allowUnderwater) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool explode(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Actor? source, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, float explosionRadius, bool fire, bool breaksBlocks, float maxResistance, bool allowUnderwater)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_38821fa3((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)(source?.Handle ?? 0), (void*)pos.Handle, explosionRadius, fire, breaksBlocks, maxResistance, allowUnderwater) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool explode(nint explosion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool explode(global::Hosihikari.Bindings.Bedrock.Interop.Explosion explosion)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5b7b023a((void*)__hosihikari_shim_handle, (void*)explosion.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool extinguishFire(nint region, nint pos, byte face, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool extinguishFire(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, byte face, global::Hosihikari.Bindings.Bedrock.Interop.Actor? source)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5e1b872f((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle, face, (void*)(source?.Handle ?? 0)) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint fetchEntity(nint actorId, bool getRemoved) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? fetchEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorId, bool getRemoved)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_5b912df1((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint fetchStrictEntity(nint actorId, bool getRemoved) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext fetchStrictEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID actorId, bool getRemoved)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StrictEntityContext((nint)NativeMethods.TablePtr->C1.hs_method_cefef518((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
     public nint findPath(nint from, nint to, nint navigation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.", false)]
     public nint findPath(nint from, int xBest, int yBest, int zBest, nint navigation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Path' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint findPlayer_8fbdf7ea(nint pred) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint findPlayer_2797792d(nint pred) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void flushRunTimeLighting() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void flushRunTimeLighting()
+    {
+        NativeMethods.TablePtr->C1.hs_method_c56a7308((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachDimension_308bbb83(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachDimension_59d1ae32(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachPlayer_97bdb2c9(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachPlayer_bac16c6f(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachUser_c7bfc996(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachUser_df23d562(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void forceFlushRemovedPlayers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void forceRemoveEntity(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void forceRemoveEntityfromWorld(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getActivePlayerCount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActiveUsers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getActiveUsersCount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorAnimationControllerGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorAnimationGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorDimensionTransferManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorEventBroadcaster() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorFactory_f07f5ea0() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorFactory_9a90cd63() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorFetcher() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorInfoRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorPropertyGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorRuntimeIDManager_123fadb8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getActorRuntimeIDManager_79caf4b6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getAdventureSettings_7bb57586() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getAdventureSettings_8234e293() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getAllowAnonymousBlockDropsInEditorWorlds() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getAutomationBehaviorTreeGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBehaviorFactory() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBiomeComponentFactory_4bccac11() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBiomeComponentFactory_a1a0f15a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBiomeManager_2a4197a7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBiomeManager_b572a385() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBiomeRegistry_42e00c01() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBiomeRegistry_f5d6f9c7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlockDefinitions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlockEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlockPalette_1c1430aa() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlockPalette_a496861c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlockReducer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlockTypeRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBossEventSubscriptionManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCameraPreset(int presetIndex) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCameraPresets_b5dd3549() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCameraPresets_c303b880() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCameraRegistry_c88a5ef1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCameraRegistry_5ed77224() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCameraSystems() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCapabilities() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getChunkGenerationManager_5dc61990() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getChunkGenerationManager_1ff998b8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getChunkTickOffsetManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint getChunkTickRange() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getChunkTickRangeManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getClientPlayerEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getClientResourcePackManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getClientTickingOffsets() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getContainerRegistryAccess() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getContainerRegistryTracker() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCurrentServerTick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getCurrentTick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDefaultAbilities() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDefaultGameType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDefaultPermissions_a64499cb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDefaultPermissions_4ac34cc7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDefaultSpawn() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDifficulty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimension(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimensionConversionData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimensionFactory_7de763b4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimensionFactory_e7f4a11a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimensionManager_f97ac8cf() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimensionManager_52d8e116() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimensionManagerNonOwner_178c10a4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimensionManagerNonOwner_1e5965d6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getDisablePlayerInteractions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDisplayActorManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDynamicContainerSerialization() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEducationSettingsManager_88edbc07() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEducationSettingsManager_946623ab() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEntities() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEntityDefinitions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEntityRegistry_f9747498() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEntityRegistry_23d1c3c8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEntitySystems() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEventing() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getFeatureRegistry_7d4744eb() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getFeatureRegistry_09323eab() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getFeatureTypeFactory_ff758613() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getFeatureTypeFactory_9762322d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getGameRules_d3f72746() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getGameRules_2f767585() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getGameplayUserManager_00f3a2f6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getGameplayUserManager_a056baf5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getHitResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getHitResultWrapper() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getILevelRandom() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getIOTasksGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getIRandom() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getImmersiveReaderString() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getInternalComponentRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getItemEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getItemRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getJigsawStructureRegistry_0cd5eae4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getJigsawStructureRegistry_f8f53f52() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getLANBroadcast() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getLANBroadcastIntent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelBlockDestroyer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelChunkEventManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelChunkMetaDataManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelChunkPerformanceTelemetry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelData_7181029b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelData_fe698fc4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelEntity_32b1974f() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelEntity_f184b919() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelEventManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelSeed64() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelSoundManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelStorage_bd38ee47() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelStorage_365650fc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLightTextureImageBuilderFactory_fd9154e5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLightTextureImageBuilderFactory_115a2b16() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLiquidHitResult() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLootTables() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMapDataManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMapSavedData_f2e4c968(nint uuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMapSavedData_029407a4(nint instance) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMapSavedData_cd371381(nint instance) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMob(nint mobId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMolangPackSettingsCache() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getMultiplayerGameIntent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMutableShapeRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getNetEventCallback() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getNetherScale() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getNewUniqueID() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getNextRuntimeID() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getNumRemotePlayers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getOrCreateDimension(nint dimensionType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPacketSender() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPauseManager_cd74e258() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPauseManager_e8af11c7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPhotoManager_66896571() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPhotoManager_41d93ed4() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPhotoStorage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlatformBroadcastIntent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlatformBroadcastMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlatformPlayer(nint platformOnlineId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayer_aee97b2a(nint entityID) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayer_442abe83(nint uuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayer_925c0832(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerAbilities(nint playerId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerAbilitiesManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerByXuid(nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerColor(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerDimensionTransferManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerFromServerId(nint serverId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerList() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerListManager_5fa420e7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerListManager_ec97a056() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerLocationReceiver() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerMovementSettings() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerMovementSettingsManager_cbdd8331() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerMovementSettingsManager_9c9a1b7d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerPermissionsManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerPermissionsSynchroniser() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerPlatformOnlineId(nint uuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerXUID(nint uuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPortalForcer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPositionTrackerDBClient() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPositionTrackerDBServer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPrimaryLocalPlayer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getProjectileFactory() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getRandom() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getRecipes() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getRegisteredBorderBlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getRemotePlayerEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getRuntimeActorList() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getRuntimeEntity(nint actorId, bool getRemoved) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getRuntimePlayer(nint runtimeId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSavedData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getScoreboard_810a88dc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getScoreboard_7586dba7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getScreenshotsFolder() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getScriptDeferredEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getScriptingEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint getSeed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getServerNetworkEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getServerParticleManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getServerPlayerEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getServerPlayerSleepManager_93f7d29d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getServerPlayerSleepManager_6132b5a8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getServerResourcePackManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getShapeRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSharedSpawnPos() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getSimPaused() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSleepStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSortedPositionsFromClientOffsets(nint centers) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSoundPlayer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSpawner() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public float getSpecialMultiplier(nint dimensionType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getStructureManager_d7ba8059() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getStructureManager_24b5649a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getStructureSpawnRegistry_f26d108a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getStructureSpawnRegistry_34172899() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSubChunkLighter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSubChunkManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSubChunkRequestManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSubClientId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSurfaceBuilderRegistry_13f29e16() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSurfaceBuilderRegistry_98dbf66a() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSyncTasksGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTagCacheManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTagRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool getTearingDown() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTempEPtrManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getThreadRandom() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTickDeltaTimeManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTickingAreasMgr() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTickingOffsets() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getTime() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
+
+    public void forceFlushRemovedPlayers()
+    {
+        NativeMethods.TablePtr->C1.hs_method_64d4e3cc((void*)__hosihikari_shim_handle);
+    }
+
+    public void forceRemoveEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C1.hs_method_371d4586((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public void forceRemoveEntityfromWorld(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        NativeMethods.TablePtr->C1.hs_method_06c99202((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+    }
+
+    public int getActivePlayerCount()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_13f38790((void*)__hosihikari_shim_handle);
+    }
+
+    public nint getActiveUsers()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_6ff152c9((void*)__hosihikari_shim_handle);
+    }
+
+    public int getActiveUsersCount()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_9eee17bd((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorAnimationControllerGroup()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_5ac1616c((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorAnimationGroup()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_cd4226c6((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorDimensionTransferManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_6cb743f2((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorEventBroadcaster()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_af8cd07f((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorEventCoordinator getActorEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_b005d9f7((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory getActorFactory_f07f5ea0()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory((nint)NativeMethods.TablePtr->C1.hs_method_f07f5ea0((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory getActorFactory_9a90cd63()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorFactory((nint)NativeMethods.TablePtr->C1.hs_method_9a90cd63((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorFetcher()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_3847948d((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorInfoRegistry? getActorInfoRegistry()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_154b2889((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorInfoRegistry((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PropertyGroupManager getActorPropertyGroup()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PropertyGroupManager((nint)NativeMethods.TablePtr->C1.hs_method_56278cd0((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorRuntimeIDManager_123fadb8()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_123fadb8((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getActorRuntimeIDManager_79caf4b6()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_79caf4b6((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings_7bb57586()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->C1.hs_method_7bb57586((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings getAdventureSettings_8234e293()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AdventureSettings((nint)NativeMethods.TablePtr->C1.hs_method_8234e293((void*)__hosihikari_shim_handle), false);
+    }
+
+    public bool getAllowAnonymousBlockDropsInEditorWorlds()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d6b23741((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.AutomationBehaviorTreeGroup getAutomationBehaviorTreeGroup()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AutomationBehaviorTreeGroup((nint)NativeMethods.TablePtr->C1.hs_method_45749ade((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory getBehaviorFactory()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BehaviorFactory((nint)NativeMethods.TablePtr->C1.hs_method_d545ff65((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory getBiomeComponentFactory_4bccac11()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory((nint)NativeMethods.TablePtr->C1.hs_method_4bccac11((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory getBiomeComponentFactory_a1a0f15a()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeComponentFactory((nint)NativeMethods.TablePtr->C1.hs_method_a1a0f15a((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeManager getBiomeManager_2a4197a7()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeManager((nint)NativeMethods.TablePtr->C1.hs_method_2a4197a7((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeManager getBiomeManager_b572a385()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeManager((nint)NativeMethods.TablePtr->C1.hs_method_b572a385((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry getBiomeRegistry_42e00c01()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry((nint)NativeMethods.TablePtr->C1.hs_method_42e00c01((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry getBiomeRegistry_f5d6f9c7()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeRegistry((nint)NativeMethods.TablePtr->C1.hs_method_f5d6f9c7((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup? getBlockDefinitions()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_efa482f9((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockDefinitionGroup((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockEventCoordinator getBlockEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_f956b1b7((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette getBlockPalette_1c1430aa()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette((nint)NativeMethods.TablePtr->C1.hs_method_1c1430aa((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette getBlockPalette_a496861c()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPalette((nint)NativeMethods.TablePtr->C1.hs_method_a496861c((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockReducer? getBlockReducer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_70ebc0cf((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockReducer((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getBlockTypeRegistry()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_0a26451b((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getBossEventSubscriptionManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_5ede95ce((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.CameraPreset? getCameraPreset(int presetIndex)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_6dd53c36((void*)__hosihikari_shim_handle, presetIndex);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.CameraPreset((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets getCameraPresets_b5dd3549()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets((nint)NativeMethods.TablePtr->C1.hs_method_b5dd3549((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets getCameraPresets_c303b880()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CameraPresets((nint)NativeMethods.TablePtr->C1.hs_method_c303b880((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getCameraRegistry_c88a5ef1()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_c88a5ef1((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getCameraRegistry_5ed77224()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_5ed77224((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getCameraSystems()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_63fc13e2((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.ISharedController getCapabilities()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerCapabilities.ISharedController((nint)NativeMethods.TablePtr->C1.hs_method_48ec00fa((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getChunkGenerationManager_5dc61990()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_5dc61990((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getChunkGenerationManager_1ff998b8()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_1ff998b8((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getChunkTickOffsetManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_1b9d9516((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public uint getChunkTickRange()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2f878f7b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkTickRangeManager getChunkTickRangeManager()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ChunkTickRangeManager((nint)NativeMethods.TablePtr->C1.hs_method_e285ca93((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ClientPlayerEventCoordinator getClientPlayerEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ClientPlayerEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_5b9c56ca((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? getClientResourcePackManager()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_b541e917((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager((nint)__hs_handle, false) : null;
+    }
+
+    public nint getClientTickingOffsets()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_4deacb2b((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getContainerRegistryAccess()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_1620e3d6((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getContainerRegistryTracker()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_0022a541((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Tick getCurrentServerTick()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->C1.hs_method_7ea0f8ce((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Tick getCurrentTick()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Tick((nint)NativeMethods.TablePtr->C1.hs_method_de0c35f5((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Abilities getDefaultAbilities()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Abilities((nint)NativeMethods.TablePtr->C1.hs_method_47dca002((void*)__hosihikari_shim_handle), false);
+    }
+
+    public int getDefaultGameType()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2fd916d0((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions_a64499cb()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler((nint)NativeMethods.TablePtr->C1.hs_method_a64499cb((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler getDefaultPermissions_4ac34cc7()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PermissionsHandler((nint)NativeMethods.TablePtr->C1.hs_method_4ac34cc7((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getDefaultSpawn()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_2cf537a0((void*)__hosihikari_shim_handle), false);
+    }
+
+    public int getDifficulty()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f14872af((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType id)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a0ea1380((void*)__hosihikari_shim_handle, (void*)id.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionConversionData getDimensionConversionData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionConversionData((nint)NativeMethods.TablePtr->C1.hs_method_9345a3c5((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtrFactory_Dimension__DerivedDimensionArguments____ getDimensionFactory_7de763b4()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtrFactory_Dimension__DerivedDimensionArguments____((nint)NativeMethods.TablePtr->C1.hs_method_7de763b4((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtrFactory_Dimension__DerivedDimensionArguments____ getDimensionFactory_e7f4a11a()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtrFactory_Dimension__DerivedDimensionArguments____((nint)NativeMethods.TablePtr->C1.hs_method_e7f4a11a((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager getDimensionManager_f97ac8cf()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager((nint)NativeMethods.TablePtr->C1.hs_method_f97ac8cf((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager getDimensionManager_52d8e116()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionManager((nint)NativeMethods.TablePtr->C1.hs_method_52d8e116((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDimensionManagerNonOwner_178c10a4()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_178c10a4((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDimensionManagerNonOwner_1e5965d6()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_1e5965d6((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public bool getDisablePlayerInteractions()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_4ce42ad9((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDisplayActorManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_beb3e1b3((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDynamicContainerSerialization()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_3de255bb((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEducationSettingsManager_88edbc07()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_88edbc07((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEducationSettingsManager_946623ab()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_946623ab((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public nint getEntities()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_e1aa64eb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup? getEntityDefinitions()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_57ff3b46((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ActorDefinitionGroup((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_f9747498()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_f9747498((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEntityRegistry_23d1c3c8()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_23d1c3c8((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.EntitySystems getEntitySystems()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.EntitySystems((nint)NativeMethods.TablePtr->C1.hs_method_1e975496((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing getEventing()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IMinecraftEventing((nint)NativeMethods.TablePtr->C1.hs_method_60e320e2((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry getFeatureRegistry_7d4744eb()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry((nint)NativeMethods.TablePtr->C1.hs_method_7d4744eb((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry getFeatureRegistry_09323eab()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry((nint)NativeMethods.TablePtr->C1.hs_method_09323eab((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeFactory getFeatureTypeFactory_ff758613()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeFactory((nint)NativeMethods.TablePtr->C1.hs_method_ff758613((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeFactory getFeatureTypeFactory_9762322d()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.FeatureTypeFactory((nint)NativeMethods.TablePtr->C1.hs_method_9762322d((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRules getGameRules_d3f72746()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameRules((nint)NativeMethods.TablePtr->C1.hs_method_d3f72746((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameRules getGameRules_2f767585()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameRules((nint)NativeMethods.TablePtr->C1.hs_method_2f767585((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getGameplayUserManager_00f3a2f6()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_00f3a2f6((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getGameplayUserManager_a056baf5()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a056baf5((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult getHitResult()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->C1.hs_method_fe9fd25d((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getHitResultWrapper()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_e3cf2e5c((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getILevelRandom()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_d573771c((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup getIOTasksGroup()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup((nint)NativeMethods.TablePtr->C1.hs_method_a55153d0((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IRandom getIRandom()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IRandom((nint)NativeMethods.TablePtr->C1.hs_method_4520f09e((void*)__hosihikari_shim_handle), false);
+    }
+
+    public string getImmersiveReaderString()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_6542fd26((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.InternalComponentRegistry getInternalComponentRegistry()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.InternalComponentRegistry((nint)NativeMethods.TablePtr->C1.hs_method_6921b73b((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemEventCoordinator getItemEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_760d4729((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef getItemRegistry()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemRegistryRef((nint)NativeMethods.TablePtr->C1.hs_method_72e13590((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry getJigsawStructureRegistry_0cd5eae4()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry((nint)NativeMethods.TablePtr->C1.hs_method_0cd5eae4((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry getJigsawStructureRegistry_f8f53f52()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureRegistry((nint)NativeMethods.TablePtr->C1.hs_method_f8f53f52((void*)__hosihikari_shim_handle), false);
+    }
+
+    public bool getLANBroadcast()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_cf102a51((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public bool getLANBroadcastIntent()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_59e5c9ef((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelBlockDestroyer()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_5371517f((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelChunkEventManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_bdd2fe07((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaDataManager? getLevelChunkMetaDataManager()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_00504d87((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LevelChunkMetaDataManager((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelChunkPerformanceTelemetry()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_11aed320((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelData getLevelData_7181029b()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelData((nint)NativeMethods.TablePtr->C1.hs_method_7181029b((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelData getLevelData_fe698fc4()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelData((nint)NativeMethods.TablePtr->C1.hs_method_fe698fc4((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ getLevelEntity_32b1974f()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_((nint)NativeMethods.TablePtr->C1.hs_method_32b1974f((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelEntity_f184b919()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_f184b919((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelEventCoordinator getLevelEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_f82737be((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelEventManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ea433c85((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public string getLevelId()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_d9bce445((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64 getLevelSeed64()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSeed64((nint)NativeMethods.TablePtr->C1.hs_method_f74928c5((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelSoundManager getLevelSoundManager()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelSoundManager((nint)NativeMethods.TablePtr->C1.hs_method_cc9ba5c3((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage getLevelStorage_bd38ee47()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage((nint)NativeMethods.TablePtr->C1.hs_method_bd38ee47((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage getLevelStorage_365650fc()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LevelStorage((nint)NativeMethods.TablePtr->C1.hs_method_365650fc((void*)__hosihikari_shim_handle), false);
+    }
+
+    public nint getLightTextureImageBuilderFactory_fd9154e5()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_fd9154e5((void*)__hosihikari_shim_handle);
+    }
+
+    public nint getLightTextureImageBuilderFactory_115a2b16()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_115a2b16((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.HitResult getLiquidHitResult()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HitResult((nint)NativeMethods.TablePtr->C1.hs_method_01a3eded((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LootTables getLootTables()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.LootTables((nint)NativeMethods.TablePtr->C1.hs_method_afa86c0b((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getMapDataManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_b6db9219((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData? getMapSavedData(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uuid)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_f2e4c968((void*)__hosihikari_shim_handle, (void*)uuid.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData? getMapSavedData_029407a4(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag instance)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_029407a4((void*)__hosihikari_shim_handle, (void*)instance.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData? getMapSavedData_cd371381(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag? instance)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_cd371381((void*)__hosihikari_shim_handle, (void*)(instance?.Handle ?? 0));
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.MapItemSavedData((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Mob? getMob(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID mobId)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_036653a9((void*)__hosihikari_shim_handle, (void*)mobId.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Mob((nint)__hs_handle, false) : null;
+    }
+
+    public nint getMolangPackSettingsCache()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_c0b18d89((void*)__hosihikari_shim_handle);
+    }
+
+    public bool getMultiplayerGameIntent()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1e27fbd5((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getMutableShapeRegistry()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_09ee9c34((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getNetEventCallback()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_7bcff712((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public int getNetherScale()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_bb2a726a((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID getNewUniqueID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID((nint)NativeMethods.TablePtr->C1.hs_method_9e168fc3((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID getNextRuntimeID()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID((nint)NativeMethods.TablePtr->C1.hs_method_b6c89354((void*)__hosihikari_shim_handle));
+    }
+
+    public int getNumRemotePlayers()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_211e8cc3((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getOrCreateDimension(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionType)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_88b0c503((void*)__hosihikari_shim_handle, (void*)dimensionType.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PacketSender? getPacketSender()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_63af7834((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PacketSender((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPauseManager_cd74e258()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_cd74e258((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPauseManager_e8af11c7()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_e8af11c7((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPhotoManager_66896571()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_66896571((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPhotoManager_41d93ed4()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_41d93ed4((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage getPhotoStorage()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PhotoStorage((nint)NativeMethods.TablePtr->C1.hs_method_1f35b29b((void*)__hosihikari_shim_handle), false);
+    }
+
+    public int getPlatformBroadcastIntent()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_00ac19a5((void*)__hosihikari_shim_handle);
+    }
+
+    public int getPlatformBroadcastMode()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_612e0407((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? getPlatformPlayer(string platformOnlineId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(platformOnlineId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(platformOnlineId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_d975f129((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? getPlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID entityID)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_aee97b2a((void*)__hosihikari_shim_handle, (void*)entityID.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? getPlayer(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_442abe83((void*)__hosihikari_shim_handle, (void*)uuid.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? getPlayer(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_925c0832((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities? getPlayerAbilities(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID playerId)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_4111b7d3((void*)__hosihikari_shim_handle, (void*)playerId.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerAbilitiesManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_9e32dd7b((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? getPlayerByXuid(string xuid)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(xuid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(xuid, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_2072aeef((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.mce.Color getPlayerColor(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.mce.Color((nint)NativeMethods.TablePtr->C1.hs_method_270e9bc0((void*)__hosihikari_shim_handle, (void*)player.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerDimensionTransferManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a2ae9656((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? getPlayerFromServerId(string serverId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(serverId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(serverId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_08b2c4de((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+        }
+    }
+
+    public nint getPlayerList()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_2dac2ccb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerListManager_5fa420e7()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_5fa420e7((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerListManager_ec97a056()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ec97a056((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerLocationReceiver()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_2a4b31dc((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings getPlayerMovementSettings()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings((nint)NativeMethods.TablePtr->C1.hs_method_0d7fc292((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerMovementSettingsManager_cbdd8331()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_cbdd8331((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerMovementSettingsManager_9c9a1b7d()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_9c9a1b7d((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerPermissionsManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_1d59587f((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getPlayerPermissionsSynchroniser()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_c58f53a8((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public string getPlayerPlatformOnlineId(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_97d9ba9b((void*)__hosihikari_shim_handle, (void*)uuid.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string getPlayerXUID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_32012b5e((void*)__hosihikari_shim_handle, (void*)uuid.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PortalForcer getPortalForcer()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PortalForcer((nint)NativeMethods.TablePtr->C1.hs_method_93868443((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBClient? getPositionTrackerDBClient()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_1bd2465f((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBClient((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer? getPositionTrackerDBServer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_2002b61b((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.PositionTrackingDBServer((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? getPrimaryLocalPlayer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_1fe9cde9((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ProjectileFactory getProjectileFactory()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ProjectileFactory((nint)NativeMethods.TablePtr->C1.hs_method_f469cc32((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Random getRandom()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Random((nint)NativeMethods.TablePtr->C1.hs_method_7c9b6d6e((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Recipes getRecipes()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Recipes((nint)NativeMethods.TablePtr->C1.hs_method_bcb4efa4((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockType getRegisteredBorderBlock()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockType((nint)NativeMethods.TablePtr->C1.hs_method_1aa4d414((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerEventCoordinator getRemotePlayerEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_be23cfd3((void*)__hosihikari_shim_handle), false);
+    }
+
+    public nint[] getRuntimeActorList()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_311be60e((void*)__hosihikari_shim_handle);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Actor? getRuntimeEntity(global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID actorId, bool getRemoved)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_f3f6408f((void*)__hosihikari_shim_handle, (void*)actorId.Handle, getRemoved);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Actor((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Player? getRuntimePlayer(global::Hosihikari.Bindings.Bedrock.Interop.ActorRuntimeID runtimeId)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_6f9c3e87((void*)__hosihikari_shim_handle, (void*)runtimeId.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Player((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SavedDataStorage getSavedData()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SavedDataStorage((nint)NativeMethods.TablePtr->C1.hs_method_b8452a57((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard getScoreboard_810a88dc()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard((nint)NativeMethods.TablePtr->C1.hs_method_810a88dc((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard getScoreboard_7586dba7()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard((nint)NativeMethods.TablePtr->C1.hs_method_7586dba7((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getScreenshotsFolder()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C1.hs_method_eed6ff07((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventCoordinator getScriptDeferredEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptDeferredEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_2a81aedd((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ScriptingEventCoordinator getScriptingEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ScriptingEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_b8ec8b32((void*)__hosihikari_shim_handle), false);
+    }
+
+    public uint getSeed()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_86d68f73((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkEventCoordinator getServerNetworkEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerNetworkEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_515bfa11((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getServerParticleManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_362f64ef((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayerEventCoordinator getServerPlayerEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayerEventCoordinator((nint)NativeMethods.TablePtr->C1.hs_method_3c809005((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getServerPlayerSleepManager_93f7d29d()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_93f7d29d((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getServerPlayerSleepManager_6132b5a8()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_6132b5a8((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager? getServerResourcePackManager()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_4bf5c177((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getShapeRegistry()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a177a3d0((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSharedSpawnPos()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_51e5ad66((void*)__hosihikari_shim_handle), false);
+    }
+
+    public bool getSimPaused()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_103099d1((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepStatus getSleepStatus()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepStatus((nint)NativeMethods.TablePtr->C1.hs_method_a7a0358d((void*)__hosihikari_shim_handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] getSortedPositionsFromClientOffsets(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[] centers)
+    {
+        var __hs_vectorItems0 = centers;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var __hs_view = NativeMethods.TablePtr->C1.hs_method_7ca67398((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(centers?.Length ?? 0));
+            var __hs_items = (void**)__hs_view.Data;
+            var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos>() : new global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos[checked((int)__hs_view.Size)];
+            for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+            {
+                __hs_result[__hs_i] = new global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos((nint)__hs_items[__hs_i]);
+            }
+            return __hs_result;
+        }
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getSoundPlayer()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_6ef3e987((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Spawner getSpawner()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Spawner((nint)NativeMethods.TablePtr->C1.hs_method_4c73c25b((void*)__hosihikari_shim_handle), false);
+    }
+
+    public float getSpecialMultiplier(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionType)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_10c3e948((void*)__hosihikari_shim_handle, (void*)dimensionType.Handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getStructureManager_d7ba8059()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_d7ba8059((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getStructureManager_24b5649a()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_24b5649a((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public nint getStructureSpawnRegistry_f26d108a()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_f26d108a((void*)__hosihikari_shim_handle);
+    }
+
+    public nint getStructureSpawnRegistry_34172899()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_34172899((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getSubChunkLighter()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_d92e7def((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getSubChunkManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_26c026f0((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public nint getSubChunkRequestManager()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_f34f8858((void*)__hosihikari_shim_handle);
+    }
+
+    public byte getSubClientId()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2281f543((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry getSurfaceBuilderRegistry_13f29e16()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry((nint)NativeMethods.TablePtr->C1.hs_method_13f29e16((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry getSurfaceBuilderRegistry_98dbf66a()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceBuilderRegistry((nint)NativeMethods.TablePtr->C1.hs_method_98dbf66a((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup getSyncTasksGroup()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TaskGroup((nint)NativeMethods.TablePtr->C1.hs_method_b62f3cf7((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTagCacheManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_0dd2fa33((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__ getTagRegistry()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__((nint)NativeMethods.TablePtr->C1.hs_method_ded8cee4((void*)__hosihikari_shim_handle), false);
+    }
+
+    public bool getTearingDown()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a4df24c6((void*)__hosihikari_shim_handle) != 0;
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTempEPtrManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_73471a7d((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.Random getThreadRandom()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Random((nint)NativeMethods.TablePtr->C1.hs_method_3d83bb93((void*)__hosihikari_shim_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTickDeltaTimeManager()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a4ff0405((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager getTickingAreasMgr()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.TickingAreasManager((nint)NativeMethods.TablePtr->C1.hs_method_766c039d((void*)__hosihikari_shim_handle), false);
+    }
+
+    public nint getTickingOffsets()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_e0978111((void*)__hosihikari_shim_handle);
+    }
+
+    public int getTime()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_325a0e99((void*)__hosihikari_shim_handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.TradeTables? getTradeTables()
     {
@@ -1190,501 +1649,702 @@ public sealed unsafe partial class ILevel : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.TradeTables((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTrimMaterialRegistry_bbfe6a40() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrimMaterialRegistry_bbfe6a40()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_bbfe6a40((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTrimMaterialRegistry_1afd091d() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrimMaterialRegistry_1afd091d()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_1afd091d((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTrimPatternRegistry_82226ad3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrimPatternRegistry_82226ad3()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_82226ad3((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTrimPatternRegistry_2b4dd4e5() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrimPatternRegistry_2b4dd4e5()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_2b4dd4e5((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTrustedSkinHelper() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getTrustedSkinHelper()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_21716997((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getUnknownBlockTypeRegistry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getUnknownBlockTypeRegistry()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_37b2bfa1((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getUserCount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getUserCount()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f08895e0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getUsers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getUsers()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_b7da647e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldClockRegistry_47673f46() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getWorldClockRegistry_47673f46()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_47673f46((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldClockRegistry_3dfdcaa6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getWorldClockRegistry_3dfdcaa6()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_3dfdcaa6((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldRegistriesProvider_0df79c36() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider getWorldRegistriesProvider_0df79c36()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider((nint)NativeMethods.TablePtr->C1.hs_method_0df79c36((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldRegistriesProvider_7a1a1ebd() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider getWorldRegistriesProvider_7a1a1ebd()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider((nint)NativeMethods.TablePtr->C1.hs_method_7a1a1ebd((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getXBLBroadcastIntent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getXBLBroadcastIntent()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_bcce43b7((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getXBLBroadcastMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getXBLBroadcastMode()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d081ec1a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void handleLevelEvent(nint type, nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void handleLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag data)
+    {
+        NativeMethods.TablePtr->C1.hs_method_84a379af((void*)__hosihikari_shim_handle, type, (void*)data.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void handleLevelEvent(nint type, nint pos, int data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void handleLevelEvent(short type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d6439c9c((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void handleStopAllSounds() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void handleStopAllSounds()
+    {
+        NativeMethods.TablePtr->C1.hs_method_c923c205((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void handleStopMusicEvent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void handleStopMusicEvent()
+    {
+        NativeMethods.TablePtr->C1.hs_method_8279c102((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void handleStopSoundEvent(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void handleStopSoundEvent(string name)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_25293b18((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasCommandsEnabled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasCommandsEnabled()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_8bc16ce9((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasLevelStorage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasLevelStorage()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a024cb57((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasPlatformBroadcast() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasPlatformBroadcast()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c66a9d98((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasPlatformBroadcastIntent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasPlatformBroadcastIntent()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_aab1062e((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasStartWithMapEnabled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasStartWithMapEnabled()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e3adb054((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasXBLBroadcast() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasXBLBroadcast()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ffe27aac((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasXBLBroadcastIntent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasXBLBroadcastIntent()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c0e569c3((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void incrementTagCache(nint tag, nint tagRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void incrementTagCache(string tag, global::Hosihikari.Bindings.Bedrock.Interop.TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__ tagRegistry)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(tag);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_6358a72a((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)tagRegistry.Handle);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.", false)]
     public bool initialize(nint levelName, nint levelSettings, nint experiments, nint levelId, nint biomeIdToResolvedData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::reference_wrapper<std::unordered_map<std::basic_string<char>, std::unique_ptr<BiomeJsonDocumentGlueResolvedBiomeData>>>' is abstract or not copy-constructible.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void initializeBlockDefinitionGroup() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void initializeBlockDefinitionGroup()
+    {
+        NativeMethods.TablePtr->C1.hs_method_1dcac221((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isClientSide() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isClientSide()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ad0e0426((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isClientSideGenerationEnabled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isClientSideGenerationEnabled()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0708e63b((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isDimensionTypeActive(nint dimensionType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isDimensionTypeActive(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimensionType)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_54ad8a89((void*)__hosihikari_shim_handle, (void*)dimensionType.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isEditorTestWorld() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isEditorTestWorld()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_9b32ceeb((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isEditorWorld() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isEditorWorld()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_614e8990((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isEdu() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isEdu()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ba89dfb5((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isExporting() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isExporting()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ce4b8bea((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isHardcore() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isHardcore()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0cbeb8fd((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isLeaveGameDone() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isLeaveGameDone()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d932baf5((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isMultiplayerGame() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isMultiplayerGame()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ead68c17((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isPlayerSuspended(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isPlayerSuspended(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_b9621ad9((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public void levelCleanupQueueEntityRemoval(nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void loadBlockDefinitionGroup(nint experiments) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void loadBlockDefinitionGroup(global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c1be266f((void*)__hosihikari_shim_handle, (void*)experiments.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void loadFunctionManager() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void loadFunctionManager()
+    {
+        NativeMethods.TablePtr->C1.hs_method_b9deae7a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void notifySubChunkRequestManager(nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void notifySubChunkRequestManager(global::Hosihikari.Bindings.Bedrock.Interop.SubChunkPacket packet)
+    {
+        NativeMethods.TablePtr->C1.hs_method_15467a4f((void*)__hosihikari_shim_handle, (void*)packet.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onChunkDiscarded(nint lc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onChunkDiscarded(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b4aa8a41((void*)__hosihikari_shim_handle, (void*)lc.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onChunkLoaded(nint source, nint lc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5c87fdeb((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onChunkReload(nint bound) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onChunkReload(global::Hosihikari.Bindings.Bedrock.Interop.Bounds bound)
+    {
+        NativeMethods.TablePtr->C1.hs_method_697b135d((void*)__hosihikari_shim_handle, (void*)bound.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onChunkReloaded(nint source, nint lc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onChunkReloaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        NativeMethods.TablePtr->C1.hs_method_01f40a57((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onPlayerDeath(nint player, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onPlayerDeath(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2b9fe81f((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)source.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onSubChunkLoaded(nint source, nint lc, short absoluteSubChunkIndex, bool subChunkVisibilityChanged) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onSubChunkLoaded(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource source, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc, short absoluteSubChunkIndex, bool subChunkVisibilityChanged)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e087dbdd((void*)__hosihikari_shim_handle, (void*)source.Handle, (void*)lc.Handle, absoluteSubChunkIndex, subChunkVisibilityChanged);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void pauseAndFlushTaskGroups() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void pauseAndFlushTaskGroups()
+    {
+        NativeMethods.TablePtr->C1.hs_method_218fd42a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playSound_25fd19a4(nint dimension, nint type, nint pos, int data, nint actorSoundIdentifier, bool isGlobal) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playSound(global::Hosihikari.Bindings.Bedrock.Interop.DimensionType dimension, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal)
+    {
+        NativeMethods.TablePtr->C1.hs_method_25fd19a4((void*)__hosihikari_shim_handle, (void*)dimension.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playSound(nint type, nint pos, nint volume, nint pitch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playSound(uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, float volume, float pitch)
+    {
+        NativeMethods.TablePtr->C1.hs_method_25753a31((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, volume, pitch);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playSound(nint type, nint pos, int data, nint actorSoundIdentifier, bool isGlobal) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playSound(uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d52b96ee((void*)__hosihikari_shim_handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playSound_f0f363a8(nint region, nint type, nint pos, int data, nint actorSoundIdentifier, bool isGlobal) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playSound(global::Hosihikari.Bindings.Bedrock.Interop.IConstBlockSource region, uint type, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, int data, nint actorSoundIdentifier, bool isGlobal)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f0f363a8((void*)__hosihikari_shim_handle, (void*)region.Handle, type, (void*)pos.Handle, data, (void*)actorSoundIdentifier, isGlobal);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playSound(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playSound(nint options)
+    {
+        NativeMethods.TablePtr->C1.hs_method_7df26380((void*)__hosihikari_shim_handle, (void*)options);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void potionSplash(nint pos, nint color, bool instantaneousEffect) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void potionSplash(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.mce.Color color, bool instantaneousEffect)
+    {
+        NativeMethods.TablePtr->C1.hs_method_31bb6a91((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)color.Handle, instantaneousEffect);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint putEntity(nint region, nint id, nint runtimeId, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint putEntity(nint region, nint id, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public void queueEntityDestruction(nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void registerTemporaryPointer(nint ptr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void registerTemporaryPointer(nint ptr)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f7bbc570((void*)__hosihikari_shim_handle, (void*)ptr);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint removeActorAndTakeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? removeActorAndTakeEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_b0c4db49((void*)__hosihikari_shim_handle, (void*)entityRef.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint removeActorFromWorldAndTakeEntity(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? removeActorFromWorldAndTakeEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a5caeca5((void*)__hosihikari_shim_handle, (void*)entityRef.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void removeDisplayEntity(nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void removeDisplayEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entity)
+    {
+        NativeMethods.TablePtr->C1.hs_method_df934a48((void*)__hosihikari_shim_handle, (void*)entity.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint removeEntity_9a2e03cc(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? removeEntity(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_9a2e03cc((void*)__hosihikari_shim_handle, (void*)actor.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint removeEntity_31267d87(nint entityRef) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? removeEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_31267d87((void*)__hosihikari_shim_handle, (void*)entityRef.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void removeListener(nint listener) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void removeListener(global::Hosihikari.Bindings.Bedrock.Interop.LevelListener listener)
+    {
+        NativeMethods.TablePtr->C1.hs_method_523b87b5((void*)__hosihikari_shim_handle, (void*)listener.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void requestMapInfo(nint uuid, bool forceUpdate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void requestMapInfo(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID uuid, bool forceUpdate)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a1db24f3((void*)__hosihikari_shim_handle, (void*)uuid.Handle, forceUpdate);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public void requestPlayerChangeDimension(nint player, nint changeRequest) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint requestTimedStorageDeferment() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? requestTimedStorageDeferment()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_5121f713((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'PlayerSpawnDimensionResolution' requires --link-carrier or --virtual-dispatch.", false)]
     public nint resolvePlayerSpawnDimension(nint playerTag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'PlayerSpawnDimensionResolution' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void resumePlayer(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void resumePlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C1.hs_method_3bf41220((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void runCommand(nint command, nint origin, nint originSystem) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.Command command, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, int originSystem)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a34dfcd6((void*)__hosihikari_shim_handle, (void*)command.Handle, (void*)origin.Handle, originSystem);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void runCommand(nint commandStr, nint origin, nint originSystem, nint commandVersion) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void runCommand(global::Hosihikari.Bindings.Bedrock.Interop.HashedString commandStr, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, int originSystem, int commandVersion)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f1838a5a((void*)__hosihikari_shim_handle, (void*)commandStr.Handle, (void*)origin.Handle, originSystem, commandVersion);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void save() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void save()
+    {
+        NativeMethods.TablePtr->C1.hs_method_c2b548ba((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void saveGameData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void saveGameData()
+    {
+        NativeMethods.TablePtr->C1.hs_method_12941d34((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void saveLevelData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void saveLevelData()
+    {
+        NativeMethods.TablePtr->C1.hs_method_4af2618a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendAllPlayerAbilities(nint playerReference) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendAllPlayerAbilities(global::Hosihikari.Bindings.Bedrock.Interop.Player playerReference)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e3ba2d5c((void*)__hosihikari_shim_handle, (void*)playerReference.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendServerLegacyParticle(nint id, nint pos, nint dir, int data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendServerLegacyParticle(int id, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 dir, int data)
+    {
+        NativeMethods.TablePtr->C1.hs_method_6014a6a2((void*)__hosihikari_shim_handle, id, (void*)pos.Handle, (void*)dir.Handle, data);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setCommandsEnabled(bool commandsEnabled) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setCommandsEnabled(bool commandsEnabled)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2c0a7736((void*)__hosihikari_shim_handle, commandsEnabled);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setDefaultGameType(nint gameType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setDefaultGameType(int gameType)
+    {
+        NativeMethods.TablePtr->C1.hs_method_4c1bad3b((void*)__hosihikari_shim_handle, gameType);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setDefaultSpawn(nint spawnPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setDefaultSpawn(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos spawnPos)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f8cda17c((void*)__hosihikari_shim_handle, (void*)spawnPos.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setDifficulty(nint difficulty) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setDifficulty(int difficulty)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e1f8bc74((void*)__hosihikari_shim_handle, difficulty);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setDisablePlayerInteractions(nint disable) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setDisablePlayerInteractions(bool disable)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a5e037af((void*)__hosihikari_shim_handle, disable);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setFinishedInitializing() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setFinishedInitializing()
+    {
+        NativeMethods.TablePtr->C1.hs_method_c94fa630((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setHasLockedBehaviorPack(bool hasLocked) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setHasLockedBehaviorPack(bool hasLocked)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c42fae98((void*)__hosihikari_shim_handle, hasLocked);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setHasLockedResourcePack(bool hasLocked) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setHasLockedResourcePack(bool hasLocked)
+    {
+        NativeMethods.TablePtr->C1.hs_method_94a790f7((void*)__hosihikari_shim_handle, hasLocked);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setImmersiveReaderString(nint newString) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setImmersiveReaderString(string newString)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(newString);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(newString, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_73db9b69((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setIsExporting(bool IsExporting) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setIsExporting(bool IsExporting)
+    {
+        NativeMethods.TablePtr->C1.hs_method_57df314a((void*)__hosihikari_shim_handle, IsExporting);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setLANBroadcast(bool broadcast) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setLANBroadcast(bool broadcast)
+    {
+        NativeMethods.TablePtr->C1.hs_method_6a7b1931((void*)__hosihikari_shim_handle, broadcast);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setLANBroadcastIntent(bool broadcast) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setLANBroadcastIntent(bool broadcast)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5787cd5d((void*)__hosihikari_shim_handle, broadcast);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setLevelId(nint LevelId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setLevelId(string LevelId)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(LevelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(LevelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_2ad3e928((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setMsaGamertagsOnly(bool msaGamertagsOnly) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setMsaGamertagsOnly(bool msaGamertagsOnly)
+    {
+        NativeMethods.TablePtr->C1.hs_method_640e4230((void*)__hosihikari_shim_handle, msaGamertagsOnly);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setMultiplayerGame(bool multiplayerGame) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setMultiplayerGame(bool multiplayerGame)
+    {
+        NativeMethods.TablePtr->C1.hs_method_a1a15cef((void*)__hosihikari_shim_handle, multiplayerGame);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setMultiplayerGameIntent(bool multiplayerGame) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setMultiplayerGameIntent(bool multiplayerGame)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f62cbf75((void*)__hosihikari_shim_handle, multiplayerGame);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<NetEventCallback>' is not a known bindable declaration.", false)]
     public void setNetEventCallback(nint val) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'Bedrock::NonOwnerPointer<NetEventCallback>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPlatformBroadcastIntent(nint broadcastMode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPlatformBroadcastIntent(int broadcastMode)
+    {
+        NativeMethods.TablePtr->C1.hs_method_31d04841((void*)__hosihikari_shim_handle, broadcastMode);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPlatformBroadcastMode(nint broadcastMode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPlatformBroadcastMode(int broadcastMode)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b253443a((void*)__hosihikari_shim_handle, broadcastMode);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPlayerAbilities(nint playerId, nint abilities) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPlayerAbilities(global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID playerId, global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities abilities)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5d7aa57c((void*)__hosihikari_shim_handle, (void*)playerId.Handle, (void*)abilities.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPlayerMovementSettings(nint settings) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPlayerMovementSettings(global::Hosihikari.Bindings.Bedrock.Interop.PlayerMovementSettings settings)
+    {
+        NativeMethods.TablePtr->C1.hs_method_4cc0651c((void*)__hosihikari_shim_handle, (void*)settings.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setSimPaused(bool value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setSimPaused(bool value)
+    {
+        NativeMethods.TablePtr->C1.hs_method_0cf414e2((void*)__hosihikari_shim_handle, value);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setSleepStatus(nint status) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setSleepStatus(global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepStatus status)
+    {
+        NativeMethods.TablePtr->C1.hs_method_dd15b0ad((void*)__hosihikari_shim_handle, (void*)status.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setTime(int time) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setTime(int time)
+    {
+        NativeMethods.TablePtr->C1.hs_method_eb74ea1c((void*)__hosihikari_shim_handle, time);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setWorldTemplateOptionsUnlocked() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setWorldTemplateOptionsUnlocked()
+    {
+        NativeMethods.TablePtr->C1.hs_method_ce56579b((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setXBLBroadcastIntent(nint broadcastMode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setXBLBroadcastIntent(int broadcastMode)
+    {
+        NativeMethods.TablePtr->C1.hs_method_0957c8b6((void*)__hosihikari_shim_handle, broadcastMode);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setXBLBroadcastMode(nint broadcastMode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setXBLBroadcastMode(int broadcastMode)
+    {
+        NativeMethods.TablePtr->C1.hs_method_1bf168e0((void*)__hosihikari_shim_handle, broadcastMode);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void spawnParticleEffect(nint effectName, nint spawnLocation, nint dimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void spawnParticleEffect(string effectName, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 spawnLocation, global::Hosihikari.Bindings.Bedrock.Interop.Dimension? dimension)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(effectName);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(effectName, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_1a9aced7((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)spawnLocation.Handle, (void*)(dimension?.Handle ?? 0));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void startLeaveGame() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void startLeaveGame()
+    {
+        NativeMethods.TablePtr->C1.hs_method_7fbfe4d7((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void subChunkTickAndSendRequests() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void subChunkTickAndSendRequests()
+    {
+        NativeMethods.TablePtr->C1.hs_method_fab05d9a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void suspendAndSave() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void suspendAndSave()
+    {
+        NativeMethods.TablePtr->C1.hs_method_9f25a9ce((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void suspendPlayer(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void suspendPlayer(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C1.hs_method_f5cf01ac((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint takeEntity(nint entityRef, nint lc) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? takeEntity(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk lc)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_a6a0799a((void*)__hosihikari_shim_handle, (void*)entityRef.Handle, (void*)lc.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void takePicture(nint outImage, nint camera, nint target, nint screenshotOptions, nint completedScreenshotCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tick()
+    {
+        NativeMethods.TablePtr->C1.hs_method_2efb57d5((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tickEntities() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tickEntities()
+    {
+        NativeMethods.TablePtr->C1.hs_method_ff33f4f0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tickEntitySystems() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tickEntitySystems()
+    {
+        NativeMethods.TablePtr->C1.hs_method_751dfe0c((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint tryGetScoreboard() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard? tryGetScoreboard()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_0d6443dd((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Scoreboard((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint tryGetVolumeEntityManagerServer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? tryGetVolumeEntityManagerServer()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_f4f5597d((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void unregisterTemporaryPointer(nint ptr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void unregisterTemporaryPointer(nint ptr)
+    {
+        NativeMethods.TablePtr->C1.hs_method_9bff5181((void*)__hosihikari_shim_handle, (void*)ptr);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void updateSleepingPlayerList() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void updateSleepingPlayerList()
+    {
+        NativeMethods.TablePtr->C1.hs_method_d2d60f60((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void updateWeather(float rainLevel, int rainTime, float lightningLevel, int lightningTime) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void updateWeather(float rainLevel, int rainTime, float lightningLevel, int lightningTime)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2acf7b7e((void*)__hosihikari_shim_handle, rainLevel, rainTime, lightningLevel, lightningTime);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void upgradeStorageVersion(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void upgradeStorageVersion(int v)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e88af72c((void*)__hosihikari_shim_handle, v);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool use3DBiomeMaps() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool use3DBiomeMaps()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_e24c3bbd((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool useMsaGamertagsOnly() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool useMsaGamertagsOnly()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_fa185430((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

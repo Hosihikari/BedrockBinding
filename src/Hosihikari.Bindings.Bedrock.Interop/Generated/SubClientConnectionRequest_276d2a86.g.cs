@@ -40,25 +40,25 @@ public sealed unsafe partial class SubClientConnectionRequest : global::System.I
 
     public int mAuthenticationType
     {
-        get => NativeMethods.TablePtr->C3.hs_get_6502c815((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_6502c815((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_6502c815((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_6502c815((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mRawToken_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_b80563cf((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b80563cf((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnverifiedGameServerToken_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_9cf5903f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_9cf5903f((void*)__hosihikari_shim_handle);
     }
 
     public bool __isAuthTypeWellFormed()
     {
-        return NativeMethods.TablePtr->C3.hs_method_bb3060a3((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_bb3060a3((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -67,7 +67,7 @@ public sealed unsafe partial class SubClientConnectionRequest : global::System.I
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_1ddfc95c((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_1ddfc95c((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -76,7 +76,7 @@ public sealed unsafe partial class SubClientConnectionRequest : global::System.I
 
     public static SubClientConnectionRequest Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_2f53ca37();
+        var handle = NativeMethods.TablePtr->C4.hs_create_2f53ca37();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -87,7 +87,7 @@ public sealed unsafe partial class SubClientConnectionRequest : global::System.I
 
     public static SubClientConnectionRequest Create(global::Hosihikari.Bindings.Bedrock.Interop.SubClientConnectionRequest arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_054b56b4((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_054b56b4((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -102,7 +102,7 @@ public sealed unsafe partial class SubClientConnectionRequest : global::System.I
 
     public bool _isAuthTypeWellFormed()
     {
-        return NativeMethods.TablePtr->C3.hs_method_1967ac82((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_1967ac82((void*)__hosihikari_shim_handle) != 0;
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.SubClientConnectionRequest fromString(string str)
@@ -120,7 +120,7 @@ public sealed unsafe partial class SubClientConnectionRequest : global::System.I
         global::System.Text.Encoding.UTF8.GetBytes(str, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Bedrock.Interop.SubClientConnectionRequest((nint)NativeMethods.TablePtr->C3.hs_method_7902d42b(__hs_stringData0, (nuint)__hs_stringByteCount0));
+            return new global::Hosihikari.Bindings.Bedrock.Interop.SubClientConnectionRequest((nint)NativeMethods.TablePtr->C4.hs_method_7902d42b(__hs_stringData0, (nuint)__hs_stringByteCount0));
         }
     }
 
@@ -131,7 +131,7 @@ public sealed unsafe partial class SubClientConnectionRequest : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_276d2a86((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_276d2a86((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

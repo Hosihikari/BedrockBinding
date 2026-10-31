@@ -176,9 +176,10 @@ public sealed unsafe partial class ContainerManagerModel : global::System.IDispo
         NativeMethods.TablePtr->C1.hs_method_1710fb92((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _postInit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext _postInit()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext((nint)NativeMethods.TablePtr->C1.hs_method_7858b32f((void*)__hosihikari_shim_handle));
+    }
 
     public void broadcastChanges()
     {

@@ -196,9 +196,10 @@ public sealed unsafe partial class BaseMoveToGoal : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Vec3((nint)NativeMethods.TablePtr->C0.hs_method_9df31497((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void _moveToBlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void _moveToBlock()
+    {
+        NativeMethods.TablePtr->C0.hs_method_28e06c8f((void*)__hosihikari_shim_handle);
+    }
 
     public int _nextStartTick()
     {
@@ -220,9 +221,10 @@ public sealed unsafe partial class BaseMoveToGoal : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_d1823d63((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isValidTarget(nint region, nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isValidTarget(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_fa4bdbc4((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockPos_Address

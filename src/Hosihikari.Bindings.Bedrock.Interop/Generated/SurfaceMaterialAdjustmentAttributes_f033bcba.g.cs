@@ -40,7 +40,7 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global:
 
     public static SurfaceMaterialAdjustmentAttributes Create(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentAttributes arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_9a2820a4((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_9a2820a4((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,13 +51,13 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global:
 
     public global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated evaluateAdjustments(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams molangParams, global::Hosihikari.Bindings.Bedrock.Interop.PerlinSimplexNoise noise, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int heightMin, int heightMax)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated((nint)NativeMethods.TablePtr->C3.hs_method_8b69e8a3((void*)__hosihikari_shim_handle, (void*)molangParams.Handle, (void*)noise.Handle, (void*)pos.Handle, heightMin, heightMax));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated((nint)NativeMethods.TablePtr->C4.hs_method_8b69e8a3((void*)__hosihikari_shim_handle, (void*)molangParams.Handle, (void*)noise.Handle, (void*)pos.Handle, heightMin, heightMax));
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mAdjustments_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_25a4d79d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_25a4d79d((void*)__hosihikari_shim_handle);
     }
 
     public static void parseExpressionNodeFloat(short op, string data, global::Hosihikari.Bindings.Bedrock.Interop.ExpressionNode node, float defaultValue)
@@ -75,7 +75,7 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global:
         global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->C3.hs_method_1638b0d4(op, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)node.Handle, defaultValue);
+            NativeMethods.TablePtr->C4.hs_method_1638b0d4(op, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)node.Handle, defaultValue);
         }
     }
 
@@ -86,7 +86,7 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentAttributes : global:
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_f033bcba((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_f033bcba((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

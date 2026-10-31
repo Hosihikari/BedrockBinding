@@ -38,9 +38,10 @@ public sealed unsafe partial class IRNS2_Berkley : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint Bind(nint bindParameters, nint file, uint line) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int Bind(nint bindParameters, nint file, uint line)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_0ab60e51((void*)__hosihikari_shim_handle, (void*)bindParameters, (void*)file, line);
+    }
 
     public static IRNS2_Berkley Create(global::Hosihikari.Bindings.Bedrock.Interop.RakNet.IRNS2_Berkley arg0)
     {

@@ -49,9 +49,10 @@ public sealed unsafe partial class ContainerContentChangeListener : global::Syst
         return new ContainerContentChangeListener((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void containerContentChanged(int slot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void containerContentChanged(int slot)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e27e2ce1((void*)__hosihikari_shim_handle, slot);
+    }
 
 
     public void Dispose()

@@ -58,17 +58,20 @@ public sealed unsafe partial class MediaChannelNetworkInterface : global::System
         return new MediaChannelNetworkInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SendPacket(nint packet, nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SendPacket(nint packet, nint options)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_aa7c6935((void*)__hosihikari_shim_handle, (void*)packet, (void*)options) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SendRtcp(nint packet, nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SendRtcp(nint packet, nint options)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_5ff14c79((void*)__hosihikari_shim_handle, (void*)packet, (void*)options) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int SetOption(nint type, nint opt, int value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int SetOption(int type, int opt, int value)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_d9da2832((void*)__hosihikari_shim_handle, type, opt, value);
+    }
 
 
     public void Dispose()

@@ -122,9 +122,10 @@ public sealed unsafe partial class BytesDataOutput : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_4f2ed231((void*)__hosihikari_shim_handle, v);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void writeBytes(nint data, ulong bytes) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void writeBytes(nint data, ulong bytes)
+    {
+        NativeMethods.TablePtr->C0.hs_method_5f1d6a28((void*)__hosihikari_shim_handle, (void*)data, bytes);
+    }
 
     public void writeDouble(double v)
     {

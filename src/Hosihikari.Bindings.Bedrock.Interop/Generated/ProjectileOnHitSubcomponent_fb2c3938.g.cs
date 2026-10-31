@@ -49,9 +49,11 @@ public sealed unsafe partial class ProjectileOnHitSubcomponent : global::System.
         return new ProjectileOnHitSubcomponent((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_5f8df62c((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
 
     public void Dispose()

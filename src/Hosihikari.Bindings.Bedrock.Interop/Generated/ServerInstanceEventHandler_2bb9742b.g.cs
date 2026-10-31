@@ -49,9 +49,10 @@ public sealed unsafe partial class ServerInstanceEventHandler : global::System.I
         return new ServerInstanceEventHandler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint handleEvent(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.ServerInstanceGameplayEvent_void_ arg0)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_0d3ee5e6((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
 
     public void Dispose()

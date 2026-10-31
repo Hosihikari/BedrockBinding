@@ -47,13 +47,15 @@ public sealed unsafe partial class VCMProtectionCallback : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int ProtectionRequest(nint delta_params, nint key_params, nint sent_video_rate_bps, nint sent_nack_rate_bps, nint sent_fec_rate_bps) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int ProtectionRequest(nint delta_params, nint key_params, nint sent_video_rate_bps, nint sent_nack_rate_bps, nint sent_fec_rate_bps)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_aa58c6b4((void*)__hosihikari_shim_handle, (void*)delta_params, (void*)key_params, (void*)sent_video_rate_bps, (void*)sent_nack_rate_bps, (void*)sent_fec_rate_bps);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetRetransmissionMode(int retransmission_mode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetRetransmissionMode(int retransmission_mode)
+    {
+        NativeMethods.TablePtr->C4.hs_method_9833ea5f((void*)__hosihikari_shim_handle, retransmission_mode);
+    }
 
     public static VCMProtectionCallback Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VCMProtectionCallback arg0)
     {

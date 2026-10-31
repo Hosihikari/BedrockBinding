@@ -40,7 +40,7 @@ public sealed unsafe partial class PropertyContainer : global::System.IDisposabl
 
     public static PropertyContainer Create(global::Hosihikari.Bindings.Bedrock.Interop.PropertyContainer arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_5892f350((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_5892f350((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,29 +51,29 @@ public sealed unsafe partial class PropertyContainer : global::System.IDisposabl
 
     public void _addDataToCompoundTag(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag compoundTag, global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata propertyMetadata)
     {
-        NativeMethods.TablePtr->C2.hs_method_3e98cd2e((void*)__hosihikari_shim_handle, (void*)compoundTag.Handle, (void*)propertyMetadata.Handle);
+        NativeMethods.TablePtr->C3.hs_method_3e98cd2e((void*)__hosihikari_shim_handle, (void*)compoundTag.Handle, (void*)propertyMetadata.Handle);
     }
 
     public ulong? _getPropertyTypeArrayIndex(ulong propertyNameHash, sbyte propertyType)
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->C2.hs_method_8f8963cd((void*)__hosihikari_shim_handle, propertyNameHash, propertyType, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->C3.hs_method_8f8963cd((void*)__hosihikari_shim_handle, propertyNameHash, propertyType, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (ulong?)null;
     }
 
     public bool _readValueFromTag(global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata propertyMetadata, global::Hosihikari.Bindings.Bedrock.Interop.Tag tag)
     {
-        return NativeMethods.TablePtr->C2.hs_method_f3a400ae((void*)__hosihikari_shim_handle, (void*)propertyMetadata.Handle, (void*)tag.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_f3a400ae((void*)__hosihikari_shim_handle, (void*)propertyMetadata.Handle, (void*)tag.Handle) != 0;
     }
 
     public void addEntryToSyncData(global::Hosihikari.Bindings.Bedrock.Interop.PropertyMetadata propMetadata, global::Hosihikari.Bindings.Bedrock.Interop.PropertySyncData syncData)
     {
-        NativeMethods.TablePtr->C2.hs_method_182c53c8((void*)__hosihikari_shim_handle, (void*)propMetadata.Handle, (void*)syncData.Handle);
+        NativeMethods.TablePtr->C3.hs_method_182c53c8((void*)__hosihikari_shim_handle, (void*)propMetadata.Handle, (void*)syncData.Handle);
     }
 
     public bool getMolangValue(ulong propertyNameHash, global::Hosihikari.Bindings.Bedrock.Interop.MolangScriptArg @out)
     {
-        return NativeMethods.TablePtr->C2.hs_method_5bf60344((void*)__hosihikari_shim_handle, propertyNameHash, (void*)@out.Handle) != 0;
+        return NativeMethods.TablePtr->C3.hs_method_5bf60344((void*)__hosihikari_shim_handle, propertyNameHash, (void*)@out.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
@@ -83,18 +83,18 @@ public sealed unsafe partial class PropertyContainer : global::System.IDisposabl
     // The native field type is not projected; this is the address of the field storage.
     public nint mPropertyGroup_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_d683e4cc((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_d683e4cc((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mValues_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_0e395c0f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_0e395c0f((void*)__hosihikari_shim_handle);
     }
 
     public void readLoadedProperties(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag loadedPropertyTag)
     {
-        NativeMethods.TablePtr->C2.hs_method_2d618dde((void*)__hosihikari_shim_handle, (void*)loadedPropertyTag.Handle);
+        NativeMethods.TablePtr->C3.hs_method_2d618dde((void*)__hosihikari_shim_handle, (void*)loadedPropertyTag.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
@@ -108,7 +108,7 @@ public sealed unsafe partial class PropertyContainer : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_a5217034((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_a5217034((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

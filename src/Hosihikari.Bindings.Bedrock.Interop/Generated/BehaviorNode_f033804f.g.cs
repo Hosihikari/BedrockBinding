@@ -98,9 +98,10 @@ public sealed unsafe partial class BehaviorNode : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C0.hs_get_38a0401e((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint tick(nint owner) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int tick(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_8ef8084d((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+    }
 
 
     public void Dispose()

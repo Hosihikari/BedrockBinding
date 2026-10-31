@@ -128,41 +128,49 @@ public sealed unsafe partial class IRandom : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_4942fc9a((void*)__hosihikari_shim_handle, possibilities) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void consumeCount(uint rounds) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void consumeCount(uint rounds)
+    {
+        NativeMethods.TablePtr->C1.hs_method_abd9ca65((void*)__hosihikari_shim_handle, rounds);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.", false)]
     public nint forkPositional() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IPositionalRandomFactory' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool nextBoolean() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool nextBoolean()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_559bb6bd((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public double nextDouble() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public double nextDouble()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_12bdb301((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public float nextFloat() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public float nextFloat()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6a35c347((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public double nextGaussianDouble() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public double nextGaussianDouble()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0ef1b75b((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int nextInt() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int nextInt()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c516ecd2((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int nextInt(int bound) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int nextInt(int bound)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_74c41cc2((void*)__hosihikari_shim_handle, bound);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public long nextLong() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public long nextLong()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_194b497b((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

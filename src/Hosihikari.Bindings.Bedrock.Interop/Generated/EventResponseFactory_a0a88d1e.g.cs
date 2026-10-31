@@ -58,13 +58,15 @@ public sealed unsafe partial class EventResponseFactory : global::System.IDispos
         return new EventResponseFactory((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void initSchema() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void initSchema()
+    {
+        NativeMethods.TablePtr->C1.hs_method_09dd2fad((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void initializeFactory(nint packLoadInfo) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void initializeFactory(global::Hosihikari.Bindings.Bedrock.Interop.PackLoadInfo packLoadInfo)
+    {
+        NativeMethods.TablePtr->C1.hs_method_083d2d26((void*)__hosihikari_shim_handle, (void*)packLoadInfo.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSchema_Address

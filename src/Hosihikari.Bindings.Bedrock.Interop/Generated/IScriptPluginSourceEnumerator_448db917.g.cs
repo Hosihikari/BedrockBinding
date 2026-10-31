@@ -49,9 +49,10 @@ public sealed unsafe partial class IScriptPluginSourceEnumerator : global::Syste
         return new IScriptPluginSourceEnumerator((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPluginSources() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getPluginSources()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_fe41d765((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

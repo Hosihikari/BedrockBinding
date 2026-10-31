@@ -113,9 +113,10 @@ public sealed unsafe partial class ScriptComponent : global::System.IDisposable
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool _isValid() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool _isValid()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_56ee32d2((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding bind()
     {

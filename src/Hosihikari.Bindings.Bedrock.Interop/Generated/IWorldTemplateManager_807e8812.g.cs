@@ -55,57 +55,79 @@ public sealed unsafe partial class IWorldTemplateManager : global::System.IDispo
         return new IWorldTemplateManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'WorldTemplateCollectionView' requires --link-carrier or --virtual-dispatch.", false)]
     public nint createView(nint toView) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'WorldTemplateCollectionView' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void deleteWorldTemplateAndFiles(nint packIdentity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void deleteWorldTemplateAndFiles(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion packIdentity)
+    {
+        NativeMethods.TablePtr->C1.hs_method_8c4b3e8c((void*)__hosihikari_shim_handle, (void*)packIdentity.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint findInstalledWorldTemplate(nint packIdentityToFind) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo? findInstalledWorldTemplate(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion packIdentityToFind)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_80ea0e20((void*)__hosihikari_shim_handle, (void*)packIdentityToFind.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint findInstalledWorldTemplateByUUID(nint packUUIDs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo? findInstalledWorldTemplateByUUID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID[] packUUIDs)
+    {
+        var __hs_vectorItems0 = packUUIDs;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var __hs_handle = NativeMethods.TablePtr->C1.hs_method_38c1995f((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(packUUIDs?.Length ?? 0));
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo((nint)__hs_handle, false) : null;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void flushResourceLoaderTasks() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void flushResourceLoaderTasks()
+    {
+        NativeMethods.TablePtr->C1.hs_method_33fe6913((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachWorldTemplate(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLocalTemplates() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getLocalTemplates()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_dbb195fa((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldTemplateAtIndex(int index) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo getWorldTemplateAtIndex(int index)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplateInfo((nint)NativeMethods.TablePtr->C1.hs_method_dc8c43de((void*)__hosihikari_shim_handle, index), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong getWorldTemplateSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong getWorldTemplateSize()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_fb52f704((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isInitialized() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isInitialized()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5a04a7b3((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isWorldTemplateInstalled(nint uuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isWorldTemplateInstalled(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_05efdf6d((void*)__hosihikari_shim_handle, (void*)uuid.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void populateWorldTemplates() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void populateWorldTemplates()
+    {
+        NativeMethods.TablePtr->C1.hs_method_faec9cec((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint registerModifiedCallback(nint newCallbackFunction) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
     public void Dispose()

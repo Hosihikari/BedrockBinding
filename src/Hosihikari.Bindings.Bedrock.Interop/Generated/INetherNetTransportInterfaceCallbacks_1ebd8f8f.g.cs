@@ -53,37 +53,42 @@ public sealed unsafe partial class INetherNetTransportInterfaceCallbacks : globa
         return new INetherNetTransportInterfaceCallbacks((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: return type 'brstd::move_only_function<bool (cereal::SchemaWriter &, cereal::ContextArea)>' is not supported.", false)]
     public nint OnDiscoveryRequest() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'brstd::move_only_function<bool (cereal::SchemaWriter &, cereal::ContextArea)>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnDiscoveryResponse(nint networkID, nint pApplicationData, int size) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnDiscoveryResponse(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID networkID, nint pApplicationData, int size)
+    {
+        NativeMethods.TablePtr->C2.hs_method_3182ee9c((void*)__hosihikari_shim_handle, (void*)networkID.Handle, (void*)pApplicationData, size);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnSessionClose(nint networkID, ulong sessionId, nint sessionError, nint summary) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnSessionClose(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID networkID, ulong sessionId, int sessionError, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value summary)
+    {
+        NativeMethods.TablePtr->C2.hs_method_0d7e469f((void*)__hosihikari_shim_handle, (void*)networkID.Handle, sessionId, sessionError, (void*)summary.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnSessionGetConnectionFlags(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnSessionGetConnectionFlags(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID arg0, nint arg1)
+    {
+        NativeMethods.TablePtr->C2.hs_method_e9532fe2((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnSessionOpen(nint networkID, ulong sessionId, bool isLan) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnSessionOpen(global::Hosihikari.Bindings.Bedrock.Interop.NetherNet.NetworkID networkID, ulong sessionId, bool isLan)
+    {
+        NativeMethods.TablePtr->C2.hs_method_4f1ae636((void*)__hosihikari_shim_handle, (void*)networkID.Handle, sessionId, isLan);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint OnSessionRequested(nint networkID, ulong sessionId, nint assertion, nint fingerprintJson, bool isLan) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint OnSessionResponse(nint networkID, ulong sessionId, nint assertion, nint fingerprintJson, bool isLan) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<bool>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnSpopViolation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnSpopViolation()
+    {
+        NativeMethods.TablePtr->C2.hs_method_69fecc8f((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

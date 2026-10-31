@@ -49,9 +49,10 @@ public sealed unsafe partial class ISharedSpawnGetter : global::System.IDisposab
         return new ISharedSpawnGetter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSharedSpawnPosition() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSharedSpawnPosition()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C1.hs_method_66522b62((void*)__hosihikari_shim_handle), false);
+    }
 
 
     public void Dispose()

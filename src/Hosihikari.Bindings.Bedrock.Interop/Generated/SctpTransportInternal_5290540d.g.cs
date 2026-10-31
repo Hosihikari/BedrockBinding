@@ -52,17 +52,19 @@ public sealed unsafe partial class SctpTransportInternal : global::System.IDispo
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::PriorityValue' is not a known bindable declaration.", false)]
     public bool OpenStream(int sid, nint priority) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::PriorityValue' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool ReadyToSendData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool ReadyToSendData()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_9b667373((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool ResetStream(int sid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool ResetStream(int sid)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_a7f61e6a((void*)__hosihikari_shim_handle, sid) != 0;
+    }
 
     public static SctpTransportInternal Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.SctpTransportInternal arg0)
     {
@@ -75,58 +77,73 @@ public sealed unsafe partial class SctpTransportInternal : global::System.IDispo
         return new SctpTransportInternal((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint SendData(int sid, nint @params, nint payload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError SendData(int sid, nint @params, nint payload)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RTCError((nint)NativeMethods.TablePtr->C4.hs_method_195e2a18((void*)__hosihikari_shim_handle, sid, (void*)@params, (void*)payload));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetBufferedAmountLowThreshold(int sid, ulong bytes) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetBufferedAmountLowThreshold(int sid, ulong bytes)
+    {
+        NativeMethods.TablePtr->C4.hs_method_0b42b909((void*)__hosihikari_shim_handle, sid, bytes);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetDataChannelSink(nint sink) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetDataChannelSink(nint sink)
+    {
+        NativeMethods.TablePtr->C4.hs_method_be4734e9((void*)__hosihikari_shim_handle, (void*)sink);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetDtlsTransport(nint transport) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetDtlsTransport(nint transport)
+    {
+        NativeMethods.TablePtr->C4.hs_method_f1de196a((void*)__hosihikari_shim_handle, (void*)transport);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void SetOnConnectedCallback(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool Start(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool Start(nint options)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_8ab3ed9e((void*)__hosihikari_shim_handle, (void*)options) != 0;
+    }
 
     public bool Start(int local_sctp_port, int remote_sctp_port, int max_message_size)
     {
         return NativeMethods.TablePtr->C4.hs_method_cdb03881((void*)__hosihikari_shim_handle, local_sctp_port, remote_sctp_port, max_message_size) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong buffered_amount(int sid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong buffered_amount(int sid)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_a27d7332((void*)__hosihikari_shim_handle, sid);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong buffered_amount_low_threshold(int sid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong buffered_amount_low_threshold(int sid)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_46b9d71e((void*)__hosihikari_shim_handle, sid);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint max_inbound_streams() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int? max_inbound_streams()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C4.hs_method_99867452((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int max_message_size() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int max_message_size()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_bd58378c((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint max_outbound_streams() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int? max_outbound_streams()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C4.hs_method_1de00831((void*)__hosihikari_shim_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void set_debug_name_for_testing(nint debug_name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void set_debug_name_for_testing(nint debug_name)
+    {
+        NativeMethods.TablePtr->C4.hs_method_9bb7f6cf((void*)__hosihikari_shim_handle, (void*)debug_name);
+    }
 
 
     public void Dispose()

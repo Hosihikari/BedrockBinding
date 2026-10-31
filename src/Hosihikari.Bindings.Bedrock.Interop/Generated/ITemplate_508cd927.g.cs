@@ -40,7 +40,7 @@ public sealed unsafe partial class ITemplate : global::System.IDisposable
 
     public static ITemplate Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement_Nested.ITemplate arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_ffc467b4((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_ffc467b4((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -49,17 +49,20 @@ public sealed unsafe partial class ITemplate : global::System.IDisposable
         return new ITemplate((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getJigsawMarkers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getJigsawMarkers()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_5ed11df7((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getSize(nint rotation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSize(byte rotation)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C4.hs_method_c55386ec((void*)__hosihikari_shim_handle, rotation));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isLegacyStructure() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isLegacyStructure()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_e8d7c489((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()
@@ -68,7 +71,7 @@ public sealed unsafe partial class ITemplate : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_508cd927((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_508cd927((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

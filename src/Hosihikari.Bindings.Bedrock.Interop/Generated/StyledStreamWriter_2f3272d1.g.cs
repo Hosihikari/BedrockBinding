@@ -53,18 +53,18 @@ public sealed unsafe partial class StyledStreamWriter : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(indentation, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->C1.hs_method_89b2a812((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C2.hs_method_89b2a812((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_f028441a((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_f028441a((void*)__hosihikari_shim_handle);
     }
 
     public static StyledStreamWriter Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_a54b045a();
+        var handle = NativeMethods.TablePtr->C2.hs_create_a54b045a();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -75,7 +75,7 @@ public sealed unsafe partial class StyledStreamWriter : global::System.IDisposab
 
     public static StyledStreamWriter Create(global::Hosihikari.Bindings.Bedrock.Interop.Json.StyledStreamWriter arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_072b5665((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_072b5665((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -99,7 +99,7 @@ public sealed unsafe partial class StyledStreamWriter : global::System.IDisposab
         global::System.Text.Encoding.UTF8.GetBytes(indentation, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->C1.hs_create_f7ac9036(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var handle = NativeMethods.TablePtr->C2.hs_create_f7ac9036(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -111,58 +111,58 @@ public sealed unsafe partial class StyledStreamWriter : global::System.IDisposab
 
     public bool addChildValues_
     {
-        get => NativeMethods.TablePtr->C1.hs_get_9c138c16((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_9c138c16((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_9c138c16((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_9c138c16((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint childValues__Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_fc0e760f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_fc0e760f((void*)__hosihikari_shim_handle);
     }
 
     public nint document_
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_a1af85f4((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_a1af85f4((void*)__hosihikari_shim_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_a1af85f4((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_a1af85f4((void*)__hosihikari_shim_handle, (void*)value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint indentString__Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_30ce5b11((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_30ce5b11((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint indentation__Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_dcd7154e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_dcd7154e((void*)__hosihikari_shim_handle);
     }
 
     public int rightMargin_
     {
-        get => NativeMethods.TablePtr->C1.hs_get_93335a32((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_93335a32((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_93335a32((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_93335a32((void*)__hosihikari_shim_handle, value);
     }
 
     public void unindent()
     {
-        NativeMethods.TablePtr->C1.hs_method_9d01b3bb((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_9d01b3bb((void*)__hosihikari_shim_handle);
     }
 
     public void write(nint @out, global::Hosihikari.Bindings.Bedrock.Interop.Json.Value root)
     {
-        NativeMethods.TablePtr->C1.hs_method_776c0be9((void*)__hosihikari_shim_handle, (void*)@out, (void*)root.Handle);
+        NativeMethods.TablePtr->C2.hs_method_776c0be9((void*)__hosihikari_shim_handle, (void*)@out, (void*)root.Handle);
     }
 
     public void writeArrayValue(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value)
     {
-        NativeMethods.TablePtr->C1.hs_method_d4b30fb6((void*)__hosihikari_shim_handle, (void*)value.Handle);
+        NativeMethods.TablePtr->C2.hs_method_d4b30fb6((void*)__hosihikari_shim_handle, (void*)value.Handle);
     }
 
     public void writeValue(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value value)
     {
-        NativeMethods.TablePtr->C1.hs_method_54f3d01a((void*)__hosihikari_shim_handle, (void*)value.Handle);
+        NativeMethods.TablePtr->C2.hs_method_54f3d01a((void*)__hosihikari_shim_handle, (void*)value.Handle);
     }
 
 
@@ -172,7 +172,7 @@ public sealed unsafe partial class StyledStreamWriter : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_2f3272d1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_2f3272d1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

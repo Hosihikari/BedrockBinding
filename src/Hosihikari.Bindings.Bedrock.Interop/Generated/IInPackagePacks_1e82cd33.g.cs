@@ -49,9 +49,9 @@ public sealed unsafe partial class IInPackagePacks : global::System.IDisposable
         return new IInPackagePacks((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'IInPackagePacks::MetaData' is not supported.", false)]
     public nint getPacks(nint packType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'IInPackagePacks::MetaData' is not supported.");
 
 
     public void Dispose()

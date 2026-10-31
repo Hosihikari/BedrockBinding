@@ -49,13 +49,14 @@ public sealed unsafe partial class IConnectionEventing : global::System.IDisposa
         return new IConnectionEventing((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fireEventOnSuccessfulClientLogin(nint level) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fireEventOnSuccessfulClientLogin(global::Hosihikari.Bindings.Bedrock.Interop.Level? level)
+    {
+        NativeMethods.TablePtr->C1.hs_method_0c366b1f((void*)__hosihikari_shim_handle, (void*)(level?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void fireServerConnectionEvent(nint outcome, nint pingLatency, double timeElapsed, nint creatorName, nint worldId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
     public void Dispose()

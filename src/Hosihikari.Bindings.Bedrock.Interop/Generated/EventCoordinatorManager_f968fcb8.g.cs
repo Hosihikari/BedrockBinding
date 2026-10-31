@@ -99,9 +99,11 @@ public sealed unsafe partial class EventCoordinatorManager : global::System.IDis
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevelEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getLevelEventCoordinator()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_77de2004((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getRemotePlayerEventCoordinator()
     {

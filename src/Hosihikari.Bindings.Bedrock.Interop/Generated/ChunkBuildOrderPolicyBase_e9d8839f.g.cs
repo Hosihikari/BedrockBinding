@@ -49,30 +49,35 @@ public sealed unsafe partial class ChunkBuildOrderPolicyBase : global::System.ID
         return new ChunkBuildOrderPolicyBase((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getChunkRebuildPriority(nint cp) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getChunkRebuildPriority(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos cp)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_79117851((void*)__hosihikari_shim_handle, (void*)cp.Handle);
+    }
 
     public uint registerForUpdates()
     {
         return NativeMethods.TablePtr->C0.hs_method_4e6c4f71((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPlayerInfluence(uint handle, nint playerPosition, nint playerMovementDirection) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPlayerInfluence(uint handle, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos playerPosition, global::Hosihikari.Bindings.Bedrock.Interop.Vec3 playerMovementDirection)
+    {
+        NativeMethods.TablePtr->C0.hs_method_8065e5a7((void*)__hosihikari_shim_handle, handle, (void*)playerPosition.Handle, (void*)playerMovementDirection.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setTickingAreaInfluence(uint handle, nint tickingAreaPosition, int sizeX, int sizeZ, bool isCircle, bool preload) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setTickingAreaInfluence(uint handle, global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos tickingAreaPosition, int sizeX, int sizeZ, bool isCircle, bool preload)
+    {
+        NativeMethods.TablePtr->C0.hs_method_c8a49ad6((void*)__hosihikari_shim_handle, handle, (void*)tickingAreaPosition.Handle, sizeX, sizeZ, isCircle, preload);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void unregisterForUpdates(uint handle) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void unregisterForUpdates(uint handle)
+    {
+        NativeMethods.TablePtr->C0.hs_method_dbb3420e((void*)__hosihikari_shim_handle, handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void updateInfluences() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void updateInfluences()
+    {
+        NativeMethods.TablePtr->C0.hs_method_c0c08132((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

@@ -134,9 +134,10 @@ public sealed unsafe partial class AggregationEventListener : global::System.IDi
     public void _sendNextEvent(nint queueToSend) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::deque<Social::Events::Event>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getEventTagsFilter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getEventTagsFilter()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_5ce3a3dd((void*)__hosihikari_shim_handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk11517d_Address
@@ -238,9 +239,10 @@ public sealed unsafe partial class AggregationEventListener : global::System.IDi
         NativeMethods.TablePtr->C3.hs_method_cd9916f0((void*)__hosihikari_shim_handle, (void*)@event, (void*)appPlatform.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendEvent(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendEvent(nint @event)
+    {
+        NativeMethods.TablePtr->C3.hs_method_aecf7378((void*)__hosihikari_shim_handle, (void*)@event);
+    }
 
     public void sendEvents(bool forceSend)
     {

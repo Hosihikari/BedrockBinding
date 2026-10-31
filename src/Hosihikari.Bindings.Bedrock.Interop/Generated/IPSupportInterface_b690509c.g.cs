@@ -49,21 +49,25 @@ public sealed unsafe partial class IPSupportInterface : global::System.IDisposab
         return new IPSupportInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ushort getDefaultGamePort() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ushort getDefaultGamePort()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_a63801fb((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ushort getDefaultGamePortv6() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ushort getDefaultGamePortv6()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_9f9646fe((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool useIPv4Only() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool useIPv4Only()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_ace9bdff((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool useIPv6Only() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool useIPv6Only()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_3d5208a7((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

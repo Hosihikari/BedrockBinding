@@ -38,9 +38,9 @@ public sealed unsafe partial class MediaReceiveStreamInterface : global::System.
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'webrtc::RtpSource' is not supported.", false)]
     public nint GetSources() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'webrtc::RtpSource' is not supported.");
 
     public static MediaReceiveStreamInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.MediaReceiveStreamInterface arg0)
     {
@@ -53,25 +53,28 @@ public sealed unsafe partial class MediaReceiveStreamInterface : global::System.
         return new MediaReceiveStreamInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::FrameTransformerInterface>' is not a known bindable declaration.", false)]
     public void SetDepacketizerToDecoderFrameTransformer(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::FrameTransformerInterface>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::FrameDecryptorInterface>' is not a known bindable declaration.", false)]
     public void SetFrameDecryptor(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::FrameDecryptorInterface>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetRtcpMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetRtcpMode(int arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_522c8195((void*)__hosihikari_shim_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void Start() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void Start()
+    {
+        NativeMethods.TablePtr->C4.hs_method_bcdbf43e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void Stop() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void Stop()
+    {
+        NativeMethods.TablePtr->C4.hs_method_72c061b6((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

@@ -41,19 +41,19 @@ public sealed unsafe partial class SwellGoal : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_ec387f42((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ec387f42((void*)__hosihikari_shim_handle);
     }
 
     public int mRequiredControlFlags
     {
-        get => NativeMethods.TablePtr->C3.hs_get_c659828a((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_c659828a((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_c659828a((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_c659828a((void*)__hosihikari_shim_handle, value);
     }
 
     public ushort mTypeId
     {
-        get => NativeMethods.TablePtr->C3.hs_get_17a5c4b3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_17a5c4b3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_17a5c4b3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_17a5c4b3((void*)__hosihikari_shim_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -62,7 +62,7 @@ public sealed unsafe partial class SwellGoal : global::System.IDisposable
 
     public bool _canUse()
     {
-        return NativeMethods.TablePtr->C3.hs_method_3ba22101((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_3ba22101((void*)__hosihikari_shim_handle) != 0;
     }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, string name, nint goalId)
@@ -80,28 +80,28 @@ public sealed unsafe partial class SwellGoal : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->C3.hs_method_aae721d4((void*)__hosihikari_shim_handle, (void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)goalId);
+            return (nint)NativeMethods.TablePtr->C4.hs_method_aae721d4((void*)__hosihikari_shim_handle, (void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)goalId);
         }
     }
 
     public void _start()
     {
-        NativeMethods.TablePtr->C3.hs_method_fa50f239((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_fa50f239((void*)__hosihikari_shim_handle);
     }
 
     public void _stop()
     {
-        NativeMethods.TablePtr->C3.hs_method_7972e8db((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_7972e8db((void*)__hosihikari_shim_handle);
     }
 
     public void _tick()
     {
-        NativeMethods.TablePtr->C3.hs_method_57922043((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_57922043((void*)__hosihikari_shim_handle);
     }
 
     public static SwellGoal Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_76702d43();
+        var handle = NativeMethods.TablePtr->C4.hs_create_76702d43();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -125,7 +125,7 @@ public sealed unsafe partial class SwellGoal : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->C3.hs_create_96085742((void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)goalId);
+            var handle = NativeMethods.TablePtr->C4.hs_create_96085742((void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)goalId);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -137,7 +137,7 @@ public sealed unsafe partial class SwellGoal : global::System.IDisposable
 
     public static SwellGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.SwellGoal arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_9d99a06c((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_9d99a06c((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -152,46 +152,46 @@ public sealed unsafe partial class SwellGoal : global::System.IDisposable
 
     public bool canUse()
     {
-        return NativeMethods.TablePtr->C3.hs_method_997d0fa2((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_997d0fa2((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCreeperRef_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_228dc1b7((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_228dc1b7((void*)__hosihikari_shim_handle);
     }
 
     public float mStartSwellDist
     {
-        get => NativeMethods.TablePtr->C3.hs_get_84d184c3((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_84d184c3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_84d184c3((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_84d184c3((void*)__hosihikari_shim_handle, value);
     }
 
     public float mStopSwellDist
     {
-        get => NativeMethods.TablePtr->C3.hs_get_dad060fc((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_dad060fc((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_dad060fc((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_dad060fc((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mTarget_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6555ffe0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6555ffe0((void*)__hosihikari_shim_handle);
     }
 
     public void start()
     {
-        NativeMethods.TablePtr->C3.hs_method_09641ec5((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_09641ec5((void*)__hosihikari_shim_handle);
     }
 
     public void stop()
     {
-        NativeMethods.TablePtr->C3.hs_method_0e1378c0((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_0e1378c0((void*)__hosihikari_shim_handle);
     }
 
     public void tick()
     {
-        NativeMethods.TablePtr->C3.hs_method_9c5f1216((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_9c5f1216((void*)__hosihikari_shim_handle);
     }
 
 
@@ -201,7 +201,7 @@ public sealed unsafe partial class SwellGoal : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_9eee1cce((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_9eee1cce((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

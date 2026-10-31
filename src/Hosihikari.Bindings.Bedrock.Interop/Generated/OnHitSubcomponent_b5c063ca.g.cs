@@ -54,22 +54,25 @@ public sealed unsafe partial class OnHitSubcomponent : global::System.IDisposabl
         return NativeMethods.TablePtr->C2.hs_method_4bc2d7a3((void*)(projectileOwnerActor?.Handle ?? 0), (void*)(hitActor?.Handle ?? 0)) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void doOnHitEffect(nint owner, nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void doOnHitEffect(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner, global::Hosihikari.Bindings.Bedrock.Interop.ProjectileComponent component)
+    {
+        NativeMethods.TablePtr->C2.hs_method_914676ec((void*)__hosihikari_shim_handle, (void*)owner.Handle, (void*)component.Handle);
+    }
 
     public nint getName()
     {
         return (nint)NativeMethods.TablePtr->C2.hs_method_eed19996((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void initFromDefinition(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.SharedTypes.v1_26_50.ProjectileOnHitSubcomponent component)
+    {
+        NativeMethods.TablePtr->C2.hs_method_c9ac7876((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void writetoJSON(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void writetoJSON(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value component)
+    {
+        NativeMethods.TablePtr->C2.hs_method_069d747d((void*)__hosihikari_shim_handle, (void*)component.Handle);
+    }
 
 
     public void Dispose()

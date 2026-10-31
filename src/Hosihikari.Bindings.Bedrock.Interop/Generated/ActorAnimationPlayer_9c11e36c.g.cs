@@ -70,9 +70,9 @@ public sealed unsafe partial class ActorAnimationPlayer : global::System.IDispos
         return new ActorAnimationPlayer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.", false)]
     public void applyToPose(nint applyContext, nint renderParams, nint destBoneOrientationMap, float blendWeight) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::vector<BoneOrientation>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: map key type 'HashedString' is not supported.", false)]
     public void bindParticleEffects(nint actorParticleEffectMap) =>
@@ -87,21 +87,26 @@ public sealed unsafe partial class ActorAnimationPlayer : global::System.IDispos
         NativeMethods.TablePtr->C0.hs_method_3edf3b19((void*)__hosihikari_shim_handle, (void*)animationComponent.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint findAnimation(nint friendlyName) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? findAnimation(global::Hosihikari.Bindings.Bedrock.Interop.HashedString friendlyName)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_a9185c05((void*)__hosihikari_shim_handle, (void*)friendlyName.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getAnimationType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getAnimationType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_ebbd359f((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getRawName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.HashedString getRawName()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.HashedString((nint)NativeMethods.TablePtr->C0.hs_method_b6017aa9((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasAnimationFinished() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasAnimationFinished()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0870c4a1((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public bool mAnimationFinished
     {
@@ -127,9 +132,10 @@ public sealed unsafe partial class ActorAnimationPlayer : global::System.IDispos
         get => (nint)NativeMethods.TablePtr->C0.hs_get_2e74a1dc((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void resetAnimation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void resetAnimation()
+    {
+        NativeMethods.TablePtr->C0.hs_method_4b373573((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public void visit(nint dispatcher) =>

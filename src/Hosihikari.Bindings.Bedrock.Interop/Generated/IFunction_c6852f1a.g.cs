@@ -64,41 +64,46 @@ public sealed unsafe partial class IFunction : global::System.IDisposable
         return new IFunction((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.", false)]
     public nint call(nint arg0, nint arg1, uint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_any' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public uint getArgCount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public uint getArgCount()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_22a68993((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getArgDetails(uint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ArgumentDetails getArgDetails(uint arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ArgumentDetails((nint)NativeMethods.TablePtr->C3.hs_method_e1dfb386((void*)__hosihikari_shim_handle, arg0), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_type' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getArgType(uint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_type' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDefaultArg(uint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getDefaultArg(uint arg0)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_8320eafe((void*)__hosihikari_shim_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'entt::meta_type' is not supported.", false)]
     public nint getInstanceType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'entt::meta_type' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'entt::meta_type' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getReturnType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'entt::meta_type' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isValidArgumentValue(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isValidArgumentValue(nint arg0, uint arg1)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_19ea9335((void*)__hosihikari_shim_handle, (void*)arg0, arg1) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isValidVectorArgumentValue(nint arg0, uint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isValidVectorArgumentValue(nint arg0, uint arg1)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_b184d223((void*)__hosihikari_shim_handle, (void*)arg0, arg1) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk84c109_Address

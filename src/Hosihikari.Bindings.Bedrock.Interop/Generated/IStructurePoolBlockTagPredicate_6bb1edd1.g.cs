@@ -49,13 +49,15 @@ public sealed unsafe partial class IStructurePoolBlockTagPredicate : global::Sys
         return new IStructurePoolBlockTagPredicate((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void appendMetadataKey(nint hash) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
+    {
+        NativeMethods.TablePtr->C1.hs_method_9290dde6((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool test(nint block, nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d4b92af1((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)tag.Handle) != 0;
+    }
 
 
     public void Dispose()

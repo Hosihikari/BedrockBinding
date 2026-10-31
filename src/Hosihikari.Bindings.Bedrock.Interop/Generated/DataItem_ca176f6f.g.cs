@@ -49,9 +49,9 @@ public sealed unsafe partial class DataItem : global::System.IDisposable
         return new DataItem((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'DataItem' has no accessible destructor.", false)]
     public nint clone() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'DataItem' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'DataItem' has no accessible destructor.", false)]
     public static nint create(nint key, bool value) =>
@@ -61,17 +61,20 @@ public sealed unsafe partial class DataItem : global::System.IDisposable
     public static nint create(ushort key, bool value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'DataItem' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ushort getId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ushort getId()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a1996b2a((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public byte getType()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0387edc3((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isDataEqual(nint rhs) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isDataEqual(global::Hosihikari.Bindings.Bedrock.Interop.DataItem rhs)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_44dc20bd((void*)__hosihikari_shim_handle, (void*)rhs.Handle) != 0;
+    }
 
 
     public void Dispose()

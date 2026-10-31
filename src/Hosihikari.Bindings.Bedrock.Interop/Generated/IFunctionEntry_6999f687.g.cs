@@ -49,9 +49,10 @@ public sealed unsafe partial class IFunctionEntry : global::System.IDisposable
         return new IFunctionEntry((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void execute(nint functionManager, nint origin, nint order) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void execute(global::Hosihikari.Bindings.Bedrock.Interop.FunctionManager functionManager, global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, byte order)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2c72b160((void*)__hosihikari_shim_handle, (void*)functionManager.Handle, (void*)origin.Handle, order);
+    }
 
 
     public void Dispose()

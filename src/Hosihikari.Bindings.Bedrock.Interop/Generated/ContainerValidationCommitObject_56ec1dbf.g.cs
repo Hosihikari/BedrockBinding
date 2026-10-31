@@ -49,21 +49,24 @@ public sealed unsafe partial class ContainerValidationCommitObject : global::Sys
         return new ContainerValidationCommitObject((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool append(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool append(global::Hosihikari.Bindings.Bedrock.Interop.ContainerValidationCommitObject? other)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_65dc3ee4((void*)__hosihikari_shim_handle, (void*)(other?.Handle ?? 0)) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<ContainerValidationCommitObject>' is not supported.", false)]
     public static void append(nint commitObject, nint objectList) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::shared_ptr<ContainerValidationCommitObject>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canCommit(nint screenContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canCommit(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_33af1c9f((void*)__hosihikari_shim_handle, (void*)screenContext.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void commit(nint screenContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void commit(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c7afa857((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+    }
 
     public int mType
     {

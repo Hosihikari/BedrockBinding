@@ -49,9 +49,9 @@ public sealed unsafe partial class IPreliminarySurfaceProvider : global::System.
         return new IPreliminarySurfaceProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.", false)]
     public nint getPreliminarySurfaceLevel(nint worldQuartPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'DividedPos2d<4>' is not a known bindable declaration.");
 
 
     public void Dispose()

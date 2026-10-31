@@ -82,9 +82,10 @@ public sealed unsafe partial class BaseConnectionRequest : global::System.IDispo
     public static BaseConnectionRequest Create(nint rawToken, nint authentication) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool _isAuthTypeWellFormed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool _isAuthTypeWellFormed()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_375362e1((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public bool _isSupportedPersonaData()
     {

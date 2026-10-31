@@ -49,9 +49,10 @@ public sealed unsafe partial class RemovedState : global::System.IDisposable
         return new RemovedState((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addValue(nint tag) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addValue(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b115d2be((void*)__hosihikari_shim_handle, (void*)tag.Handle);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mName_Address
@@ -59,13 +60,15 @@ public sealed unsafe partial class RemovedState : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->C1.hs_get_8d6ebe76((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void match(nint builder, ulong index) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void match(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagUpdaterNodeBuilder builder, ulong index)
+    {
+        NativeMethods.TablePtr->C1.hs_method_775727a5((void*)__hosihikari_shim_handle, (void*)builder.Handle, index);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong valueCount() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong valueCount()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_cdd0276e((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

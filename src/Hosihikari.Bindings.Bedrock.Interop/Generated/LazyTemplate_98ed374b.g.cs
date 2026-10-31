@@ -40,17 +40,17 @@ public sealed unsafe partial class LazyTemplate : global::System.IDisposable
 
     public nint _getJigsawMarkers()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_3facdf0c((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_3facdf0c((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _getSize(byte rotation)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_eb49d5a8((void*)__hosihikari_shim_handle, rotation));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C4.hs_method_eb49d5a8((void*)__hosihikari_shim_handle, rotation));
     }
 
     public bool _isLegacyStructure()
     {
-        return NativeMethods.TablePtr->C3.hs_method_ee1422e2((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_ee1422e2((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -59,7 +59,7 @@ public sealed unsafe partial class LazyTemplate : global::System.IDisposable
 
     public static LazyTemplate Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolElement_Nested.LazyTemplate arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_03bc9756((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_03bc9756((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -74,29 +74,29 @@ public sealed unsafe partial class LazyTemplate : global::System.IDisposable
 
     public nint getJigsawMarkers()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_53d20e90((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_53d20e90((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos getSize(byte rotation)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_7c722fe3((void*)__hosihikari_shim_handle, rotation));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C4.hs_method_7c722fe3((void*)__hosihikari_shim_handle, rotation));
     }
 
     public bool isLegacyStructure()
     {
-        return NativeMethods.TablePtr->C3.hs_method_8642bcee((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_8642bcee((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mJigsawMarkers_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_8851fb92((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_8851fb92((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructureVariant_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_45ea4cc1((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_45ea4cc1((void*)__hosihikari_shim_handle);
     }
 
 
@@ -106,7 +106,7 @@ public sealed unsafe partial class LazyTemplate : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_98ed374b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_98ed374b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

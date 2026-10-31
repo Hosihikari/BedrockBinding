@@ -49,17 +49,20 @@ public sealed unsafe partial class UriListener : global::System.IDisposable
         return new UriListener((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void executeStartupUris() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void executeStartupUris()
+    {
+        NativeMethods.TablePtr->C4.hs_method_a4e46c04((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onUri(nint uri) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onUri(nint uri)
+    {
+        NativeMethods.TablePtr->C4.hs_method_c99bcb97((void*)__hosihikari_shim_handle, (void*)uri);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tick() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tick()
+    {
+        NativeMethods.TablePtr->C4.hs_method_69cb7e52((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

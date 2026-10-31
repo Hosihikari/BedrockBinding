@@ -54,9 +54,10 @@ public sealed unsafe partial class ActorEventResponse : global::System.IDisposab
         NativeMethods.TablePtr->C0.hs_method_d7f02aba((void*)__hosihikari_shim_handle, root?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)factory.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void executeAction(nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void executeAction(global::Hosihikari.Bindings.Bedrock.Interop.RenderParams @params)
+    {
+        NativeMethods.TablePtr->C0.hs_method_af004358((void*)__hosihikari_shim_handle, (void*)@params.Handle);
+    }
 
     public string getName()
     {

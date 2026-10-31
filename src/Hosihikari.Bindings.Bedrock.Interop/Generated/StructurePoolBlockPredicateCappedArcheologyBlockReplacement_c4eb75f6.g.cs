@@ -40,17 +40,17 @@ public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBl
 
     public bool _finalize(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return NativeMethods.TablePtr->C3.hs_method_c1a10d7c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_c1a10d7c((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle) != 0;
     }
 
     public int _getType()
     {
-        return NativeMethods.TablePtr->C3.hs_method_9630fe26((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_9630fe26((void*)__hosihikari_shim_handle);
     }
 
     public string _validate()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_a2474c95((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_a2474c95((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -60,7 +60,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBl
 
     public static StructurePoolBlockPredicateCappedArcheologyBlockReplacement Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockPredicateCappedArcheologyBlockReplacement arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_307e568e((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_307e568e((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,33 +71,33 @@ public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBl
 
     public bool finalize(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
     {
-        return NativeMethods.TablePtr->C3.hs_method_4bd025de((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_4bd025de((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)random.Handle) != 0;
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->C3.hs_method_ef4dd248((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_ef4dd248((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mLootTable_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_119b146f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_119b146f((void*)__hosihikari_shim_handle);
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockPredicateCappedArcheologyBlockReplacement other)
     {
-        return NativeMethods.TablePtr->C3.hs_method_c6958b2a((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_c6958b2a((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockPredicateCappedArcheologyBlockReplacement other)
     {
-        return NativeMethods.TablePtr->C3.hs_method_9a82cc6e((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_9a82cc6e((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
     }
 
     public string validate()
     {
-        var __hs_view = NativeMethods.TablePtr->C3.hs_method_7b5bafe5((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_7b5bafe5((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -105,24 +105,24 @@ public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBl
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockMappings_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_4ae925b4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_4ae925b4((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCandidatePositions_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_a75819e6((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a75819e6((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCandidatePositionsLock_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_745ec136((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_745ec136((void*)__hosihikari_shim_handle);
     }
 
     public uint mMaximumAmount
     {
-        get => NativeMethods.TablePtr->C3.hs_get_c314f3db((void*)__hosihikari_shim_handle);
+        get => NativeMethods.TablePtr->C4.hs_get_c314f3db((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -131,7 +131,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateCappedArcheologyBl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_c4eb75f6((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_c4eb75f6((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

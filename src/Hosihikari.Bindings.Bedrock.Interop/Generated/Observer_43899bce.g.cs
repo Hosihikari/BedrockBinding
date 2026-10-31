@@ -58,9 +58,9 @@ public sealed unsafe partial class Observer : global::System.IDisposable
         return new Observer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::DtlsTransport>' is not a known bindable declaration.", false)]
     public bool OnTransportChanged(nint mid, nint rtp_transport, nint dtls_transport, nint data_channel_transport) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'webrtc::scoped_refptr<webrtc::DtlsTransport>' is not a known bindable declaration.");
 
 
     public void Dispose()

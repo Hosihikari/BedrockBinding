@@ -49,13 +49,15 @@ public sealed unsafe partial class LoggingInterface : global::System.IDisposable
         return new LoggingInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong threadId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong threadId()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_73629d74((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void writeToDebugger(nint area, nint level, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void writeToDebugger(nint area, uint level, nint message)
+    {
+        NativeMethods.TablePtr->C0.hs_method_ea648b1f((void*)__hosihikari_shim_handle, (void*)area, level, (void*)message);
+    }
 
 
     public void Dispose()

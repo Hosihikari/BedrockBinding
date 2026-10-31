@@ -40,7 +40,7 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.KeyManager rhs)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_c9ca935c((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_c9ca935c((void*)__hosihikari_shim_handle, (void*)rhs.Handle);
     }
 
     public nint _ctor(string publicKey, int system)
@@ -58,18 +58,18 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->C1.hs_method_1966ed76((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, system);
+            return (nint)NativeMethods.TablePtr->C2.hs_method_1966ed76((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, system);
         }
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C1.hs_method_e5d8d858((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_e5d8d858((void*)__hosihikari_shim_handle);
     }
 
     public bool _isValid()
     {
-        return NativeMethods.TablePtr->C1.hs_method_b27c2aee((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_b27c2aee((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -78,7 +78,7 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
 
     public static KeyManager Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_171eaefb();
+        var handle = NativeMethods.TablePtr->C2.hs_create_171eaefb();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -89,7 +89,7 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
 
     public static KeyManager Create(global::Hosihikari.Bindings.Bedrock.Interop.KeyManager rhs)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_d3478501((void*)rhs.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_d3478501((void*)rhs.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -113,7 +113,7 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->C1.hs_create_f17fdf15(__hs_stringData0, (nuint)__hs_stringByteCount0, system);
+            var handle = NativeMethods.TablePtr->C2.hs_create_f17fdf15(__hs_stringData0, (nuint)__hs_stringByteCount0, system);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -125,24 +125,24 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
 
     public bool isValid()
     {
-        return NativeMethods.TablePtr->C1.hs_method_d820b7d7((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_d820b7d7((void*)__hosihikari_shim_handle) != 0;
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnka2774b_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_0a8335b8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_0a8335b8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkbe6af1_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_45121658((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_45121658((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.KeyManager operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.KeyManager rhs)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.KeyManager((nint)NativeMethods.TablePtr->C1.hs_method_7a34a356((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.KeyManager((nint)NativeMethods.TablePtr->C2.hs_method_7a34a356((void*)__hosihikari_shim_handle, (void*)rhs.Handle), false);
     }
 
 
@@ -152,7 +152,7 @@ public sealed unsafe partial class KeyManager : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_ed2d05e0((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_ed2d05e0((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

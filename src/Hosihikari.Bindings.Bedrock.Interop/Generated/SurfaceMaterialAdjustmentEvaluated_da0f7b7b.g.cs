@@ -40,12 +40,12 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentEvaluated : global::
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_e114c5ed((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_e114c5ed((void*)__hosihikari_shim_handle);
     }
 
     public static SurfaceMaterialAdjustmentEvaluated Create(global::Hosihikari.Bindings.Bedrock.Interop.SurfaceMaterialAdjustmentEvaluated arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_40c25e1b((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_40c25e1b((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,7 +57,7 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentEvaluated : global::
     // The native field type is not projected; this is the address of the field storage.
     public nint mAdjustments_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_16d812d5((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_16d812d5((void*)__hosihikari_shim_handle);
     }
 
 
@@ -67,7 +67,7 @@ public sealed unsafe partial class SurfaceMaterialAdjustmentEvaluated : global::
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_da0f7b7b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_da0f7b7b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

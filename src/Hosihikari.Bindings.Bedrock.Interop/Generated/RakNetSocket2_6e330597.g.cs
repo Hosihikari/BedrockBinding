@@ -60,9 +60,10 @@ public sealed unsafe partial class RakNetSocket2 : global::System.IDisposable
         return new RakNetSocket2((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int Send(nint sendParameters, nint file, uint line) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int Send(nint sendParameters, nint file, uint line)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_a658f639((void*)__hosihikari_shim_handle, (void*)sendParameters, (void*)file, line);
+    }
 
     public void SetMulticastInterface(int interfaceIndex)
     {

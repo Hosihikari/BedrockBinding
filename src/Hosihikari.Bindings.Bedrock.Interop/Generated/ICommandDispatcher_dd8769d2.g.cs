@@ -49,9 +49,10 @@ public sealed unsafe partial class ICommandDispatcher : global::System.IDisposab
         return new ICommandDispatcher((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int performCommand(nint origin, nint command) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int performCommand(global::Hosihikari.Bindings.Bedrock.Interop.CommandOrigin origin, global::Hosihikari.Bindings.Bedrock.Interop.Command command)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6a0c5588((void*)__hosihikari_shim_handle, (void*)origin.Handle, (void*)command.Handle);
+    }
 
 
     public void Dispose()

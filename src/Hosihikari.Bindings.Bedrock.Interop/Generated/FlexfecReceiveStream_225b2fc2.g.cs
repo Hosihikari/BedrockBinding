@@ -49,21 +49,25 @@ public sealed unsafe partial class FlexfecReceiveStream : global::System.IDispos
         return new FlexfecReceiveStream((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint GetStats() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint GetStats()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_f9930ecd((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetPayloadType(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetPayloadType(int arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_c315341f((void*)__hosihikari_shim_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetRtcpMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetRtcpMode(int arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_9d7c8493((void*)__hosihikari_shim_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int payload_type() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int payload_type()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_8f5b635f((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

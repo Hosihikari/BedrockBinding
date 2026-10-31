@@ -49,13 +49,15 @@ public sealed unsafe partial class ITickDeltaTimeManagerProxy : global::System.I
         return new ITickDeltaTimeManagerProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public double calculateDeltaTimeAndReset() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public double calculateDeltaTimeAndReset()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_88ecadf1((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void start() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void start()
+    {
+        NativeMethods.TablePtr->C1.hs_method_5e2c3407((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

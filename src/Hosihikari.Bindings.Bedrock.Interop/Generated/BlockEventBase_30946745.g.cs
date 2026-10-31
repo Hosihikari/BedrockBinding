@@ -81,9 +81,10 @@ public sealed unsafe partial class BlockEventBase : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C0.hs_method_9a5de8eb((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlockSource() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockSource getBlockSource()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockSource((nint)NativeMethods.TablePtr->C0.hs_method_69dcb0cd((void*)__hosihikari_shim_handle), false);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPos_Address

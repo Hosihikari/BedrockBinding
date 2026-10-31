@@ -49,13 +49,15 @@ public sealed unsafe partial class IMinecraftEventingProvider : global::System.I
         return new IMinecraftEventingProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPurchaseEventing() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getPurchaseEventing()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_b11a7d2e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldLoadPerformanceEventing() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getWorldLoadPerformanceEventing()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_08162866((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

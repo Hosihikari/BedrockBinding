@@ -49,13 +49,13 @@ public sealed unsafe partial class IPositionalRandomFactory : global::System.IDi
         return new IPositionalRandomFactory((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.", false)]
     public nint forBlockPos(nint blockPos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.", false)]
     public nint forString(nint s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'IRandom' has no accessible destructor.");
 
 
     public void Dispose()

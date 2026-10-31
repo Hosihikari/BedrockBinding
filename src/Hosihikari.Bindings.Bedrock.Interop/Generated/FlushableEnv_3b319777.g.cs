@@ -38,9 +38,10 @@ public sealed unsafe partial class FlushableEnv : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void flushToPermanentStorage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void flushToPermanentStorage()
+    {
+        NativeMethods.TablePtr->C1.hs_method_a1590644((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

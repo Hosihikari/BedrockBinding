@@ -55,33 +55,56 @@ public sealed unsafe partial class IFileAccess : global::System.IDisposable
         return new IFileAccess((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int fclose(nint file) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int fclose(nint file)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2b5c8210((void*)__hosihikari_shim_handle, (void*)file);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint fopen(nint filePath, nint mode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint fopen(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath, string mode)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(mode);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(mode, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C1.hs_method_eb5323ac((void*)__hosihikari_shim_handle, (void*)filePath.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int fseek(nint file, long offset, int origin) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int fseek(nint file, long offset, int origin)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5fa47097((void*)__hosihikari_shim_handle, (void*)file, offset, origin);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public long ftell(nint file) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public long ftell(nint file)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5cbce0ae((void*)__hosihikari_shim_handle, (void*)file);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getReadInterface() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.IFileReadAccess? getReadInterface()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_9c8d5b6f((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IFileReadAccess((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWriteInterface() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.IFileWriteAccess? getWriteInterface()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_f899f0a5((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.IFileWriteAccess((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void unload() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void unload()
+    {
+        NativeMethods.TablePtr->C1.hs_method_a45fe9e0((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

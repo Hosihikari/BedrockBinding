@@ -49,33 +49,38 @@ public sealed unsafe partial class IBackgroundTaskOwner : global::System.IDispos
         return new IBackgroundTaskOwner((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getState() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getState()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_bff29327((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void processCoroutines() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void processCoroutines()
+    {
+        NativeMethods.TablePtr->C1.hs_method_b3a2c92d((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public nint queueSync_DEPRECATED(nint startInfo, nint task) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.", false)]
     public nint queue_DEPRECATED(nint startInfo, nint task, nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'TaskResult' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void requeueTask(nint task, bool queueImmediate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void requeueTask(global::Hosihikari.Bindings.Abi.SharedHandle? task, bool queueImmediate)
+    {
+        NativeMethods.TablePtr->C1.hs_method_68af961b((void*)__hosihikari_shim_handle, task?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), queueImmediate);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void taskComplete(nint task) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void taskComplete(global::Hosihikari.Bindings.Bedrock.Interop.BackgroundTaskBase? task)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e68323e2((void*)__hosihikari_shim_handle, (void*)(task?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void taskRegister(nint task) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void taskRegister(global::Hosihikari.Bindings.Abi.SharedHandle? task)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c2acaeaf((void*)__hosihikari_shim_handle, task?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
 
     public void Dispose()

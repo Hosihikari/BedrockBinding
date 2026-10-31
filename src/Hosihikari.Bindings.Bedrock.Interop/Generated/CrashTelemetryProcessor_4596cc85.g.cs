@@ -49,21 +49,25 @@ public sealed unsafe partial class CrashTelemetryProcessor : global::System.IDis
         return new CrashTelemetryProcessor((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void addCrashTelemetryToBatch(nint session) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void addCrashTelemetryToBatch(global::Hosihikari.Bindings.Abi.SharedHandle? session)
+    {
+        NativeMethods.TablePtr->C0.hs_method_abf7529f((void*)__hosihikari_shim_handle, session?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendBatchedCrashTelemetry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendBatchedCrashTelemetry()
+    {
+        NativeMethods.TablePtr->C0.hs_method_bd7cfbd0((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendCrashStatusTelemetry(nint status) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendCrashStatusTelemetry(nint status)
+    {
+        NativeMethods.TablePtr->C0.hs_method_6119fdf7((void*)__hosihikari_shim_handle, (void*)status);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendCrashTelemetryNow(nint session) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendCrashTelemetryNow(global::Hosihikari.Bindings.Abi.SharedHandle? session)
+    {
+        NativeMethods.TablePtr->C0.hs_method_d81db209((void*)__hosihikari_shim_handle, session?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
 
     public void Dispose()

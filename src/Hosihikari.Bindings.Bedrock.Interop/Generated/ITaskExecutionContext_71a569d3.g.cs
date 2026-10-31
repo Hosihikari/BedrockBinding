@@ -49,13 +49,15 @@ public sealed unsafe partial class ITaskExecutionContext : global::System.IDispo
         return new ITaskExecutionContext((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canTaskRunAgain() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canTaskRunAgain()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_46fb408e((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isAsync() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isAsync()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d0285d06((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

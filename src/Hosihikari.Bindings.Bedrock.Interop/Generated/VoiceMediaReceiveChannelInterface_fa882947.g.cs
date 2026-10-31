@@ -38,61 +38,70 @@ public sealed unsafe partial class VoiceMediaReceiveChannelInterface : global::S
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RtpParameters' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetDefaultRtpReceiveParameters() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RtpParameters' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RtpParameters' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetRtpReceiverParameters(uint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RtpParameters' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'webrtc::RtpSource' is not supported.", false)]
     public nint GetSources(uint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'webrtc::RtpSource' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool GetStats(nint arg0, bool arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool GetStats(nint arg0, bool arg1)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_567f5c1d((void*)__hosihikari_shim_handle, (void*)arg0, arg1) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint RtcpMode() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int RtcpMode()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_8e8b2231((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SetDefaultOutputVolume(double arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SetDefaultOutputVolume(double arg0)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_b4394084((void*)__hosihikari_shim_handle, arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::AudioSinkInterface' has no generated wrapper.", false)]
     public void SetDefaultRawAudioSink(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::AudioSinkInterface' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SetOutputVolume(uint arg0, double arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SetOutputVolume(uint arg0, double arg1)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_1ace5bcd((void*)__hosihikari_shim_handle, arg0, arg1) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetPlayout(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetPlayout(bool arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_8eca5273((void*)__hosihikari_shim_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::AudioSinkInterface' has no generated wrapper.", false)]
     public void SetRawAudioSink(uint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'webrtc::AudioSinkInterface' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetReceiveNackEnabled(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetReceiveNackEnabled(bool arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_46a2e70d((void*)__hosihikari_shim_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetReceiveNonSenderRttEnabled(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetReceiveNonSenderRttEnabled(bool arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_5f8495c7((void*)__hosihikari_shim_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SetReceiverParameters(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SetReceiverParameters(nint arg0)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_092b3cb3((void*)__hosihikari_shim_handle, (void*)arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetRtcpMode(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetRtcpMode(int arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_c26f5b6f((void*)__hosihikari_shim_handle, arg0);
+    }
 
     public static VoiceMediaReceiveChannelInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VoiceMediaReceiveChannelInterface arg0)
     {

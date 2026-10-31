@@ -108,9 +108,9 @@ public sealed unsafe partial class PackSource : global::System.IDisposable
     public nint _getTaskData(nint task) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'PackSourceLoadResult' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
     public nint _loadImpl(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void forEachPackShared(nint callback) =>

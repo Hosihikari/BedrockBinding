@@ -40,19 +40,19 @@ public sealed unsafe partial class Features : global::System.IDisposable
 
     public bool allowComments_
     {
-        get => NativeMethods.TablePtr->C1.hs_get_1e928bc3((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_1e928bc3((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_1e928bc3((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_1e928bc3((void*)__hosihikari_shim_handle, value);
     }
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Json.Features strictMode()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Features((nint)NativeMethods.TablePtr->C1.hs_method_25705af7());
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Features((nint)NativeMethods.TablePtr->C2.hs_method_25705af7());
     }
 
     public bool strictRoot_
     {
-        get => NativeMethods.TablePtr->C1.hs_get_be1c1601((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C1.hs_set_be1c1601((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_be1c1601((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C2.hs_set_be1c1601((void*)__hosihikari_shim_handle, value);
     }
 
     public void Dispose()
@@ -61,7 +61,7 @@ public sealed unsafe partial class Features : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_72fb2a34((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_72fb2a34((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

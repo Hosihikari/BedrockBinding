@@ -56,26 +56,26 @@ public sealed unsafe partial class PreferredPathComponent : global::System.IDisp
 
     public float mDefaultBlockCost
     {
-        get => NativeMethods.TablePtr->C2.hs_get_e5344ebe((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_e5344ebe((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_e5344ebe((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_e5344ebe((void*)__hosihikari_shim_handle, value);
     }
 
     public float mJumpCost
     {
-        get => NativeMethods.TablePtr->C2.hs_get_89395058((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_89395058((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_89395058((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_89395058((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMaxFallBlocks
     {
-        get => NativeMethods.TablePtr->C2.hs_get_4a224ba6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_4a224ba6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_4a224ba6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_4a224ba6((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPreferredPathGroup_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_422c2eeb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_422c2eeb((void*)__hosihikari_shim_handle);
     }
 
 

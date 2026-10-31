@@ -49,13 +49,16 @@ public sealed unsafe partial class MediaStreamTrackInterface : global::System.ID
         return new MediaStreamTrackInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool enabled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool enabled()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_3c3730d6((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint id() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string id()
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_54316cc7((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint kAudioKind() =>
@@ -65,17 +68,21 @@ public sealed unsafe partial class MediaStreamTrackInterface : global::System.ID
     public static nint kVideoKind() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint kind() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string kind()
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_fcc93977((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool set_enabled(bool a1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool set_enabled(bool a1)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_2cb7459f((void*)__hosihikari_shim_handle, a1) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint state() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int state()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_379a0a4a((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

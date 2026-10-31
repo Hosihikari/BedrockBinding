@@ -74,18 +74,20 @@ public sealed unsafe partial class ContentLogEndPoint : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_726c1e64((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void log(nint area, nint level, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void log(uint area, uint level, nint message)
+    {
+        NativeMethods.TablePtr->C1.hs_method_868b3815((void*)__hosihikari_shim_handle, area, level, (void*)message);
+    }
 
     public void log(nint arg0)
     {
         NativeMethods.TablePtr->C1.hs_method_d0c60e89((void*)__hosihikari_shim_handle, (void*)arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool logOnlyOnce() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool logOnlyOnce()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f81e7b36((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

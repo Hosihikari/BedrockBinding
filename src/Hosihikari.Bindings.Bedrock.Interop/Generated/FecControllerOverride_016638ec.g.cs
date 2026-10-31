@@ -49,9 +49,10 @@ public sealed unsafe partial class FecControllerOverride : global::System.IDispo
         return new FecControllerOverride((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetFecAllowed(bool fec_allowed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetFecAllowed(bool fec_allowed)
+    {
+        NativeMethods.TablePtr->C4.hs_method_50c38b4e((void*)__hosihikari_shim_handle, fec_allowed);
+    }
 
 
     public void Dispose()

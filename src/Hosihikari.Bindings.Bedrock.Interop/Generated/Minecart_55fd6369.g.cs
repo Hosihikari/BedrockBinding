@@ -767,9 +767,10 @@ public sealed unsafe partial class Minecart : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_36af63a2((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getType()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_199bb537((void*)__hosihikari_shim_handle);
+    }
 
     public bool isInvulnerableTo(global::Hosihikari.Bindings.Bedrock.Interop.ActorDamageSource source)
     {

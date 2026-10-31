@@ -49,17 +49,20 @@ public sealed unsafe partial class IEventListener : global::System.IDisposable
         return new IEventListener((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void recordEvent(nint @event, nint appPlatform) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void recordEvent(nint @event, global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.NonOwnerPointer_AppPlatform_ appPlatform)
+    {
+        NativeMethods.TablePtr->C3.hs_method_b5b30cb9((void*)__hosihikari_shim_handle, (void*)@event, (void*)appPlatform.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendEvents(bool forceSend) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendEvents(bool forceSend)
+    {
+        NativeMethods.TablePtr->C3.hs_method_97baa6dc((void*)__hosihikari_shim_handle, forceSend);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void stopDebugEventLogging() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void stopDebugEventLogging()
+    {
+        NativeMethods.TablePtr->C3.hs_method_c69dfb56((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

@@ -38,9 +38,9 @@ public sealed unsafe partial class VideoEncoderFactory : global::System.IDisposa
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'webrtc::VideoEncoder' is not a known bindable declaration.", false)]
     public nint Create(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'webrtc::VideoEncoder' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'webrtc::VideoEncoderFactory::EncoderSelectorInterface' has no accessible destructor.", false)]
     public nint GetEncoderSelector() =>
@@ -50,9 +50,9 @@ public sealed unsafe partial class VideoEncoderFactory : global::System.IDisposa
     public nint GetImplementations() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'webrtc::SdpVideoFormat' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector return type 'webrtc::SdpVideoFormat' is not supported.", false)]
     public nint GetSupportedFormats() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'webrtc::SdpVideoFormat' is not supported.");
 
     public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VideoEncoderFactory_Nested.CodecSupport QueryCodecSupport(nint arg0, string? arg1)
     {

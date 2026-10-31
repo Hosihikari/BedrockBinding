@@ -60,7 +60,7 @@ public sealed unsafe partial class JsonValidator : global::System.IDisposable
                 __hs_vectorData3[__hs_i3] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr3 + __hs_vectorOffset3, Size = (nuint)__hs_length3 };
                 __hs_vectorOffset3 += __hs_length3;
             }
-            return NativeMethods.TablePtr->C1.hs_method_b43187cd((void*)loc.Handle, (void*)rootProp.Handle, (void*)rootData.Handle, __hs_vectorData3, (nuint)(errors?.Length ?? 0)) != 0;
+            return NativeMethods.TablePtr->C2.hs_method_b43187cd((void*)loc.Handle, (void*)rootProp.Handle, (void*)rootData.Handle, __hs_vectorData3, (nuint)(errors?.Length ?? 0)) != 0;
         }
     }
 
@@ -70,7 +70,7 @@ public sealed unsafe partial class JsonValidator : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_dc26e33b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_dc26e33b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

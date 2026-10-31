@@ -78,9 +78,10 @@ public sealed unsafe partial class ResourcePackListener : global::System.IDispos
         return new ResourcePackListener((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onActiveResourcePacksChanged(nint mgr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onActiveResourcePacksChanged(global::Hosihikari.Bindings.Bedrock.Interop.ResourcePackManager mgr)
+    {
+        NativeMethods.TablePtr->C3.hs_method_ffe83721((void*)__hosihikari_shim_handle, (void*)mgr.Handle);
+    }
 
     public void onBaseGamePackDownloadComplete()
     {

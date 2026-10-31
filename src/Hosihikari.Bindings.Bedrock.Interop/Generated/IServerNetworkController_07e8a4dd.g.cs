@@ -49,13 +49,15 @@ public sealed unsafe partial class IServerNetworkController : global::System.IDi
         return new IServerNetworkController((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canChangePermission(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canChangePermission(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer player)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f4a3dee2((void*)__hosihikari_shim_handle, (void*)player.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isDedicatedServer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isDedicatedServer()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_dae2948a((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

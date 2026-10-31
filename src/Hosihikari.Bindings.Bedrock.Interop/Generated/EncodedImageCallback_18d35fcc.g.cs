@@ -63,9 +63,10 @@ public sealed unsafe partial class EncodedImageCallback : global::System.IDispos
         NativeMethods.TablePtr->C4.hs_method_bbe00f5d((void*)__hosihikari_shim_handle, arg0);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint OnEncodedImage(nint encoded_image, nint codec_specific_info) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.EncodedImageCallback_Nested.Result OnEncodedImage(nint encoded_image, nint codec_specific_info)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.EncodedImageCallback_Nested.Result((nint)NativeMethods.TablePtr->C4.hs_method_4fdf4696((void*)__hosihikari_shim_handle, (void*)encoded_image, (void*)codec_specific_info));
+    }
 
 
     public void Dispose()

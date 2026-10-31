@@ -96,9 +96,10 @@ public sealed unsafe partial class CraftHandlerBase : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Recipes((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _handleCraftAction(nint requestAction) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public byte _handleCraftAction(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftBase requestAction)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a4c8bfb6((void*)__hosihikari_shim_handle, (void*)requestAction.Handle);
+    }
 
     public void _postCraftRequest(bool wasSuccess)
     {

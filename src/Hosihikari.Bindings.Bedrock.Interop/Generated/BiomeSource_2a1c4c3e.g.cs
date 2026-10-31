@@ -57,25 +57,30 @@ public sealed unsafe partial class BiomeSource : global::System.IDisposable
         return new BiomeSource((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getBiome(nint getBiomeOptions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Biome? _getBiome(nint getBiomeOptions)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C0.hs_method_e6342635((void*)__hosihikari_shim_handle, (void*)getBiomeOptions);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Biome((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.", false)]
     public bool containsOnly(int xo, int yo, int zo, int r, nint allowed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const BiomeIdType' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fillBiomes(nint levelChunk, nint chunkLocalNoiseCache) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fillBiomes(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk, global::Hosihikari.Bindings.Bedrock.Interop.ChunkLocalNoiseCache? chunkLocalNoiseCache)
+    {
+        NativeMethods.TablePtr->C0.hs_method_a84a331e((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle, (void*)(chunkLocalNoiseCache?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBiomeArea(nint area, uint scale) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox area, uint scale)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->C0.hs_method_d89a103a((void*)__hosihikari_shim_handle, (void*)area.Handle, scale));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBiomeArea(nint area, uint scale, nint getBiomeOptionsIn) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea getBiomeArea(global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox area, uint scale, nint getBiomeOptionsIn)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BiomeArea((nint)NativeMethods.TablePtr->C0.hs_method_f00d6eda((void*)__hosihikari_shim_handle, (void*)area.Handle, scale, (void*)getBiomeOptionsIn));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'OperationGraphResult<const Biome *>' is not supported.", false)]
     public nint getBiomeAreaToFill(nint levelChunk) =>
@@ -85,17 +90,19 @@ public sealed unsafe partial class BiomeSource : global::System.IDisposable
     public nint getBiomeVolumeToFill(short chunkHeight, nint chunkMin, uint levelSeed, nint chunkLocalNoiseCache) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'ChunkVolume::VolumeOf<Biome>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getType()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_56a72793((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasBiomeById(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasBiomeById(global::Hosihikari.Bindings.Bedrock.Interop.BiomeIdType id)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_034ed55e((void*)__hosihikari_shim_handle, (void*)id.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'BiomeHashType' is not a known bindable declaration.", false)]
     public bool hasBiomeByNameHash(nint hash) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'BiomeHashType' is not a known bindable declaration.");
 
 
     public void Dispose()

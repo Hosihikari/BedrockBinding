@@ -97,9 +97,10 @@ public sealed unsafe partial class AbstractArrow : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_71ae9921((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _getPickupItem() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.ItemStack _getPickupItem()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStack((nint)NativeMethods.TablePtr->C0.hs_method_e230e2b6((void*)__hosihikari_shim_handle));
+    }
 
     public void addAdditionalSaveData(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTag tag)
     {

@@ -49,17 +49,20 @@ public sealed unsafe partial class IReplayStatePolicy : global::System.IDisposab
         return new IReplayStatePolicy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isReplayNeeded(nint result) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isReplayNeeded(byte result)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_5a0f07e8((void*)__hosihikari_shim_handle, result) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void notifyOfExternalCorrection(ulong frame) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void notifyOfExternalCorrection(ulong frame)
+    {
+        NativeMethods.TablePtr->C1.hs_method_df4e85e1((void*)__hosihikari_shim_handle, frame);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint shouldCorrectMovement(nint arg0, nint arg1, ulong arg2, byte arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.MovementCorrection shouldCorrectMovement(global::Hosihikari.Bindings.Bedrock.Interop.EntityContext arg0, global::Hosihikari.Bindings.Bedrock.Interop.PlayerAuthInputPacket arg1, ulong arg2, byte arg3, bool arg4)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.MovementCorrection((nint)NativeMethods.TablePtr->C1.hs_method_d5425b62((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3, arg4));
+    }
 
 
     public void Dispose()

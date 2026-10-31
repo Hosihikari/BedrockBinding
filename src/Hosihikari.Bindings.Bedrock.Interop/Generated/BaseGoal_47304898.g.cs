@@ -97,9 +97,9 @@ public sealed unsafe partial class BaseGoal : global::System.IDisposable
         return new BaseGoal((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
     public void appendDebugInfo(nint str) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
     public bool canBeInterrupted()
     {
@@ -111,9 +111,10 @@ public sealed unsafe partial class BaseGoal : global::System.IDisposable
         return NativeMethods.TablePtr->C0.hs_method_72f54a69((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canUse() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canUse()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_19c443e1((void*)__hosihikari_shim_handle) != 0;
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GoalId' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getGoalId() =>

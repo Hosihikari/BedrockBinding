@@ -59,37 +59,45 @@ public sealed unsafe partial class GameCallbacks : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_17f65e06((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onGameModeChanged() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onGameModeChanged()
+    {
+        NativeMethods.TablePtr->C1.hs_method_bc52eecb((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onGameSessionReset() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onGameSessionReset()
+    {
+        NativeMethods.TablePtr->C1.hs_method_62f74995((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onInternetUpdate() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onInternetUpdate()
+    {
+        NativeMethods.TablePtr->C1.hs_method_0b0c06ac((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onLevelCorrupt() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onLevelCorrupt()
+    {
+        NativeMethods.TablePtr->C1.hs_method_f20a77a3((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onLevelExit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onLevelExit()
+    {
+        NativeMethods.TablePtr->C1.hs_method_7c2f4508((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onRequestResourceReload() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onRequestResourceReload()
+    {
+        NativeMethods.TablePtr->C1.hs_method_872a5dfc((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onTick(int nTick, int maxTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onTick(int nTick, int maxTick)
+    {
+        NativeMethods.TablePtr->C1.hs_method_9cbe2c1c((void*)__hosihikari_shim_handle, nTick, maxTick);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void updateScreens() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void updateScreens()
+    {
+        NativeMethods.TablePtr->C1.hs_method_aa0c4c29((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

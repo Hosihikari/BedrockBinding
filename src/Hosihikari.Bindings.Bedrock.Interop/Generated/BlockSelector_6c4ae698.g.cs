@@ -49,9 +49,10 @@ public sealed unsafe partial class BlockSelector : global::System.IDisposable
         return new BlockSelector((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint next(nint arg0, int arg1, int arg2, int arg3, bool arg4) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block next(global::Hosihikari.Bindings.Bedrock.Interop.Random arg0, int arg1, int arg2, int arg3, bool arg4)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C0.hs_method_b85147a8((void*)__hosihikari_shim_handle, (void*)arg0.Handle, arg1, arg2, arg3, arg4), false);
+    }
 
 
     public void Dispose()

@@ -49,21 +49,24 @@ public sealed unsafe partial class ConnectionCallbacks : global::System.IDisposa
         return new ConnectionCallbacks((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onAllConnectionsClosed(nint discoReason, bool skipDisconnectMessage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onAllConnectionsClosed(int discoReason, bool skipDisconnectMessage)
+    {
+        NativeMethods.TablePtr->C3.hs_method_e6fc3d37((void*)__hosihikari_shim_handle, discoReason, skipDisconnectMessage);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onAllRemoteConnectionsClosed(nint discoReason, bool skipDisconnectMessage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onAllRemoteConnectionsClosed(int discoReason, bool skipDisconnectMessage)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bb66df32((void*)__hosihikari_shim_handle, discoReason, skipDisconnectMessage);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onOutgoingConnectionFailed(nint discoReason) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onOutgoingConnectionFailed(int discoReason)
+    {
+        NativeMethods.TablePtr->C3.hs_method_a3bac999((void*)__hosihikari_shim_handle, discoReason);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void onWebsocketRequest(nint serverAddress, nint payload, nint errorCallback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
     public void Dispose()

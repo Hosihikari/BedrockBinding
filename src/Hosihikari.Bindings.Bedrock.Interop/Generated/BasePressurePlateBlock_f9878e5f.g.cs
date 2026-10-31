@@ -148,22 +148,25 @@ public sealed unsafe partial class BasePressurePlateBlock : global::System.IDisp
         return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->C0.hs_method_3367ca8b((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, (void*)(arg3?.Handle ?? 0), arg3 is not null));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getRedstoneSignal(int signal) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getRedstoneSignal(int signal)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_71de0110((void*)__hosihikari_shim_handle, signal);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.AABB getSensitiveAABB(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->C0.hs_method_536b45e1((void*)__hosihikari_shim_handle, (void*)pos.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getSignalForData(int data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getSignalForData(int data)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_b295b75e((void*)__hosihikari_shim_handle, data);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getSignalStrength(nint region, nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getSignalStrength(global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_5414d059((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
+    }
 
     public int getTickDelay()
     {

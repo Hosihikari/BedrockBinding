@@ -55,9 +55,10 @@ public sealed unsafe partial class IContentAccessibilityProvider : global::Syste
         return new IContentAccessibilityProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool canAccess(nint contentIdentity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool canAccess(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity contentIdentity)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0091a432((void*)__hosihikari_shim_handle, (void*)contentIdentity.Handle) != 0;
+    }
 
 
     public void Dispose()

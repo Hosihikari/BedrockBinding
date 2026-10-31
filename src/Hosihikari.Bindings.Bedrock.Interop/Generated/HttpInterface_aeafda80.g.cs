@@ -49,9 +49,10 @@ public sealed unsafe partial class HttpInterface : global::System.IDisposable
         return new HttpInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void send(nint arg0, nint arg1, nint arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void send(nint arg0, global::Hosihikari.Bindings.Bedrock.Interop.XAsyncBlock? arg1, global::Hosihikari.Bindings.Bedrock.Interop.HC_PERFORM_ENV? arg2)
+    {
+        NativeMethods.TablePtr->C0.hs_method_1567293f((void*)__hosihikari_shim_handle, (void*)arg0, (void*)(arg1?.Handle ?? 0), (void*)(arg2?.Handle ?? 0));
+    }
 
 
     public void Dispose()

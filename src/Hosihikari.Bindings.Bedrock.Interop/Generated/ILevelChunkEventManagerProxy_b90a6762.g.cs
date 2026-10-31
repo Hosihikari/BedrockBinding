@@ -49,33 +49,40 @@ public sealed unsafe partial class ILevelChunkEventManagerProxy : global::System
         return new ILevelChunkEventManagerProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getClosestPlayerDistanceSquared(nint levelChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getClosestPlayerDistanceSquared(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f32ed19f((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isOwnedByTickingThread(nint levelChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isOwnedByTickingThread(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_17067e41((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isReadOnly(nint levelChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isReadOnly(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0ca10b4e((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onTickingStarted(nint levelChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onTickingStarted(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_bb841e68((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onTickingStopped(nint levelChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onTickingStopped(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_dd44c988((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool setOnChunkLoadedCalled(nint levelChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool setOnChunkLoadedCalled(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_98abb51d((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setupRedstoneCircuit(nint chunkSource, nint levelChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setupRedstoneCircuit(global::Hosihikari.Bindings.Bedrock.Interop.ChunkSource chunkSource, global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk levelChunk)
+    {
+        NativeMethods.TablePtr->C1.hs_method_429a722b((void*)__hosihikari_shim_handle, (void*)chunkSource.Handle, (void*)levelChunk.Handle);
+    }
 
 
     public void Dispose()

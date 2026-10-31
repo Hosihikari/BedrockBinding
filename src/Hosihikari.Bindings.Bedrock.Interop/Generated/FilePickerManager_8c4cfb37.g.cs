@@ -55,13 +55,14 @@ public sealed unsafe partial class FilePickerManager : global::System.IDisposabl
         return new FilePickerManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool directoryPickingEnabledForPlatform() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool directoryPickingEnabledForPlatform()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_36481be4((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::FilePickerManager::DirectoryPickerResult>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint pickDirectory(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<Bedrock::FilePickerManager::DirectoryPickerResult>' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()

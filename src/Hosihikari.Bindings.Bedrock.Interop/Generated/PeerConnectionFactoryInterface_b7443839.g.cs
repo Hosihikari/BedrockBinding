@@ -43,33 +43,33 @@ public sealed unsafe partial class PeerConnectionFactoryInterface : global::Syst
         NativeMethods.TablePtr->C4.hs_method_bb4eda96((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::AudioSourceInterface>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint CreateAudioSource(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::AudioSourceInterface>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::AudioTrackInterface>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint CreateAudioTrack(nint id, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::AudioTrackInterface>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::MediaStreamInterface>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint CreateLocalMediaStream(nint stream_id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::MediaStreamInterface>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RTCErrorOr<webrtc::scoped_refptr<webrtc::PeerConnectionInterface>>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint CreatePeerConnectionOrError(nint configuration, nint dependencies) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RTCErrorOr<webrtc::scoped_refptr<webrtc::PeerConnectionInterface>>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::VideoTrackInterface>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint CreateVideoTrack(nint source, nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::scoped_refptr<webrtc::VideoTrackInterface>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RtpCapabilities' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetRtpReceiverCapabilities(nint kind) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RtpCapabilities' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::RtpCapabilities' requires --link-carrier or --virtual-dispatch.", false)]
     public nint GetRtpSenderCapabilities(nint kind) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::RtpCapabilities' requires --link-carrier or --virtual-dispatch.");
 
     public static PeerConnectionFactoryInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionFactoryInterface arg0)
     {
@@ -82,18 +82,20 @@ public sealed unsafe partial class PeerConnectionFactoryInterface : global::Syst
         return new PeerConnectionFactoryInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetOptions(nint options) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetOptions(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.PeerConnectionFactoryInterface_Nested.Options options)
+    {
+        NativeMethods.TablePtr->C4.hs_method_166c44c7((void*)__hosihikari_shim_handle, (void*)options.Handle);
+    }
 
     public bool StartAecDump(nint file, long max_size_bytes)
     {
         return NativeMethods.TablePtr->C4.hs_method_0fdf9404((void*)__hosihikari_shim_handle, (void*)file, max_size_bytes) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void StopAecDump() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void StopAecDump()
+    {
+        NativeMethods.TablePtr->C4.hs_method_3109dbc5((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

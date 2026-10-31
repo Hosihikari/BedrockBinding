@@ -90,9 +90,16 @@ public sealed unsafe partial class NetworkManager : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_ea0b63ae((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint GetAnyAddressNetworks() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint[] GetAnyAddressNetworks()
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_64ec1058((void*)__hosihikari_shim_handle);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public bool GetDefaultLocalAddress(int family, nint ipaddr)
     {
@@ -104,9 +111,16 @@ public sealed unsafe partial class NetworkManager : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->C4.hs_method_d7a45b4c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint GetNetworks() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint[] GetNetworks()
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_e5fa7bed((void*)__hosihikari_shim_handle);
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public void Initialize()
     {
@@ -135,13 +149,15 @@ public sealed unsafe partial class NetworkManager : global::System.IDisposable
         return new NetworkManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void StartUpdating() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void StartUpdating()
+    {
+        NativeMethods.TablePtr->C4.hs_method_7d8a0e68((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void StopUpdating() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void StopUpdating()
+    {
+        NativeMethods.TablePtr->C4.hs_method_e7b38773((void*)__hosihikari_shim_handle);
+    }
 
     public int enumeration_permission()
     {

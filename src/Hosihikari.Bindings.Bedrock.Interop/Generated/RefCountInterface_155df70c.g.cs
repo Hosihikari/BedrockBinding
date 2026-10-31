@@ -47,9 +47,10 @@ public sealed unsafe partial class RefCountInterface : global::System.IDisposabl
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void AddRef() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void AddRef()
+    {
+        NativeMethods.TablePtr->C4.hs_method_6fc6324b((void*)__hosihikari_shim_handle);
+    }
 
     public static RefCountInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.RefCountInterface arg0)
     {
@@ -62,9 +63,10 @@ public sealed unsafe partial class RefCountInterface : global::System.IDisposabl
         return new RefCountInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint Release() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int Release()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_a42b15c5((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

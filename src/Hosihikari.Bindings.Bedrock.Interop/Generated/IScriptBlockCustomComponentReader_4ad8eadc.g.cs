@@ -49,13 +49,36 @@ public sealed unsafe partial class IScriptBlockCustomComponentReader : global::S
         return new IScriptBlockCustomComponentReader((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getValidComponentsForBlock(nint permutation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string[] getValidComponentsForBlock(nint permutation)
+    {
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_2ae461a8((void*)__hosihikari_shim_handle, (void*)permutation);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint tryGetCustomComponentParametersForBlock(nint block, nint componentName, nint scope) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint tryGetCustomComponentParametersForBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block block, string componentName, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
+    {
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(componentName);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(componentName, __hs_stringBytes1);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            return (nint)NativeMethods.TablePtr->C3.hs_method_75b087b7((void*)__hosihikari_shim_handle, (void*)block.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)scope.Handle);
+        }
+    }
 
 
     public void Dispose()

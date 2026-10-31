@@ -40,12 +40,12 @@ public sealed unsafe partial class StructureTemplateRegistrationContext : global
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C3.hs_method_3b927d86((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C4.hs_method_3b927d86((void*)__hosihikari_shim_handle);
     }
 
     public static StructureTemplateRegistrationContext Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_58039a92();
+        var handle = NativeMethods.TablePtr->C4.hs_create_58039a92();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class StructureTemplateRegistrationContext : global
 
     public static StructureTemplateRegistrationContext Create(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateRegistrationContext arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_cf3fb76f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_cf3fb76f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,7 +67,7 @@ public sealed unsafe partial class StructureTemplateRegistrationContext : global
 
     public static StructureTemplateRegistrationContext Create(nint manager, global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureElementRegistry structureRegistry, global::Hosihikari.Bindings.Bedrock.Interop.FeatureRegistry featureRegistry, global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_a491ce0e((void*)manager, (void*)structureRegistry.Handle, (void*)featureRegistry.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_a491ce0e((void*)manager, (void*)structureRegistry.Handle, (void*)featureRegistry.Handle, (void*)baseGameVersion.Handle, (void*)experiments.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -79,36 +79,36 @@ public sealed unsafe partial class StructureTemplateRegistrationContext : global
     // The native field type is not projected; this is the address of the field storage.
     public nint mBaseGameVersion_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_53500be3((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_53500be3((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mExperiments_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_367f9b5b((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_367f9b5b((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mFeatureRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_6a1b3298((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_6a1b3298((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mManager_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_55eda3c8((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_55eda3c8((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mStructureRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_3627006c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_3627006c((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateRegistrationContext operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateRegistrationContext arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateRegistrationContext((nint)NativeMethods.TablePtr->C3.hs_method_0bc39185((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.StructureTemplateRegistrationContext((nint)NativeMethods.TablePtr->C4.hs_method_0bc39185((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -118,7 +118,7 @@ public sealed unsafe partial class StructureTemplateRegistrationContext : global
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_860e213b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_860e213b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

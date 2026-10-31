@@ -270,18 +270,20 @@ public sealed unsafe partial class TemptBaseGoal : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_b757ef0b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void stopMovement() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void stopMovement()
+    {
+        NativeMethods.TablePtr->C4.hs_method_a224d7ed((void*)__hosihikari_shim_handle);
+    }
 
     public void tick()
     {
         NativeMethods.TablePtr->C4.hs_method_e1b129f5((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void updateMovement() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void updateMovement()
+    {
+        NativeMethods.TablePtr->C4.hs_method_bf12f56a((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

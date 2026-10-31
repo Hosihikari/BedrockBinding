@@ -53,13 +53,16 @@ public sealed unsafe partial class FileSizePresetManager : global::System.IDispo
         return new FileSizePresetManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint checkFileInitialSize(nint filePath) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong? checkFileInitialSize(global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView filePath)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C1.hs_method_271ce973((void*)__hosihikari_shim_handle, (void*)filePath.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (ulong?)null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.", false)]
     public nint presetInitialSizeForFile(nint filePath, ulong initialFileSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSizePresetToken' has no accessible destructor.");
 
 
     public void Dispose()

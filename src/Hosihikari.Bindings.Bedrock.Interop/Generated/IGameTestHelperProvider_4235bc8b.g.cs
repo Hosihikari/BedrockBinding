@@ -49,13 +49,13 @@ public sealed unsafe partial class IGameTestHelperProvider : global::System.IDis
         return new IGameTestHelperProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestHelperProvider' has no accessible destructor.", false)]
     public nint clone() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::IGameTestHelperProvider' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'gametest::BaseGameTestHelper' has no accessible destructor.", false)]
     public nint createGameTestHelper(nint testInstance) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'gametest::BaseGameTestHelper' has no accessible destructor.");
 
 
     public void Dispose()

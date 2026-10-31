@@ -49,13 +49,13 @@ public sealed unsafe partial class ISynchedActorDataAdapter : global::System.IDi
         return new ISynchedActorDataAdapter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'SynchedActorDataSerializer::DeserializeResult' requires --link-carrier or --virtual-dispatch.", false)]
     public nint deserialize(nint from, nint args) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'SynchedActorDataSerializer::DeserializeResult' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'DataItem' has no accessible destructor.", false)]
     public nint serialize(nint from) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'DataItem' has no accessible destructor.");
 
 
     public void Dispose()

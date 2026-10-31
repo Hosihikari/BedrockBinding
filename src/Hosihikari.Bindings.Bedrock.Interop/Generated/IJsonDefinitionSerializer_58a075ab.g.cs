@@ -64,9 +64,11 @@ public sealed unsafe partial class IJsonDefinitionSerializer : global::System.ID
         return new IJsonDefinitionSerializer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _serializeDefinitionInstance(nint arg0, nint arg1, bool arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _serializeDefinitionInstance(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion arg1, bool arg2, bool arg3)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_ce5ddf84((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, arg2, arg3);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkff0ac1_Address
@@ -79,13 +81,17 @@ public sealed unsafe partial class IJsonDefinitionSerializer : global::System.ID
         return new global::Hosihikari.Bindings.Bedrock.Interop.IJsonDefinitionSerializer((nint)NativeMethods.TablePtr->C1.hs_method_5dc70135((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint serializeDefinitionInstance(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? serializeDefinitionInstance(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion arg1)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_7ad430ea((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint serializeDefinitionInstance(nint arg0, nint arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? serializeDefinitionInstance(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value arg0, global::Hosihikari.Bindings.Bedrock.Interop.MinEngineVersion arg1, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion arg2, bool arg3)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_8ab59662((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle, arg3);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
 
     public void Dispose()

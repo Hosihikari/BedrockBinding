@@ -49,9 +49,10 @@ public sealed unsafe partial class IStructureConstraint : global::System.IDispos
         return new IStructureConstraint((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isSatisfied(nint target, nint structurePos, nint structureRot, nint centeringOffset) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isSatisfied(global::Hosihikari.Bindings.Bedrock.Interop.IBlockWorldGenAPI target, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos structurePos, nint structureRot, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos centeringOffset)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_53e13821((void*)__hosihikari_shim_handle, (void*)target.Handle, (void*)structurePos.Handle, (void*)structureRot, (void*)centeringOffset.Handle) != 0;
+    }
 
 
     public void Dispose()

@@ -55,57 +55,72 @@ public sealed unsafe partial class IPackSourceFactory : global::System.IDisposab
         return new IPackSourceFactory((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'CompositePackSource' has no accessible destructor.", false)]
     public nint createCompositePackSource(nint sources) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'CompositePackSource' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint createDirectoryPackSource(nint path, nint packType, nint packOrigin, bool isDevDirectory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource createDirectoryPackSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path, sbyte packType, byte packOrigin, bool isDevDirectory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource((nint)NativeMethods.TablePtr->C1.hs_method_1055bb66((void*)__hosihikari_shim_handle, (void*)path.Handle, packType, packOrigin, isDevDirectory), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint createInPackagePackSource(nint packType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource createInPackagePackSource(sbyte packType)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource((nint)NativeMethods.TablePtr->C1.hs_method_a4573675((void*)__hosihikari_shim_handle, packType), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Realms::RealmsServicePackSource' is not a known bindable declaration.", false)]
     public nint createRealmsServicePackSource(long realmId, nint packType, nint servicePackData) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Realms::RealmsServicePackSource' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint createWorldHistoryPackSource(nint pathToWorld, nint packType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource createWorldHistoryPackSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path pathToWorld, sbyte packType)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource((nint)NativeMethods.TablePtr->C1.hs_method_18e6da02((void*)__hosihikari_shim_handle, (void*)pathToWorld.Handle, packType), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint createWorldTemplatePackSource_d4c6be6a(nint worldTemplateManager, nint worldTemplateId, nint packType, nint packOrigin) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource createWorldTemplatePackSource(nint worldTemplateManager, global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID worldTemplateId, sbyte packType, byte packOrigin)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource((nint)NativeMethods.TablePtr->C1.hs_method_d4c6be6a((void*)__hosihikari_shim_handle, (void*)worldTemplateManager, (void*)worldTemplateId.Handle, packType, packOrigin), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint createWorldTemplatePackSource_a36660e6(nint view, nint worldTemplateId, nint packType, nint packOrigin) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr parameter pointee 'WorldTemplateCollectionView' has no generated wrapper.", false)]
+    public nint createWorldTemplatePackSource(nint view, nint worldTemplateId, nint packType, nint packOrigin) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr parameter pointee 'WorldTemplateCollectionView' has no generated wrapper.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDirectoryPackSource(nint path, nint packType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource? getDirectoryPackSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path path, sbyte packType)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_31621a01((void*)__hosihikari_shim_handle, (void*)path.Handle, packType);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDirectoryPackSourceContaining(nint packId) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource? getDirectoryPackSourceContaining(global::Hosihikari.Bindings.Bedrock.Interop.PackIdVersion packId)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_c0b45d98((void*)__hosihikari_shim_handle, (void*)packId.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.DirectoryPackSource((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getInPackagePackSource(nint packType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource? getInPackagePackSource(sbyte packType)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_488df00d((void*)__hosihikari_shim_handle, packType);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.InPackagePackSource((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldHistoryPackSource(nint pathToWorld, nint packType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource? getWorldHistoryPackSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path pathToWorld, sbyte packType)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_81c2cc00((void*)__hosihikari_shim_handle, (void*)pathToWorld.Handle, packType);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldHistoryPackSource((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getWorldTemplatePackSource(nint worldTemplateId, nint packType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource? getWorldTemplatePackSource(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID worldTemplateId, sbyte packType)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_a29051d3((void*)__hosihikari_shim_handle, (void*)worldTemplateId.Handle, packType);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.WorldTemplatePackSource((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void removeFromDirectoryPackSource(nint fullPathToPack) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void removeFromDirectoryPackSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fullPathToPack)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b1f6e759((void*)__hosihikari_shim_handle, (void*)fullPathToPack.Handle);
+    }
 
 
     public void Dispose()

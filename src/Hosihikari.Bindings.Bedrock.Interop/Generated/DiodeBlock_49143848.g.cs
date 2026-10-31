@@ -365,13 +365,17 @@ public sealed unsafe partial class DiodeBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_b0bdd160((void*)__hosihikari_shim_handle, (void*)region.Handle, (void*)pos.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getOffBlock(nint block) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block? getOffBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block? block)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_426b1275((void*)__hosihikari_shim_handle, (void*)(block?.Handle ?? 0));
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getOnBlock(nint block) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block? getOnBlock(global::Hosihikari.Bindings.Bedrock.Interop.Block? block)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_76709c4f((void*)__hosihikari_shim_handle, (void*)(block?.Handle ?? 0));
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)__hs_handle, false) : null;
+    }
 
     public int getOutputSignal(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
@@ -388,9 +392,10 @@ public sealed unsafe partial class DiodeBlock : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_2738aa1c((void*)__hosihikari_shim_handle, (void*)block.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getTurnOnDelay(nint block) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getTurnOnDelay(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_d18ba639((void*)__hosihikari_shim_handle, (void*)block.Handle);
+    }
 
     public int getVariant(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {

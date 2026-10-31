@@ -49,13 +49,15 @@ public sealed unsafe partial class TestType : global::System.IDisposable
         return new TestType((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void appendMetadataKey(nint hash) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
+    {
+        NativeMethods.TablePtr->C4.hs_method_9e7fa3b6((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool test(nint inTemplatePos, nint worldPos, nint worldReference, nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool test(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos inTemplatePos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos worldPos, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos worldReference, global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_f61f8d8b((void*)__hosihikari_shim_handle, (void*)inTemplatePos.Handle, (void*)worldPos.Handle, (void*)worldReference.Handle, (void*)random.Handle) != 0;
+    }
 
 
     public void Dispose()

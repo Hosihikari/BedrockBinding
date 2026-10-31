@@ -117,27 +117,30 @@ public sealed unsafe partial class Recipe : global::System.IDisposable
         return new Recipe((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint assemble(nint craftSlots, nint craftingContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint assemble(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer craftSlots, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext craftingContext)
+    {
+        return (nint)NativeMethods.TablePtr->C3.hs_method_98d821b4((void*)__hosihikari_shim_handle, (void*)craftSlots.Handle, (void*)craftingContext.Handle);
+    }
 
     public int countQuantityOfIngredient(global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance ingredient)
     {
         return NativeMethods.TablePtr->C3.hs_method_858e60c8((void*)__hosihikari_shim_handle, (void*)ingredient.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int getCraftingSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getCraftingSize()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_c99e2cd7((void*)__hosihikari_shim_handle);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID getId()
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID((nint)NativeMethods.TablePtr->C3.hs_method_19d612b1((void*)__hosihikari_shim_handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getIngredient(int x, int y) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient getIngredient(int x, int y)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.RecipeIngredient((nint)NativeMethods.TablePtr->C3.hs_method_e4154c1a((void*)__hosihikari_shim_handle, x, y), false);
+    }
 
     public ulong getIngredientsHash()
     {
@@ -164,9 +167,10 @@ public sealed unsafe partial class Recipe : global::System.IDisposable
         return NativeMethods.TablePtr->C3.hs_method_8b4200ae((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isShapeless() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isShapeless()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_33744f0e((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public bool itemValidForRecipe(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor recipeItem, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack item)
     {
@@ -249,13 +253,15 @@ public sealed unsafe partial class Recipe : global::System.IDisposable
         set => NativeMethods.TablePtr->C3.hs_set_2764d0a2((void*)__hosihikari_shim_handle, value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool matches(nint craftSlots, nint craftingContext) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool matches(global::Hosihikari.Bindings.Bedrock.Interop.CraftingContainer craftSlots, global::Hosihikari.Bindings.Bedrock.Interop.CraftingContext craftingContext)
+    {
+        return NativeMethods.TablePtr->C3.hs_method_8120caf4((void*)__hosihikari_shim_handle, (void*)craftSlots.Handle, (void*)craftingContext.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int size() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int size()
+    {
+        return NativeMethods.TablePtr->C3.hs_method_bae49571((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

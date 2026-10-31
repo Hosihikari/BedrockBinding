@@ -47,9 +47,10 @@ public sealed unsafe partial class NetworkBinderInterface : global::System.IDisp
     public static nint _vftable() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint BindSocketToNetwork(int socket_fd, nint address) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int BindSocketToNetwork(int socket_fd, nint address)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_06497f10((void*)__hosihikari_shim_handle, socket_fd, (void*)address);
+    }
 
     public static NetworkBinderInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.NetworkBinderInterface arg0)
     {

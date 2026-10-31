@@ -40,13 +40,13 @@ public sealed unsafe partial class ItemUseMethodMap : global::System.IDisposable
 
     public static string getItemUseMethodName(int useMethod)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_7c164422(useMethod);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_7c164422(useMethod);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static nint mMap()
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_9d85d1c3();
+        return (nint)NativeMethods.TablePtr->C2.hs_method_9d85d1c3();
     }
 
     public void Dispose()
@@ -55,7 +55,7 @@ public sealed unsafe partial class ItemUseMethodMap : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_c520444f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_c520444f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

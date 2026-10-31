@@ -49,9 +49,9 @@ public sealed unsafe partial class ILegacyItemTriggerHandler : global::System.ID
         return new ILegacyItemTriggerHandler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.", false)]
     public bool executeTrigger(nint eventHandlers, nint item, nint trigger, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'DefinitionEvent' is not supported.");
 
 
     public void Dispose()

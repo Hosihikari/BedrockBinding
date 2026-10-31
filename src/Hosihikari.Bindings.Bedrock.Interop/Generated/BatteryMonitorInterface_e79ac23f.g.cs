@@ -49,18 +49,20 @@ public sealed unsafe partial class BatteryMonitorInterface : global::System.IDis
         return new BatteryMonitorInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public float getBatteryLevel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public float getBatteryLevel()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_eea96559((void*)__hosihikari_shim_handle);
+    }
 
     public int getBatterySaverMode()
     {
         return NativeMethods.TablePtr->C0.hs_method_6f34c125((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBatteryStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getBatteryStatus()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_a3be12ae((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

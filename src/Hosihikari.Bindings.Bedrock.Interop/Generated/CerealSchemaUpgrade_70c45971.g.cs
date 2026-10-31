@@ -208,9 +208,10 @@ public sealed unsafe partial class CerealSchemaUpgrade : global::System.IDisposa
         return new global::Hosihikari.Bindings.Bedrock.Interop.CerealSchemaUpgrade((nint)NativeMethods.TablePtr->C0.hs_method_69c81ffe((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool previousSchema(nint component) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool previousSchema(nint component)
+    {
+        return NativeMethods.TablePtr->C0.hs_method_0855f018((void*)__hosihikari_shim_handle, (void*)component) != 0;
+    }
 
     public void upgradeToNext(nint document, global::Hosihikari.Bindings.Bedrock.Interop.SemVersion documentOriginalVersion)
     {

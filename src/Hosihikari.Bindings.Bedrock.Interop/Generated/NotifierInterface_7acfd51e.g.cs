@@ -53,13 +53,15 @@ public sealed unsafe partial class NotifierInterface : global::System.IDisposabl
         return new NotifierInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void RegisterObserver(nint a1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void RegisterObserver(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.ObserverInterface? a1)
+    {
+        NativeMethods.TablePtr->C4.hs_method_ba2f11b0((void*)__hosihikari_shim_handle, (void*)(a1?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void UnregisterObserver(nint a1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void UnregisterObserver(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.ObserverInterface? a1)
+    {
+        NativeMethods.TablePtr->C4.hs_method_d7144087((void*)__hosihikari_shim_handle, (void*)(a1?.Handle ?? 0));
+    }
 
 
     public void Dispose()

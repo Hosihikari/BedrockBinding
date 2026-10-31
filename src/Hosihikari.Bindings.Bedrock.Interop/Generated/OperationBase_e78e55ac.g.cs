@@ -49,9 +49,10 @@ public sealed unsafe partial class OperationBase : global::System.IDisposable
         return new OperationBase((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDescription() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getDescription()
+    {
+        return (nint)NativeMethods.TablePtr->C2.hs_method_961f0dd2((void*)__hosihikari_shim_handle);
+    }
 
     public bool isAsync()
     {
@@ -63,9 +64,10 @@ public sealed unsafe partial class OperationBase : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_eb0ea82b((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool tick(nint databasePtr, nint record) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool tick(global::Hosihikari.Bindings.Abi.SharedHandle? databasePtr, global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingDB.TrackingRecord record)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_33097dbe((void*)__hosihikari_shim_handle, databasePtr?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)record.Handle) != 0;
+    }
 
 
     public void Dispose()

@@ -49,13 +49,15 @@ public sealed unsafe partial class ILifetimeScopeListener : global::System.IDisp
         return new ILifetimeScopeListener((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onPostLifetimeScopeDestroy(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onPostLifetimeScopeDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry arg0)
+    {
+        NativeMethods.TablePtr->C3.hs_method_bfe53b70((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onPreLifetimeScopeDestroy(nint registry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onPreLifetimeScopeDestroy(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry registry)
+    {
+        NativeMethods.TablePtr->C3.hs_method_24f0140c((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
 
 
     public void Dispose()

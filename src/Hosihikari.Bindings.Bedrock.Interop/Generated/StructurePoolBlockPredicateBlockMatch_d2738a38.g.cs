@@ -40,27 +40,27 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatch : globa
 
     public void _appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
-        NativeMethods.TablePtr->C3.hs_method_986d8814((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+        NativeMethods.TablePtr->C4.hs_method_986d8814((void*)__hosihikari_shim_handle, (void*)hash.Handle);
     }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_38ec9d9e((void*)__hosihikari_shim_handle, (void*)block.Handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_38ec9d9e((void*)__hosihikari_shim_handle, (void*)block.Handle);
     }
 
     public int _getType()
     {
-        return NativeMethods.TablePtr->C3.hs_method_ed82eaf0((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_ed82eaf0((void*)__hosihikari_shim_handle);
     }
 
     public bool _test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg1)
     {
-        return NativeMethods.TablePtr->C3.hs_method_77839563((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_77839563((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool _test(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg2)
     {
-        return NativeMethods.TablePtr->C3.hs_method_822ac2c8((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_822ac2c8((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -69,7 +69,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatch : globa
 
     public static StructurePoolBlockPredicateBlockMatch Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_e40015f3();
+        var handle = NativeMethods.TablePtr->C4.hs_create_e40015f3();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -80,7 +80,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatch : globa
 
     public static StructurePoolBlockPredicateBlockMatch Create(global::Hosihikari.Bindings.Bedrock.Interop.Block block)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_61853758((void*)block.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_61853758((void*)block.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -91,7 +91,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatch : globa
 
     public static StructurePoolBlockPredicateBlockMatch Create(global::Hosihikari.Bindings.Bedrock.Interop.StructurePoolBlockPredicateBlockMatch arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_6b959547((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_6b959547((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -102,28 +102,28 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatch : globa
 
     public void appendMetadataKey(global::Hosihikari.Bindings.Bedrock.Interop.Util.XXHash hash)
     {
-        NativeMethods.TablePtr->C3.hs_method_9c479b73((void*)__hosihikari_shim_handle, (void*)hash.Handle);
+        NativeMethods.TablePtr->C4.hs_method_9c479b73((void*)__hosihikari_shim_handle, (void*)hash.Handle);
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->C3.hs_method_a76dba17((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C4.hs_method_a76dba17((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockMatchings_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_789f8786((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_789f8786((void*)__hosihikari_shim_handle);
     }
 
     public bool test(global::Hosihikari.Bindings.Bedrock.Interop.Block block, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg1)
     {
-        return NativeMethods.TablePtr->C3.hs_method_a9ab3c20((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)arg1.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_a9ab3c20((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)arg1.Handle) != 0;
     }
 
     public bool test(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg0, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos arg1, global::Hosihikari.Bindings.Bedrock.Interop.IRandom arg2)
     {
-        return NativeMethods.TablePtr->C3.hs_method_b4cd4d30((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_b4cd4d30((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2.Handle) != 0;
     }
 
 
@@ -133,7 +133,7 @@ public sealed unsafe partial class StructurePoolBlockPredicateBlockMatch : globa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_d2738a38((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_d2738a38((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

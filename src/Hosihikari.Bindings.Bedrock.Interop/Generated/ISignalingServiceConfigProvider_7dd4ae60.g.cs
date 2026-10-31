@@ -55,17 +55,18 @@ public sealed unsafe partial class ISignalingServiceConfigProvider : global::Sys
         return new ISignalingServiceConfigProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<ISignalingServiceConfigProvider::Token>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getAuthToken() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<ISignalingServiceConfigProvider::Token>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<SignalingClientConfiguration>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getConfiguration(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Threading::Async<SignalingClientConfiguration>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void reset() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void reset()
+    {
+        NativeMethods.TablePtr->C1.hs_method_6062f26b((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

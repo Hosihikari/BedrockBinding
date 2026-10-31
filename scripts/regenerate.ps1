@@ -82,6 +82,7 @@ if (-not $SkipFrontend) {
         LlvmRoot = $LlvmRoot
         EmitMangledNames = $true
         EmitImplicitDestructors = $true
+        EmitVTableIndices = $true
         AdditionalIncludePath = $Includes
         SkipBuild = $SkipBuild
     }

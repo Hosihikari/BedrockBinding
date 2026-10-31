@@ -55,25 +55,28 @@ public sealed unsafe partial class BossEventSubscriptionManager : global::System
         return new BossEventSubscriptionManager((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool areBossEventSubscribersReady() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool areBossEventSubscribersReady()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_84ed484e((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastBossEvent(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastBossEvent(byte type)
+    {
+        NativeMethods.TablePtr->C0.hs_method_63f2bb3d((void*)__hosihikari_shim_handle, type);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void broadcastBossEvent(nint type, nint id, nint packet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void broadcastBossEvent(byte type, global::Hosihikari.Bindings.Bedrock.Interop.ActorUniqueID id, global::Hosihikari.Bindings.Bedrock.Interop.BossEventPacket packet)
+    {
+        NativeMethods.TablePtr->C0.hs_method_9a582649((void*)__hosihikari_shim_handle, type, (void*)id.Handle, (void*)packet.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint subscribeToBossEvent_0075b532(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public nint subscribeToBossEvent_0e8cd63c(nint callback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
 
     public void Dispose()

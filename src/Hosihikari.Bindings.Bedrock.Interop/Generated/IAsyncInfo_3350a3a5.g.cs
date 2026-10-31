@@ -49,17 +49,19 @@ public sealed unsafe partial class IAsyncInfo : global::System.IDisposable
         return new IAsyncInfo((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void cancel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void cancel()
+    {
+        NativeMethods.TablePtr->C0.hs_method_f535c87c((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::error_code' requires --link-carrier or --virtual-dispatch.", false)]
     public nint getError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::error_code' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getStatus() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getStatus()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_286c0474((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

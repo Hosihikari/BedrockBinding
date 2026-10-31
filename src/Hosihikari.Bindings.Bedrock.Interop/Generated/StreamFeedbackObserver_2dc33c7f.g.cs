@@ -38,9 +38,9 @@ public sealed unsafe partial class StreamFeedbackObserver : global::System.IDisp
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.", false)]
     public void OnPacketFeedbackVector(nint packet_feedback_vector) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value vector parameters are not supported by symbol dispatch.");
 
     public static StreamFeedbackObserver Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.StreamFeedbackObserver arg0)
     {

@@ -175,7 +175,7 @@ public sealed unsafe partial class StrollTowardsVillageGoal : global::System.IDi
 
     public bool _canUse()
     {
-        return NativeMethods.TablePtr->C3.hs_method_a8c8577a((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_a8c8577a((void*)__hosihikari_shim_handle) != 0;
     }
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Mob mob, string name, nint goalId)
@@ -193,7 +193,7 @@ public sealed unsafe partial class StrollTowardsVillageGoal : global::System.IDi
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->C3.hs_method_78b6f62e((void*)__hosihikari_shim_handle, (void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)goalId);
+            return (nint)NativeMethods.TablePtr->C4.hs_method_78b6f62e((void*)__hosihikari_shim_handle, (void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)goalId);
         }
     }
 
@@ -203,7 +203,7 @@ public sealed unsafe partial class StrollTowardsVillageGoal : global::System.IDi
 
     public static StrollTowardsVillageGoal Create()
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_8b012902();
+        var handle = NativeMethods.TablePtr->C4.hs_create_8b012902();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -227,7 +227,7 @@ public sealed unsafe partial class StrollTowardsVillageGoal : global::System.IDi
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->C3.hs_create_0fc61517((void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)goalId);
+            var handle = NativeMethods.TablePtr->C4.hs_create_0fc61517((void*)mob.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)goalId);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -239,7 +239,7 @@ public sealed unsafe partial class StrollTowardsVillageGoal : global::System.IDi
 
     public static StrollTowardsVillageGoal Create(global::Hosihikari.Bindings.Bedrock.Interop.StrollTowardsVillageGoal arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_b872c5bb((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_b872c5bb((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -250,7 +250,7 @@ public sealed unsafe partial class StrollTowardsVillageGoal : global::System.IDi
 
     public global::Hosihikari.Bindings.Bedrock.Interop.BlockPos _selectRandomPosInVillage()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C3.hs_method_c2ac9561((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.BlockPos((nint)NativeMethods.TablePtr->C4.hs_method_c2ac9561((void*)__hosihikari_shim_handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: methods do not accept mutable string references.", false)]
@@ -259,13 +259,13 @@ public sealed unsafe partial class StrollTowardsVillageGoal : global::System.IDi
 
     public bool canUse()
     {
-        return NativeMethods.TablePtr->C3.hs_method_98879d2b((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_98879d2b((void*)__hosihikari_shim_handle) != 0;
     }
 
     public float mStartChance
     {
-        get => NativeMethods.TablePtr->C3.hs_get_191f3e64((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_191f3e64((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_191f3e64((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_191f3e64((void*)__hosihikari_shim_handle, value);
     }
 
 

@@ -307,9 +307,9 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_5eca8c9b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSystemImpl' has no accessible destructor.", false)]
     public nint createTransaction(nint accessType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'Core::FileSystemImpl' has no accessible destructor.");
 
     [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'Core::FileSystemImpl' has no accessible destructor.", false)]
     public nint createTransaction(nint fileAccessType, nint arg1) =>
@@ -361,18 +361,20 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.FileStorageArea_Nested.StorageAreaSpaceInfo((nint)NativeMethods.TablePtr->C1.hs_method_f3bd00f3((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public ulong getTotalSize() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public ulong getTotalSize()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_c91c1509((void*)__hosihikari_shim_handle);
+    }
 
     public ulong getTransactionWriteSizeLimit()
     {
         return NativeMethods.TablePtr->C1.hs_method_54d3bb0a((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getUsedSize(nint outUsedSize) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Core.Result getUsedSize(nint outUsedSize)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Core.Result((nint)NativeMethods.TablePtr->C1.hs_method_1552d0bb((void*)__hosihikari_shim_handle, (void*)outUsedSize));
+    }
 
     public bool handlesPendingWrites()
     {
@@ -539,9 +541,10 @@ public sealed unsafe partial class FileStorageArea : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_1871a21a((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool supportsSizeQuery() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool supportsSizeQuery()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_921591e5((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public void tick()
     {

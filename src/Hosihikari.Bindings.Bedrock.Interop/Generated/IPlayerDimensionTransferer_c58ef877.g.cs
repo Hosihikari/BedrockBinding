@@ -49,65 +49,79 @@ public sealed unsafe partial class IPlayerDimensionTransferer : global::System.I
         return new IPlayerDimensionTransferer((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool doRespawnIfReady(nint player, nint changeRequest, nint addLimboActorHelper) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool doRespawnIfReady(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, nint addLimboActorHelper)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_a0637db6((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)addLimboActorHelper) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playerDestroyRegion(nint player, nint changeRequest) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playerDestroyRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
+    {
+        NativeMethods.TablePtr->C1.hs_method_395f7150((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playerDestroyRemotePlayers(nint gameplayUserManager) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playerDestroyRemotePlayers(global::Hosihikari.Bindings.Bedrock.Interop.GameplayUserManager gameplayUserManager)
+    {
+        NativeMethods.TablePtr->C1.hs_method_c703c1a3((void*)__hosihikari_shim_handle, (void*)gameplayUserManager.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playerPrepareRegion(nint player, nint changeRequest, nint toDimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playerPrepareRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
+    {
+        NativeMethods.TablePtr->C1.hs_method_fa03f486((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playerSaveLimboActors(nint player, nint changeRequest, nint toDimension, nint playerLimboActorManager) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playerSaveLimboActors(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension, global::Hosihikari.Bindings.Bedrock.Interop.PlayerLimboActorManager? playerLimboActorManager)
+    {
+        NativeMethods.TablePtr->C1.hs_method_d6c146d8((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle, (void*)(playerLimboActorManager?.Handle ?? 0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playerStartChangeDimensionSuspendRegion(nint player, nint fromDimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playerStartChangeDimensionSuspendRegion(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.DimensionType fromDimension)
+    {
+        NativeMethods.TablePtr->C1.hs_method_b2a5a81d((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)fromDimension.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playerSwitchDimension(nint player, nint changeRequest, nint addLimboActorHelper) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playerSwitchDimension(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, nint addLimboActorHelper)
+    {
+        NativeMethods.TablePtr->C1.hs_method_acdf8195((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)addLimboActorHelper);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool playerWaitForDimensionTransitionSystem(nint player, nint entityRegistry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool playerWaitForDimensionTransitionSystem(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry entityRegistry)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_b49e158e((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)entityRegistry.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool playerWaitForServer(nint player, nint currentTime) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendClientRespawnMovePacketFromServer(nint player, nint changeRequest) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendClientRespawnMovePacketFromServer(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
+    {
+        NativeMethods.TablePtr->C1.hs_method_367fb3ec((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setPacketSender(nint packetSender) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setPacketSender(global::Hosihikari.Bindings.Bedrock.Interop.PacketSender packetSender)
+    {
+        NativeMethods.TablePtr->C1.hs_method_07eabad9((void*)__hosihikari_shim_handle, (void*)packetSender.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setTransitionLocation(nint player, nint changeRequest, nint toDimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setTransitionLocation(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
+    {
+        NativeMethods.TablePtr->C1.hs_method_9f276d07((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle, (void*)toDimension.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void startWaitForRespawn(nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void startWaitForRespawn(global::Hosihikari.Bindings.Bedrock.Interop.Player player)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5229cb73((void*)__hosihikari_shim_handle, (void*)player.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void syncTransitionComponentTargetPosition(nint player, nint changeRequest) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void syncTransitionComponentTargetPosition(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.ChangeDimensionRequest changeRequest)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5647a065((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)changeRequest.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool waitForSubChunks(nint player, nint toDimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool waitForSubChunks(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Dimension toDimension)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_0a6833bb((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)toDimension.Handle) != 0;
+    }
 
 
     public void Dispose()

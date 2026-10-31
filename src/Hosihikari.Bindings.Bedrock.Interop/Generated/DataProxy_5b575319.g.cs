@@ -53,9 +53,9 @@ public sealed unsafe partial class DataProxy : global::System.IDisposable
         return new DataProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'BehaviorData::DataProxy' has no accessible destructor.", false)]
     public nint copy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'BehaviorData::DataProxy' has no accessible destructor.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mId_Address

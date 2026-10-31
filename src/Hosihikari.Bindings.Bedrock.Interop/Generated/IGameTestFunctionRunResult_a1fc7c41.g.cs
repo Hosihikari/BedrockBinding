@@ -49,13 +49,14 @@ public sealed unsafe partial class IGameTestFunctionRunResult : global::System.I
         return new IGameTestFunctionRunResult((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
     public nint getError() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isComplete() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isComplete()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_db64c5b4((void*)__hosihikari_shim_handle) != 0;
+    }
 
 
     public void Dispose()

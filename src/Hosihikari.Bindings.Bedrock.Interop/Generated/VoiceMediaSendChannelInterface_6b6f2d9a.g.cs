@@ -38,37 +38,45 @@ public sealed unsafe partial class VoiceMediaSendChannelInterface : global::Syst
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool CanInsertDtmf() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool CanInsertDtmf()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_f74988f8((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool GetStats(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool GetStats(nint arg0)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_b90fe7f3((void*)__hosihikari_shim_handle, (void*)arg0) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool InsertDtmf(uint arg0, int arg1, int arg2) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool InsertDtmf(uint arg0, int arg1, int arg2)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_12be2725((void*)__hosihikari_shim_handle, arg0, arg1, arg2) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SenderNackEnabled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SenderNackEnabled()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_88629c9c((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SenderNonSenderRttEnabled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SenderNonSenderRttEnabled()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_b4bd8722((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SetAudioSend(uint arg0, bool arg1, nint arg2, nint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SetAudioSend(uint arg0, bool arg1, nint arg2, nint arg3)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_e18300d1((void*)__hosihikari_shim_handle, arg0, arg1, (void*)arg2, (void*)arg3) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void SetSend(bool arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void SetSend(bool arg0)
+    {
+        NativeMethods.TablePtr->C4.hs_method_b16d95fc((void*)__hosihikari_shim_handle, arg0);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool SetSenderParameters(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool SetSenderParameters(nint arg0)
+    {
+        return NativeMethods.TablePtr->C4.hs_method_75b0ca7a((void*)__hosihikari_shim_handle, (void*)arg0) != 0;
+    }
 
     public static VoiceMediaSendChannelInterface Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.VoiceMediaSendChannelInterface arg0)
     {

@@ -68,9 +68,11 @@ public sealed unsafe partial class FilterGroup : global::System.IDisposable
         return new FilterGroup((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _createSubgroup(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? _createSubgroup(int type)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C1.hs_method_5669853b((void*)__hosihikari_shim_handle, type);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool _parseFilterParam(nint filter, nint member, nint param, nint paramDef, nint input) =>

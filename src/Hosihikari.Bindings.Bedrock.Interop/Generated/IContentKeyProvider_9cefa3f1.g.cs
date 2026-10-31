@@ -66,9 +66,10 @@ public sealed unsafe partial class IContentKeyProvider : global::System.IDisposa
         return new IContentKeyProvider((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void clearTempContentKeys() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void clearTempContentKeys()
+    {
+        NativeMethods.TablePtr->C1.hs_method_50a12390((void*)__hosihikari_shim_handle);
+    }
 
     public string getAlternateContentKey(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity contentIdentity)
     {
@@ -76,18 +77,20 @@ public sealed unsafe partial class IContentKeyProvider : global::System.IDisposa
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getContentKey(nint contentIdentity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string getContentKey(global::Hosihikari.Bindings.Bedrock.Interop.ContentIdentity contentIdentity)
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_030df325((void*)__hosihikari_shim_handle, (void*)contentIdentity.Handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public bool requireEncryptedReads()
     {
         return NativeMethods.TablePtr->C1.hs_method_054901f5((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: map key type 'ContentIdentity' is not supported.", false)]
     public void setTempContentKeys(nint keys) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map key type 'ContentIdentity' is not supported.");
 
 
     public void Dispose()

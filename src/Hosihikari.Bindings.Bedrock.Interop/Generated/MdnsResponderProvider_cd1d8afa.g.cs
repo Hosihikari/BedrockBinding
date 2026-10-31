@@ -38,9 +38,10 @@ public sealed unsafe partial class MdnsResponderProvider : global::System.IDispo
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint GetMdnsResponder() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint GetMdnsResponder()
+    {
+        return (nint)NativeMethods.TablePtr->C4.hs_method_e7b5ee4f((void*)__hosihikari_shim_handle);
+    }
 
     public static MdnsResponderProvider Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.MdnsResponderProvider arg0)
     {

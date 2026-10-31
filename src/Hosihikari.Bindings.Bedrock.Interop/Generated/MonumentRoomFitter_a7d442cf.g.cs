@@ -49,13 +49,14 @@ public sealed unsafe partial class MonumentRoomFitter : global::System.IDisposab
         return new MonumentRoomFitter((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: unique_ptr return type 'OceanMonumentPiece' has no accessible destructor.", false)]
     public nint create(nint orientation, nint definition, nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: unique_ptr return type 'OceanMonumentPiece' has no accessible destructor.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool fits(nint definition) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool fits(global::Hosihikari.Bindings.Bedrock.Interop.RoomDefinition definition)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_c10c93b2((void*)__hosihikari_shim_handle, (void*)definition.Handle) != 0;
+    }
 
 
     public void Dispose()

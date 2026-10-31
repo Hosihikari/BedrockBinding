@@ -44,17 +44,18 @@ public sealed unsafe partial class TaskQueueBase : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.TaskQueueBase((nint)__hs_handle, false) : null;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void Delete() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void Delete()
+    {
+        NativeMethods.TablePtr->C4.hs_method_e6a2529f((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void () &&>' is not supported.", false)]
     public void PostDelayedTask(nint task, nint delay, nint location) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void () &&>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void () &&>' is not supported.", false)]
     public void PostDelayedTaskImpl(nint task, nint delay, nint traits, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void () &&>' is not supported.");
 
     [global::System.Obsolete("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void () &&>' is not supported.", false)]
     public void PostDelayedTaskWithPrecision(nint precision, nint task, nint delay, nint location) =>
@@ -64,9 +65,9 @@ public sealed unsafe partial class TaskQueueBase : global::System.IDisposable
     public void PostTask(nint task, nint location) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void () &&>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void () &&>' is not supported.", false)]
     public void PostTaskImpl(nint task, nint traits, nint location) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: parameter type 'absl::AnyInvocable<void () &&>' is not supported.");
 
     public static TaskQueueBase Create(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.TaskQueueBase arg0)
     {

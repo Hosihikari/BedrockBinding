@@ -49,13 +49,17 @@ public sealed unsafe partial class ISharedData : global::System.IDisposable
         return new ISharedData((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getChatRestrictionLevel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public byte getChatRestrictionLevel()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_8a341770((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint isGameRuleEnabled(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool? isGameRuleEnabled(global::Hosihikari.Bindings.Bedrock.Interop.GameRuleId arg0)
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->C2.hs_method_9a305fed((void*)__hosihikari_shim_handle, (void*)arg0.Handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value != 0 : (bool?)null;
+    }
 
 
     public void Dispose()

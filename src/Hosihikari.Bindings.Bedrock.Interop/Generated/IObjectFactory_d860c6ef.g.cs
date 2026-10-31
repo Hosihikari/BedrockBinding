@@ -49,13 +49,13 @@ public sealed unsafe partial class IObjectFactory : global::System.IDisposable
         return new IObjectFactory((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<Scripting::DataBufferHandleType>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint makeDataBuffer(nint data, ulong size, nint dataType) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<Scripting::DataBufferHandleType>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<Scripting::PromiseType>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint makePromise() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<Scripting::PromiseType>' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()

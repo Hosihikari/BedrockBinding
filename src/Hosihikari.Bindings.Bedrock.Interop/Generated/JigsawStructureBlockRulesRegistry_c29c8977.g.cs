@@ -40,7 +40,7 @@ public sealed unsafe partial class JigsawStructureBlockRulesRegistry : global::S
 
     public static JigsawStructureBlockRulesRegistry Create(global::Hosihikari.Bindings.Bedrock.Interop.JigsawStructureBlockRulesRegistry arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_465ed03f((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_465ed03f((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -68,26 +68,26 @@ public sealed unsafe partial class JigsawStructureBlockRulesRegistry : global::S
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->C1.hs_method_539801eb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return (nint)NativeMethods.TablePtr->C2.hs_method_539801eb((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockRuleLookupMap_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1ed15a47((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1ed15a47((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlockRulesRegistry_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_f41d6535((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_f41d6535((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mProcessors_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_8d8dfd48((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_8d8dfd48((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'gsl::not_null<std::shared_ptr<const br::worldgen::StructureProcessor>>' is not supported.", false)]
@@ -105,7 +105,7 @@ public sealed unsafe partial class JigsawStructureBlockRulesRegistry : global::S
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_c29c8977((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_c29c8977((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

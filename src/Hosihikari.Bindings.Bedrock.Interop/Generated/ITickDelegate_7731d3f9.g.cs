@@ -49,13 +49,15 @@ public sealed unsafe partial class ITickDelegate : global::System.IDisposable
         return new ITickDelegate((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void breakBlock(nint fallingBlock) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void breakBlock(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlockActor fallingBlock)
+    {
+        NativeMethods.TablePtr->C1.hs_method_5c9801dc((void*)__hosihikari_shim_handle, (void*)fallingBlock.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onLand(nint block, nint region, nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onLand(global::Hosihikari.Bindings.Bedrock.Interop.FallingBlock block, global::Hosihikari.Bindings.Bedrock.Interop.IBlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        NativeMethods.TablePtr->C1.hs_method_ea7926a0((void*)__hosihikari_shim_handle, (void*)block.Handle, (void*)region.Handle, (void*)pos.Handle);
+    }
 
 
     public void Dispose()

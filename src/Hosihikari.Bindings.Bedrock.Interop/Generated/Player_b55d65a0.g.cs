@@ -2073,9 +2073,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_26b54e5f((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void destroyEditorPlayer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void destroyEditorPlayer()
+    {
+        NativeMethods.TablePtr->C2.hs_method_5622c878((void*)__hosihikari_shim_handle);
+    }
 
     public void destroyRegion()
     {
@@ -2429,9 +2430,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_5499f6eb((void*)__hosihikari_shim_handle, (void*)fromDimension.Handle, (void*)toDimension.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void frameUpdate(nint frameUpdateContextBase) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void frameUpdate(nint frameUpdateContextBase)
+    {
+        NativeMethods.TablePtr->C2.hs_method_82c0d73e((void*)__hosihikari_shim_handle, (void*)frameUpdateContextBase);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.LayeredAbilities getAbilities_f8073330()
     {
@@ -2540,9 +2542,11 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_5bf3565b((void*)__hosihikari_shim_handle, (void*)block.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getEditorPlayer() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getEditorPlayer()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C2.hs_method_6631c27b((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.EnderChestContainer? getEnderChestContainer()
     {
@@ -2688,9 +2692,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->C2.hs_method_f46104c8((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerEventCoordinator() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerEventCoordinator getPlayerEventCoordinator()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerEventCoordinator((nint)NativeMethods.TablePtr->C2.hs_method_d5576247((void*)__hosihikari_shim_handle), false);
+    }
 
     public int getPlayerGameType()
     {
@@ -2853,9 +2858,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_bed21713((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isExternalCommunicationAllowed() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isExternalCommunicationAllowed()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_8ec7b7b1((void*)__hosihikari_shim_handle) != 0;
+    }
 
     public bool isFireImmune()
     {
@@ -2927,9 +2933,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_635fc63e((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isTeacher() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isTeacher()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_9a4e5f3b((void*)__hosihikari_shim_handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mBlastFurnaceOptions_Address
@@ -3714,9 +3721,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_2f27a00f((void*)__hosihikari_shim_handle, (void*)tag.Handle, (void*)dataLoadHelper.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void refreshContainer(nint menu) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void refreshContainer(global::Hosihikari.Bindings.Bedrock.Interop.IContainerManager menu)
+    {
+        NativeMethods.TablePtr->C2.hs_method_12ab23d2((void*)__hosihikari_shim_handle, (void*)menu.Handle);
+    }
 
     public void releaseUsingItem()
     {
@@ -3758,9 +3766,9 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_0258506c((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public void sendComplexInventoryTransaction(nint transaction) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
     public void sendEventPacket(global::Hosihikari.Bindings.Bedrock.Interop.LegacyTelemetryEventPacket packet)
     {
@@ -3772,9 +3780,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_7a3e730e((void*)__hosihikari_shim_handle, shouldSelectSlot);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void sendInventoryTransaction(nint transaction) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void sendInventoryTransaction(global::Hosihikari.Bindings.Bedrock.Interop.InventoryTransaction transaction)
+    {
+        NativeMethods.TablePtr->C2.hs_method_54a54149((void*)__hosihikari_shim_handle, (void*)transaction.Handle);
+    }
 
     public void sendMessage(string msg)
     {
@@ -3859,9 +3868,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         NativeMethods.TablePtr->C2.hs_method_dffdb0a6((void*)__hosihikari_shim_handle, permissions);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void setContainerData(nint menu, int id, int value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void setContainerData(global::Hosihikari.Bindings.Bedrock.Interop.IContainerManager menu, int id, int value)
+    {
+        NativeMethods.TablePtr->C2.hs_method_ee9d5dfc((void*)__hosihikari_shim_handle, (void*)menu.Handle, id, value);
+    }
 
     public void setContainerManagerModel(global::Hosihikari.Bindings.Abi.SharedHandle? manager)
     {
@@ -3952,9 +3962,10 @@ public sealed unsafe partial class Player : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_6730ece0((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void slotChanged(nint menu, nint container, int slot, nint oldItem, nint newItem, bool isResultSlot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void slotChanged(global::Hosihikari.Bindings.Bedrock.Interop.IContainerManager menu, global::Hosihikari.Bindings.Bedrock.Interop.Container container, int slot, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack oldItem, global::Hosihikari.Bindings.Bedrock.Interop.ItemStack newItem, bool isResultSlot)
+    {
+        NativeMethods.TablePtr->C2.hs_method_55905b02((void*)__hosihikari_shim_handle, (void*)menu.Handle, (void*)container.Handle, slot, (void*)oldItem.Handle, (void*)newItem.Handle, isResultSlot);
+    }
 
     public void startGliding()
     {

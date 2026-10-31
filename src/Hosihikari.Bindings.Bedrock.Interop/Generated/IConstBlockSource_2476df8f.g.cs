@@ -49,101 +49,155 @@ public sealed unsafe partial class IConstBlockSource : global::System.IDisposabl
         return new IConstBlockSource((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool containsAnyLiquid(nint box) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool containsAnyLiquid(global::Hosihikari.Bindings.Bedrock.Interop.AABB box)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2c94bc37((void*)__hosihikari_shim_handle, (void*)box.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool containsMaterial(nint box, nint material) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool containsMaterial(global::Hosihikari.Bindings.Bedrock.Interop.AABB box, byte material)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6fd61860((void*)__hosihikari_shim_handle, (void*)box.Handle, material) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fetchAABBs(nint shapes, nint intersectTestBox, bool withUnloadedChunks) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fetchAABBs(global::Hosihikari.Bindings.Bedrock.Interop.AABB[] shapes, global::Hosihikari.Bindings.Bedrock.Interop.AABB intersectTestBox, bool withUnloadedChunks)
+    {
+        var __hs_vectorItems0 = shapes;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            NativeMethods.TablePtr->C1.hs_method_2eb12097((void*)__hosihikari_shim_handle, (void*)intersectTestBox.Handle, withUnloadedChunks, __hs_vectorData0, (nuint)(shapes?.Length ?? 0));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void fetchCollisionShapes(nint shapes, nint intersectTestBox, bool withUnloadedChunks, nint entity, nint tempShapes) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void fetchCollisionShapes(global::Hosihikari.Bindings.Bedrock.Interop.AABB[] shapes, global::Hosihikari.Bindings.Bedrock.Interop.AABB intersectTestBox, bool withUnloadedChunks, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? entity, global::Hosihikari.Bindings.Bedrock.Interop.AABB[] tempShapes)
+    {
+        var __hs_vectorItems0 = shapes;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            var __hs_vectorItems4 = tempShapes;
+            var __hs_vectorHandles4 = new nint[__hs_vectorItems4?.Length ?? 0];
+            for (var __hs_i4 = 0; __hs_i4 < __hs_vectorHandles4.Length; __hs_i4++)
+            {
+                __hs_vectorHandles4[__hs_i4] = __hs_vectorItems4![__hs_i4]?.Handle ?? 0;
+            }
+            fixed (nint* __hs_vectorHandleData4 = __hs_vectorHandles4)
+            {
+                var __hs_vectorData4 = (void**)__hs_vectorHandleData4;
+                NativeMethods.TablePtr->C1.hs_method_14d8ecd4((void*)__hosihikari_shim_handle, (void*)intersectTestBox.Handle, withUnloadedChunks, (void*)(entity?.Handle ?? 0), __hs_vectorData0, (nuint)(shapes?.Length ?? 0), __hs_vectorData4, (nuint)(tempShapes?.Length ?? 0), entity is not null);
+            }
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'BlockSourceVisitor::CollisionShape' is not supported.", false)]
     public void fetchCollisionShapesAndBlocks(nint shapes, nint intersectTestBox, bool withUnloadedChunks, nint entity, nint tempShapes) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'BlockSourceVisitor::CollisionShape' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlock(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_178277fe((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlock(nint pos, uint layer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, uint layer)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_0bc912a5((void*)__hosihikari_shim_handle, (void*)pos.Handle, layer), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getBlockEntity(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.BlockActor? getBlockEntity(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_df44539f((void*)__hosihikari_shim_handle, (void*)pos.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.BlockActor((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public float getBrightness(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public float getBrightness(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1d82e463((void*)__hosihikari_shim_handle, (void*)pos.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDimensionId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.DimensionType getDimensionId()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.DimensionType((nint)NativeMethods.TablePtr->C1.hs_method_772d2509((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getExtraBlock(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getExtraBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_bd29f70a((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLiquidBlock(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Block getLiquidBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Block((nint)NativeMethods.TablePtr->C1.hs_method_b2c72777((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMaterial(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->C1.hs_method_ccb0e143((void*)__hosihikari_shim_handle, (void*)pos.Handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getMaterial(int x, int y, int z) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Material getMaterial(int x, int y, int z)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Material((nint)NativeMethods.TablePtr->C1.hs_method_d35a3e0f((void*)__hosihikari_shim_handle, x, y, z), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getTallestCollisionShape(nint intersectTestBox, nint actualSurfaceOffset, bool withUnloadedChunks, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.AABB getTallestCollisionShape(global::Hosihikari.Bindings.Bedrock.Interop.AABB intersectTestBox, nint actualSurfaceOffset, bool withUnloadedChunks, global::Hosihikari.Bindings.Bedrock.Interop.GetCollisionShapeInterface? entity)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.AABB((nint)NativeMethods.TablePtr->C1.hs_method_cf406731((void*)__hosihikari_shim_handle, (void*)intersectTestBox.Handle, (void*)actualSurfaceOffset, withUnloadedChunks, (void*)(entity?.Handle ?? 0), entity is not null));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasBlock(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_47976e66((void*)__hosihikari_shim_handle, (void*)pos.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasBorderBlock(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasBorderBlock(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_2e3b2448((void*)__hosihikari_shim_handle, (void*)pos.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasChunk(nint pos, bool serverSideOnly) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasChunk(global::Hosihikari.Bindings.Bedrock.Interop.ChunkPos pos, bool serverSideOnly)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ca06a51f((void*)__hosihikari_shim_handle, (void*)pos.Handle, serverSideOnly) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasChunksAt_6c5b3ad4(nint bb, bool ignoreClientChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasChunksAt(global::Hosihikari.Bindings.Bedrock.Interop.AABB bb, bool ignoreClientChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_6c5b3ad4((void*)__hosihikari_shim_handle, (void*)bb.Handle, ignoreClientChunk) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasChunksAt(nint pos, int r, bool ignoreClientChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasChunksAt(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, int r, bool ignoreClientChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_39a4fa7e((void*)__hosihikari_shim_handle, (void*)pos.Handle, r, ignoreClientChunk) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool hasChunksAt_86a5365b(nint bounds, bool ignoreClientChunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool hasChunksAt(global::Hosihikari.Bindings.Bedrock.Interop.Bounds bounds, bool ignoreClientChunk)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_86a5365b((void*)__hosihikari_shim_handle, (void*)bounds.Handle, ignoreClientChunk) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isInWall(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isInWall(global::Hosihikari.Bindings.Bedrock.Interop.Vec3 pos)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_7e872e66((void*)__hosihikari_shim_handle, (void*)pos.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isUnderWater(nint pos, nint block) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isUnderWater(global::Hosihikari.Bindings.Bedrock.Interop.BlockPos pos, global::Hosihikari.Bindings.Bedrock.Interop.Block block)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_12376d05((void*)__hosihikari_shim_handle, (void*)pos.Handle, (void*)block.Handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool shouldFireEvents(nint c) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool shouldFireEvents(global::Hosihikari.Bindings.Bedrock.Interop.LevelChunk c)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1a3c2909((void*)__hosihikari_shim_handle, (void*)c.Handle) != 0;
+    }
 
 
     public void Dispose()

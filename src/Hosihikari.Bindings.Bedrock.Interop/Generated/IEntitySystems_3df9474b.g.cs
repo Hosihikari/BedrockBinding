@@ -49,21 +49,23 @@ public sealed unsafe partial class IEntitySystems : global::System.IDisposable
         return new IEntitySystems((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
     public bool _hasSingleTickCategory(nint category) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the parameter needs a generated C++ type.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: span element type 'const Bedrock::typeid_t<SystemCategory>' is not supported.", false)]
     public void registerTickingSystem(nint categories, nint system, nint info, nint tickingMode) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: span element type 'const Bedrock::typeid_t<SystemCategory>' is not supported.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tickMovementCatchup(nint registry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tickMovementCatchup(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e1716c21((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void tickMovementCorrectionReplay(nint registry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void tickMovementCorrectionReplay(global::Hosihikari.Bindings.Bedrock.Interop.EntityRegistry registry)
+    {
+        NativeMethods.TablePtr->C1.hs_method_90c6e2f0((void*)__hosihikari_shim_handle, (void*)registry.Handle);
+    }
 
 
     public void Dispose()

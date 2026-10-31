@@ -44,17 +44,34 @@ public sealed unsafe partial class I18nObserver : global::System.IDisposable
         set => NativeMethods.TablePtr->C1.hs_set_ab3a72af((void*)__hosihikari_shim_handle, (void*)value);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onLanguageChanged(nint code, bool languageSystemInitializing) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onLanguageChanged(string code, bool languageSystemInitializing)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(code);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(code, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->C1.hs_method_a9a909de((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, languageSystemInitializing);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onLanguageKeywordsLoadedFromPack(nint manifest) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onLanguageKeywordsLoadedFromPack(global::Hosihikari.Bindings.Bedrock.Interop.PackManifest manifest)
+    {
+        NativeMethods.TablePtr->C1.hs_method_4b41220a((void*)__hosihikari_shim_handle, (void*)manifest.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onLanguagesLoaded() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onLanguagesLoaded()
+    {
+        NativeMethods.TablePtr->C1.hs_method_a9d6a15c((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

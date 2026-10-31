@@ -58,9 +58,10 @@ public sealed unsafe partial class ObserverInterface : global::System.IDisposabl
         return new ObserverInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void OnChanged() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void OnChanged()
+    {
+        NativeMethods.TablePtr->C4.hs_method_a7f090c8((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

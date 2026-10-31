@@ -53,7 +53,7 @@ public sealed unsafe partial class StructureHelpers : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(lootTable, __hs_stringBytes8);
         fixed (byte* __hs_stringData8 = __hs_stringBytes8)
         {
-            return NativeMethods.TablePtr->C3.hs_method_126aede2((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, direction, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_126aede2((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, direction, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
         }
     }
 
@@ -72,7 +72,7 @@ public sealed unsafe partial class StructureHelpers : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(lootTable, __hs_stringBytes8);
         fixed (byte* __hs_stringData8 = __hs_stringBytes8)
         {
-            return NativeMethods.TablePtr->C3.hs_method_3da9ec3a((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, facing, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_3da9ec3a((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, facing, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
         }
     }
 
@@ -91,38 +91,38 @@ public sealed unsafe partial class StructureHelpers : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(lootTable, __hs_stringBytes8);
         fixed (byte* __hs_stringData8 = __hs_stringBytes8)
         {
-            return NativeMethods.TablePtr->C3.hs_method_2b5b86fb((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, direction, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
+            return NativeMethods.TablePtr->C4.hs_method_2b5b86fb((void*)piece.Handle, (void*)region.Handle, (void*)chunkBB.Handle, (void*)random.Handle, x, y, z, direction, __hs_stringData8, (nuint)__hs_stringByteCount8) != 0;
         }
     }
 
     public static void fillColumnDown(global::Hosihikari.Bindings.Bedrock.Interop.StructurePiece piece, global::Hosihikari.Bindings.Bedrock.Interop.BlockSource region, global::Hosihikari.Bindings.Bedrock.Interop.Block block, int x, int startY, int z, global::Hosihikari.Bindings.Bedrock.Interop.BoundingBox chunkBB)
     {
-        NativeMethods.TablePtr->C3.hs_method_1221c83d((void*)piece.Handle, (void*)region.Handle, (void*)block.Handle, x, startY, z, (void*)chunkBB.Handle);
+        NativeMethods.TablePtr->C4.hs_method_1221c83d((void*)piece.Handle, (void*)region.Handle, (void*)block.Handle, x, startY, z, (void*)chunkBB.Handle);
     }
 
     public static int getDirectionRotation(int structureOrientation, ushort inOrientation)
     {
-        return NativeMethods.TablePtr->C3.hs_method_3effd453(structureOrientation, inOrientation);
+        return NativeMethods.TablePtr->C4.hs_method_3effd453(structureOrientation, inOrientation);
     }
 
     public static int getDoorRotation(int structureOrientation, ushort inOrientation)
     {
-        return NativeMethods.TablePtr->C3.hs_method_688bb407(structureOrientation, inOrientation);
+        return NativeMethods.TablePtr->C4.hs_method_688bb407(structureOrientation, inOrientation);
     }
 
     public static int getFacingDirectionRotation(int structureOrientation, ushort inOrientation)
     {
-        return NativeMethods.TablePtr->C3.hs_method_4c80156e(structureOrientation, inOrientation);
+        return NativeMethods.TablePtr->C4.hs_method_4c80156e(structureOrientation, inOrientation);
     }
 
     public static int getTorchRotation(int structureOrientation, ushort torchOrientation)
     {
-        return NativeMethods.TablePtr->C3.hs_method_5dcb0a60(structureOrientation, torchOrientation);
+        return NativeMethods.TablePtr->C4.hs_method_5dcb0a60(structureOrientation, torchOrientation);
     }
 
     public static int getWeirdoDirectionRotation(int structureOrientation, ushort inOrientation)
     {
-        return NativeMethods.TablePtr->C3.hs_method_60c5358c(structureOrientation, inOrientation);
+        return NativeMethods.TablePtr->C4.hs_method_60c5358c(structureOrientation, inOrientation);
     }
 
     public void Dispose()
@@ -131,7 +131,7 @@ public sealed unsafe partial class StructureHelpers : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_27155c20((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_27155c20((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

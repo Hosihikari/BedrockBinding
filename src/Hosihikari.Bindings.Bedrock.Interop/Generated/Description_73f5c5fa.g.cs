@@ -59,9 +59,10 @@ public sealed unsafe partial class Description : global::System.IDisposable
         NativeMethods.TablePtr->C1.hs_method_811a616b((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getJsonName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public nint getJsonName()
+    {
+        return (nint)NativeMethods.TablePtr->C1.hs_method_4500630b((void*)__hosihikari_shim_handle);
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'ActorDocumentDataParams' is not a known bindable declaration.", false)]
     public bool parseDescription(nint actorDocumentDataParams) =>

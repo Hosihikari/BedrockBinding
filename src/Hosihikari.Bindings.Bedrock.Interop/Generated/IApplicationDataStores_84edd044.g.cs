@@ -55,17 +55,22 @@ public sealed unsafe partial class IApplicationDataStores : global::System.IDisp
         return new IApplicationDataStores((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDataStore_bfafcf55(nint which) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDataStore_bfafcf55(int which)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_bfafcf55((void*)__hosihikari_shim_handle, which);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getDataStore_08aadf97(nint which) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getDataStore_08aadf97(int which)
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_08aadf97((void*)__hosihikari_shim_handle, which);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void init() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void init()
+    {
+        NativeMethods.TablePtr->C0.hs_method_5cfea199((void*)__hosihikari_shim_handle);
+    }
 
 
     public void Dispose()

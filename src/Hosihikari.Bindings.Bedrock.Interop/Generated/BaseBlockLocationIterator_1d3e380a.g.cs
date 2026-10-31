@@ -69,9 +69,10 @@ public sealed unsafe partial class BaseBlockLocationIterator : global::System.ID
         NativeMethods.TablePtr->C0.hs_method_3c59bc74((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool isValid() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool isValid()
+    {
+        return NativeMethods.TablePtr->C0.hs_method_d97006ff((void*)__hosihikari_shim_handle) != 0;
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mCurrent_Address

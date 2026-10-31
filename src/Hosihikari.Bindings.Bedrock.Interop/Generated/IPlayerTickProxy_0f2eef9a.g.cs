@@ -49,25 +49,30 @@ public sealed unsafe partial class IPlayerTickProxy : global::System.IDisposable
         return new IPlayerTickProxy((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void clearDimensionPlayerReplicationList(nint dimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void clearDimensionPlayerReplicationList(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        NativeMethods.TablePtr->C1.hs_method_2fd68f9f((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void playerTick(nint player, nint currentTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void playerTick(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
+    {
+        NativeMethods.TablePtr->C1.hs_method_e29a32b0((void*)__hosihikari_shim_handle, (void*)player.Handle, (void*)currentTick.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void postReplicationtick(nint serverPlayer, nint currentTick) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void postReplicationtick(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer serverPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick)
+    {
+        NativeMethods.TablePtr->C1.hs_method_19ddae51((void*)__hosihikari_shim_handle, (void*)serverPlayer.Handle, (void*)currentTick.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void preReplicationTick(nint serverPlayer, nint currentTick, nint userEntity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void preReplicationTick(global::Hosihikari.Bindings.Bedrock.Interop.ServerPlayer serverPlayer, global::Hosihikari.Bindings.Bedrock.Interop.Tick currentTick, global::Hosihikari.Bindings.Bedrock.Interop.EntityContext userEntity)
+    {
+        NativeMethods.TablePtr->C1.hs_method_bde24af3((void*)__hosihikari_shim_handle, (void*)serverPlayer.Handle, (void*)currentTick.Handle, (void*)userEntity.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void processDimensionPlayerReplication(nint dimension) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void processDimensionPlayerReplication(global::Hosihikari.Bindings.Bedrock.Interop.Dimension dimension)
+    {
+        NativeMethods.TablePtr->C1.hs_method_3b805828((void*)__hosihikari_shim_handle, (void*)dimension.Handle);
+    }
 
 
     public void Dispose()

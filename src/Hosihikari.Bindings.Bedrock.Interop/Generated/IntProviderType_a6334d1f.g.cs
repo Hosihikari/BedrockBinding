@@ -49,17 +49,20 @@ public sealed unsafe partial class IntProviderType : global::System.IDisposable
         return new IntProviderType((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int maxValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int maxValue()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_f2e55342((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int minValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int minValue()
+    {
+        return NativeMethods.TablePtr->C1.hs_method_ef62b4cc((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public int sample(nint random) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int sample(global::Hosihikari.Bindings.Bedrock.Interop.IRandom random)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_1b93afd0((void*)__hosihikari_shim_handle, (void*)random.Handle);
+    }
 
 
     public void Dispose()

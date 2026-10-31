@@ -84,9 +84,10 @@ public sealed unsafe partial class FilterTest : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C1.hs_method_3b3ecd34((void*)__hosihikari_shim_handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _serializeValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Json.Value _serializeValue()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Json.Value((nint)NativeMethods.TablePtr->C1.hs_method_4107ca9f((void*)__hosihikari_shim_handle));
+    }
 
     public bool _testValuesWithOperator(bool a, bool b)
     {
@@ -103,9 +104,10 @@ public sealed unsafe partial class FilterTest : global::System.IDisposable
         return NativeMethods.TablePtr->C1.hs_method_ea35bc85((void*)__hosihikari_shim_handle, a, b) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool evaluate(nint context) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool evaluate(nint context)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_695c54e9((void*)__hosihikari_shim_handle, (void*)context) != 0;
+    }
 
     public void finalizeParsedValue(global::Hosihikari.Bindings.Bedrock.Interop.IWorldRegistriesProvider registries)
     {
@@ -116,13 +118,15 @@ public sealed unsafe partial class FilterTest : global::System.IDisposable
     public nint getDomain() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_1cb99fd9((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.", false)]
     public nint getValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: variants and callable wrappers are not supported by symbol dispatch.");
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk20eb73_Address

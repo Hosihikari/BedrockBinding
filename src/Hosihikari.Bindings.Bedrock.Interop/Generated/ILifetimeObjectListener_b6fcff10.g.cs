@@ -49,13 +49,15 @@ public sealed unsafe partial class ILifetimeObjectListener : global::System.IDis
         return new ILifetimeObjectListener((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onDestroyObject(nint arg0, nint arg1, nint arg2, uint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onDestroyObject(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle arg1, nint arg2, uint arg3)
+    {
+        NativeMethods.TablePtr->C3.hs_method_1a8f2f79((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void onMakeObject(nint arg0, nint arg1, nint arg2, uint arg3) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void onMakeObject(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.LifetimeRegistry arg0, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ObjectHandle arg1, nint arg2, uint arg3)
+    {
+        NativeMethods.TablePtr->C3.hs_method_d837033a((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle, (void*)arg2, arg3);
+    }
 
 
     public void Dispose()

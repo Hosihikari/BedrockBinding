@@ -329,9 +329,10 @@ public sealed unsafe partial class IScriptWorldAfterEvents : global::System.IDis
         return new IScriptWorldAfterEvents((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getLevel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Level getLevel()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Level((nint)NativeMethods.TablePtr->C3.hs_method_8192a4c0((void*)__hosihikari_shim_handle), false);
+    }
 
     public void onActivateLever(global::Hosihikari.Bindings.Abi.SharedHandle? leverEvent)
     {

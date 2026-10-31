@@ -68,7 +68,7 @@ public sealed unsafe partial class Packet : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_8421d5d9((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _read(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream bitStream)
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _read_59f05262(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream bitStream)
     {
         return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_59f05262((void*)__hosihikari_shim_handle, (void*)bitStream.Handle));
     }
@@ -125,9 +125,10 @@ public sealed unsafe partial class Packet : global::System.IDisposable
         return new Packet((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint _read(nint stream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _read_ee4d01fa(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_ee4d01fa((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _read_82eeaf4a(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream bitStream, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx reflectionCtx)
     {
@@ -144,18 +145,21 @@ public sealed unsafe partial class Packet : global::System.IDisposable
         return NativeMethods.TablePtr->C2.hs_method_233cf66b((void*)__hosihikari_shim_handle) != 0;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public int getId()
+    {
+        return NativeMethods.TablePtr->C2.hs_method_e666aa53((void*)__hosihikari_shim_handle);
+    }
 
     public ulong getMaxSize()
     {
         return NativeMethods.TablePtr->C2.hs_method_3a28812b((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getName() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public string getName()
+    {
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_ffaac6b8((void*)__hosihikari_shim_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
     public int getSerializationMode()
     {
@@ -274,9 +278,10 @@ public sealed unsafe partial class Packet : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void write(nint stream) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
+    {
+        NativeMethods.TablePtr->C2.hs_method_6fc61fbb((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+    }
 
     public void write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream bitStream, global::Hosihikari.Bindings.Bedrock.Interop.cereal.ReflectionCtx reflectionCtx)
     {

@@ -99,9 +99,9 @@ public sealed unsafe partial class BasicSchema : global::System.IDisposable
         NativeMethods.TablePtr->C4.hs_method_b89dc6a3((void*)__hosihikari_shim_handle, (void*)value.Handle, (void*)any, (void*)udata, (void*)state);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'cereal::DescriptionConfig' is not a known bindable declaration.", false)]
     public nint makeDescription(nint ctx, nint config) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'cereal::DescriptionConfig' is not a known bindable declaration.");
 
     public bool map(global::Hosihikari.Bindings.Bedrock.Interop.cereal.@internal.BasicSchema schema, nint src, nint dst, nint visitor)
     {

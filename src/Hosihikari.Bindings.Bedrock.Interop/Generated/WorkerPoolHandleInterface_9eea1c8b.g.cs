@@ -49,9 +49,11 @@ public sealed unsafe partial class WorkerPoolHandleInterface : global::System.ID
         return new WorkerPoolHandleInterface((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint get() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? get()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C0.hs_method_206cffe4((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 
 
     public void Dispose()

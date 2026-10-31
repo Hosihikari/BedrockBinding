@@ -3703,13 +3703,15 @@ public sealed unsafe partial class Level : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerSleepManager_5a2a475c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager getPlayerSleepManager_5a2a475c()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager((nint)NativeMethods.TablePtr->C2.hs_method_5a2a475c((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint getPlayerSleepManager_64964ec8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager getPlayerSleepManager_64964ec8()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PlayerSleepManager((nint)NativeMethods.TablePtr->C2.hs_method_64964ec8((void*)__hosihikari_shim_handle), false);
+    }
 
     public string getPlayerXUID(global::Hosihikari.Bindings.Bedrock.Interop.mce.UUID uuid)
     {

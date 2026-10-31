@@ -38,9 +38,10 @@ public sealed unsafe partial class Context : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void ClearTxErrorCounter() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void ClearTxErrorCounter()
+    {
+        NativeMethods.TablePtr->C4.hs_method_3839258e((void*)__hosihikari_shim_handle);
+    }
 
     public static Context Create(global::Hosihikari.Bindings.Bedrock.Interop.dcsctp.Context arg0)
     {
@@ -53,45 +54,67 @@ public sealed unsafe partial class Context : global::System.IDisposable
         return new Context((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool HasTooManyTxErrors() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool HasTooManyTxErrors()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_7f5310a0((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool IncrementTxErrorCounter(nint reason) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool IncrementTxErrorCounter(string reason)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(reason);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(reason, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return NativeMethods.TablePtr->C4.hs_method_b0f53485((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void ObserveRTT(nint rtt) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void ObserveRTT(global::Hosihikari.Bindings.Bedrock.Interop.webrtc.TimeDelta rtt)
+    {
+        NativeMethods.TablePtr->C4.hs_method_c3abf97d((void*)__hosihikari_shim_handle, (void*)rtt.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint PacketBuilder() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.dcsctp.SctpPacket_Nested.Builder PacketBuilder()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.dcsctp.SctpPacket_Nested.Builder((nint)NativeMethods.TablePtr->C4.hs_method_746f50d5((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public void Send(nint builder) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public void Send(global::Hosihikari.Bindings.Bedrock.Interop.dcsctp.SctpPacket_Nested.Builder builder)
+    {
+        NativeMethods.TablePtr->C4.hs_method_7647849e((void*)__hosihikari_shim_handle, (void*)builder.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint callbacks() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.dcsctp.DcSctpSocketCallbacks callbacks()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.dcsctp.DcSctpSocketCallbacks((nint)NativeMethods.TablePtr->C4.hs_method_d58d9ffc((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public nint current_rto() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.webrtc.TimeDelta current_rto()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.webrtc.TimeDelta((nint)NativeMethods.TablePtr->C4.hs_method_f0d68a29((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
-    public bool is_connection_established() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+    public bool is_connection_established()
+    {
+        return NativeMethods.TablePtr->C4.hs_method_4f754dea((void*)__hosihikari_shim_handle) != 0;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::StrongAlias<dcsctp::TSNTag, unsigned int>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint my_initial_tsn() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::StrongAlias<dcsctp::TSNTag, unsigned int>' requires --link-carrier or --virtual-dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'webrtc::StrongAlias<dcsctp::TSNTag, unsigned int>' requires --link-carrier or --virtual-dispatch.", false)]
     public nint peer_initial_tsn() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'webrtc::StrongAlias<dcsctp::TSNTag, unsigned int>' requires --link-carrier or --virtual-dispatch.");
 
 
     public void Dispose()

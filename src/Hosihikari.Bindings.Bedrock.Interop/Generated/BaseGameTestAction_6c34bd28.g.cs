@@ -71,9 +71,9 @@ public sealed unsafe partial class BaseGameTestAction : global::System.IDisposab
         return new global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestAction((nint)NativeMethods.TablePtr->C4.hs_method_0406c6e9((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the member is pure virtual.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.", false)]
     public nint run() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the member is pure virtual.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'gametest::GameTestError' is not supported.");
 
 
     public void Dispose()
