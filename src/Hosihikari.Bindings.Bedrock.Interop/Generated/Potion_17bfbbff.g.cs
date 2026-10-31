@@ -66,7 +66,7 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return (nint)NativeMethods.TablePtr->C2.hs_method_0c0bf0f8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                return (nint)NativeMethods.TablePtr->C3.hs_method_0c0bf0f8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
             }
         }
     }
@@ -99,7 +99,7 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return (nint)NativeMethods.TablePtr->C2.hs_method_7b35bbdf((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)mobEffect.Handle, var);
+                return (nint)NativeMethods.TablePtr->C3.hs_method_7b35bbdf((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)mobEffect.Handle, var);
             }
         }
     }
@@ -110,27 +110,27 @@ public sealed unsafe partial class Potion : global::System.IDisposable
 
     public static nint Awkward()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_c69caf42();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_c69caf42();
     }
 
     public static nint FireResistance()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_573e215b();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_573e215b();
     }
 
     public static nint Healing()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_1bf6101e();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_1bf6101e();
     }
 
     public static nint Poison()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_f6fe3bf3();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_f6fe3bf3();
     }
 
     public static Potion Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_a6714c77();
+        var handle = NativeMethods.TablePtr->C3.hs_create_a6714c77();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -141,7 +141,7 @@ public sealed unsafe partial class Potion : global::System.IDisposable
 
     public static Potion Create(global::Hosihikari.Bindings.Bedrock.Interop.Potion arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_c3755163((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_c3755163((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -178,7 +178,7 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var handle = NativeMethods.TablePtr->C2.hs_create_27aa86d7(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
+                var handle = NativeMethods.TablePtr->C3.hs_create_27aa86d7(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -217,7 +217,7 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var handle = NativeMethods.TablePtr->C2.hs_create_ce073ca8(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)mobEffect.Handle, var);
+                var handle = NativeMethods.TablePtr->C3.hs_create_ce073ca8(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)mobEffect.Handle, var);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -234,83 +234,83 @@ public sealed unsafe partial class Potion : global::System.IDisposable
 
     public static nint Slowness()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_f60a1554();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_f60a1554();
     }
 
     public static nint Swiftness()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_7a2789b5();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_7a2789b5();
     }
 
     public static nint Water()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_35ec8e38();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_35ec8e38();
     }
 
     public static nint WaterBreathing()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_4e752f66();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_4e752f66();
     }
 
     public static nint Weakness()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_d441a418();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_d441a418();
     }
 
     public static void addPotion(global::Hosihikari.Bindings.Abi.SharedHandle? potion)
     {
-        NativeMethods.TablePtr->C2.hs_method_268d287b(potion?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->C3.hs_method_268d287b(potion?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public void appendFormattedPotionText(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString inOutHovertext, int potionType, int potionVariant, global::Hosihikari.Bindings.Bedrock.Interop.Player player, float timeMod)
     {
-        NativeMethods.TablePtr->C2.hs_method_cdf5f7ec((void*)__hosihikari_shim_handle, (void*)inOutHovertext.Handle, potionType, potionVariant, (void*)player.Handle, timeMod);
+        NativeMethods.TablePtr->C3.hs_method_cdf5f7ec((void*)__hosihikari_shim_handle, (void*)inOutHovertext.Handle, potionType, potionVariant, (void*)player.Handle, timeMod);
     }
 
     public static void appendMobEffectText(global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Safety.RedactableString inOutHovertext, int potionVariant, uint mobEffectId, int amplifier, global::Hosihikari.Bindings.Bedrock.Interop.Player player)
     {
-        NativeMethods.TablePtr->C2.hs_method_32669610((void*)inOutHovertext.Handle, potionVariant, mobEffectId, amplifier, (void*)player.Handle);
+        NativeMethods.TablePtr->C3.hs_method_32669610((void*)inOutHovertext.Handle, potionVariant, mobEffectId, amplifier, (void*)player.Handle);
     }
 
     public static string effectDurationToString(int potionType, float timeMod, global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effect)
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b9da7440(potionType, timeMod, (void*)effect.Handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_b9da7440(potionType, timeMod, (void*)effect.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string effectPotencyToString(global::Hosihikari.Bindings.Bedrock.Interop.MobEffectInstance effect)
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_28e0deef((void*)effect.Handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_28e0deef((void*)effect.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static string getBasePotion(int type)
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b61269bd(type);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_b61269bd(type);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getDescriptionId()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_664353d7((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_664353d7((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getDescriptionId(int potionType)
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_a278b43d((void*)__hosihikari_shim_handle, potionType);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_a278b43d((void*)__hosihikari_shim_handle, potionType);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getNameId()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_15fa23e7((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_15fa23e7((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getPotencyDescription(int potionType, float timeMod)
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_474b56c0((void*)__hosihikari_shim_handle, potionType, timeMod);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_474b56c0((void*)__hosihikari_shim_handle, potionType, timeMod);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -329,7 +329,7 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(descID, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            var __hs_view = NativeMethods.TablePtr->C2.hs_method_04c67f83(potionType, timeMod, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)effect.Handle);
+            var __hs_view = NativeMethods.TablePtr->C3.hs_method_04c67f83(potionType, timeMod, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)effect.Handle);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
@@ -349,54 +349,54 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(potionNameId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->C2.hs_method_f219971a(__hs_stringData0, (nuint)__hs_stringByteCount0);
+            var __hs_shared = NativeMethods.TablePtr->C3.hs_method_f219971a(__hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
     public string getPrefix()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_edd4311f((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_edd4311f((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public static void initPotions(global::Hosihikari.Bindings.Bedrock.Interop.BaseGameVersion baseGameVersion, global::Hosihikari.Bindings.Bedrock.Interop.Experiments experiments)
     {
-        NativeMethods.TablePtr->C2.hs_method_39898587((void*)baseGameVersion.Handle, (void*)experiments.Handle);
+        NativeMethods.TablePtr->C3.hs_method_39898587((void*)baseGameVersion.Handle, (void*)experiments.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mDescriptionIds_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_759ab3d4((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_759ab3d4((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mEffects_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_68deaacb((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_68deaacb((void*)__hosihikari_shim_handle);
     }
 
     public int mId
     {
-        get => NativeMethods.TablePtr->C2.hs_get_ed65d090((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_ed65d090((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_ed65d090((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_ed65d090((void*)__hosihikari_shim_handle, value);
     }
 
     public static nint mLastId()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_28ec050a();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_28ec050a();
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNameId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_ecb4cf33((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ecb4cf33((void*)__hosihikari_shim_handle);
     }
 
     public static nint mPotionsById()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_cfe935c9();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_cfe935c9();
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the return type needs a generated C++ type.", false)]
@@ -406,13 +406,13 @@ public sealed unsafe partial class Potion : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mPrefix_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_ddbfdf62((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_ddbfdf62((void*)__hosihikari_shim_handle);
     }
 
     public int mVar
     {
-        get => NativeMethods.TablePtr->C2.hs_get_c5f95e0f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_c5f95e0f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_c5f95e0f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_c5f95e0f((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -422,7 +422,7 @@ public sealed unsafe partial class Potion : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_17bfbbff((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_17bfbbff((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

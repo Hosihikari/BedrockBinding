@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class NewType_unsigned_int_
+public sealed unsafe partial class NewType_unsigned_int_ : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -39,34 +38,70 @@ public sealed partial class NewType_unsigned_int_
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static NewType_unsigned_int_ Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static NewType_unsigned_int_ Create_11fcd183(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static NewType_unsigned_int_ Create_7cea5fdd(nint t) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public uint mValue
+    public static NewType_unsigned_int_ Create()
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        var handle = NativeMethods.TablePtr->C2.hs_create_11dc932e();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NewType_unsigned_int_((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint operator_assign(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public static NewType_unsigned_int_ Create(global::Hosihikari.Bindings.Bedrock.Interop.NewType_unsigned_int_ other)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_11fcd183((void*)other.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public bool operator_equal_cd6a5c26(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        return new NewType_unsigned_int_((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public bool operator_equal_2bb959e0(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public static NewType_unsigned_int_ Create(nint t)
+    {
+        var handle = NativeMethods.TablePtr->C2.hs_create_7cea5fdd((void*)t);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new NewType_unsigned_int_((nint)handle);
+    }
+
+    public uint mValue
+    {
+        get => NativeMethods.TablePtr->C2.hs_get_46b143df((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_46b143df((void*)__hosihikari_shim_handle, value);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.NewType_unsigned_int_ operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.NewType_unsigned_int_ other)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NewType_unsigned_int_((nint)NativeMethods.TablePtr->C2.hs_method_211ac44a((void*)__hosihikari_shim_handle, (void*)other.Handle), false);
+    }
+
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.NewType_unsigned_int_ other)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_cd6a5c26((void*)__hosihikari_shim_handle, (void*)other.Handle) != 0;
+    }
+
+    public bool operator_equal(nint other)
+    {
+        return NativeMethods.TablePtr->C2.hs_method_2bb959e0((void*)__hosihikari_shim_handle, (void*)other) != 0;
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_fdaba415((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

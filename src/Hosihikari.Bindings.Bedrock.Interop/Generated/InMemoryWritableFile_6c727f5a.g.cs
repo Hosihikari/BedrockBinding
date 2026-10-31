@@ -38,33 +38,40 @@ public sealed unsafe partial class InMemoryWritableFile : global::System.IDispos
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _Append(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status _Append(nint data)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C1.hs_method_e14faa55((void*)__hosihikari_shim_handle, (void*)data));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _Close() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status _Close()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C1.hs_method_bacd7e03((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _Flush() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status _Flush()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C1.hs_method_62370a34((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _Sync() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status _Sync()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C1.hs_method_40b6cd8d((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Append(nint data) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status Append(nint data)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C1.hs_method_4ca2d7de((void*)__hosihikari_shim_handle, (void*)data));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Close() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status Close()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C1.hs_method_2c1621a0((void*)__hosihikari_shim_handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Flush() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status Flush()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C1.hs_method_1ee15d88((void*)__hosihikari_shim_handle));
+    }
 
     public static InMemoryWritableFile Create()
     {
@@ -88,9 +95,10 @@ public sealed unsafe partial class InMemoryWritableFile : global::System.IDispos
         return new InMemoryWritableFile((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Sync() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status Sync()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C1.hs_method_0edfbf84((void*)__hosihikari_shim_handle));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkeee101_Address

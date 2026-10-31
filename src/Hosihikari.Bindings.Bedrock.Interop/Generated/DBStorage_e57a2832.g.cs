@@ -253,9 +253,9 @@ public sealed unsafe partial class DBStorage : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.TaskResult((nint)NativeMethods.TablePtr->C1.hs_method_29c7a9a5((void*)__hosihikari_shim_handle));
     }
 
-    public string _getTelemetryMessage(nint status)
+    public string _getTelemetryMessage(global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status status)
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_425b2807((void*)__hosihikari_shim_handle, (void*)status);
+        var __hs_view = NativeMethods.TablePtr->C1.hs_method_425b2807((void*)__hosihikari_shim_handle, (void*)status.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 

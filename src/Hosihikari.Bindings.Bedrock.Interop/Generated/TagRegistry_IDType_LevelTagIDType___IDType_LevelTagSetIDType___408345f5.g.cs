@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__
+public sealed unsafe partial class TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__ : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -39,67 +38,132 @@ public sealed partial class TagRegistry_IDType_LevelTagIDType___IDType_LevelTagS
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__ Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint acquireTag(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint addTagToSet(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint getTagSetID_261bceb1(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint getTagSetID_31a9e928(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint getTagsInSet(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint mEmptyTagSet
+    public static TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__ Create(global::Hosihikari.Bindings.Bedrock.Interop.TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__ arg0)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        var handle = NativeMethods.TablePtr->C4.hs_create_39ceab06((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new TagRegistry_IDType_LevelTagIDType___IDType_LevelTagSetIDType__((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint mSets
+    public global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagIDType_ acquireTag(string arg0)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagIDType_((nint)NativeMethods.TablePtr->C4.hs_method_6fef894c((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint mTagIndexMap
+    public global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_ addTagToSet(global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagIDType_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_ arg1)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_((nint)NativeMethods.TablePtr->C4.hs_method_33afe844((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint mTags
+    public global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_ getTagSetID(global::Hosihikari.Bindings.Bedrock.Interop.IndexSet arg0)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_((nint)NativeMethods.TablePtr->C4.hs_method_261bceb1((void*)__hosihikari_shim_handle, (void*)arg0.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint removeTagFromSet(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_ getTagSetID(global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagIDType_[] arg0)
+    {
+        var __hs_vectorItems0 = arg0;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
+        {
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
+        {
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            return new global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_((nint)NativeMethods.TablePtr->C4.hs_method_31a9e928((void*)__hosihikari_shim_handle, __hs_vectorData0, (nuint)(arg0?.Length ?? 0)));
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint tryGetTagID(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public string[] getTagsInSet(global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_ arg0)
+    {
+        var __hs_view = NativeMethods.TablePtr->C4.hs_method_0f0e0857((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEmptyTagSet_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ba6c7de6((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mSets_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_ea84b2ab((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTagIndexMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_0cbcea80((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mTags_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_b49cc3eb((void*)__hosihikari_shim_handle);
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_ removeTagFromSet(global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagIDType_ arg0, global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_ arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagSetIDType_((nint)NativeMethods.TablePtr->C4.hs_method_20865d62((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)arg1.Handle));
+    }
+
+    public global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagIDType_ tryGetTagID(string arg0)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(arg0);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(arg0, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.IDType_LevelTagIDType_((nint)NativeMethods.TablePtr->C4.hs_method_b24afa2e((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_408345f5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

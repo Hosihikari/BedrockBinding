@@ -202,10 +202,9 @@ public sealed unsafe partial class ScriptPlayer : global::System.IDisposable
     public nint getChatNameSuffix() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::Result<std::optional<std::basic_string<char>>, ScriptModuleMinecraft::ScriptInvalidActorError>' requires --link-carrier or --virtual-dispatch.");
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptPlayer_ getHandle(global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptPlayer_((nint)NativeMethods.TablePtr->C3.hs_method_c8fb6204((void*)player.Handle, (void*)scope.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint getHandle(nint player, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPlayer>' requires --link-carrier or --virtual-dispatch.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptPlayer_? getHandle(global::Hosihikari.Bindings.Bedrock.Interop.WeakEntityRef entityRef, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {

@@ -74,9 +74,10 @@ public sealed unsafe partial class IActorManagerProxy : global::System.IDisposab
         NativeMethods.TablePtr->C1.hs_method_20d69b65((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint validate(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__ActorValidationError_ validate(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__ActorValidationError_((nint)NativeMethods.TablePtr->C1.hs_method_d34bef77((void*)__hosihikari_shim_handle, (void*)actor.Handle));
+    }
 
 
     public void Dispose()

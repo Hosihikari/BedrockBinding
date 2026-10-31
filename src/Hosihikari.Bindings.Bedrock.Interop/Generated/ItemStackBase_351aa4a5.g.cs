@@ -941,17 +941,17 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
 
     public void setPickupTime()
     {
-        NativeMethods.TablePtr->C1.hs_method_5ff538fd((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C2.hs_method_5ff538fd((void*)__hosihikari_shim_handle);
     }
 
     public void setRepairCost(int cost)
     {
-        NativeMethods.TablePtr->C1.hs_method_410a6d6d((void*)__hosihikari_shim_handle, cost);
+        NativeMethods.TablePtr->C2.hs_method_410a6d6d((void*)__hosihikari_shim_handle, cost);
     }
 
     public void setUnbreakable(bool isUnbreakable)
     {
-        NativeMethods.TablePtr->C1.hs_method_0764987f((void*)__hosihikari_shim_handle, isUnbreakable);
+        NativeMethods.TablePtr->C2.hs_method_0764987f((void*)__hosihikari_shim_handle, isUnbreakable);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -960,23 +960,23 @@ public sealed unsafe partial class ItemStackBase : global::System.IDisposable
 
     public bool shouldVanish()
     {
-        return NativeMethods.TablePtr->C1.hs_method_e8e0f275((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_e8e0f275((void*)__hosihikari_shim_handle) != 0;
     }
 
     public void startCooldown(global::Hosihikari.Bindings.Bedrock.Interop.Player player, byte type)
     {
-        NativeMethods.TablePtr->C1.hs_method_af720a64((void*)__hosihikari_shim_handle, (void*)player.Handle, type);
+        NativeMethods.TablePtr->C2.hs_method_af720a64((void*)__hosihikari_shim_handle, (void*)player.Handle, type);
     }
 
     public string toDebugString()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_92414ce1((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_92414ce1((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string toString()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_2644d048((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_2644d048((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 

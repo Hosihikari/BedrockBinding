@@ -44,7 +44,7 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
 
     public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus _getNetworkStatus()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C0.hs_method_cc61a6b4((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C1.hs_method_cc61a6b4((void*)__hosihikari_shim_handle));
     }
 
     public void _sendPacket(string data, int reliability, int compressible)
@@ -62,7 +62,7 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
         global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C0.hs_method_e048a14f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, compressible);
+            NativeMethods.TablePtr->C1.hs_method_e048a14f((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, compressible);
         }
     }
 
@@ -72,7 +72,7 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
 
     public static CompressedNetworkPeer Create(global::Hosihikari.Bindings.Bedrock.Interop.CompressedNetworkPeer arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_58f93f47((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_58f93f47((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -87,43 +87,43 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
 
     public global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus getNetworkStatus()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C0.hs_method_2d7c192c((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.NetworkPeer_Nested.NetworkStatus((nint)NativeMethods.TablePtr->C1.hs_method_2d7c192c((void*)__hosihikari_shim_handle));
     }
 
     public bool mCompressionEnabled
     {
-        get => NativeMethods.TablePtr->C0.hs_get_04efa9ca((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_04efa9ca((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_04efa9ca((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_04efa9ca((void*)__hosihikari_shim_handle, value);
     }
 
     public bool mHybridCompressionEnabled
     {
-        get => NativeMethods.TablePtr->C0.hs_get_aa37fe71((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C0.hs_set_aa37fe71((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_aa37fe71((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C1.hs_set_aa37fe71((void*)__hosihikari_shim_handle, value);
     }
 
     public ulong mMaxDecompressedSize
     {
-        get => NativeMethods.TablePtr->C0.hs_get_af38f55f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C0.hs_set_af38f55f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C1.hs_get_af38f55f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C1.hs_set_af38f55f((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNetworkSettings_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_da68c994((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_da68c994((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mReceiveBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_d7c175ca((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_d7c175ca((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mSendBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_7b6f935a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_7b6f935a((void*)__hosihikari_shim_handle);
     }
 
     public void sendPacket(string data, int reliability, int compressible)
@@ -141,7 +141,7 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
         global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->C0.hs_method_ea9675ab((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, compressible);
+            NativeMethods.TablePtr->C1.hs_method_ea9675ab((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, reliability, compressible);
         }
     }
 
@@ -149,7 +149,7 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
     // The native field type is not projected; this is the address of the field storage.
     public nint mPeer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_8305fd4d((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_8305fd4d((void*)__hosihikari_shim_handle);
     }
 
     public void Dispose()
@@ -158,7 +158,7 @@ public sealed unsafe partial class CompressedNetworkPeer : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_736bb172((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_736bb172((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

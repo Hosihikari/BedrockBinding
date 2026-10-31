@@ -40,23 +40,23 @@ public sealed unsafe partial class PositionTrackingId : global::System.IDisposab
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId INVALID_ID()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId((nint)NativeMethods.TablePtr->C2.hs_method_036ab624(), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PositionTrackingId((nint)NativeMethods.TablePtr->C3.hs_method_036ab624(), false);
     }
 
     public uint mRawId
     {
-        get => NativeMethods.TablePtr->C2.hs_get_5098509f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C2.hs_set_5098509f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C3.hs_get_5098509f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C3.hs_set_5098509f((void*)__hosihikari_shim_handle, value);
     }
 
     public static nint sNextId()
     {
-        return (nint)NativeMethods.TablePtr->C2.hs_method_e85143f5();
+        return (nint)NativeMethods.TablePtr->C3.hs_method_e85143f5();
     }
 
     public string toString()
     {
-        var __hs_view = NativeMethods.TablePtr->C2.hs_method_9bb78316((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C3.hs_method_9bb78316((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -66,7 +66,7 @@ public sealed unsafe partial class PositionTrackingId : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_e9a3162d((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_e9a3162d((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

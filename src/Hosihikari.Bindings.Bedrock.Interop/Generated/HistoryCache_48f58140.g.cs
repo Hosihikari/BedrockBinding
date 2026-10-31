@@ -40,7 +40,7 @@ public sealed unsafe partial class HistoryCache : global::System.IDisposable
 
     public static HistoryCache Create()
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_88d4db9f();
+        var handle = NativeMethods.TablePtr->C3.hs_create_88d4db9f();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class HistoryCache : global::System.IDisposable
 
     public static HistoryCache Create(global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryCache arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_eebaec85((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_eebaec85((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -62,7 +62,7 @@ public sealed unsafe partial class HistoryCache : global::System.IDisposable
 
     public void _clearHistory()
     {
-        NativeMethods.TablePtr->C2.hs_method_74b8bb8e((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C3.hs_method_74b8bb8e((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -72,30 +72,30 @@ public sealed unsafe partial class HistoryCache : global::System.IDisposable
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk468c22_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_9d783c55((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_9d783c55((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk4e7465_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_3b964c70((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_3b964c70((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk7822d9_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_56686c04((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_56686c04((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk93cee2_Address
     {
-        get => (nint)NativeMethods.TablePtr->C2.hs_get_dd75f939((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C3.hs_get_dd75f939((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryCache operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryCache arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryCache((nint)NativeMethods.TablePtr->C2.hs_method_e01e6bc0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.PredictedMovementComponent_Nested.HistoryCache((nint)NativeMethods.TablePtr->C3.hs_method_e01e6bc0((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     public void Dispose()
@@ -104,7 +104,7 @@ public sealed unsafe partial class HistoryCache : global::System.IDisposable
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_48f58140((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_48f58140((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

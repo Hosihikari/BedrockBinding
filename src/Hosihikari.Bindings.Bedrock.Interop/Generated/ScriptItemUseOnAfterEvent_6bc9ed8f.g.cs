@@ -38,10 +38,9 @@ public sealed unsafe partial class ScriptItemUseOnAfterEvent : global::System.ID
         return __hs_handle;
     }
 
-    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ItemUseOnEvent itemEvent, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_ item, global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
-    {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_c9269772((void*)__hosihikari_shim_handle, (void*)itemEvent.Handle, (void*)item.Handle, (void*)player.Handle, (void*)scope.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint itemEvent, nint item, nint player, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public nint _ctor(global::Hosihikari.Bindings.Abi.SharedHandle? evtData, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
     {
@@ -59,16 +58,9 @@ public sealed unsafe partial class ScriptItemUseOnAfterEvent : global::System.ID
         return new ScriptItemUseOnAfterEvent((nint)handle);
     }
 
-    public static ScriptItemUseOnAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemUseOnEvent itemEvent, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_ item, global::Hosihikari.Bindings.Bedrock.Interop.Player player, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
-    {
-        var handle = NativeMethods.TablePtr->C3.hs_create_3c8c6868((void*)itemEvent.Handle, (void*)item.Handle, (void*)player.Handle, (void*)scope.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ScriptItemUseOnAfterEvent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static ScriptItemUseOnAfterEvent Create(nint itemEvent, nint item, nint player, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public static ScriptItemUseOnAfterEvent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemUseOnAfterEvent arg0)
     {

@@ -7,6 +7,7 @@ param(
     [string]$AbiRoot = "",
     [string]$Output = "artifacts/regenerated",
     [string[]]$AdditionalIncludePath = @(),
+    [string[]]$ExternalRoot = @(),
     [switch]$SkipFrontend,
     [switch]$SkipBuild,
     [string]$IrDirectory = ""
@@ -75,6 +76,21 @@ if (-not $SkipFrontend) {
     }
     $Includes += $AdditionalIncludePath
 
+    # leveldb::Status is returned by value from the LevelDbEnv/InMemoryEnv overrides. Its
+    # definition lives in the leveldb package the carrier builds against, outside the
+    # carrier's src root, so the frontend needs an explicit external root for it.
+    $ExternalRoots = @($ExternalRoot)
+    if ($ExternalRoots.Count -eq 0) {
+        $LevelDbStatus = Get-ChildItem "$env:LOCALAPPDATA\.xmake\packages\l\leveldb" `
+            -Recurse -Filter "status.h" -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -match '\\include\\leveldb\\status\.h$' } |
+            Sort-Object FullName |
+            Select-Object -Last 1
+        if ($null -ne $LevelDbStatus) {
+            $ExternalRoots += $LevelDbStatus.FullName
+        }
+    }
+
     $FrontendArgs = @{
         LeviLaminaRoot = $LeviLaminaRoot
         HeaderList = $HeaderList
@@ -84,6 +100,7 @@ if (-not $SkipFrontend) {
         EmitImplicitDestructors = $true
         EmitVTableIndices = $true
         AdditionalIncludePath = $Includes
+        ExternalRoot = $ExternalRoots
         SkipBuild = $SkipBuild
     }
     if (-not [string]::IsNullOrWhiteSpace($EnttRoot)) {

@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class WeakRef_EntityContext_
+public sealed unsafe partial class WeakRef_EntityContext_ : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -39,27 +38,72 @@ public sealed partial class WeakRef_EntityContext_
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static WeakRef_EntityContext_ Create_1ac14bd8(nint ptr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.", false)]
+    public static WeakRef_EntityContext_ Create(nint ptr) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameters are not supported by symbol dispatch.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static WeakRef_EntityContext_ Create_2366f897(nint ptr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public static WeakRef_EntityContext_ Create(global::Hosihikari.Bindings.Bedrock.Interop.StackResultStorageEntity ptr)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_2366f897((void*)ptr.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static WeakRef_EntityContext_ Create_a8fc75d9(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        return new WeakRef_EntityContext_((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static WeakRef_EntityContext_ Create_38241be0(nint ptr) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public static WeakRef_EntityContext_ Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakRef_EntityContext_ arg0)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_a8fc75d9((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint @lock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        return new WeakRef_EntityContext_((nint)handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public static WeakRef_EntityContext_ Create(global::Hosihikari.Bindings.Bedrock.Interop.WeakStorageEntity ptr)
+    {
+        var handle = NativeMethods.TablePtr->C4.hs_create_38241be0((void*)ptr.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new WeakRef_EntityContext_((nint)handle);
+    }
+
+    public global::Hosihikari.Bindings.Abi.SharedHandle? @lock()
+    {
+        var __hs_shared = NativeMethods.TablePtr->C4.hs_method_f504bd9f((void*)__hosihikari_shim_handle);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
+
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mEntity_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_a64bfa8e((void*)__hosihikari_shim_handle);
+    }
+
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mRegistry_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_fe7b47b6((void*)__hosihikari_shim_handle);
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C4.hs_destroy_6c8d2f36((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

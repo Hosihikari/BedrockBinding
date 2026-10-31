@@ -38,9 +38,10 @@ public sealed unsafe partial class LevelDbRandomAccessFile : global::System.IDis
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _Read(ulong offset, ulong n, nint result, nint scratch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status _Read(ulong offset, ulong n, nint result, nint scratch)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C2.hs_method_53708cdd((void*)__hosihikari_shim_handle, offset, n, (void*)result, (void*)scratch));
+    }
 
     public static LevelDbRandomAccessFile Create()
     {
@@ -64,9 +65,10 @@ public sealed unsafe partial class LevelDbRandomAccessFile : global::System.IDis
         return new LevelDbRandomAccessFile((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint Read(ulong offset, ulong n, nint result, nint scratch) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'leveldb::Status' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status Read(ulong offset, ulong n, nint result, nint scratch)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.leveldb.Status((nint)NativeMethods.TablePtr->C2.hs_method_7dcdfbf1((void*)__hosihikari_shim_handle, offset, n, (void*)result, (void*)scratch));
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2c0e30_Address

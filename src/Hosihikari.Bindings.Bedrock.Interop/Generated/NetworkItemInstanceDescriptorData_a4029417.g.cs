@@ -40,12 +40,12 @@ public sealed unsafe partial class NetworkItemInstanceDescriptorData : global::S
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.NetworkItemInstanceDescriptorData arg0)
     {
-        return (nint)NativeMethods.TablePtr->C1.hs_method_2ea869ae((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
+        return (nint)NativeMethods.TablePtr->C2.hs_method_2ea869ae((void*)__hosihikari_shim_handle, (void*)arg0.Handle);
     }
 
     public static NetworkItemInstanceDescriptorData Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_f8c86711();
+        var handle = NativeMethods.TablePtr->C2.hs_create_f8c86711();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class NetworkItemInstanceDescriptorData : global::S
 
     public static NetworkItemInstanceDescriptorData Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.NetworkItemInstanceDescriptorData arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_966d9801((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_966d9801((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -67,31 +67,31 @@ public sealed unsafe partial class NetworkItemInstanceDescriptorData : global::S
 
     public uint mBlockRuntimeId
     {
-        get => NativeMethods.TablePtr->C1.hs_get_3b984b2f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_3b984b2f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_3b984b2f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_3b984b2f((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemDescriptor_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_073bdb3c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_073bdb3c((void*)__hosihikari_shim_handle);
     }
 
     public ushort mStackSize
     {
-        get => NativeMethods.TablePtr->C1.hs_get_0836b185((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_0836b185((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_0836b185((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_0836b185((void*)__hosihikari_shim_handle, value);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUserDataBuffer_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_1ee6a835((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_1ee6a835((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.NetworkItemInstanceDescriptorData operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.NetworkItemInstanceDescriptorData arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.NetworkItemInstanceDescriptorData((nint)NativeMethods.TablePtr->C1.hs_method_5b57af88((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestCereal.NetworkItemInstanceDescriptorData((nint)NativeMethods.TablePtr->C2.hs_method_5b57af88((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -101,7 +101,7 @@ public sealed unsafe partial class NetworkItemInstanceDescriptorData : global::S
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_a4029417((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_a4029417((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

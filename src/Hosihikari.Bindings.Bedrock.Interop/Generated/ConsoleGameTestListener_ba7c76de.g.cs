@@ -40,22 +40,22 @@ public sealed unsafe partial class ConsoleGameTestListener : global::System.IDis
 
     public void _onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
     {
-        NativeMethods.TablePtr->C0.hs_method_877d93fc((void*)__hosihikari_shim_handle, (void*)test.Handle);
+        NativeMethods.TablePtr->C1.hs_method_877d93fc((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
     public void _onTestPassed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
     {
-        NativeMethods.TablePtr->C0.hs_method_65d3aaa2((void*)__hosihikari_shim_handle, (void*)test.Handle);
+        NativeMethods.TablePtr->C1.hs_method_65d3aaa2((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
     public void _onTestStructureLoaded(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
     {
-        NativeMethods.TablePtr->C0.hs_method_8b0f224a((void*)__hosihikari_shim_handle, (void*)test.Handle);
+        NativeMethods.TablePtr->C1.hs_method_8b0f224a((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
     public static ConsoleGameTestListener Create(global::Hosihikari.Bindings.Bedrock.Interop.ConsoleGameTestListener arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_e478c164((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_e478c164((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,17 +66,17 @@ public sealed unsafe partial class ConsoleGameTestListener : global::System.IDis
 
     public void onTestFailed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
     {
-        NativeMethods.TablePtr->C0.hs_method_04e2cac4((void*)__hosihikari_shim_handle, (void*)test.Handle);
+        NativeMethods.TablePtr->C1.hs_method_04e2cac4((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
     public void onTestPassed(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
     {
-        NativeMethods.TablePtr->C0.hs_method_19a9717b((void*)__hosihikari_shim_handle, (void*)test.Handle);
+        NativeMethods.TablePtr->C1.hs_method_19a9717b((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
     public void onTestStructureLoaded(global::Hosihikari.Bindings.Bedrock.Interop.gametest.BaseGameTestInstance test)
     {
-        NativeMethods.TablePtr->C0.hs_method_015cbec2((void*)__hosihikari_shim_handle, (void*)test.Handle);
+        NativeMethods.TablePtr->C1.hs_method_015cbec2((void*)__hosihikari_shim_handle, (void*)test.Handle);
     }
 
 
@@ -86,7 +86,7 @@ public sealed unsafe partial class ConsoleGameTestListener : global::System.IDis
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_ba7c76de((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_ba7c76de((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

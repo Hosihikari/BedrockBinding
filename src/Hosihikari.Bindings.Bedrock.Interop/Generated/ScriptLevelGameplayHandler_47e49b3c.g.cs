@@ -38,26 +38,30 @@ public sealed unsafe partial class ScriptLevelGameplayHandler
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _handleEvent_6607c85f(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_ _handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelWeatherChangedEvent @event)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_((nint)NativeMethods.TablePtr->C3.hs_method_6607c85f((void*)__hosihikari_shim_handle, (void*)@event.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _handleEvent_92c1b1d9(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_ _handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.WorldClockRestartEvent @event)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_((nint)NativeMethods.TablePtr->C3.hs_method_92c1b1d9((void*)__hosihikari_shim_handle, (void*)@event.Handle));
+    }
 
     public int _handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.ScriptingWorldInitializeEvent @event)
     {
         return NativeMethods.TablePtr->C3.hs_method_a924157d((void*)__hosihikari_shim_handle, (void*)@event.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint handleEvent_ce6b22d1(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_ handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.LevelWeatherChangedEvent @event)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_((nint)NativeMethods.TablePtr->C3.hs_method_ce6b22d1((void*)__hosihikari_shim_handle, (void*)@event.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint handleEvent_415ac37f(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_ handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.WorldClockRestartEvent @event)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_((nint)NativeMethods.TablePtr->C3.hs_method_415ac37f((void*)__hosihikari_shim_handle, (void*)@event.Handle));
+    }
 
     public int handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.ScriptingWorldInitializeEvent @event)
     {

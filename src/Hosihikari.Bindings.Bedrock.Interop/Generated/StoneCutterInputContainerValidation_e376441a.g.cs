@@ -40,12 +40,12 @@ public sealed unsafe partial class StoneCutterInputContainerValidation : global:
 
     public int _getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
-        return NativeMethods.TablePtr->C3.hs_method_c0c69ef8((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_c0c69ef8((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
     public static StoneCutterInputContainerValidation Create(global::Hosihikari.Bindings.Bedrock.Interop.StoneCutterInputContainerValidation arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_40a056fc((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_40a056fc((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -56,7 +56,7 @@ public sealed unsafe partial class StoneCutterInputContainerValidation : global:
 
     public int getContainerOffset(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext)
     {
-        return NativeMethods.TablePtr->C3.hs_method_72fcef81((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
+        return NativeMethods.TablePtr->C4.hs_method_72fcef81((void*)__hosihikari_shim_handle, (void*)screenContext.Handle);
     }
 
 
@@ -66,7 +66,7 @@ public sealed unsafe partial class StoneCutterInputContainerValidation : global:
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_e376441a((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_e376441a((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

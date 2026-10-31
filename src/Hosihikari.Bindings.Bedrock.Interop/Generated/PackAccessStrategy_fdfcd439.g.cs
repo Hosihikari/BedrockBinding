@@ -194,9 +194,10 @@ public sealed unsafe partial class PackAccessStrategy : global::System.IDisposab
         return NativeMethods.TablePtr->C2.hs_method_3abc8e08((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStreamableSource(nint packRelativePath, nint tempDirectory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_ getStreamableSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView? tempDirectory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_ea7f0eea((void*)__hosihikari_shim_handle, (void*)packRelativePath.Handle, (void*)(tempDirectory?.Handle ?? 0), tempDirectory is not null));
+    }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__ getSubPath()
     {

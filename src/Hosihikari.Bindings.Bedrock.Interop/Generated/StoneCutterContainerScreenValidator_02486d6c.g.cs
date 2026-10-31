@@ -41,7 +41,7 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator : global:
     // The native field type is not projected; this is the address of the field storage.
     public nint mValidContainerEnumNames_Address
     {
-        get => (nint)NativeMethods.TablePtr->C3.hs_get_c168a093((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C4.hs_get_c168a093((void*)__hosihikari_shim_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -50,7 +50,7 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator : global:
 
     public bool _isCraftingImplemented()
     {
-        return NativeMethods.TablePtr->C3.hs_method_7bb62fd8((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_7bb62fd8((void*)__hosihikari_shim_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -59,7 +59,7 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator : global:
 
     public static StoneCutterContainerScreenValidator Create(global::Hosihikari.Bindings.Bedrock.Interop.StoneCutterContainerScreenValidator arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_236ac89d((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_236ac89d((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -70,7 +70,7 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator : global:
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance _getResultFromId(global::Hosihikari.Bindings.Bedrock.Interop.ContainerScreenContext screenContext, nint recipeNetId)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C3.hs_method_0ac16525((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)recipeNetId));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemInstance((nint)NativeMethods.TablePtr->C4.hs_method_0ac16525((void*)__hosihikari_shim_handle, (void*)screenContext.Handle, (void*)recipeNetId));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -79,7 +79,7 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator : global:
 
     public bool isCraftingImplemented()
     {
-        return NativeMethods.TablePtr->C3.hs_method_02253267((void*)__hosihikari_shim_handle) != 0;
+        return NativeMethods.TablePtr->C4.hs_method_02253267((void*)__hosihikari_shim_handle) != 0;
     }
 
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class StoneCutterContainerScreenValidator : global:
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_02486d6c((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_02486d6c((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

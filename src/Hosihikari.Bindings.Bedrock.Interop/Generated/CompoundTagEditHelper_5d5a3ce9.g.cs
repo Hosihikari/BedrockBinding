@@ -40,7 +40,7 @@ public sealed unsafe partial class CompoundTagEditHelper : global::System.IDispo
 
     public static CompoundTagEditHelper Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_2634a19c();
+        var handle = NativeMethods.TablePtr->C1.hs_create_2634a19c();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class CompoundTagEditHelper : global::System.IDispo
 
     public static CompoundTagEditHelper Create(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagEditHelper arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_5e27a597((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_5e27a597((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -63,24 +63,24 @@ public sealed unsafe partial class CompoundTagEditHelper : global::System.IDispo
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk43c659_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_456f2064((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_456f2064((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk76e80d_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_74b1981a((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_74b1981a((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk9ba84f_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4b53fa08((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4b53fa08((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagEditHelper operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagEditHelper arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagEditHelper((nint)NativeMethods.TablePtr->C0.hs_method_f71cdebd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagEditHelper((nint)NativeMethods.TablePtr->C1.hs_method_f71cdebd((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the parameter needs a generated C++ type.", false)]
@@ -93,7 +93,7 @@ public sealed unsafe partial class CompoundTagEditHelper : global::System.IDispo
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_5d5a3ce9((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_5d5a3ce9((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

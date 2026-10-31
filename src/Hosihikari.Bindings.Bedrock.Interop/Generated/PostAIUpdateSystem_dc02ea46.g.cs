@@ -48,7 +48,7 @@ public sealed unsafe partial class PostAIUpdateSystem : global::System.IDisposab
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_dc02ea46((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_dc02ea46((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

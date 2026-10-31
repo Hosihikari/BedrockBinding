@@ -40,24 +40,24 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
 
     public byte mActionType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_2aa7c96f((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_2aa7c96f((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_2aa7c96f((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_2aa7c96f((void*)__hosihikari_shim_handle, value);
     }
 
     public byte mNumCrafts
     {
-        get => NativeMethods.TablePtr->C1.hs_get_521120c9((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_521120c9((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_521120c9((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_521120c9((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ __read(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_2de9ba50((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_2de9ba50((void*)__hosihikari_shim_handle, (void*)stream.Handle));
     }
 
     public void __write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_6ff90b91((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_6ff90b91((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public nint _ctor(string patternNameId, byte numCrafts)
@@ -75,7 +75,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
         global::System.Text.Encoding.UTF8.GetBytes(patternNameId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->C1.hs_method_faf46fc8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, numCrafts);
+            return (nint)NativeMethods.TablePtr->C2.hs_method_faf46fc8((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, numCrafts);
         }
     }
 
@@ -85,7 +85,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
 
     public static ItemStackRequestActionCraftLoom Create()
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_b9747816();
+        var handle = NativeMethods.TablePtr->C2.hs_create_b9747816();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -96,7 +96,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
 
     public static ItemStackRequestActionCraftLoom Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionCraftLoom arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_b891daba((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_b891daba((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -120,7 +120,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
         global::System.Text.Encoding.UTF8.GetBytes(patternNameId, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->C1.hs_create_ed225c21(__hs_stringData0, (nuint)__hs_stringByteCount0, numCrafts);
+            var handle = NativeMethods.TablePtr->C2.hs_create_ed225c21(__hs_stringData0, (nuint)__hs_stringByteCount0, numCrafts);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -132,18 +132,18 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _read(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_1d6f19f3((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_1d6f19f3((void*)__hosihikari_shim_handle, (void*)stream.Handle));
     }
 
     public void _write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_f2fb3fd0((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_f2fb3fd0((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mPatternNameId_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ab70fa6f((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ab70fa6f((void*)__hosihikari_shim_handle);
     }
 
 
@@ -153,7 +153,7 @@ public sealed unsafe partial class ItemStackRequestActionCraftLoom : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_aa75bdcf((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_aa75bdcf((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

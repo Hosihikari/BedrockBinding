@@ -40,18 +40,18 @@ public sealed unsafe partial class ItemStackRequestActionMineBlock : global::Sys
 
     public byte mActionType
     {
-        get => NativeMethods.TablePtr->C1.hs_get_14f1fb0d((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_14f1fb0d((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_14f1fb0d((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_14f1fb0d((void*)__hosihikari_shim_handle, value);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ __read(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_18f0f5a4((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_18f0f5a4((void*)__hosihikari_shim_handle, (void*)stream.Handle));
     }
 
     public void __write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_e30357a7((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_e30357a7((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -60,7 +60,7 @@ public sealed unsafe partial class ItemStackRequestActionMineBlock : global::Sys
 
     public static ItemStackRequestActionMineBlock Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemStackRequestActionMineBlock arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_5b4bc1a9((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_5b4bc1a9((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -71,36 +71,36 @@ public sealed unsafe partial class ItemStackRequestActionMineBlock : global::Sys
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _read(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_badf229d((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_badf229d((void*)__hosihikari_shim_handle, (void*)stream.Handle));
     }
 
     public void _write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_c86797bf((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c86797bf((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mNetIdVariant_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_ed2d5800((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_ed2d5800((void*)__hosihikari_shim_handle);
     }
 
     public byte mPreValidationStatus
     {
-        get => NativeMethods.TablePtr->C1.hs_get_8fc18115((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_8fc18115((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_8fc18115((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8fc18115((void*)__hosihikari_shim_handle, value);
     }
 
     public int mPredictedDurability
     {
-        get => NativeMethods.TablePtr->C1.hs_get_8bccd1ba((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_8bccd1ba((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_8bccd1ba((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_8bccd1ba((void*)__hosihikari_shim_handle, value);
     }
 
     public int mSlot
     {
-        get => NativeMethods.TablePtr->C1.hs_get_fd23dd03((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_fd23dd03((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_fd23dd03((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_fd23dd03((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -110,7 +110,7 @@ public sealed unsafe partial class ItemStackRequestActionMineBlock : global::Sys
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_5064a65f((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_5064a65f((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

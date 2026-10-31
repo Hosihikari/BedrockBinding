@@ -185,9 +185,24 @@ public sealed unsafe partial class LevelStorageSource : global::System.IDisposab
         return new global::Hosihikari.Bindings.Bedrock.Interop.Core.PathBuffer_std__basic_string_char__((nint)NativeMethods.TablePtr->C2.hs_method_8fcaa57d((void*)__hosihikari_shim_handle, (void*)levelPath.Handle));
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<LevelDataLoadResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getLevelData(nint levelId, nint levelDataOut) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<LevelDataLoadResult>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_LevelDataLoadResult__std__error_code_ getLevelData(string levelId, global::Hosihikari.Bindings.Bedrock.Interop.LevelData levelDataOut)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(levelId);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(levelId, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_LevelDataLoadResult__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_281cb923((void*)__hosihikari_shim_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)levelDataOut.Handle));
+        }
+    }
 
     public string getLevelIdFromPath(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path fullPath, global::Hosihikari.Bindings.Bedrock.Interop.Core.Path worldsPath)
     {

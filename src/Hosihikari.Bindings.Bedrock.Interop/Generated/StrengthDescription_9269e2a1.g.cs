@@ -40,17 +40,17 @@ public sealed unsafe partial class StrengthDescription : global::System.IDisposa
 
     public void _deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
     {
-        NativeMethods.TablePtr->C3.hs_method_6e04888b((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+        NativeMethods.TablePtr->C4.hs_method_6e04888b((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
     }
 
     public nint _getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_93dcf327((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_93dcf327((void*)__hosihikari_shim_handle);
     }
 
     public static StrengthDescription Create(global::Hosihikari.Bindings.Bedrock.Interop.StrengthDescription arg0)
     {
-        var handle = NativeMethods.TablePtr->C3.hs_create_a8aca285((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C4.hs_create_a8aca285((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,30 +61,30 @@ public sealed unsafe partial class StrengthDescription : global::System.IDisposa
 
     public void deserializeData(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
     {
-        NativeMethods.TablePtr->C3.hs_method_3b47e362((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+        NativeMethods.TablePtr->C4.hs_method_3b47e362((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
     }
 
     public nint getJsonName()
     {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_c5c13c4c((void*)__hosihikari_shim_handle);
+        return (nint)NativeMethods.TablePtr->C4.hs_method_c5c13c4c((void*)__hosihikari_shim_handle);
     }
 
     public bool mHasComponent
     {
-        get => NativeMethods.TablePtr->C3.hs_get_ee02c852((void*)__hosihikari_shim_handle) != 0;
-        set => NativeMethods.TablePtr->C3.hs_set_ee02c852((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_ee02c852((void*)__hosihikari_shim_handle) != 0;
+        set => NativeMethods.TablePtr->C4.hs_set_ee02c852((void*)__hosihikari_shim_handle, value);
     }
 
     public int mMaxStrength
     {
-        get => NativeMethods.TablePtr->C3.hs_get_466ae3c6((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_466ae3c6((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_466ae3c6((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_466ae3c6((void*)__hosihikari_shim_handle, value);
     }
 
     public int mStrength
     {
-        get => NativeMethods.TablePtr->C3.hs_get_bde7042b((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C3.hs_set_bde7042b((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C4.hs_get_bde7042b((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C4.hs_set_bde7042b((void*)__hosihikari_shim_handle, value);
     }
 
 
@@ -94,7 +94,7 @@ public sealed unsafe partial class StrengthDescription : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C3.hs_destroy_9269e2a1((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C4.hs_destroy_9269e2a1((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

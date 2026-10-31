@@ -50,10 +50,9 @@ public sealed unsafe partial class ScriptFoodComponent : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->C3.hs_get_64373e8b((void*)__hosihikari_shim_handle);
     }
 
-    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_ itemStackHandle, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
-    {
-        return (nint)NativeMethods.TablePtr->C3.hs_method_2ecabab1((void*)__hosihikari_shim_handle, (void*)itemStackHandle.Handle, (void*)scope.Handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint itemStackHandle, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -70,16 +69,9 @@ public sealed unsafe partial class ScriptFoodComponent : global::System.IDisposa
         return new ScriptFoodComponent((nint)handle);
     }
 
-    public static ScriptFoodComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_ itemStackHandle, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope)
-    {
-        var handle = NativeMethods.TablePtr->C3.hs_create_dca03cc7((void*)itemStackHandle.Handle, (void*)scope.Handle);
-        if (handle == null)
-        {
-            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-        }
-
-        return new ScriptFoodComponent((nint)handle);
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static ScriptFoodComponent Create(nint itemStackHandle, nint scope) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public static ScriptFoodComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptFoodComponent arg0)
     {

@@ -81,9 +81,10 @@ public sealed unsafe partial class DirectoryPackWithEncryptionAccessStrategy : g
         return NativeMethods.TablePtr->C1.hs_method_3cff44d7((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getStreamableSource(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_ _getStreamableSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path arg0, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView? arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_e9ea63b3((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), arg1 is not null));
+    }
 
     public bool _hasAsset(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, bool trustedContentOnly, bool caseSensative)
     {
@@ -186,9 +187,10 @@ public sealed unsafe partial class DirectoryPackWithEncryptionAccessStrategy : g
         return NativeMethods.TablePtr->C1.hs_method_77d76e1d((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStreamableSource(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_ getStreamableSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path arg0, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView? arg1)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_e4e5376b((void*)__hosihikari_shim_handle, (void*)arg0.Handle, (void*)(arg1?.Handle ?? 0), arg1 is not null));
+    }
 
     public bool hasAsset(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, bool trustedContentOnly, bool caseSensative)
     {

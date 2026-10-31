@@ -49,15 +49,17 @@ public sealed unsafe partial class ActorGameplayHandler : global::System.IDispos
         return new ActorGameplayHandler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint handleEvent_a3cad182(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_ handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.MutableActorGameplayEvent_CoordinatorResult_ @event)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_((nint)NativeMethods.TablePtr->C0.hs_method_a3cad182((void*)__hosihikari_shim_handle, (void*)@event.Handle));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint handleEvent_a40389bd(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_ handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.ActorGameplayEvent_CoordinatorResult_ arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_((nint)NativeMethods.TablePtr->C0.hs_method_a40389bd((void*)__hosihikari_shim_handle, (void*)arg0.Handle));
+    }
 
-    public int handleEvent_7abecdb2(nint @event)
+    public int handleEvent(nint @event)
     {
         return NativeMethods.TablePtr->C0.hs_method_7abecdb2((void*)__hosihikari_shim_handle, (void*)@event);
     }

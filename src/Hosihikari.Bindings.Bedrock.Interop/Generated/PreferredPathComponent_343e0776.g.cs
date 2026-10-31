@@ -40,7 +40,7 @@ public sealed unsafe partial class PreferredPathComponent : global::System.IDisp
 
     public static PreferredPathComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.PreferredPathComponent arg0)
     {
-        var handle = NativeMethods.TablePtr->C2.hs_create_6447b3ef((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C3.hs_create_6447b3ef((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe partial class PreferredPathComponent : global::System.IDisp
 
     public void initFromDefinition(global::Hosihikari.Bindings.Bedrock.Interop.Actor owner)
     {
-        NativeMethods.TablePtr->C2.hs_method_450595f7((void*)__hosihikari_shim_handle, (void*)owner.Handle);
+        NativeMethods.TablePtr->C3.hs_method_450595f7((void*)__hosihikari_shim_handle, (void*)owner.Handle);
     }
 
     public float mDefaultBlockCost
@@ -85,7 +85,7 @@ public sealed unsafe partial class PreferredPathComponent : global::System.IDisp
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C2.hs_destroy_343e0776((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C3.hs_destroy_343e0776((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

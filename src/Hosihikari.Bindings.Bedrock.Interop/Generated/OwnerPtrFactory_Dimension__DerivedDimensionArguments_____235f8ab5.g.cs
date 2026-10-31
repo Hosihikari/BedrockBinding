@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class OwnerPtrFactory_Dimension__DerivedDimensionArguments____
+public sealed unsafe partial class OwnerPtrFactory_Dimension__DerivedDimensionArguments____ : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -39,22 +38,38 @@ public sealed partial class OwnerPtrFactory_Dimension__DerivedDimensionArguments
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public static OwnerPtrFactory_Dimension__DerivedDimensionArguments____ Create(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint mFactoryMap
+    public static OwnerPtrFactory_Dimension__DerivedDimensionArguments____ Create(global::Hosihikari.Bindings.Bedrock.Interop.OwnerPtrFactory_Dimension__DerivedDimensionArguments____ arg0)
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        var handle = NativeMethods.TablePtr->C2.hs_create_001f9b80((void*)arg0.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new OwnerPtrFactory_Dimension__DerivedDimensionArguments____((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public void registerFactory(nint arg0, nint arg1) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    // The native field type is not projected; this is the address of the field storage.
+    public nint mFactoryMap_Address
+    {
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_283f5d3e((void*)__hosihikari_shim_handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    [global::System.Obsolete("BindingShim cannot project this member: callback return type 'OwnerPtr<Dimension>' is not supported.", false)]
+    public void registerFactory(nint arg0, nint arg1) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: callback return type 'OwnerPtr<Dimension>' is not supported.");
+
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C2.hs_destroy_235f8ab5((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

@@ -112,9 +112,10 @@ public sealed unsafe partial class EncryptedFileAccessStrategy : global::System.
         return NativeMethods.TablePtr->C1.hs_method_09a56940((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _getStreamableSource(nint packRelativePath, nint tempDirectory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_ _getStreamableSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView? tempDirectory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_382fe154((void*)__hosihikari_shim_handle, (void*)packRelativePath.Handle, (void*)(tempDirectory?.Handle ?? 0), tempDirectory is not null));
+    }
 
     public bool _hasAsset(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, bool trustedContentOnly, bool caseSensative)
     {
@@ -268,9 +269,10 @@ public sealed unsafe partial class EncryptedFileAccessStrategy : global::System.
         return NativeMethods.TablePtr->C1.hs_method_102c1f39((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint getStreamableSource(nint packRelativePath, nint tempDirectory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<StreamableAssetSource>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_ getStreamableSource(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, global::Hosihikari.Bindings.Bedrock.Interop.Core.PathView? tempDirectory)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_StreamableAssetSource__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_e57be60a((void*)__hosihikari_shim_handle, (void*)packRelativePath.Handle, (void*)(tempDirectory?.Handle ?? 0), tempDirectory is not null));
+    }
 
     public bool hasAsset(global::Hosihikari.Bindings.Bedrock.Interop.Core.Path packRelativePath, bool trustedContentOnly, bool caseSensative)
     {

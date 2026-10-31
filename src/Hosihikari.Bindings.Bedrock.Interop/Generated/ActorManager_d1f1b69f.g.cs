@@ -74,21 +74,21 @@ public sealed unsafe partial class ActorManager : global::System.IDisposable
         NativeMethods.TablePtr->C0.hs_method_193f2890((void*)__hosihikari_shim_handle, (void*)levelChunk.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addActorEntity_e8501b7e(nint dimension, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addActorEntity_ca066dee(nint addActorEntityProxy, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addGlobalActorEntity_905e66b5(nint dimension, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addGlobalActorEntity_f47338ed(nint addActorEntityProxy, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public void cleanupActorEntityReferencesGarbageCollect(nint entity) =>

@@ -2481,9 +2481,9 @@ public sealed unsafe partial class Level : global::System.IDisposable
     public nint addEntity(nint region, nint entity) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addEntityWithError(nint region, nint entity) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Actor *, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.");
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'OwnerPtr<EntityContext>' is not a known bindable declaration.", false)]
     public nint addGlobalEntity(nint region, nint entity) =>

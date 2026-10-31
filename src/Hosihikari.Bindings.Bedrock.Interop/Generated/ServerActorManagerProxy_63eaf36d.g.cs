@@ -58,9 +58,10 @@ public sealed unsafe partial class ServerActorManagerProxy : global::System.IDis
         NativeMethods.TablePtr->C3.hs_method_7e20f3da((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint _validate(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__ActorValidationError_ _validate(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__ActorValidationError_((nint)NativeMethods.TablePtr->C3.hs_method_e9a275b9((void*)__hosihikari_shim_handle, (void*)actor.Handle));
+    }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
     public static nint _vftable() =>
@@ -103,9 +104,10 @@ public sealed unsafe partial class ServerActorManagerProxy : global::System.IDis
         NativeMethods.TablePtr->C3.hs_method_ded0ee13((void*)__hosihikari_shim_handle, (void*)actor.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint validate(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<void, ActorValidationError>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__ActorValidationError_ validate(global::Hosihikari.Bindings.Bedrock.Interop.Actor actor)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__ActorValidationError_((nint)NativeMethods.TablePtr->C3.hs_method_fd7dd051((void*)__hosihikari_shim_handle, (void*)actor.Handle));
+    }
 
 
     public void Dispose()

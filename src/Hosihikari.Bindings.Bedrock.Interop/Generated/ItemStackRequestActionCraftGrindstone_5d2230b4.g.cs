@@ -40,17 +40,17 @@ public sealed unsafe partial class ItemStackRequestActionCraftGrindstone
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ __read(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_719aec67((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_719aec67((void*)__hosihikari_shim_handle, (void*)stream.Handle));
     }
 
     public void __write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_df987a56((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_df987a56((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant _getRecipeNetId()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant((nint)NativeMethods.TablePtr->C1.hs_method_561bf4b0((void*)__hosihikari_shim_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant((nint)NativeMethods.TablePtr->C2.hs_method_561bf4b0((void*)__hosihikari_shim_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value record returns are not supported by symbol dispatch.", false)]
@@ -59,22 +59,22 @@ public sealed unsafe partial class ItemStackRequestActionCraftGrindstone
 
     public global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_ _read(global::Hosihikari.Bindings.Bedrock.Interop.ReadOnlyBinaryStream stream)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_77f36665((void*)__hosihikari_shim_handle, (void*)stream.Handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_void__std__error_code_((nint)NativeMethods.TablePtr->C2.hs_method_77f36665((void*)__hosihikari_shim_handle, (void*)stream.Handle));
     }
 
     public void _write(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_c6faf5b4((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_c6faf5b4((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant getRecipeNetId()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant((nint)NativeMethods.TablePtr->C1.hs_method_351ae23f((void*)__hosihikari_shim_handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemStackNetIdVariant((nint)NativeMethods.TablePtr->C2.hs_method_351ae23f((void*)__hosihikari_shim_handle), false);
     }
 
     public int mRepairCost
     {
-        get => NativeMethods.TablePtr->C1.hs_get_24138f4e((void*)__hosihikari_shim_handle);
-        set => NativeMethods.TablePtr->C1.hs_set_24138f4e((void*)__hosihikari_shim_handle, value);
+        get => NativeMethods.TablePtr->C2.hs_get_24138f4e((void*)__hosihikari_shim_handle);
+        set => NativeMethods.TablePtr->C2.hs_set_24138f4e((void*)__hosihikari_shim_handle, value);
     }
 }

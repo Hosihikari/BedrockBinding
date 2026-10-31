@@ -4,8 +4,7 @@
 
 namespace Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested;
 
-[global::System.Obsolete("BindingShim cannot project any member of this type; it is exported for type identity only.", false)]
-public sealed partial class Iterator_true_
+public sealed unsafe partial class Iterator_true_ : global::System.IDisposable
 {
     private nint __hosihikari_shim_handle;
     private readonly bool _ownsHandle;
@@ -39,38 +38,58 @@ public sealed partial class Iterator_true_
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint iter
+    // The native field type is not projected; this is the address of the field storage.
+    public nint iter_Address
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_751e7e74((void*)__hosihikari_shim_handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint operator_multiply() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Tag operator_multiply()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.Tag((nint)NativeMethods.TablePtr->C1.hs_method_06b54b29((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint operator_operator___7ba97c9b() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_ operator_operator___7ba97c9b()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_((nint)NativeMethods.TablePtr->C1.hs_method_7ba97c9b((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint operator_operator___b035f811(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_ operator_operator___b035f811(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_((nint)NativeMethods.TablePtr->C1.hs_method_b035f811((void*)__hosihikari_shim_handle, arg0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint operator_operator___ed3742c3() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_ operator_operator___ed3742c3()
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_((nint)NativeMethods.TablePtr->C1.hs_method_ed3742c3((void*)__hosihikari_shim_handle), false);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint operator_operator___bbd9e3f4(int arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_ operator_operator___bbd9e3f4(int arg0)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_((nint)NativeMethods.TablePtr->C1.hs_method_bbd9e3f4((void*)__hosihikari_shim_handle, arg0));
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public nint operator_operator___e0e27f3c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.Tag? operator_operator___e0e27f3c()
+    {
+        var __hs_handle = NativeMethods.TablePtr->C1.hs_method_e0e27f3c((void*)__hosihikari_shim_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Bedrock.Interop.Tag((nint)__hs_handle, false) : null;
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: template classes are not supported by symbol dispatch.", false)]
-    public bool operator_equal(nint r) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template classes are not supported by symbol dispatch.");
+    public bool operator_equal(global::Hosihikari.Bindings.Bedrock.Interop.CompoundTagVariant_Nested.Iterator_true_ r)
+    {
+        return NativeMethods.TablePtr->C1.hs_method_b2786015((void*)__hosihikari_shim_handle, (void*)r.Handle) != 0;
+    }
+
+    public void Dispose()
+    {
+        if (__hosihikari_shim_handle != 0)
+        {
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->C1.hs_destroy_0222e5ef((void*)__hosihikari_shim_handle);
+            }
+
+            __hosihikari_shim_handle = 0;
+        }
+    }
 }

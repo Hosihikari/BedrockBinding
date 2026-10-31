@@ -49,9 +49,10 @@ public sealed unsafe partial class ServerNetworkEventHandler : global::System.ID
         return new ServerNetworkEventHandler((nint)handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.", false)]
-    public nint handleEvent(nint @event) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'GameplayHandlerResult<CoordinatorResult>' requires --link-carrier or --virtual-dispatch.");
+    public global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_ handleEvent(global::Hosihikari.Bindings.Bedrock.Interop.MutableServerNetworkGameplayEvent_CoordinatorResult_ @event)
+    {
+        return new global::Hosihikari.Bindings.Bedrock.Interop.GameplayHandlerResult_CoordinatorResult_((nint)NativeMethods.TablePtr->C3.hs_method_948899cc((void*)__hosihikari_shim_handle, (void*)@event.Handle));
+    }
 
 
     public void Dispose()

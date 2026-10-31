@@ -40,17 +40,17 @@ public sealed unsafe partial class ConstDeserializeDataParams : global::System.I
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
     {
-        return (nint)NativeMethods.TablePtr->C0.hs_method_4c001541((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
+        return (nint)NativeMethods.TablePtr->C1.hs_method_4c001541((void*)__hosihikari_shim_handle, (void*)deserializeDataParams.Handle);
     }
 
     public void _dtor()
     {
-        NativeMethods.TablePtr->C0.hs_method_04f12982((void*)__hosihikari_shim_handle);
+        NativeMethods.TablePtr->C1.hs_method_04f12982((void*)__hosihikari_shim_handle);
     }
 
     public static ConstDeserializeDataParams Create()
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_a7fc3a24();
+        var handle = NativeMethods.TablePtr->C1.hs_create_a7fc3a24();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,7 +61,7 @@ public sealed unsafe partial class ConstDeserializeDataParams : global::System.I
 
     public static ConstDeserializeDataParams Create(global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_f3cd041a((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_f3cd041a((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -72,7 +72,7 @@ public sealed unsafe partial class ConstDeserializeDataParams : global::System.I
 
     public static ConstDeserializeDataParams Create(global::Hosihikari.Bindings.Bedrock.Interop.DeserializeDataParams deserializeDataParams)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_cf975000((void*)deserializeDataParams.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_cf975000((void*)deserializeDataParams.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -84,24 +84,24 @@ public sealed unsafe partial class ConstDeserializeDataParams : global::System.I
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk25c848_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_6bef255c((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_6bef255c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk53e6e0_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_4fe7b5f0((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_4fe7b5f0((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnkcb3186_Address
     {
-        get => (nint)NativeMethods.TablePtr->C0.hs_get_b09ce1ca((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C1.hs_get_b09ce1ca((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams operator_assign(global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams arg0)
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams((nint)NativeMethods.TablePtr->C0.hs_method_08d2a02d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ConstDeserializeDataParams((nint)NativeMethods.TablePtr->C1.hs_method_08d2a02d((void*)__hosihikari_shim_handle, (void*)arg0.Handle), false);
     }
 
 
@@ -111,7 +111,7 @@ public sealed unsafe partial class ConstDeserializeDataParams : global::System.I
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_f5cd8b41((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_f5cd8b41((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

@@ -90,10 +90,9 @@ public sealed unsafe partial class ScriptItemStack : global::System.IDisposable
         return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.ClassBinding((nint)NativeMethods.TablePtr->C3.hs_method_80988d43(itemComponents?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)version.Handle));
     }
 
-    public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_ createHandle(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
-    {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_((nint)NativeMethods.TablePtr->C3.hs_method_c43a4913((void*)scope.Handle, (void*)item.Handle));
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' requires --link-carrier or --virtual-dispatch.", false)]
+    public static nint createHandle(nint scope, nint item) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemStack>' requires --link-carrier or --virtual-dispatch.");
 
     public static global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_? createOptionalHandle(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, global::Hosihikari.Bindings.Bedrock.Interop.ItemStackBase item)
     {

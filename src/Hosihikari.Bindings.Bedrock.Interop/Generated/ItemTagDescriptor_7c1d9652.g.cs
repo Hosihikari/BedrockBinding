@@ -48,33 +48,33 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
 
     public string _getFullName()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_b903afcc((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_b903afcc((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public ulong _getHash()
     {
-        return NativeMethods.TablePtr->C1.hs_method_0d8098f1((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C2.hs_method_0d8098f1((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry _getItem()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->C1.hs_method_89b36e9f((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->C2.hs_method_89b36e9f((void*)__hosihikari_shim_handle));
     }
 
     public byte _getType()
     {
-        return NativeMethods.TablePtr->C1.hs_method_f899264b((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C2.hs_method_f899264b((void*)__hosihikari_shim_handle);
     }
 
     public bool _sameItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry otherItem, bool arg1)
     {
-        return NativeMethods.TablePtr->C1.hs_method_36120ff9((void*)__hosihikari_shim_handle, (void*)otherItem.Handle, arg1) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_36120ff9((void*)__hosihikari_shim_handle, (void*)otherItem.Handle, arg1) != 0;
     }
 
     public bool _sameItems(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor otherDescriptor, bool compareAux)
     {
-        return NativeMethods.TablePtr->C1.hs_method_9692d675((void*)__hosihikari_shim_handle, (void*)otherDescriptor.Handle, compareAux) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_9692d675((void*)__hosihikari_shim_handle, (void*)otherDescriptor.Handle, compareAux) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'CompoundTag' is not supported.", false)]
@@ -83,12 +83,12 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
 
     public void _serialize(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_3d8c6659((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_3d8c6659((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public void _serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val)
     {
-        NativeMethods.TablePtr->C1.hs_method_212de047((void*)__hosihikari_shim_handle, (void*)val.Handle);
+        NativeMethods.TablePtr->C2.hs_method_212de047((void*)__hosihikari_shim_handle, (void*)val.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -97,7 +97,7 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
 
     public string _toString()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_76e52206((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_76e52206((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -107,7 +107,7 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
 
     public static ItemTagDescriptor Create(global::Hosihikari.Bindings.Bedrock.Interop.ItemTagDescriptor arg0)
     {
-        var handle = NativeMethods.TablePtr->C1.hs_create_5a1bc500((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C2.hs_create_5a1bc500((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -126,39 +126,39 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
 
     public string getFullName()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_c4693717((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_c4693717((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public ulong getHash()
     {
-        return NativeMethods.TablePtr->C1.hs_method_91aaaa5b((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C2.hs_method_91aaaa5b((void*)__hosihikari_shim_handle);
     }
 
     public global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry getItem()
     {
-        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->C1.hs_method_2eebe696((void*)__hosihikari_shim_handle));
+        return new global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry((nint)NativeMethods.TablePtr->C2.hs_method_2eebe696((void*)__hosihikari_shim_handle));
     }
 
     public byte getType()
     {
-        return NativeMethods.TablePtr->C1.hs_method_a75b1f3c((void*)__hosihikari_shim_handle);
+        return NativeMethods.TablePtr->C2.hs_method_a75b1f3c((void*)__hosihikari_shim_handle);
     }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mItemTag_Address
     {
-        get => (nint)NativeMethods.TablePtr->C1.hs_get_7c8d817e((void*)__hosihikari_shim_handle);
+        get => (nint)NativeMethods.TablePtr->C2.hs_get_7c8d817e((void*)__hosihikari_shim_handle);
     }
 
     public bool sameItem(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.ItemEntry otherItem, bool arg1)
     {
-        return NativeMethods.TablePtr->C1.hs_method_e1a38dda((void*)__hosihikari_shim_handle, (void*)otherItem.Handle, arg1) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_e1a38dda((void*)__hosihikari_shim_handle, (void*)otherItem.Handle, arg1) != 0;
     }
 
     public bool sameItems(global::Hosihikari.Bindings.Bedrock.Interop.ItemDescriptor_Nested.BaseDescriptor otherDescriptor, bool compareAux)
     {
-        return NativeMethods.TablePtr->C1.hs_method_b7f494be((void*)__hosihikari_shim_handle, (void*)otherDescriptor.Handle, compareAux) != 0;
+        return NativeMethods.TablePtr->C2.hs_method_b7f494be((void*)__hosihikari_shim_handle, (void*)otherDescriptor.Handle, compareAux) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: optional return type 'CompoundTag' is not supported.", false)]
@@ -167,12 +167,12 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
 
     public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.BinaryStream stream)
     {
-        NativeMethods.TablePtr->C1.hs_method_7354ca71((void*)__hosihikari_shim_handle, (void*)stream.Handle);
+        NativeMethods.TablePtr->C2.hs_method_7354ca71((void*)__hosihikari_shim_handle, (void*)stream.Handle);
     }
 
     public void serialize(global::Hosihikari.Bindings.Bedrock.Interop.Json.Value val)
     {
-        NativeMethods.TablePtr->C1.hs_method_bd1ecfc5((void*)__hosihikari_shim_handle, (void*)val.Handle);
+        NativeMethods.TablePtr->C2.hs_method_bd1ecfc5((void*)__hosihikari_shim_handle, (void*)val.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::map<std::basic_string<char>, std::basic_string<char>>' requires --link-carrier or --virtual-dispatch.", false)]
@@ -181,7 +181,7 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
 
     public string toString()
     {
-        var __hs_view = NativeMethods.TablePtr->C1.hs_method_96fb2603((void*)__hosihikari_shim_handle);
+        var __hs_view = NativeMethods.TablePtr->C2.hs_method_96fb2603((void*)__hosihikari_shim_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -192,7 +192,7 @@ public sealed unsafe partial class ItemTagDescriptor : global::System.IDisposabl
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C1.hs_destroy_7c1d9652((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C2.hs_destroy_7c1d9652((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

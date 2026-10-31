@@ -40,7 +40,7 @@ public sealed unsafe partial class ConnectionCallbacks : global::System.IDisposa
 
     public static ConnectionCallbacks Create(global::Hosihikari.Bindings.Bedrock.Interop.Connector_Nested.ConnectionCallbacks arg0)
     {
-        var handle = NativeMethods.TablePtr->C0.hs_create_d6398122((void*)arg0.Handle);
+        var handle = NativeMethods.TablePtr->C1.hs_create_d6398122((void*)arg0.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -77,19 +77,19 @@ public sealed unsafe partial class ConnectionCallbacks : global::System.IDisposa
         {
             fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                NativeMethods.TablePtr->C0.hs_method_48b0054d((void*)__hosihikari_shim_handle, (void*)id.Handle, discoReason, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, skipDisconnectMessage, (void*)sessionSummary.Handle);
+                NativeMethods.TablePtr->C1.hs_method_48b0054d((void*)__hosihikari_shim_handle, (void*)id.Handle, discoReason, __hs_stringData2, (nuint)__hs_stringByteCount2, __hs_stringData3, (nuint)__hs_stringByteCount3, skipDisconnectMessage, (void*)sessionSummary.Handle);
             }
         }
     }
 
     public bool onNewIncomingConnection(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, global::Hosihikari.Bindings.Abi.SharedHandle? peer)
     {
-        return NativeMethods.TablePtr->C0.hs_method_9a0b1407((void*)__hosihikari_shim_handle, (void*)id.Handle, peer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_9a0b1407((void*)__hosihikari_shim_handle, (void*)id.Handle, peer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
     }
 
     public bool onNewOutgoingConnection(global::Hosihikari.Bindings.Bedrock.Interop.NetworkIdentifier id, global::Hosihikari.Bindings.Abi.SharedHandle? peer)
     {
-        return NativeMethods.TablePtr->C0.hs_method_3d1119c9((void*)__hosihikari_shim_handle, (void*)id.Handle, peer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
+        return NativeMethods.TablePtr->C1.hs_method_3d1119c9((void*)__hosihikari_shim_handle, (void*)id.Handle, peer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
     }
 
 
@@ -99,7 +99,7 @@ public sealed unsafe partial class ConnectionCallbacks : global::System.IDisposa
         {
             if (_ownsHandle)
             {
-                NativeMethods.TablePtr->C0.hs_destroy_1ed52c6b((void*)__hosihikari_shim_handle);
+                NativeMethods.TablePtr->C1.hs_destroy_1ed52c6b((void*)__hosihikari_shim_handle);
             }
 
             __hosihikari_shim_handle = 0;

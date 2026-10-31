@@ -432,9 +432,24 @@ public sealed unsafe partial class OpenSSLInterface : global::System.IDisposable
     public bool generateKeyPair(nint privateKey, nint publicKey) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: methods do not accept mutable string references.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Crypto::Asymmetric::System>' requires --link-carrier or --virtual-dispatch.", false)]
-    public static nint inferSystemFromPublicKey(nint publicKey) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'Bedrock::Result<Crypto::Asymmetric::System>' requires --link-carrier or --virtual-dispatch.");
+    public static global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_Crypto__Asymmetric__System__std__error_code_ inferSystemFromPublicKey(string publicKey)
+    {
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(publicKey);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(publicKey, __hs_stringBytes0);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            return new global::Hosihikari.Bindings.Bedrock.Interop.Bedrock.Result_Crypto__Asymmetric__System__std__error_code_((nint)NativeMethods.TablePtr->C1.hs_method_a4dee346(__hs_stringData0, (nuint)__hs_stringByteCount0));
+        }
+    }
 
     // The native field type is not projected; this is the address of the field storage.
     public nint mUnk2484a2_Address

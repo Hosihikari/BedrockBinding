@@ -55,24 +55,9 @@ public sealed unsafe partial class ScriptItemComponent : global::System.IDisposa
         return NativeMethods.TablePtr->C3.hs_method_5b6f189b((void*)__hosihikari_shim_handle) != 0;
     }
 
-    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_ item, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, string id)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(id);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            return (nint)NativeMethods.TablePtr->C3.hs_method_7a713020((void*)__hosihikari_shim_handle, (void*)item.Handle, (void*)scope.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint item, nint scope, nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemComponent arg0)
     {
@@ -99,30 +84,9 @@ public sealed unsafe partial class ScriptItemComponent : global::System.IDisposa
         return new ScriptItemComponent((nint)handle);
     }
 
-    public static ScriptItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.StrongTypedObjectHandle_ScriptModuleMinecraft__ScriptItemStack_ item, global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakLifetimeScope scope, string id)
-    {
-        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(id);
-        scoped global::System.Span<byte> __hs_stringBytes2;
-        if (__hs_stringByteCount2 <= 256)
-        {
-            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
-        }
-        else
-        {
-            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes2);
-        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
-        {
-            var handle = NativeMethods.TablePtr->C3.hs_create_b6b10778((void*)item.Handle, (void*)scope.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new ScriptItemComponent((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static ScriptItemComponent Create(nint item, nint scope, nint id) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public static ScriptItemComponent Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptItemComponent arg0)
     {

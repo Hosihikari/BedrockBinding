@@ -38,24 +38,9 @@ public sealed unsafe partial class ScriptScoreboardObjective : global::System.ID
         return __hs_handle;
     }
 
-    public nint _ctor(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakTypedObjectHandle_ScriptModuleMinecraft__ScriptScoreboard_ scoreboardHandle, string objectiveId)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(objectiveId);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(objectiveId, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            return (nint)NativeMethods.TablePtr->C3.hs_method_e55dbef0((void*)__hosihikari_shim_handle, (void*)scoreboardHandle.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public nint _ctor(nint scoreboardHandle, nint objectiveId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public static ScriptScoreboardObjective Create()
     {
@@ -68,30 +53,9 @@ public sealed unsafe partial class ScriptScoreboardObjective : global::System.ID
         return new ScriptScoreboardObjective((nint)handle);
     }
 
-    public static ScriptScoreboardObjective Create(global::Hosihikari.Bindings.Bedrock.Interop.Scripting.WeakTypedObjectHandle_ScriptModuleMinecraft__ScriptScoreboard_ scoreboardHandle, string objectiveId)
-    {
-        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(objectiveId);
-        scoped global::System.Span<byte> __hs_stringBytes1;
-        if (__hs_stringByteCount1 <= 256)
-        {
-            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
-        }
-        else
-        {
-            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
-        }
-        global::System.Text.Encoding.UTF8.GetBytes(objectiveId, __hs_stringBytes1);
-        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
-        {
-            var handle = NativeMethods.TablePtr->C3.hs_create_297aa95b((void*)scoreboardHandle.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
-            if (handle == null)
-            {
-                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
-            }
-
-            return new ScriptScoreboardObjective((nint)handle);
-        }
-    }
+    [global::System.Obsolete("BindingShim cannot project this member: the by-value record parameter has no eligible layout.", false)]
+    public static ScriptScoreboardObjective Create(nint scoreboardHandle, nint objectiveId) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the by-value record parameter has no eligible layout.");
 
     public static ScriptScoreboardObjective Create(global::Hosihikari.Bindings.Bedrock.Interop.ScriptModuleMinecraft.ScriptScoreboardObjective arg0)
     {

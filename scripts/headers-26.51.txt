@@ -1322,6 +1322,7 @@ mc/external/webrtc/VideoChannel.h
 mc/external/webrtc/VideoTrack.h
 mc/external/webrtc/VoiceChannel.h
 mc/gameplayhandlers/ActorGameplayHandler.h
+mc/gameplayhandlers/GameplayHandlerResult.h
 mc/gameplayhandlers/ServerInstanceEventHandler.h
 mc/gametest/BaseGameTestFunction.h
 mc/gametest/ConsoleGameTestListener.h
@@ -1706,6 +1707,7 @@ mc/resources/ResourcePackRepository.h
 mc/resources/ResourcePackStack.h
 mc/resources/ResourceSignature.h
 mc/resources/ResourceTaskGroupScope.h
+mc/resources/StreamableAssetSource.h
 mc/resources/SubpackInfo.h
 mc/resources/SubpackInfoCollection.h
 mc/resources/ValidatorRegistry.h
