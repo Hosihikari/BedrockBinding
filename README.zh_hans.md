@@ -25,7 +25,7 @@ shim 以 `--symbol-dispatch --resolve-by-name` 模式发射。支持的 ABI：
 - `std::string` / `std::string_view` 的值与 const 引用；
 - 单层 `T*` / `T&`，以 `void*` 传递；
 - 按值 record：小的 `triviallyCopyable` record 走整数寄存器，较大 record 走栈上临时区；非 triviallyCopyable 的 record 通过按名解析的拷贝构造函数构造实参，析构非平凡时由被调方释放；无拷贝构造记录的平凡析构 record 按字节复制，但仍使用隐藏引用；
-- 按值返回的签名省略默认模板实参时（如 `Bedrock::Result<T>`）会归一为已记录的特化 `Bedrock::Result<T, std::error_code>`，调用返回拥有型包装并可正常 `Dispose`；`Bedrock::Result<void>` 在 1.26.51.1 中没有析构符号，`Dispose` 会释放结果缓冲，但不会释放错误载荷；
+- 按值返回的签名省略默认模板实参时（如 `Bedrock::Result<T>`）会归一为已记录的特化 `Bedrock::Result<T, std::error_code>`，调用返回拥有型包装并可正常 `Dispose`；`Bedrock::Result` 特化在 1.26.51.1 中没有析构符号，`Dispose` 会释放结果缓冲，但不会释放错误载荷；
 - 类型未投影的字段以只读 `nint` 暴露字段存储地址，属性名为 `<field>_Address`；
 - `optional_ref<T>` 参数与返回使用存在标志；
 - `std::vector<T>` 参数与按值返回，元素支持标量/枚举、字符串、单层指针（以 `nint[]` 传入），或 layout 已知且平凡析构的 record；引用与指针 vector 返回仍是借用句柄；
